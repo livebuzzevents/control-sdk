@@ -91,7 +91,7 @@ class GuzzleClient implements Client
 
             $response = $e->getResponse();
 
-            if ($response->getStatusCode() === 400) {
+            if ($response->getStatusCode() === 400 || $response->getStatusCode() === 422) {
                 return $response->json();
             } elseif ($response->getStatusCode() === 401) {
                 throw new UnauthorizedException("Invalid API key or your IP is not in the whitelist!");

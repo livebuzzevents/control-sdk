@@ -13,47 +13,47 @@ class Address extends Object
     /**
      * @var
      */
+    protected $id;
+    /**
+     * @var
+     */
     protected $type;
-
-    /**
-     * @return mixed
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param mixed $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
     /**
      * @var
      */
     protected $postcode;
-
     /**
      * @var
      */
     protected $address;
-
     /**
      * @var
      */
     protected $city;
-
     /**
      * @var
      */
     protected $country;
-
     /**
      * @var
      */
     protected $county;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
     /**
      * @return mixed
@@ -139,5 +139,21 @@ class Address extends Object
     public function setCounty($county)
     {
         $this->county = $county;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 }

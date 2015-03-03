@@ -1,21 +1,29 @@
-<?php namespace Buzz\Control\Services\User;
+<?php namespace Buzz\Control\Services\User\Phone;
 
 use Buzz\Control\Contracts\Service;
+use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\User;
+use Buzz\Control\Objects\User\Phone;
 
-class Register implements Service
+class Create implements Service
 {
     /**
      * @var User
      */
     private $user;
-
     /**
-     * @param User $user
+     * @var Phone
      */
-    public function __construct(User $user)
+    private $phone;
+
+    public function __construct(User $user, Phone $phone)
     {
-        $this->user = $user;
+        if (empty($user->getId())) {
+            throw new ErrorException('User id required!');
+        }
+
+        $this->user  = $user;
+        $this->phone = $phone;
     }
 
     /**
@@ -35,7 +43,7 @@ class Register implements Service
      */
     public function getUrl()
     {
-        return 'user';
+        return "user/{$this->user->getId()}/phone";
     }
 
     /**
@@ -45,8 +53,6 @@ class Register implements Service
      */
     public function getRequest()
     {
-        return [
-            'user' => $this->user->toArray()
-        ];
+        return $this->phone->toArray();
     }
 }

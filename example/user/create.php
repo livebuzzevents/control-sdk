@@ -1,6 +1,6 @@
 <?php
 
-require_once 'bootstrap.php';
+require_once '../bootstrap.php';
 
 $user = new \Buzz\Control\Objects\User();
 
@@ -46,7 +46,7 @@ foreach ($parameters as $parameter) {
     $user->addParameter($parameter);
 }
 
-$service  = new \Buzz\Control\Services\User\Register($user);
+$service  = new \Buzz\Control\Services\User\Create($user);
 $response = $serviceHandler->execute($service);
 
 var_dump($response);
