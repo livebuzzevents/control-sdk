@@ -3,6 +3,7 @@
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\User;
+use Buzz\Control\Objects\User\Address;
 
 /**
  * Class All
@@ -58,5 +59,21 @@ class All implements Service
     public function getRequest()
     {
         return [];
+    }
+
+    /**
+     * @param $response
+     *
+     * @return array
+     */
+    public function decorate($response)
+    {
+        $decorated = [];
+
+        foreach ($response as $address) {
+            array_push($decorated, Address::createFromArray($address));
+        }
+
+        return $decorated;
     }
 }

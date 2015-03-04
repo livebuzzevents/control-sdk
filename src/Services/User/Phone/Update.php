@@ -59,4 +59,14 @@ class Update implements Service
     {
         return [];
     }
+
+    /**
+     * @param $result
+     *
+     * @return static
+     */
+    public function decorate($result)
+    {
+        return Phone::createFromArray($result);
+    }
 }

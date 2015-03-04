@@ -164,7 +164,7 @@ class User extends Object
     }
 
     /**
-     * @return mixed
+     * @return Group
      */
     public function getGroup()
     {
@@ -172,9 +172,9 @@ class User extends Object
     }
 
     /**
-     * @param mixed $group
+     * @param Group $group
      */
-    public function setGroup($group)
+    public function setGroup(Group $group)
     {
         $this->group = $group;
     }

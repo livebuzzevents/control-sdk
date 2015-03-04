@@ -38,6 +38,6 @@ class ServiceHandler
      */
     public function execute(Service $service)
     {
-        return $this->client->{$service->getMethod()}($service->getUrl(), $service->getRequest());
+        return $service->decorate($this->client->{$service->getMethod()}($service->getUrl(), $service->getRequest()));
     }
 }

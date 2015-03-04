@@ -55,4 +55,9 @@ class Create implements Service
     {
         return $this->job->toArray();
     }
+
+    public function decorate($response)
+    {
+        return Job::createFromArray($response);
+    }
 }

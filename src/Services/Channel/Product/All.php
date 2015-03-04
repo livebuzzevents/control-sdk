@@ -1,34 +1,34 @@
-<?php namespace Buzz\Control\Services\User\Job;
+<?php namespace Buzz\Control\Services\Channel\Product;
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\User;
-use Buzz\Control\Objects\User\Job;
+use Buzz\Control\Objects\Channel;
+use Buzz\Control\Objects\Channel\Product;
 
 /**
  * Class All
  *
- * @package Buzz\Control\Services\User\Job
+ * @package Buzz\Control\Services\Channel\Address
  */
 class All implements Service
 {
     /**
-     * @var User
+     * @var Channel
      */
-    private $user;
+    private $channel;
 
     /**
-     * @param User $user
+     * @param Channel $channel
      *
      * @throws ErrorException
      */
-    public function __construct(User $user)
+    public function __construct(Channel $channel)
     {
-        if (empty($user->getId())) {
-            throw new ErrorException('User id required!');
+        if (empty($channel->getId())) {
+            throw new ErrorException('Channel id required!');
         }
 
-        $this->user = $user;
+        $this->channel = $channel;
     }
 
     /**
@@ -48,7 +48,7 @@ class All implements Service
      */
     public function getUrl()
     {
-        return "user/{$this->user->getId()}/job";
+        return "channel/{$this->channel->getId()}/product";
     }
 
     /**
@@ -61,17 +61,12 @@ class All implements Service
         return [];
     }
 
-    /**
-     * @param $response
-     *
-     * @return array
-     */
     public function decorate($response)
     {
         $decorated = [];
 
-        foreach ($response as $job) {
-            array_push($decorated, Job::createFromArray($job));
+        foreach ($response as $product) {
+            array_push($decorated, Product::createFromArray($product));
         }
 
         return $decorated;

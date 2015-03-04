@@ -59,4 +59,9 @@ class Get implements Service
     {
         return [];
     }
+
+    public function decorate($response)
+    {
+        return Job::createFromArray($response);
+    }
 }

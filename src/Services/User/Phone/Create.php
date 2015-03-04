@@ -16,6 +16,12 @@ class Create implements Service
      */
     private $phone;
 
+    /**
+     * @param User  $user
+     * @param Phone $phone
+     *
+     * @throws ErrorException
+     */
     public function __construct(User $user, Phone $phone)
     {
         if (empty($user->getId())) {
@@ -54,5 +60,15 @@ class Create implements Service
     public function getRequest()
     {
         return $this->phone->toArray();
+    }
+
+    /**
+     * @param $result
+     *
+     * @return static
+     */
+    public function decorate($result)
+    {
+        return Phone::createFromArray($result);
     }
 }

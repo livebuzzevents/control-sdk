@@ -3,6 +3,7 @@
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\User;
+use Buzz\Control\Objects\Group;
 
 class Update implements Service
 {
@@ -48,5 +49,17 @@ class Update implements Service
     public function getRequest()
     {
         return [];
+    }
+
+    /**
+     * @param $result
+     *
+     * @return static
+     */
+    public function decorate($result)
+    {
+        $result['group'] = Group::createFromArray($result['group']);
+
+        return User::createFromArray($result);
     }
 }

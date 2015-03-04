@@ -5,6 +5,11 @@ use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\User;
 use Buzz\Control\Objects\User\Job;
 
+/**
+ * Class Update
+ *
+ * @package Buzz\Control\Services\User\Job
+ */
 class Update implements Service
 {
     /**
@@ -16,6 +21,12 @@ class Update implements Service
      */
     private $job;
 
+    /**
+     * @param User $user
+     * @param Job  $job
+     *
+     * @throws ErrorException
+     */
     public function __construct(User $user, Job $job)
     {
         if (empty($user->getId())) {
@@ -58,5 +69,15 @@ class Update implements Service
     public function getRequest()
     {
         return [];
+    }
+
+    /**
+     * @param $response
+     *
+     * @return static
+     */
+    public function decorate($response)
+    {
+        return Job::createFromArray($response);
     }
 }

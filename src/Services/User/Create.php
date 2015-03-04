@@ -1,8 +1,14 @@
 <?php namespace Buzz\Control\Services\User;
 
 use Buzz\Control\Contracts\Service;
+use Buzz\Control\Objects\Group;
 use Buzz\Control\Objects\User;
 
+/**
+ * Class Create
+ *
+ * @package Buzz\Control\Services\User
+ */
 class Create implements Service
 {
     /**
@@ -48,5 +54,17 @@ class Create implements Service
         return [
             'user' => $this->user->toArray()
         ];
+    }
+
+    /**
+     * @param $result
+     *
+     * @return static
+     */
+    public function decorate($result)
+    {
+        $result['group'] = Group::createFromArray($result['group']);
+
+        return User::createFromArray($result);
     }
 }

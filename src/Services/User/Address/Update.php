@@ -59,4 +59,9 @@ class Update implements Service
     {
         return [];
     }
+
+    public function decorate($response)
+    {
+        return Address::createFromArray($response);
+    }
 }

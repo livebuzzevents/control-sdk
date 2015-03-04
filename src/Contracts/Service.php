@@ -1,5 +1,10 @@
 <?php namespace Buzz\Control\Contracts;
 
+/**
+ * Interface Service
+ *
+ * @package Buzz\Control\Contracts
+ */
 interface Service
 {
     /**
@@ -22,4 +27,11 @@ interface Service
      * @return mixed
      */
     public function getRequest();
+
+    /**
+     * @param $response
+     *
+     * @return mixed
+     */
+    public function decorate($response);
 }

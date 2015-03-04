@@ -49,4 +49,14 @@ class Delete implements Service
     {
         return [];
     }
+
+    /**
+     * @param $result
+     *
+     * @return static
+     */
+    public function decorate($result)
+    {
+        return true;
+    }
 }

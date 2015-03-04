@@ -39,4 +39,24 @@ abstract class Object
 
         return $array;
     }
+
+    public static function createFromArray(array $array)
+    {
+        $object = new static;
+
+        $reflect   = new ReflectionClass($object);
+        $protected = $reflect->getProperties(ReflectionProperty::IS_PROTECTED);
+
+        foreach ($protected as $property) {
+            $name = $property->getName();
+
+            if (!isset($array[$name])) {
+                continue;
+            }
+
+            $object->$name = $array[$name];
+        }
+
+        return $object;
+    }
 }
