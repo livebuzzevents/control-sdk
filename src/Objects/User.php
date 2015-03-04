@@ -1,9 +1,6 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\User\Address;
-use Buzz\Control\Objects\User\Job;
-use Buzz\Control\Objects\User\Parameter;
 
 /**
  * Class User
@@ -63,21 +60,6 @@ class User extends Object
     protected $language;
 
     /**
-     * @var array
-     */
-    protected $addresses = [];
-
-    /**
-     * @var array
-     */
-    protected $jobs = [];
-
-    /**
-     * @var array
-     */
-    protected $parameters = [];
-
-    /**
      * @return mixed
      */
     public function getId()
@@ -129,38 +111,6 @@ class User extends Object
         }
 
         $this->sex = $sex;
-    }
-
-    /**
-     * @return array
-     */
-    public function getJobs()
-    {
-        return $this->jobs;
-    }
-
-    /**
-     * @param Job $job
-     */
-    public function addJob(Job $job)
-    {
-        array_push($this->jobs, $job);
-    }
-
-    /**
-     * @return Address
-     */
-    public function getAddresses()
-    {
-        return $this->addresses;
-    }
-
-    /**
-     * @param Address $address
-     */
-    public function addAddress(Address $address)
-    {
-        array_push($this->addresses, $address);
     }
 
     /**
@@ -291,21 +241,5 @@ class User extends Object
         }
 
         $this->language = $language;
-    }
-
-    /**
-     * @param Parameter $parameter
-     */
-    public function addParameter(Parameter $parameter)
-    {
-        array_push($this->parameters, $parameter);
-    }
-
-    /**
-     * @return array
-     */
-    public function getParameters()
-    {
-        return $this->parameters;
     }
 }
