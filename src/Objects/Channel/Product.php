@@ -4,27 +4,10 @@ use Buzz\Control\Objects\Object;
 
 class Product extends Object
 {
-    protected $id;
     protected $name;
     protected $description;
     protected $cost;
     protected $currency;
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return mixed

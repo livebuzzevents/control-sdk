@@ -5,6 +5,43 @@ use ReflectionProperty;
 
 abstract class Object
 {
+    protected $id;
+
+    public function __construct($id = null)
+    {
+        $this->id = $id;
+    }
+
+    public static function createFromArray(array $array)
+    {
+        $object = new static;
+
+        $reflect   = new ReflectionClass($object);
+        $protected = $reflect->getProperties(ReflectionProperty::IS_PROTECTED);
+
+        foreach ($protected as $property) {
+            $name = $property->getName();
+
+            if (!isset($array[$name])) {
+                continue;
+            }
+
+            $object->$name = $array[$name];
+        }
+
+        return $object;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
     public function toArray($skip_null = true)
     {
         $reflect   = new ReflectionClass($this);
@@ -38,25 +75,5 @@ abstract class Object
         }
 
         return $array;
-    }
-
-    public static function createFromArray(array $array)
-    {
-        $object = new static;
-
-        $reflect   = new ReflectionClass($object);
-        $protected = $reflect->getProperties(ReflectionProperty::IS_PROTECTED);
-
-        foreach ($protected as $property) {
-            $name = $property->getName();
-
-            if (!isset($array[$name])) {
-                continue;
-            }
-
-            $object->$name = $array[$name];
-        }
-
-        return $object;
     }
 }

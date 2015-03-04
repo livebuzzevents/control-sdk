@@ -2,11 +2,8 @@
 
 require_once '../../bootstrap.php';
 
-$user = new \Buzz\Control\Objects\User();
-$user->setId(3);
-
-$phone = new \Buzz\Control\Objects\User\Phone();
-$phone->setId(5);
+$user  = new \Buzz\Control\Objects\User(3);
+$phone = new \Buzz\Control\Objects\User\Phone(5);
 
 $service  = new \Buzz\Control\Services\User\Phone\Get($user, $phone);
 $response = $serviceHandler->execute($service);

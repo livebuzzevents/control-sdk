@@ -12,31 +12,11 @@ class Parameter extends Object
     /**
      * @var
      */
-    protected $id;
-    /**
-     * @var
-     */
     protected $parameter;
     /**
      * @var
      */
     protected $value;
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return mixed
