@@ -4,6 +4,7 @@ use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Channel;
 use Buzz\Control\Objects\Channel\Product;
+use Buzz\Control\Objects\Filter;
 
 /**
  * Class All
@@ -16,19 +17,25 @@ class All implements Service
      * @var Channel
      */
     private $channel;
+    /**
+     * @var Filter
+     */
+    private $filter;
 
     /**
      * @param Channel $channel
+     * @param Filter  $filter
      *
      * @throws ErrorException
      */
-    public function __construct(Channel $channel)
+    public function __construct(Channel $channel, Filter $filter = null)
     {
         if (empty($channel->getId())) {
             throw new ErrorException('Channel id required!');
         }
 
         $this->channel = $channel;
+        $this->filter = $filter;
     }
 
     /**
@@ -58,9 +65,14 @@ class All implements Service
      */
     public function getRequest()
     {
-        return [];
+        return $this->filter ? ['filter' => $this->filter->getFilters()] : [];
     }
 
+    /**
+     * @param $response
+     *
+     * @return array
+     */
     public function decorate($response)
     {
         $decorated = [];

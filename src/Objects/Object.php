@@ -3,15 +3,39 @@
 use ReflectionClass;
 use ReflectionProperty;
 
+/**
+ * Class Object
+ *
+ * @package Buzz\Control\Objects
+ */
 abstract class Object
 {
+    /**
+     * @var null
+     */
     protected $id;
+    /**
+     * @var
+     */
+    protected $created_at;
+    /**
+     * @var
+     */
+    protected $updated_at;
 
+    /**
+     * @param null $id
+     */
     public function __construct($id = null)
     {
         $this->id = $id;
     }
 
+    /**
+     * @param array $array
+     *
+     * @return static
+     */
     public static function createFromArray(array $array)
     {
         $object = new static;
@@ -32,16 +56,43 @@ abstract class Object
         return $object;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+
+    /**
+     * @return null
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * @param $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
 
+    /**
+     * @param bool $skip_null
+     *
+     * @return array
+     */
     public function toArray($skip_null = true)
     {
         $reflect   = new ReflectionClass($this);
