@@ -14,11 +14,31 @@ class Question extends Object
     /**
      * @var
      */
+    protected $description;
+    /**
+     * @var
+     */
     protected $type;
     /**
      * @var
      */
     protected $options;
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
 
     /**
      * @return mixed
