@@ -1,5 +1,7 @@
 <?php namespace Buzz\Control\Objects;
 
+use Buzz\Control\Objects\Question\Option;
+
 /**
  * Class Question
  *
@@ -22,7 +24,7 @@ class Question extends Object
     /**
      * @var
      */
-    protected $options;
+    protected $options = [];
 
     /**
      * @return mixed
@@ -70,6 +72,14 @@ class Question extends Object
     public function setType($type)
     {
         $this->type = $type;
+    }
+
+    /**
+     * @param Option $option
+     */
+    public function addOption(Option $option)
+    {
+        array_push($this->options, $option);
     }
 
     /**
