@@ -29,7 +29,7 @@ class Parameter extends Object
     /**
      * @param mixed $parameter
      */
-    public function setParameter($parameter)
+    public function setParameter(\Buzz\Control\Objects\Parameter $parameter)
     {
         $this->parameter = $parameter;
     }

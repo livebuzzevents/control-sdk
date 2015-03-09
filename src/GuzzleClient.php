@@ -78,6 +78,7 @@ class GuzzleClient implements Client
      * @param Request $request
      *
      * @return array|bool|float|int|string
+     * @throws ErrorException
      * @throws ResponseException
      * @throws ServerException
      * @throws UnauthorizedException
@@ -91,7 +92,7 @@ class GuzzleClient implements Client
         } catch (GuzzleClientException $e) {
 
             $response = $e->getResponse();
-
+            exit($response);
             if ($response->getStatusCode() === 400 || $response->getStatusCode() === 422) {
                 throw new ErrorException($response->json()['error']);
             } elseif ($response->getStatusCode() === 401) {
