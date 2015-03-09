@@ -61,7 +61,9 @@ class Create implements Service
      */
     public function decorate($result)
     {
-        $result['group'] = Group::createFromArray($result['group']);
+        if(!empty($result['group'])) {
+            $result['group'] = Group::createFromArray($result['group']);
+        }
 
         return User::createFromArray($result);
     }
