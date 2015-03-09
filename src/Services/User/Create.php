@@ -51,6 +51,12 @@ class Create implements Service
      */
     public function getRequest()
     {
+        $user = $this->user->toArray();
+
+        if (!empty($user['group']) && !empty($user['group']['id'])) {
+            $user['group_id'] = $user['group']['id'];
+        }
+
         return [
             'user' => $this->user->toArray()
         ];
