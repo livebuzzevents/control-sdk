@@ -1,33 +1,34 @@
-<?php namespace Buzz\Control\Services\User\Parameter;
+<?php namespace Buzz\Control\Services\User\Property;
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\User;
-use Buzz\Control\Objects\User\Parameter;
+use Buzz\Control\Objects\User\Property;
 
-class Delete implements Service
+/**
+ * Class All
+ *
+ * @package Buzz\Control\Services\User\Property
+ */
+class All implements Service
 {
     /**
      * @var User
      */
     private $user;
-    /**
-     * @var Parameter
-     */
-    private $parameter;
 
-    public function __construct(User $user, Parameter $parameter)
+    /**
+     * @param User $user
+     *
+     * @throws ErrorException
+     */
+    public function __construct(User $user)
     {
         if (empty($user->getId())) {
             throw new ErrorException('User id required!');
         }
 
-        if (empty($parameter->getId())) {
-            throw new ErrorException('Parameter id required!');
-        }
-
-        $this->user  = $user;
-        $this->parameter = $parameter;
+        $this->user = $user;
     }
 
     /**
@@ -37,7 +38,7 @@ class Delete implements Service
      */
     public function getMethod()
     {
-        return 'delete';
+        return 'get';
     }
 
     /**
@@ -47,7 +48,7 @@ class Delete implements Service
      */
     public function getUrl()
     {
-        return "user/{$this->user->getId()}/parameter/{$this->parameter->getId()}";
+        return "user/{$this->user->getId()}/property";
     }
 
     /**
@@ -61,12 +62,18 @@ class Delete implements Service
     }
 
     /**
-     * @param $result
+     * @param $response
      *
-     * @return static
+     * @return array
      */
-    public function decorate($result)
+    public function decorate($response)
     {
-        return true;
+        $decorated = [];
+
+        foreach ($response as $property) {
+            array_push($decorated, Property::createFromArray($property));
+        }
+
+        return $decorated;
     }
 }

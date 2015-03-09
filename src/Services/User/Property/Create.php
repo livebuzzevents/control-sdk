@@ -1,9 +1,9 @@
-<?php namespace Buzz\Control\Services\User\Parameter;
+<?php namespace Buzz\Control\Services\User\Property;
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\User;
-use Buzz\Control\Objects\User\Parameter;
+use Buzz\Control\Objects\User\Property;
 
 class Create implements Service
 {
@@ -12,28 +12,28 @@ class Create implements Service
      */
     private $user;
     /**
-     * @var Parameter
+     * @var Property
      */
-    private $user_parameter;
+    private $property;
 
     /**
-     * @param User      $user
-     * @param Parameter $user_parameter
+     * @param User     $user
+     * @param Property $property
      *
      * @throws ErrorException
      */
-    public function __construct(User $user, Parameter $user_parameter)
+    public function __construct(User $user, Property $property)
     {
         if (empty($user->getId())) {
             throw new ErrorException('User id required!');
         }
 
-        if (empty($user_parameter->getParameter())) {
+        if (empty($property->getParameter())) {
             throw new ErrorException('Parameter required!');
         }
 
-        $this->user           = $user;
-        $this->user_parameter = $user_parameter;
+        $this->user     = $user;
+        $this->property = $property;
     }
 
     /**
@@ -53,7 +53,7 @@ class Create implements Service
      */
     public function getUrl()
     {
-        return "user/{$this->user->getId()}/parameter";
+        return "user/{$this->user->getId()}/property";
     }
 
     /**
@@ -63,7 +63,7 @@ class Create implements Service
      */
     public function getRequest()
     {
-        return $this->user_parameter->toArray();
+        return $this->property->toArray();
     }
 
     /**
@@ -73,6 +73,6 @@ class Create implements Service
      */
     public function decorate($result)
     {
-        return Parameter::createFromArray($result);
+        return Property::createFromArray($result);
     }
 }

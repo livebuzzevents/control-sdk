@@ -1,33 +1,33 @@
-<?php namespace Buzz\Control\Services\User\Parameter;
+<?php namespace Buzz\Control\Services\User\Property;
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\User;
-use Buzz\Control\Objects\User\Parameter;
+use Buzz\Control\Objects\User\Property;
 
-class Update implements Service
+class Delete implements Service
 {
     /**
      * @var User
      */
     private $user;
     /**
-     * @var Parameter
+     * @var Property
      */
-    private $parameter;
+    private $property;
 
-    public function __construct(User $user, Parameter $parameter)
+    public function __construct(User $user, Property $property)
     {
         if (empty($user->getId())) {
             throw new ErrorException('User id required!');
         }
 
-        if (empty($parameter->getId())) {
-            throw new ErrorException('Parameter id required!');
+        if (empty($property->getId())) {
+            throw new ErrorException('Property id required!');
         }
 
         $this->user  = $user;
-        $this->parameter = $parameter;
+        $this->property = $property;
     }
 
     /**
@@ -37,7 +37,7 @@ class Update implements Service
      */
     public function getMethod()
     {
-        return 'put';
+        return 'delete';
     }
 
     /**
@@ -47,7 +47,7 @@ class Update implements Service
      */
     public function getUrl()
     {
-        return "user/{$this->user->getId()}/parameter/{$this->parameter->getId()}";
+        return "user/{$this->user->getId()}/property/{$this->property->getId()}";
     }
 
     /**
@@ -67,6 +67,6 @@ class Update implements Service
      */
     public function decorate($result)
     {
-        return Parameter::createFromArray($result);
+        return true;
     }
 }

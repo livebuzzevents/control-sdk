@@ -1,13 +1,14 @@
 <?php namespace Buzz\Control\Objects\User;
 
 use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Parameter;
 
 /**
- * Class Parameter
+ * Class Property
  *
  * @package Buzz\Control\User
  */
-class Parameter extends Object
+class Property extends Object
 {
     /**
      * @var
@@ -29,7 +30,7 @@ class Parameter extends Object
     /**
      * @param mixed $parameter
      */
-    public function setParameter(\Buzz\Control\Objects\Parameter $parameter)
+    public function setParameter(Parameter $parameter)
     {
         $this->parameter = $parameter;
     }

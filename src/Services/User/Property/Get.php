@@ -1,34 +1,33 @@
-<?php namespace Buzz\Control\Services\User\Parameter;
+<?php namespace Buzz\Control\Services\User\Property;
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\User;
-use Buzz\Control\Objects\User\Parameter;
+use Buzz\Control\Objects\User\Property;
 
-/**
- * Class All
- *
- * @package Buzz\Control\Services\User\Parameter
- */
-class All implements Service
+class Get implements Service
 {
     /**
      * @var User
      */
     private $user;
-
     /**
-     * @param User $user
-     *
-     * @throws ErrorException
+     * @var Property
      */
-    public function __construct(User $user)
+    private $property;
+
+    public function __construct(User $user, Property $property)
     {
         if (empty($user->getId())) {
             throw new ErrorException('User id required!');
         }
 
-        $this->user = $user;
+        if (empty($property->getId())) {
+            throw new ErrorException('Property id required!');
+        }
+
+        $this->user  = $user;
+        $this->property = $property;
     }
 
     /**
@@ -48,7 +47,7 @@ class All implements Service
      */
     public function getUrl()
     {
-        return "user/{$this->user->getId()}/parameter";
+        return "user/{$this->user->getId()}/property/{$this->property->getId()}";
     }
 
     /**
@@ -62,18 +61,12 @@ class All implements Service
     }
 
     /**
-     * @param $response
+     * @param $result
      *
-     * @return array
+     * @return static
      */
-    public function decorate($response)
+    public function decorate($result)
     {
-        $decorated = [];
-
-        foreach ($response as $parameter) {
-            array_push($decorated, Parameter::createFromArray($parameter));
-        }
-
-        return $decorated;
+        return Property::createFromArray($result);
     }
 }
