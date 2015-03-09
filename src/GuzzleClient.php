@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control;
 
 use Buzz\Control\Contracts\Client;
+use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Exceptions\ResponseException;
 use Buzz\Control\Exceptions\ServerException;
 use Buzz\Control\Exceptions\UnauthorizedException;
@@ -92,7 +93,7 @@ class GuzzleClient implements Client
             $response = $e->getResponse();
 
             if ($response->getStatusCode() === 400 || $response->getStatusCode() === 422) {
-                return $response->json();
+                throw new ErrorException($response->json());
             } elseif ($response->getStatusCode() === 401) {
                 throw new UnauthorizedException("Invalid API key or your IP is not in the whitelist!");
             } elseif ($response->getStatusCode() === 404) {
