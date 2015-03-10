@@ -2,6 +2,7 @@
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
+use Buzz\Control\Objects\Parameter;
 use Buzz\Control\Objects\User;
 use Buzz\Control\Objects\User\Property;
 
@@ -26,7 +27,7 @@ class Update implements Service
             throw new ErrorException('Property id required!');
         }
 
-        $this->user  = $user;
+        $this->user     = $user;
         $this->property = $property;
     }
 
@@ -67,6 +68,8 @@ class Update implements Service
      */
     public function decorate($result)
     {
+        $result['parameter'] = Parameter::createFromArray($result['parameter']);
+
         return Property::createFromArray($result);
     }
 }

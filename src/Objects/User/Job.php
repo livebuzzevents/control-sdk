@@ -16,7 +16,7 @@ class Job extends Object
     /**
      * @var
      */
-    protected $job_title;
+    protected $title;
 
     /**
      * @return mixed
@@ -37,16 +37,16 @@ class Job extends Object
     /**
      * @return mixed
      */
-    public function getJobTitle()
+    public function getTitle()
     {
-        return $this->job_title;
+        return $this->title;
     }
 
     /**
-     * @param mixed $job_title
+     * @param mixed $title
      */
-    public function setJobTitle($job_title)
+    public function setTitle($title)
     {
-        $this->job_title = $job_title;
+        $this->title = $title;
     }
 }

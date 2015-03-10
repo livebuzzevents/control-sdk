@@ -2,6 +2,7 @@
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
+use Buzz\Control\Objects\Parameter;
 use Buzz\Control\Objects\User;
 use Buzz\Control\Objects\User\Property;
 
@@ -71,6 +72,7 @@ class All implements Service
         $decorated = [];
 
         foreach ($response as $property) {
+            $property['parameter'] = Parameter::createFromArray($property['parameter']);
             array_push($decorated, Property::createFromArray($property));
         }
 

@@ -2,6 +2,7 @@
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
+use Buzz\Control\Objects\Parameter;
 use Buzz\Control\Objects\User;
 use Buzz\Control\Objects\User\Property;
 
@@ -67,6 +68,8 @@ class Get implements Service
      */
     public function decorate($result)
     {
+        $result['parameter'] = Parameter::createFromArray($result['parameter']);
+
         return Property::createFromArray($result);
     }
 }
