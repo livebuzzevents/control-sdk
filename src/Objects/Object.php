@@ -57,11 +57,31 @@ abstract class Object
     }
 
     /**
+     * @param $created_at
+     *
+     * @return mixed
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->created_at = $created_at;
+    }
+
+    /**
      * @return mixed
      */
     public function getCreatedAt()
     {
         return $this->created_at;
+    }
+
+    /**
+     * @param $updated_at
+     *
+     * @return mixed
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->updated_at = $updated_at;
     }
 
     /**
