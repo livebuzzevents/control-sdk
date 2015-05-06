@@ -1,28 +1,34 @@
-<?php namespace Buzz\Control\Services\Question;
+<?php namespace Buzz\Control\Services\Customer\Job;
 
 use Buzz\Control\Contracts\Service;
-use Buzz\Control\Objects\Filter;
-use Buzz\Control\Objects\Question;
+use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
+use Buzz\Control\Objects\Customer\Job;
 
 /**
  * Class All
  *
- * @package Buzz\Control\Services\Customer\Address
+ * @package Buzz\Control\Services\Customer\Job
  */
 class All implements Service
 {
     /**
-     * @var
+     * @var Customer
      */
-    protected $filter;
+    private $customer;
 
     /**
-     * @param Filter $filter
+     * @param Customer $customer
+     *
+     * @throws ErrorException
      */
-    public function __construct(Filter $filter = null)
+    public function __construct(Customer $customer)
     {
-        $this->filter = $filter;
+        if (empty($customer->getId())) {
+            throw new ErrorException('Customer id required!');
+        }
+
+        $this->customer = $customer;
     }
 
     /**
@@ -42,7 +48,7 @@ class All implements Service
      */
     public function getUrl()
     {
-        return "question";
+        return "customer/{$this->customer->getId()}/job";
     }
 
     /**
@@ -52,7 +58,7 @@ class All implements Service
      */
     public function getRequest()
     {
-        return $this->filter ? ['filters' => $this->filter->getFilters()] : [];
+        return [];
     }
 
     /**
@@ -64,14 +70,8 @@ class All implements Service
     {
         $decorated = [];
 
-        foreach ($response as $question) {
-            if (!empty($question['options'])) {
-                foreach ($question['options'] as &$option) {
-                    $option = Question\Option::createFromArray($option);
-                }
-            }
-
-            array_push($decorated, Question::createFromArray($question));
+        foreach ($response as $job) {
+            array_push($decorated, Job::createFromArray($job));
         }
 
         return $decorated;
