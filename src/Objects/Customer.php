@@ -12,11 +12,6 @@ class Customer extends Object
     /**
      * @var
      */
-    protected $group;
-
-    /**
-     * @var
-     */
     protected $email;
 
     /**
@@ -90,22 +85,6 @@ class Customer extends Object
         }
 
         $this->sex = $sex;
-    }
-
-    /**
-     * @return Group
-     */
-    public function getGroup()
-    {
-        return $this->group;
-    }
-
-    /**
-     * @param Group $group
-     */
-    public function setGroup(Group $group)
-    {
-        $this->group = $group;
     }
 
     /**
@@ -197,7 +176,7 @@ class Customer extends Object
             throw new ErrorException('Nationality must be in ISO 3166 format');
         }
 
-        $this->nationality = $nationality;
+        $this->nationality = mb_strtolower($nationality);
     }
 
     /**
@@ -219,6 +198,6 @@ class Customer extends Object
             throw new ErrorException('Language must be in ISO 639 format');
         }
 
-        $this->language = $language;
+        $this->language = mb_strtolower($language);
     }
 }

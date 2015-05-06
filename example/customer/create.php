@@ -12,7 +12,6 @@ $customer->setLastName('Doe');
 $customer->setSex('male');
 $customer->setNationality('BG');
 $customer->setLanguage('en');
-$customer->setGroup('exhibitor');
 
 $service  = new \Buzz\Control\Services\Customer\Create($customer);
 $response = $serviceHandler->execute($service);

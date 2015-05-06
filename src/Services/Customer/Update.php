@@ -3,7 +3,6 @@
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
-use Buzz\Control\Objects\Group;
 
 class Update implements Service
 {
@@ -58,10 +57,6 @@ class Update implements Service
      */
     public function decorate($result)
     {
-        if(!empty($result['group'])) {
-            $result['group'] = Group::createFromArray($result['group']);
-        }
-
         return Customer::createFromArray($result);
     }
 }

@@ -1,7 +1,6 @@
 <?php namespace Buzz\Control\Services\Customer;
 
 use Buzz\Control\Contracts\Service;
-use Buzz\Control\Objects\Group;
 use Buzz\Control\Objects\Customer;
 
 /**
@@ -61,10 +60,6 @@ class Create implements Service
      */
     public function decorate($result)
     {
-        if(!empty($result['group'])) {
-            $result['group'] = Group::createFromArray($result['group']);
-        }
-
         return Customer::createFromArray($result);
     }
 }
