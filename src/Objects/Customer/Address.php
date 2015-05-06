@@ -21,7 +21,15 @@ class Address extends Object
     /**
      * @var
      */
-    protected $address;
+    protected $line_1;
+    /**
+     * @var
+     */
+    protected $line_2;
+    /**
+     * @var
+     */
+    protected $line_3;
     /**
      * @var
      */
@@ -54,17 +62,49 @@ class Address extends Object
     /**
      * @return mixed
      */
-    public function getAddress()
+    public function getLine1()
     {
-        return $this->address;
+        return $this->line_1;
     }
 
     /**
-     * @param mixed $address
+     * @param mixed $line_1
      */
-    public function setAddress($address)
+    public function setLine1($line_1)
     {
-        $this->address = $address;
+        $this->line_1 = $line_1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLine2()
+    {
+        return $this->line_2;
+    }
+
+    /**
+     * @param mixed $line_2
+     */
+    public function setLine2($line_2)
+    {
+        $this->line_2 = $line_2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLine3()
+    {
+        return $this->line_3;
+    }
+
+    /**
+     * @param mixed $line_3
+     */
+    public function setLine3($line_3)
+    {
+        $this->line_3 = $line_3;
     }
 
     /**
