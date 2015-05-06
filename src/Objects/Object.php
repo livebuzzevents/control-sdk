@@ -1,5 +1,6 @@
 <?php namespace Buzz\Control\Objects;
 
+use DateTime;
 use ReflectionClass;
 use ReflectionProperty;
 
@@ -57,11 +58,11 @@ abstract class Object
     }
 
     /**
-     * @param $created_at
+     * @param DateTime $created_at
      *
      * @return mixed
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt(DateTime $created_at)
     {
         $this->created_at = $created_at;
     }
@@ -75,11 +76,11 @@ abstract class Object
     }
 
     /**
-     * @param $updated_at
+     * @param DateTime $updated_at
      *
      * @return mixed
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt(DateTime $updated_at)
     {
         $this->updated_at = $updated_at;
     }
