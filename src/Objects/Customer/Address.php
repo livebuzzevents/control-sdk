@@ -139,7 +139,7 @@ class Address extends Object
     public function setCountry($country)
     {
         if (strlen($country) !== 2) {
-            throw new ErrorException('Country must be in ISO 3166 format');
+            throw new ErrorException("Country must be in ISO 3166 format '{$country}'");
         }
 
         $this->country = mb_strtoupper($country);

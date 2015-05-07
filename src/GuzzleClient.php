@@ -54,7 +54,8 @@ class GuzzleClient implements Client
             'POST',
             $this->credentials->getEndpoint() . $method,
             null,
-            $this->buildRequest($request)
+            $this->buildRequest($request),
+            [CURLOPT_SAFE_UPLOAD, true]
         );
 
         return $this->executeRequestAndParseResponse($request);

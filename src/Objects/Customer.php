@@ -91,7 +91,7 @@ class Customer extends Object
     public function setSex($sex)
     {
         if (!in_array($sex, ['male', 'female', 'other'])) {
-            throw new ErrorException('Invalid sex value');
+            throw new ErrorException("Invalid sex value '{$sex}'");
         }
 
         $this->sex = $sex;
@@ -113,7 +113,7 @@ class Customer extends Object
     public function setEmail($email)
     {
         if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-            throw new ErrorException('Invalid email address!');
+            throw new ErrorException("Invalid email address '{$email}'!");
         }
 
         $this->email = $email;
@@ -183,7 +183,7 @@ class Customer extends Object
     public function setNationality($nationality)
     {
         if (strlen($nationality) !== 2) {
-            throw new ErrorException('Nationality must be in ISO 3166 format');
+            throw new ErrorException("Nationality must be in ISO 3166 format '{$nationality}'");
         }
 
         $this->nationality = mb_strtoupper($nationality);
@@ -205,7 +205,7 @@ class Customer extends Object
     public function setLanguage($language)
     {
         if (strlen($language) !== 2) {
-            throw new ErrorException('Language must be in ISO 639 format');
+            throw new ErrorException("Language must be in ISO 639 format '{$language}'");
         }
 
         $this->language = mb_strtolower($language);

@@ -8,7 +8,8 @@ class ErrorException extends Exception
 
     public function __construct($error)
     {
-        $this->error = $error;
+        $this->error   = $error;
+        $this->message = var_export($this->error, true);
     }
 
     public function getError()
