@@ -2,7 +2,6 @@
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\Campaign;
 use Buzz\Control\Objects\Filter;
 use Buzz\Control\Objects\Question;
 use Buzz\Control\Objects\Customer;
@@ -21,33 +20,24 @@ class All implements Service
     private $customer;
 
     /**
-     * @var Campaign
-     */
-    private $campaign;
-    /**
      * @var Filter
      */
     private $filter;
 
     /**
      * @param Customer     $customer
-     * @param Campaign $campaign
      * @param Filter   $filter
      *
      * @throws ErrorException
      */
-    public function __construct(Customer $customer, Campaign $campaign, Filter $filter = null)
+    public function __construct(Customer $customer, Filter $filter = null)
     {
         if (empty($customer->getId())) {
             throw new ErrorException('Customer id required!');
         }
 
-        if (empty($campaign->getId())) {
-            throw new ErrorException('Campaign id required!');
-        }
 
         $this->customer     = $customer;
-        $this->campaign = $campaign;
         $this->filter   = $filter;
     }
 
@@ -68,7 +58,7 @@ class All implements Service
      */
     public function getUrl()
     {
-        return "customer/{$this->customer->getId()}/answer/{$this->campaign->getId()}";
+        return "customer/{$this->customer->getId()}/answer";
     }
 
     /**

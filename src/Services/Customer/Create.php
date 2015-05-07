@@ -1,6 +1,8 @@
 <?php namespace Buzz\Control\Services\Customer;
 
 use Buzz\Control\Contracts\Service;
+use Buzz\Control\Exceptions\ErrorException;
+use Buzz\Control\Objects\Campaign;
 use Buzz\Control\Objects\Customer;
 
 /**
@@ -14,13 +16,25 @@ class Create implements Service
      * @var Customer
      */
     private $customer;
+    /**
+     * @var Campaign
+     */
+    private $campaign;
 
     /**
      * @param Customer $customer
+     * @param Campaign $campaign
+     *
+     * @throws ErrorException
      */
-    public function __construct(Customer $customer)
+    public function __construct(Customer $customer, Campaign $campaign)
     {
+        if (empty($campaign->getId())) {
+            throw new ErrorException('Campaign id required!');
+        }
+
         $this->customer = $customer;
+        $this->campaign = $campaign;
     }
 
     /**
@@ -40,7 +54,7 @@ class Create implements Service
      */
     public function getUrl()
     {
-        return 'customer';
+        return 'customer/'.$this->campaign->getId();
     }
 
     /**

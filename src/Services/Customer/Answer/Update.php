@@ -22,8 +22,8 @@ class Update implements Service
     private $answer;
 
     /**
-     * @param Customer   $customer
-     * @param Answer $answer
+     * @param Customer $customer
+     * @param Answer   $answer
      *
      * @throws ErrorException
      */
@@ -37,8 +37,8 @@ class Update implements Service
             throw new ErrorException('Answer id required!');
         }
 
-        $this->customer   = $customer;
-        $this->answer = $answer;
+        $this->customer = $customer;
+        $this->answer   = $answer;
     }
 
     /**
@@ -58,7 +58,7 @@ class Update implements Service
      */
     public function getUrl()
     {
-        return "customer/{$this->customer->getId()}/answer/{$this->campaign->getId()}/{$this->answer->getId()}";
+        return "customer/{$this->customer->getId()}/answer/{$this->answer->getId()}";
     }
 
     /**

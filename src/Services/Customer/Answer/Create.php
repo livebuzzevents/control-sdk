@@ -2,9 +2,8 @@
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\Campaign;
-use Buzz\Control\Objects\Question;
 use Buzz\Control\Objects\Customer;
+use Buzz\Control\Objects\Question;
 
 class Create implements Service
 {
@@ -17,30 +16,21 @@ class Create implements Service
      */
     private $question;
     /**
-     * @var Campaign
-     */
-    private $campaign;
-    /**
      * @var array
      */
     private $answer;
 
     /**
-     * @param Customer     $customer
-     * @param Campaign $campaign
+     * @param Customer $customer
      * @param Question $question
      * @param array    $answer
      *
      * @throws ErrorException
      */
-    public function __construct(Customer $customer, Campaign $campaign, Question $question, array $answer)
+    public function __construct(Customer $customer, Question $question, array $answer)
     {
         if (empty($customer->getId())) {
             throw new ErrorException('Customer id required!');
-        }
-
-        if (empty($campaign->getId())) {
-            throw new ErrorException('Campaign id required!');
         }
 
         if (empty($question->getId())) {
@@ -51,8 +41,7 @@ class Create implements Service
             throw new ErrorException('Answer required!');
         }
 
-        $this->customer     = $customer;
-        $this->campaign = $campaign;
+        $this->customer = $customer;
         $this->question = $question;
         $this->answer   = $answer;
     }
@@ -74,7 +63,7 @@ class Create implements Service
      */
     public function getUrl()
     {
-        return "customer/{$this->customer->getId()}/answer/{$this->campaign->getId()}";
+        return "customer/{$this->customer->getId()}/answer";
     }
 
     /**

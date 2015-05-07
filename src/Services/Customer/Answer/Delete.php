@@ -47,7 +47,7 @@ class Delete implements Service
      */
     public function getUrl()
     {
-        return "customer/{$this->customer->getId()}/answer/{$this->campaign->getId()}/{$this->answer->getId()}";
+        return "customer/{$this->customer->getId()}/answer/{$this->answer->getId()}";
     }
 
     /**
