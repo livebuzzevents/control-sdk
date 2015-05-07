@@ -140,6 +140,8 @@ abstract class Object
             } else {
                 if ($value instanceof Object) {
                     $array[$name] = $value->toArray();
+                } elseif ($value instanceof DateTime) {
+                    $array[$name] = $value->format(DateTime::ISO8601);
                 } else {
                     $array[$name] = $value;
                 }
