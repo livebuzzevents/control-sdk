@@ -6,10 +6,10 @@ use Buzz\Control\Exceptions\ResponseException;
 use Buzz\Control\Exceptions\ServerException;
 use Buzz\Control\Exceptions\UnauthorizedException;
 use Exception;
-use Guzzle\Http\Client as Guzzle;
-use Guzzle\Http\Exception\ClientErrorResponseException as GuzzleClientException;
-use Guzzle\Http\Exception\ServerErrorResponseException as GuzzleServerException;
-use Guzzle\Http\Message\Request;
+use GuzzleHttp\Client as Guzzle;
+use GuzzleHttp\Exception\ClientException as GuzzleClientException;
+use GuzzleHttp\Exception\ServerException as GuzzleServerException;
+use GuzzleHttp\Message\Request;
 
 /**
  * Class Client
@@ -53,9 +53,7 @@ class GuzzleClient implements Client
         $request = $this->guzzle->createRequest(
             'POST',
             $this->credentials->getEndpoint() . $method,
-            null,
-            $this->buildRequest($request),
-            [CURLOPT_SAFE_UPLOAD, true]
+            ['body' => $this->buildRequest($request)]
         );
 
         return $this->executeRequestAndParseResponse($request);
@@ -126,8 +124,6 @@ class GuzzleClient implements Client
         $request = $this->guzzle->createRequest(
             'GET',
             $this->credentials->getEndpoint() . $method,
-            null,
-            null,
             ['query' => $this->buildRequest($request)]
         );
 
@@ -150,8 +146,6 @@ class GuzzleClient implements Client
         $request = $this->guzzle->createRequest(
             'DELETE',
             $this->credentials->getEndpoint() . $method,
-            null,
-            null,
             ['query' => $this->buildRequest($request)]
         );
 

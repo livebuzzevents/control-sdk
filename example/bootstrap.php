@@ -2,7 +2,7 @@
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
-$api_key  = '54f476979db76';
+$api_key  = '55364c96907e6';
 $endpoint = 'http://www.reg.dev/rest/';
 
 $credentials = new Buzz\Control\Credentials($api_key, $endpoint);
