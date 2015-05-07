@@ -142,7 +142,7 @@ class Address extends Object
             throw new ErrorException('Country must be in ISO 3166 format');
         }
 
-        $this->country = $country;
+        $this->country = mb_strtoupper($country);
     }
 
     /**

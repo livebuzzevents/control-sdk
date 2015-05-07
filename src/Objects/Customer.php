@@ -50,6 +50,16 @@ class Customer extends Object
     protected $language;
 
     /**
+     * @var
+     */
+    protected $source;
+
+    /**
+     * @var
+     */
+    protected $source_id;
+
+    /**
      * @return mixed
      */
     public function getMiddleName()
@@ -176,7 +186,7 @@ class Customer extends Object
             throw new ErrorException('Nationality must be in ISO 3166 format');
         }
 
-        $this->nationality = mb_strtolower($nationality);
+        $this->nationality = mb_strtoupper($nationality);
     }
 
     /**
@@ -199,5 +209,37 @@ class Customer extends Object
         }
 
         $this->language = mb_strtolower($language);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSource()
+    {
+        return $this->source;
+    }
+
+    /**
+     * @param mixed $source
+     */
+    public function setSource($source)
+    {
+        $this->source = $source;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSourceId()
+    {
+        return $this->source_id;
+    }
+
+    /**
+     * @param mixed $source_id
+     */
+    public function setSourceId($source_id)
+    {
+        $this->source_id = $source_id;
     }
 }
