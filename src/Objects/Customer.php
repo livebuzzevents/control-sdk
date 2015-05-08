@@ -60,6 +60,21 @@ class Customer extends Object
     protected $source_id;
 
     /**
+     * @var
+     */
+    protected $phones;
+
+    /**
+     * @var
+     */
+    protected $jobs;
+
+    /**
+     * @var
+     */
+    protected $addresses;
+
+    /**
      * @return mixed
      */
     public function getMiddleName()
@@ -241,5 +256,53 @@ class Customer extends Object
     public function setSourceId($source_id)
     {
         $this->source_id = $source_id;
+    }
+
+    /**
+     * @param Customer\Address $address
+     */
+    public function addAddress(Customer\Address $address)
+    {
+        $this->addresses[] = $address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAddresses()
+    {
+        return $this->addresses;
+    }
+
+    /**
+     * @param Customer\Job $job
+     */
+    public function addJob(Customer\Job $job)
+    {
+        $this->jobs[] = $job;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
+    }
+
+    /**
+     * @param Customer\Phone $phone
+     */
+    public function addPhone(Customer\Phone $phone)
+    {
+        $this->phones[] = $phone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhones()
+    {
+        return $this->phones;
     }
 }
