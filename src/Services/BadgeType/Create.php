@@ -55,7 +55,7 @@ class Create implements Service
      */
     public function getUrl()
     {
-        return 'badge-type/' . $this->campaign->getId();
+        return 'badgeType/' . $this->campaign->getId();
     }
 
     /**

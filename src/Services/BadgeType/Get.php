@@ -37,7 +37,7 @@ class Get implements Service
      */
     public function getUrl()
     {
-        return "badge-type/{$this->badgeType->getId()}";
+        return "badgeType/{$this->badgeType->getId()}";
     }
 
     /**

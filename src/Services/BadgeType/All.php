@@ -42,7 +42,7 @@ class All implements Service
      */
     public function getUrl()
     {
-        return "badge-type";
+        return "badgeType";
     }
 
     /**
