@@ -73,6 +73,7 @@ class Customer extends Object
      * @var
      */
     protected $addresses;
+
     /**
      * @var
      */

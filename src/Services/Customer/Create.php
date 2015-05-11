@@ -54,7 +54,7 @@ class Create implements Service
      */
     public function getUrl()
     {
-        return 'customer/'.$this->campaign->getId();
+        return 'customer/' . $this->campaign->getId();
     }
 
     /**
