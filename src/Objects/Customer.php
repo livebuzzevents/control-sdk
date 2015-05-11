@@ -73,6 +73,26 @@ class Customer extends Object
      * @var
      */
     protected $addresses;
+    /**
+     * @var
+     */
+    protected $campaign_id;
+
+    /**
+     * @return mixed
+     */
+    public function getCampaignId()
+    {
+        return $this->campaign_id;
+    }
+
+    /**
+     * @param mixed $campaign_id
+     */
+    public function setCampaignId($campaign_id)
+    {
+        $this->campaign_id = $campaign_id;
+    }
 
     /**
      * @return mixed
