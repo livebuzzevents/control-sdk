@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Exceptions\ErrorException;
+use Buzz\Control\Objects\Customer\Answer;
 
 /**
  * Class Customer
@@ -77,7 +78,27 @@ class Customer extends Object
     /**
      * @var
      */
+    protected $answers;
+    /**
+     * @var
+     */
     protected $campaign_id;
+
+    /**
+     * @return mixed
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
+
+    /**
+     * @param mixed $answer
+     */
+    public function addAnswer(Answer $answer)
+    {
+        $this->answers[] = $answer;
+    }
 
     /**
      * @return mixed

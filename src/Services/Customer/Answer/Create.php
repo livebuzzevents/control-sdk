@@ -5,6 +5,11 @@ use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
 use Buzz\Control\Objects\Question;
 
+/**
+ * Class Create
+ *
+ * @package Buzz\Control\Services\Customer\Answer
+ */
 class Create implements Service
 {
     /**
@@ -12,7 +17,7 @@ class Create implements Service
      */
     private $customer;
     /**
-     * @var Answer
+     * @var Question
      */
     private $question;
     /**
@@ -21,28 +26,22 @@ class Create implements Service
     private $answer;
 
     /**
-     * @param Customer $customer
-     * @param Question $question
-     * @param array    $answer
+     * @param Customer        $customer
+     * @param Customer\Answer $answer
      *
      * @throws ErrorException
      */
-    public function __construct(Customer $customer, Question $question, array $answer)
+    public function __construct(Customer $customer, Customer\Answer $answer)
     {
-        if (empty($customer->getId())) {
+        if (!$customer->getId()) {
             throw new ErrorException('Customer id required!');
         }
 
-        if (empty($question->getId())) {
-            throw new ErrorException('Question id required!');
-        }
-
-        if (empty($answer)) {
-            throw new ErrorException('Answer required!');
+        if (!$answer->getQuestionId()) {
+            throw new ErrorException('Answer question required!');
         }
 
         $this->customer = $customer;
-        $this->question = $question;
         $this->answer   = $answer;
     }
 
@@ -73,7 +72,7 @@ class Create implements Service
      */
     public function getRequest()
     {
-        return ['question_id' => $this->question->getId()] + $this->answer;
+        return $this->question->toArray();
     }
 
     /**
@@ -83,17 +82,6 @@ class Create implements Service
      */
     public function decorate($response)
     {
-        $decorated = [];
-        foreach ($response as $answer) {
-            $answer['question'] = Question::createFromArray($answer['question']);
-
-            if (!empty($answer['question_option'])) {
-                $answer['question_option'] = Question\Option::createFromArray($answer['question_option']);
-            }
-
-            array_push($decorated, Customer\Answer::createFromArray($answer));
-        }
-
-        return $decorated;
+        return $response;
     }
 }

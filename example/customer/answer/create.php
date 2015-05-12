@@ -2,15 +2,18 @@
 
 require_once '../../bootstrap.php';
 
-$customer            = new \Buzz\Control\Objects\Customer(1);
-$campaign        = new \Buzz\Control\Objects\Campaign(1);
+$customer = new \Buzz\Control\Objects\Customer(1);
 
 //ANSWER SELECT AND RADIO
-$question = new \Buzz\Control\Objects\Question(1);
+$answer = new \Buzz\Control\Objects\Customer\Answer();
+$answer->setQuestion(1, 'text');
 
-$answer = ['options' => [['id' => 2]]];
+$answer->addOption(2, '3');
+$answer->addOption(3, '4');
 
-$service  = new \Buzz\Control\Services\Customer\Answer\Create($customer, $campaign, $question, $answer);
+var_dump($answer->toArray());exit();
+
+$service  = new \Buzz\Control\Services\Customer\Answer\Create($customer, $answer);
 $response = $serviceHandler->execute($service);
 
 var_dump($response);

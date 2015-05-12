@@ -1,6 +1,8 @@
 <?php namespace Buzz\Control\Objects\Customer;
 
+use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Question;
 
 /**
  * Class Answer
@@ -12,22 +14,22 @@ class Answer extends Object
     /**
      * @var
      */
-    protected $question;
+    protected $question_id;
 
     /**
      * @var
      */
-    protected $question_option;
-
-    /**
-     * @var
-     */
-    protected $answer;
+    protected $options;
 
     /**
      * @var
      */
     protected $customer_id;
+
+    /**
+     * @var
+     */
+    protected $text;
 
     /**
      * @return mixed
@@ -46,50 +48,43 @@ class Answer extends Object
     }
 
     /**
-     * @return mixed
+     * @return Question
      */
-    public function getQuestion()
+    public function getQuestionId()
     {
-        return $this->question;
+        return $this->question_id;
     }
 
     /**
-     * @param mixed $question
+     * @param Question $question_id
+     * @param null     $text
      */
-    public function setQuestion($question)
+    public function setQuestion($question_id, $text = null)
     {
-        $this->question = $question;
+        $this->question_id = $question_id;
+        $this->text        = $text;
     }
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function getQuestionOption()
+    public function getOptions()
     {
-        return $this->question_option;
+        return $this->options;
     }
 
     /**
-     * @param mixed $question_option
+     * @param      $option_id
+     * @param null $text
+     *
+     * @throws ErrorException
      */
-    public function setQuestionOption($question_option)
+    public function addOption($option_id, $text = null)
     {
-        $this->question_option = $question_option;
-    }
+        if (isset($this->options[$option_id])) {
+            throw new ErrorException('Option already exists');
+        }
 
-    /**
-     * @return mixed
-     */
-    public function getAnswer()
-    {
-        return $this->answer;
-    }
-
-    /**
-     * @param mixed $answer
-     */
-    public function setAnswer($answer)
-    {
-        $this->answer = $answer;
+        $this->options[$option_id] = compact('option_id', 'text');
     }
 }
