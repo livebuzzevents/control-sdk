@@ -85,6 +85,9 @@ class Answer extends Object
             throw new ErrorException('Option already exists');
         }
 
-        $this->options[$option_id] = compact('option_id', 'text');
+        $this->options[$option_id] = [
+            'id'   => $option_id,
+            'text' => $text
+        ];
     }
 }
