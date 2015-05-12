@@ -59,7 +59,7 @@ class Answer extends Object
      * @param Question $question_id
      * @param null     $text
      */
-    public function setQuestion($question_id, $text = null)
+    public function setQuestionId($question_id, $text = null)
     {
         $this->question_id = $question_id;
         $this->text        = $text;
