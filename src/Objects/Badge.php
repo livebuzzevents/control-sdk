@@ -5,6 +5,11 @@
  *
  * @package Buzz\Control\Objects
  */
+/**
+ * Class Badge
+ *
+ * @package Buzz\Control\Objects
+ */
 class Badge extends Object
 {
     /**
@@ -24,17 +29,57 @@ class Badge extends Object
     /**
      * @var
      */
+    protected $badge_type_id;
+
+    /**
+     * @var
+     */
     protected $customer;
 
     /**
      * @var
      */
+    protected $customer_id;
+    /**
+     * @var
+     */
     protected $barcode;
-
     /**
      * @var
      */
     protected $scans = [];
+
+    /**
+     * @return mixed
+     */
+    public function getBadgeTypeId()
+    {
+        return $this->badge_type_id;
+    }
+
+    /**
+     * @param mixed $badge_type_id
+     */
+    public function setBadgeTypeId($badge_type_id)
+    {
+        $this->badge_type_id = $badge_type_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCustomerId()
+    {
+        return $this->customer_id;
+    }
+
+    /**
+     * @param mixed $customer_id
+     */
+    public function setCustomerId($customer_id)
+    {
+        $this->customer_id = $customer_id;
+    }
 
     /**
      * @return mixed
@@ -69,22 +114,6 @@ class Badge extends Object
     }
 
     /**
-     * @return array
-     */
-    public function getObjectMap()
-    {
-        return $this->objectMap;
-    }
-
-    /**
-     * @param array $objectMap
-     */
-    public function setObjectMap($objectMap)
-    {
-        $this->objectMap = $objectMap;
-    }
-
-    /**
      * @return mixed
      */
     public function getBadgeType()
@@ -93,26 +122,10 @@ class Badge extends Object
     }
 
     /**
-     * @param BadgeType $badgeType
-     */
-    public function setBadgeType(BadgeType $badgeType)
-    {
-        $this->badge_type = $badgeType;
-    }
-
-    /**
      * @return mixed
      */
     public function getCustomer()
     {
         return $this->customer;
-    }
-
-    /**
-     * @param mixed $customer
-     */
-    public function setCustomer(Customer $customer)
-    {
-        $this->customer = $customer;
     }
 }

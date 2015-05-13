@@ -140,7 +140,12 @@ abstract class Object
         $array = [];
 
         foreach ($protected as $property) {
-            $name  = $property->getName();
+            $name = $property->getName();
+
+            if (in_array($name, ['objectMap'])) { //skip
+                continue;
+            }
+
             $value = $this->$name;
 
             if ($skip_null && $value === null) {

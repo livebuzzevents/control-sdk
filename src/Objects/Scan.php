@@ -25,6 +25,11 @@ class Scan extends Object
     /**
      * @var
      */
+    protected $badge_id;
+
+    /**
+     * @var
+     */
     protected $barcode;
 
     /**
@@ -33,19 +38,16 @@ class Scan extends Object
     protected $scanner;
 
     /**
+     * @var
+     */
+    protected $scanner_id;
+
+    /**
      * @return mixed
      */
     public function getBadge()
     {
         return $this->badge;
-    }
-
-    /**
-     * @param mixed $badge
-     */
-    public function setBadge(Badge $badge)
-    {
-        $this->badge = $badge;
     }
 
     /**
@@ -73,10 +75,34 @@ class Scan extends Object
     }
 
     /**
-     * @param mixed $scanner
+     * @return mixed
      */
-    public function setScanner(Scanner $scanner)
+    public function getBadgeId()
     {
-        $this->scanner = $scanner;
+        return $this->badge_id;
+    }
+
+    /**
+     * @param mixed $badge_id
+     */
+    public function setBadgeId($badge_id)
+    {
+        $this->badge_id = $badge_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getScannerId()
+    {
+        return $this->scanner_id;
+    }
+
+    /**
+     * @param mixed $scanner_id
+     */
+    public function setScannerId($scanner_id)
+    {
+        $this->scanner_id = $scanner_id;
     }
 }
