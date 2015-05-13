@@ -12,13 +12,20 @@ use ReflectionProperty;
 abstract class Object
 {
     /**
+     * @var
+     */
+    protected $objectMap;
+
+    /**
      * @var null
      */
     protected $id;
+
     /**
      * @var
      */
     protected $created_at;
+
     /**
      * @var
      */
@@ -51,10 +58,29 @@ abstract class Object
                 continue;
             }
 
-            $object->$name = $array[$name];
+            if (isset($object->objectMap[$name])) {
+                $mapClass = $object->objectMap[$name];
+                if (is_array($object->$name)) {
+                    foreach ($array[$name] as $single) {
+                        array_push($object->$name, $mapClass::createFromArray($single));
+                    }
+                } else {
+                    $object->$name = $mapClass::createFromArray($array[$name]);
+                }
+            } else {
+                $object->$name = $array[$name];
+            }
         }
 
         return $object;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
     }
 
     /**
@@ -70,9 +96,9 @@ abstract class Object
     /**
      * @return mixed
      */
-    public function getCreatedAt()
+    public function getUpdatedAt()
     {
-        return $this->created_at;
+        return $this->updated_at;
     }
 
     /**
@@ -83,14 +109,6 @@ abstract class Object
     public function setUpdatedAt(DateTime $updated_at)
     {
         $this->updated_at = $updated_at;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
     }
 
     /**
