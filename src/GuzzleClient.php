@@ -123,7 +123,7 @@ class GuzzleClient implements Client
     {
         $request = $this->guzzle->createRequest(
             'GET',
-            $this->credentials->getEndpoint() . $method,
+            $this->credentials->getEndpoint() . $this->credentials->getOrganizationId() . '/' . $method,
             ['query' => $this->buildRequest($request)]
         );
 

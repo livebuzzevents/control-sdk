@@ -7,6 +7,11 @@
  *
  * @package Buzz\Control
  */
+/**
+ * Class Credentials
+ *
+ * @package Buzz\Control
+ */
 class Credentials
 {
     /**
@@ -17,17 +22,23 @@ class Credentials
      * @var
      */
     protected $endpoint;
+    /**
+     * @var
+     */
+    private $organization_id;
 
     /**
      * Instantiates and fills Rest SDK credentials
      *
      * @param $api_key
+     * @param $organization_id
      * @param $endpoint
      */
-    public function __construct($api_key, $endpoint)
+    public function __construct($api_key, $organization_id, $endpoint)
     {
-        $this->api_key  = $api_key;
-        $this->endpoint = $endpoint;
+        $this->api_key         = $api_key;
+        $this->organization_id = $organization_id;
+        $this->endpoint        = $endpoint;
     }
 
     /**
@@ -38,6 +49,11 @@ class Credentials
     public function getApiKey()
     {
         return $this->api_key;
+    }
+
+    public function getOrganizationId()
+    {
+        return $this->organization_id;
     }
 
     /**
