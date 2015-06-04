@@ -17,6 +17,7 @@ class Badge extends Object
      */
     protected $objectMap = [
         'customer'   => Customer::class,
+        'exhibitor'  => Exhibitor::class,
         'badge_type' => BadgeType::class,
         'scans'      => Scan::class
     ];
@@ -40,6 +41,15 @@ class Badge extends Object
      * @var
      */
     protected $customer_id;
+
+    /**
+     * @var
+     */
+    protected $exhibitor;
+    /**
+     * @var
+     */
+    protected $exhibitor_id;
     /**
      * @var
      */
@@ -48,6 +58,30 @@ class Badge extends Object
      * @var
      */
     protected $scans = [];
+
+    /**
+     * @return mixed
+     */
+    public function getExhibitor()
+    {
+        return $this->exhibitor;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExhibitorId()
+    {
+        return $this->exhibitor_id;
+    }
+
+    /**
+     * @param mixed $exhibitor_id
+     */
+    public function setExhibitorId($exhibitor_id)
+    {
+        $this->exhibitor_id = $exhibitor_id;
+    }
 
     /**
      * @return mixed

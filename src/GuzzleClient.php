@@ -9,7 +9,6 @@ use Exception;
 use GuzzleHttp\Client as Guzzle;
 use GuzzleHttp\Exception\ClientException as GuzzleClientException;
 use GuzzleHttp\Exception\ServerException as GuzzleServerException;
-use GuzzleHttp\Message\Request;
 
 /**
  * Class Client
@@ -38,62 +37,32 @@ class GuzzleClient implements Client
     }
 
     /**
-     * Execute POST HTTP request
-     *
+     * @param       $verb
      * @param       $method
      * @param array $request
      *
-     * @return array|bool|float|int|string
-     * @throws ResponseException
-     * @throws ServerException
-     * @throws UnauthorizedException
-     */
-    public function post($method, array $request = [])
-    {
-        $request = $this->guzzle->createRequest(
-            'POST',
-            $this->credentials->getEndpoint() . $method,
-            ['body' => $this->buildRequest($request)]
-        );
-
-        return $this->executeRequestAndParseResponse($request);
-    }
-
-    /**
-     * Build on top of the request and sends the required data for rest authorization
-     *
-     * @param array $request
-     *
-     * @return array
-     */
-    protected function buildRequest(array $request = [])
-    {
-        $request['api_key'] = $this->credentials->getApiKey();
-
-        return $request;
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return array|bool|float|int|string
+     * @return mixed
      * @throws ErrorException
      * @throws ResponseException
      * @throws ServerException
      * @throws UnauthorizedException
      */
-    private function executeRequestAndParseResponse(Request $request)
+    public function request($verb, $method, array $request = [])
     {
         try {
-            $response = $this->guzzle->send($request);
+            $response = $this->guzzle->request(
+                $verb,
+                $this->getEndpoing($method),
+                $this->buildRequest($verb, $request)
+            );
 
-            return $response->json();
+            return json_decode($response->getBody()->getContents(), true);
         } catch (GuzzleClientException $e) {
 
             $response = $e->getResponse();
-
+            $contents = $response->getBody()->getContents();
             if ($response->getStatusCode() === 400 || $response->getStatusCode() === 422) {
-                throw new ErrorException($response->json()['error']);
+                throw new ErrorException(json_decode($contents, true)['error']);
             } elseif ($response->getStatusCode() === 401) {
                 throw new UnauthorizedException("Invalid API key or your IP is not in the whitelist!");
             } elseif ($response->getStatusCode() === 404) {
@@ -109,46 +78,52 @@ class GuzzleClient implements Client
     }
 
     /**
-     * Executes GET HTTP request
+     * @param $method
      *
-     * @param       $method
-     * @param array $request
-     *
-     * @return array|bool|float|int|string
-     * @throws ResponseException
-     * @throws ServerException
-     * @throws UnauthorizedException
+     * @return string
      */
-    public function get($method, array $request = [])
+    private function getEndpoing($method)
     {
-        $request = $this->guzzle->createRequest(
-            'GET',
-            $this->credentials->getEndpoint() . $this->credentials->getOrganizationId() . '/' . $method,
-            ['query' => $this->buildRequest($request)]
-        );
-
-        return $this->executeRequestAndParseResponse($request);
+        return $this->credentials->getEndpoint() . $this->credentials->getOrganizationId() . '/' . $method;
     }
 
     /**
-     * Executes DELETE HTTP request
+     * Build on top of the request and sends the required data for rest authorization
      *
-     * @param       $method
      * @param array $request
      *
-     * @return array|bool|float|int|string
-     * @throws ResponseException
-     * @throws ServerException
-     * @throws UnauthorizedException
+     * @return array
      */
-    public function delete($method, array $request = [])
+    protected function buildRequest($verb, array $request = [])
     {
-        $request = $this->guzzle->createRequest(
-            'DELETE',
-            $this->credentials->getEndpoint() . $method,
-            ['query' => $this->buildRequest($request)]
-        );
+        $request['api_key'] = $this->credentials->getApiKey();
 
-        return $this->executeRequestAndParseResponse($request);
+        $result = [];
+
+        if (in_array($verb, ['post', 'put'])) {
+            foreach ($request as $key => $value) {
+                if (is_resource($value)) {
+                    $result['multipart'][] = [
+                        'name'     => $key,
+                        'contents' => $value
+                    ];
+                } else {
+                    $result['form_params'][$key] = $value;
+                }
+            }
+
+            /**
+             * @todo
+             * Bug if guzzle. send as get parameters if file exists
+             */
+            if (!empty($result['multipart'])) {
+                $result['query'] = $result['form_params'];
+                unset($result['form_params']);
+            }
+        } elseif (in_array($verb, ['get', 'delete'])) {
+            $result['query'] = $request;
+        }
+
+        return $result;
     }
 }

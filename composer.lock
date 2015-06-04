@@ -4,25 +4,26 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ff5b4c0fea5455956ceb206856418bb6",
+    "hash": "e7e725a6df1a695d9ae20498047efb29",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
-            "version": "5.2.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "475b29ccd411f2fa8a408e64576418728c032cfa"
+                "reference": "a1c986a4bc470a0959a2b1d5bc3e5b945a72dcb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/475b29ccd411f2fa8a408e64576418728c032cfa",
-                "reference": "475b29ccd411f2fa8a408e64576418728c032cfa",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/a1c986a4bc470a0959a2b1d5bc3e5b945a72dcb5",
+                "reference": "a1c986a4bc470a0959a2b1d5bc3e5b945a72dcb5",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/ringphp": "~1.0",
-                "php": ">=5.4.0"
+                "guzzlehttp/promises": "~1.0",
+                "guzzlehttp/psr7": "~1.0",
+                "php": ">=5.5.0"
             },
             "require-dev": {
                 "ext-curl": "*",
@@ -32,10 +33,13 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.0-dev"
+                    "dev-master": "6.0-dev"
                 }
             },
             "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
                 "psr-4": {
                     "GuzzleHttp\\": "src/"
                 }
@@ -51,7 +55,7 @@
                     "homepage": "https://github.com/mtdowling"
                 }
             ],
-            "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
+            "description": "Guzzle is a PHP HTTP client library",
             "homepage": "http://guzzlephp.org/",
             "keywords": [
                 "client",
@@ -62,33 +66,27 @@
                 "rest",
                 "web service"
             ],
-            "time": "2015-01-28 01:03:29"
+            "time": "2015-06-03 19:13:27"
         },
         {
-            "name": "guzzlehttp/ringphp",
+            "name": "guzzlehttp/promises",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/guzzle/RingPHP.git",
-                "reference": "2498ee848cd01639aecdcf3d5a257bace8665b7c"
+                "url": "https://github.com/guzzle/promises.git",
+                "reference": "61f950b4e8bed600f0c54e7a69e9e085bb5e76a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/2498ee848cd01639aecdcf3d5a257bace8665b7c",
-                "reference": "2498ee848cd01639aecdcf3d5a257bace8665b7c",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/61f950b4e8bed600f0c54e7a69e9e085bb5e76a9",
+                "reference": "61f950b4e8bed600f0c54e7a69e9e085bb5e76a9",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/streams": "~3.0",
-                "php": ">=5.4.0",
-                "react/promise": "~2.0"
+                "php": ">=5.5.0"
             },
             "require-dev": {
-                "ext-curl": "*",
                 "phpunit/phpunit": "~4.0"
-            },
-            "suggest": {
-                "ext-curl": "Guzzle will use specific adapters if cURL is present"
             },
             "type": "library",
             "extra": {
@@ -98,102 +96,10 @@
             },
             "autoload": {
                 "psr-4": {
-                    "GuzzleHttp\\Ring\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
-            "time": "2015-05-01 04:57:09"
-        },
-        {
-            "name": "guzzlehttp/streams",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/streams.git",
-                "reference": "d1f8a6c55f0f753cfd6f6755856473eb02cedb19"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/streams/zipball/d1f8a6c55f0f753cfd6f6755856473eb02cedb19",
-                "reference": "d1f8a6c55f0f753cfd6f6755856473eb02cedb19",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Stream\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Provides a simple abstraction over streams of data",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "Guzzle",
-                "stream"
-            ],
-            "time": "2015-01-22 00:01:34"
-        },
-        {
-            "name": "react/promise",
-            "version": "v2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/promise.git",
-                "reference": "365fcee430dfa4ace1fbc75737ca60ceea7eeeef"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/365fcee430dfa4ace1fbc75737ca60ceea7eeeef",
-                "reference": "365fcee430dfa4ace1fbc75737ca60ceea7eeeef",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "React\\Promise\\": "src/"
+                    "GuzzleHttp\\Promise\\": "src/"
                 },
                 "files": [
-                    "src/functions_include.php"
+                    "src/functions.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -202,12 +108,123 @@
             ],
             "authors": [
                 {
-                    "name": "Jan Sorgalla",
-                    "email": "jsorgalla@googlemail.com"
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
                 }
             ],
-            "description": "A lightweight implementation of CommonJS Promises/A for PHP",
-            "time": "2014-12-30 13:32:42"
+            "description": "Guzzle promises library",
+            "keywords": [
+                "promise"
+            ],
+            "time": "2015-05-28 00:34:40"
+        },
+        {
+            "name": "guzzlehttp/psr7",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/psr7.git",
+                "reference": "e4d917d5f1304af62898f6dbd579dae9912a8b0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/e4d917d5f1304af62898f6dbd579dae9912a8b0c",
+                "reference": "e4d917d5f1304af62898f6dbd579dae9912a8b0c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "psr/http-message": "~1.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Psr7\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "PSR-7 message implementation",
+            "keywords": [
+                "http",
+                "message",
+                "stream",
+                "uri"
+            ],
+            "time": "2015-05-29 18:21:02"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
+                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "time": "2015-05-04 20:22:00"
         }
     ],
     "packages-dev": [
@@ -217,12 +234,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "fc999e2f0508e434645ec2bfadeb89d39fa6453c"
+                "reference": "b70d22758c0813ea5fef9c22480caadd3a2b6a56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/fc999e2f0508e434645ec2bfadeb89d39fa6453c",
-                "reference": "fc999e2f0508e434645ec2bfadeb89d39fa6453c",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/b70d22758c0813ea5fef9c22480caadd3a2b6a56",
+                "reference": "b70d22758c0813ea5fef9c22480caadd3a2b6a56",
                 "shasum": ""
             },
             "require": {
@@ -263,7 +280,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2015-04-12 20:59:10"
+            "time": "2015-05-13 13:33:36"
         },
         {
             "name": "fzaninotto/faker",
@@ -315,16 +332,16 @@
         },
         {
             "name": "hamcrest/hamcrest-php",
-            "version": "v1.2.1",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hamcrest/hamcrest-php.git",
-                "reference": "ac50c470531243944f977b8de75be0b684a9cb51"
+                "reference": "b37020aa976fa52d3de9aa904aa2522dc518f79c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/ac50c470531243944f977b8de75be0b684a9cb51",
-                "reference": "ac50c470531243944f977b8de75be0b684a9cb51",
+                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/b37020aa976fa52d3de9aa904aa2522dc518f79c",
+                "reference": "b37020aa976fa52d3de9aa904aa2522dc518f79c",
                 "shasum": ""
             },
             "require": {
@@ -356,7 +373,7 @@
             "keywords": [
                 "test"
             ],
-            "time": "2015-01-20 19:34:09"
+            "time": "2015-05-11 14:41:42"
         },
         {
             "name": "mockery/mockery",
@@ -364,12 +381,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "dbe3cfe736bb1d3e319c4cd0c310c140737028a0"
+                "reference": "a4817105ee32b8a05056986ad23ce3a54781f693"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/dbe3cfe736bb1d3e319c4cd0c310c140737028a0",
-                "reference": "dbe3cfe736bb1d3e319c4cd0c310c140737028a0",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/a4817105ee32b8a05056986ad23ce3a54781f693",
+                "reference": "a4817105ee32b8a05056986ad23ce3a54781f693",
                 "shasum": ""
             },
             "require": {
@@ -383,7 +400,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.9.x-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -421,7 +438,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2015-04-02 20:16:47"
+            "time": "2015-05-12 15:28:09"
         },
         {
             "name": "nikic/php-parser",
@@ -474,12 +491,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "d1da796ba5565789a623052eb9f2cf59d57fec60"
+                "reference": "ae15da2ce234d3ffe5d7fafcdad19c7f1acf3568"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/d1da796ba5565789a623052eb9f2cf59d57fec60",
-                "reference": "d1da796ba5565789a623052eb9f2cf59d57fec60",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/ae15da2ce234d3ffe5d7fafcdad19c7f1acf3568",
+                "reference": "ae15da2ce234d3ffe5d7fafcdad19c7f1acf3568",
                 "shasum": ""
             },
             "require": {
@@ -489,7 +506,6 @@
                 "phpunit/phpunit": "~4.0"
             },
             "suggest": {
-                "dflydev/markdown": "~1.0",
                 "erusev/parsedown": "~1.0",
                 "league/commonmark": "*"
             },
@@ -516,7 +532,7 @@
                     "email": "mike.vanriel@naenius.com"
                 }
             ],
-            "time": "2015-02-27 09:28:18"
+            "time": "2015-05-12 07:21:12"
         },
         {
             "name": "phpspec/php-diff",
@@ -558,12 +574,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/phpspec.git",
-                "reference": "73d0335bf8473be8bcfab5a9d66adce8d0db3857"
+                "reference": "ac465735239dfd9ea681d2b74896a76c08e1d944"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/73d0335bf8473be8bcfab5a9d66adce8d0db3857",
-                "reference": "73d0335bf8473be8bcfab5a9d66adce8d0db3857",
+                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/ac465735239dfd9ea681d2b74896a76c08e1d944",
+                "reference": "ac465735239dfd9ea681d2b74896a76c08e1d944",
                 "shasum": ""
             },
             "require": {
@@ -628,7 +644,7 @@
                 "testing",
                 "tests"
             ],
-            "time": "2015-04-28 15:39:29"
+            "time": "2015-06-02 20:53:21"
         },
         {
             "name": "phpspec/prophecy",
@@ -636,12 +652,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "3132b1f44c7bf2ec4c7eb2d3cb78fdeca760d373"
+                "reference": "5a355f91730c845301a9e28f91c8a5053353c496"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/3132b1f44c7bf2ec4c7eb2d3cb78fdeca760d373",
-                "reference": "3132b1f44c7bf2ec4c7eb2d3cb78fdeca760d373",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/5a355f91730c845301a9e28f91c8a5053353c496",
+                "reference": "5a355f91730c845301a9e28f91c8a5053353c496",
                 "shasum": ""
             },
             "require": {
@@ -688,7 +704,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2015-04-27 22:15:08"
+            "time": "2015-05-20 16:00:43"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -942,12 +958,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "13a957b45df0b04f2e3b1fabd4a83eb4e5e5046a"
+                "reference": "c090092e5f85662b1a1f150de136bf4e50ba4279"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/13a957b45df0b04f2e3b1fabd4a83eb4e5e5046a",
-                "reference": "13a957b45df0b04f2e3b1fabd4a83eb4e5e5046a",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c090092e5f85662b1a1f150de136bf4e50ba4279",
+                "reference": "c090092e5f85662b1a1f150de136bf4e50ba4279",
                 "shasum": ""
             },
             "require": {
@@ -958,7 +974,7 @@
                 "ext-spl": "*",
                 "php": ">=5.3.3",
                 "phpspec/prophecy": "~1.3,>=1.3.1",
-                "phpunit/php-code-coverage": "~2.0,>=2.0.11",
+                "phpunit/php-code-coverage": "~2.1",
                 "phpunit/php-file-iterator": "~1.4",
                 "phpunit/php-text-template": "~1.2",
                 "phpunit/php-timer": "~1.0",
@@ -1006,7 +1022,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-04-29 13:03:58"
+            "time": "2015-06-04 06:04:28"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1014,12 +1030,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "74ffb87f527f24616f72460e54b595f508dccb5c"
+                "reference": "5034a3d9f2057a7b7d6ad03a984509dadfdda3cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/74ffb87f527f24616f72460e54b595f508dccb5c",
-                "reference": "74ffb87f527f24616f72460e54b595f508dccb5c",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/5034a3d9f2057a7b7d6ad03a984509dadfdda3cc",
+                "reference": "5034a3d9f2057a7b7d6ad03a984509dadfdda3cc",
                 "shasum": ""
             },
             "require": {
@@ -1061,7 +1077,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2015-04-02 05:36:41"
+            "time": "2015-06-03 13:12:50"
         },
         {
             "name": "sebastian/comparator",
@@ -1440,12 +1456,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "36194c12ded9b0dc2b5d719ad626257b5bbc2d96"
+                "reference": "7e857a2b52b5833ed27d78a6b1b846bd440ee8bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/36194c12ded9b0dc2b5d719ad626257b5bbc2d96",
-                "reference": "36194c12ded9b0dc2b5d719ad626257b5bbc2d96",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/7e857a2b52b5833ed27d78a6b1b846bd440ee8bd",
+                "reference": "7e857a2b52b5833ed27d78a6b1b846bd440ee8bd",
                 "shasum": ""
             },
             "require": {
@@ -1479,17 +1495,17 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Console Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-04-24 07:03:44"
+            "homepage": "https://symfony.com",
+            "time": "2015-05-15 14:11:12"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1497,12 +1513,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "aced82e3cd15d40e5fadebec5dae9fb1ae666596"
+                "reference": "8766cebf28beac9a45b511d7dba053da9d35eb9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/aced82e3cd15d40e5fadebec5dae9fb1ae666596",
-                "reference": "aced82e3cd15d40e5fadebec5dae9fb1ae666596",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/8766cebf28beac9a45b511d7dba053da9d35eb9f",
+                "reference": "8766cebf28beac9a45b511d7dba053da9d35eb9f",
                 "shasum": ""
             },
             "require": {
@@ -1537,17 +1553,17 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony EventDispatcher Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-05-05 20:46:18"
+            "homepage": "https://symfony.com",
+            "time": "2015-05-12 15:16:46"
         },
         {
             "name": "symfony/finder",
@@ -1555,12 +1571,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder.git",
-                "reference": "60e1a3c4699ac84b5d0acb4333b6b5cca3900af1"
+                "reference": "fd26bdbb67bc8753884eff5767a4f1ee90e2284b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Finder/zipball/60e1a3c4699ac84b5d0acb4333b6b5cca3900af1",
-                "reference": "60e1a3c4699ac84b5d0acb4333b6b5cca3900af1",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/fd26bdbb67bc8753884eff5767a4f1ee90e2284b",
+                "reference": "fd26bdbb67bc8753884eff5767a4f1ee90e2284b",
                 "shasum": ""
             },
             "require": {
@@ -1586,17 +1602,17 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Finder Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-04-24 07:03:44"
+            "homepage": "https://symfony.com",
+            "time": "2015-05-15 14:11:12"
         },
         {
             "name": "symfony/process",
@@ -1604,12 +1620,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "8382bc54f1d83ee36fb3983bb1b6b307d238622b"
+                "reference": "daf96f1491cf0b8d8de60e6d3b5fda8e502b3798"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/8382bc54f1d83ee36fb3983bb1b6b307d238622b",
-                "reference": "8382bc54f1d83ee36fb3983bb1b6b307d238622b",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/daf96f1491cf0b8d8de60e6d3b5fda8e502b3798",
+                "reference": "daf96f1491cf0b8d8de60e6d3b5fda8e502b3798",
                 "shasum": ""
             },
             "require": {
@@ -1635,17 +1651,17 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Process Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-04-24 07:03:44"
+            "homepage": "https://symfony.com",
+            "time": "2015-05-15 14:11:12"
         },
         {
             "name": "symfony/yaml",
@@ -1653,12 +1669,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "4ededb1d00dc2c65fcd16ae3dafc785f92b3f95f"
+                "reference": "2396832f6f9ab2b8f62f00b5d3f2e722fc773d65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/4ededb1d00dc2c65fcd16ae3dafc785f92b3f95f",
-                "reference": "4ededb1d00dc2c65fcd16ae3dafc785f92b3f95f",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/2396832f6f9ab2b8f62f00b5d3f2e722fc773d65",
+                "reference": "2396832f6f9ab2b8f62f00b5d3f2e722fc773d65",
                 "shasum": ""
             },
             "require": {
@@ -1684,17 +1700,17 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Yaml Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-04-24 07:03:44"
+            "homepage": "https://symfony.com",
+            "time": "2015-05-12 15:16:46"
         },
         {
             "name": "theseer/directoryscanner",
@@ -1744,12 +1760,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/theseer/fDOMDocument.git",
-                "reference": "a6088f0888b73808491ec3dd3dc9c9aca7789b56"
+                "reference": "d9ad139d6c2e8edf5e313ffbe37ff13344cf0684"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/theseer/fDOMDocument/zipball/a6088f0888b73808491ec3dd3dc9c9aca7789b56",
-                "reference": "a6088f0888b73808491ec3dd3dc9c9aca7789b56",
+                "url": "https://api.github.com/repos/theseer/fDOMDocument/zipball/d9ad139d6c2e8edf5e313ffbe37ff13344cf0684",
+                "reference": "d9ad139d6c2e8edf5e313ffbe37ff13344cf0684",
                 "shasum": ""
             },
             "require": {
@@ -1776,7 +1792,7 @@
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
             "homepage": "https://github.com/theseer/fDOMDocument",
-            "time": "2015-04-02 23:00:54"
+            "time": "2015-05-27 22:58:02"
         },
         {
             "name": "theseer/fxsl",
@@ -1829,12 +1845,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/theseer/phpdox.git",
-                "reference": "119588c85254a11366dacbce32e60d46cbed2ad8"
+                "reference": "670fc909d9f3f38d17ef68665dcaf3ef66d82702"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/theseer/phpdox/zipball/119588c85254a11366dacbce32e60d46cbed2ad8",
-                "reference": "119588c85254a11366dacbce32e60d46cbed2ad8",
+                "url": "https://api.github.com/repos/theseer/phpdox/zipball/670fc909d9f3f38d17ef68665dcaf3ef66d82702",
+                "reference": "670fc909d9f3f38d17ef68665dcaf3ef66d82702",
                 "shasum": ""
             },
             "require": {
@@ -1848,7 +1864,7 @@
                 "php": ">=5.3.3",
                 "phpunit/php-timer": ">=1.0.4",
                 "theseer/directoryscanner": ">=1.3.0",
-                "theseer/fdomdocument": ">=1.6.0",
+                "theseer/fdomdocument": ">=1.6.1",
                 "theseer/fxsl": ">=1.1"
             },
             "bin": [
@@ -1872,12 +1888,14 @@
                 }
             ],
             "description": "A fast Documentation generator for PHP Code using standard technology (SRC, DOCBLOCK, XML and XSLT) with event based processing",
-            "time": "2015-05-06 21:35:23"
+            "time": "2015-05-28 11:25:03"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "guzzlehttp/guzzle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
