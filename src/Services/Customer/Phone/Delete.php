@@ -26,8 +26,8 @@ class Delete implements Service
             throw new ErrorException('Phone id required!');
         }
 
-        $this->customer  = $customer;
-        $this->phone = $phone;
+        $this->customer = $customer;
+        $this->phone    = $phone;
     }
 
     /**

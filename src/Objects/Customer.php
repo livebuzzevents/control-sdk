@@ -1,7 +1,7 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\Customer\Answer;
+use Buzz\Control\Objects\Customer\Address;
 
 /**
  * Class Customer
@@ -10,6 +10,19 @@ use Buzz\Control\Objects\Customer\Answer;
  */
 class Customer extends Object
 {
+    /**
+     * @var array
+     */
+    protected $objectMap = [
+        'badges'     => Badge::class,
+        'addresses'  => Customer\Address::class,
+        'answers'    => Customer\Answer::class,
+        'phones'     => Customer\Phone::class,
+        'jobs'       => Customer\Job::class,
+        'properties' => Customer\Property::class,
+        'socials'    => Customer\Social::class
+    ];
+
     /**
      * @var
      */
@@ -63,26 +76,49 @@ class Customer extends Object
     /**
      * @var
      */
-    protected $phones;
+    protected $phones = [];
 
     /**
      * @var
      */
-    protected $jobs;
+    protected $jobs = [];
 
     /**
      * @var
      */
-    protected $addresses;
+    protected $addresses = [];
+
+    /**
+     * @var array
+     */
+    protected $properties = [];
+
+    /**
+     * @var array
+     */
+    protected $socials = [];
 
     /**
      * @var
      */
-    protected $answers;
+    protected $answers = [];
+
+    /**
+     * @var array
+     */
+    protected $badges = [];
     /**
      * @var
      */
     protected $campaign_id;
+
+    /**
+     * @return array
+     */
+    public function getBadges()
+    {
+        return $this->badges;
+    }
 
     /**
      * @return mixed
@@ -93,11 +129,43 @@ class Customer extends Object
     }
 
     /**
-     * @param mixed $answer
+     * @param Customer\Answer $answer
      */
-    public function addAnswer(Answer $answer)
+    public function addAnswer(Customer\Answer $answer)
     {
         $this->answers[] = $answer;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSocials()
+    {
+        return $this->socials;
+    }
+
+    /**
+     * @param Customer\Social $social
+     */
+    public function addSocial(Customer\Social $social)
+    {
+        $this->socials[] = $social;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProperties()
+    {
+        return $this->properties;
+    }
+
+    /**
+     * @param Customer\Property $property
+     */
+    public function addProperty(Customer\Property $property)
+    {
+        $this->properties[] = $property;
     }
 
     /**
@@ -301,7 +369,7 @@ class Customer extends Object
     }
 
     /**
-     * @param Customer\Address $address
+     * @param Address $address
      */
     public function addAddress(Customer\Address $address)
     {

@@ -2,9 +2,9 @@
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\Parameter;
 use Buzz\Control\Objects\Customer;
 use Buzz\Control\Objects\Customer\Property;
+use Buzz\Control\Objects\Parameter;
 
 /**
  * Class All

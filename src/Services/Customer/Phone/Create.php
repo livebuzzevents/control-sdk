@@ -17,8 +17,8 @@ class Create implements Service
     private $phone;
 
     /**
-     * @param Customer  $customer
-     * @param Phone $phone
+     * @param Customer $customer
+     * @param Phone    $phone
      *
      * @throws ErrorException
      */
@@ -28,8 +28,8 @@ class Create implements Service
             throw new ErrorException('Customer id required!');
         }
 
-        $this->customer  = $customer;
-        $this->phone = $phone;
+        $this->customer = $customer;
+        $this->phone    = $phone;
     }
 
     /**

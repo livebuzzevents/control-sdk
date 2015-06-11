@@ -23,7 +23,7 @@ class Update implements Service
 
     /**
      * @param Customer $customer
-     * @param Job  $job
+     * @param Job      $job
      *
      * @throws ErrorException
      */
@@ -38,7 +38,7 @@ class Update implements Service
         }
 
         $this->customer = $customer;
-        $this->job  = $job;
+        $this->job      = $job;
     }
 
     /**

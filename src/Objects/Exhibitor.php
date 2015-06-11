@@ -21,7 +21,12 @@ class Exhibitor extends Object
         'badges'     => Badge::class,
         'customers'  => Exhibitor\Customer::class,
         'owner'      => Exhibitor::class,
-        'exhibitors' => Exhibitor::class
+        'exhibitors' => Exhibitor::class,
+        'addresses'  => Exhibitor\Address::class,
+        'answers'    => Exhibitor\Answer::class,
+        'phones'     => Exhibitor\Phone::class,
+        'properties' => Exhibitor\Property::class,
+        'socials'    => Exhibitor\Social::class
     ];
 
     /**
@@ -82,6 +87,117 @@ class Exhibitor extends Object
     protected $owner;
 
     /**
+     * @var array
+     */
+    protected $addresses = [];
+    /**
+     * @var array
+     */
+    protected $phones = [];
+    /**
+     * @var array
+     */
+    protected $answers = [];
+    /**
+     * @var array
+     */
+    protected $properties = [];
+    /**
+     * @var array
+     */
+    protected $socials = [];
+
+    /**
+     * @return array
+     */
+    public function getAddresses()
+    {
+        return $this->addresses;
+    }
+
+    /**
+     * @param Exhibitor\Address $address
+     *
+     * @return array
+     */
+    public function addAddress(Exhibitor\Address $address)
+    {
+        $this->addresses[] = $address;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPhones()
+    {
+        return $this->phones;
+    }
+
+    /**
+     * @param Exhibitor\Phone $phone
+     *
+     * @return array
+     */
+    public function addPhone(Exhibitor\Phone $phone)
+    {
+        $this->phones[] = $phone;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
+
+    /**
+     * @param Exhibitor\Answer $answer
+     *
+     * @return array
+     */
+    public function addAnswer(Exhibitor\Answer $answer)
+    {
+        $this->answers[] = $answer;
+    }
+
+    /**
+     * @return array
+     */
+    public function getProperties()
+    {
+        return $this->properties;
+    }
+
+    /**
+     * @param Exhibitor\Property $property
+     *
+     * @return array
+     */
+    public function addProperty(Exhibitor\Property $property)
+    {
+        $this->properties[] = $property;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSocials()
+    {
+        return $this->socials;
+    }
+
+    /**
+     * @param Exhibitor\Social $social
+     *
+     * @return array
+     */
+    public function addSocial(Exhibitor\Social $social)
+    {
+        $this->socials[] = $social;
+    }
+
+    /**
      * @param mixed $image
      *
      * @throws ErrorException
@@ -105,14 +221,6 @@ class Exhibitor extends Object
     public function getBadges()
     {
         return $this->badges;
-    }
-
-    /**
-     * @param array $badges
-     */
-    public function setBadges($badges)
-    {
-        $this->badges = $badges;
     }
 
     /**

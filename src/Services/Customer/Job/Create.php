@@ -23,7 +23,7 @@ class Create implements Service
         }
 
         $this->customer = $customer;
-        $this->job  = $job;
+        $this->job      = $job;
     }
 
     /**

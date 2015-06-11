@@ -26,8 +26,8 @@ class Delete implements Service
             throw new ErrorException('Answer id required!');
         }
 
-        $this->customer   = $customer;
-        $this->answer = $answer;
+        $this->customer = $customer;
+        $this->answer   = $answer;
     }
 
     /**

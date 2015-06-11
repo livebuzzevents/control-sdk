@@ -2,10 +2,10 @@
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\Filter;
-use Buzz\Control\Objects\Question;
 use Buzz\Control\Objects\Customer;
 use Buzz\Control\Objects\Customer\Answer;
+use Buzz\Control\Objects\Filter;
+use Buzz\Control\Objects\Question;
 
 /**
  * Class All
@@ -25,7 +25,7 @@ class All implements Service
     private $filter;
 
     /**
-     * @param Customer     $customer
+     * @param Customer $customer
      * @param Filter   $filter
      *
      * @throws ErrorException
@@ -36,8 +36,7 @@ class All implements Service
             throw new ErrorException('Customer id required!');
         }
 
-
-        $this->customer     = $customer;
+        $this->customer = $customer;
         $this->filter   = $filter;
     }
 
@@ -80,9 +79,9 @@ class All implements Service
     {
         $decorated = [];
         foreach ($response as $answer) {
-            $answer['question']        = Question::createFromArray($answer['question']);
+            $answer['question'] = Question::createFromArray($answer['question']);
 
-            if(!empty($answer['question_option'])) {
+            if (!empty($answer['question_option'])) {
                 $answer['question_option'] = Question\Option::createFromArray($answer['question_option']);
             }
 

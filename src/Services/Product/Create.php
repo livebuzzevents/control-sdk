@@ -24,7 +24,7 @@ class Create implements Service
 
     /**
      * @param Campaign $campaign
-     * @param Product $product
+     * @param Product  $product
      *
      * @throws ErrorException
      */
@@ -34,7 +34,7 @@ class Create implements Service
             throw new ErrorException('Campaign id required!');
         }
 
-        $this->product = $product;
+        $this->product  = $product;
         $this->campaign = $campaign;
     }
 

@@ -2,9 +2,9 @@
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\Parameter;
 use Buzz\Control\Objects\Customer;
 use Buzz\Control\Objects\Customer\Property;
+use Buzz\Control\Objects\Parameter;
 
 class Create implements Service
 {
@@ -18,7 +18,7 @@ class Create implements Service
     private $property;
 
     /**
-     * @param Customer     $customer
+     * @param Customer $customer
      * @param Property $property
      *
      * @throws ErrorException
@@ -33,7 +33,7 @@ class Create implements Service
             throw new ErrorException('Parameter required!');
         }
 
-        $this->customer     = $customer;
+        $this->customer = $customer;
         $this->property = $property;
     }
 

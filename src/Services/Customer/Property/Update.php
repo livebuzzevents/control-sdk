@@ -2,9 +2,9 @@
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\Parameter;
 use Buzz\Control\Objects\Customer;
 use Buzz\Control\Objects\Customer\Property;
+use Buzz\Control\Objects\Parameter;
 
 class Update implements Service
 {
@@ -27,7 +27,7 @@ class Update implements Service
             throw new ErrorException('Property id required!');
         }
 
-        $this->customer     = $customer;
+        $this->customer = $customer;
         $this->property = $property;
     }
 

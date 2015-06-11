@@ -1,10 +1,10 @@
 <?php namespace Buzz\Control\Objects;
 
-/**
- * Class Badge
- *
- * @package Buzz\Control\Objects
- */
+    /**
+     * Class Badge
+     *
+     * @package Buzz\Control\Objects
+     */
 /**
  * Class Badge
  *

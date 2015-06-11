@@ -26,7 +26,7 @@ class Delete implements Service
             throw new ErrorException('Property id required!');
         }
 
-        $this->customer  = $customer;
+        $this->customer = $customer;
         $this->property = $property;
     }
 

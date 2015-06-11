@@ -26,8 +26,8 @@ class Delete implements Service
             throw new ErrorException('Address id required!');
         }
 
-        $this->customer    = $customer;
-        $this->address = $address;
+        $this->customer = $customer;
+        $this->address  = $address;
     }
 
     /**
