@@ -1,13 +1,13 @@
-<?php namespace Buzz\Control\Services\Badge;
+<?php namespace Buzz\Control\Services\Exhibitor;
 
 use Buzz\Control\Contracts\Service;
-use Buzz\Control\Objects\Badge;
+use Buzz\Control\Objects\Exhibitor;
 use Buzz\Control\Objects\Filter;
 
 /**
  * Class All
  *
- * @package Buzz\Control\Services\Badge
+ * @package Buzz\Control\Services\Exhibitor\Address
  */
 class All implements Service
 {
@@ -41,7 +41,7 @@ class All implements Service
      */
     public function getUrl()
     {
-        return "badge";
+        return "exhibitor";
     }
 
     /**
@@ -63,8 +63,8 @@ class All implements Service
     {
         $decorated = [];
 
-        foreach ($response as $badge) {
-            $decorated[] = Badge::createFromArray($badge);
+        foreach ($response as $exhibitor) {
+            $decorated[] = Exhibitor::createFromArray($exhibitor);
         }
 
         return $decorated;
