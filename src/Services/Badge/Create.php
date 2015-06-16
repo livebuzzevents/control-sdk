@@ -15,7 +15,7 @@ class Create implements Service
     /**
      * @var Badge
      */
-    private $badgeType;
+    private $badge;
 
     /**
      * @var
@@ -23,19 +23,19 @@ class Create implements Service
     private $campaign;
 
     /**
-     * @param Campaign  $campaign
-     * @param Badge $badgeType
+     * @param Campaign $campaign
+     * @param Badge    $badge
      *
      * @throws ErrorException
      */
-    public function __construct(Campaign $campaign, Badge $badgeType)
+    public function __construct(Campaign $campaign, Badge $badge)
     {
         if (empty($campaign->getId())) {
             throw new ErrorException('Campaign id required!');
         }
 
-        $this->badgeType = $badgeType;
-        $this->campaign  = $campaign;
+        $this->badge    = $badge;
+        $this->campaign = $campaign;
     }
 
     /**
@@ -55,7 +55,7 @@ class Create implements Service
      */
     public function getUrl()
     {
-        return 'badgeType/' . $this->campaign->getId();
+        return 'badge/' . $this->campaign->getId();
     }
 
     /**
@@ -65,7 +65,7 @@ class Create implements Service
      */
     public function getRequest()
     {
-        return $this->badgeType->toArray();
+        return $this->badge->toArray();
     }
 
     /**
