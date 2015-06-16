@@ -22,12 +22,12 @@ class Create implements Service
     private $campaign;
 
     /**
-     * @param Exhibitor $exhibitor
      * @param Campaign  $campaign
+     * @param Exhibitor $exhibitor
      *
      * @throws ErrorException
      */
-    public function __construct(Exhibitor $exhibitor, Campaign $campaign)
+    public function __construct(Campaign $campaign, Exhibitor $exhibitor)
     {
         if (empty($campaign->getId())) {
             throw new ErrorException('Campaign id required!');

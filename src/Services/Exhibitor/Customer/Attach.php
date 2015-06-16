@@ -2,7 +2,6 @@
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\Campaign;
 use Buzz\Control\Objects\Exhibitor;
 
 /**
@@ -17,7 +16,7 @@ class Attach implements Service
      */
     private $exhibitor;
     /**
-     * @var Campaign
+     * @var array
      */
     private $customers;
 
