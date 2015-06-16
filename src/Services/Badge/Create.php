@@ -3,6 +3,7 @@
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Badge;
+use Buzz\Control\Objects\Campaign;
 
 /**
  * Class Create
@@ -14,16 +15,27 @@ class Create implements Service
     /**
      * @var Badge
      */
-    private $badge;
+    private $badgeType;
 
     /**
-     * @param Badge $badge
+     * @var
+     */
+    private $campaign;
+
+    /**
+     * @param Campaign  $campaign
+     * @param Badge $badgeType
      *
      * @throws ErrorException
      */
-    public function __construct(Badge $badge)
+    public function __construct(Campaign $campaign, Badge $badgeType)
     {
-        $this->badge = $badge;
+        if (empty($campaign->getId())) {
+            throw new ErrorException('Campaign id required!');
+        }
+
+        $this->badgeType = $badgeType;
+        $this->campaign  = $campaign;
     }
 
     /**
@@ -43,7 +55,7 @@ class Create implements Service
      */
     public function getUrl()
     {
-        return 'badge';
+        return 'badgeType/' . $this->campaign->getId();
     }
 
     /**
@@ -53,7 +65,7 @@ class Create implements Service
      */
     public function getRequest()
     {
-        return $this->badge->toArray();
+        return $this->badgeType->toArray();
     }
 
     /**

@@ -1,10 +1,5 @@
 <?php namespace Buzz\Control\Objects;
 
-    /**
-     * Class Badge
-     *
-     * @package Buzz\Control\Objects
-     */
 /**
  * Class Badge
  *
@@ -19,7 +14,8 @@ class Badge extends Object
         'customer'   => Customer::class,
         'exhibitor'  => Exhibitor::class,
         'badge_type' => BadgeType::class,
-        'scans'      => Scan::class
+        'scans'      => Scan::class,
+        'details'    => Badge\Details::class
     ];
 
     /**
