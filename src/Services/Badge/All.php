@@ -2,7 +2,7 @@
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Objects\Badge;
-use Buzz\Control\Objects\Filter;
+use Buzz\Control\Filter;
 
 /**
  * Class All

@@ -3,7 +3,7 @@
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Objects\BadgeType;
 use Buzz\Control\Objects\Customer;
-use Buzz\Control\Objects\Filter;
+use Buzz\Control\Filter;
 
 /**
  * Class All

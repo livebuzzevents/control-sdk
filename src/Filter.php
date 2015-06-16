@@ -1,4 +1,4 @@
-<?php namespace Buzz\Control\Objects;
+<?php namespace Buzz\Control;
 
 use Buzz\Control\Exceptions\ErrorException;
 use DateTime;
@@ -15,8 +15,14 @@ class Filter
         '>=',
         '<>',
         '!=',
-        'like',
-        'not like',
+        'is',
+        'is not',
+        'contains',
+        'starts with',
+        'ends with',
+        'not contains',
+        'not starts with',
+        'not ends with',
         'between',
         'in',
         'not in',

@@ -4,7 +4,7 @@ use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
 use Buzz\Control\Objects\Customer\Answer;
-use Buzz\Control\Objects\Filter;
+use Buzz\Control\Filter;
 use Buzz\Control\Objects\Question;
 
 /**

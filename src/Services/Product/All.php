@@ -2,7 +2,7 @@
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Objects\Customer;
-use Buzz\Control\Objects\Filter;
+use Buzz\Control\Filter;
 use Buzz\Control\Objects\Product;
 
 /**
