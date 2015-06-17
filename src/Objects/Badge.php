@@ -1,5 +1,10 @@
 <?php namespace Buzz\Control\Objects;
 
+    /**
+     * Class Badge
+     *
+     * @package Buzz\Control\Objects
+     */
 /**
  * Class Badge
  *
@@ -46,22 +51,68 @@ class Badge extends Object
      * @var
      */
     protected $exhibitor;
+
     /**
      * @var
      */
     protected $exhibitor_id;
+
     /**
      * @var
      */
     protected $barcode;
+
     /**
      * @var
      */
     protected $scans = [];
+
     /**
      * @var array
      */
     protected $override;
+
+    /**
+     * @var
+     */
+    protected $source;
+
+    /**
+     * @var
+     */
+    protected $source_id;
+
+    /**
+     * @return mixed
+     */
+    public function getSource()
+    {
+        return $this->source;
+    }
+
+    /**
+     * @param mixed $source
+     */
+    public function setSource($source)
+    {
+        $this->source = $source;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSourceId()
+    {
+        return $this->source_id;
+    }
+
+    /**
+     * @param mixed $source_id
+     */
+    public function setSourceId($source_id)
+    {
+        $this->source_id = $source_id;
+    }
 
     /**
      * @return array
