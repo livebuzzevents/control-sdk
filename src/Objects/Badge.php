@@ -5,6 +5,11 @@
  *
  * @package Buzz\Control\Objects
  */
+/**
+ * Class Badge
+ *
+ * @package Buzz\Control\Objects
+ */
 class Badge extends Object
 {
     /**
@@ -14,8 +19,7 @@ class Badge extends Object
         'customer'   => Customer::class,
         'exhibitor'  => Exhibitor::class,
         'badge_type' => BadgeType::class,
-        'scans'      => Scan::class,
-        'details'    => Badge\Details::class
+        'scans'      => Scan::class
     ];
 
     /**
@@ -54,6 +58,26 @@ class Badge extends Object
      * @var
      */
     protected $scans = [];
+    /**
+     * @var array
+     */
+    protected $override;
+
+    /**
+     * @return array
+     */
+    public function getOverride()
+    {
+        return $this->override;
+    }
+
+    /**
+     * @param array $override
+     */
+    public function setOverride(array $override)
+    {
+        $this->override = $override;
+    }
 
     /**
      * @return mixed
