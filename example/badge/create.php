@@ -9,12 +9,11 @@ $badge = new \Buzz\Control\Objects\Badge();
 $badge->setBadgeTypeId(1);
 $badge->setCustomerId(1);
 $badge->setOverride([
-    'customer_first_name'  => 'Jordan',
-    'customer_middle_name' => 'Todorov',
-    'customer_last_name'   => 'Dobrev',
-    'job_company'          => 'LiveBuzz',
-    'job_title'            => 'Web developer',
-    'badge_type_name'      => 'LiveBuzz VIP',
+    'customer_title'      => '',
+    'customer_first_name' => 'Jordan',
+    'job_company'         => 'LiveBuzz',
+    'job_title'           => 'Web developer',
+    'badge_type_name'     => 'LiveBuzz VIP',
 ]);
 //$badge->setBarcode('1234567890');
 

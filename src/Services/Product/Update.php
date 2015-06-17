@@ -47,7 +47,7 @@ class Update implements Service
      */
     public function getRequest()
     {
-        return [];
+        return $this->product->toArray();
     }
 
     public function decorate($response)

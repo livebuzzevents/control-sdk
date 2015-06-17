@@ -17,10 +17,6 @@ class Create implements Service
      */
     private $exhibitor;
     /**
-     * @var Question
-     */
-    private $question;
-    /**
      * @var array
      */
     private $answer;
@@ -72,7 +68,7 @@ class Create implements Service
      */
     public function getRequest()
     {
-        return $this->question->toArray();
+        return $this->answer->toArray();
     }
 
     /**
