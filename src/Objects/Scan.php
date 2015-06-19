@@ -1,54 +1,30 @@
 <?php namespace Buzz\Control\Objects;
 
-use Buzz\Control\Objects\Entrance\Scanner;
+use Buzz\Control\Objects\Traits\BelongsToBadge;
 
 /**
  * Class Scan
  *
- * @package Buzz\Control\Objects\Badge
+ * @package Buzz\Control\Objects
  */
 class Scan extends Object
 {
-    /**
-     * @var array
-     */
-    protected $objectMap = [
-        'badge'   => Badge::class,
-        'scanner' => Scanner::class
-    ];
+    use BelongsToBadge;
 
     /**
-     * @var
-     */
-    protected $badge;
-
-    /**
-     * @var
-     */
-    protected $badge_id;
-
-    /**
-     * @var
+     * @var string
      */
     protected $barcode;
 
     /**
-     * @var
+     * @var \Buzz\Control\Objects\Entrance\Scanner
      */
     protected $scanner;
 
     /**
-     * @var
+     * @var int
      */
     protected $scanner_id;
-
-    /**
-     * @return mixed
-     */
-    public function getBadge()
-    {
-        return $this->badge;
-    }
 
     /**
      * @return mixed
@@ -67,7 +43,7 @@ class Scan extends Object
     }
 
     /**
-     * @return mixed
+     * @return Entrance\Scanner
      */
     public function getScanner()
     {
@@ -75,23 +51,7 @@ class Scan extends Object
     }
 
     /**
-     * @return mixed
-     */
-    public function getBadgeId()
-    {
-        return $this->badge_id;
-    }
-
-    /**
-     * @param mixed $badge_id
-     */
-    public function setBadgeId($badge_id)
-    {
-        $this->badge_id = $badge_id;
-    }
-
-    /**
-     * @return mixed
+     * @return int
      */
     public function getScannerId()
     {
@@ -99,7 +59,7 @@ class Scan extends Object
     }
 
     /**
-     * @param mixed $scanner_id
+     * @param int $scanner_id
      */
     public function setScannerId($scanner_id)
     {

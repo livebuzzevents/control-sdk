@@ -2,6 +2,7 @@
 
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 
 /**
  * Class Address
@@ -10,59 +11,47 @@ use Buzz\Control\Objects\Object;
  */
 class Address extends Object
 {
+    use BelongsToExhibitor;
+
     /**
-     * @var
+     * @var string
      */
     protected $type;
+
     /**
-     * @var
+     * @var string
      */
     protected $postcode;
+
     /**
-     * @var
+     * @var string
      */
     protected $line_1;
+
     /**
-     * @var
+     * @var string
      */
     protected $line_2;
+
     /**
-     * @var
+     * @var string
      */
     protected $line_3;
+
     /**
-     * @var
+     * @var string
      */
     protected $city;
+
     /**
-     * @var
+     * @var string
      */
     protected $country;
+
     /**
-     * @var
+     * @var string
      */
     protected $county;
-
-    /**
-     * @var
-     */
-    protected $exhibitor_id;
-
-    /**
-     * @return mixed
-     */
-    public function getExhibitorId()
-    {
-        return $this->exhibitor_id;
-    }
-
-    /**
-     * @param mixed $exhibitor_id
-     */
-    public function setExhibitorId($exhibitor_id)
-    {
-        $this->exhibitor_id = $exhibitor_id;
-    }
 
     /**
      * @return mixed

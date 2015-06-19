@@ -3,6 +3,8 @@
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Object;
 use Buzz\Control\Objects\Question;
+use Buzz\Control\Objects\Traits\BelongsToExhibitor;
+use Buzz\Control\Objects\Traits\BelongsToQuestion;
 
 /**
  * Class Answer
@@ -11,58 +13,32 @@ use Buzz\Control\Objects\Question;
  */
 class Answer extends Object
 {
-    /**
-     * @var
-     */
-    protected $question_id;
+    use BelongsToExhibitor, BelongsToQuestion;
 
     /**
-     * @var
+     * @var array
      */
     protected $options;
 
     /**
-     * @var
-     */
-    protected $exhibitor_id;
-
-    /**
-     * @var
+     * @var string
      */
     protected $text;
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getExhibitorId()
+    public function getText()
     {
-        return $this->exhibitor_id;
+        return $this->text;
     }
 
     /**
-     * @param mixed $exhibitor_id
+     * @param string $text
      */
-    public function setExhibitorId($exhibitor_id)
+    public function setText($text)
     {
-        $this->exhibitor_id = $exhibitor_id;
-    }
-
-    /**
-     * @return Question
-     */
-    public function getQuestionId()
-    {
-        return $this->question_id;
-    }
-
-    /**
-     * @param Question $question_id
-     * @param null     $text
-     */
-    public function setQuestionId($question_id, $text = null)
-    {
-        $this->question_id = $question_id;
-        $this->text        = $text;
+        $this->text = $text;
     }
 
     /**
@@ -74,7 +50,7 @@ class Answer extends Object
     }
 
     /**
-     * @param      $option_id
+     * @param int  $option_id
      * @param null $text
      *
      * @throws ErrorException

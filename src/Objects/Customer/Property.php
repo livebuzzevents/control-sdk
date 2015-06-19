@@ -1,7 +1,8 @@
 <?php namespace Buzz\Control\Objects\Customer;
 
 use Buzz\Control\Objects\Object;
-use Buzz\Control\Objects\Parameter;
+use Buzz\Control\Objects\Traits\BelongsToCustomer;
+use Buzz\Control\Objects\Traits\BelongsToParameter;
 
 /**
  * Class Property
@@ -10,54 +11,15 @@ use Buzz\Control\Objects\Parameter;
  */
 class Property extends Object
 {
+    use BelongsToCustomer, BelongsToParameter;
+
     /**
-     * @var
-     */
-    protected $parameter;
-    /**
-     * @var
+     * @var string
      */
     protected $value;
 
     /**
-     * @var
-     */
-    protected $customer_id;
-
-    /**
-     * @return mixed
-     */
-    public function getCustomerId()
-    {
-        return $this->customer_id;
-    }
-
-    /**
-     * @param mixed $customer_id
-     */
-    public function setCustomerId($customer_id)
-    {
-        $this->customer_id = $customer_id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getParameter()
-    {
-        return $this->parameter;
-    }
-
-    /**
-     * @param mixed $parameter
-     */
-    public function setParameter(Parameter $parameter)
-    {
-        $this->parameter = $parameter;
-    }
-
-    /**
-     * @return mixed
+     * @return string
      */
     public function getValue()
     {
@@ -65,7 +27,7 @@ class Property extends Object
     }
 
     /**
-     * @param mixed $value
+     * @param string $value
      */
     public function setValue($value)
     {

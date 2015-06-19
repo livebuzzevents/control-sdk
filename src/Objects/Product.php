@@ -1,5 +1,8 @@
 <?php namespace Buzz\Control\Objects;
 
+use Buzz\Control\Objects\Traits\HasBadgeType;
+use Buzz\Control\Objects\Traits\BelongsToCampaign;
+
 /**
  * Class Product
  *
@@ -7,43 +10,35 @@
  */
 class Product extends Object
 {
+    use BelongsToCampaign, HasBadgeType;
+
     /**
-     * @var
+     * @var string
      */
     protected $name;
 
     /**
-     * @var
+     * @var string
      */
     protected $description;
 
     /**
-     * @var
+     * @var int
      */
     protected $cost;
 
     /**
-     * @var
+     * @var string
      */
     protected $currency;
 
     /**
-     * @var
-     */
-    protected $campaign_id;
-
-    /**
-     * @var
+     * @var string
      */
     protected $shippable;
 
     /**
-     * @var
-     */
-    protected $badge_type_id;
-
-    /**
-     * @return mixed
+     * @return string
      */
     public function getShippable()
     {
@@ -51,7 +46,7 @@ class Product extends Object
     }
 
     /**
-     * @param mixed $shippable
+     * @param string $shippable
      */
     public function setShippable($shippable)
     {
@@ -59,39 +54,7 @@ class Product extends Object
     }
 
     /**
-     * @return mixed
-     */
-    public function getBadgeTypeId()
-    {
-        return $this->badge_type_id;
-    }
-
-    /**
-     * @param mixed $badge_type_id
-     */
-    public function setBadgeTypeId($badge_type_id)
-    {
-        $this->badge_type_id = $badge_type_id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCampaignId()
-    {
-        return $this->campaign_id;
-    }
-
-    /**
-     * @param mixed $campaign_id
-     */
-    public function setCampaignId($campaign_id)
-    {
-        $this->campaign_id = $campaign_id;
-    }
-
-    /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -99,7 +62,7 @@ class Product extends Object
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      */
     public function setName($name)
     {
@@ -107,7 +70,7 @@ class Product extends Object
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getDescription()
     {
@@ -115,7 +78,7 @@ class Product extends Object
     }
 
     /**
-     * @param mixed $description
+     * @param string $description
      */
     public function setDescription($description)
     {
@@ -123,7 +86,7 @@ class Product extends Object
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getCost()
     {
@@ -131,7 +94,7 @@ class Product extends Object
     }
 
     /**
-     * @param mixed $cost
+     * @param int $cost
      */
     public function setCost($cost)
     {
@@ -139,7 +102,7 @@ class Product extends Object
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCurrency()
     {
@@ -147,7 +110,7 @@ class Product extends Object
     }
 
     /**
-     * @param mixed $currency
+     * @param string $currency
      */
     public function setCurrency($currency)
     {

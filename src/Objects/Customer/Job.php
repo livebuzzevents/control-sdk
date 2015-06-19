@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects\Customer;
 
 use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Traits\BelongsToCustomer;
 
 /**
  * Class Job
@@ -9,38 +10,20 @@ use Buzz\Control\Objects\Object;
  */
 class Job extends Object
 {
+    use BelongsToCustomer;
+
     /**
-     * @var
+     * @var string
      */
     protected $company;
+
     /**
-     * @var
+     * @var string
      */
     protected $title;
 
     /**
-     * @var
-     */
-    protected $customer_id;
-
-    /**
-     * @return mixed
-     */
-    public function getCustomerId()
-    {
-        return $this->customer_id;
-    }
-
-    /**
-     * @param mixed $customer_id
-     */
-    public function setCustomerId($customer_id)
-    {
-        $this->customer_id = $customer_id;
-    }
-
-    /**
-     * @return mixed
+     * @return string
      */
     public function getCompany()
     {
@@ -48,7 +31,7 @@ class Job extends Object
     }
 
     /**
-     * @param mixed $company
+     * @param string $company
      */
     public function setCompany($company)
     {
@@ -56,7 +39,7 @@ class Job extends Object
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getTitle()
     {
@@ -64,7 +47,7 @@ class Job extends Object
     }
 
     /**
-     * @param mixed $title
+     * @param string $title
      */
     public function setTitle($title)
     {

@@ -1,7 +1,8 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\Customer\Address;
+use Buzz\Control\Objects\Traits\HasSource;
+use Buzz\Control\Objects\Traits\BelongsToCampaign;
 
 /**
  * Class Customer
@@ -10,107 +11,82 @@ use Buzz\Control\Objects\Customer\Address;
  */
 class Customer extends Object
 {
-    /**
-     * @var array
-     */
-    protected $objectMap = [
-        'badges'     => Badge::class,
-        'addresses'  => Customer\Address::class,
-        'answers'    => Customer\Answer::class,
-        'phones'     => Customer\Phone::class,
-        'jobs'       => Customer\Job::class,
-        'properties' => Customer\Property::class,
-        'socials'    => Customer\Social::class
-    ];
+    use BelongsToCampaign, HasSource;
 
     /**
-     * @var
+     * @var string
      */
     protected $email;
 
     /**
-     * @var
+     * @var string
      */
     protected $title;
 
     /**
-     * @var
+     * @var string
      */
     protected $first_name;
 
     /**
-     * @var
+     * @var string
      */
     protected $middle_name;
 
     /**
-     * @var
+     * @var string
      */
     protected $last_name;
 
     /**
-     * @var
+     * @var string
      */
     protected $sex;
 
     /**
-     * @var
+     * @var string
      */
     protected $nationality;
 
     /**
-     * @var
+     * @var string
      */
     protected $language;
 
     /**
-     * @var
+     * @var \Buzz\Control\Objects\Customer\Phone
      */
-    protected $source;
+    protected $phones;
 
     /**
-     * @var
+     * @var \Buzz\Control\Objects\Customer\Job
      */
-    protected $source_id;
+    protected $jobs;
 
     /**
-     * @var
+     * @var \Buzz\Control\Objects\Customer\Address
      */
-    protected $phones = [];
+    protected $addresses;
 
     /**
-     * @var
+     * @var \Buzz\Control\Objects\Customer\Property[]
      */
-    protected $jobs = [];
+    protected $properties;
 
     /**
-     * @var
+     * @var \Buzz\Control\Objects\Customer\Social[]
      */
-    protected $addresses = [];
+    protected $socials;
 
     /**
-     * @var array
+     * @var \Buzz\Control\Objects\Customer\Answer[]
      */
-    protected $properties = [];
+    protected $answers;
 
     /**
-     * @var array
+     * @var \Buzz\Control\Objects\Badge[]
      */
-    protected $socials = [];
-
-    /**
-     * @var
-     */
-    protected $answers = [];
-
-    /**
-     * @var array
-     */
-    protected $badges = [];
-    /**
-     * @var
-     */
-    protected $campaign_id;
+    protected $badges;
 
     /**
      * @return array
@@ -166,22 +142,6 @@ class Customer extends Object
     public function addProperty(Customer\Property $property)
     {
         $this->properties[] = $property;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCampaignId()
-    {
-        return $this->campaign_id;
-    }
-
-    /**
-     * @param mixed $campaign_id
-     */
-    public function setCampaignId($campaign_id)
-    {
-        $this->campaign_id = $campaign_id;
     }
 
     /**
@@ -337,39 +297,7 @@ class Customer extends Object
     }
 
     /**
-     * @return mixed
-     */
-    public function getSource()
-    {
-        return $this->source;
-    }
-
-    /**
-     * @param mixed $source
-     */
-    public function setSource($source)
-    {
-        $this->source = $source;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSourceId()
-    {
-        return $this->source_id;
-    }
-
-    /**
-     * @param mixed $source_id
-     */
-    public function setSourceId($source_id)
-    {
-        $this->source_id = $source_id;
-    }
-
-    /**
-     * @param Address $address
+     * @param Customer\Address $address
      */
     public function addAddress(Customer\Address $address)
     {

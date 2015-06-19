@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects\Customer;
 
 use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Traits\BelongsToCustomer;
 
 /**
  * Class Address
@@ -9,8 +10,10 @@ use Buzz\Control\Objects\Object;
  */
 class Social extends Object
 {
+    use BelongsToCustomer;
+
     /**
-     * @var
+     * @var string
      */
     protected $provider;
 
@@ -18,13 +21,9 @@ class Social extends Object
      * @var array
      */
     protected $settings = [];
-    /**
-     * @var
-     */
-    protected $customer_id;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getProvider()
     {
@@ -32,7 +31,7 @@ class Social extends Object
     }
 
     /**
-     * @param mixed $provider
+     * @param string $provider
      */
     public function setProvider($provider)
     {
@@ -53,21 +52,5 @@ class Social extends Object
     public function setSettings(array $settings = null)
     {
         $this->settings = $settings;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCustomerId()
-    {
-        return $this->customer_id;
-    }
-
-    /**
-     * @param mixed $customer_id
-     */
-    public function setCustomerId($customer_id)
-    {
-        $this->customer_id = $customer_id;
     }
 }

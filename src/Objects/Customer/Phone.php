@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects\Customer;
 
 use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Traits\BelongsToCustomer;
 
 /**
  * Class Phone
@@ -9,39 +10,20 @@ use Buzz\Control\Objects\Object;
  */
 class Phone extends Object
 {
+    use BelongsToCustomer;
+
     /**
-     * @var
+     * @var string
      */
     protected $type;
 
     /**
-     * @var
+     * @var string
      */
     protected $number;
 
     /**
-     * @var
-     */
-    protected $customer_id;
-
-    /**
-     * @return mixed
-     */
-    public function getCustomerId()
-    {
-        return $this->customer_id;
-    }
-
-    /**
-     * @param mixed $customer_id
-     */
-    public function setCustomerId($customer_id)
-    {
-        $this->customer_id = $customer_id;
-    }
-
-    /**
-     * @return mixed
+     * @return string
      */
     public function getType()
     {
@@ -49,7 +31,7 @@ class Phone extends Object
     }
 
     /**
-     * @param mixed $type
+     * @param string $type
      */
     public function setType($type)
     {
@@ -57,7 +39,7 @@ class Phone extends Object
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getNumber()
     {
@@ -65,7 +47,7 @@ class Phone extends Object
     }
 
     /**
-     * @param mixed $number
+     * @param string $number
      */
     public function setNumber($number)
     {

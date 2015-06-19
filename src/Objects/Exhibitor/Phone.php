@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects\Exhibitor;
 
 use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 
 /**
  * Class Phone
@@ -9,39 +10,20 @@ use Buzz\Control\Objects\Object;
  */
 class Phone extends Object
 {
+    use BelongsToExhibitor;
+
     /**
-     * @var
+     * @var string
      */
     protected $type;
 
     /**
-     * @var
+     * @var string
      */
     protected $number;
 
     /**
-     * @var
-     */
-    protected $exhibitor_id;
-
-    /**
-     * @return mixed
-     */
-    public function getExhibitorId()
-    {
-        return $this->exhibitor_id;
-    }
-
-    /**
-     * @param mixed $exhibitor_id
-     */
-    public function setExhibitorId($exhibitor_id)
-    {
-        $this->exhibitor_id = $exhibitor_id;
-    }
-
-    /**
-     * @return mixed
+     * @return string
      */
     public function getType()
     {
@@ -49,7 +31,7 @@ class Phone extends Object
     }
 
     /**
-     * @param mixed $type
+     * @param string $type
      */
     public function setType($type)
     {
@@ -57,7 +39,7 @@ class Phone extends Object
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getNumber()
     {
@@ -65,7 +47,7 @@ class Phone extends Object
     }
 
     /**
-     * @param mixed $number
+     * @param string $number
      */
     public function setNumber($number)
     {

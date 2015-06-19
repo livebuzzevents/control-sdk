@@ -11,16 +11,16 @@ use Buzz\Control\Objects\Exhibitor;
 class Customer extends \Buzz\Control\Objects\Customer
 {
     /**
-     * @var
+     * @var array
      */
     protected $pivot;
     /**
-     * @var
+     * @var string
      */
     protected $role;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getRole()
     {
@@ -28,7 +28,7 @@ class Customer extends \Buzz\Control\Objects\Customer
     }
 
     /**
-     * @param mixed $role
+     * @param string $role
      *
      * @throws ErrorException
      */
@@ -37,6 +37,7 @@ class Customer extends \Buzz\Control\Objects\Customer
         if (!in_array($role, ['basic', 'leader'])) {
             throw new ErrorException("Invalid role '{$role}'!");
         }
+
         $this->role = $role;
     }
 }

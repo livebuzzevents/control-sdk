@@ -1,11 +1,8 @@
 <?php namespace Buzz\Control\Objects;
 
-/**
- * Class Exhibitor
- *
- * @package Buzz\Control\Objects
- */
 use Buzz\Control\Exceptions\ErrorException;
+use Buzz\Control\Objects\Traits\HasSource;
+use Buzz\Control\Objects\Traits\BelongsToCampaign;
 
 /**
  * Class Exhibitor
@@ -14,98 +11,87 @@ use Buzz\Control\Exceptions\ErrorException;
  */
 class Exhibitor extends Object
 {
-    /**
-     * @var array
-     */
-    protected $objectMap = [
-        'badges'     => Badge::class,
-        'customers'  => Exhibitor\Customer::class,
-        'owner'      => Exhibitor::class,
-        'exhibitors' => Exhibitor::class,
-        'addresses'  => Exhibitor\Address::class,
-        'answers'    => Exhibitor\Answer::class,
-        'phones'     => Exhibitor\Phone::class,
-        'properties' => Exhibitor\Property::class,
-        'socials'    => Exhibitor\Social::class
-    ];
+    use BelongsToCampaign, HasSource;
 
     /**
-     * @var
+     * @var string
      */
     protected $name;
+
     /**
-     * @var
+     * @var string
      */
     protected $description;
+
     /**
-     * @var
+     * @var string
      */
     protected $image;
+
     /**
-     * @var
+     * @var int
      */
     protected $owner_id;
+
     /**
-     * @var
-     */
-    protected $campaign_id;
-    /**
-     * @var
+     * @var array
      */
     protected $details;
+
     /**
-     * @var
+     * @var array
      */
     protected $settings;
+
     /**
-     * @var
-     */
-    protected $source;
-    /**
-     * @var
-     */
-    protected $source_id;
-    /**
-     * @var
+     * @var string
      */
     protected $active;
+
     /**
-     * @var array
+     * @var \Buzz\Control\Objects\Customer[]
      */
-    protected $customers = [];
+    protected $customers;
+
     /**
-     * @var array
+     * @var \Buzz\Control\Objects\Badge[]
      */
-    protected $badges = [];
+    protected $badges;
+
     /**
-     * @var array
+     * @var \Buzz\Control\Objects\Exhibitor[]
      */
-    protected $exhibitors = [];
+    protected $exhibitors;
+
     /**
-     * @var
+     * @var \Buzz\Control\Objects\Exhibitor
      */
     protected $owner;
 
     /**
-     * @var array
+     * @var \Buzz\Control\Objects\Exhibitor\Address[]
      */
-    protected $addresses = [];
+    protected $addresses;
+
     /**
-     * @var array
+     * @var \Buzz\Control\Objects\Exhibitor\Phone[]
      */
-    protected $phones = [];
+    protected $phones;
+
     /**
-     * @var array
+     * @var \Buzz\Control\Objects\Exhibitor\Answer[]
      */
-    protected $answers = [];
+    protected $answers;
+
     /**
-     * @var array
+     * @var \Buzz\Control\Objects\Exhibitor\Property[]
      */
-    protected $properties = [];
+    protected $properties;
+
     /**
-     * @var array
+     * @var \Buzz\Control\Objects\Exhibitor\Social[]
      */
-    protected $socials = [];
+    protected $socials;
 
     /**
      * @return array
@@ -290,22 +276,6 @@ class Exhibitor extends Object
     /**
      * @return mixed
      */
-    public function getCampaignId()
-    {
-        return $this->campaign_id;
-    }
-
-    /**
-     * @param mixed $campaign_id
-     */
-    public function setCampaignId($campaign_id)
-    {
-        $this->campaign_id = $campaign_id;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getDetails()
     {
         return $this->details;
@@ -333,38 +303,6 @@ class Exhibitor extends Object
     public function setSetting(array $settings)
     {
         $this->settings = $settings;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSource()
-    {
-        return $this->source;
-    }
-
-    /**
-     * @param mixed $source
-     */
-    public function setSource($source)
-    {
-        $this->source = $source;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSourceId()
-    {
-        return $this->source_id;
-    }
-
-    /**
-     * @param mixed $source_id
-     */
-    public function setSourceId($source_id)
-    {
-        $this->source_id = $source_id;
     }
 
     /**

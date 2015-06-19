@@ -5,6 +5,7 @@ use ReflectionClass;
 use ReflectionProperty;
 
 /**
+ * @Annotation
  * Class Object
  *
  * @package Buzz\Control\Objects
@@ -12,22 +13,17 @@ use ReflectionProperty;
 abstract class Object
 {
     /**
-     * @var
-     */
-    protected $objectMap;
-
-    /**
-     * @var null
+     * @var int
      */
     protected $id;
 
     /**
-     * @var
+     * @var \DateTime
      */
     protected $created_at;
 
     /**
-     * @var
+     * @var \DateTime
      */
     protected $updated_at;
 
@@ -52,27 +48,72 @@ abstract class Object
         $protected = $reflect->getProperties(ReflectionProperty::IS_PROTECTED);
 
         foreach ($protected as $property) {
+
             $name = $property->getName();
 
             if (!isset($array[$name])) {
                 continue;
             }
 
-            if (isset($object->objectMap[$name])) {
-                $mapClass = $object->objectMap[$name];
-                if (is_array($object->$name)) {
-                    foreach ($array[$name] as $single) {
-                        array_push($object->$name, $mapClass::createFromArray($single));
-                    }
-                } else {
-                    $object->$name = $mapClass::createFromArray($array[$name]);
+            $type = self::getAnnotationVarType($property);
+
+            if (strpos($type, '[]') !== false) { //array
+                $type          = trim($type, '[]');
+                $object->$name = [];
+                foreach ($array[$name] as $single) {
+                    array_push($object->$name, self::castSingleProperty($type, $single));
                 }
             } else {
-                $object->$name = $array[$name];
+                $object->$name = self::castSingleProperty($type, $array[$name]);
             }
         }
 
         return $object;
+    }
+
+    /**
+     * @param $property
+     *
+     * @return bool
+     */
+    private static function getAnnotationVarType($property)
+    {
+        $comment = $property->getDocComment();
+
+        preg_match_all('/@var(.*)?\n/', $comment, $var);
+
+        $value = trim($var[1][0]);
+
+        if (empty($value)) {
+            return false;
+        }
+
+        $type = explode(' ', $value)[0];
+
+        return $type;
+    }
+
+    /**
+     * @param $type
+     * @param $value
+     *
+     * @return DateTime|float|int
+     */
+    private static function castSingleProperty($type, $value)
+    {
+        if ($type === 'int') {
+            return intval($value);
+        } elseif ($type === 'float') {
+            return floatval($value);
+        } elseif (class_exists($type)) {
+            if ($type === \DateTime::class) {
+                return (new \DateTime())->setTimestamp(strtotime($value));
+            } else {
+                return $type::createFromArray($value);
+            }
+        } else { //all other types, including non specified arrays
+            return $value;
+        }
     }
 
     /**

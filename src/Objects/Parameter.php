@@ -8,12 +8,12 @@
 class Parameter extends Object
 {
     /**
-     * @var
+     * @var string
      */
     protected $name;
 
     /**
-     * @return mixed
+     * @return string|null
      */
     public function getName()
     {
@@ -21,7 +21,7 @@ class Parameter extends Object
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      */
     public function setName($name)
     {

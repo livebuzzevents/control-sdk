@@ -1,5 +1,7 @@
 <?php namespace Buzz\Control\Objects;
 
+use Buzz\Control\Objects\Traits\BelongsToCampaign;
+
 /**
  * Class BadgeType
  *
@@ -7,8 +9,10 @@
  */
 class BadgeType extends Object
 {
+    use BelongsToCampaign;
+
     /**
-     * @var
+     * @var string
      */
     protected $name;
 
@@ -27,25 +31,4 @@ class BadgeType extends Object
     {
         $this->name = $name;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getCampaignId()
-    {
-        return $this->campaign_id;
-    }
-
-    /**
-     * @param mixed $campaign_id
-     */
-    public function setCampaignId($campaign_id)
-    {
-        $this->campaign_id = $campaign_id;
-    }
-
-    /**
-     * @var
-     */
-    protected $campaign_id;
 }

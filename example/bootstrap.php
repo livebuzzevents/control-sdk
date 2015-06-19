@@ -9,3 +9,11 @@ $organization_id = 1;
 $credentials = new Buzz\Control\Credentials($api_key, $organization_id, $endpoint);
 
 $serviceHandler = new Buzz\Control\ServiceHandler($credentials);
+
+
+function dd($v) {
+    echo '<pre>';
+    var_dump($v);
+    echo '</pre>';
+    exit();
+}

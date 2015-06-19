@@ -1,7 +1,5 @@
 <?php namespace Buzz\Control\Objects;
 
-use Buzz\Control\Objects\Question\Option;
-
 /**
  * Class Question
  *
@@ -10,24 +8,27 @@ use Buzz\Control\Objects\Question\Option;
 class Question extends Object
 {
     /**
-     * @var
+     * @var string
      */
     protected $name;
-    /**
-     * @var
-     */
-    protected $description;
-    /**
-     * @var
-     */
-    protected $type;
-    /**
-     * @var
-     */
-    protected $options = [];
 
     /**
-     * @return mixed
+     * @var string
+     */
+    protected $description;
+
+    /**
+     * @var string
+     */
+    protected $type;
+
+    /**
+     * @var \Buzz\Control\Objects\Question\Option[]
+     */
+    protected $options;
+
+    /**
+     * @return string
      */
     public function getDescription()
     {
@@ -35,7 +36,7 @@ class Question extends Object
     }
 
     /**
-     * @param mixed $description
+     * @param string $description
      */
     public function setDescription($description)
     {
@@ -43,7 +44,7 @@ class Question extends Object
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -51,7 +52,7 @@ class Question extends Object
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      */
     public function setName($name)
     {
@@ -59,7 +60,7 @@ class Question extends Object
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getType()
     {
@@ -67,7 +68,7 @@ class Question extends Object
     }
 
     /**
-     * @param mixed $type
+     * @param string $type
      */
     public function setType($type)
     {
@@ -75,15 +76,15 @@ class Question extends Object
     }
 
     /**
-     * @param Option $option
+     * @param Question\Option $option
      */
-    public function addOption(Option $option)
+    public function addOption(Question\Option $option)
     {
         array_push($this->options, $option);
     }
 
     /**
-     * @return mixed
+     * @return Question\Option[]
      */
     public function getOptions()
     {
@@ -91,9 +92,9 @@ class Question extends Object
     }
 
     /**
-     * @param mixed $options
+     * @param Question\Option[] $options
      */
-    public function setOptions($options)
+    public function setOptions(array $options)
     {
         $this->options = $options;
     }

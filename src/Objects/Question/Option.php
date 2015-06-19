@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects\Question;
 
 use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Traits\BelongsToQuestion;
 
 /**
  * Class Option
@@ -9,6 +10,8 @@ use Buzz\Control\Objects\Object;
  */
 class Option extends Object
 {
+    use BelongsToQuestion;
+
     protected $name;
     protected $active;
     protected $open;

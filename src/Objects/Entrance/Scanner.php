@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects\Entrance;
 
 use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Traits\BelongsToEntrance;
 
 /**
  * Class Scanner
@@ -9,34 +10,15 @@ use Buzz\Control\Objects\Object;
  */
 class Scanner extends Object
 {
+    use BelongsToEntrance;
+
     /**
-     * @var
+     * @var string
      */
     protected $identifier;
 
     /**
-     * @var
-     */
-    protected $entrance_id;
-
-    /**
-     * @return mixed
-     */
-    public function getEntranceId()
-    {
-        return $this->entrance_id;
-    }
-
-    /**
-     * @param mixed $entrance_id
-     */
-    public function setEntranceId($entrance_id)
-    {
-        $this->entrance_id = $entrance_id;
-    }
-
-    /**
-     * @return mixed
+     * @return string
      */
     public function getIdentifier()
     {
@@ -44,7 +26,7 @@ class Scanner extends Object
     }
 
     /**
-     * @param mixed $identifier
+     * @param string $identifier
      */
     public function setIdentifier($identifier)
     {

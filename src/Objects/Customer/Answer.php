@@ -3,6 +3,8 @@
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Object;
 use Buzz\Control\Objects\Question;
+use Buzz\Control\Objects\Traits\BelongsToCustomer;
+use Buzz\Control\Objects\Traits\BelongsToQuestion;
 
 /**
  * Class Answer
@@ -11,58 +13,32 @@ use Buzz\Control\Objects\Question;
  */
 class Answer extends Object
 {
-    /**
-     * @var
-     */
-    protected $question_id;
+    use BelongsToCustomer, BelongsToQuestion;
 
     /**
-     * @var
+     * @var array
      */
     protected $options;
 
     /**
-     * @var
-     */
-    protected $customer_id;
-
-    /**
-     * @var
+     * @var string
      */
     protected $text;
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getCustomerId()
+    public function getText()
     {
-        return $this->customer_id;
+        return $this->text;
     }
 
     /**
-     * @param mixed $customer_id
+     * @param string $text
      */
-    public function setCustomerId($customer_id)
+    public function setText($text)
     {
-        $this->customer_id = $customer_id;
-    }
-
-    /**
-     * @return Question
-     */
-    public function getQuestionId()
-    {
-        return $this->question_id;
-    }
-
-    /**
-     * @param Question $question_id
-     * @param null     $text
-     */
-    public function setQuestionId($question_id, $text = null)
-    {
-        $this->question_id = $question_id;
-        $this->text        = $text;
+        $this->text = $text;
     }
 
     /**
@@ -71,6 +47,14 @@ class Answer extends Object
     public function getOptions()
     {
         return $this->options;
+    }
+
+    /**
+     * @param array $options
+     */
+    public function setOptions($options)
+    {
+        $this->options = $options;
     }
 
     /**

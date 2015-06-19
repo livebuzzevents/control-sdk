@@ -2,6 +2,7 @@
 
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Traits\BelongsToCustomer;
 
 /**
  * Class Address
@@ -10,59 +11,40 @@ use Buzz\Control\Objects\Object;
  */
 class Address extends Object
 {
+    use BelongsToCustomer;
+
     /**
-     * @var
+     * @var string
      */
     protected $type;
     /**
-     * @var
+     * @var string
      */
     protected $postcode;
     /**
-     * @var
+     * @var string
      */
     protected $line_1;
     /**
-     * @var
+     * @var string
      */
     protected $line_2;
     /**
-     * @var
+     * @var string
      */
     protected $line_3;
     /**
-     * @var
+     * @var string
      */
     protected $city;
     /**
-     * @var
+     * @var string
      */
     protected $country;
     /**
-     * @var
+     * @var string
      */
     protected $county;
-
-    /**
-     * @var
-     */
-    protected $customer_id;
-
-    /**
-     * @return mixed
-     */
-    public function getCustomerId()
-    {
-        return $this->customer_id;
-    }
-
-    /**
-     * @param mixed $customer_id
-     */
-    public function setCustomerId($customer_id)
-    {
-        $this->customer_id = $customer_id;
-    }
 
     /**
      * @return mixed
