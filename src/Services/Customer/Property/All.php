@@ -72,8 +72,7 @@ class All implements Service
         $decorated = [];
 
         foreach ($response as $property) {
-            $property['parameter'] = Parameter::createFromArray($property['parameter']);
-            array_push($decorated, Property::createFromArray($property));
+            $decorated[] = Property::createFromArray($property);
         }
 
         return $decorated;

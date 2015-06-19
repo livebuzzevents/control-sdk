@@ -71,7 +71,7 @@ class All implements Service
         $decorated = [];
 
         foreach ($response as $phone) {
-            array_push($decorated, Phone::createFromArray($phone));
+            $decorated[] = Phone::createFromArray($phone);
         }
 
         return $decorated;

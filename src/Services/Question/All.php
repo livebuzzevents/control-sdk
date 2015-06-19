@@ -65,13 +65,7 @@ class All implements Service
         $decorated = [];
 
         foreach ($response as $question) {
-            if (!empty($question['options'])) {
-                foreach ($question['options'] as &$option) {
-                    $option = Question\Option::createFromArray($option);
-                }
-            }
-
-            array_push($decorated, Question::createFromArray($question));
+            $decorated[] = Question::createFromArray($question);
         }
 
         return $decorated;

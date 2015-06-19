@@ -58,12 +58,6 @@ class Create implements Service
      */
     public function decorate($response)
     {
-        if (!empty($response['options'])) {
-            foreach ($response['options'] as &$option) {
-                $option = Question\Option::createFromArray($option);
-            }
-        }
-
         return Question::createFromArray($response);
     }
 }
