@@ -3,7 +3,6 @@
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Exhibitor;
-use Buzz\Control\Objects\Exhibitor\Answer;
 
 /**
  * Class Update
@@ -17,17 +16,17 @@ class Update implements Service
      */
     private $exhibitor;
     /**
-     * @var Answer
+     * @var Exhibitor\Answer
      */
     private $answer;
 
     /**
-     * @param Exhibitor $exhibitor
-     * @param Answer    $answer
+     * @param Exhibitor        $exhibitor
+     * @param Exhibitor\Answer $answer
      *
      * @throws ErrorException
      */
-    public function __construct(Exhibitor $exhibitor, Answer $answer)
+    public function __construct(Exhibitor $exhibitor, Exhibitor\Answer $answer)
     {
         if (empty($exhibitor->getId())) {
             throw new ErrorException('Exhibitor id required!');
@@ -78,6 +77,6 @@ class Update implements Service
      */
     public function decorate($response)
     {
-        return Answer::createFromArray($response);
+        return Exhibitor\Answer::createFromArray($response);
     }
 }

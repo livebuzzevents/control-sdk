@@ -3,7 +3,6 @@
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Exhibitor;
-use Buzz\Control\Objects\Exhibitor\Answer;
 
 class Delete implements Service
 {
@@ -16,7 +15,7 @@ class Delete implements Service
      */
     private $answer;
 
-    public function __construct(Exhibitor $exhibitor, Answer $answer)
+    public function __construct(Exhibitor $exhibitor, Exhibitor\Answer $answer)
     {
         if (empty($exhibitor->getId())) {
             throw new ErrorException('Exhibitor id required!');

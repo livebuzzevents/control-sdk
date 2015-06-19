@@ -78,6 +78,6 @@ class Create implements Service
      */
     public function decorate($response)
     {
-        return $response;
+        return Exhibitor\Answer::createFromArray($response);
     }
 }

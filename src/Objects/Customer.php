@@ -54,17 +54,17 @@ class Customer extends Object
     protected $language;
 
     /**
-     * @var \Buzz\Control\Objects\Customer\Phone
+     * @var \Buzz\Control\Objects\Customer\Phone[]
      */
     protected $phones;
 
     /**
-     * @var \Buzz\Control\Objects\Customer\Job
+     * @var \Buzz\Control\Objects\Customer\Job[]
      */
     protected $jobs;
 
     /**
-     * @var \Buzz\Control\Objects\Customer\Address
+     * @var \Buzz\Control\Objects\Customer\Address[]
      */
     protected $addresses;
 

@@ -2,9 +2,8 @@
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\Exhibitor;
-use Buzz\Control\Objects\Exhibitor\Answer;
 use Buzz\Control\Filter;
+use Buzz\Control\Objects\Exhibitor;
 use Buzz\Control\Objects\Question;
 
 /**
@@ -78,14 +77,9 @@ class All implements Service
     public function decorate($response)
     {
         $decorated = [];
+
         foreach ($response as $answer) {
-            $answer['question'] = Question::createFromArray($answer['question']);
-
-            if (!empty($answer['question_option'])) {
-                $answer['question_option'] = Question\Option::createFromArray($answer['question_option']);
-            }
-
-            array_push($decorated, Answer::createFromArray($answer));
+            array_push($decorated, Exhibitor\Answer::createFromArray($answer));
         }
 
         return $decorated;

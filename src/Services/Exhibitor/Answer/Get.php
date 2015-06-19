@@ -3,7 +3,6 @@
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Exhibitor;
-use Buzz\Control\Objects\Exhibitor\Answer;
 use Buzz\Control\Objects\Question;
 
 /**
@@ -80,9 +79,6 @@ class Get implements Service
      */
     public function decorate($response)
     {
-        $response['question']        = Question::createFromArray($response['question']);
-        $response['question_option'] = Question\Option::createFromArray($response['question_option']);
-
-        return Answer::createFromArray($response);
+        return Exhibitor\Answer::createFromArray($response);
     }
 }
