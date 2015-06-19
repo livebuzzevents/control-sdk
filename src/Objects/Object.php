@@ -82,6 +82,10 @@ abstract class Object
 
         preg_match_all('/@var(.*)?\n/', $comment, $var);
 
+        if (empty($var) || empty($var[1]) || empty($var[1][0])) {
+            return false;
+        }
+
         $value = trim($var[1][0]);
 
         if (empty($value)) {
