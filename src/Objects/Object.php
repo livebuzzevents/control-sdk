@@ -106,7 +106,7 @@ abstract class Object
         } elseif ($type === 'float') {
             return floatval($value);
         } elseif (class_exists($type)) {
-            if ($type === \DateTime::class) {
+            if ($type === '\DateTime') {
                 return (new \DateTime())->setTimestamp(strtotime($value));
             } else {
                 return $type::createFromArray($value);

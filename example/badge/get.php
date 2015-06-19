@@ -5,11 +5,12 @@ require_once '../bootstrap.php';
 $badge = new \Buzz\Control\Objects\Badge(1);
 
 $badge = $badge->createFromArray([
-    'id'        => 1,
-    'customer'  => ['id' => '1'],
-    'scans'     => [['id' => '1']],
-    'badgeType' => ['id' => '1'],
-    'exhibitor' => ['id' => '1'],
+    'id'         => 1,
+    'customer'   => ['id' => '1'],
+//    'scans'      => [['id' => '1']],
+//    'badgeType'  => ['id' => '1'],
+//    'exhibitor'  => ['id' => '1'],
+    'created_at' => '2012-01-01 12:12:12'
 ]);
 
 dd($badge);
