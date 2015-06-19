@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects\Exhibitor;
 
 use Buzz\Control\Exceptions\ErrorException;
+use Buzz\Control\Objects\Exhibitor\Answer\Option;
 use Buzz\Control\Objects\Object;
 use Buzz\Control\Objects\Question;
 use Buzz\Control\Objects\Traits\BelongsToExhibitor;
@@ -16,7 +17,7 @@ class Answer extends Object
     use BelongsToExhibitor, BelongsToQuestion;
 
     /**
-     * @var array
+     * @var \Buzz\Control\Objects\Exhibitor\Answer\Option[]
      */
     protected $options;
 
@@ -42,7 +43,7 @@ class Answer extends Object
     }
 
     /**
-     * @return array
+     * @return \Buzz\Control\Objects\Exhibitor\Answer\Option[]
      */
     public function getOptions()
     {
@@ -50,20 +51,20 @@ class Answer extends Object
     }
 
     /**
-     * @param int  $option_id
-     * @param null $text
+     * @param \Buzz\Control\Objects\Exhibitor\Answer\Option[] $options
+     */
+    public function setOptions(array $options)
+    {
+        $this->options = $options;
+    }
+
+    /**
+     * @param \Buzz\Control\Objects\Exhibitor\Answer\Option $option
      *
      * @throws ErrorException
      */
-    public function addOption($option_id, $text = null)
+    public function addOption(Option $option)
     {
-        if (isset($this->options[$option_id])) {
-            throw new ErrorException('Option already exists');
-        }
-
-        $this->options[$option_id] = [
-            'id'   => $option_id,
-            'text' => $text
-        ];
+        $this->options[] = $option;
     }
 }

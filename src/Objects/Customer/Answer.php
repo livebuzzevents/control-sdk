@@ -59,7 +59,7 @@ class Answer extends Object
     }
 
     /**
-     * @param Option $option
+     * @param \Buzz\Control\Objects\Customer\Answer\Option $option
      *
      * @throws ErrorException
      */

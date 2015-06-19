@@ -6,12 +6,19 @@ $exhibitor = new \Buzz\Control\Objects\Exhibitor(1);
 
 //ANSWER SELECT AND RADIO
 $answer = new \Buzz\Control\Objects\Exhibitor\Answer();
-$answer->setQuestion(1, 'text');
+$answer->setQuestionId(3);
+//$answer->setText('TEST2');
 
-$answer->addOption(2, '3');
-$answer->addOption(3, '4');
+$option = new \Buzz\Control\Objects\Exhibitor\Answer\Option();
+$option->setQuestionOptionId(6);
 
-var_dump($answer->toArray());exit();
+$answer->addOption($option);
+
+$option = new \Buzz\Control\Objects\Exhibitor\Answer\Option();
+$option->setQuestionOptionId(7);
+
+$answer->addOption($option);
+
 
 $service  = new \Buzz\Control\Services\Exhibitor\Answer\Create($exhibitor, $answer);
 $response = $serviceHandler->execute($service);
