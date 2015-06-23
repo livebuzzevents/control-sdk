@@ -14,15 +14,15 @@ class Customer extends Object
     use BelongsToCampaign, HasSource;
 
     /**
-     * @var
+     * @var string
      */
     protected $username;
     /**
-     * @var
+     * @var string
      */
     protected $password;
     /**
-     * @var
+     * @var string
      */
     protected $remember_token;
     /**
