@@ -1,8 +1,8 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\Traits\HasSource;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
+use Buzz\Control\Objects\Traits\HasSource;
 
 /**
  * Class Customer
@@ -14,79 +14,125 @@ class Customer extends Object
     use BelongsToCampaign, HasSource;
 
     /**
+     * @var
+     */
+    protected $username;
+    /**
+     * @var
+     */
+    protected $password;
+    /**
+     * @var
+     */
+    protected $remember_token;
+    /**
      * @var string
      */
     protected $email;
-
     /**
      * @var string
      */
     protected $title;
-
     /**
      * @var string
      */
     protected $first_name;
-
     /**
      * @var string
      */
     protected $middle_name;
-
     /**
      * @var string
      */
     protected $last_name;
-
     /**
      * @var string
      */
     protected $sex;
-
     /**
      * @var string
      */
     protected $nationality;
-
     /**
      * @var string
      */
     protected $language;
-
     /**
      * @var \Buzz\Control\Objects\Customer\Phone[]
      */
     protected $phones;
-
     /**
      * @var \Buzz\Control\Objects\Customer\Job[]
      */
     protected $jobs;
-
     /**
      * @var \Buzz\Control\Objects\Customer\Address[]
      */
     protected $addresses;
-
     /**
      * @var \Buzz\Control\Objects\Customer\Property[]
      */
     protected $properties;
-
     /**
      * @var \Buzz\Control\Objects\Customer\Social[]
      */
     protected $socials;
-
     /**
      * @var \Buzz\Control\Objects\Customer\Answer[]
      */
     protected $answers;
-
     /**
      * @var \Buzz\Control\Objects\Badge[]
      */
     protected $badges;
+
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRememberToken()
+    {
+        return $this->remember_token;
+    }
+
+    /**
+     * @param mixed $remember_token
+     */
+    public function setRememberToken($remember_token)
+    {
+        $this->remember_token = $remember_token;
+    }
 
     /**
      * @return array
