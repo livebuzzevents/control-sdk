@@ -64,8 +64,8 @@ class All implements Service
     {
         $decorated = [];
 
-        foreach ($response as $product) {
-            $decorated[] = Product::createFromArray($product);
+        foreach ($response as $key => $product) {
+            $decorated[$key] = Product::createFromArray($product);
         }
 
         return $decorated;

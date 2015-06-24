@@ -60,8 +60,8 @@ abstract class Object
             if (strpos($type, '[]') !== false) { //array
                 $type          = trim($type, '[]');
                 $object->$name = [];
-                foreach ($array[$name] as $single) {
-                    array_push($object->$name, self::castSingleProperty($type, $single));
+                foreach ($array[$name] as $key => $single) {
+                    $object->$name[$key] = self::castSingleProperty($type, $single);
                 }
             } else {
                 $object->$name = self::castSingleProperty($type, $array[$name]);

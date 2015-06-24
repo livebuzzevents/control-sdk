@@ -71,8 +71,8 @@ class All implements Service
     {
         $decorated = [];
 
-        foreach ($response as $property) {
-            $decorated[] = Property::createFromArray($property);
+        foreach ($response as $key => $property) {
+            $decorated[$key] = Property::createFromArray($property);
         }
 
         return $decorated;

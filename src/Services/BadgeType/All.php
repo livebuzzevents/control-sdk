@@ -64,8 +64,8 @@ class All implements Service
     {
         $decorated = [];
 
-        foreach ($response as $badgeType) {
-            $decorated[] = BadgeType::createFromArray($badgeType);
+        foreach ($response as $key => $badgeType) {
+            $decorated[$key] = BadgeType::createFromArray($badgeType);
         }
 
         return $decorated;

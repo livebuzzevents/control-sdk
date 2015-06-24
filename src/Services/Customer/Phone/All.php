@@ -70,8 +70,8 @@ class All implements Service
     {
         $decorated = [];
 
-        foreach ($response as $phone) {
-            $decorated[] = Phone::createFromArray($phone);
+        foreach ($response as $key => $phone) {
+            $decorated[$key] = Phone::createFromArray($phone);
         }
 
         return $decorated;
