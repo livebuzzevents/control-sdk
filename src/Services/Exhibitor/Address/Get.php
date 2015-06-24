@@ -18,11 +18,11 @@ class Get implements Service
 
     public function __construct(Exhibitor $exhibitor, Address $address)
     {
-        if (empty($exhibitor->getId())) {
+        if (!$exhibitor->getId()) {
             throw new ErrorException('Exhibitor id required!');
         }
 
-        if (empty($address->getId())) {
+        if (!$address->getId()) {
             throw new ErrorException('Address id required!');
         }
 

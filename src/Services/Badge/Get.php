@@ -13,7 +13,7 @@ class Get implements Service
 
     public function __construct(Badge $badge)
     {
-        if (empty($badge->getId())) {
+        if (!$badge->getId()) {
             throw new ErrorException('Badge id required!');
         }
 

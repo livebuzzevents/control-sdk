@@ -4,7 +4,7 @@ use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Question;
 
-class Update implements Service
+class Save implements Service
 {
     /**
      * @var Question
@@ -13,7 +13,7 @@ class Update implements Service
 
     public function __construct(Question $question)
     {
-        if (empty($question->getId())) {
+        if (!$question->getId()) {
             throw new ErrorException('Question id required!');
         }
 

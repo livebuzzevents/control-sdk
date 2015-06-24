@@ -4,7 +4,7 @@ use Buzz\Control\Contracts\Service;
 use Buzz\Control\Objects\Customer;
 
 /**
- * Class All
+ * Class Search
  *
  * @package Buzz\Control\Services\Customer\Address
  */

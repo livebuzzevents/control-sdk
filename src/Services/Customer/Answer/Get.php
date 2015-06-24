@@ -30,11 +30,11 @@ class Get implements Service
      */
     public function __construct(Customer $customer, Question $question)
     {
-        if (empty($customer->getId())) {
+        if (!$customer->getId()) {
             throw new ErrorException('Customer id required!');
         }
 
-        if (empty($question->getId())) {
+        if (!$question->getId()) {
             throw new ErrorException('Question id required!');
         }
 

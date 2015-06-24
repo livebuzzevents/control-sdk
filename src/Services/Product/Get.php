@@ -13,7 +13,7 @@ class Get implements Service
 
     public function __construct(Product $product)
     {
-        if (empty($product->getId())) {
+        if (!$product->getId()) {
             throw new ErrorException('Product id required!');
         }
 

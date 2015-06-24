@@ -30,11 +30,11 @@ class Get implements Service
      */
     public function __construct(Exhibitor $exhibitor, Question $question)
     {
-        if (empty($exhibitor->getId())) {
+        if (!$exhibitor->getId()) {
             throw new ErrorException('Exhibitor id required!');
         }
 
-        if (empty($question->getId())) {
+        if (!$question->getId()) {
             throw new ErrorException('Question id required!');
         }
 

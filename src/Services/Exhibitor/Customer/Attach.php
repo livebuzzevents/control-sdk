@@ -29,7 +29,7 @@ class Attach implements Service
      */
     public function __construct(Exhibitor $exhibitor, array $customers)
     {
-        if (empty($customers)) {
+        if (!$customers)) {
             throw new ErrorException('Customers required!');
         }
 

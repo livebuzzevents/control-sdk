@@ -13,7 +13,7 @@ class Delete implements Service
 
     public function __construct(Entrance $entrance)
     {
-        if (empty($entrance->getId())) {
+        if (!$entrance->getId()) {
             throw new ErrorException('Entrance id required!');
         }
 

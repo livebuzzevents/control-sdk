@@ -141,7 +141,7 @@ abstract class Object
     /**
      * @return mixed
      */
-    public function getUpdatedAt()
+    public function getSavedAt()
     {
         return $this->updated_at;
     }
@@ -151,7 +151,7 @@ abstract class Object
      *
      * @return mixed
      */
-    public function setUpdatedAt(DateTime $updated_at)
+    public function setSavedAt(DateTime $updated_at)
     {
         $this->updated_at = $updated_at;
     }

@@ -13,7 +13,7 @@ class Delete implements Service
 
     public function __construct(BadgeType $badgeType)
     {
-        if (empty($badgeType->getId())) {
+        if (!$badgeType->getId()) {
             throw new ErrorException('BadgeType id required!');
         }
 

@@ -5,7 +5,7 @@ use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Exhibitor;
 use Buzz\Control\Objects\Exhibitor\Phone;
 
-class Update implements Service
+class Save implements Service
 {
     /**
      * @var Exhibitor
@@ -18,12 +18,8 @@ class Update implements Service
 
     public function __construct(Exhibitor $exhibitor, Phone $phone)
     {
-        if (empty($exhibitor->getId())) {
+        if (!$exhibitor->getId()) {
             throw new ErrorException('Exhibitor id required!');
-        }
-
-        if (empty($phone->getId())) {
-            throw new ErrorException('Phone id required!');
         }
 
         $this->exhibitor = $exhibitor;
@@ -37,7 +33,7 @@ class Update implements Service
      */
     public function getMethod()
     {
-        return 'put';
+        return $this->phone->getId() ? 'put' : 'post';
     }
 
     /**

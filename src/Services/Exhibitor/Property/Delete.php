@@ -18,11 +18,11 @@ class Delete implements Service
 
     public function __construct(Exhibitor $exhibitor, Property $property)
     {
-        if (empty($exhibitor->getId())) {
+        if (!$exhibitor->getId()) {
             throw new ErrorException('Exhibitor id required!');
         }
 
-        if (empty($property->getId())) {
+        if (!$property->getId()) {
             throw new ErrorException('Property id required!');
         }
 

@@ -13,7 +13,7 @@ class Get implements Service
 
     public function __construct(Question $question)
     {
-        if (empty($question->getId())) {
+        if (!$question->getId()) {
             throw new ErrorException('Question id required!');
         }
 

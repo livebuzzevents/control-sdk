@@ -6,11 +6,11 @@ use Buzz\Control\Filter;
 use Buzz\Control\Objects\Question;
 
 /**
- * Class All
+ * Class Search
  *
  * @package Buzz\Control\Services\Customer\Address
  */
-class All implements Service
+class Search implements Service
 {
     /**
      * @var

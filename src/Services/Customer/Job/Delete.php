@@ -18,11 +18,11 @@ class Delete implements Service
 
     public function __construct(Customer $customer, Job $job)
     {
-        if (empty($customer->getId())) {
+        if (!$customer->getId()) {
             throw new ErrorException('Customer id required!');
         }
 
-        if (empty($job->getId())) {
+        if (!$job->getId()) {
             throw new ErrorException('Job id required!');
         }
 
