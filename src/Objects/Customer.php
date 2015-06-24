@@ -3,6 +3,7 @@
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasSource;
+use Buzz\Control\Objects\Traits\HasStatus;
 
 /**
  * Class Customer
@@ -11,8 +12,16 @@ use Buzz\Control\Objects\Traits\HasSource;
  */
 class Customer extends Object
 {
-    use BelongsToCampaign, HasSource;
+    use BelongsToCampaign, HasSource, HasStatus;
 
+    /**
+     * @var int
+     */
+    protected $owner_id;
+    /**
+     * @var \Buzz\Control\Objects\Customer
+     */
+    protected $owner;
     /**
      * @var string
      */
@@ -85,6 +94,30 @@ class Customer extends Object
      * @var \Buzz\Control\Objects\Badge[]
      */
     protected $badges;
+
+    /**
+     * @return int
+     */
+    public function getOwnerId()
+    {
+        return $this->owner_id;
+    }
+
+    /**
+     * @param int $owner_id
+     */
+    public function setOwnerId($owner_id)
+    {
+        $this->owner_id = $owner_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
 
     /**
      * @return mixed

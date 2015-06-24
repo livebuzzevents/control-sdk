@@ -3,6 +3,7 @@
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Traits\HasSource;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
+use Buzz\Control\Objects\Traits\HasStatus;
 
 /**
  * Class Exhibitor
@@ -11,7 +12,7 @@ use Buzz\Control\Objects\Traits\BelongsToCampaign;
  */
 class Exhibitor extends Object
 {
-    use BelongsToCampaign, HasSource;
+    use BelongsToCampaign, HasSource, HasStatus;
 
     /**
      * @var string

@@ -3,8 +3,11 @@
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\BelongsToCustomer;
 use Buzz\Control\Objects\Traits\BelongsToExhibitor;
+use Buzz\Control\Objects\Traits\CreatedByCustomer;
+use Buzz\Control\Objects\Traits\CreatedByExhibitor;
 use Buzz\Control\Objects\Traits\HasBadgeType;
 use Buzz\Control\Objects\Traits\HasSource;
+use Buzz\Control\Objects\Traits\HasStatus;
 
 /**
  * Class Badge
@@ -13,7 +16,14 @@ use Buzz\Control\Objects\Traits\HasSource;
  */
 class Badge extends Object
 {
-    use BelongsToCustomer, BelongsToExhibitor, BelongsToCampaign, HasBadgeType, HasSource;
+    use CreatedByCustomer,
+        BelongsToCustomer,
+        CreatedByExhibitor,
+        BelongsToExhibitor,
+        BelongsToCampaign,
+        HasBadgeType,
+        HasSource,
+        HasStatus;
 
     /**
      * @var string
@@ -29,6 +39,40 @@ class Badge extends Object
      * @var array
      */
     protected $override;
+
+    /**
+     * @var int
+     */
+    protected $created_by_customer_id;
+
+    /**
+     * @var \Buzz\Control\Objects\Customer
+     */
+    protected $created_by_customer;
+
+    /**
+     * @return \Buzz\Control\Objects\Customer
+     */
+    public function getCreatedByCustomer()
+    {
+        return $this->created_by_customer;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCreatedByCustomerId()
+    {
+        return $this->created_by_customer_id;
+    }
+
+    /**
+     * @param int $created_by_customer_id
+     */
+    public function setCreatedByCustomerId($created_by_customer_id)
+    {
+        $this->customer_id = $created_by_customer_id;
+    }
 
     /**
      * @return array
