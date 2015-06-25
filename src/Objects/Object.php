@@ -120,6 +120,20 @@ abstract class Object
         }
     }
 
+    public function __get($key, $value)
+    {
+        $method = 'get' . str_replace(' ', '', ucwords(str_replace(['_'], ' ', $value)));
+
+        return $this->{$method}($key);
+    }
+
+    public function __set($key, $value)
+    {
+        $method = 'set' . str_replace(' ', '', ucwords(str_replace(['_'], ' ', $value)));
+
+        return $this->{$method}($key, $value);
+    }
+
     /**
      * @return mixed
      */
