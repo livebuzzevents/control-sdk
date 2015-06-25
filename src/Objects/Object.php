@@ -120,6 +120,11 @@ abstract class Object
         }
     }
 
+    /**
+     * @param $key
+     *
+     * @return mixed
+     */
     public function __get($key)
     {
         $method = 'get' . str_replace(' ', '', ucwords(str_replace(['_'], ' ', $key)));
@@ -127,11 +132,35 @@ abstract class Object
         return $this->{$method}($key);
     }
 
+    /**
+     * @param $key
+     * @param $value
+     *
+     * @return mixed
+     */
     public function __set($key, $value)
     {
         $method = 'set' . str_replace(' ', '', ucwords(str_replace(['_'], ' ', $key)));
 
         return $this->{$method}($key, $value);
+    }
+
+    /**
+     * @param $key
+     *
+     * @return bool
+     */
+    public function __isset($key)
+    {
+        return isset($this->$key);
+    }
+
+    /**
+     * @param $key
+     */
+    public function __unset($key)
+    {
+        unset($this->$key);
     }
 
     /**
