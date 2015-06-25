@@ -120,16 +120,16 @@ abstract class Object
         }
     }
 
-    public function __get($key, $value)
+    public function __get($key)
     {
-        $method = 'get' . str_replace(' ', '', ucwords(str_replace(['_'], ' ', $value)));
+        $method = 'get' . str_replace(' ', '', ucwords(str_replace(['_'], ' ', $key)));
 
         return $this->{$method}($key);
     }
 
     public function __set($key, $value)
     {
-        $method = 'set' . str_replace(' ', '', ucwords(str_replace(['_'], ' ', $value)));
+        $method = 'set' . str_replace(' ', '', ucwords(str_replace(['_'], ' ', $key)));
 
         return $this->{$method}($key, $value);
     }
