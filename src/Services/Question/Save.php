@@ -1,7 +1,6 @@
 <?php namespace Buzz\Control\Services\Question;
 
 use Buzz\Control\Contracts\Service;
-use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Question;
 
 class Save implements Service
@@ -13,10 +12,6 @@ class Save implements Service
 
     public function __construct(Question $question)
     {
-        if (!$question->getId()) {
-            throw new ErrorException('Question id required!');
-        }
-
         $this->question = $question;
     }
 
@@ -37,7 +32,7 @@ class Save implements Service
      */
     public function getUrl()
     {
-        return "question/{$this->question->getId()}";
+        return "question" . ($this->question->getId() ? "/{$this->question->getId()}" : '');
     }
 
     /**

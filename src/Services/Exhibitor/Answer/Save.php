@@ -57,7 +57,7 @@ class Save implements Service
      */
     public function getUrl()
     {
-        return "exhibitor/{$this->exhibitor->getId()}/answer/{$this->answer->getId()}";
+        return "exhibitor/{$this->exhibitor->getId()}/answer" . ($this->answer->getId() ? "/{$this->answer->getId()}" : '');
     }
 
     /**

@@ -43,7 +43,7 @@ class Save implements Service
      */
     public function getUrl()
     {
-        return "customer/{$this->customer->getId()}/social/{$this->social->getId()}";
+        return "customer/{$this->customer->getId()}/social" . ($this->social->getId() ? "/{$this->social->getId()}" : '');
     }
 
     /**

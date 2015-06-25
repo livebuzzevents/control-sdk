@@ -13,7 +13,7 @@ class Save implements Service
 
     public function __construct(Badge $badge)
     {
-        if (!$badge->getId()) && !$badge->getCampaignId())) {
+        if (!$badge->getId() && !$badge->getCampaignId()) {
             throw new ErrorException('Badge id or Campaign id is required!');
         }
 
@@ -37,7 +37,7 @@ class Save implements Service
      */
     public function getUrl()
     {
-        return "badge/{$this->badge->getId()}";
+        return "badge/" . ($this->badge->getId() ?: $this->badge->getCampaignId());
     }
 
     /**

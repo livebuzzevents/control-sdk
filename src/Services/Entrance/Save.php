@@ -13,7 +13,7 @@ class Save implements Service
 
     public function __construct(Entrance $entrance)
     {
-        if (!$entrance->getId()) && !$entrance->getCampaignId())) {
+        if (!$entrance->getId() && !$entrance->getCampaignId()) {
             throw new ErrorException('Entrance id or Campaign id is required!');
         }
 
@@ -37,7 +37,7 @@ class Save implements Service
      */
     public function getUrl()
     {
-        return "entrance/{$this->entrance->getId()}";
+        return "entrance/" . ($this->entrance->getId() ?: $this->entrance->getCampaignId());
     }
 
     /**

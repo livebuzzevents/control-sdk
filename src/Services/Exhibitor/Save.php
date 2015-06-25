@@ -13,7 +13,7 @@ class Save implements Service
 
     public function __construct(Exhibitor $exhibitor)
     {
-        if (!$exhibitor->getId()) && !$exhibitor->getCampaignId())) {
+        if (!$exhibitor->getId() && !$exhibitor->getCampaignId()) {
             throw new ErrorException('Exhibitor id or Campaign id is required!');
         }
 
@@ -37,7 +37,7 @@ class Save implements Service
      */
     public function getUrl()
     {
-        return "exhibitor/{$this->exhibitor->getId()}";
+        return "exhibitor/" . ($this->exhibitor->getId() ?: $this->exhibitor->getCampaignId());
     }
 
     /**

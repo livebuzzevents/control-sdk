@@ -13,7 +13,7 @@ class Save implements Service
 
     public function __construct(Product $product)
     {
-        if (!$product->getId()) && !$product->getCampaignId())) {
+        if (!$product->getId() && !$product->getCampaignId()) {
             throw new ErrorException('Product id or Campaign id is required!');
         }
 
@@ -37,7 +37,7 @@ class Save implements Service
      */
     public function getUrl()
     {
-        return "product/{$this->product->getId()}";
+        return "product/" . ($this->product->getId() ?: $this->product->getCampaignId());
     }
 
     /**
