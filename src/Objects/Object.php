@@ -61,7 +61,7 @@ abstract class Object
                 $type          = trim($type, '[]');
                 $object->$name = [];
                 foreach ($array[$name] as $key => $single) {
-                    $object->$name[$key] = self::castSingleProperty($type, $single);
+                    $object->{$name}[$key] = self::castSingleProperty($type, $single);
                 }
             } else {
                 $object->$name = self::castSingleProperty($type, $array[$name]);
