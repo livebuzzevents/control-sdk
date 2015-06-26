@@ -3,7 +3,6 @@
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
-use Buzz\Control\Objects\Customer\Answer;
 
 class Delete implements Service
 {
@@ -12,11 +11,11 @@ class Delete implements Service
      */
     private $customer;
     /**
-     * @var Answer
+     * @var Customer\Answer
      */
     private $answer;
 
-    public function __construct(Customer $customer, Answer $answer)
+    public function __construct(Customer $customer, Customer\Answer $answer)
     {
         if (!$customer->getId()) {
             throw new ErrorException('Customer id required!');

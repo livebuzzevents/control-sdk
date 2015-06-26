@@ -1,34 +1,34 @@
-<?php namespace Buzz\Control\Services\Customer\Answer;
+<?php namespace Buzz\Control\Services\Exhibitor\Answer;
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\Customer;
-use Buzz\Control\Objects\Customer\Answer;
+use Buzz\Control\Objects\Exhibitor;
+use Buzz\Control\Objects\Exhibitor\Answer;
 use Buzz\Control\Objects\Question;
 
 class DeleteByQuestion implements Service
 {
     /**
-     * @var Customer
+     * @var Exhibitor
      */
-    private $customer;
+    private $exhibitor;
     /**
      * @var Question
      */
     private $question;
 
-    public function __construct(Customer $customer, Question $question)
+    public function __construct(Exhibitor $exhibitor, Question $question)
     {
-        if (!$customer->getId()) {
-            throw new ErrorException('Customer id required!');
+        if (!$exhibitor->getId()) {
+            throw new ErrorException('Exhibitor id required!');
         }
 
         if (!$question->getId()) {
             throw new ErrorException('Question id required!');
         }
 
-        $this->customer = $customer;
-        $this->question = $question;
+        $this->exhibitor = $exhibitor;
+        $this->question  = $question;
     }
 
     /**
@@ -48,7 +48,7 @@ class DeleteByQuestion implements Service
      */
     public function getUrl()
     {
-        return "customer/{$this->customer->getId()}/answer/question/{$this->question->getId()}";
+        return "exhibitor/{$this->exhibitor->getId()}/answer/question/{$this->question->getId()}";
     }
 
     /**

@@ -11,7 +11,7 @@ class Delete implements Service
      */
     private $exhibitor;
     /**
-     * @var Answer
+     * @var Exhibitor\Answer
      */
     private $answer;
 
@@ -46,7 +46,7 @@ class Delete implements Service
      */
     public function getUrl()
     {
-        return "exhibitor/{$this->exhibitor->getId()}/answer/{$this->answer->getId()}";
+        return "exhibitor/{$this->exhibitor->getId()}/answer/id/{$this->answer->getId()}";
     }
 
     /**

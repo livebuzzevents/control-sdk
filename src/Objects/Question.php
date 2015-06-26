@@ -80,7 +80,7 @@ class Question extends Object
      */
     public function addOption(Question\Option $option)
     {
-        array_push($this->options, $option);
+        $this->options[] = $option;
     }
 
     /**
