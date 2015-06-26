@@ -22,7 +22,7 @@ class Save implements Service
      */
     public function getMethod()
     {
-        return 'put';
+        return $this->question->getId() ? 'put' : 'post';
     }
 
     /**
