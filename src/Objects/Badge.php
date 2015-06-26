@@ -41,40 +41,6 @@ class Badge extends Object
     protected $override;
 
     /**
-     * @var int
-     */
-    protected $created_by_customer_id;
-
-    /**
-     * @var \Buzz\Control\Objects\Customer
-     */
-    protected $created_by_customer;
-
-    /**
-     * @return \Buzz\Control\Objects\Customer
-     */
-    public function getCreatedByCustomer()
-    {
-        return $this->created_by_customer;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCreatedByCustomerId()
-    {
-        return $this->created_by_customer_id;
-    }
-
-    /**
-     * @param int $created_by_customer_id
-     */
-    public function setCreatedByCustomerId($created_by_customer_id)
-    {
-        $this->customer_id = $created_by_customer_id;
-    }
-
-    /**
      * @return array
      */
     public function getOverride()
