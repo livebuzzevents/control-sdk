@@ -32,7 +32,7 @@ class Save implements Service
             throw new ErrorException('Customer id required!');
         }
 
-        if (!$answer->getId() && !$answer->getQuestionId()) {
+        if (!$answer->getId() && !$answer->getQuestionId() && !$answer->getQuestion()) {
             throw new ErrorException('Answer id or Question id required!');
         }
 

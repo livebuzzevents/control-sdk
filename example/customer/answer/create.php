@@ -6,14 +6,22 @@ $customer = new \Buzz\Control\Objects\Customer(1);
 
 //ANSWER SELECT AND RADIO
 $answer = new \Buzz\Control\Objects\Customer\Answer();
-$answer->setQuestion(1, 'text');
 
-$answer->addOption(2, '3');
-$answer->addOption(3, '4');
+$question = new \Buzz\Control\Objects\Question();
+$question->setIdentifier('quaerat');
 
-var_dump($answer->toArray());exit();
+$answer->setQuestion($question);
 
-$service  = new \Buzz\Control\Services\Customer\Answer\Create($customer, $answer);
+$option = new \Buzz\Control\Objects\Customer\Answer\Option();
+
+$question_option = new \Buzz\Control\Objects\Question\Option();
+$question_option->setIdentifier('nihil');
+
+$option->setQuestionOption($question_option);
+
+$answer->addOption($option);
+
+$service  = new \Buzz\Control\Services\Customer\Answer\Save($customer, $answer);
 $response = $serviceHandler->execute($service);
 
 var_dump($response);

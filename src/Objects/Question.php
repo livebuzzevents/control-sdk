@@ -10,27 +10,43 @@ class Question extends Object
     /**
      * @var string
      */
+    protected $identifier;
+    /**
+     * @var string
+     */
     protected $body;
-
     /**
      * @var string
      */
     protected $description;
-
     /**
      * @var string
      */
     protected $active;
-
     /**
      * @var string
      */
     protected $type;
-
     /**
      * @var \Buzz\Control\Objects\Question\Option[]
      */
     protected $options;
+
+    /**
+     * @return string
+     */
+    public function getIdentifier()
+    {
+        return $this->identifier;
+    }
+
+    /**
+     * @param string $identifier
+     */
+    public function setIdentifier($identifier)
+    {
+        $this->identifier = $identifier;
+    }
 
     /**
      * @return string
