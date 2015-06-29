@@ -1,5 +1,7 @@
 <?php namespace Buzz\Control\Objects\Traits;
 
+use \Buzz\Control\Objects\Question;
+
 /**
  * Class BelongsToQuestion
  *
@@ -23,6 +25,14 @@ trait BelongsToQuestion
     public function getQuestion()
     {
         return $this->question;
+    }
+
+    /**
+     * @return \Buzz\Control\Objects\Question
+     */
+    public function setQuestion(Question $question)
+    {
+        $this->question = $question;
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects\Customer\Answer;
 
 use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Traits\BelongsToQuestionOption;
 
 /**
  * Class Option
@@ -9,6 +10,8 @@ use Buzz\Control\Objects\Object;
  */
 class Option extends Object
 {
+    use BelongsToQuestionOption;
+
     /**
      * @var int
      */
@@ -19,15 +22,6 @@ class Option extends Object
      */
     protected $customer_answer;
 
-    /**
-     * @var int
-     */
-    protected $question_option_id;
-
-    /**
-     * @var \Buzz\Control\Objects\Question\Option
-     */
-    protected $question_option;
     /**
      * @var string
      */
@@ -47,22 +41,6 @@ class Option extends Object
     public function setCustomerAnswerId($customer_answer_id)
     {
         $this->customer_answer_id = $customer_answer_id;
-    }
-
-    /**
-     * @return int
-     */
-    public function getQuestionOptionId()
-    {
-        return $this->question_option_id;
-    }
-
-    /**
-     * @param int $question_option_id
-     */
-    public function setQuestionOptionId($question_option_id)
-    {
-        $this->question_option_id = $question_option_id;
     }
 
     /**
@@ -87,13 +65,5 @@ class Option extends Object
     public function getCustomerAnswer()
     {
         return $this->customer_answer;
-    }
-
-    /**
-     * @return \Buzz\Control\Objects\Question\Option
-     */
-    public function getQuestionOption()
-    {
-        return $this->question_option;
     }
 }

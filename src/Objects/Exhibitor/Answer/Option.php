@@ -20,15 +20,6 @@ class Option extends Object
     protected $exhibitor_answer;
 
     /**
-     * @var int
-     */
-    protected $question_option_id;
-
-    /**
-     * @var \Buzz\Control\Objects\Question\Option
-     */
-    protected $question_option;
-    /**
      * @var string
      */
     protected $text;
@@ -47,22 +38,6 @@ class Option extends Object
     public function setExhibitorAnswerId($exhibitor_answer_id)
     {
         $this->exhibitor_answer_id = $exhibitor_answer_id;
-    }
-
-    /**
-     * @return int
-     */
-    public function getQuestionOptionId()
-    {
-        return $this->question_option_id;
-    }
-
-    /**
-     * @param int $question_option_id
-     */
-    public function setQuestionOptionId($question_option_id)
-    {
-        $this->question_option_id = $question_option_id;
     }
 
     /**
@@ -87,13 +62,5 @@ class Option extends Object
     public function getExhibitorAnswer()
     {
         return $this->exhibitor_answer;
-    }
-    
-    /**
-     * @return \Buzz\Control\Objects\Question\Option
-     */
-    public function getQuestionOption()
-    {
-        return $this->question_option;
     }
 }
