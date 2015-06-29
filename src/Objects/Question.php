@@ -10,12 +10,17 @@ class Question extends Object
     /**
      * @var string
      */
-    protected $name;
+    protected $body;
 
     /**
      * @var string
      */
     protected $description;
+
+    /**
+     * @var string
+     */
+    protected $active;
 
     /**
      * @var string
@@ -46,17 +51,33 @@ class Question extends Object
     /**
      * @return string
      */
-    public function getName()
+    public function getBody()
     {
-        return $this->name;
+        return $this->body;
     }
 
     /**
-     * @param string $name
+     * @param string $body
      */
-    public function setName($name)
+    public function setBody($body)
     {
-        $this->name = $name;
+        $this->body = $body;
+    }
+
+    /**
+     * @return string
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param string $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
     }
 
     /**

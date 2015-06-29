@@ -12,25 +12,57 @@ class Option extends Object
 {
     use BelongsToQuestion;
 
-    protected $name;
+    /**
+     * @var string
+     */
+    protected $body;
+    /**
+     * @var string
+     */
+    protected $description;
+    /**
+     * @var string
+     */
     protected $active;
+    /**
+     * @var string
+     */
     protected $open;
+    /**
+     * @var int
+     */
     protected $order;
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getName()
+    public function getDescription()
     {
-        return $this->name;
+        return $this->description;
     }
 
     /**
-     * @param mixed $name
+     * @param string $description
      */
-    public function setName($name)
+    public function setDescription($description)
     {
-        $this->name = $name;
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    /**
+     * @param string $body
+     */
+    public function setBody($body)
+    {
+        $this->body = $body;
     }
 
     /**
