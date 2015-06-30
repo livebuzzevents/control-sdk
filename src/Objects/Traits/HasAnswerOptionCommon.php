@@ -6,10 +6,10 @@ trait HasAnswerOptionsCommon
 {
     public function hasAnsweredQuestionOption(Option $option)
     {
-        return (bool)$this->getAnswerOptionByQuestionOption($option);
+        return (bool)$this->getOptionByQuestionOption($option);
     }
 
-    public function getAnswerOptionByQuestionOption(Option $option)
+    public function getOptionByQuestionOption(Option $option)
     {
         foreach ($this->options as $answer_option) {
             if ($option->getId()) {
