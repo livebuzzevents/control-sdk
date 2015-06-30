@@ -6,6 +6,7 @@ use Buzz\Control\Objects\Object;
 use Buzz\Control\Objects\Question;
 use Buzz\Control\Objects\Traits\BelongsToCustomer;
 use Buzz\Control\Objects\Traits\BelongsToQuestion;
+use Buzz\Control\Objects\Traits\HasAnswerOptionsCommon;
 
 /**
  * Class Answer
@@ -14,7 +15,7 @@ use Buzz\Control\Objects\Traits\BelongsToQuestion;
  */
 class Answer extends Object
 {
-    use BelongsToCustomer, BelongsToQuestion;
+    use BelongsToCustomer, BelongsToQuestion, HasAnswerOptionsCommon;
 
     /**
      * @var \Buzz\Control\Objects\Customer\Answer\Option[]

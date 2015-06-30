@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Exceptions\ErrorException;
+use Buzz\Control\Objects\Traits\HasAnswersCommon;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasSource;
 use Buzz\Control\Objects\Traits\HasStatus;
@@ -12,7 +13,7 @@ use Buzz\Control\Objects\Traits\HasStatus;
  */
 class Customer extends Object
 {
-    use BelongsToCampaign, HasSource, HasStatus;
+    use BelongsToCampaign, HasSource, HasStatus, HasAnswersCommon;
 
     /**
      * @var int
