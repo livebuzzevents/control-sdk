@@ -73,7 +73,7 @@ class SaveMany implements Service
             $answer = $answer->toArray();
         }
 
-        return $this->answers;
+        return ['batch' => $this->answers];
     }
 
     /**
