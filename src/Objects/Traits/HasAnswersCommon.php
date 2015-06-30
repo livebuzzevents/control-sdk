@@ -1,6 +1,6 @@
 <?php namespace Buzz\Control\Objects\Traits;
 
-use Symfony\Component\Console\Question\Question;
+use Buzz\Control\Objects\Question;
 
 trait HasAnswersCommon
 {
