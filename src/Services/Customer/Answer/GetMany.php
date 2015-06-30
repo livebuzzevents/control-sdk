@@ -11,7 +11,7 @@ use Buzz\Control\Objects\Question;
  *
  * @package Buzz\Control\Services\Customer\Answer
  */
-class Search implements Service
+class GetMany implements Service
 {
     /**
      * @var Customer

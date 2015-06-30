@@ -10,6 +10,7 @@ class Delete implements Service
      * @var Customer
      */
     private $customer;
+
     /**
      * @var Customer\Answer
      */
@@ -22,7 +23,7 @@ class Delete implements Service
         }
 
         if (!$answer->getId()) {
-            throw new ErrorException('Answer id required!');
+            throw new ErrorException('Question id required!');
         }
 
         $this->customer = $customer;
@@ -46,7 +47,7 @@ class Delete implements Service
      */
     public function getUrl()
     {
-        return "customer/{$this->customer->getId()}/answer/id/{$this->answer->getId()}";
+        return "customer/{$this->customer->getId()}/answer/{$this->answer->getId()}";
     }
 
     /**
@@ -56,7 +57,7 @@ class Delete implements Service
      */
     public function getRequest()
     {
-        return [];
+        return $this->answer->toArray();
     }
 
     public function decorate($response)

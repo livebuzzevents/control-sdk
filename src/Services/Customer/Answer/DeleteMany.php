@@ -2,33 +2,29 @@
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;
+use Buzz\Control\Filter;
 use Buzz\Control\Objects\Customer;
-use Buzz\Control\Objects\Customer\Answer;
-use Buzz\Control\Objects\Question;
 
-class DeleteByQuestion implements Service
+class DeleteMany implements Service
 {
     /**
      * @var Customer
      */
     private $customer;
-    /**
-     * @var Question
-     */
-    private $question;
 
-    public function __construct(Customer $customer, Question $question)
+    /**
+     * @var Filter
+     */
+    private $filter;
+
+    public function __construct(Customer $customer, Filter $filter = null)
     {
         if (!$customer->getId()) {
             throw new ErrorException('Customer id required!');
         }
 
-        if (!$question->getId()) {
-            throw new ErrorException('Question id required!');
-        }
-
         $this->customer = $customer;
-        $this->question = $question;
+        $this->filter   = $filter;
     }
 
     /**
@@ -48,7 +44,7 @@ class DeleteByQuestion implements Service
      */
     public function getUrl()
     {
-        return "customer/{$this->customer->getId()}/answer/question/{$this->question->getId()}";
+        return "customer/{$this->customer->getId()}/answers";
     }
 
     /**
@@ -58,7 +54,7 @@ class DeleteByQuestion implements Service
      */
     public function getRequest()
     {
-        return [];
+        return $this->filter ? ['filters' => $this->filter->getFilters()] : [];
     }
 
     public function decorate($response)

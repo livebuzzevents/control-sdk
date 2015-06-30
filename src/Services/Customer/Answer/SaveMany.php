@@ -5,39 +5,41 @@ use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
 
 /**
- * Class Save
+ * Class SaveMany
  *
  * @package Buzz\Control\Services\Customer\Answer
  */
-class Save implements Service
+class SaveMany implements Service
 {
     /**
      * @var Customer
      */
     private $customer;
     /**
-     * @var Customer\Answer
+     * @var Customer\Answer[]
      */
-    private $answer;
+    private $answers;
 
     /**
-     * @param Customer        $customer
-     * @param Customer\Answer $answer
+     * @param Customer          $customer
+     * @param Customer\Answer[] $answers
      *
      * @throws ErrorException
      */
-    public function __construct(Customer $customer, Customer\Answer $answer)
+    public function __construct(Customer $customer, $answers)
     {
         if (!$customer->getId()) {
             throw new ErrorException('Customer id required!');
         }
 
-        if (!$answer->getId() && !$answer->getQuestionId() && !$answer->getQuestion()) {
-            throw new ErrorException('Answer id or Question id required!');
+        foreach ($answers as $answer) {
+            if (!$answer->getId() && !$answer->getQuestionId() && !$answer->getQuestion()) {
+                throw new ErrorException('Answer id or Question id required!');
+            }
         }
 
         $this->customer = $customer;
-        $this->answer   = $answer;
+        $this->answers  = $answers;
     }
 
     /**
@@ -57,7 +59,7 @@ class Save implements Service
      */
     public function getUrl()
     {
-        return "customer/{$this->customer->getId()}/answer";
+        return "customer/{$this->customer->getId()}/answers";
     }
 
     /**
@@ -67,7 +69,11 @@ class Save implements Service
      */
     public function getRequest()
     {
-        return $this->answer->toArray();
+        foreach ($this->answers as &$answer) {
+            $answer = $answer->toArray();
+        }
+
+        return $this->answers;
     }
 
     /**
