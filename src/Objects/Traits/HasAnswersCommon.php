@@ -34,6 +34,22 @@ trait HasAnswersCommon
         return $this->getAnswerByQuestion($question);
     }
 
+    public function getAnsweredQuestionIdentifiers()
+    {
+        return array_keys($this->getAnswersGroupedByIdentifier());
+    }
+
+    public function getAnswersGroupedByIdentifier()
+    {
+        $answers = [];
+
+        foreach ($this->answers as $answer) {
+            $answers[$answer->getQuestion()->getIdentifier()] = $answer;
+        }
+
+        return $answers;
+    }
+
     public function getAnswersByQuestionIdentifiers(array $identifiers)
     {
         $answers = $this->getAnswersGroupedByIdentifier();
@@ -47,16 +63,5 @@ trait HasAnswersCommon
         }
 
         return $match;
-    }
-
-    public function getAnswersGroupedByIdentifier()
-    {
-        $answers = [];
-
-        foreach ($this->answers as $answer) {
-            $answers[$answer->getQuestion()->getIdentifier()] = $answer;
-        }
-
-        return $answers;
     }
 }

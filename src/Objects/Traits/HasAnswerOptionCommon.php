@@ -4,7 +4,7 @@ use Buzz\Control\Objects\Question\Option;
 
 trait HasAnswerOptionsCommon
 {
-    public function hasAnsweredQuestionOption(Option $option)
+    public function hasOptionByQuestionOption(Option $option)
     {
         return (bool)$this->getOptionByQuestionOption($option);
     }
@@ -24,5 +24,49 @@ trait HasAnswerOptionsCommon
         }
 
         return false;
+    }
+
+    public function hasOptionByQuestionOptionIdentifier($identifier)
+    {
+        return (bool)$this->getOptionByIdentifier($identifier);
+    }
+
+    public function getOptionByIdentifier($identifier)
+    {
+        $option = new Option();
+        $option->setIdentifier($identifier);
+
+        return $this->getOptionByQuestionOption($option);
+    }
+
+    public function getOptionsIdentifiers()
+    {
+        return array_keys($this->getOptionsGroupedByIdentifier());
+    }
+
+    public function getOptionsGroupedByIdentifier()
+    {
+        $options = [];
+
+        foreach ($this->options as $option) {
+            $options[$option->getQuestionOption()->getIdentifier()] = $option;
+        }
+
+        return $options;
+    }
+
+    public function getOptionsByIdentifiers(array $identifiers)
+    {
+        $options = $this->getOptionsGroupedByIdentifier();
+
+        $match = null;
+
+        foreach ($options as $identified => $option) {
+            if (in_array($identified, $identifiers)) {
+                $match[$identified] = $option;
+            }
+        }
+
+        return $match;
     }
 }
