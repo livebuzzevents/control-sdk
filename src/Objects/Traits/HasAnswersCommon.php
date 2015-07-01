@@ -11,6 +11,10 @@ trait HasAnswersCommon
 
     public function getAnswerByQuestion(Question $question)
     {
+        if (!$this->answers) {
+            return null;
+        }
+
         foreach ($this->answers as $answer) {
             if ($question->getId()) {
                 if ($answer->getQuestion()->getId() === $question->getId()) {
@@ -23,7 +27,7 @@ trait HasAnswersCommon
             }
         }
 
-        return false;
+        return null;
     }
 
     public function getAnswerByQuestionIdentifier($identifier)
@@ -41,6 +45,10 @@ trait HasAnswersCommon
 
     public function getAnswersGroupedByIdentifier()
     {
+        if (!$this->answers) {
+            return null;
+        }
+
         $answers = [];
 
         foreach ($this->answers as $answer) {
@@ -52,6 +60,10 @@ trait HasAnswersCommon
 
     public function getAnswersByQuestionIdentifiers(array $identifiers)
     {
+        if (!$this->answers) {
+            return null;
+        }
+
         $answers = $this->getAnswersGroupedByIdentifier();
 
         $match = null;

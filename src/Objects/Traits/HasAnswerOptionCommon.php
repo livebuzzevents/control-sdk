@@ -11,6 +11,10 @@ trait HasAnswerOptionsCommon
 
     public function getOptionByQuestionOption(Option $option)
     {
+        if (!$this->options) {
+            return null;
+        }
+
         foreach ($this->options as $answer_option) {
             if ($option->getId()) {
                 if ($answer_option->getQuestionOption()->getId() === $option->getId()) {
@@ -23,7 +27,7 @@ trait HasAnswerOptionsCommon
             }
         }
 
-        return false;
+        return null;
     }
 
     public function hasOptionByQuestionOptionIdentifier($identifier)
@@ -46,7 +50,11 @@ trait HasAnswerOptionsCommon
 
     public function getOptionsGroupedByIdentifier()
     {
-        $options = [];
+        if (!$this->options) {
+            return null;
+        }
+
+        $options = null;
 
         foreach ($this->options as $option) {
             $options[$option->getQuestionOption()->getIdentifier()] = $option;
@@ -57,6 +65,10 @@ trait HasAnswerOptionsCommon
 
     public function getOptionsByIdentifiers(array $identifiers)
     {
+        if (!$this->options) {
+            return null;
+        }
+
         $options = $this->getOptionsGroupedByIdentifier();
 
         $match = null;
