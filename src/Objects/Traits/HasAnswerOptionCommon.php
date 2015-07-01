@@ -32,10 +32,10 @@ trait HasAnswerOptionsCommon
 
     public function hasOptionByQuestionOptionIdentifier($identifier)
     {
-        return (bool)$this->getOptionByIdentifier($identifier);
+        return (bool)$this->getOptionByQuestionOptionIdentifier($identifier);
     }
 
-    public function getOptionByIdentifier($identifier)
+    public function getOptionByQuestionOptionIdentifier($identifier)
     {
         $option = new Option();
         $option->setIdentifier($identifier);
@@ -43,12 +43,12 @@ trait HasAnswerOptionsCommon
         return $this->getOptionByQuestionOption($option);
     }
 
-    public function getOptionsIdentifiers()
+    public function getOptionsQuestionOptionIdentifiers()
     {
-        return array_keys($this->getOptionsGroupedByIdentifier());
+        return array_keys($this->getOptionsGroupedByQuestionOptionIdentifier());
     }
 
-    public function getOptionsGroupedByIdentifier()
+    public function getOptionsGroupedByQuestionOptionIdentifier()
     {
         if (!$this->options) {
             return null;
@@ -63,13 +63,13 @@ trait HasAnswerOptionsCommon
         return $options;
     }
 
-    public function getOptionsByIdentifiers(array $identifiers)
+    public function getOptionsByQuestionOptionIdentifiers(array $identifiers)
     {
         if (!$this->options) {
             return null;
         }
 
-        $options = $this->getOptionsGroupedByIdentifier();
+        $options = $this->getOptionsGroupedByQuestionOptionIdentifier();
 
         $match = null;
 
