@@ -26,7 +26,30 @@ trait HasAnswersCommon
         return false;
     }
 
-    public function getAnswersByIdentifier()
+    public function getAnswerByQuestionIdentifier($identifier)
+    {
+        $question = new Question();
+        $question->setIdentifier($identifier);
+
+        return $this->getAnswerByQuestion($question);
+    }
+
+    public function getAnswersByQuestionIdentifiers(array $identifiers)
+    {
+        $answers = $this->getAnswersGroupedByIdentifier();
+
+        $match = null;
+
+        foreach ($answers as $identified => $answer) {
+            if (in_array($identified, $identifiers)) {
+                $match[$identified] = $answer;
+            }
+        }
+
+        return $match;
+    }
+
+    public function getAnswersGroupedByIdentifier()
     {
         $answers = [];
 
