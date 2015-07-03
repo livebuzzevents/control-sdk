@@ -1,26 +1,29 @@
-<?php namespace Buzz\Control\Services\Badge;
+<?php namespace Buzz\Control\Services\Badge\Answer;
 
 use Buzz\Control\Contracts\Service;
+use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Filter;
 use Buzz\Control\Objects\Badge;
 
-/**
- * Class Search
- *
- * @package Buzz\Control\Services\Badge
- */
-class Search implements Service
+class DeleteMany implements Service
 {
     /**
-     * @var
+     * @var Badge
      */
-    protected $filter;
+    private $badge;
 
     /**
-     * @param Filter $filter
+     * @var Filter
      */
-    public function __construct(Filter $filter = null)
+    private $filter;
+
+    public function __construct(Badge $badge, Filter $filter = null)
     {
+        if (!$badge->getId()) {
+            throw new ErrorException('Badge id required!');
+        }
+
+        $this->badge  = $badge;
         $this->filter = $filter;
     }
 
@@ -31,7 +34,7 @@ class Search implements Service
      */
     public function getMethod()
     {
-        return 'get';
+        return 'delete';
     }
 
     /**
@@ -41,7 +44,7 @@ class Search implements Service
      */
     public function getUrl()
     {
-        return "badge";
+        return "badge/{$this->badge->getId()}/answers";
     }
 
     /**
@@ -54,19 +57,8 @@ class Search implements Service
         return $this->filter ? ['filters' => $this->filter->getFilters()] : [];
     }
 
-    /**
-     * @param $response
-     *
-     * @return array
-     */
     public function decorate($response)
     {
-        $decorated = [];
-
-        foreach ($response as $key => $badge) {
-            $decorated[$key] = Badge::createFromArray($badge);
-        }
-
-        return $decorated;
+        return true;
     }
 }

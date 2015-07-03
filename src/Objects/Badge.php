@@ -5,6 +5,7 @@ use Buzz\Control\Objects\Traits\BelongsToCustomer;
 use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 use Buzz\Control\Objects\Traits\CreatedByCustomer;
 use Buzz\Control\Objects\Traits\CreatedByExhibitor;
+use Buzz\Control\Objects\Traits\HasAnswersCommon;
 use Buzz\Control\Objects\Traits\HasBadgeType;
 use Buzz\Control\Objects\Traits\HasSource;
 use Buzz\Control\Objects\Traits\HasStatus;
@@ -23,7 +24,8 @@ class Badge extends Object
         BelongsToCampaign,
         HasBadgeType,
         HasSource,
-        HasStatus;
+        HasStatus,
+        HasAnswersCommon;
 
     /**
      * @var string
@@ -31,14 +33,45 @@ class Badge extends Object
     protected $barcode;
 
     /**
-     * @var \Buzz\Control\Objects\Scan[]
+     * @var int
      */
-    protected $scans;
+    protected $participants;
 
     /**
      * @var array
      */
     protected $override;
+
+    /**
+     * @var \Buzz\Control\Objects\Scan[]
+     */
+    protected $scans;
+
+    /**
+     * @var \Buzz\Control\Objects\Badge\Answer[]
+     */
+    protected $answers;
+
+    /**
+     * @var \Buzz\Control\Objects\Badge\Property[]
+     */
+    protected $properties;
+
+    /**
+     * @return int
+     */
+    public function getParticipants()
+    {
+        return $this->participants;
+    }
+
+    /**
+     * @param int $participants
+     */
+    public function setParticipants($participants)
+    {
+        $this->participants = $participants;
+    }
 
     /**
      * @return array
@@ -86,5 +119,21 @@ class Badge extends Object
     public function setBarcode($barcode)
     {
         $this->barcode = $barcode;
+    }
+
+    /**
+     * @return array
+     */
+    public function getProperties()
+    {
+        return $this->properties;
+    }
+
+    /**
+     * @param Badge\Property $property
+     */
+    public function addProperty(Badge\Property $property)
+    {
+        $this->properties[] = $property;
     }
 }

@@ -1,27 +1,34 @@
-<?php namespace Buzz\Control\Services\Badge;
+<?php namespace Buzz\Control\Services\Badge\Property;
 
 use Buzz\Control\Contracts\Service;
-use Buzz\Control\Filter;
+use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Badge;
+use Buzz\Control\Objects\Badge\Property;
 
 /**
  * Class Search
  *
- * @package Buzz\Control\Services\Badge
+ * @package Buzz\Control\Services\Badge\Property
  */
 class Search implements Service
 {
     /**
-     * @var
+     * @var Badge
      */
-    protected $filter;
+    private $badge;
 
     /**
-     * @param Filter $filter
+     * @param Badge $badge
+     *
+     * @throws ErrorException
      */
-    public function __construct(Filter $filter = null)
+    public function __construct(Badge $badge)
     {
-        $this->filter = $filter;
+        if (!$badge->getId()) {
+            throw new ErrorException('Badge id required!');
+        }
+
+        $this->badge = $badge;
     }
 
     /**
@@ -41,7 +48,7 @@ class Search implements Service
      */
     public function getUrl()
     {
-        return "badge";
+        return "badge/{$this->badge->getId()}/property";
     }
 
     /**
@@ -51,7 +58,7 @@ class Search implements Service
      */
     public function getRequest()
     {
-        return $this->filter ? ['filters' => $this->filter->getFilters()] : [];
+        return [];
     }
 
     /**
@@ -63,8 +70,8 @@ class Search implements Service
     {
         $decorated = [];
 
-        foreach ($response as $key => $badge) {
-            $decorated[$key] = Badge::createFromArray($badge);
+        foreach ($response as $key => $property) {
+            $decorated[$key] = Property::createFromArray($property);
         }
 
         return $decorated;
