@@ -1,27 +1,30 @@
 <?php namespace Buzz\Control\Services\Customer;
 
 use Buzz\Control\Contracts\Service;
+use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
-use Buzz\Control\Filter;
 
-/**
- * Class Search
- *
- * @package Buzz\Control\Services\Customer\Address
- */
-class Search implements Service
+class SaveMany implements Service
 {
     /**
-     * @var
+     * @var Customer[]
      */
-    protected $filter;
+    private $customers;
 
     /**
-     * @param Filter $filter
+     * @param Customer[] $customers
+     *
+     * @throws ErrorException
      */
-    public function __construct(Filter $filter = null)
+    public function __construct(array $customers)
     {
-        $this->filter = $filter;
+        foreach ($customers as $customer) {
+            if (!$customer->getId() && !$customer->getCampaignId()) {
+                throw new ErrorException('Customer id or Campaign id required!');
+            }
+        }
+
+        $this->customers = $customers;
     }
 
     /**
@@ -31,7 +34,7 @@ class Search implements Service
      */
     public function getMethod()
     {
-        return 'get';
+        return 'post';
     }
 
     /**
@@ -41,7 +44,7 @@ class Search implements Service
      */
     public function getUrl()
     {
-        return "customer";
+        return "customers";
     }
 
     /**
@@ -51,13 +54,19 @@ class Search implements Service
      */
     public function getRequest()
     {
-        return $this->filter ? ['filters' => $this->filter->getFilters()] : [];
+        $customers = [];
+
+        foreach ($this->customers as $customer) {
+            $customers[] = $customer->toArray();
+        }
+
+        return ['batch' => $customers];
     }
 
     /**
      * @param $response
      *
-     * @return array
+     * @return static
      */
     public function decorate($response)
     {

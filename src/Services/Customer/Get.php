@@ -1,4 +1,6 @@
-<?php namespace Buzz\Control\Services\Customer;
+<?php
+
+namespace Buzz\Control\Services\Customer;
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Exceptions\ErrorException;

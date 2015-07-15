@@ -1,15 +1,17 @@
-<?php namespace Buzz\Control\Services\Badge;
+<?php
+
+namespace Buzz\Control\Services\Badge;
 
 use Buzz\Control\Contracts\Service;
 use Buzz\Control\Filter;
 use Buzz\Control\Objects\Badge;
 
 /**
- * Class Search
+ * Class GetMany
  *
- * @package Buzz\Control\Services\Badge
+ * @package Buzz\Control\Services\Badge\Address
  */
-class Search implements Service
+class GetMany implements Service
 {
     /**
      * @var
@@ -41,7 +43,7 @@ class Search implements Service
      */
     public function getUrl()
     {
-        return "badge";
+        return "badges";
     }
 
     /**

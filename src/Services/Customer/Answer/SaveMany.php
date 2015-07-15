@@ -26,7 +26,7 @@ class SaveMany implements Service
      *
      * @throws ErrorException
      */
-    public function __construct(Customer $customer, $answers)
+    public function __construct(Customer $customer, array $answers)
     {
         if (!$customer->getId()) {
             throw new ErrorException('Customer id required!');
@@ -69,11 +69,13 @@ class SaveMany implements Service
      */
     public function getRequest()
     {
-        foreach ($this->answers as &$answer) {
-            $answer = $answer->toArray();
+        $answers = [];
+
+        foreach ($this->answers as $answer) {
+            $answers[] = $answer->toArray();
         }
 
-        return ['batch' => $this->answers];
+        return ['batch' => $answers];
     }
 
     /**
@@ -83,6 +85,12 @@ class SaveMany implements Service
      */
     public function decorate($response)
     {
-        return Customer\Answer::createFromArray($response);
+        $decorated = [];
+
+        foreach ($response as $key => $answer) {
+            $decorated[$key] = Customer\Answer::createFromArray($answer);
+        }
+
+        return $decorated;
     }
 }

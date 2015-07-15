@@ -1,28 +1,29 @@
 <?php
 
-namespace Buzz\Control\Services\Customer;
+namespace Buzz\Control\Services\Exhibitor;
 
 use Buzz\Control\Contracts\Service;
-use Buzz\Control\Objects\Customer;
+use Buzz\Control\Filter;
+use Buzz\Control\Objects\Exhibitor;
 
 /**
- * Class Search
+ * Class GetMany
  *
- * @package Buzz\Control\Services\Customer\Address
+ * @package Buzz\Control\Services\Exhibitor\Address
  */
-class Login implements Service
+class GetMany implements Service
 {
     /**
      * @var
      */
-    protected $credentials;
+    protected $filter;
 
     /**
-     * @param array $credentials
+     * @param Filter $filter
      */
-    public function __construct(array $credentials)
+    public function __construct(Filter $filter = null)
     {
-        $this->credentials = $credentials;
+        $this->filter = $filter;
     }
 
     /**
@@ -42,7 +43,7 @@ class Login implements Service
      */
     public function getUrl()
     {
-        return "customer/login";
+        return "exhibitors";
     }
 
     /**
@@ -52,7 +53,7 @@ class Login implements Service
      */
     public function getRequest()
     {
-        return $this->credentials;
+        return $this->filter ? ['filters' => $this->filter->getFilters()] : [];
     }
 
     /**
@@ -62,6 +63,12 @@ class Login implements Service
      */
     public function decorate($response)
     {
-        return Customer::createFromArray($response);
+        $decorated = [];
+
+        foreach ($response as $key => $exhibitor) {
+            $decorated[$key] = Exhibitor::createFromArray($exhibitor);
+        }
+
+        return $decorated;
     }
 }

@@ -1,42 +1,29 @@
-<?php namespace Buzz\Control\Services\Customer\Answer;
+<?php
+
+namespace Buzz\Control\Services\Customer;
 
 use Buzz\Control\Contracts\Service;
-use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Filter;
 use Buzz\Control\Objects\Customer;
-use Buzz\Control\Objects\Question;
 
 /**
- * Class Search
+ * Class GetMany
  *
- * @package Buzz\Control\Services\Customer\Answer
+ * @package Buzz\Control\Services\Customer\Address
  */
 class GetMany implements Service
 {
     /**
-     * @var Customer
+     * @var
      */
-    private $customer;
+    protected $filter;
 
     /**
-     * @var Filter
+     * @param Filter $filter
      */
-    private $filter;
-
-    /**
-     * @param Customer $customer
-     * @param Filter   $filter
-     *
-     * @throws ErrorException
-     */
-    public function __construct(Customer $customer, Filter $filter = null)
+    public function __construct(Filter $filter = null)
     {
-        if (!$customer->getId()) {
-            throw new ErrorException('Customer id required!');
-        }
-
-        $this->customer = $customer;
-        $this->filter   = $filter;
+        $this->filter = $filter;
     }
 
     /**
@@ -56,7 +43,7 @@ class GetMany implements Service
      */
     public function getUrl()
     {
-        return "customer/{$this->customer->getId()}/answers";
+        return "customers";
     }
 
     /**
@@ -78,8 +65,8 @@ class GetMany implements Service
     {
         $decorated = [];
 
-        foreach ($response as $key => $answer) {
-            $decorated[$key] = Customer\Answer::createFromArray($answer);
+        foreach ($response as $key => $customer) {
+            $decorated[$key] = Customer::createFromArray($customer);
         }
 
         return $decorated;

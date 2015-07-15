@@ -37,7 +37,7 @@ class Save implements Service
      */
     public function getUrl()
     {
-        return "badge/" . ($this->badge->getId() ?: $this->badge->getCampaignId());
+        return "badge" . ($this->badge->getId() ? "/{$this->badge->getId()}" : '');
     }
 
     /**
