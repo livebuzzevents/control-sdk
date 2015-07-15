@@ -133,14 +133,6 @@ class Exhibitor extends Object
     }
 
     /**
-     * @return array
-     */
-    public function getAnswers()
-    {
-        return $this->answers;
-    }
-
-    /**
      * @param Exhibitor\Answer $answer
      *
      * @return array

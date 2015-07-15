@@ -178,14 +178,6 @@ class Customer extends Object
     }
 
     /**
-     * @return mixed
-     */
-    public function getAnswers()
-    {
-        return $this->answers;
-    }
-
-    /**
      * @param Customer\Answer $answer
      */
     public function addAnswer(Customer\Answer $answer)

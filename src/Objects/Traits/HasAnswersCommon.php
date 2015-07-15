@@ -76,4 +76,12 @@ trait HasAnswersCommon
 
         return $match;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
 }

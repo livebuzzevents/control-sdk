@@ -136,4 +136,12 @@ class Badge extends Object
     {
         $this->properties[] = $property;
     }
+
+    /**
+     * @param Badge\Answer $answer
+     */
+    public function addAnswer(Badge\Answer $answer)
+    {
+        $this->answers[] = $answer;
+    }
 }
