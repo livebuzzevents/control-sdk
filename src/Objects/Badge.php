@@ -90,11 +90,27 @@ class Badge extends Object
     }
 
     /**
+     * @param Badge\Answer[] $answers
+     */
+    public function setAnswers($answers)
+    {
+        $this->answers = $answers;
+    }
+
+    /**
      * @return Scan[]|null
      */
     public function getScans()
     {
         return $this->scans;
+    }
+
+    /**
+     * @param Scan[] $scans
+     */
+    public function setScans($scans)
+    {
+        $this->scans = $scans;
     }
 
     /**
@@ -127,6 +143,14 @@ class Badge extends Object
     public function getProperties()
     {
         return $this->properties;
+    }
+
+    /**
+     * @param Badge\Property[] $properties
+     */
+    public function setProperties($properties)
+    {
+        $this->properties = $properties;
     }
 
     /**

@@ -190,6 +190,14 @@ class Customer extends Object
     }
 
     /**
+     * @param Customer\Social[] $socials
+     */
+    public function setSocials($socials)
+    {
+        $this->socials = $socials;
+    }
+
+    /**
      * @param Customer\Social $social
      */
     public function addSocial(Customer\Social $social)
@@ -203,6 +211,14 @@ class Customer extends Object
     public function getProperties()
     {
         return $this->properties;
+    }
+
+    /**
+     * @param Customer\Property[] $properties
+     */
+    public function setProperties($properties)
+    {
+        $this->properties = $properties;
     }
 
     /**
@@ -382,6 +398,14 @@ class Customer extends Object
     }
 
     /**
+     * @param Customer\Address[] $addresses
+     */
+    public function setAddresses($addresses)
+    {
+        $this->addresses = $addresses;
+    }
+
+    /**
      * @param Customer\Job $job
      */
     public function addJob(Customer\Job $job)
@@ -395,6 +419,14 @@ class Customer extends Object
     public function getJobs()
     {
         return $this->jobs;
+    }
+
+    /**
+     * @param Customer\Job[] $jobs
+     */
+    public function setJobs($jobs)
+    {
+        $this->jobs = $jobs;
     }
 
     /**
@@ -414,6 +446,14 @@ class Customer extends Object
     }
 
     /**
+     * @param Customer\Phone[] $phones
+     */
+    public function setPhones($phones)
+    {
+        $this->phones = $phones;
+    }
+
+    /**
      * @param Badge $badge
      */
     public function addBadge(Badge $badge)
@@ -430,6 +470,22 @@ class Customer extends Object
     }
 
     /**
+     * @param Badge[] $badges
+     */
+    public function setBadges(array $badges = [])
+    {
+        $this->badges = $badges;
+    }
+
+    /**
+     * @param Customer\Answer[] $answers
+     */
+    public function setAnswers($answers)
+    {
+        $this->answers = $answers;
+    }
+
+    /**
      * @param Badge $badge
      */
     public function addCreatedBadge(Badge $badge)
@@ -443,5 +499,13 @@ class Customer extends Object
     public function getCreatedBadges()
     {
         return $this->created_badges;
+    }
+
+    /**
+     * @param Badge[] $badges
+     */
+    public function setCreatedBadges($badges)
+    {
+        $this->created_badges = $badges;
     }
 }

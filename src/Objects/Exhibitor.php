@@ -110,6 +110,14 @@ class Exhibitor extends Object
     }
 
     /**
+     * @param Exhibitor\Address[] $addresses
+     */
+    public function setAddresses($addresses)
+    {
+        $this->addresses = $addresses;
+    }
+
+    /**
      * @param Exhibitor\Address $address
      *
      * @return array
@@ -125,6 +133,14 @@ class Exhibitor extends Object
     public function getPhones()
     {
         return $this->phones;
+    }
+
+    /**
+     * @param Exhibitor\Phone[] $phones
+     */
+    public function setPhones($phones)
+    {
+        $this->phones = $phones;
     }
 
     /**
@@ -156,6 +172,14 @@ class Exhibitor extends Object
     }
 
     /**
+     * @param Exhibitor\Property[] $properties
+     */
+    public function setProperties($properties)
+    {
+        $this->properties = $properties;
+    }
+
+    /**
      * @param Exhibitor\Property $property
      *
      * @return array
@@ -171,6 +195,14 @@ class Exhibitor extends Object
     public function getSocials()
     {
         return $this->socials;
+    }
+
+    /**
+     * @param Exhibitor\Social[] $socials
+     */
+    public function setSocials($socials)
+    {
+        $this->socials = $socials;
     }
 
     /**
@@ -215,6 +247,14 @@ class Exhibitor extends Object
     public function getExhibitors()
     {
         return $this->exhibitors;
+    }
+
+    /**
+     * @param Exhibitor[] $exhibitors
+     */
+    public function setExhibitors($exhibitors)
+    {
+        $this->exhibitors = $exhibitors;
     }
 
     /**
@@ -322,6 +362,14 @@ class Exhibitor extends Object
     }
 
     /**
+     * @param Customer[] $customers
+     */
+    public function setCustomers($customers)
+    {
+        $this->customers = $customers;
+    }
+
+    /**
      * @param Customer|Exhibitor\Customer $customers
      */
     public function addCustomer(Exhibitor\Customer $customers)
@@ -346,6 +394,22 @@ class Exhibitor extends Object
     }
 
     /**
+     * @param Badge[] $badges
+     */
+    public function setBadges(array $badges = [])
+    {
+        $this->badges = $badges;
+    }
+
+    /**
+     * @param Exhibitor\Answer[] $answers
+     */
+    public function setAnswers($answers)
+    {
+        $this->answers = $answers;
+    }
+
+    /**
      * @param Badge $badge
      */
     public function addCreatedBadge(Badge $badge)
@@ -359,5 +423,13 @@ class Exhibitor extends Object
     public function getCreatedBadges()
     {
         return $this->created_badges;
+    }
+
+    /**
+     * @param Badge[] $badges
+     */
+    public function setCreatedBadges(array $badges = [])
+    {
+        $this->created_badges = $badges;
     }
 }
