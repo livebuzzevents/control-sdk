@@ -96,6 +96,10 @@ class Customer extends Object
      * @var \Buzz\Control\Objects\Badge[]
      */
     protected $badges;
+    /**
+     * @var \Buzz\Control\Objects\Badge[]
+     */
+    protected $created_badges;
 
     /**
      * @return int

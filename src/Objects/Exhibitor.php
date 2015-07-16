@@ -60,6 +60,11 @@ class Exhibitor extends Object
      * @var \Buzz\Control\Objects\Badge[]
      */
     protected $badges;
+    
+    /**
+     * @var \Buzz\Control\Objects\Badge[]
+     */
+    protected $created_badges;
 
     /**
      * @var \Buzz\Control\Objects\Exhibitor[]
