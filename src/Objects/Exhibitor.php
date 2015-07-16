@@ -60,7 +60,7 @@ class Exhibitor extends Object
      * @var \Buzz\Control\Objects\Badge[]
      */
     protected $badges;
-    
+
     /**
      * @var \Buzz\Control\Objects\Badge[]
      */
@@ -202,14 +202,6 @@ class Exhibitor extends Object
     }
 
     /**
-     * @return array
-     */
-    public function getBadges()
-    {
-        return $this->badges;
-    }
-
-    /**
      * @return mixed
      */
     public function getOwner()
@@ -335,5 +327,37 @@ class Exhibitor extends Object
     public function addCustomer(Exhibitor\Customer $customers)
     {
         $this->customers[] = $customers;
+    }
+
+    /**
+     * @param Badge $badge
+     */
+    public function addBadge(Badge $badge)
+    {
+        $this->badges[] = $badge;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBadges()
+    {
+        return $this->badges;
+    }
+
+    /**
+     * @param Badge $badge
+     */
+    public function addCreatedBadge(Badge $badge)
+    {
+        $this->created_badges[] = $badge;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedBadges()
+    {
+        return $this->created_badges;
     }
 }

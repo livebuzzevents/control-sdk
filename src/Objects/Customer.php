@@ -174,14 +174,6 @@ class Customer extends Object
     }
 
     /**
-     * @return array
-     */
-    public function getBadges()
-    {
-        return $this->badges;
-    }
-
-    /**
      * @param Customer\Answer $answer
      */
     public function addAnswer(Customer\Answer $answer)
@@ -419,5 +411,37 @@ class Customer extends Object
     public function getPhones()
     {
         return $this->phones;
+    }
+
+    /**
+     * @param Badge $badge
+     */
+    public function addBadge(Badge $badge)
+    {
+        $this->badges[] = $badge;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBadges()
+    {
+        return $this->badges;
+    }
+
+    /**
+     * @param Badge $badge
+     */
+    public function addCreatedBadge(Badge $badge)
+    {
+        $this->created_badges[] = $badge;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedBadges()
+    {
+        return $this->created_badges;
     }
 }
