@@ -30,7 +30,7 @@ trait HasAnswersCommon
         return null;
     }
 
-    public function getAnswerByQuestionIdentifier($identifier)
+    public function getAnswerByIdentifier($identifier)
     {
         $question = new Question();
         $question->setIdentifier($identifier);
@@ -38,7 +38,7 @@ trait HasAnswersCommon
         return $this->getAnswerByQuestion($question);
     }
 
-    public function getAnsweredQuestionIdentifiers()
+    public function getAnsweredIdentifiers()
     {
         return array_keys($this->getAnswersGroupedByIdentifier());
     }
@@ -58,7 +58,7 @@ trait HasAnswersCommon
         return $answers;
     }
 
-    public function getAnswersByQuestionIdentifiers(array $identifiers)
+    public function getAnswersByIdentifiers(array $identifiers)
     {
         if (!$this->answers) {
             return null;
