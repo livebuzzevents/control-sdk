@@ -444,7 +444,7 @@ class Customer extends Object
     {
         return $this->phones;
     }
-
+    
     /**
      * @param Customer\Phone[] $phones
      */

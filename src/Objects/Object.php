@@ -261,4 +261,37 @@ abstract class Object
 
         return $array;
     }
+
+    public function first($field)
+    {
+        return !empty($this->{$field}[0]) ? $this->{$field}[0] : null;
+    }
+
+    public function firstWhere(...$parameters)
+    {
+        $all = $this->allWhere(...$parameters);
+
+        return !empty($all[0]) ? $all[0] : null;
+    }
+
+    public function allWhere($field, array $wheres)
+    {
+        if (!$this->{$field}) {
+            return null;
+        }
+
+        $match = null;
+
+        foreach ($this->{$field} as $single) {
+            foreach ($wheres as $key => $value) {
+                if ($single->{$key} !== $value) {
+                    continue 2;
+                }
+            }
+
+            $match[] = $single;
+        }
+
+        return $match;
+    }
 }

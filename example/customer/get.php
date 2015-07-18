@@ -2,9 +2,10 @@
 
 require_once '../bootstrap.php';
 
-$customer = new \Buzz\Control\Objects\Customer(3);
+$customer = new \Buzz\Control\Objects\Customer(563);
 
-$service  = new \Buzz\Control\Services\Customer\Get($customer);
-$response = $serviceHandler->execute($service);
+$service  = new \Buzz\Control\Services\CustomerService();
 
-var_dump($response);
+$customer = $service->get($customer);
+
+var_dump($customer->firstWhere('phones', ['type' => 'mobile']));
