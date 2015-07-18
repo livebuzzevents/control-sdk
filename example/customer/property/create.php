@@ -2,7 +2,7 @@
 
 require_once '../../bootstrap.php';
 
-$customer      = new \Buzz\Control\Objects\Customer(8);
+$customer  = new \Buzz\Control\Objects\Customer(8);
 $parameter = new \Buzz\Control\Objects\Parameter(1);
 
 $property = new \Buzz\Control\Objects\Customer\Property();

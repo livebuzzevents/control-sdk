@@ -43,6 +43,11 @@ trait HasAnswerOptionsCommon
         return $this->getOptionByQuestionOption($option);
     }
 
+    public function getOptionIdentifier()
+    {
+        return $this->getOptionsIdentifiers()[0];
+    }
+
     public function getOptionsIdentifiers()
     {
         return array_keys($this->getOptionsGroupedByIdentifier());
@@ -61,11 +66,6 @@ trait HasAnswerOptionsCommon
         }
 
         return $options;
-    }
-
-    public function getOptionIdentifier()
-    {
-        return $this->getOptionsIdentifiers()[0];
     }
 
     public function getOptionsByIdentifiers(array $identifiers)

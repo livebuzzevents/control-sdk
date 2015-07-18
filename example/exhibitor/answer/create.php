@@ -19,7 +19,6 @@ $option->setQuestionOptionId(7);
 
 $answer->addOption($option);
 
-
 $service  = new \Buzz\Control\Services\Exhibitor\Answer\Create($exhibitor, $answer);
 $response = $serviceHandler->execute($service);
 

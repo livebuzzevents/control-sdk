@@ -3,10 +3,24 @@
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Entrance;
 
+/**
+ * Class EntranceService
+ *
+ * @package Buzz\Control\Services
+ */
 class EntranceService extends Service
 {
+    /**
+     * @var
+     */
     protected static $cast = Entrance::class;
 
+    /**
+     * @param Entrance $entrance
+     *
+     * @return Entrance
+     * @throws ErrorException
+     */
     public function get(Entrance $entrance)
     {
         if (!$entrance->getId()) {
@@ -16,6 +30,11 @@ class EntranceService extends Service
         return $this->callAndCast('get', "entrance/{$entrance->getId()}");
     }
 
+    /**
+     * @param Entrance $entrance
+     *
+     * @throws ErrorException
+     */
     public function delete(Entrance $entrance)
     {
         if (!$entrance->getId()) {
@@ -25,6 +44,12 @@ class EntranceService extends Service
         $this->call('delete', "entrance/{$entrance->getId()}");
     }
 
+    /**
+     * @param Entrance $entrance
+     *
+     * @return Entrance
+     * @throws ErrorException
+     */
     public function save(Entrance $entrance)
     {
         if (!$entrance->getId() && !$entrance->getCampaignId()) {
@@ -42,16 +67,28 @@ class EntranceService extends Service
         return $this->callAndCast($verb, $url, $entrance->toArray());
     }
 
+    /**
+     *
+     */
     public function deleteMany()
     {
         $this->call('delete', 'entrances');
     }
 
+    /**
+     * @return mixed
+     */
     public function getMany()
     {
         return $this->callAndCastMany('get', 'entrances');
     }
 
+    /**
+     * @param Entrance[] $entrances
+     *
+     * @return Entrance[]
+     * @throws ErrorException
+     */
     public function saveMany(array $entrances)
     {
         foreach ($entrances as $key => $entrance) {

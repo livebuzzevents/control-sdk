@@ -1,6 +1,6 @@
 <?php namespace Buzz\Control\Objects\Traits;
 
-use \Buzz\Control\Objects\Question;
+use Buzz\Control\Objects\Question;
 
 /**
  * Class BelongsToQuestion

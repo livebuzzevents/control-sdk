@@ -4,13 +4,28 @@ use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Entrance;
 use Buzz\Control\Services\Service;
 
+/**
+ * Class ScannerService
+ *
+ * @package Buzz\Control\Services\Entrance
+ */
 class ScannerService extends Service
 {
+    /**
+     * @var
+     */
     protected static $cast = Entrance\Scanner::class;
 
-    public function get(Entrance $customer, Entrance\Scanner $job)
+    /**
+     * @param Entrance         $entrance
+     * @param Entrance\Scanner $job
+     *
+     * @return Entrance\Scanner
+     * @throws ErrorException
+     */
+    public function get(Entrance $entrance, Entrance\Scanner $job)
     {
-        if (!$customer->getId()) {
+        if (!$entrance->getId()) {
             throw new ErrorException('Entrance id required!');
         }
 
@@ -18,12 +33,18 @@ class ScannerService extends Service
             throw new ErrorException('Scanner id required!');
         }
 
-        return $this->callAndCast('get', "customer/{$customer->getId()}/job/{$job->getId()}");
+        return $this->callAndCast('get', "entrance/{$entrance->getId()}/job/{$job->getId()}");
     }
 
-    public function delete(Entrance $customer, Entrance\Scanner $job)
+    /**
+     * @param Entrance         $entrance
+     * @param Entrance\Scanner $job
+     *
+     * @throws ErrorException
+     */
+    public function delete(Entrance $entrance, Entrance\Scanner $job)
     {
-        if (!$customer->getId()) {
+        if (!$entrance->getId()) {
             throw new ErrorException('Entrance id required!');
         }
 
@@ -31,47 +52,72 @@ class ScannerService extends Service
             throw new ErrorException('Scanner id required!');
         }
 
-        $this->call('delete', "customer/{$customer->getId()}/job/{$job->getId()}");
+        $this->call('delete', "entrance/{$entrance->getId()}/job/{$job->getId()}");
     }
 
-    public function save(Entrance $customer, Entrance\Scanner $job)
+    /**
+     * @param Entrance         $entrance
+     * @param Entrance\Scanner $job
+     *
+     * @return Entrance\Scanner
+     * @throws ErrorException
+     */
+    public function save(Entrance $entrance, Entrance\Scanner $job)
     {
-        if (!$customer->getId()) {
+        if (!$entrance->getId()) {
             throw new ErrorException('Entrance id required!');
         }
 
         if ($job->getId()) {
             $verb = 'put';
-            $url  = "customer/{$customer->getId()}/job/{$job->getId()}";
+            $url  = "entrance/{$entrance->getId()}/job/{$job->getId()}";
         } else {
             $verb = 'post';
-            $url  = "customer/{$customer->getId()}/job";
+            $url  = "entrance/{$entrance->getId()}/job";
         }
 
         return $this->callAndCast($verb, $url, $job->toArray());
     }
 
-    public function deleteMany(Entrance $customer)
+    /**
+     * @param Entrance $entrance
+     *
+     * @throws ErrorException
+     */
+    public function deleteMany(Entrance $entrance)
     {
-        if (!$customer->getId()) {
+        if (!$entrance->getId()) {
             throw new ErrorException('Entrance id required!');
         }
 
-        $this->call('delete', "customer/{$customer->getId()}/jobs");
+        $this->call('delete', "entrance/{$entrance->getId()}/jobs");
     }
 
-    public function getMany(Entrance $customer)
+    /**
+     * @param Entrance $entrance
+     *
+     * @return Entrance\Scanner[]
+     * @throws ErrorException
+     */
+    public function getMany(Entrance $entrance)
     {
-        if (!$customer->getId()) {
+        if (!$entrance->getId()) {
             throw new ErrorException('Entrance id required!');
         }
 
-        return $this->callAndCastMany('get', "customer/{$customer->getId()}/jobs");
+        return $this->callAndCastMany('get', "entrance/{$entrance->getId()}/jobs");
     }
 
-    public function saveMany(Entrance $customer, array $jobs)
+    /**
+     * @param Entrance           $entrance
+     * @param Entrance\Scanner[] $jobs
+     *
+     * @return Entrance\Scanner[]
+     * @throws ErrorException
+     */
+    public function saveMany(Entrance $entrance, array $jobs)
     {
-        if (!$customer->getId()) {
+        if (!$entrance->getId()) {
             throw new ErrorException('Entrance id required!');
         }
 
@@ -79,6 +125,6 @@ class ScannerService extends Service
             $jobs[$key] = $job->toArray();
         }
 
-        return $this->callAndCastMany('post', "customer/{$customer->getId()}/jobs", ['batch' => $jobs]);
+        return $this->callAndCastMany('post', "entrance/{$entrance->getId()}/jobs", ['batch' => $jobs]);
     }
 }

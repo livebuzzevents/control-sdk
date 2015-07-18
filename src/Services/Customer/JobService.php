@@ -4,10 +4,25 @@ use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
 use Buzz\Control\Services\Service;
 
+/**
+ * Class JobService
+ *
+ * @package Buzz\Control\Services\Customer
+ */
 class JobService extends Service
 {
+    /**
+     * @var
+     */
     protected static $cast = Customer\Job::class;
 
+    /**
+     * @param Customer     $customer
+     * @param Customer\Job $job
+     *
+     * @return Customer\Job
+     * @throws ErrorException
+     */
     public function get(Customer $customer, Customer\Job $job)
     {
         if (!$customer->getId()) {
@@ -21,6 +36,12 @@ class JobService extends Service
         return $this->callAndCast('get', "customer/{$customer->getId()}/job/{$job->getId()}");
     }
 
+    /**
+     * @param Customer     $customer
+     * @param Customer\Job $job
+     *
+     * @throws ErrorException
+     */
     public function delete(Customer $customer, Customer\Job $job)
     {
         if (!$customer->getId()) {
@@ -34,6 +55,13 @@ class JobService extends Service
         $this->call('delete', "customer/{$customer->getId()}/job/{$job->getId()}");
     }
 
+    /**
+     * @param Customer     $customer
+     * @param Customer\Job $job
+     *
+     * @return Customer\Job
+     * @throws ErrorException
+     */
     public function save(Customer $customer, Customer\Job $job)
     {
         if (!$customer->getId()) {
@@ -51,6 +79,11 @@ class JobService extends Service
         return $this->callAndCast($verb, $url, $job->toArray());
     }
 
+    /**
+     * @param Customer $customer
+     *
+     * @throws ErrorException
+     */
     public function deleteMany(Customer $customer)
     {
         if (!$customer->getId()) {
@@ -60,6 +93,12 @@ class JobService extends Service
         $this->call('delete', "customer/{$customer->getId()}/jobs");
     }
 
+    /**
+     * @param Customer $customer
+     *
+     * @return Customer\Job[]
+     * @throws ErrorException
+     */
     public function getMany(Customer $customer)
     {
         if (!$customer->getId()) {
@@ -69,6 +108,13 @@ class JobService extends Service
         return $this->callAndCastMany('get', "customer/{$customer->getId()}/jobs");
     }
 
+    /**
+     * @param Customer       $customer
+     * @param Customer\Job[] $jobs
+     *
+     * @return Customer\Job[]
+     * @throws ErrorException
+     */
     public function saveMany(Customer $customer, array $jobs)
     {
         if (!$customer->getId()) {

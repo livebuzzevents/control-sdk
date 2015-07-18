@@ -1,7 +1,7 @@
 <?php namespace Buzz\Control\Objects;
 
-use Buzz\Control\Objects\Traits\HasBadgeType;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
+use Buzz\Control\Objects\Traits\HasBadgeType;
 
 /**
  * Class Product

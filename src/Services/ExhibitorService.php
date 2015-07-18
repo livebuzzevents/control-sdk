@@ -3,10 +3,24 @@
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Exhibitor;
 
+/**
+ * Class ExhibitorService
+ *
+ * @package Buzz\Control\Services
+ */
 class ExhibitorService extends Service
 {
+    /**
+     * @var
+     */
     protected static $cast = Exhibitor::class;
 
+    /**
+     * @param Exhibitor $exhibitor
+     *
+     * @return Exhibitor
+     * @throws ErrorException
+     */
     public function get(Exhibitor $exhibitor)
     {
         if (!$exhibitor->getId()) {
@@ -16,6 +30,11 @@ class ExhibitorService extends Service
         return $this->callAndCast('get', "exhibitor/{$exhibitor->getId()}");
     }
 
+    /**
+     * @param Exhibitor $exhibitor
+     *
+     * @throws ErrorException
+     */
     public function delete(Exhibitor $exhibitor)
     {
         if (!$exhibitor->getId()) {
@@ -25,6 +44,12 @@ class ExhibitorService extends Service
         $this->call('delete', "exhibitor/{$exhibitor->getId()}");
     }
 
+    /**
+     * @param Exhibitor $exhibitor
+     *
+     * @return Exhibitor
+     * @throws ErrorException
+     */
     public function save(Exhibitor $exhibitor)
     {
         if (!$exhibitor->getId() && !$exhibitor->getCampaignId()) {
@@ -42,16 +67,28 @@ class ExhibitorService extends Service
         return $this->callAndCast($verb, $url, $exhibitor->toArray());
     }
 
+    /**
+     *
+     */
     public function deleteMany()
     {
         $this->call('delete', 'exhibitors');
     }
 
+    /**
+     * @return Exhibitor[]
+     */
     public function getMany()
     {
         return $this->callAndCastMany('get', 'exhibitors');
     }
 
+    /**
+     * @param Exhibitor[] $exhibitors
+     *
+     * @return Exhibitor[]
+     * @throws ErrorException
+     */
     public function saveMany(array $exhibitors)
     {
         foreach ($exhibitors as $key => $exhibitor) {

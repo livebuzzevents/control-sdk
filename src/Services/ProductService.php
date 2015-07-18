@@ -3,10 +3,24 @@
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Product;
 
+/**
+ * Class ProductService
+ *
+ * @package Buzz\Control\Services
+ */
 class ProductService extends Service
 {
+    /**
+     * @var
+     */
     protected static $cast = Product::class;
 
+    /**
+     * @param Product $product
+     *
+     * @return Product
+     * @throws ErrorException
+     */
     public function get(Product $product)
     {
         if (!$product->getId()) {
@@ -16,6 +30,11 @@ class ProductService extends Service
         return $this->callAndCast('get', "product/{$product->getId()}");
     }
 
+    /**
+     * @param Product $product
+     *
+     * @throws ErrorException
+     */
     public function delete(Product $product)
     {
         if (!$product->getId()) {
@@ -25,6 +44,12 @@ class ProductService extends Service
         $this->call('delete', "product/{$product->getId()}");
     }
 
+    /**
+     * @param Product $product
+     *
+     * @return Product
+     * @throws ErrorException
+     */
     public function save(Product $product)
     {
         if (!$product->getId() && !$product->getCampaignId()) {
@@ -42,16 +67,28 @@ class ProductService extends Service
         return $this->callAndCast($verb, $url, $product->toArray());
     }
 
+    /**
+     *
+     */
     public function deleteMany()
     {
         $this->call('delete', 'products');
     }
 
+    /**
+     * @return Product[]
+     */
     public function getMany()
     {
         return $this->callAndCastMany('get', 'products');
     }
 
+    /**
+     * @param Product[] $products
+     *
+     * @return Product[]
+     * @throws ErrorException
+     */
     public function saveMany(array $products)
     {
         foreach ($products as $key => $product) {

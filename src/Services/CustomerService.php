@@ -94,7 +94,7 @@ class CustomerService extends Service
     }
 
     /**
-     * @param array $customers
+     * @param Customer[] $customers
      *
      * @return Customer[]
      * @throws ErrorException

@@ -6,7 +6,7 @@ $exhibitor = new \Buzz\Control\Objects\Exhibitor();
 $campaign  = new \Buzz\Control\Objects\Campaign(11);
 
 $exhibitor->setName('API TEST');
-$exhibitor->setImage(__DIR__.'/example.png');
+$exhibitor->setImage(__DIR__ . '/example.png');
 $exhibitor->setDetails([
     'website' => 'http://www.google.com'
 ]);

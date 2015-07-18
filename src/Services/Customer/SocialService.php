@@ -4,10 +4,25 @@ use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
 use Buzz\Control\Services\Service;
 
+/**
+ * Class SocialService
+ *
+ * @package Buzz\Control\Services\Customer
+ */
 class SocialService extends Service
 {
+    /**
+     * @var
+     */
     protected static $cast = Customer\Social::class;
 
+    /**
+     * @param Customer        $customer
+     * @param Customer\Social $social
+     *
+     * @return Customer\Social
+     * @throws ErrorException
+     */
     public function get(Customer $customer, Customer\Social $social)
     {
         if (!$customer->getId()) {
@@ -21,6 +36,12 @@ class SocialService extends Service
         return $this->callAndCast('get', "customer/{$customer->getId()}/social/{$social->getId()}");
     }
 
+    /**
+     * @param Customer        $customer
+     * @param Customer\Social $social
+     *
+     * @throws ErrorException
+     */
     public function delete(Customer $customer, Customer\Social $social)
     {
         if (!$customer->getId()) {
@@ -34,6 +55,13 @@ class SocialService extends Service
         $this->call('delete', "customer/{$customer->getId()}/social/{$social->getId()}");
     }
 
+    /**
+     * @param Customer        $customer
+     * @param Customer\Social $social
+     *
+     * @return Customer\Social
+     * @throws ErrorException
+     */
     public function save(Customer $customer, Customer\Social $social)
     {
         if (!$customer->getId()) {
@@ -51,6 +79,11 @@ class SocialService extends Service
         return $this->callAndCast($verb, $url, $social->toArray());
     }
 
+    /**
+     * @param Customer $customer
+     *
+     * @throws ErrorException
+     */
     public function deleteMany(Customer $customer)
     {
         if (!$customer->getId()) {
@@ -60,6 +93,12 @@ class SocialService extends Service
         $this->call('delete', "customer/{$customer->getId()}/socials");
     }
 
+    /**
+     * @param Customer $customer
+     *
+     * @return Customer\Social[]
+     * @throws ErrorException
+     */
     public function getMany(Customer $customer)
     {
         if (!$customer->getId()) {
@@ -69,6 +108,13 @@ class SocialService extends Service
         return $this->callAndCastMany('get', "customer/{$customer->getId()}/socials");
     }
 
+    /**
+     * @param Customer          $customer
+     * @param Customer\Social[] $socials
+     *
+     * @return Customer\Social[]
+     * @throws ErrorException
+     */
     public function saveMany(Customer $customer, array $socials)
     {
         if (!$customer->getId()) {

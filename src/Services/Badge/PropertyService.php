@@ -4,13 +4,28 @@ use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Badge;
 use Buzz\Control\Services\Service;
 
+/**
+ * Class PropertyService
+ *
+ * @package Buzz\Control\Services\Badge
+ */
 class PropertyService extends Service
 {
+    /**
+     * @var
+     */
     protected static $cast = Badge\Property::class;
 
-    public function get(Badge $customer, Badge\Property $property)
+    /**
+     * @param Badge          $badge
+     * @param Badge\Property $property
+     *
+     * @return Badge\Property
+     * @throws ErrorException
+     */
+    public function get(Badge $badge, Badge\Property $property)
     {
-        if (!$customer->getId()) {
+        if (!$badge->getId()) {
             throw new ErrorException('Badge id required!');
         }
 
@@ -18,12 +33,18 @@ class PropertyService extends Service
             throw new ErrorException('Property id required!');
         }
 
-        return $this->callAndCast('get', "customer/{$customer->getId()}/property/{$property->getId()}");
+        return $this->callAndCast('get', "badge/{$badge->getId()}/property/{$property->getId()}");
     }
 
-    public function delete(Badge $customer, Badge\Property $property)
+    /**
+     * @param Badge          $badge
+     * @param Badge\Property $property
+     *
+     * @throws ErrorException
+     */
+    public function delete(Badge $badge, Badge\Property $property)
     {
-        if (!$customer->getId()) {
+        if (!$badge->getId()) {
             throw new ErrorException('Badge id required!');
         }
 
@@ -31,47 +52,72 @@ class PropertyService extends Service
             throw new ErrorException('Property id required!');
         }
 
-        $this->call('delete', "customer/{$customer->getId()}/property/{$property->getId()}");
+        $this->call('delete', "badge/{$badge->getId()}/property/{$property->getId()}");
     }
 
-    public function save(Badge $customer, Badge\Property $property)
+    /**
+     * @param Badge          $badge
+     * @param Badge\Property $property
+     *
+     * @return Badge\Property
+     * @throws ErrorException
+     */
+    public function save(Badge $badge, Badge\Property $property)
     {
-        if (!$customer->getId()) {
+        if (!$badge->getId()) {
             throw new ErrorException('Badge id required!');
         }
 
         if ($property->getId()) {
             $verb = 'put';
-            $url  = "customer/{$customer->getId()}/property/{$property->getId()}";
+            $url  = "badge/{$badge->getId()}/property/{$property->getId()}";
         } else {
             $verb = 'post';
-            $url  = "customer/{$customer->getId()}/property";
+            $url  = "badge/{$badge->getId()}/property";
         }
 
         return $this->callAndCast($verb, $url, $property->toArray());
     }
 
-    public function deleteMany(Badge $customer)
+    /**
+     * @param Badge $badge
+     *
+     * @throws ErrorException
+     */
+    public function deleteMany(Badge $badge)
     {
-        if (!$customer->getId()) {
+        if (!$badge->getId()) {
             throw new ErrorException('Badge id required!');
         }
 
-        $this->call('delete', "customer/{$customer->getId()}/properties");
+        $this->call('delete', "badge/{$badge->getId()}/properties");
     }
 
-    public function getMany(Badge $customer)
+    /**
+     * @param Badge $badge
+     *
+     * @return Badge\Property[]
+     * @throws ErrorException
+     */
+    public function getMany(Badge $badge)
     {
-        if (!$customer->getId()) {
+        if (!$badge->getId()) {
             throw new ErrorException('Badge id required!');
         }
 
-        return $this->callAndCastMany('get', "customer/{$customer->getId()}/properties");
+        return $this->callAndCastMany('get', "badge/{$badge->getId()}/properties");
     }
 
-    public function saveMany(Badge $customer, array $properties)
+    /**
+     * @param Badge            $badge
+     * @param Badge\Property[] $properties
+     *
+     * @return Badge\Property[]
+     * @throws ErrorException
+     */
+    public function saveMany(Badge $badge, array $properties)
     {
-        if (!$customer->getId()) {
+        if (!$badge->getId()) {
             throw new ErrorException('Badge id required!');
         }
 
@@ -79,6 +125,6 @@ class PropertyService extends Service
             $properties[$key] = $property->toArray();
         }
 
-        return $this->callAndCastMany('post', "customer/{$customer->getId()}/properties", ['batch' => $properties]);
+        return $this->callAndCastMany('post', "badge/{$badge->getId()}/properties", ['batch' => $properties]);
     }
 }

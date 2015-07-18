@@ -4,10 +4,25 @@ use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Badge;
 use Buzz\Control\Services\Service;
 
+/**
+ * Class AnswerService
+ *
+ * @package Buzz\Control\Services\Badge
+ */
 class AnswerService extends Service
 {
+    /**
+     * @var
+     */
     protected static $cast = Badge\Answer::class;
 
+    /**
+     * @param Badge        $badge
+     * @param Badge\Answer $answer
+     *
+     * @return Badge\Answer[]
+     * @throws ErrorException
+     */
     public function get(Badge $badge, Badge\Answer $answer)
     {
         if (!$badge->getId()) {
@@ -21,6 +36,12 @@ class AnswerService extends Service
         return $this->callAndCast('get', "badge/{$badge->getId()}/answer/{$answer->getId()}");
     }
 
+    /**
+     * @param Badge        $badge
+     * @param Badge\Answer $answer
+     *
+     * @throws ErrorException
+     */
     public function delete(Badge $badge, Badge\Answer $answer)
     {
         if (!$badge->getId()) {
@@ -34,6 +55,13 @@ class AnswerService extends Service
         $this->call('delete', "badge/{$badge->getId()}/answer/{$answer->getId()}");
     }
 
+    /**
+     * @param Badge        $badge
+     * @param Badge\Answer $answer
+     *
+     * @return Badge\Answer[]
+     * @throws ErrorException
+     */
     public function save(Badge $badge, Badge\Answer $answer)
     {
         if (!$badge->getId()) {
@@ -55,6 +83,11 @@ class AnswerService extends Service
         return $this->callAndCast($verb, $url, $answer->toArray());
     }
 
+    /**
+     * @param Badge $badge
+     *
+     * @throws ErrorException
+     */
     public function deleteMany(Badge $badge)
     {
         if (!$badge->getId()) {
@@ -64,6 +97,12 @@ class AnswerService extends Service
         $this->call('delete', "badge/{$badge->getId()}/answers");
     }
 
+    /**
+     * @param Badge $badge
+     *
+     * @return Badge\Answer[]
+     * @throws ErrorException
+     */
     public function getMany(Badge $badge)
     {
         if (!$badge->getId()) {
@@ -73,6 +112,13 @@ class AnswerService extends Service
         return $this->callAndCastMany('get', "badge/{$badge->getId()}/answers");
     }
 
+    /**
+     * @param Badge          $badge
+     * @param Badge\Answer[] $answers
+     *
+     * @return Badge\Answer[]
+     * @throws ErrorException
+     */
     public function saveMany(Badge $badge, array $answers)
     {
         if (!$badge->getId()) {

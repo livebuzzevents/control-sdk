@@ -4,10 +4,25 @@ use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Exhibitor;
 use Buzz\Control\Services\Service;
 
+/**
+ * Class AnswerService
+ *
+ * @package Buzz\Control\Services\Exhibitor
+ */
 class AnswerService extends Service
 {
+    /**
+     * @var
+     */
     protected static $cast = Exhibitor\Answer::class;
 
+    /**
+     * @param Exhibitor        $exhibitor
+     * @param Exhibitor\Answer $answer
+     *
+     * @return Exhibitor\Answer[]
+     * @throws ErrorException
+     */
     public function get(Exhibitor $exhibitor, Exhibitor\Answer $answer)
     {
         if (!$exhibitor->getId()) {
@@ -21,6 +36,12 @@ class AnswerService extends Service
         return $this->callAndCast('get', "exhibitor/{$exhibitor->getId()}/answer/{$answer->getId()}");
     }
 
+    /**
+     * @param Exhibitor        $exhibitor
+     * @param Exhibitor\Answer $answer
+     *
+     * @throws ErrorException
+     */
     public function delete(Exhibitor $exhibitor, Exhibitor\Answer $answer)
     {
         if (!$exhibitor->getId()) {
@@ -34,6 +55,13 @@ class AnswerService extends Service
         $this->call('delete', "exhibitor/{$exhibitor->getId()}/answer/{$answer->getId()}");
     }
 
+    /**
+     * @param Exhibitor        $exhibitor
+     * @param Exhibitor\Answer $answer
+     *
+     * @return Exhibitor\Answer[]
+     * @throws ErrorException
+     */
     public function save(Exhibitor $exhibitor, Exhibitor\Answer $answer)
     {
         if (!$exhibitor->getId()) {
@@ -55,6 +83,11 @@ class AnswerService extends Service
         return $this->callAndCast($verb, $url, $answer->toArray());
     }
 
+    /**
+     * @param Exhibitor $exhibitor
+     *
+     * @throws ErrorException
+     */
     public function deleteMany(Exhibitor $exhibitor)
     {
         if (!$exhibitor->getId()) {
@@ -64,6 +97,12 @@ class AnswerService extends Service
         $this->call('delete', "exhibitor/{$exhibitor->getId()}/answers");
     }
 
+    /**
+     * @param Exhibitor $exhibitor
+     *
+     * @return Exhibitor\Answer[]
+     * @throws ErrorException
+     */
     public function getMany(Exhibitor $exhibitor)
     {
         if (!$exhibitor->getId()) {
@@ -73,6 +112,13 @@ class AnswerService extends Service
         return $this->callAndCastMany('get', "exhibitor/{$exhibitor->getId()}/answers");
     }
 
+    /**
+     * @param Exhibitor          $exhibitor
+     * @param Exhibitor\Answer[] $answers
+     *
+     * @return Exhibitor\Answer[]
+     * @throws ErrorException
+     */
     public function saveMany(Exhibitor $exhibitor, array $answers)
     {
         if (!$exhibitor->getId()) {

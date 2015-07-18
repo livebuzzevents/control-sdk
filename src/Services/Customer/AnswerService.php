@@ -4,10 +4,25 @@ use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
 use Buzz\Control\Services\Service;
 
+/**
+ * Class AnswerService
+ *
+ * @package Buzz\Control\Services\Customer
+ */
 class AnswerService extends Service
 {
+    /**
+     * @var
+     */
     protected static $cast = Customer\Answer::class;
 
+    /**
+     * @param Customer        $customer
+     * @param Customer\Answer $answer
+     *
+     * @return Customer\Answer[]
+     * @throws ErrorException
+     */
     public function get(Customer $customer, Customer\Answer $answer)
     {
         if (!$customer->getId()) {
@@ -21,6 +36,12 @@ class AnswerService extends Service
         return $this->callAndCast('get', "customer/{$customer->getId()}/answer/{$answer->getId()}");
     }
 
+    /**
+     * @param Customer        $customer
+     * @param Customer\Answer $answer
+     *
+     * @throws ErrorException
+     */
     public function delete(Customer $customer, Customer\Answer $answer)
     {
         if (!$customer->getId()) {
@@ -34,6 +55,13 @@ class AnswerService extends Service
         $this->call('delete', "customer/{$customer->getId()}/answer/{$answer->getId()}");
     }
 
+    /**
+     * @param Customer        $customer
+     * @param Customer\Answer $answer
+     *
+     * @return Customer\Answer[]
+     * @throws ErrorException
+     */
     public function save(Customer $customer, Customer\Answer $answer)
     {
         if (!$customer->getId()) {
@@ -55,6 +83,11 @@ class AnswerService extends Service
         return $this->callAndCast($verb, $url, $answer->toArray());
     }
 
+    /**
+     * @param Customer $customer
+     *
+     * @throws ErrorException
+     */
     public function deleteMany(Customer $customer)
     {
         if (!$customer->getId()) {
@@ -64,6 +97,12 @@ class AnswerService extends Service
         $this->call('delete', "customer/{$customer->getId()}/answers");
     }
 
+    /**
+     * @param Customer $customer
+     *
+     * @return Customer\Answer[]
+     * @throws ErrorException
+     */
     public function getMany(Customer $customer)
     {
         if (!$customer->getId()) {
@@ -73,6 +112,13 @@ class AnswerService extends Service
         return $this->callAndCastMany('get', "customer/{$customer->getId()}/answers");
     }
 
+    /**
+     * @param Customer          $customer
+     * @param Customer\Answer[] $answers
+     *
+     * @return Customer\Answer[]
+     * @throws ErrorException
+     */
     public function saveMany(Customer $customer, array $answers)
     {
         if (!$customer->getId()) {

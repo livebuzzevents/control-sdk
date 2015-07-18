@@ -3,10 +3,24 @@
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Badge;
 
+/**
+ * Class BadgeService
+ *
+ * @package Buzz\Control\Services
+ */
 class BadgeService extends Service
 {
+    /**
+     * @var
+     */
     protected static $cast = Badge::class;
 
+    /**
+     * @param Badge $badge
+     *
+     * @return Badge
+     * @throws ErrorException
+     */
     public function get(Badge $badge)
     {
         if (!$badge->getId()) {
@@ -16,6 +30,11 @@ class BadgeService extends Service
         return $this->callAndCast('get', "badge/{$badge->getId()}");
     }
 
+    /**
+     * @param Badge $badge
+     *
+     * @throws ErrorException
+     */
     public function delete(Badge $badge)
     {
         if (!$badge->getId()) {
@@ -25,6 +44,12 @@ class BadgeService extends Service
         $this->call('delete', "badge/{$badge->getId()}");
     }
 
+    /**
+     * @param Badge $badge
+     *
+     * @return Badge
+     * @throws ErrorException
+     */
     public function save(Badge $badge)
     {
         if (!$badge->getId() && !$badge->getCampaignId()) {
@@ -42,16 +67,28 @@ class BadgeService extends Service
         return $this->callAndCast($verb, $url, $badge->toArray());
     }
 
+    /**
+     *
+     */
     public function deleteMany()
     {
         $this->call('delete', 'badges');
     }
 
+    /**
+     * @return Badge[]
+     */
     public function getMany()
     {
         return $this->callAndCastMany('get', 'badges');
     }
 
+    /**
+     * @param Badge[] $badges
+     *
+     * @return Badge[]
+     * @throws ErrorException
+     */
     public function saveMany(array $badges)
     {
         foreach ($badges as $key => $badge) {
