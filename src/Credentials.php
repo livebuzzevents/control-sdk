@@ -1,12 +1,12 @@
 <?php namespace Buzz\Control;
 
-/**
- * Class Credentials
- *
- * Holds the api credentials for the SDK REST calls
- *
- * @package Buzz\Control
- */
+    /**
+     * Class Credentials
+     *
+     * Holds the api credentials for the SDK REST calls
+     *
+     * @package Buzz\Control
+     */
 /**
  * Class Credentials
  *
@@ -25,7 +25,7 @@ class Credentials
     /**
      * @var
      */
-    private $organization_id;
+    protected $organization_id;
 
     /**
      * Instantiates and fills Rest SDK credentials

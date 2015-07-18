@@ -2,9 +2,10 @@
 
 require_once '../../bootstrap.php';
 
-$customer = new \Buzz\Control\Objects\Customer(3);
+$customer = new \Buzz\Control\Objects\Customer(563);
 
-$service  = new \Buzz\Control\Services\Customer\Job\All($customer);
-$response = $serviceHandler->execute($service);
+$service  = new \Buzz\Control\Services\Customer\JobService();
 
-var_dump($response);
+$jobs = $service->getMany($customer);
+
+var_dump($jobs);

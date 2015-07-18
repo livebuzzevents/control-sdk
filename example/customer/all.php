@@ -2,11 +2,8 @@
 
 require_once '../bootstrap.php';
 
-$filter = new \Buzz\Control\Objects\Filter();
+$service = new \Buzz\Control\Services\CustomerService();
 
-$filter->add('email', 'like', '@gmail.com');
+$customers = $service->where('email', 'is', 'jordan.dobrev.88@gmail.com')->getMany();
 
-$service  = new \Buzz\Control\Services\Customer\All($filter);
-$response = $serviceHandler->execute($service);
-
-var_dump($response);
+var_dump($customers);
