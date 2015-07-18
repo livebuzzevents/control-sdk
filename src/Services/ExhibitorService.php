@@ -99,6 +99,6 @@ class ExhibitorService extends Service
             $exhibitors[$key] = $exhibitor->toArray();
         }
 
-        return $this->callAndCastMany('post', 'exhibitors', $exhibitors);
+        return $this->callAndCastMany('post', 'exhibitors', ['batch' => $exhibitors]);
     }
 }

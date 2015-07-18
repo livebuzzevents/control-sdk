@@ -99,6 +99,6 @@ class ProductService extends Service
             $products[$key] = $product->toArray();
         }
 
-        return $this->callAndCastMany('post', 'products', $products);
+        return $this->callAndCastMany('post', 'products', ['batch' => $products]);
     }
 }

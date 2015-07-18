@@ -109,6 +109,6 @@ class CustomerService extends Service
             $customers[$key] = $customer->toArray();
         }
 
-        return $this->callAndCastMany('post', 'customers', $customers);
+        return $this->callAndCastMany('post', 'customers', ['batch' => $customers]);
     }
 }

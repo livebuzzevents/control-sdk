@@ -99,6 +99,6 @@ class QuestionService extends Service
             $questions[$key] = $question->toArray();
         }
 
-        return $this->callAndCastMany('post', 'questions', $questions);
+        return $this->callAndCastMany('post', 'questions', ['batch' => $questions]);
     }
 }

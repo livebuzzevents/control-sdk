@@ -99,6 +99,6 @@ class EntranceService extends Service
             $entrances[$key] = $entrance->toArray();
         }
 
-        return $this->callAndCastMany('post', 'entrances', $entrances);
+        return $this->callAndCastMany('post', 'entrances', ['batch' => $entrances]);
     }
 }

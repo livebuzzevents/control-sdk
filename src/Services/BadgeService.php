@@ -99,6 +99,6 @@ class BadgeService extends Service
             $badges[$key] = $badge->toArray();
         }
 
-        return $this->callAndCastMany('post', 'badges', $badges);
+        return $this->callAndCastMany('post', 'badges', ['batch' => $badges]);
     }
 }
