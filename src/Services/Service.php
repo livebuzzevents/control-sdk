@@ -2,6 +2,7 @@
 
 use Buzz\Control\Buzz;
 use Buzz\Control\Contracts\Client;
+use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Filter;
 use Buzz\Control\GuzzleClient;
 
@@ -125,6 +126,7 @@ abstract class Service
      * @param $response
      *
      * @return mixed
+     * @throws ErrorException
      */
     protected final function castMany($response)
     {
@@ -134,7 +136,11 @@ abstract class Service
             if (!$this->keyBy) {
                 $result[$key] = self::cast($value);
             } else {
-                $result[$this->keyBy] = self::cast($value);
+                if (!array_key_exists($value, $this->keyBy)) {
+                    throw new ErrorException('Parameter %1$s does not exist!');
+                }
+
+                $result[$value[$this->keyBy]] = self::cast($value);
             }
         }
 
