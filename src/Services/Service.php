@@ -59,10 +59,14 @@ abstract class Service
 
     /**
      * @param string $keyBy
+     *
+     * @return $this
      */
     public final function keyBy($keyBy = 'id')
     {
         $this->keyBy = $keyBy;
+
+        return $this;
     }
 
     /**
