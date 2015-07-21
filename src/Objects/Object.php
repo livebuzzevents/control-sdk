@@ -36,6 +36,8 @@ abstract class Object
     }
 
     /**
+     * Creates object from array
+     *
      * @param array $array
      *
      * @return static
@@ -262,11 +264,25 @@ abstract class Object
         return $array;
     }
 
+    /**
+     * Gets first element from array
+     *
+     * @param $field
+     *
+     * @return null
+     */
     public function first($field)
     {
         return !empty($this->{$field}[0]) ? $this->{$field}[0] : null;
     }
 
+    /**
+     * Gets first element matching specific where clause
+     *
+     * @param ...$parameters
+     *
+     * @return null
+     */
     public function firstWhere(...$parameters)
     {
         $all = $this->allWhere(...$parameters);
@@ -274,6 +290,14 @@ abstract class Object
         return !empty($all[0]) ? $all[0] : null;
     }
 
+    /**
+     * Gets all elements matching specific where clause
+     *
+     * @param       $field
+     * @param array $wheres
+     *
+     * @return array|null
+     */
     public function allWhere($field, array $wheres)
     {
         if (!$this->{$field}) {
@@ -293,5 +317,28 @@ abstract class Object
         }
 
         return $match;
+    }
+
+    /**
+     * Copies attributes from target object
+     *
+     * @param \StdClass $target
+     *
+     * @return $this
+     */
+    public function copy($target)
+    {
+        $reflect   = new ReflectionClass($this);
+        $protected = $reflect->getProperties(ReflectionProperty::IS_PROTECTED);
+
+        foreach ($protected as $property) {
+            $name = $property->getName();
+
+            if (isset($target->{$name})) {
+                $this->{$property->getName()} = $target->{$property->getName()};
+            }
+        }
+
+        return $this;
     }
 }
