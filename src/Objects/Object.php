@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects;
 
 use DateTime;
+use Doctrine\Common\Inflector\Inflector;
 use ReflectionClass;
 use ReflectionProperty;
 
@@ -304,6 +305,8 @@ abstract class Object
      */
     public function first($field)
     {
+        $field = Inflector::pluralize($field);
+
         return !empty($this->{$field}[0]) ? $this->{$field}[0] : null;
     }
 
@@ -331,6 +334,8 @@ abstract class Object
      */
     public function allWhere($field, array $wheres)
     {
+        $field = Inflector::pluralize($field);
+
         if (!$this->{$field}) {
             return null;
         }
