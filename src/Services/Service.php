@@ -46,7 +46,7 @@ abstract class Service
     {
         $object = static::$cast;
 
-        return $object::createFromArray($response);
+        return new $object($response);
     }
 
     protected final function call($verb, $method, array $request = [])

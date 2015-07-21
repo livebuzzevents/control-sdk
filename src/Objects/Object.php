@@ -28,11 +28,21 @@ abstract class Object
     protected $updated_at;
 
     /**
-     * @param null $id
+     * Creates new object
+     * if data is object or array it clones all fields
+     * else it sets the Id
+     *
+     * @param null|int|array|\StdClass $data
      */
-    public function __construct($id = null)
+    public function __construct($data = null)
     {
-        $this->id = $id;
+        if (is_object($data)) {
+            $this->clone($data);
+        } elseif (is_array($data)) {
+            $this->cloneFromArray($data);
+        } else {
+            $this->id = $data;
+        }
     }
 
     /**
@@ -42,11 +52,9 @@ abstract class Object
      *
      * @return static
      */
-    public static function createFromArray(array $array)
+    public function cloneFromArray(array $array)
     {
-        $object = new static;
-
-        $reflect   = new ReflectionClass($object);
+        $reflect   = new ReflectionClass($this);
         $protected = $reflect->getProperties(ReflectionProperty::IS_PROTECTED);
 
         foreach ($protected as $property) {
@@ -60,17 +68,17 @@ abstract class Object
             $type = self::getAnnotationVarType($property);
 
             if (strpos($type, '[]') !== false) { //array
-                $type          = trim($type, '[]');
-                $object->$name = [];
+                $type        = trim($type, '[]');
+                $this->$name = [];
                 foreach ($array[$name] as $key => $single) {
-                    $object->{$name}[$key] = self::castSingleProperty($type, $single);
+                    $this->{$name}[$key] = self::castSingleProperty($type, $single);
                 }
             } else {
-                $object->$name = self::castSingleProperty($type, $array[$name]);
+                $this->$name = self::castSingleProperty($type, $array[$name]);
             }
         }
 
-        return $object;
+        return $this;
     }
 
     /**
@@ -115,7 +123,7 @@ abstract class Object
             if ($type === '\DateTime') {
                 return (new \DateTime())->setTimestamp(strtotime($value));
             } else {
-                return $type::createFromArray($value);
+                return new $type($value);
             }
         } else { //all other types, including non specified arrays
             return $value;
