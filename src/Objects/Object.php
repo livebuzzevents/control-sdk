@@ -37,12 +37,35 @@ abstract class Object
     public function __construct($data = null)
     {
         if (is_object($data)) {
-            $this->clone($data);
+            $this->copy($data);
         } elseif (is_array($data)) {
-            $this->cloneFromArray($data);
+            $this->copyFromArray($data);
         } else {
             $this->id = $data;
         }
+    }
+
+    /**
+     * Copies attributes from target object
+     *
+     * @param \StdClass $target
+     *
+     * @return $this
+     */
+    public function copy($target)
+    {
+        $reflect   = new ReflectionClass($this);
+        $protected = $reflect->getProperties(ReflectionProperty::IS_PROTECTED);
+
+        foreach ($protected as $property) {
+            $name = $property->getName();
+
+            if (isset($target->{$name})) {
+                $this->{$property->getName()} = $target->{$property->getName()};
+            }
+        }
+
+        return $this;
     }
 
     /**
@@ -52,7 +75,7 @@ abstract class Object
      *
      * @return static
      */
-    public function cloneFromArray(array $array)
+    public function copyFromArray(array $array)
     {
         $reflect   = new ReflectionClass($this);
         $protected = $reflect->getProperties(ReflectionProperty::IS_PROTECTED);
@@ -325,28 +348,5 @@ abstract class Object
         }
 
         return $match;
-    }
-
-    /**
-     * Copies attributes from target object
-     *
-     * @param \StdClass $target
-     *
-     * @return $this
-     */
-    public function copy($target)
-    {
-        $reflect   = new ReflectionClass($this);
-        $protected = $reflect->getProperties(ReflectionProperty::IS_PROTECTED);
-
-        foreach ($protected as $property) {
-            $name = $property->getName();
-
-            if (isset($target->{$name})) {
-                $this->{$property->getName()} = $target->{$property->getName()};
-            }
-        }
-
-        return $this;
     }
 }
