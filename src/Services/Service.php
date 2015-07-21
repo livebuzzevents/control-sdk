@@ -136,8 +136,11 @@ abstract class Service
             if (!$this->keyBy) {
                 $result[$key] = self::cast($value);
             } else {
-                if (!array_key_exists($value, $this->keyBy)) {
-                    throw new ErrorException('Parameter %1$s does not exist!');
+                if (!is_array($value)) {
+                    throw new ErrorException('KeyBy expects each result to be an array!');
+                }
+                if (!array_key_exists($this->keyBy, $value)) {
+                    throw new ErrorException(sprintf('Parameter %1$s does not exist!', $this->keyBy));
                 }
 
                 $result[$value[$this->keyBy]] = self::cast($value);
