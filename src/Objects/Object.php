@@ -264,14 +264,14 @@ abstract class Object
         foreach ($protected as $property) {
             $name = $property->getName();
 
-            if (in_array($name, ['objectMap'])) { //skip
-                continue;
-            }
-
             $value = $this->$name;
 
             if ($skip_null && $value === null) {
                 continue;
+            }
+
+            if (empty($value)) { //handle [] and ''
+                $array[$name] = $value;
             }
 
             if (is_array($value)) {
@@ -338,7 +338,7 @@ abstract class Object
 
         if (!$this->{$field}) {
             return null;
-        }q
+        }
 
         $match = null;
 

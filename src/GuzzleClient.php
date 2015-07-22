@@ -108,7 +108,11 @@ class GuzzleClient implements Client
                         'contents' => $value
                     ];
                 } else {
-                    $result['form_params'][$key] = $value;
+                    if (is_array($value) and empty($value)) { //fix to send empty arrays to post!
+                        $result['form_params'][$key] = '';
+                    } else {
+                        $result['form_params'][$key] = $value;
+                    }
                 }
             }
 
