@@ -327,25 +327,31 @@ abstract class Object
     /**
      * Gets all elements matching specific where clause
      *
-     * @param       $field
-     * @param array $wheres
+     * @param                $field
+     * @param array|callback $where
      *
      * @return array|null
      */
-    public function allWhere($field, array $wheres)
+    public function allWhere($field, $where)
     {
         $field = Inflector::pluralize($field);
 
         if (!$this->{$field}) {
             return null;
-        }
+        }q
 
         $match = null;
 
         foreach ($this->{$field} as $single) {
-            foreach ($wheres as $key => $value) {
-                if ($single->{$key} !== $value) {
-                    continue 2;
+            if (is_array($where)) {
+                foreach ($where as $key => $value) {
+                    if ($single->{$key} !== $value) {
+                        continue 2;
+                    }
+                }
+            } elseif (is_callable($where)) {
+                if (!call_user_func($where, $single)) {
+                    continue;
                 }
             }
 
