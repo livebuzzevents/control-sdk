@@ -28,8 +28,10 @@ class CustomerService extends Service
         ];
 
         if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $user_information['ip'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        } elseif (!empty($_SERVER['REMOTE_ADDR'])) {
+            $user_information['x_ip'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+
+        if (!empty($_SERVER['REMOTE_ADDR'])) {
             $user_information['ip'] = $_SERVER['REMOTE_ADDR'];
         }
 
