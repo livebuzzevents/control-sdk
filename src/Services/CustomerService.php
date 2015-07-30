@@ -22,6 +22,19 @@ class CustomerService extends Service
      */
     public function login(array $credentials)
     {
+        $user_information = [
+            'user-agent'      => !empty($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null,
+            'accept_language' => !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : null
+        ];
+
+        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $user_information['ip'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } elseif (!empty($_SERVER['REMOTE_ADDR'])) {
+            $user_information['ip'] = $_SERVER['REMOTE_ADDR'];
+        }
+
+        $credentials['user_information'] = $user_information;
+
         return $this->callAndCast('get', 'customer/login', $credentials);
     }
 
