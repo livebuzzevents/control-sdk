@@ -1,5 +1,7 @@
 <?php namespace Buzz\Control\Objects;
 
+use Buzz\Control\Objects\Traits\HasIdentifier;
+
 /**
  * Class Parameter
  *
@@ -7,6 +9,8 @@
  */
 class Parameter extends Object
 {
+    use HasIdentifier;
+    
     /**
      * @var string
      */

@@ -1,16 +1,15 @@
 <?php namespace Buzz\Control\Objects;
 
-use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasIdentifier;
 
 /**
- * Class BadgeType
+ * Class Channel
  *
  * @package Buzz\Control\Objects
  */
-class BadgeType extends Object
+class Organization extends Object
 {
-    use BelongsToCampaign, HasIdentifier;
+    use HasIdentifier;
 
     /**
      * @var string
@@ -18,7 +17,7 @@ class BadgeType extends Object
     protected $name;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -26,7 +25,7 @@ class BadgeType extends Object
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      */
     public function setName($name)
     {

@@ -1,5 +1,7 @@
 <?php namespace Buzz\Control\Objects;
 
+use Buzz\Control\Objects\Traits\HasIdentifier;
+
 /**
  * Class Question
  *
@@ -7,10 +9,8 @@
  */
 class Question extends Object
 {
-    /**
-     * @var string
-     */
-    protected $identifier;
+    use HasIdentifier;
+
     /**
      * @var string
      */
@@ -31,22 +31,6 @@ class Question extends Object
      * @var \Buzz\Control\Objects\Question\Option[]
      */
     protected $options;
-
-    /**
-     * @return string
-     */
-    public function getIdentifier()
-    {
-        return $this->identifier;
-    }
-
-    /**
-     * @param string $identifier
-     */
-    public function setIdentifier($identifier)
-    {
-        $this->identifier = $identifier;
-    }
 
     /**
      * @return string

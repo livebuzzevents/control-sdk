@@ -26,7 +26,8 @@ class Filter
         'between',
         'in',
         'not in',
-        'has'
+        'has',
+        'has not'
     ];
 
     public function set(array $filters)

@@ -1,5 +1,7 @@
 <?php namespace Buzz\Control\Objects\Traits;
 
+use Buzz\Control\Objects\Campaign;
+
 /**
  * Class BelongsToCampaign
  *
@@ -23,6 +25,14 @@ trait BelongsToCampaign
     public function getCampaign()
     {
         return $this->campaign;
+    }
+
+    /**
+     * @param \Buzz\Control\Objects\Campaign $campaign
+     */
+    public function setCampaign(Campaign $campaign)
+    {
+        $this->campaign = $campaign;
     }
 
     /**

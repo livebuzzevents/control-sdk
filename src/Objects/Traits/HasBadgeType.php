@@ -1,5 +1,7 @@
 <?php namespace Buzz\Control\Objects\Traits;
 
+use Buzz\Control\Objects\BadgeType;
+
 /**
  * Class HasBadgeType
  *
@@ -23,6 +25,14 @@ trait HasBadgeType
     public function getBadgeType()
     {
         return $this->badge_type;
+    }
+
+    /**
+     * @param \Buzz\Control\Objects\BadgeType $badge_type
+     */
+    public function setBadgeType(BadgeType $badge_type)
+    {
+        $this->badge_type = $badge_type;
     }
 
     /**
