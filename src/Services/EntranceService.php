@@ -52,8 +52,8 @@ class EntranceService extends Service
      */
     public function save(Entrance $entrance)
     {
-        if (!$entrance->getId() && !$entrance->getCampaignId()) {
-            throw new ErrorException('Entrance id or Campaign id required!');
+        if (!$entrance->getId() && !$entrance->getCampaignId() && !$entrance->getCampaign()) {
+            throw new ErrorException('Entrance id or Campaign id/identifier required!');
         }
 
         if ($entrance->getId()) {
@@ -92,8 +92,8 @@ class EntranceService extends Service
     public function saveMany(array $entrances)
     {
         foreach ($entrances as $key => $entrance) {
-            if (!$entrance->getId() && !$entrance->getCampaignId()) {
-                throw new ErrorException('Entrance id or Campaign id required!');
+            if (!$entrance->getId() && !$entrance->getCampaignId() && !$entrance->getCampaign()) {
+                throw new ErrorException('Entrance id or Campaign id/identifier required!');
             }
 
             $entrances[$key] = $entrance->toArray();

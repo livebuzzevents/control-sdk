@@ -52,8 +52,8 @@ class ProductService extends Service
      */
     public function save(Product $product)
     {
-        if (!$product->getId() && !$product->getCampaignId()) {
-            throw new ErrorException('Product id or Campaign id required!');
+        if (!$product->getId() && !$product->getCampaignId() && !$product->getCampaign()) {
+            throw new ErrorException('Product id or Campaign id/identifier required!');
         }
 
         if ($product->getId()) {
@@ -92,8 +92,8 @@ class ProductService extends Service
     public function saveMany(array $products)
     {
         foreach ($products as $key => $product) {
-            if (!$product->getId() && !$product->getCampaignId()) {
-                throw new ErrorException('Product id or Campaign id required!');
+            if (!$product->getId() && !$product->getCampaignId() && !$product->getCampaign()) {
+                throw new ErrorException('Product id or Campaign id/identifier required!');
             }
 
             $products[$key] = $product->toArray();

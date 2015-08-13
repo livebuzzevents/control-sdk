@@ -26,7 +26,7 @@ class ScannerService extends Service
     public function get(Entrance $entrance, Entrance\Scanner $job)
     {
         if (!$entrance->getId()) {
-            throw new ErrorException('Entrance id required!');
+            throw new ErrorException('Entrance id/identifier required!');
         }
 
         if (!$job->getId()) {

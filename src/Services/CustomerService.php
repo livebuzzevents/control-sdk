@@ -77,8 +77,8 @@ class CustomerService extends Service
      */
     public function save(Customer $customer)
     {
-        if (!$customer->getId() && !$customer->getCampaignId()) {
-            throw new ErrorException('Customer id or Campaign id required!');
+        if (!$customer->getId() && !$customer->getCampaignId() && !$customer->getCampaign()) {
+            throw new ErrorException('Customer id or Campaign id/identifier required!');
         }
 
         if ($customer->getId()) {
@@ -117,8 +117,8 @@ class CustomerService extends Service
     public function saveMany(array $customers)
     {
         foreach ($customers as $key => $customer) {
-            if (!$customer->getId() && !$customer->getCampaignId()) {
-                throw new ErrorException('Customer id or Campaign id required!');
+            if (!$customer->getId() && !$customer->getCampaignId() && !$customer->getCampaign()) {
+                throw new ErrorException('Customer id or Campaign id/identifier required!');
             }
 
             $customers[$key] = $customer->toArray();

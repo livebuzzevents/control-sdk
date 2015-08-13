@@ -52,8 +52,8 @@ class BadgeService extends Service
      */
     public function save(Badge $badge)
     {
-        if (!$badge->getId() && !$badge->getCampaignId()) {
-            throw new ErrorException('Badge id or Campaign id required!');
+        if (!$badge->getId() && !$badge->getCampaignId() && !$badge->getCampaign()) {
+            throw new ErrorException('Badge id or Campaign id/identifier required!');
         }
 
         if ($badge->getId()) {
@@ -92,8 +92,8 @@ class BadgeService extends Service
     public function saveMany(array $badges)
     {
         foreach ($badges as $key => $badge) {
-            if (!$badge->getId() && !$badge->getCampaignId()) {
-                throw new ErrorException('Badge id or Campaign id required!');
+            if (!$badge->getId() && !$badge->getCampaignId() && !$badge->getCampaign()) {
+                throw new ErrorException('Badge id or Campaign id/identifier required!');
             }
 
             $badges[$key] = $badge->toArray();
