@@ -1,14 +1,9 @@
 <?php namespace Buzz\Control;
 
-    /**
-     * Class Credentials
-     *
-     * Holds the api credentials for the SDK REST calls
-     *
-     * @package Buzz\Control
-     */
 /**
  * Class Credentials
+ *
+ * Holds the api credentials for the SDK REST calls
  *
  * @package Buzz\Control
  */
@@ -25,20 +20,20 @@ class Credentials
     /**
      * @var
      */
-    protected $organization_id;
+    protected $organization;
 
     /**
      * Instantiates and fills Rest SDK credentials
      *
-     * @param $api_key
-     * @param $organization_id
-     * @param $endpoint
+     * @param string $api_key
+     * @param string $organization
+     * @param string $endpoint
      */
-    public function __construct($api_key, $organization_id, $endpoint)
+    public function __construct($api_key, $organization, $endpoint)
     {
-        $this->api_key         = $api_key;
-        $this->organization_id = $organization_id;
-        $this->endpoint        = $endpoint;
+        $this->api_key      = $api_key;
+        $this->organization = $organization;
+        $this->endpoint     = $endpoint;
     }
 
     /**
@@ -51,9 +46,9 @@ class Credentials
         return $this->api_key;
     }
 
-    public function getOrganizationId()
+    public function getOrganization()
     {
-        return $this->organization_id;
+        return $this->organization;
     }
 
     /**

@@ -84,7 +84,7 @@ class GuzzleClient implements Client
      */
     private function getEndpoing($method)
     {
-        return $this->credentials->getEndpoint() . $this->credentials->getOrganizationId() . '/' . $method;
+        return $this->credentials->getEndpoint() . $this->credentials->getOrganization() . '/' . $method;
     }
 
     /**
