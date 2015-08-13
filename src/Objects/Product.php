@@ -2,6 +2,7 @@
 
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasBadgeType;
+use Buzz\Control\Objects\Traits\HasIdentifier;
 
 /**
  * Class Product
@@ -10,7 +11,7 @@ use Buzz\Control\Objects\Traits\HasBadgeType;
  */
 class Product extends Object
 {
-    use BelongsToCampaign, HasBadgeType;
+    use BelongsToCampaign, HasBadgeType, HasIdentifier;
 
     /**
      * @var string
