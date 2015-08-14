@@ -5,6 +5,7 @@ use Buzz\Control\Contracts\Client;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Filter;
 use Buzz\Control\GuzzleClient;
+use Buzz\Control\Paging;
 
 /**
  * Class Service
@@ -26,18 +27,42 @@ abstract class Service
      * @var int
      */
     protected $page = 1;
+
     /**
      * @var int
      */
     protected $per_page = 15;
+
     /**
      * @var string
      */
     protected $order = 'id';
+
     /**
      * @var string
      */
     protected $direction = 'asc';
+
+    /**
+     * @var int
+     */
+    protected $total;
+
+    /**
+     * @var int
+     */
+    protected $last_page;
+
+    /**
+     * @var int
+     */
+    protected $from;
+
+    /**
+     * @var int
+     */
+    protected $to;
+
     /**
      * @var Filter
      */
@@ -201,9 +226,15 @@ abstract class Service
         $result = [];
 
         if (isset($response['total']) && isset($response['data'])) { //for paging
-            $response['data'] = $this->castMany($response['data']);
+            $paging = new Paging();
 
-            return $response;
+            $paging->setTotal($response['total']);
+            $paging->setLastPage($response['last_page']);
+            $paging->setFrom($response['from']);
+            $paging->setTo($response['to']);
+            $paging->setItems($this->castMany($response['data']));
+
+            return $paging;
         }
 
         foreach ($response as $key => $value) {

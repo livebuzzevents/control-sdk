@@ -10,7 +10,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
 class Campaign extends Object
 {
     use HasIdentifier;
-    
+
     /**
      * @var string
      */
