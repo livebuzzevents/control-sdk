@@ -22,7 +22,22 @@ abstract class Service
      * @var string
      */
     protected $keyBy = null;
-
+    /**
+     * @var int
+     */
+    protected $page = 1;
+    /**
+     * @var int
+     */
+    protected $per_page = 15;
+    /**
+     * @var string
+     */
+    protected $order = 'id';
+    /**
+     * @var string
+     */
+    protected $direction = 'asc';
     /**
      * @var Filter
      */
@@ -34,6 +49,54 @@ abstract class Service
     public final function __construct(Client $client = null)
     {
         $this->client = $client ?: new GuzzleClient(Buzz::getCredentials());
+    }
+
+    /**
+     * @param int $page
+     *
+     * @return $this
+     */
+    public function page($page)
+    {
+        $this->page = $page;
+
+        return $this;
+    }
+
+    /**
+     * @param int $per_page
+     *
+     * @return $this
+     */
+    public function perPage($per_page)
+    {
+        $this->per_page = $per_page;
+
+        return $this;
+    }
+
+    /**
+     * @param string $order
+     *
+     * @return $this
+     */
+    public function order($order)
+    {
+        $this->order = $order;
+
+        return $this;
+    }
+
+    /**
+     * @param string $direction
+     *
+     * @return $this
+     */
+    public function direction($direction)
+    {
+        $this->direction = $direction;
+
+        return $this;
     }
 
     /**
@@ -109,6 +172,11 @@ abstract class Service
             $request['filters'] = $this->filter->getFilters();
         }
 
+        $request['page']      = $this->page;
+        $request['per_page']  = $this->per_page;
+        $request['order']     = $this->order;
+        $request['direction'] = $this->direction;
+
         return $this->client->request($verb, $method, $request);
     }
 
@@ -131,6 +199,12 @@ abstract class Service
     protected final function castMany($response)
     {
         $result = [];
+
+        if (isset($response['total']) && isset($response['data'])) { //for paging
+            $response['data'] = $this->castMany($response['data']);
+
+            return $response;
+        }
 
         foreach ($response as $key => $value) {
             if (!$this->keyBy) {

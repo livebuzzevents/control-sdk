@@ -2,8 +2,8 @@
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
-$api_key      = '55364c96907e6';
-$endpoint     = 'http://www.control.dev/rest/';
+$api_key      = '55bb6fa8e9eb7';
+$endpoint     = 'http://www.control.dev/rest/v1/';
 $organization = 'bigbang';
 
 \Buzz\Control\Buzz::setCredentials(

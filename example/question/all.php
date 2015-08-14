@@ -2,10 +2,8 @@
 
 require_once '../bootstrap.php';
 
-$filter = new \Buzz\Control\Filter();
-$filter->add('id', 'in', [1, 2]);
+$service = new \Buzz\Control\Services\QuestionService();
 
-$service  = new \Buzz\Control\Services\Question\All($filter);
-$response = $serviceHandler->execute($service);
+$questions = $service->perPage(3)->page(2)->where('active', 'is', 'yes')->getMany();
 
-var_dump($response);
+var_dump($questions);
