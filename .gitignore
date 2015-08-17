@@ -3,3 +3,4 @@
 /.vagrant
 .env
 .composer.lock
+.DS_Store
