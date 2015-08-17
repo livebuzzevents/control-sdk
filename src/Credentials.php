@@ -46,6 +46,11 @@ class Credentials
         return $this->api_key;
     }
 
+    public function getApiProxy()
+    {
+        return $this->api_proxy;
+    }
+
     public function getOrganization()
     {
         return $this->organization;
