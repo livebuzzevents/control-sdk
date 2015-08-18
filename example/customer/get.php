@@ -8,6 +8,4 @@ $service = new \Buzz\Control\Services\CustomerService();
 
 $customer = $service->get($customer);
 
-exit($customer->toArray());
-
-var_dump($customer->firstWhere('phones', ['type' => 'mobile']));
+var_dump($customer->getPhones()->first('type', 'mobile'));
