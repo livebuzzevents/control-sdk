@@ -2,17 +2,12 @@
 
 namespace Buzz\Control;
 
-use ArrayAccess;
-use ArrayIterator;
-use Countable;
-use IteratorAggregate;
-
 /**
  * Class Paging
  *
  * @package Buzz\Control
  */
-class Paging implements ArrayAccess, Countable, IteratorAggregate
+class Paging extends Collection
 {
     /**
      * @var int
@@ -43,15 +38,6 @@ class Paging implements ArrayAccess, Countable, IteratorAggregate
      * @var int
      */
     protected $last_page;
-    /**
-     * @var array
-     */
-    protected $items = [];
-
-    public function __construct(array $items = [])
-    {
-        $this->items = [];
-    }
 
     /**
      * @return int
@@ -147,78 +133,5 @@ class Paging implements ArrayAccess, Countable, IteratorAggregate
     public function setLastPage($last_page)
     {
         $this->last_page = $last_page;
-    }
-
-    /**
-     * @return array
-     */
-    public function getItems()
-    {
-        return $this->items;
-    }
-
-    /**
-     * @param array $items
-     */
-    public function setItems($items)
-    {
-        $this->items = $items;
-    }
-
-    /**
-     * @return ArrayIterator
-     */
-    public function getIterator()
-    {
-        return new ArrayIterator($this->items);
-    }
-
-    /**
-     * @param mixed $offset
-     * @param mixed $value
-     */
-    public function offsetSet($offset, $value)
-    {
-        if (is_null($offset)) {
-            $this->items[] = $value;
-        } else {
-            $this->items[$offset] = $value;
-        }
-    }
-
-    /**
-     * @param mixed $offset
-     *
-     * @return bool
-     */
-    public function offsetExists($offset)
-    {
-        return isset($this->items[$offset]);
-    }
-
-    /**
-     * @param mixed $offset
-     */
-    public function offsetUnset($offset)
-    {
-        unset($this->items[$offset]);
-    }
-
-    /**
-     * @param mixed $offset
-     *
-     * @return null
-     */
-    public function offsetGet($offset)
-    {
-        return isset($this->items[$offset]) ? $this->items[$offset] : null;
-    }
-
-    /**
-     * @return int
-     */
-    public function count()
-    {
-        return count($this->items);
     }
 }
