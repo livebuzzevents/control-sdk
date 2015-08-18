@@ -1,5 +1,6 @@
 <?php namespace Buzz\Control\Objects;
 
+use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
@@ -190,11 +191,11 @@ class Customer extends Object
     }
 
     /**
-     * @param Customer\Social[] $socials
+     * @param Customer\Social[]|Collection $socials
      */
     public function setSocials($socials)
     {
-        $this->socials = $socials;
+        $this->socials = new Collection($socials);
     }
 
     /**
@@ -214,11 +215,11 @@ class Customer extends Object
     }
 
     /**
-     * @param Customer\Property[] $properties
+     * @param Customer\Property[]|Collection $properties
      */
     public function setProperties($properties)
     {
-        $this->properties = $properties;
+        $this->properties = new Collection($properties);
     }
 
     /**
@@ -398,11 +399,11 @@ class Customer extends Object
     }
 
     /**
-     * @param Customer\Address[] $addresses
+     * @param Customer\Address[]|Collection $addresses
      */
     public function setAddresses($addresses)
     {
-        $this->addresses = $addresses;
+        $this->addresses = new Collection($addresses);
     }
 
     /**
@@ -422,11 +423,11 @@ class Customer extends Object
     }
 
     /**
-     * @param Customer\Job[] $jobs
+     * @param Customer\Job[]|Collection $jobs
      */
     public function setJobs($jobs)
     {
-        $this->jobs = $jobs;
+        $this->jobs = new Collection($jobs);
     }
 
     /**
@@ -446,11 +447,11 @@ class Customer extends Object
     }
 
     /**
-     * @param Customer\Phone[] $phones
+     * @param Customer\Phone[]|Collection $phones
      */
     public function setPhones($phones)
     {
-        $this->phones = $phones;
+        $this->phones = new Collection($phones);
     }
 
     /**
@@ -470,19 +471,19 @@ class Customer extends Object
     }
 
     /**
-     * @param Badge[] $badges
+     * @param Badge[]|Collection $badges
      */
-    public function setBadges(array $badges = [])
+    public function setBadges($badges)
     {
-        $this->badges = $badges;
+        $this->badges = new Collection($badges);
     }
 
     /**
-     * @param Customer\Answer[] $answers
+     * @param Customer\Answer[]|Collection $answers
      */
     public function setAnswers($answers)
     {
-        $this->answers = $answers;
+        $this->answers = new Collection($answers);
     }
 
     /**
@@ -502,10 +503,10 @@ class Customer extends Object
     }
 
     /**
-     * @param Badge[] $badges
+     * @param Badge[]|Collection $badges
      */
     public function setCreatedBadges($badges)
     {
-        $this->created_badges = $badges;
+        $this->created_badges = new Collection($badges);
     }
 }

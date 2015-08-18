@@ -1,5 +1,6 @@
 <?php namespace Buzz\Control\Objects\Customer;
 
+use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer\Answer\Option;
 use Buzz\Control\Objects\Object;
@@ -52,11 +53,11 @@ class Answer extends Object
     }
 
     /**
-     * @param \Buzz\Control\Objects\Customer\Answer\Option[] $options
+     * @param \Buzz\Control\Objects\Customer\Answer\Option[]|Collection $options
      */
-    public function setOptions(array $options)
+    public function setOptions($options)
     {
-        $this->options = $options;
+        $this->options = new Collection($options);
     }
 
     /**

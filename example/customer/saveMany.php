@@ -42,8 +42,6 @@ for ($i = 0; $i < 50; $i++) {
     $customers[] = $customer;
 }
 
-dd($customers);
-
 $service  = new \Buzz\Control\Services\Customer\SaveMany($customers);
 $response = $serviceHandler->execute($service);
 

@@ -1,5 +1,6 @@
 <?php namespace Buzz\Control\Objects;
 
+use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
@@ -110,11 +111,11 @@ class Exhibitor extends Object
     }
 
     /**
-     * @param Exhibitor\Address[] $addresses
+     * @param Exhibitor\Address[]|Collection $addresses
      */
     public function setAddresses($addresses)
     {
-        $this->addresses = $addresses;
+        $this->addresses = new Collection($addresses);
     }
 
     /**
@@ -136,11 +137,11 @@ class Exhibitor extends Object
     }
 
     /**
-     * @param Exhibitor\Phone[] $phones
+     * @param Exhibitor\Phone[]|Collection $phones
      */
     public function setPhones($phones)
     {
-        $this->phones = $phones;
+        $this->phones = new Collection($phones);
     }
 
     /**
@@ -172,11 +173,11 @@ class Exhibitor extends Object
     }
 
     /**
-     * @param Exhibitor\Property[] $properties
+     * @param Exhibitor\Property[]|Collection $properties
      */
     public function setProperties($properties)
     {
-        $this->properties = $properties;
+        $this->properties = new Collection($properties);
     }
 
     /**
@@ -198,11 +199,11 @@ class Exhibitor extends Object
     }
 
     /**
-     * @param Exhibitor\Social[] $socials
+     * @param Exhibitor\Social[]|Collection $socials
      */
     public function setSocials($socials)
     {
-        $this->socials = $socials;
+        $this->socials = new Collection($socials);
     }
 
     /**
@@ -250,11 +251,11 @@ class Exhibitor extends Object
     }
 
     /**
-     * @param Exhibitor[] $exhibitors
+     * @param Exhibitor[]|Collection $exhibitors
      */
     public function setExhibitors($exhibitors)
     {
-        $this->exhibitors = $exhibitors;
+        $this->exhibitors = new Collection($exhibitors);
     }
 
     /**
@@ -362,11 +363,11 @@ class Exhibitor extends Object
     }
 
     /**
-     * @param Customer[] $customers
+     * @param Customer[]|Collection $customers
      */
     public function setCustomers($customers)
     {
-        $this->customers = $customers;
+        $this->customers = new Collection($customers);
     }
 
     /**
@@ -394,19 +395,19 @@ class Exhibitor extends Object
     }
 
     /**
-     * @param Badge[] $badges
+     * @param Badge[]|Collection $badges
      */
-    public function setBadges(array $badges = [])
+    public function setBadges($badges)
     {
-        $this->badges = $badges;
+        $this->badges = new Collection($badges);
     }
 
     /**
-     * @param Exhibitor\Answer[] $answers
+     * @param Exhibitor\Answer[]|Collection $answers
      */
     public function setAnswers($answers)
     {
-        $this->answers = $answers;
+        $this->answers = new Collection($answers);
     }
 
     /**
@@ -426,10 +427,10 @@ class Exhibitor extends Object
     }
 
     /**
-     * @param Badge[] $badges
+     * @param Badge[]|Collection $badges
      */
-    public function setCreatedBadges(array $badges = [])
+    public function setCreatedBadges($badges)
     {
-        $this->created_badges = $badges;
+        $this->created_badges = new Collection($badges);
     }
 }

@@ -1,5 +1,6 @@
 <?php namespace Buzz\Control\Objects;
 
+use Buzz\Control\Collection;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\BelongsToCustomer;
 use Buzz\Control\Objects\Traits\BelongsToExhibitor;
@@ -90,11 +91,11 @@ class Badge extends Object
     }
 
     /**
-     * @param Badge\Answer[] $answers
+     * @param Badge\Answer[]|Collection $answers
      */
     public function setAnswers($answers)
     {
-        $this->answers = $answers;
+        $this->answers = new Collection($answers);
     }
 
     /**
@@ -106,11 +107,11 @@ class Badge extends Object
     }
 
     /**
-     * @param Scan[] $scans
+     * @param Scan[]|Collection $scans
      */
     public function setScans($scans)
     {
-        $this->scans = $scans;
+        $this->scans = new Collection($scans);
     }
 
     /**
@@ -146,11 +147,11 @@ class Badge extends Object
     }
 
     /**
-     * @param Badge\Property[] $properties
+     * @param Badge\Property[]|Collection $properties
      */
     public function setProperties($properties)
     {
-        $this->properties = $properties;
+        $this->properties = new Collection($properties);
     }
 
     /**

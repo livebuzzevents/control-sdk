@@ -23,9 +23,19 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, Arrayable
     /**
      * @param array $items
      */
-    public function __construct(array $items = [])
+    public function __construct($items = null)
     {
-        $this->items = $items;
+        if (!isset($items)) {
+            return;
+        }
+
+        if (is_array($items)) {
+            $this->items = $items;
+        } elseif ($items instanceof Arrayable) {
+            $this->items = $items->toArray();
+        } elseif (is_scalar($items)) {
+            $this->items = [$items];
+        }
     }
 
     /**

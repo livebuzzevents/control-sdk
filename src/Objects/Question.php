@@ -1,5 +1,6 @@
 <?php namespace Buzz\Control\Objects;
 
+use Buzz\Control\Collection;
 use Buzz\Control\Objects\Traits\HasIdentifier;
 
 /**
@@ -113,10 +114,10 @@ class Question extends Object
     }
 
     /**
-     * @param Question\Option[] $options
+     * @param Question\Option[]|Collection $options
      */
-    public function setOptions(array $options)
+    public function setOptions($options)
     {
-        $this->options = $options;
+        $this->options = new Collection($options);
     }
 }
