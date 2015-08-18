@@ -1,0 +1,269 @@
+<?php
+
+namespace Buzz\Control;
+
+use ArrayAccess;
+use ArrayIterator;
+use Countable;
+use IteratorAggregate;
+use JsonSerializable;
+
+/**
+ * Class Collection
+ *
+ * @package Buzz\Control
+ */
+class Collection implements ArrayAccess, Countable, IteratorAggregate, Arrayable, JsonSerializable
+{
+    /**
+     * @var array
+     */
+    protected $items = [];
+
+    /**
+     * @param array $items
+     */
+    public function __construct(array $items = [])
+    {
+        $this->items = $items;
+    }
+
+    /**
+     * @return array
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param array $items
+     */
+    public function setItems($items)
+    {
+        $this->items = $items;
+    }
+
+    /**
+     * @return ArrayIterator
+     */
+    public function getIterator()
+    {
+        return new ArrayIterator($this->items);
+    }
+
+    /**
+     * @param mixed $offset
+     * @param mixed $value
+     */
+    public function offsetSet($offset, $value)
+    {
+        if (is_null($offset)) {
+            $this->items[] = $value;
+        } else {
+            $this->items[$offset] = $value;
+        }
+    }
+
+    /**
+     * @param mixed $offset
+     *
+     * @return bool
+     */
+    public function offsetExists($offset)
+    {
+        return isset($this->items[$offset]);
+    }
+
+    /**
+     * @param mixed $offset
+     */
+    public function offsetUnset($offset)
+    {
+        unset($this->items[$offset]);
+    }
+
+    /**
+     * @param mixed $offset
+     *
+     * @return null
+     */
+    public function offsetGet($offset)
+    {
+        return isset($this->items[$offset]) ? $this->items[$offset] : null;
+    }
+
+    /**
+     * @return int
+     */
+    public function count()
+    {
+        return count($this->items);
+    }
+
+    /**
+     * @param $keyBy
+     *
+     * @return static
+     */
+    public function keyBy($keyBy)
+    {
+        $results = [];
+
+        foreach ($this->items as $item) {
+            $results[$item->$keyBy] = $item;
+        }
+
+        return new static($results);
+    }
+
+    /**
+     * Convert the collection to its string representation.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->toJson();
+    }
+
+    /**
+     * Get the collection of items as JSON.
+     *
+     * @param  int $options
+     *
+     * @return string
+     */
+    public function toJson($options = 0)
+    {
+        return json_encode($this->toArray(), $options);
+    }
+
+    /**
+     * Get the collection of items as a plain array.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return array_map(function ($value) {
+            return $value instanceof Arrayable ? $value->toArray() : $value;
+        }, $this->items);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEmpty()
+    {
+        return empty($this->items);
+    }
+
+    /**
+     * Reverse items order.
+     *
+     * @return static
+     */
+    public function reverse()
+    {
+        return new static(array_reverse($this->items));
+    }
+
+    /**
+     * @param      $key
+     * @param      $value
+     * @param bool $strict
+     *
+     * @return mixed
+     */
+    public function firstWhere($key, $value, $strict = true)
+    {
+        return $this->where($key, $value, $strict)->first();
+    }
+
+    /**
+     * Get the first item from the collection.
+     *
+     * @param  callable|null $callback
+     *
+     * @return mixed
+     */
+    public function first(callable $callback = null)
+    {
+        if (!$callback) {
+            return count($this->items) > 0 ? reset($this->items) : null;
+        }
+
+        return $this->filter($callback)->first();
+    }
+
+    /**
+     * @param callable $filter
+     *
+     * @return static
+     */
+    public function filter(callable $filter = null)
+    {
+        if ($filter) {
+            return new static(array_filter($this->items, $filter));
+        }
+
+        return new static(array_filter($this->items));
+    }
+
+    /**
+     * @param      $key
+     * @param      $value
+     * @param bool $strict
+     *
+     * @return Collection
+     */
+    public function where($key, $value, $strict = true)
+    {
+        return $this->filter(function ($item) use ($key, $value, $strict) {
+            return $strict ? $item->$key === $value : $item->$key == $value;
+        });
+    }
+
+    /**
+     * Execute a callback over each item.
+     *
+     * @param  callable $callback
+     *
+     * @return $this
+     */
+    public function each(callable $callback)
+    {
+        foreach ($this->items as $key => $item) {
+            if ($callback($item, $key) === false) {
+                break;
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    function jsonSerialize()
+    {
+        return $this->toArray();
+    }
+
+    /**
+     * Sort through each item with a callback.
+     *
+     * @param  callable|null $callback
+     *
+     * @return static
+     */
+    public function sort(callable $callback = null)
+    {
+        $items = $this->items;
+
+        $callback ? uasort($items, $callback) : natcasesort($items);
+
+        return new static($items);
+    }
+}

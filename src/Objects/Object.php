@@ -1,7 +1,12 @@
-<?php namespace Buzz\Control\Objects;
+<?php
 
+namespace Buzz\Control\Objects;
+
+use Buzz\Control\Arrayable;
+use Buzz\Control\Collection;
 use DateTime;
 use Doctrine\Common\Inflector\Inflector;
+use JsonSerializable;
 use ReflectionClass;
 use ReflectionProperty;
 
@@ -11,7 +16,7 @@ use ReflectionProperty;
  *
  * @package Buzz\Control\Objects
  */
-abstract class Object
+abstract class Object implements Arrayable, JsonSerializable
 {
     /**
      * @var int
@@ -93,7 +98,7 @@ abstract class Object
 
             if (strpos($type, '[]') !== false) { //array
                 $type        = trim($type, '[]');
-                $this->$name = [];
+                $this->$name = new Collection();
                 foreach ($array[$name] as $key => $single) {
                     $this->{$name}[$key] = self::castSingleProperty($type, $single);
                 }
@@ -250,53 +255,6 @@ abstract class Object
     }
 
     /**
-     * @param bool $skip_null
-     *
-     * @return array
-     */
-    public function toArray($skip_null = true)
-    {
-        $reflect   = new ReflectionClass($this);
-        $protected = $reflect->getProperties(ReflectionProperty::IS_PROTECTED);
-
-        $array = [];
-
-        foreach ($protected as $property) {
-            $name = $property->getName();
-
-            $value = $this->$name;
-
-            if ($skip_null && $value === null) {
-                continue;
-            }
-
-            if (empty($value)) { //handle [] and ''
-                $array[$name] = $value;
-            }
-
-            if (is_array($value)) {
-                foreach ($value as $key => $single) {
-                    if ($single instanceof Object) {
-                        $array[$name][$key] = $single->toArray();
-                    } else {
-                        $array[$name][$key] = $single;
-                    }
-                }
-            } else {
-                if ($value instanceof Object) {
-                    $array[$name] = $value->toArray();
-                } elseif ($value instanceof DateTime) {
-                    $array[$name] = $value->format(DateTime::ISO8601);
-                } else {
-                    $array[$name] = $value;
-                }
-            }
-        }
-
-        return $array;
-    }
-
-    /**
      * Gets first element from array
      *
      * @param $field
@@ -359,5 +317,60 @@ abstract class Object
         }
 
         return $match;
+    }
+
+    /**
+     * @return string
+     */
+    function jsonSerialize()
+    {
+        return $this->toArray();
+    }
+
+    /**
+     * @param bool $skip_null
+     *
+     * @return array
+     */
+    public function toArray($skip_null = true)
+    {
+        $reflect   = new ReflectionClass($this);
+        $protected = $reflect->getProperties(ReflectionProperty::IS_PROTECTED);
+
+        $array = [];
+
+        foreach ($protected as $property) {
+            $name = $property->getName();
+
+            $value = $this->$name;
+
+            if ($skip_null && $value === null) {
+                continue;
+            }
+
+            if (empty($value)) { //handle [] and ''
+                $array[$name] = $value;
+            }
+
+            if (is_array($value)) {
+                foreach ($value as $key => $single) {
+                    if ($value instanceof Arrayable) {
+                        $array[$name][$key] = $single->toArray();
+                    } else {
+                        $array[$name][$key] = $single;
+                    }
+                }
+            } else {
+                if ($value instanceof Arrayable) {
+                    $array[$name] = $value->toArray();
+                } elseif ($value instanceof DateTime) {
+                    $array[$name] = $value->format(DateTime::ISO8601);
+                } else {
+                    $array[$name] = $value;
+                }
+            }
+        }
+
+        return $array;
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace Buzz\Control\Services;
+<?php
+
+namespace Buzz\Control\Services;
 
 use Buzz\Control\Buzz;
 use Buzz\Control\Contracts\Client;
