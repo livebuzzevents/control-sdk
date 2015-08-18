@@ -118,7 +118,7 @@ class Badge extends Object
      */
     public function addScan(Scan $scan)
     {
-        $this->scans[] = $scan;
+        $this->add($this->scans, $scan);
     }
 
     /**
@@ -158,7 +158,7 @@ class Badge extends Object
      */
     public function addProperty(Badge\Property $property)
     {
-        $this->properties[] = $property;
+        $this->add($this->properties, $property);
     }
 
     /**
@@ -166,6 +166,6 @@ class Badge extends Object
      */
     public function addAnswer(Badge\Answer $answer)
     {
-        $this->answers[] = $answer;
+        $this->add($this->answers, $answer);
     }
 }

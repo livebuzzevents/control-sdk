@@ -124,7 +124,7 @@ class Exhibitor extends Object
      */
     public function addAddress(Exhibitor\Address $address)
     {
-        $this->addresses[] = $address;
+        $this->add($this->addresses, $address);
     }
 
     /**
@@ -150,7 +150,7 @@ class Exhibitor extends Object
      */
     public function addPhone(Exhibitor\Phone $phone)
     {
-        $this->phones[] = $phone;
+        $this->add($this->phones, $phone);
     }
 
     /**
@@ -160,7 +160,7 @@ class Exhibitor extends Object
      */
     public function addAnswer(Exhibitor\Answer $answer)
     {
-        $this->answers[] = $answer;
+        $this->add($this->answers, $answer);
     }
 
     /**
@@ -186,7 +186,7 @@ class Exhibitor extends Object
      */
     public function addProperty(Exhibitor\Property $property)
     {
-        $this->properties[] = $property;
+        $this->add($this->properties, $property);
     }
 
     /**
@@ -212,7 +212,7 @@ class Exhibitor extends Object
      */
     public function addSocial(Exhibitor\Social $social)
     {
-        $this->socials[] = $social;
+        $this->add($this->socials, $social);
     }
 
     /**
@@ -370,11 +370,11 @@ class Exhibitor extends Object
     }
 
     /**
-     * @param Customer|Exhibitor\Customer $customers
+     * @param Customer|Exhibitor\Customer $customer
      */
-    public function addCustomer(Exhibitor\Customer $customers)
+    public function addCustomer(Exhibitor\Customer $customer)
     {
-        $this->customers[] = $customers;
+        $this->add($this->customers, $customer);
     }
 
     /**
@@ -382,7 +382,7 @@ class Exhibitor extends Object
      */
     public function addBadge(Badge $badge)
     {
-        $this->badges[] = $badge;
+        $this->add($this->badges, $badge);
     }
 
     /**
@@ -414,7 +414,7 @@ class Exhibitor extends Object
      */
     public function addCreatedBadge(Badge $badge)
     {
-        $this->created_badges[] = $badge;
+        $this->add($this->created_badges, $badge);
     }
 
     /**

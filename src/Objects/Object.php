@@ -307,4 +307,13 @@ abstract class Object implements Arrayable, JsonSerializable
 
         return $array;
     }
+
+    protected function add(&$property, $value)
+    {
+        if (!$property) {
+            $property = new Collection();
+        }
+
+        $property[] = $value;
+    }
 }

@@ -178,7 +178,7 @@ class Customer extends Object
      */
     public function addAnswer(Customer\Answer $answer)
     {
-        $this->answers[] = $answer;
+        $this->add($this->answers, $answer);
     }
 
     /**
@@ -202,7 +202,7 @@ class Customer extends Object
      */
     public function addSocial(Customer\Social $social)
     {
-        $this->socials[] = $social;
+        $this->add($this->socials, $social);
     }
 
     /**
@@ -226,7 +226,7 @@ class Customer extends Object
      */
     public function addProperty(Customer\Property $property)
     {
-        $this->properties[] = $property;
+        $this->add($this->properties, $property);
     }
 
     /**
@@ -386,7 +386,7 @@ class Customer extends Object
      */
     public function addAddress(Customer\Address $address)
     {
-        $this->addresses[] = $address;
+        $this->add($this->addresses, $address);
     }
 
     /**
@@ -410,7 +410,7 @@ class Customer extends Object
      */
     public function addJob(Customer\Job $job)
     {
-        $this->jobs[] = $job;
+        $this->add($this->jobs, $job);
     }
 
     /**
@@ -434,7 +434,7 @@ class Customer extends Object
      */
     public function addPhone(Customer\Phone $phone)
     {
-        $this->phones[] = $phone;
+        $this->add($this->phones, $phone);
     }
 
     /**
@@ -458,7 +458,7 @@ class Customer extends Object
      */
     public function addBadge(Badge $badge)
     {
-        $this->badges[] = $badge;
+        $this->add($this->badges, $badge);
     }
 
     /**
@@ -490,7 +490,7 @@ class Customer extends Object
      */
     public function addCreatedBadge(Badge $badge)
     {
-        $this->created_badges[] = $badge;
+        $this->add($this->created_badges, $badge);
     }
 
     /**

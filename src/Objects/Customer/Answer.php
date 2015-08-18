@@ -66,6 +66,6 @@ class Answer extends Object
      */
     public function addOption(Option $option)
     {
-        $this->options[] = $option;
+        $this->add($this->options, $option);
     }
 }
