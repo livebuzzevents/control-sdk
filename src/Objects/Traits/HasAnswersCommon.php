@@ -1,5 +1,6 @@
 <?php namespace Buzz\Control\Objects\Traits;
 
+use Buzz\Control\Collection;
 use Buzz\Control\Objects\Question;
 
 trait HasAnswersCommon
@@ -55,7 +56,7 @@ trait HasAnswersCommon
             $answers[$answer->getQuestion()->getIdentifier()] = $answer;
         }
 
-        return $answers;
+        return new Collection($answers);
     }
 
     public function getAnswersByIdentifiers(array $identifiers)
@@ -74,7 +75,7 @@ trait HasAnswersCommon
             }
         }
 
-        return $match;
+        return $match ?: new Collection($match);
     }
 
     /**
