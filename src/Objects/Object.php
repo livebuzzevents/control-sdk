@@ -288,7 +288,7 @@ abstract class Object implements Arrayable, JsonSerializable
 
             if (is_array($value)) {
                 foreach ($value as $key => $single) {
-                    if ($value instanceof Arrayable) {
+                    if ($single instanceof Arrayable) {
                         $array[$name][$key] = $single->toArray();
                     } else {
                         $array[$name][$key] = $single;
