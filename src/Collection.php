@@ -170,45 +170,25 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, Arrayable
     }
 
     /**
-     * @param      $key
-     * @param      $value
-     * @param bool $strict
-     *
-     * @return mixed
-     */
-    public function firstWhere($key, $value, $strict = true)
-    {
-        return $this->where($key, $value, $strict)->first();
-    }
-
-    /**
      * Get the first item from the collection.
      *
-     * @param  callable|null $callback
+     * @param  callable|string|null $callback
+     * @param null                  $value
+     * @param bool                  $strict
      *
      * @return mixed
      */
-    public function first(callable $callback = null)
+    public function first($callback = null, $value = null, $strict = true)
     {
         if (!$callback) {
             return count($this->items) > 0 ? reset($this->items) : null;
         }
 
-        return $this->filter($callback)->first();
-    }
-
-    /**
-     * @param callable $filter
-     *
-     * @return static
-     */
-    public function filter(callable $filter = null)
-    {
-        if ($filter) {
-            return new static(array_filter($this->items, $filter));
+        if (!is_callable($callback)) {
+            return $this->where($callback, $value, $strict)->first();
         }
 
-        return new static(array_filter($this->items));
+        return $this->filter($callback)->first();
     }
 
     /**
@@ -223,6 +203,20 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, Arrayable
         return $this->filter(function ($item) use ($key, $value, $strict) {
             return $strict ? $item->$key === $value : $item->$key == $value;
         });
+    }
+
+    /**
+     * @param callable $filter
+     *
+     * @return static
+     */
+    public function filter(callable $filter = null)
+    {
+        if ($filter) {
+            return new static(array_filter($this->items, $filter));
+        }
+
+        return new static(array_filter($this->items));
     }
 
     /**

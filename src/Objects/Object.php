@@ -5,7 +5,6 @@ namespace Buzz\Control\Objects;
 use Buzz\Control\Arrayable;
 use Buzz\Control\Collection;
 use DateTime;
-use Doctrine\Common\Inflector\Inflector;
 use JsonSerializable;
 use ReflectionClass;
 use ReflectionProperty;
@@ -252,71 +251,6 @@ abstract class Object implements Arrayable, JsonSerializable
     public function setId($id)
     {
         $this->id = $id;
-    }
-
-    /**
-     * Gets first element from array
-     *
-     * @param $field
-     *
-     * @return null
-     */
-    public function first($field)
-    {
-        $field = Inflector::pluralize($field);
-
-        return !empty($this->{$field}[0]) ? $this->{$field}[0] : null;
-    }
-
-    /**
-     * Gets first element matching specific where clause
-     *
-     * @param ...$parameters
-     *
-     * @return null
-     */
-    public function firstWhere(...$parameters)
-    {
-        $all = $this->allWhere(...$parameters);
-
-        return !empty($all[0]) ? $all[0] : null;
-    }
-
-    /**
-     * Gets all elements matching specific where clause
-     *
-     * @param                $field
-     * @param array|callback $where
-     *
-     * @return array|null
-     */
-    public function allWhere($field, $where)
-    {
-        $field = Inflector::pluralize($field);
-
-        if (!$this->{$field}) {
-            return null;
-        }
-
-        $match = null;
-
-        foreach ($this->{$field} as $single) {
-            if (is_array($where)) {
-                foreach ($where as $key => $value) {
-                    if ($single->{$key} !== $value) {
-                        continue 2;
-                    }
-                }
-            } elseif (is_callable($where)) {
-                if (!call_user_func($where, $single)) {
-                    continue;
-                }
-            }
-
-            $match[] = $single;
-        }
-
-        return $match;
     }
 
     /**
