@@ -8,4 +8,6 @@ $service = new \Buzz\Control\Services\CustomerService();
 
 $customer = $service->get($customer);
 
+dd($customer->getAnswersGroupedByIdentifier());
+
 var_dump($customer->getPhones()->first('type', 'mobile'));
