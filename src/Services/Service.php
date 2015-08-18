@@ -46,26 +46,6 @@ abstract class Service
     protected $direction = 'asc';
 
     /**
-     * @var int
-     */
-    protected $total;
-
-    /**
-     * @var int
-     */
-    protected $last_page;
-
-    /**
-     * @var int
-     */
-    protected $from;
-
-    /**
-     * @var int
-     */
-    protected $to;
-
-    /**
      * @var Filter
      */
     protected $filter;

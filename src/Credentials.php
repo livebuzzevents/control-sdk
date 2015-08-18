@@ -21,6 +21,10 @@ class Credentials
      * @var
      */
     protected $organization;
+    /**
+     * @var
+     */
+    protected $api_proxy;
 
     /**
      * Instantiates and fills Rest SDK credentials
@@ -28,12 +32,14 @@ class Credentials
      * @param string $api_key
      * @param string $organization
      * @param string $endpoint
+     * @param null   $api_proxy
      */
-    public function __construct($api_key, $organization, $endpoint)
+    public function __construct($api_key, $organization, $endpoint, $api_proxy = null)
     {
         $this->api_key      = $api_key;
         $this->organization = $organization;
         $this->endpoint     = $endpoint;
+        $this->api_proxy    = $api_proxy;
     }
 
     /**
@@ -59,5 +65,10 @@ class Credentials
     public function getEndpoint()
     {
         return $this->endpoint;
+    }
+
+    public function getApiProxy()
+    {
+        return $this->api_proxy;
     }
 }
