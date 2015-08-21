@@ -2,5 +2,5 @@
 
 interface Client
 {
-    public function request($verb, $method, array $request = []);
+    public function request($verb, $url, array $request = []);
 }

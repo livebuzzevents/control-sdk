@@ -18,30 +18,24 @@ use GuzzleHttp\Exception\ServerException as GuzzleServerException;
 class GuzzleClient implements Client
 {
     /**
-     * @var Credentials
-     */
-    protected $credentials;
-    /**
      * @var Guzzle
      */
     protected $guzzle;
 
     /**
-     * @param Credentials $credentials
-     * @param Guzzle      $guzzle
+     * @param Guzzle $guzzle
      */
-    public function __construct(Credentials $credentials, Guzzle $guzzle = null)
+    public function __construct(Guzzle $guzzle = null)
     {
-        $this->credentials = $credentials;
-        $this->guzzle      = $guzzle ?: new Guzzle([
-            'proxy'  => $this->credentials->getApiProxy(),
-            'verify' => $this->credentials->getApiProxy() ? false : true
+        $this->guzzle = $guzzle ?: new Guzzle([
+//            'proxy'  => $this->credentials->getApiProxy(),
+//            'verify' => $this->credentials->getApiProxy() ? false : true
         ]);
     }
 
     /**
      * @param       $verb
-     * @param       $method
+     * @param       $url
      * @param array $request
      *
      * @return mixed
@@ -50,12 +44,12 @@ class GuzzleClient implements Client
      * @throws ServerException
      * @throws UnauthorizedException
      */
-    public function request($verb, $method, array $request = [])
+    public function request($verb, $url, array $request = [])
     {
         try {
             $response = $this->guzzle->request(
                 $verb,
-                $this->getEndpoing($method),
+                $url,
                 $this->buildRequest($verb, $request)
             );
 
@@ -81,16 +75,6 @@ class GuzzleClient implements Client
     }
 
     /**
-     * @param $method
-     *
-     * @return string
-     */
-    private function getEndpoing($method)
-    {
-        return $this->credentials->getEndpoint() . $this->credentials->getOrganization() . '/' . $method;
-    }
-
-    /**
      * Build on top of the request and sends the required data for rest authorization
      *
      * @param array $request
@@ -99,8 +83,6 @@ class GuzzleClient implements Client
      */
     protected function buildRequest($verb, array $request = [])
     {
-        $request['api_key'] = $this->credentials->getApiKey();
-
         $result = [];
 
         if (in_array($verb, ['post', 'put'])) {

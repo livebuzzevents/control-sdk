@@ -10,21 +10,63 @@ class Buzz
     /**
      * @var Credentials
      */
-    protected static $credentials;
+    protected $credentials;
+
+    /**
+     * @var Scope
+     */
+    protected $scope;
+
+    /**
+     * @var CustomerFlow
+     */
+    protected $customerFlow;
 
     /**
      * @return Credentials
      */
-    public static function getCredentials()
+    public function getCredentials()
     {
-        return self::$credentials;
+        return $this->credentials;
     }
 
     /**
      * @param Credentials $credentials
      */
-    public static function setCredentials(Credentials $credentials)
+    public function setCredentials(Credentials $credentials)
     {
-        self::$credentials = $credentials;
+        $this->credentials = $credentials;
+    }
+
+    /**
+     * @return Scope
+     */
+    public function getScope()
+    {
+        return $this->scope;
+    }
+
+    /**
+     * @param Scope $scope
+     */
+    public function setScope(Scope $scope)
+    {
+        $this->scope = $scope;
+    }
+
+    /**
+     * @return CustomerFlow
+     */
+    public function getCustomerFlow()
+    {
+        return $this->customerFlow;
+    }
+
+    /**
+     * @param CustomerFlow $customerFlow
+     */
+    public function setCustomerFlow(CustomerFlow $customerFlow)
+    {
+        $this->customerFlow = $customerFlow;
     }
 }

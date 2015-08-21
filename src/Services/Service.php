@@ -22,28 +22,26 @@ abstract class Service
     protected static $cast;
 
     /**
-     * @var string
+     * @var Buzz
      */
-    protected $keyBy = null;
-    /**
-     * @var int
-     */
-    protected $page = 1;
+    protected $buzz;
 
     /**
-     * @var int
+     * @var Client
      */
-    protected $per_page = 15;
+    protected $client;
 
     /**
-     * @var string
+     * @var array
      */
-    protected $order = 'id';
-
-    /**
-     * @var string
-     */
-    protected $direction = 'asc';
+    protected $settings = [
+        'api_key'   => false,
+        'keyBy'     => null,
+        'page'      => 1,
+        'per_page'  => 15,
+        'order'     => 'id',
+        'direction' => 'asc'
+    ];
 
     /**
      * @var Filter
@@ -51,11 +49,13 @@ abstract class Service
     protected $filter;
 
     /**
+     * @param Buzz   $buzz
      * @param Client $client
      */
-    public final function __construct(Client $client = null)
+    public final function __construct(Buzz $buzz, Client $client = null)
     {
-        $this->client = $client ?: new GuzzleClient(Buzz::getCredentials());
+        $this->buzz   = $buzz;
+        $this->client = $client ?: new GuzzleClient();
     }
 
     /**
@@ -65,7 +65,18 @@ abstract class Service
      */
     public function page($page)
     {
-        $this->page = $page;
+        return $this->setSetting('page', $page);
+    }
+
+    /**
+     * @param $key
+     * @param $value
+     *
+     * @return $this
+     */
+    public function setSetting($key, $value)
+    {
+        $this->settings[$key] = $value;
 
         return $this;
     }
@@ -77,9 +88,7 @@ abstract class Service
      */
     public function perPage($per_page)
     {
-        $this->per_page = $per_page;
-
-        return $this;
+        return $this->setSetting('per_page', $per_page);
     }
 
     /**
@@ -89,9 +98,7 @@ abstract class Service
      */
     public function order($order)
     {
-        $this->order = $order;
-
-        return $this;
+        return $this->setSetting('order', $order);
     }
 
     /**
@@ -101,9 +108,7 @@ abstract class Service
      */
     public function direction($direction)
     {
-        $this->direction = $direction;
-
-        return $this;
+        return $this->setSetting('direction', $direction);
     }
 
     /**
@@ -135,9 +140,7 @@ abstract class Service
      */
     public final function keyBy($keyBy = 'id')
     {
-        $this->keyBy = $keyBy;
-
-        return $this;
+        return $this->setSetting('keyBy', $keyBy);
     }
 
     /**
@@ -175,16 +178,41 @@ abstract class Service
      */
     protected final function call($verb, $method, array $request = [])
     {
+        $request['_settings'] = $this->settings;
+
         if ($this->filter) {
-            $request['filters'] = $this->filter->getFilters();
+            $request['_settings']['filters'] = $this->filter->getFilters();
         }
 
-        $request['page']      = $this->page;
-        $request['per_page']  = $this->per_page;
-        $request['order']     = $this->order;
-        $request['direction'] = $this->direction;
+        $request['_settings']['api_key'] = $this->buzz->getCredentials()->getApiKey();
 
-        return $this->client->request($verb, $method, $request);
+        if ($this->buzz->getScope()) {
+            $request['_settings']['scope'] = $this->buzz->getScope()->getScope();
+        }
+
+        if ($this->buzz->getCustomerFlow()) {
+            $request['_settings']['customer_flow'] = [
+                'customer_id' => $this->buzz->getCustomerFlow()->getCustomer()->id,
+                'step'        => $this->buzz->getCustomerFlow()->getStep(),
+                'origin'      => $this->buzz->getCustomerFlow()->getOrigin()
+            ];
+        }
+
+        return $this->client->request(
+            $verb,
+            $this->getUrl($method),
+            $request
+        );
+    }
+
+    /**
+     * @param string $method
+     *
+     * @return string
+     */
+    private function getUrl($method)
+    {
+        return $this->buzz->getCredentials()->getEndpoint() . $this->buzz->getCredentials()->getOrganization() . '/' . $method;
     }
 
     /**
@@ -220,20 +248,30 @@ abstract class Service
         }
 
         foreach ($response as $key => $value) {
-            if (!$this->keyBy) {
+            if (!$this->getSetting('keyBy')) {
                 $result[$key] = self::cast($value);
             } else {
                 if (!is_array($value)) {
                     throw new ErrorException('KeyBy expects each result to be an array!');
                 }
-                if (!array_key_exists($this->keyBy, $value)) {
+                if (!array_key_exists($this->getSetting('keyBy'), $value)) {
                     throw new ErrorException(sprintf('Parameter %1$s does not exist!', $this->keyBy));
                 }
 
-                $result[$value[$this->keyBy]] = self::cast($value);
+                $result[$value[$this->getSetting('keyBy')]] = self::cast($value);
             }
         }
 
         return $result;
+    }
+
+    /**
+     * @param $key
+     *
+     * @return string
+     */
+    public function getSetting($key)
+    {
+        return isset($this->settings[$key]) ? $this->settings[$key] : null;
     }
 }

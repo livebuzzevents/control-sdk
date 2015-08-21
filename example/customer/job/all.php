@@ -4,7 +4,7 @@ require_once '../../bootstrap.php';
 
 $customer = new \Buzz\Control\Objects\Customer(563);
 
-$service = new \Buzz\Control\Services\Customer\JobService();
+$service = new \Buzz\Control\Services\Customer\JobService($buzz);
 
 $jobs = $service->getMany($customer);
 

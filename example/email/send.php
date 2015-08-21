@@ -9,7 +9,7 @@ $mailer = new \Buzz\Control\Objects\Mailer();
 $mailer->setEmail($email);
 $mailer->setCustomer(new \Buzz\Control\Objects\Customer(6));
 
-$service  = new \Buzz\Control\Services\MailerService();
+$service  = new \Buzz\Control\Services\MailerService($buzz);
 $response = $service->send($mailer);
 
 var_dump($response);
