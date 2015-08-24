@@ -191,7 +191,7 @@ abstract class Service
         }
 
         if ($this->buzz->getCustomerFlow()) {
-            $request['_settings']['customer_flow'] = $this->getFlow();
+            $request['_settings']['customer_flow'] = $this->buzz->getCustomerFlow();
         }
 
         return $this->client->request(
