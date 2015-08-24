@@ -17,11 +17,6 @@ class CustomerFlow
     private $customer;
 
     /**
-     * @var int
-     */
-    private $step;
-
-    /**
      * @var string
      */
     private $origin;
@@ -36,7 +31,6 @@ class CustomerFlow
     public function __construct(Customer $customer, $step, $origin)
     {
         $this->setCustomer($customer);
-        $this->setStep($step);
         $this->setOrigin($origin);
     }
 
@@ -54,22 +48,6 @@ class CustomerFlow
     public function setCustomer($customer)
     {
         $this->customer = $customer;
-    }
-
-    /**
-     * @return int
-     */
-    public function getStep()
-    {
-        return $this->step;
-    }
-
-    /**
-     * @param int $step
-     */
-    public function setStep($step)
-    {
-        $this->step = $step;
     }
 
     /**

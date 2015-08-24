@@ -27,22 +27,6 @@ class Credentials
     protected $api_proxy;
 
     /**
-     * Instantiates and fills Rest SDK credentials
-     *
-     * @param string $api_key
-     * @param string $organization
-     * @param string $endpoint
-     * @param null   $api_proxy
-     */
-    public function __construct($api_key, $organization, $endpoint, $api_proxy = null)
-    {
-        $this->setApiKey($api_key);
-        $this->setOrganization($organization);
-        $this->setEndpoint($endpoint);
-        $this->setApiProxy($api_proxy);
-    }
-
-    /**
      * Retrieves Event API key
      *
      * @return mixed
