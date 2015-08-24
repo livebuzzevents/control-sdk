@@ -105,6 +105,10 @@ class Customer extends Object
      * @var \Buzz\Control\Objects\Flow
      */
     protected $flow;
+    /**
+     * @var \Buzz\Control\Objects\Flow[]
+     */
+    protected $flows;
 
     /**
      * @return int
@@ -459,19 +463,43 @@ class Customer extends Object
     }
 
     /**
-     * @param Badge $badge
-     */
-    public function addBadge(Badge $badge)
-    {
-        $this->add($this->badges, $badge);
-    }
-
-    /**
      * @return Customer\Flow
      */
     public function getFlow()
     {
         return $this->flow;
+    }
+
+    /**
+     * @param Customer\Flow $flow
+     */
+    public function addFlow(Customer\Flow $flow)
+    {
+        $this->add($this->flows, $flow);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFlows()
+    {
+        return $this->flows;
+    }
+
+    /**
+     * @param Customer\Flow[]|Collection $flows
+     */
+    public function setFlows($flows)
+    {
+        $this->flows = new Collection($flows);
+    }
+
+    /**
+     * @param Badge $badge
+     */
+    public function addBadge(Badge $badge)
+    {
+        $this->add($this->badges, $badge);
     }
 
     /**
