@@ -1,5 +1,6 @@
 <?php namespace Buzz\Control;
 
+use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
 
 /**
@@ -63,5 +64,21 @@ class CustomerFlow
     public function setOrigin($origin)
     {
         $this->origin = $origin;
+    }
+
+    public function getFlow()
+    {
+        if (!$this->origin) {
+            throw new ErrorException('Origin is required for flow');
+        }
+        
+        if (!$this->customer) {
+            return ['origin' => $this->origin];
+        }
+
+        return [
+            'customer_id' => $this->customer->id,
+            'origin'      => $this->origin
+        ];
     }
 }
