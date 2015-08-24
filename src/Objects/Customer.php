@@ -101,6 +101,10 @@ class Customer extends Object
      * @var \Buzz\Control\Objects\Badge[]
      */
     protected $created_badges;
+    /**
+     * @var \Buzz\Control\Objects\Flow
+     */
+    protected $flow;
 
     /**
      * @return int
@@ -460,6 +464,14 @@ class Customer extends Object
     public function addBadge(Badge $badge)
     {
         $this->add($this->badges, $badge);
+    }
+
+    /**
+     * @return Customer\Flow
+     */
+    public function getFlow()
+    {
+        return $this->flow;
     }
 
     /**
