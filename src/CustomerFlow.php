@@ -25,10 +25,9 @@ class CustomerFlow
      * Instantiates and fills Rest SDK customer flow
      *
      * @param Customer $customer
-     * @param int      $step
      * @param string   $origin
      */
-    public function __construct(Customer $customer, $step, $origin)
+    public function __construct(Customer $customer = null, $origin = null)
     {
         $this->setCustomer($customer);
         $this->setOrigin($origin);
