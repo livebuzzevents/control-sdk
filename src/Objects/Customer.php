@@ -102,11 +102,11 @@ class Customer extends Object
      */
     protected $created_badges;
     /**
-     * @var \Buzz\Control\Objects\Flow
+     * @var \Buzz\Control\Objects\Customer\Flow
      */
     protected $flow;
     /**
-     * @var \Buzz\Control\Objects\Flow[]
+     * @var \Buzz\Control\Objects\Customer\Flow[]
      */
     protected $flows;
 
