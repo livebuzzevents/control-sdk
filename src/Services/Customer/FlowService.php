@@ -49,6 +49,6 @@ class FlowService extends Service
      */
     public function goToStep(Customer $customer, $step)
     {
-        $this->call('delete', "customer/{$customer->getId()}/flow/go-to-step/{$step}");
+        $this->call('get', "customer/{$customer->getId()}/flow/go-to-step/{$step}");
     }
 }
