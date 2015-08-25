@@ -31,6 +31,8 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, Arrayable
 
         if (is_array($items)) {
             $this->items = $items;
+        } elseif ($items instanceof Collection) {
+            $this->items = $items->getItems();
         } elseif ($items instanceof Arrayable) {
             $this->items = $items->toArray();
         } elseif (is_scalar($items)) {
