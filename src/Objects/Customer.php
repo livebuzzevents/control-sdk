@@ -4,6 +4,7 @@ use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
+use Buzz\Control\Objects\Traits\HasPropertiesCommon;
 use Buzz\Control\Objects\Traits\HasSharedId;
 use Buzz\Control\Objects\Traits\HasSource;
 use Buzz\Control\Objects\Traits\HasStatus;
@@ -15,7 +16,7 @@ use Buzz\Control\Objects\Traits\HasStatus;
  */
 class Customer extends Object
 {
-    use BelongsToCampaign, HasSharedId, HasSource, HasStatus, HasAnswersCommon;
+    use BelongsToCampaign, HasSharedId, HasSource, HasStatus, HasAnswersCommon, HasPropertiesCommon;
 
     /**
      * @var int
@@ -212,14 +213,6 @@ class Customer extends Object
     public function addSocial(Customer\Social $social)
     {
         $this->add($this->socials, $social);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProperties()
-    {
-        return $this->properties;
     }
 
     /**

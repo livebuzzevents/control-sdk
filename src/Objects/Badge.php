@@ -8,6 +8,7 @@ use Buzz\Control\Objects\Traits\CreatedByCustomer;
 use Buzz\Control\Objects\Traits\CreatedByExhibitor;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
 use Buzz\Control\Objects\Traits\HasBadgeType;
+use Buzz\Control\Objects\Traits\HasPropertiesCommon;
 use Buzz\Control\Objects\Traits\HasSource;
 use Buzz\Control\Objects\Traits\HasStatus;
 
@@ -26,7 +27,8 @@ class Badge extends Object
         HasBadgeType,
         HasSource,
         HasStatus,
-        HasAnswersCommon;
+        HasAnswersCommon,
+        HasPropertiesCommon;
 
     /**
      * @var string
@@ -137,15 +139,7 @@ class Badge extends Object
     {
         $this->barcode = $barcode;
     }
-
-    /**
-     * @return array
-     */
-    public function getProperties()
-    {
-        return $this->properties;
-    }
-
+    
     /**
      * @param Badge\Property[]|Collection $properties
      */

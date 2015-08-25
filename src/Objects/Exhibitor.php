@@ -4,6 +4,7 @@ use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
+use Buzz\Control\Objects\Traits\HasPropertiesCommon;
 use Buzz\Control\Objects\Traits\HasSharedId;
 use Buzz\Control\Objects\Traits\HasSource;
 use Buzz\Control\Objects\Traits\HasStatus;
@@ -15,7 +16,7 @@ use Buzz\Control\Objects\Traits\HasStatus;
  */
 class Exhibitor extends Object
 {
-    use BelongsToCampaign, HasSharedId, HasSource, HasStatus, HasAnswersCommon;
+    use BelongsToCampaign, HasSharedId, HasSource, HasStatus, HasAnswersCommon, HasPropertiesCommon;
 
     /**
      * @var string
@@ -162,14 +163,6 @@ class Exhibitor extends Object
     public function addAnswer(Exhibitor\Answer $answer)
     {
         $this->add($this->answers, $answer);
-    }
-
-    /**
-     * @return array
-     */
-    public function getProperties()
-    {
-        return $this->properties;
     }
 
     /**

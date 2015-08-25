@@ -1,5 +1,7 @@
 <?php namespace Buzz\Control\Objects\Traits;
 
+use Buzz\Control\Objects\Parameter;
+
 /**
  * Class BelongsToParameter
  *
@@ -23,6 +25,14 @@ trait BelongsToParameter
     public function getParameter()
     {
         return $this->parameter;
+    }
+
+    /**
+     * @param \Buzz\Control\Objects\Parameter $parameter
+     */
+    public function setParameter(Parameter $parameter)
+    {
+        $this->parameter = $parameter;
     }
 
     /**
