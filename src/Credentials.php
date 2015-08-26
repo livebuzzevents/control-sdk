@@ -10,26 +10,43 @@
 class Credentials
 {
     /**
-     * @var
+     * @var string
      */
     protected $api_key;
+
     /**
-     * @var
+     * @var string
      */
     protected $endpoint;
+
     /**
-     * @var
+     * @var string
      */
     protected $organization;
+
     /**
-     * @var
+     * @var string
      */
     protected $api_proxy;
 
     /**
+     * @param null $api_key
+     * @param null $organization
+     * @param null $endpoint
+     * @param null $api_proxy
+     */
+    public function __construct($api_key = null, $organization = null, $endpoint = null, $api_proxy = null)
+    {
+        $this->setApiKey($api_key);
+        $this->setOrganization($organization);
+        $this->setEndpoint($endpoint);
+        $this->setApiProxy($api_proxy);
+    }
+
+    /**
      * Retrieves Event API key
      *
-     * @return mixed
+     * @return string
      */
     public function getApiKey()
     {
@@ -37,20 +54,23 @@ class Credentials
     }
 
     /**
-     * @param mixed $api_key
+     * @param string $api_key
      */
     public function setApiKey($api_key)
     {
         $this->api_key = $api_key;
     }
 
+    /**
+     * @return string
+     */
     public function getOrganization()
     {
         return $this->organization;
     }
 
     /**
-     * @param mixed $organization
+     * @param string $organization
      */
     public function setOrganization($organization)
     {
@@ -60,7 +80,7 @@ class Credentials
     /**
      * Retrieves Event endpoint url
      *
-     * @return mixed
+     * @return string
      */
     public function getEndpoint()
     {
@@ -68,20 +88,23 @@ class Credentials
     }
 
     /**
-     * @param mixed $endpoint
+     * @param string $endpoint
      */
     public function setEndpoint($endpoint)
     {
         $this->endpoint = $endpoint;
     }
 
+    /**
+     * @return string
+     */
     public function getApiProxy()
     {
         return $this->api_proxy;
     }
 
     /**
-     * @param mixed $api_proxy
+     * @param string $api_proxy
      */
     public function setApiProxy($api_proxy)
     {

@@ -2,14 +2,13 @@
 
 require_once '../bootstrap.php';
 
+$campaign = new \Buzz\Control\Objects\Campaign();
+$campaign->setIdentifier('bbf16');
+
 $email = new \Buzz\Control\Objects\Email();
-$email->setIdentifier('bbf16-exhibitor');
+$email->setIdentifier('visitor-registered');
+$email->setCampaign($campaign);
 
-$mailer = new \Buzz\Control\Objects\Mailer();
-$mailer->setEmail($email);
-$mailer->setCustomer(new \Buzz\Control\Objects\Customer(6));
+$service = new \Buzz\Control\Services\EmailService($buzz);
 
-$service  = new \Buzz\Control\Services\MailerService($buzz);
-$response = $service->send($mailer);
-
-var_dump($response);
+$service->sendToCustomer(new \Buzz\Control\Objects\Customer(2), $email);

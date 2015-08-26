@@ -8,9 +8,12 @@ $organization = 'bigbang';
 
 $buzz = new \Buzz\Control\Buzz();
 
-$buzz->setCredentials(
-    new Buzz\Control\Credentials($api_key, $organization, $endpoint)
-);
+$credentials = new \Buzz\Control\Credentials();
+$credentials->setApiKey($api_key);
+$credentials->setEndpoint($endpoint);
+$credentials->setOrganization($organization);
+
+$buzz->setCredentials($credentials);
 
 $scope = new \Buzz\Control\Scope();
 $scope->add(1);
