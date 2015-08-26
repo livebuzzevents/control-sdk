@@ -3,13 +3,28 @@
 use Buzz\Control\Collection;
 use Buzz\Control\Objects\Parameter;
 
+/**
+ * Class HasPropertiesCommon
+ *
+ * @package Buzz\Control\Objects\Traits
+ */
 trait HasPropertiesCommon
 {
+    /**
+     * @param Parameter $parameter
+     *
+     * @return bool
+     */
     public function hasPropertyParameter(Parameter $parameter)
     {
         return (bool)$this->getPropertyByParameter($parameter);
     }
 
+    /**
+     * @param Parameter $parameter
+     *
+     * @return null
+     */
     public function getPropertyByParameter(Parameter $parameter)
     {
         if (!$this->properties) {
@@ -31,6 +46,11 @@ trait HasPropertiesCommon
         return null;
     }
 
+    /**
+     * @param $identifier
+     *
+     * @return null
+     */
     public function getPropertyByIdentifier($identifier)
     {
         $parameter = new Parameter();
@@ -39,11 +59,17 @@ trait HasPropertiesCommon
         return $this->getPropertyByParameter($parameter);
     }
 
+    /**
+     * @return static
+     */
     public function getPropertyedIdentifiers()
     {
-        return array_keys($this->getPropertiesGroupedByIdentifier());
+        return $this->getPropertiesGroupedByIdentifier()->keys();
     }
 
+    /**
+     * @return Collection|null
+     */
     public function getPropertiesGroupedByIdentifier()
     {
         if (!$this->properties) {
@@ -59,6 +85,11 @@ trait HasPropertiesCommon
         return new Collection($properties);
     }
 
+    /**
+     * @param array $identifiers
+     *
+     * @return Collection|null
+     */
     public function getPropertiesByIdentifiers(array $identifiers)
     {
         if (!$this->properties) {
@@ -83,6 +114,6 @@ trait HasPropertiesCommon
      */
     public function getProperties()
     {
-    return $this->properties;
+        return $this->properties;
     }
 }

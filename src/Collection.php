@@ -232,6 +232,16 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, Arrayable
     }
 
     /**
+     * Get the keys of the collection items.
+     *
+     * @return static
+     */
+    public function keys()
+    {
+        return new static(array_keys($this->items));
+    }
+
+    /**
      * Execute a callback over each item.
      *
      * @param  callable $callback

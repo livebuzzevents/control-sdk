@@ -3,13 +3,28 @@
 use Buzz\Control\Collection;
 use Buzz\Control\Objects\Question;
 
+/**
+ * Class HasAnswersCommon
+ *
+ * @package Buzz\Control\Objects\Traits
+ */
 trait HasAnswersCommon
 {
+    /**
+     * @param Question $question
+     *
+     * @return bool
+     */
     public function hasAnsweredQuestion(Question $question)
     {
         return (bool)$this->getAnswerByQuestion($question);
     }
 
+    /**
+     * @param Question $question
+     *
+     * @return null
+     */
     public function getAnswerByQuestion(Question $question)
     {
         if (!$this->answers) {
@@ -31,6 +46,11 @@ trait HasAnswersCommon
         return null;
     }
 
+    /**
+     * @param $identifier
+     *
+     * @return null
+     */
     public function getAnswerByIdentifier($identifier)
     {
         $question = new Question();
@@ -39,11 +59,17 @@ trait HasAnswersCommon
         return $this->getAnswerByQuestion($question);
     }
 
+    /**
+     * @return static
+     */
     public function getAnsweredIdentifiers()
     {
-        return array_keys($this->getAnswersGroupedByIdentifier());
+        return $this->getAnswersGroupedByIdentifier()->keys();
     }
 
+    /**
+     * @return Collection|null
+     */
     public function getAnswersGroupedByIdentifier()
     {
         if (!$this->answers) {
@@ -59,6 +85,11 @@ trait HasAnswersCommon
         return new Collection($answers);
     }
 
+    /**
+     * @param array $identifiers
+     *
+     * @return Collection|null
+     */
     public function getAnswersByIdentifiers(array $identifiers)
     {
         if (!$this->answers) {

@@ -2,8 +2,7 @@
 
 require_once '../bootstrap.php';
 
-$service = new \Buzz\Control\Services\QuestionService($buzz);
+$service  = new \Buzz\Control\Services\QuestionService($buzz);
+$response = $service->getMany();
 
-$questions = $service->perPage(3)->page(2)->where('active', 'is', 'yes')->getMany();
-
-var_dump($questions);
+var_dump($response);

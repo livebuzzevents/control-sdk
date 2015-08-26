@@ -1,14 +1,30 @@
 <?php namespace Buzz\Control\Objects\Traits;
 
+use Buzz\Control\Collection;
 use Buzz\Control\Objects\Question\Option;
 
+/**
+ * Class HasAnswerOptionsCommon
+ *
+ * @package Buzz\Control\Objects\Traits
+ */
 trait HasAnswerOptionsCommon
 {
+    /**
+     * @param Option $option
+     *
+     * @return bool
+     */
     public function hasOptionByQuestionOption(Option $option)
     {
         return (bool)$this->getOptionByQuestionOption($option);
     }
 
+    /**
+     * @param Option $option
+     *
+     * @return null
+     */
     public function getOptionByQuestionOption(Option $option)
     {
         if (!$this->options) {
@@ -30,11 +46,21 @@ trait HasAnswerOptionsCommon
         return null;
     }
 
+    /**
+     * @param $identifier
+     *
+     * @return bool
+     */
     public function hasOptionByIdentifier($identifier)
     {
         return (bool)$this->getOptionByIdentifier($identifier);
     }
 
+    /**
+     * @param $identifier
+     *
+     * @return null
+     */
     public function getOptionByIdentifier($identifier)
     {
         $option = new Option();
@@ -43,16 +69,25 @@ trait HasAnswerOptionsCommon
         return $this->getOptionByQuestionOption($option);
     }
 
+    /**
+     * @return mixed
+     */
     public function getOptionIdentifier()
     {
         return $this->getOptionsIdentifiers()[0];
     }
 
+    /**
+     * @return static
+     */
     public function getOptionsIdentifiers()
     {
-        return array_keys($this->getOptionsGroupedByIdentifier());
+        return $this->getOptionsGroupedByIdentifier()->keys();
     }
 
+    /**
+     * @return Collection|null
+     */
     public function getOptionsGroupedByIdentifier()
     {
         if (!$this->options) {
@@ -65,9 +100,14 @@ trait HasAnswerOptionsCommon
             $options[$option->getQuestionOption()->getIdentifier()] = $option;
         }
 
-        return $options;
+        return new Collection($options);
     }
 
+    /**
+     * @param array $identifiers
+     *
+     * @return null
+     */
     public function getOptionsByIdentifiers(array $identifiers)
     {
         if (!$this->options) {
