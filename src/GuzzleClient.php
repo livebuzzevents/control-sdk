@@ -96,7 +96,7 @@ class GuzzleClient implements Client
                 }
             }
 
-            $request['json'] = $request;
+            $result['json'] = $request;
         } elseif (in_array($verb, ['get', 'delete'])) {
             $result['query'] = $request;
         }
