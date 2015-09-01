@@ -90,18 +90,13 @@ class GuzzleClient implements Client
         ];
 
         if (in_array($verb, ['post', 'put'])) {
-
-            $result['content-type'] = 'application/json';
-
-            $result['json'] = null;
-
             foreach ($request as $key => $value) {
                 if (is_resource($value)) {
-                    $result['json'][$key] = base64_encode(file_get_contents($value));
-                } else {
-                    $result['json'][$key] = $value;
+                    $request[$key] = base64_encode(file_get_contents($request[$key]));
                 }
             }
+
+            $request['json'] = $request;
         } elseif (in_array($verb, ['get', 'delete'])) {
             $result['query'] = $request;
         }
