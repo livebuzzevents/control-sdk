@@ -83,31 +83,24 @@ class GuzzleClient implements Client
      */
     protected function buildRequest($verb, array $request = [])
     {
-        $result = [];
+        $result = [
+            'headers' => [
+                'Accept' => 'application/json',
+            ]
+        ];
 
         if (in_array($verb, ['post', 'put'])) {
+
+            $result['content-type'] = 'application/json';
+
+            $result['json'] = null;
+
             foreach ($request as $key => $value) {
                 if (is_resource($value)) {
-                    $result['multipart'][] = [
-                        'name'     => $key,
-                        'contents' => $value
-                    ];
+                    $result['json'][$key] = base64_encode(file_get_contents($value));
                 } else {
-                    if (is_array($value) and empty($value)) { //fix to send empty arrays to post!
-                        $result['form_params'][$key] = '';
-                    } else {
-                        $result['form_params'][$key] = $value;
-                    }
+                    $result['json'][$key] = $value;
                 }
-            }
-
-            /**
-             * @todo
-             * Bug if guzzle. send as get parameters if file exists
-             */
-            if (!empty($result['multipart'])) {
-                $result['query'] = $result['form_params'];
-                unset($result['form_params']);
             }
         } elseif (in_array($verb, ['get', 'delete'])) {
             $result['query'] = $request;

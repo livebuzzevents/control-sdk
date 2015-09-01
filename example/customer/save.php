@@ -14,7 +14,7 @@ $customer->setSex('male');
 $customer->setNationality('BG');
 $customer->setLanguage('en');
 
-$service  = new \Buzz\Control\Services\Customer\Save($customer);
-$response = $serviceHandler->execute($service);
+$service  = new \Buzz\Control\Services\CustomerService($buzz);
+$response = $service->save($customer);
 
 var_dump($response);
