@@ -16,18 +16,22 @@ class Flow extends Object
      * @var int
      */
     protected $step;
+
     /**
      * @var string
      */
     protected $origin;
+
     /**
      * @var string
      */
     protected $status;
+
     /**
      * @var array
      */
     protected $current_items;
+
     /**
      * @var array
      */

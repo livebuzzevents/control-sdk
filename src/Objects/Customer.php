@@ -22,90 +22,112 @@ class Customer extends Object
      * @var int
      */
     protected $owner_id;
+
     /**
      * @var \Buzz\Control\Objects\Customer
      */
     protected $owner;
+
     /**
      * @var string
      */
     protected $username;
+
     /**
      * @var string
      */
     protected $password;
+
     /**
      * @var string
      */
     protected $remember_token;
+
     /**
      * @var string
      */
     protected $email;
+
     /**
      * @var string
      */
     protected $title;
+
     /**
      * @var string
      */
     protected $first_name;
+
     /**
      * @var string
      */
     protected $middle_name;
+
     /**
      * @var string
      */
     protected $last_name;
+
     /**
      * @var string
      */
     protected $sex;
+
     /**
      * @var string
      */
     protected $nationality;
+
     /**
      * @var string
      */
     protected $language;
+
     /**
      * @var \Buzz\Control\Objects\Customer\Phone[]
      */
     protected $phones;
+
     /**
      * @var \Buzz\Control\Objects\Customer\Job[]
      */
     protected $jobs;
+
     /**
      * @var \Buzz\Control\Objects\Customer\Address[]
      */
     protected $addresses;
+
     /**
      * @var \Buzz\Control\Objects\Customer\Property[]
      */
     protected $properties;
+
     /**
      * @var \Buzz\Control\Objects\Customer\Social[]
      */
     protected $socials;
+
     /**
      * @var \Buzz\Control\Objects\Customer\Answer[]
      */
     protected $answers;
+
     /**
      * @var \Buzz\Control\Objects\Badge[]
      */
     protected $badges;
+
     /**
      * @var \Buzz\Control\Objects\Badge[]
      */
     protected $created_badges;
+
     /**
      * @var \Buzz\Control\Objects\Customer\Flow
      */
     protected $flow;
+
     /**
      * @var \Buzz\Control\Objects\Customer\Flow[]
      */

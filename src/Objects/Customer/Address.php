@@ -17,30 +17,37 @@ class Address extends Object
      * @var string
      */
     protected $type;
+
     /**
      * @var string
      */
     protected $postcode;
+
     /**
      * @var string
      */
     protected $line_1;
+
     /**
      * @var string
      */
     protected $line_2;
+
     /**
      * @var string
      */
     protected $line_3;
+
     /**
      * @var string
      */
     protected $city;
+
     /**
      * @var string
      */
     protected $country;
+
     /**
      * @var string
      */

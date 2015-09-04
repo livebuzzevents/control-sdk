@@ -139,7 +139,7 @@ class Badge extends Object
     {
         $this->barcode = $barcode;
     }
-    
+
     /**
      * @param Badge\Property[]|Collection $properties
      */

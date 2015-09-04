@@ -14,6 +14,7 @@ class Customer extends \Buzz\Control\Objects\Customer
      * @var array
      */
     protected $pivot;
+
     /**
      * @var string
      */

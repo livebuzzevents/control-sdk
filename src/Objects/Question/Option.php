@@ -17,22 +17,47 @@ class Option extends Object
      * @var string
      */
     protected $body;
+
     /**
      * @var string
      */
     protected $description;
+
     /**
      * @var string
      */
     protected $active;
+
     /**
      * @var string
      */
     protected $open;
+
     /**
      * @var int
      */
     protected $order;
+
+    /**
+     * @var array
+     */
+    protected $rules;
+
+    /**
+     * @return array
+     */
+    public function getRules()
+    {
+        return $this->rules;
+    }
+
+    /**
+     * @param array $rules
+     */
+    public function setRules($rules)
+    {
+        $this->rules = $rules;
+    }
 
     /**
      * @return string

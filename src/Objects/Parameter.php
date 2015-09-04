@@ -17,6 +17,27 @@ class Parameter extends Object
     protected $name;
 
     /**
+     * @var array
+     */
+    protected $rules;
+
+    /**
+     * @return array
+     */
+    public function getRules()
+    {
+        return $this->rules;
+    }
+
+    /**
+     * @param array $rules
+     */
+    public function setRules($rules)
+    {
+        $this->rules = $rules;
+    }
+
+    /**
      * @return string|null
      */
     public function getName()
