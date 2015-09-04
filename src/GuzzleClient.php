@@ -53,7 +53,13 @@ class GuzzleClient implements Client
                 $this->buildRequest($verb, $request)
             );
 
-            return json_decode($response->getBody()->getContents(), true);
+            $decodedResponse = json_decode($response->getBody()->getContents(), true);
+
+            if ((json_last_error() == JSON_ERROR_NONE)) {
+                return $decodedResponse;
+            } else {
+                throw new ResponseException('Unexpected error! Response not valid JSON!');
+            }
         } catch (GuzzleClientException $e) {
 
             $response = $e->getResponse();
