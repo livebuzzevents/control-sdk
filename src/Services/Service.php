@@ -35,13 +35,13 @@ abstract class Service
      * @var array
      */
     protected $settings = [
-        'api_key'       => false,
-        'keyBy'         => null,
-        'withRelations' => null,
-        'page'          => 1,
-        'per_page'      => 15,
-        'order'         => 'id',
-        'direction'     => 'asc',
+        'api_key'   => false,
+        'keyBy'     => null,
+        'with'      => null,
+        'page'      => 1,
+        'per_page'  => 15,
+        'order'     => 'id',
+        'direction' => 'asc',
     ];
 
     /**
@@ -149,13 +149,13 @@ abstract class Service
      *
      * @return $this
      */
-    public final function withRelations($relations)
+    public final function with($relations)
     {
         if (is_string($relations)) {
             $relations = func_get_args();
         }
 
-        return $this->setSetting('withRelations', $relations);
+        return $this->setSetting('with', $relations);
     }
 
     /**

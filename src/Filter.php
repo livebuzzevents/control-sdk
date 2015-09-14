@@ -27,7 +27,7 @@ class Filter
         'in',
         'not in',
         'has',
-        'has not'
+        'has not',
     ];
 
     public function set(array $filters)

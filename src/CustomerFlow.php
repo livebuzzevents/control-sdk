@@ -71,14 +71,14 @@ class CustomerFlow
         if (!$this->origin) {
             throw new ErrorException('Origin is required for flow');
         }
-        
+
         if (!$this->customer) {
             return ['origin' => $this->origin];
         }
 
         return [
             'customer_id' => $this->customer->id,
-            'origin'      => $this->origin
+            'origin'      => $this->origin,
         ];
     }
 }

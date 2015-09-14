@@ -89,7 +89,7 @@ class GuzzleClient implements Client
         $result = [
             'headers' => [
                 'Accept' => 'application/json',
-            ]
+            ],
         ];
 
         if (in_array($verb, ['post', 'put'])) {

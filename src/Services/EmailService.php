@@ -25,7 +25,7 @@ class EmailService extends Service
         }
 
         $request = [
-            'customer_id' => $customer->getId()
+            'customer_id' => $customer->getId(),
         ];
 
         if ($email->getId()) {
@@ -51,7 +51,7 @@ class EmailService extends Service
         }
 
         $request = [
-            'exhibitor_id' => $exhibitor->getId()
+            'exhibitor_id' => $exhibitor->getId(),
         ];
 
         if ($email->getId()) {

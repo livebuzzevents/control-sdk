@@ -6,7 +6,7 @@ $customer = new \Buzz\Control\Objects\Customer(1);
 
 $service = new \Buzz\Control\Services\CustomerService($buzz);
 
-$customer = $service->withRelations('phones', 'badges.badgeType')->get($customer);
+$customer = $service->with('phones', 'badges.badgeType')->get($customer);
 
 dd($customer);
 
