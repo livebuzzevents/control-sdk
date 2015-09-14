@@ -35,12 +35,13 @@ abstract class Service
      * @var array
      */
     protected $settings = [
-        'api_key'   => false,
-        'keyBy'     => null,
-        'page'      => 1,
-        'per_page'  => 15,
-        'order'     => 'id',
-        'direction' => 'asc'
+        'api_key'       => false,
+        'keyBy'         => null,
+        'withRelations' => null,
+        'page'          => 1,
+        'per_page'      => 15,
+        'order'         => 'id',
+        'direction'     => 'asc',
     ];
 
     /**
@@ -144,6 +145,20 @@ abstract class Service
     }
 
     /**
+     * @param array $relations
+     *
+     * @return $this
+     */
+    public final function withRelations($relations)
+    {
+        if (is_string($relations)) {
+            $relations = func_get_args();
+        }
+
+        return $this->setSetting('withRelations', $relations);
+    }
+
+    /**
      * @param ...$parameters
      *
      * @return mixed
@@ -208,7 +223,8 @@ abstract class Service
      */
     private function getUrl($method)
     {
-        return $this->buzz->getCredentials()->getEndpoint() . $this->buzz->getCredentials()->getOrganization() . '/' . $method;
+        return $this->buzz->getCredentials()->getEndpoint() . $this->buzz->getCredentials()
+            ->getOrganization() . '/' . $method;
     }
 
     /**
