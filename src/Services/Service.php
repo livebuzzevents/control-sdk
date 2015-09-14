@@ -247,6 +247,10 @@ abstract class Service
     {
         $result = [];
 
+        if (!$response) {
+            return $result;
+        }
+
         if (isset($response['total']) && isset($response['data'])) { //for paging
             $paging = new Paging();
 
