@@ -51,6 +51,14 @@ class Scan extends Object
     }
 
     /**
+     * @param Entrance\Scanner $scanner
+     */
+    public function setScanner(Entrance\Scanner $scanner)
+    {
+        $this->scanner = $scanner;
+    }
+
+    /**
      * @return int
      */
     public function getScannerId()

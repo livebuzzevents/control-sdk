@@ -27,10 +27,7 @@ class GuzzleClient implements Client
      */
     public function __construct(Guzzle $guzzle = null)
     {
-        $this->guzzle = $guzzle ?: new Guzzle([
-//            'proxy'  => $this->credentials->getApiProxy(),
-//            'verify' => $this->credentials->getApiProxy() ? false : true
-        ]);
+        $this->guzzle = $guzzle ?: new Guzzle();
     }
 
     /**

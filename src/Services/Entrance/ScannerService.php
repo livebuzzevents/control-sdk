@@ -18,65 +18,65 @@ class ScannerService extends Service
 
     /**
      * @param Entrance         $entrance
-     * @param Entrance\Scanner $job
+     * @param Entrance\Scanner $scanner
      *
      * @return Entrance\Scanner
      * @throws ErrorException
      */
-    public function get(Entrance $entrance, Entrance\Scanner $job)
+    public function get(Entrance $entrance, Entrance\Scanner $scanner)
     {
         if (!$entrance->getId()) {
             throw new ErrorException('Entrance id/identifier required!');
         }
 
-        if (!$job->getId()) {
+        if (!$scanner->getId()) {
             throw new ErrorException('Scanner id required!');
         }
 
-        return $this->callAndCast('get', "entrance/{$entrance->getId()}/job/{$job->getId()}");
+        return $this->callAndCast('get', "entrance/{$entrance->getId()}/scanner/{$scanner->getId()}");
     }
 
     /**
      * @param Entrance         $entrance
-     * @param Entrance\Scanner $job
+     * @param Entrance\Scanner $scanner
      *
      * @throws ErrorException
      */
-    public function delete(Entrance $entrance, Entrance\Scanner $job)
+    public function delete(Entrance $entrance, Entrance\Scanner $scanner)
     {
         if (!$entrance->getId()) {
             throw new ErrorException('Entrance id required!');
         }
 
-        if (!$job->getId()) {
+        if (!$scanner->getId()) {
             throw new ErrorException('Scanner id required!');
         }
 
-        $this->call('delete', "entrance/{$entrance->getId()}/job/{$job->getId()}");
+        $this->call('delete', "entrance/{$entrance->getId()}/scanner/{$scanner->getId()}");
     }
 
     /**
      * @param Entrance         $entrance
-     * @param Entrance\Scanner $job
+     * @param Entrance\Scanner $scanner
      *
      * @return Entrance\Scanner
      * @throws ErrorException
      */
-    public function save(Entrance $entrance, Entrance\Scanner $job)
+    public function save(Entrance $entrance, Entrance\Scanner $scanner)
     {
         if (!$entrance->getId()) {
             throw new ErrorException('Entrance id required!');
         }
 
-        if ($job->getId()) {
+        if ($scanner->getId()) {
             $verb = 'put';
-            $url  = "entrance/{$entrance->getId()}/job/{$job->getId()}";
+            $url  = "entrance/{$entrance->getId()}/scanner/{$scanner->getId()}";
         } else {
             $verb = 'post';
-            $url  = "entrance/{$entrance->getId()}/job";
+            $url  = "entrance/{$entrance->getId()}/scanner";
         }
 
-        return $this->callAndCast($verb, $url, $job->toArray());
+        return $this->callAndCast($verb, $url, $scanner->toArray());
     }
 
     /**
@@ -90,7 +90,7 @@ class ScannerService extends Service
             throw new ErrorException('Entrance id required!');
         }
 
-        $this->call('delete', "entrance/{$entrance->getId()}/jobs");
+        $this->call('delete', "entrance/{$entrance->getId()}/scanners");
     }
 
     /**
@@ -105,26 +105,26 @@ class ScannerService extends Service
             throw new ErrorException('Entrance id required!');
         }
 
-        return $this->callAndCastMany('get', "entrance/{$entrance->getId()}/jobs");
+        return $this->callAndCastMany('get', "entrance/{$entrance->getId()}/scanners");
     }
 
     /**
      * @param Entrance           $entrance
-     * @param Entrance\Scanner[] $jobs
+     * @param Entrance\Scanner[] $scanners
      *
      * @return Entrance\Scanner[]
      * @throws ErrorException
      */
-    public function saveMany(Entrance $entrance, array $jobs)
+    public function saveMany(Entrance $entrance, array $scanners)
     {
         if (!$entrance->getId()) {
             throw new ErrorException('Entrance id required!');
         }
 
-        foreach ($jobs as $key => $job) {
-            $jobs[$key] = $job->toArray();
+        foreach ($scanners as $key => $scanner) {
+            $scanners[$key] = $scanner->toArray();
         }
 
-        return $this->callAndCastMany('post', "entrance/{$entrance->getId()}/jobs", ['batch' => $jobs]);
+        return $this->callAndCastMany('post', "entrance/{$entrance->getId()}/scanners", ['batch' => $scanners]);
     }
 }

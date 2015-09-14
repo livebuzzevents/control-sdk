@@ -1,5 +1,7 @@
 <?php namespace Buzz\Control\Objects\Traits;
 
+use Buzz\Control\Objects\Entrance;
+
 /**
  * Class BelongsToEntrance
  *
@@ -13,16 +15,24 @@ trait BelongsToEntrance
     protected $entrance_id;
 
     /**
-     * @var \Buzz\Control\Objects\Entrance
+     * @var Entrance
      */
     protected $entrance;
 
     /**
-     * @return \Buzz\Control\Objects\Entrance
+     * @return Entrance
      */
     public function getEntrance()
     {
         return $this->entrance;
+    }
+
+    /**
+     * @param Entrance $entrance
+     */
+    public function setEntrance(Entrance $entrance)
+    {
+        $this->entrance = $entrance;
     }
 
     /**

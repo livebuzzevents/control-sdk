@@ -25,22 +25,15 @@ class Credentials
     protected $organization;
 
     /**
-     * @var string
-     */
-    protected $api_proxy;
-
-    /**
      * @param null $api_key
      * @param null $organization
      * @param null $endpoint
-     * @param null $api_proxy
      */
-    public function __construct($api_key = null, $organization = null, $endpoint = null, $api_proxy = null)
+    public function __construct($api_key = null, $organization = null, $endpoint = null)
     {
         $this->setApiKey($api_key);
         $this->setOrganization($organization);
         $this->setEndpoint($endpoint);
-        $this->setApiProxy($api_proxy);
     }
 
     /**
@@ -93,21 +86,5 @@ class Credentials
     public function setEndpoint($endpoint)
     {
         $this->endpoint = $endpoint;
-    }
-
-    /**
-     * @return string
-     */
-    public function getApiProxy()
-    {
-        return $this->api_proxy;
-    }
-
-    /**
-     * @param string $api_proxy
-     */
-    public function setApiProxy($api_proxy)
-    {
-        $this->api_proxy = $api_proxy;
     }
 }
