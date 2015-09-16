@@ -1,5 +1,6 @@
 <?php namespace Buzz\Control\Objects;
 
+use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasIdentifier;
 
 /**
@@ -9,7 +10,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  */
 class Parameter extends Object
 {
-    use HasIdentifier;
+    use BelongsToCampaign, HasIdentifier;
 
     /**
      * @var string

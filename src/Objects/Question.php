@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Collection;
+use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasIdentifier;
 
 /**
@@ -10,7 +11,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  */
 class Question extends Object
 {
-    use HasIdentifier;
+    use BelongsToCampaign, HasIdentifier;
 
     /**
      * @var string

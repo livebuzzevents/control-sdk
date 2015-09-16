@@ -1518,12 +1518,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "a0d4aa01cfe2e3646e50c13c721c04d044534535"
+                "reference": "93c0bce3f600502b59ba827ddf7d48499bc56f3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/a0d4aa01cfe2e3646e50c13c721c04d044534535",
-                "reference": "a0d4aa01cfe2e3646e50c13c721c04d044534535",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/93c0bce3f600502b59ba827ddf7d48499bc56f3f",
+                "reference": "93c0bce3f600502b59ba827ddf7d48499bc56f3f",
                 "shasum": ""
             },
             "require": {
@@ -1567,7 +1567,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2015-09-12 22:39:36"
+            "time": "2015-09-14 14:15:17"
         },
         {
             "name": "symfony/event-dispatcher",
