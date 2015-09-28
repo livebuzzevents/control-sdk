@@ -40,6 +40,11 @@ class CustomerService extends Service
         return $this->callAndCast('get', 'customer/login', $credentials);
     }
 
+    /**
+     * @param Customer $customer
+     *
+     * @throws ErrorException
+     */
     public function sendPasswordResetEmail(Customer $customer)
     {
         if (!$customer->getId()) {
@@ -47,6 +52,17 @@ class CustomerService extends Service
         }
 
         $this->call('get', "customer/send-password-reset-email/{$customer->getId()}");
+    }
+
+    /**
+     * @param $token
+     * @param $source
+     *
+     * @return Customer
+     */
+    public function getByPasswordResetToken($token, $source)
+    {
+        return $this->callAndCast('get', "customer/by-password-reset-token/{$token}/{$source}");
     }
 
     /**
