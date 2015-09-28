@@ -40,6 +40,15 @@ class CustomerService extends Service
         return $this->callAndCast('get', 'customer/login', $credentials);
     }
 
+    public function sendPasswordResetEmail(Customer $customer)
+    {
+        if (!$customer->getId()) {
+            throw new ErrorException('Customer id required!');
+        }
+
+        $this->call('get', "customer/send-password-reset-email/{$customer->getId()}");
+    }
+
     /**
      * @param Customer $customer
      *
