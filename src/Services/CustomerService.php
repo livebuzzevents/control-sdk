@@ -60,9 +60,9 @@ class CustomerService extends Service
      *
      * @return Customer
      */
-    public function getByPasswordResetToken($token, $source)
+    public function activatePasswordReset($token, $source)
     {
-        return $this->callAndCast('get', "customer/by-password-reset-token/{$token}/{$source}");
+        return $this->callAndCast('get', "customer/activate-password-reset/{$token}/{$source}");
     }
 
     /**
