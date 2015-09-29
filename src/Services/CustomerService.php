@@ -42,27 +42,28 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
+     * @param          $stream
      *
      * @throws ErrorException
      */
-    public function sendPasswordResetEmail(Customer $customer)
+    public function sendPasswordResetEmail(Customer $customer, $stream)
     {
         if (!$customer->getId()) {
             throw new ErrorException('Customer id required!');
         }
 
-        $this->call('get', "customer/send-password-reset-email/{$customer->getId()}");
+        $this->call('get', "customer/send-password-reset-email/{$customer->getId()}/{$stream}");
     }
 
     /**
      * @param $token
-     * @param $source
+     * @param $stream
      *
      * @return Customer
      */
-    public function activatePasswordReset($token, $source)
+    public function activatePasswordReset($token, $stream)
     {
-        return $this->callAndCast('get', "customer/activate-password-reset/{$token}/{$source}");
+        return $this->callAndCast('get', "customer/activate-password-reset/{$token}/{$stream}");
     }
 
     /**

@@ -2,6 +2,8 @@
 
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
+use Buzz\Control\Objects\Stream;
+use Buzz\Control\Objects\Traits\BelongsToStream;
 
 /**
  * Class Credentials
@@ -12,26 +14,23 @@ use Buzz\Control\Objects\Customer;
  */
 class CustomerFlow
 {
+    use BelongsToStream;
+
     /**
      * @var Customer
      */
     private $customer;
 
     /**
-     * @var string
-     */
-    private $origin;
-
-    /**
      * Instantiates and fills Rest SDK customer flow
      *
-     * @param Customer $customer
-     * @param string   $origin
+     * @param Customer|null $customer
+     * @param Stream|null   $stream
      */
-    public function __construct(Customer $customer = null, $origin = null)
+    public function __construct(Customer $customer = null, Stream $stream = null)
     {
         $this->setCustomer($customer);
-        $this->setOrigin($origin);
+        $this->setStream($stream);
     }
 
     /**
@@ -50,35 +49,19 @@ class CustomerFlow
         $this->customer = $customer;
     }
 
-    /**
-     * @return string
-     */
-    public function getOrigin()
-    {
-        return $this->origin;
-    }
-
-    /**
-     * @param string $origin
-     */
-    public function setOrigin($origin)
-    {
-        $this->origin = $origin;
-    }
-
     public function getFlow()
     {
-        if (!$this->origin) {
-            throw new ErrorException('Origin is required for flow');
+        if (!$this->stream) {
+            throw new ErrorException('Stream is required for flow');
         }
 
         if (!$this->customer) {
-            return ['origin' => $this->origin];
+            return ['stream' => $this->stream];
         }
 
         return [
             'customer_id' => $this->customer->id,
-            'origin'      => $this->origin,
+            'stream'      => $this->stream,
         ];
     }
 }

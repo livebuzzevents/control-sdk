@@ -2,6 +2,7 @@
 
 use Buzz\Control\Objects\Object;
 use Buzz\Control\Objects\Traits\BelongsToCustomer;
+use Buzz\Control\Objects\Traits\BelongsToStream;
 
 /**
  * Class Flow
@@ -10,17 +11,12 @@ use Buzz\Control\Objects\Traits\BelongsToCustomer;
  */
 class Flow extends Object
 {
-    use BelongsToCustomer;
+    use BelongsToCustomer, BelongsToStream;
 
     /**
      * @var int
      */
     protected $step;
-
-    /**
-     * @var string
-     */
-    protected $origin;
 
     /**
      * @var string
@@ -51,22 +47,6 @@ class Flow extends Object
     public function setStep($step)
     {
         $this->step = $step;
-    }
-
-    /**
-     * @return string
-     */
-    public function getOrigin()
-    {
-        return $this->origin;
-    }
-
-    /**
-     * @param string $origin
-     */
-    public function setOrigin($origin)
-    {
-        $this->origin = $origin;
     }
 
     /**

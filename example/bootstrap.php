@@ -20,7 +20,10 @@ $scope->add(1);
 
 $buzz->setScope($scope);
 
-$customerFlow = new \Buzz\Control\CustomerFlow(new Buzz\Control\Objects\Customer(1), 2, 'reg');
+$stream = new \Buzz\Control\Objects\Stream();
+$stream->setIdentifier('reg');
+
+$customerFlow = new \Buzz\Control\CustomerFlow(new Buzz\Control\Objects\Customer(1), 2, $stream);
 $buzz->setCustomerFlow($customerFlow);
 
 function dd($v)
