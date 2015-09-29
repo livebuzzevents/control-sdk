@@ -28,9 +28,9 @@ trait BelongsToStream
     }
 
     /**
-     * @param \Buzz\Control\Objects\Stream $stream
+     * @param $stream
      */
-    public function setStream(Stream $stream)
+    public function setStream($stream)
     {
         $this->stream = $stream;
     }
