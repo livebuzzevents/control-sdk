@@ -56,7 +56,7 @@ class CustomerFlow
         }
 
         if (!$this->customer) {
-            return ['stream' => $this->stream];
+            return ['stream' => $this->stream->toArray()];
         }
 
         return [
