@@ -57,14 +57,14 @@ class CustomerService extends Service
     }
 
     /**
-     * @param $token
-     * @param $stream
+     * @param        $token
+     * @param Stream $stream
      *
-     * @return Customer
+     * @return mixed
      */
-    public function activatePasswordReset($token, $stream)
+    public function activatePasswordReset($token, Stream $stream)
     {
-        return $this->callAndCast('get', "customer/activate-password-reset/{$token}/{$stream}");
+        return $this->callAndCast('get', "customer/activate-password-reset/{$token}/{$stream->getIdentifier()}");
     }
 
     /**
