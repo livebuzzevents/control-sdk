@@ -1,5 +1,7 @@
 <?php namespace Buzz\Control;
 
+use Buzz\Control\Objects\Stream;
+
 /**
  * Class Buzz
  *
@@ -16,6 +18,11 @@ class Buzz
      * @var Scope
      */
     protected $scope;
+
+    /**
+     * @var Stream
+     */
+    protected $stream;
 
     /**
      * @var CustomerFlow
@@ -52,6 +59,22 @@ class Buzz
     public function setScope(Scope $scope)
     {
         $this->scope = $scope;
+    }
+
+    /**
+     * @param Stream $stream
+     */
+    public function setStream(Stream $stream)
+    {
+        $this->stream = $stream;
+    }
+
+    /**
+     * @return Stream
+     */
+    public function getStream()
+    {
+        return $this->stream;
     }
 
     /**

@@ -28,9 +28,9 @@ trait BelongsToStream
     }
 
     /**
-     * @param $stream
+     * @param Stream $stream
      */
-    public function setStream($stream)
+    public function setStream(Stream $stream)
     {
         $this->stream = $stream;
     }

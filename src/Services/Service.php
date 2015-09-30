@@ -209,6 +209,10 @@ abstract class Service
             $request['_settings']['customer_flow'] = $this->buzz->getCustomerFlow()->getFlow();
         }
 
+        if ($this->buzz->getStream()) {
+            $request['_settings']['stream'] = $this->buzz->getStream()->toArray();
+        }
+
         return $this->client->request(
             $verb,
             $this->getUrl($method),

@@ -26,8 +26,9 @@ $campaign->setIdentifier('bbf16');
 $stream = new \Buzz\Control\Objects\Stream();
 $stream->setIdentifier('reg');
 $stream->setCampaign($campaign);
+$buzz->setStream($stream);
 
-$customerFlow = new \Buzz\Control\CustomerFlow(new Buzz\Control\Objects\Customer(1), $stream);
+$customerFlow = new \Buzz\Control\CustomerFlow(new Buzz\Control\Objects\Customer(1));
 $buzz->setCustomerFlow($customerFlow);
 
 function dd($v)
