@@ -2,6 +2,7 @@
 
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
+use Buzz\Control\Objects\Stream;
 
 /**
  * Class CustomerService
@@ -42,17 +43,17 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
-     * @param          $stream
+     * @param Stream   $stream
      *
      * @throws ErrorException
      */
-    public function sendPasswordResetEmail(Customer $customer, $stream)
+    public function sendPasswordResetEmail(Customer $customer, Stream $stream)
     {
         if (!$customer->getId()) {
             throw new ErrorException('Customer id required!');
         }
 
-        $this->call('get', "customer/send-password-reset-email/{$customer->getId()}/{$stream}");
+        $this->call('get', "customer/send-password-reset-email/{$customer->getId()}/{$stream->getIdentifier()}");
     }
 
     /**
