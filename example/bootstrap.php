@@ -20,10 +20,14 @@ $scope->add(1);
 
 $buzz->setScope($scope);
 
+$campaign = new \Buzz\Control\Objects\Campaign();
+$campaign->setIdentifier('bbf16');
+
 $stream = new \Buzz\Control\Objects\Stream();
 $stream->setIdentifier('reg');
+$stream->setCampaign($campaign);
 
-$customerFlow = new \Buzz\Control\CustomerFlow(new Buzz\Control\Objects\Customer(1), 2, $stream);
+$customerFlow = new \Buzz\Control\CustomerFlow(new Buzz\Control\Objects\Customer(1), $stream);
 $buzz->setCustomerFlow($customerFlow);
 
 function dd($v)

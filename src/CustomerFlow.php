@@ -61,7 +61,7 @@ class CustomerFlow
 
         return [
             'customer_id' => $this->customer->id,
-            'stream'      => $this->stream,
+            'stream'      => $this->stream->toArray(),
         ];
     }
 }
