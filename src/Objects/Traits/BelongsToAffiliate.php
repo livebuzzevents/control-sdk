@@ -1,5 +1,7 @@
 <?php namespace Buzz\Control\Objects\Traits;
 
+use Buzz\Control\Objects\Affiliate;
+
 /**
  * Class BelongsToAffiliate
  *
@@ -23,6 +25,14 @@ trait BelongsToAffiliate
     public function getAffiliate()
     {
         return $this->affiliate;
+    }
+
+    /**
+     * @param Affiliate $affiliate
+     */
+    public function setAffiliate(Affiliate $affiliate)
+    {
+        $this->affiliate = $affiliate;
     }
 
     /**
