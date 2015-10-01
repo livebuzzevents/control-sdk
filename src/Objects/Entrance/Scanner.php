@@ -12,4 +12,25 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
 class Scanner extends Object
 {
     use BelongsToEntrance, HasIdentifier;
+
+    /**
+     * @var string
+     */
+    protected $active;
+
+    /**
+     * @return string
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param string $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    }
 }
