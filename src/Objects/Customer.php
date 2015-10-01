@@ -109,6 +109,11 @@ class Customer extends Object
     protected $socials;
 
     /**
+     * @var \Buzz\Control\Objects\Customer\Affiliates[]
+     */
+    protected $affiliates;
+
+    /**
      * @var \Buzz\Control\Objects\Customer\Answer[]
      */
     protected $answers;
@@ -235,6 +240,30 @@ class Customer extends Object
     public function addSocial(Customer\Social $social)
     {
         $this->add($this->socials, $social);
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getAffiliates()
+    {
+        return $this->affiliates;
+    }
+
+    /**
+     * @param Customer\Affiliate[]|Collection $affiliates
+     */
+    public function setAffiliates($affiliates)
+    {
+        $this->affiliates = new Collection($affiliates);
+    }
+
+    /**
+     * @param Customer\Affiliate $affiliate
+     */
+    public function addAffiliate(Customer\Affiliate $affiliate)
+    {
+        $this->add($this->affiliates, $affiliate);
     }
 
     /**
