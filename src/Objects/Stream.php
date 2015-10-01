@@ -1,5 +1,6 @@
 <?php namespace Buzz\Control\Objects;
 
+use Buzz\Control\Collection;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasIdentifier;
 
@@ -21,6 +22,11 @@ class Stream extends Object
      * @var string
      */
     protected $origin_url;
+
+    /**
+     * @var \Buzz\Control\Objects\Affiliate[]
+     */
+    protected $affiliates;
 
     /**
      * @return mixed
@@ -52,5 +58,29 @@ class Stream extends Object
     public function setOriginUrl($origin_url)
     {
         $this->origin_url = $origin_url;
+    }
+
+    /**
+     * @return Affiliate[]|null
+     */
+    public function getAffiliates()
+    {
+        return $this->affiliates;
+    }
+
+    /**
+     * @param Affiliate[]|Collection $affiliates
+     */
+    public function setAffiliates($affiliates)
+    {
+        $this->affiliates = new Collection($affiliates);
+    }
+
+    /**
+     * @param Affiliate $affiliate
+     */
+    public function addAffiliate(Affiliate $affiliate)
+    {
+        $this->add($this->affiliates, $affiliate);
     }
 }
