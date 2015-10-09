@@ -99,11 +99,6 @@ class Exhibitor extends Object
     protected $properties;
 
     /**
-     * @var \Buzz\Control\Objects\Exhibitor\Social[]
-     */
-    protected $socials;
-
-    /**
      * @return array
      */
     public function getAddresses()
@@ -181,32 +176,6 @@ class Exhibitor extends Object
     public function addProperty(Exhibitor\Property $property)
     {
         $this->add($this->properties, $property);
-    }
-
-    /**
-     * @return array
-     */
-    public function getSocials()
-    {
-        return $this->socials;
-    }
-
-    /**
-     * @param Exhibitor\Social[]|Collection $socials
-     */
-    public function setSocials($socials)
-    {
-        $this->socials = new Collection($socials);
-    }
-
-    /**
-     * @param Exhibitor\Social $social
-     *
-     * @return array
-     */
-    public function addSocial(Exhibitor\Social $social)
-    {
-        $this->add($this->socials, $social);
     }
 
     /**
