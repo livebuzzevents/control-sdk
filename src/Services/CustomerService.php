@@ -80,7 +80,7 @@ class CustomerService extends Service
 
         $response = $this->call('get', $url);
 
-        dd($response);
+        return $response['url'];
     }
 
     /**
