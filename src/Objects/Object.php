@@ -180,7 +180,7 @@ abstract class Object implements Arrayable, JsonSerializable
     {
         $method = 'set' . str_replace(' ', '', ucwords(str_replace(['_'], ' ', $key)));
 
-        return $this->{$method}($key, $value);
+        return $this->{$method}($value);
     }
 
     /**

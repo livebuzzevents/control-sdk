@@ -65,6 +65,25 @@ class CustomerService extends Service
     }
 
     /**
+     * @param string   $provider
+     * @param Customer $customer
+     *
+     * @return mixed
+     */
+    public function socialConnect($provider, Customer $customer = null)
+    {
+        $url = "customer/social-connect/{$provider}";
+
+        if ($customer) {
+            $url .= '/' . $customer->id;
+        }
+
+        $response = $this->call('get', $url);
+
+        dd($response);
+    }
+
+    /**
      * @param Customer $customer
      *
      * @return Customer
