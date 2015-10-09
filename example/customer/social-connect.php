@@ -13,4 +13,4 @@ $stream->setCampaign($campaign);
 
 $service = new \Buzz\Control\Services\CustomerService($buzz);
 
-$service->socialConnect('linkedin');
+$service->socialConnect('linkein');

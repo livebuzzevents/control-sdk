@@ -18,9 +18,19 @@ class Social extends Object
     protected $provider;
 
     /**
+     * @var string
+     */
+    protected $provider_id;
+
+    /**
+     * @var string
+     */
+    protected $provider_token;
+
+    /**
      * @var array
      */
-    protected $settings = [];
+    protected $details = [];
 
     /**
      * @return string
@@ -39,18 +49,50 @@ class Social extends Object
     }
 
     /**
-     * @return array
+     * @return string
      */
-    public function getSettings()
+    public function getProviderId()
     {
-        return $this->settings;
+        return $this->provider_id;
     }
 
     /**
-     * @param array $settings
+     * @param string $provider_id
      */
-    public function setSettings(array $settings = null)
+    public function setProviderId($provider_id)
     {
-        $this->settings = $settings;
+        $this->provider_id = $provider_id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProviderToken()
+    {
+        return $this->provider_token;
+    }
+
+    /**
+     * @param string $provider_token
+     */
+    public function setProviderToken($provider_token)
+    {
+        $this->provider_token = $provider_token;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDetails()
+    {
+        return $this->details;
+    }
+
+    /**
+     * @param array $details
+     */
+    public function setDetails(array $details = null)
+    {
+        $this->details = $details;
     }
 }
