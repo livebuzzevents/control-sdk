@@ -1,5 +1,6 @@
 <?php namespace Buzz\Control\Services;
 
+use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
 use Buzz\Control\Objects\Exhibitor;
@@ -201,8 +202,6 @@ class CustomerService extends Service
             throw new ErrorException('Customer id required!');
         }
 
-        $connections = $this->call('get', "customer/{$customer->getId()}/suggest-connections");
-
-        dd($connections);
+        return new Collection($this->call('get', "customer/{$customer->getId()}/suggest-connections"));
     }
 }

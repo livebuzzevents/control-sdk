@@ -3,6 +3,7 @@
 namespace Buzz\Control\Services;
 
 use Buzz\Control\Buzz;
+use Buzz\Control\Collection;
 use Buzz\Control\Contracts\Client;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Filter;
@@ -284,7 +285,7 @@ abstract class Service
             }
         }
 
-        return $result;
+        return new Collection($result);
     }
 
     /**
