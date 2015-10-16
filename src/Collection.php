@@ -213,7 +213,11 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, Arrayable
     public function where($key, $value, $strict = true)
     {
         return $this->filter(function ($item) use ($key, $value, $strict) {
-            return $strict ? $item->$key === $value : $item->$key == $value;
+            if (is_object($item)) {
+                return $strict ? $item->$key === $value : $item->$key == $value;
+            } else {
+                return $strict ? $item[$key] === $value : $item[$key] == $value;
+            }
         });
     }
 
