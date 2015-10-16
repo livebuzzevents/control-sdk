@@ -2,6 +2,7 @@
 
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
+use Buzz\Control\Objects\Exhibitor;
 
 /**
  * Class CustomerService
@@ -168,5 +169,23 @@ class CustomerService extends Service
         }
 
         return $this->callAndCastMany('post', 'customers', ['batch' => $customers]);
+    }
+
+    /**
+     * @param Customer $customer
+     * @param int      $count
+     *
+     * @return mixed
+     * @throws ErrorException
+     */
+    public function suggestExhibitors(Customer $customer, $count = 15)
+    {
+        if (!$customer->getId()) {
+            throw new ErrorException('Customer id required!');
+        }
+
+        $exhibitors = $this->call('get', "customer/{$customer->getId()}/suggest-exhibitors/{$count}");
+
+        return $this->castMany($exhibitors, Exhibitor::class);
     }
 }

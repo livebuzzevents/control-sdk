@@ -169,15 +169,16 @@ abstract class Service
     }
 
     /**
-     * @param $response
+     * @param      $response
+     * @param null $cast
      *
      * @return mixed
      */
-    protected final function cast($response)
+    protected final function cast($response, $cast = null)
     {
-        $object = static::$cast;
+        $class = $cast ?: static::$cast;
 
-        return new $object($response);
+        return new $class($response);
     }
 
     /**
@@ -242,12 +243,13 @@ abstract class Service
     }
 
     /**
-     * @param $response
+     * @param      $response
+     * @param null $cast
      *
      * @return mixed
      * @throws ErrorException
      */
-    protected final function castMany($response)
+    protected final function castMany($response, $cast = null)
     {
         $result = [];
 
@@ -262,14 +264,14 @@ abstract class Service
             $paging->setLastPage($response['last_page']);
             $paging->setFrom($response['from']);
             $paging->setTo($response['to']);
-            $paging->setItems($this->castMany($response['data']));
+            $paging->setItems($this->castMany($response['data'], $cast));
 
             return $paging;
         }
 
         foreach ($response as $key => $value) {
             if (!$this->getSetting('keyBy')) {
-                $result[$key] = self::cast($value);
+                $result[$key] = self::cast($value, $cast);
             } else {
                 if (!is_array($value)) {
                     throw new ErrorException('KeyBy expects each result to be an array!');
