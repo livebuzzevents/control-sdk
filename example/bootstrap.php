@@ -4,7 +4,7 @@ require_once(__DIR__ . '/../vendor/autoload.php');
 
 $api_key      = '55bb6fa8e9eb7';
 $endpoint     = 'http://control.dev/rest/v1/';
-$organization = 'bigbang';
+$organization = 'demo';
 
 $buzz = new \Buzz\Control\Buzz();
 
@@ -21,10 +21,10 @@ $scope->add(1);
 $buzz->setScope($scope);
 
 $campaign = new \Buzz\Control\Objects\Campaign();
-$campaign->setIdentifier('bbf16');
+$campaign->setIdentifier('event16');
 
 $stream = new \Buzz\Control\Objects\Stream();
-$stream->setIdentifier('reg');
+$stream->setIdentifier('visitor-registration');
 $stream->setCampaign($campaign);
 $buzz->setStream($stream);
 

@@ -188,4 +188,21 @@ class CustomerService extends Service
 
         return $this->castMany($exhibitors, Exhibitor::class);
     }
+
+    /**
+     * @param Customer $customer
+     *
+     * @return mixed
+     * @throws ErrorException
+     */
+    public function suggestConnections(Customer $customer)
+    {
+        if (!$customer->getId()) {
+            throw new ErrorException('Customer id required!');
+        }
+
+        $connections = $this->call('get', "customer/{$customer->getId()}/suggest-connections");
+
+        dd($connections);
+    }
 }
