@@ -101,4 +101,22 @@ class ExhibitorService extends Service
 
         return $this->callAndCastMany('post', 'exhibitors', ['batch' => $exhibitors]);
     }
+
+    public function attachCustomers(Exhibitor $exhibitor, $customers)
+    {
+        if (!$exhibitor->getId()) {
+            throw new ErrorException('Exhibitor id required!');
+        }
+
+        $this->call('post', "exhibitor/{$exhibitor->getId()}/customer", ['customers' => $customers]);
+    }
+
+    public function detachCustomers(Exhibitor $exhibitor, $customers)
+    {
+        if (!$exhibitor->getId()) {
+            throw new ErrorException('Exhibitor id required!');
+        }
+
+        $this->call('delete', "exhibitor/{$exhibitor->getId()}/customer", ['customers' => $customers]);
+    }
 }
