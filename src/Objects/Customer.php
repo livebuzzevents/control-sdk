@@ -140,6 +140,11 @@ class Customer extends Object
     protected $flows;
 
     /**
+     * @var \Buzz\Control\Objects\Exhibitor[]
+     */
+    protected $exhibitors;
+
+    /**
      * @return int
      */
     public function getOwnerId()
@@ -593,5 +598,13 @@ class Customer extends Object
     public function setCreatedBadges($badges)
     {
         $this->created_badges = new Collection($badges);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExhibitors()
+    {
+        return $this->exhibitors;
     }
 }
