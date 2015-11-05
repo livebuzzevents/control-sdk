@@ -4,11 +4,11 @@ use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasIdentifier;
 
 /**
- * Class Email
+ * Class EmailTemplate
  *
- * @package Buzz\Control\Objects\Email
+ * @package Buzz\Control\Objects\EmailTemplate
  */
-class Email extends Object
+class EmailTemplate extends Object
 {
     use BelongsToCampaign, HasIdentifier;
 }

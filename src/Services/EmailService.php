@@ -2,7 +2,7 @@
 
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
-use Buzz\Control\Objects\Email;
+use Buzz\Control\Objects\EmailTemplate;
 use Buzz\Control\Objects\Exhibitor;
 
 /**
@@ -13,14 +13,14 @@ use Buzz\Control\Objects\Exhibitor;
 class EmailService extends Service
 {
     /**
-     * @param Customer $customer
-     * @param Email    $email
+     * @param Customer      $customer
+     * @param EmailTemplate $emailTemplate
      *
      * @throws ErrorException
      */
-    public function sendToCustomer(Customer $customer, Email $email)
+    public function sendToCustomer(Customer $customer, EmailTemplate $emailTemplate)
     {
-        if ((!$email->getId() && !$email->getIdentifier()) && !$customer->getId()) {
+        if ((!$emailTemplate->getId() && !$emailTemplate->getIdentifier()) && !$customer->getId()) {
             throw new ErrorException('Email and Customer required!');
         }
 
@@ -28,25 +28,25 @@ class EmailService extends Service
             'customer_id' => $customer->getId(),
         ];
 
-        if ($email->getId()) {
-            $request['email_id'] = $email->getId();
+        if ($emailTemplate->getId()) {
+            $request['email_template_id'] = $emailTemplate->getId();
         } else {
-            $request['email'] = $email->toArray();
+            $request['email_template'] = $emailTemplate->toArray();
         }
 
         $this->call('post', 'email/send', $request);
     }
 
     /**
-     * @param Exhibitor $exhibitor
-     * @param Email     $email
+     * @param Exhibitor     $exhibitor
+     * @param EmailTemplate $emailTemplate
      *
      * @throws ErrorException
      * @internal param Customer $customer
      */
-    public function sendToExhibitor(Exhibitor $exhibitor, Email $email)
+    public function sendToExhibitor(Exhibitor $exhibitor, EmailTemplate $emailTemplate)
     {
-        if ((!$email->getId() && !$email->getIdentifier()) && !$exhibitor->getId()) {
+        if ((!$emailTemplate->getId() && !$emailTemplate->getIdentifier()) && !$exhibitor->getId()) {
             throw new ErrorException('Email and Exhibitor required!');
         }
 
@@ -54,10 +54,10 @@ class EmailService extends Service
             'exhibitor_id' => $exhibitor->getId(),
         ];
 
-        if ($email->getId()) {
-            $request['email_id'] = $email->getId();
+        if ($emailTemplate->getId()) {
+            $request['email_template_id'] = $emailTemplate->getId();
         } else {
-            $request['email'] = $email->toArray();
+            $request['email_template'] = $emailTemplate->toArray();
         }
 
         $this->call('post', 'email/send', $request);
