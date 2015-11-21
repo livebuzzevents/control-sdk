@@ -27,7 +27,7 @@ class BadgeTypeService extends Service
             throw new ErrorException('BadgeType id required!');
         }
 
-        return $this->callAndCast('get', "badgeType/{$badge_type->getId()}");
+        return $this->callAndCast('get', "badge-type/{$badge_type->getId()}");
     }
 
     /**
@@ -41,7 +41,7 @@ class BadgeTypeService extends Service
             throw new ErrorException('BadgeType id required!');
         }
 
-        $this->call('delete', "badgeType/{$badge_type->getId()}");
+        $this->call('delete', "badge-type/{$badge_type->getId()}");
     }
 
     /**
@@ -58,10 +58,10 @@ class BadgeTypeService extends Service
 
         if ($badge_type->getId()) {
             $verb = 'put';
-            $url  = 'badgeType/' . $badge_type->getId();
+            $url  = 'badge-type/' . $badge_type->getId();
         } else {
             $verb = 'post';
-            $url  = 'badgeType';
+            $url  = 'badge-type';
         }
 
         return $this->callAndCast($verb, $url, $badge_type->toArray());
@@ -72,7 +72,7 @@ class BadgeTypeService extends Service
      */
     public function deleteMany()
     {
-        $this->call('delete', 'badgeTypes');
+        $this->call('delete', 'badge-types');
     }
 
     /**
@@ -80,7 +80,7 @@ class BadgeTypeService extends Service
      */
     public function getMany()
     {
-        return $this->callAndCastMany('get', 'badgeTypes');
+        return $this->callAndCastMany('get', 'badge-types');
     }
 
     /**
@@ -99,6 +99,6 @@ class BadgeTypeService extends Service
             $badge_types[$key] = $badge_type->toArray();
         }
 
-        return $this->callAndCastMany('post', 'badgeTypes', ['batch' => $badge_types]);
+        return $this->callAndCastMany('post', 'badge-types', ['batch' => $badge_types]);
     }
 }
