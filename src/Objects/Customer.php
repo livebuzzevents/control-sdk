@@ -4,6 +4,8 @@ use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
+use Buzz\Control\Objects\Traits\HasBadges;
+use Buzz\Control\Objects\Traits\HasCreatedBadges;
 use Buzz\Control\Objects\Traits\HasPivot;
 use Buzz\Control\Objects\Traits\HasPropertiesCommon;
 use Buzz\Control\Objects\Traits\HasSharedId;
@@ -17,7 +19,7 @@ use Buzz\Control\Objects\Traits\HasStatus;
  */
 class Customer extends Object
 {
-    use BelongsToCampaign, HasSharedId, HasSource, HasStatus, HasAnswersCommon, HasPropertiesCommon, HasPivot;
+    use BelongsToCampaign, HasSharedId, HasSource, HasStatus, HasAnswersCommon, HasPropertiesCommon, HasPivot, HasBadges, HasCreatedBadges;
 
     /**
      * @var int
@@ -118,16 +120,6 @@ class Customer extends Object
      * @var \Buzz\Control\Objects\Customer\Answer[]
      */
     protected $answers;
-
-    /**
-     * @var \Buzz\Control\Objects\Badge[]
-     */
-    protected $badges;
-
-    /**
-     * @var \Buzz\Control\Objects\Badge[]
-     */
-    protected $created_badges;
 
     /**
      * @var \Buzz\Control\Objects\Customer\Flow
@@ -247,7 +239,7 @@ class Customer extends Object
     {
         $this->add($this->socials, $social);
     }
-    
+
     /**
      * @return mixed
      */
@@ -545,59 +537,11 @@ class Customer extends Object
     }
 
     /**
-     * @param Badge $badge
-     */
-    public function addBadge(Badge $badge)
-    {
-        $this->add($this->badges, $badge);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getBadges()
-    {
-        return $this->badges;
-    }
-
-    /**
-     * @param Badge[]|Collection $badges
-     */
-    public function setBadges($badges)
-    {
-        $this->badges = new Collection($badges);
-    }
-
-    /**
      * @param Customer\Answer[]|Collection $answers
      */
     public function setAnswers($answers)
     {
         $this->answers = new Collection($answers);
-    }
-
-    /**
-     * @param Badge $badge
-     */
-    public function addCreatedBadge(Badge $badge)
-    {
-        $this->add($this->created_badges, $badge);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCreatedBadges()
-    {
-        return $this->created_badges;
-    }
-
-    /**
-     * @param Badge[]|Collection $badges
-     */
-    public function setCreatedBadges($badges)
-    {
-        $this->created_badges = new Collection($badges);
     }
 
     /**
