@@ -21,9 +21,9 @@ trait HasCreatedBadges
      *
      * @return bool
      */
-    public function hasBadgeOfBadgeType(BadgeType $badgeType)
+    public function hasCreatedBadgeByBadgeType(BadgeType $badgeType)
     {
-        return (bool)$this->getBadgeByBadgeType($badgeType);
+        return (bool)$this->getCreatedBadgeByBadgeType($badgeType);
     }
 
     /**
