@@ -3,7 +3,6 @@
 use Buzz\Control\Collection;
 use Buzz\Control\Objects\Badge;
 use Buzz\Control\Objects\BadgeType;
-use Buzz\Control\Objects\Question;
 
 /**
  * Class HasBadgesCommon
@@ -18,13 +17,13 @@ trait HasBadges
     protected $badges;
 
     /**
-     * @param Question $question
+     * @param BadgeType $badgeType
      *
      * @return bool
      */
-    public function hasAnsweredQuestion(Question $question)
+    public function hasBadgeOfBadgeType(BadgeType $badgeType)
     {
-        return (bool)$this->getAnswerByQuestion($question);
+        return (bool)$this->getBadgeByBadgeType($badgeType);
     }
 
     /**
