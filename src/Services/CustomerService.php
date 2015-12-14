@@ -230,12 +230,12 @@ class CustomerService extends Service
      * @return Collection
      * @throws ErrorException
      */
-    public function detachInvite(Customer $customer)
+    public function detachInvite(Customer $customer, Invite $invite)
     {
-        if (!$customer->getId()) {
-            throw new ErrorException('Customer id required!');
+        if (!$customer->getId() || !$invite->getId()) {
+            throw new ErrorException('Customer id and Invite id required!');
         }
 
-        return new Collection($this->call('get', "customer/{$customer->getId()}/invite/detach"));
+        return new Collection($this->call('get', "customer/{$customer->getId()}/invite/{$invite->getId()}/detach"));
     }
 }
