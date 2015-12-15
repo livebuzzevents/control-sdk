@@ -15,10 +15,9 @@ $credentials->setOrganization($organization);
 
 $buzz->setCredentials($credentials);
 
-$scope = new \Buzz\Control\Scope();
-$scope->add(1);
-
-$buzz->setScope($scope);
+//$scope = new \Buzz\Control\Scope();
+//$scope->add(1);
+//$buzz->setScope($scope);
 
 $campaign = new \Buzz\Control\Objects\Campaign();
 $campaign->setIdentifier('event16');
