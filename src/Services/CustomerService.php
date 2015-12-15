@@ -4,6 +4,7 @@ use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
 use Buzz\Control\Objects\Exhibitor;
+use Buzz\Control\Objects\Invite;
 
 /**
  * Class CustomerService
@@ -203,5 +204,38 @@ class CustomerService extends Service
         }
 
         return new Collection($this->call('get', "customer/{$customer->getId()}/suggest-connections"));
+    }
+
+    /**
+     * @param Customer $customer
+     * @param Invite   $invite
+     *
+     * @return mixed
+     * @throws ErrorException
+     */
+    public function attachInvite(Customer $customer, Invite $invite)
+    {
+        if (!$customer->getId() || !$invite->getId()) {
+            throw new ErrorException('Customer id and Invite id required!');
+        }
+
+        $exhibitors = $this->call('get', "customer/{$customer->getId()}/invite/{$invite->getId()}/attach");
+
+        return $this->castMany($exhibitors, Exhibitor::class);
+    }
+
+    /**
+     * @param Customer $customer
+     *
+     * @return Collection
+     * @throws ErrorException
+     */
+    public function detachInvite(Customer $customer, Invite $invite)
+    {
+        if (!$customer->getId() || !$invite->getId()) {
+            throw new ErrorException('Customer id and Invite id required!');
+        }
+
+        return new Collection($this->call('get', "customer/{$customer->getId()}/invite/{$invite->getId()}/detach"));
     }
 }
