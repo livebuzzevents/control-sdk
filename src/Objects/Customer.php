@@ -49,6 +49,11 @@ class Customer extends Object
     /**
      * @var string
      */
+    protected $avatar;
+
+    /**
+     * @var string
+     */
     protected $email;
 
     /**
@@ -316,6 +321,22 @@ class Customer extends Object
         }
 
         $this->sex = $sex;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * @param string $avatar
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
     }
 
     /**
