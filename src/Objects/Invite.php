@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
+use Buzz\Control\Objects\Traits\BelongsToCustomer;
 use Buzz\Control\Objects\Traits\BelongsToStream;
 use Buzz\Control\Objects\Traits\CreatedByCustomer;
 use Buzz\Control\Objects\Traits\CreatedByExhibitor;
@@ -12,7 +13,7 @@ use Buzz\Control\Objects\Traits\CreatedByExhibitor;
  */
 class Invite extends Object
 {
-    use BelongsToStream, BelongsToCampaign, CreatedByCustomer, CreatedByExhibitor;
+    use BelongsToStream, BelongsToCampaign, BelongsToCustomer, CreatedByCustomer, CreatedByExhibitor;
 
     /**
      * @var string
@@ -33,6 +34,11 @@ class Invite extends Object
      * @var string
      */
     protected $provider_recipient;
+
+    /**
+     * @var string
+     */
+    protected $status;
 
     /**
      * @return string
@@ -96,5 +102,21 @@ class Invite extends Object
     public function setProviderRecipient($providerRecipient)
     {
         $this->provider_recipient = $providerRecipient;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 }

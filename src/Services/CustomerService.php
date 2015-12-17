@@ -208,6 +208,21 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
+     *
+     * @return mixed
+     * @throws ErrorException
+     */
+    public function getEmailInvites(Customer $customer)
+    {
+        if (!$customer->getId()) {
+            throw new ErrorException('Customer id required!');
+        }
+
+        return $this->castMany($this->call('get', "customer/{$customer->getId()}/email-invites"), Invite::class);
+    }
+
+    /**
+     * @param Customer $customer
      * @param Invite   $invite
      *
      * @return mixed
