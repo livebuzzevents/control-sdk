@@ -23,6 +23,11 @@ class Invite extends Object
     /**
      * @var string
      */
+    protected $status;
+
+    /**
+     * @var string
+     */
     protected $provider;
 
     /**
@@ -54,6 +59,22 @@ class Invite extends Object
     public function setToken($token)
     {
         $this->token = $token;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 
     /**
