@@ -41,11 +41,6 @@ class Invite extends Object
     protected $provider_recipient;
 
     /**
-     * @var string
-     */
-    protected $status;
-
-    /**
      * @return string
      */
     public function getToken()
@@ -123,21 +118,5 @@ class Invite extends Object
     public function setProviderRecipient($providerRecipient)
     {
         $this->provider_recipient = $providerRecipient;
-    }
-
-    /**
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * @param string $status
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
     }
 }
