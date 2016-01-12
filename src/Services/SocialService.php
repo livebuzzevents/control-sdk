@@ -36,7 +36,7 @@ class SocialService extends Service
             $request['email_template'] = $emailTemplate->toArray();
         }
 
-        $this->call('post', 'social/invite/email', $request);
+        return $this->callAndCast('post', 'social/invite/email', $request);
     }
 
     public function inviteShare(Invite $invite, $message)
@@ -46,7 +46,7 @@ class SocialService extends Service
             'message' => $message
         ];
 
-        $this->call('post', "social/invite/{$invite->getProvider()}/share", $request);
+        return $this->callAndCast('post', "social/invite/{$invite->getProvider()}/share", $request);
     }
 
     public function inviteConnection(Invite $invite, $subject, $message)
@@ -57,6 +57,6 @@ class SocialService extends Service
             'message' => $message
         ];
 
-        $this->call('post', "social/invite/{$invite->getProvider()}/connection", $request);
+        return $this->callAndCast('post', "social/invite/{$invite->getProvider()}/connection", $request);
     }
 }
