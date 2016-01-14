@@ -13,22 +13,15 @@ use Buzz\Control\Objects\Invite;
  */
 class SocialService extends Service
 {
-    /**
-     * @var
-     */
     protected static $cast = Invite::class;
 
-    public function inviteEmail(Invite $invite, EmailTemplate $emailTemplate, $subject, $message)
+    public function inviteEmail(Invite $invite, EmailTemplate $emailTemplate)
     {
         if (!$invite->getProviderRecipient()) {
             throw new ErrorException('Email required!');
         }
 
-        $request = [
-            'invite'  => $invite->toArray(),
-            'subject' => $subject,
-            'message' => $message
-        ];
+        $request = ['invite'  => $invite->toArray()];
 
         if ($emailTemplate->getId()) {
             $request['email_template_id'] = $emailTemplate->getId();
@@ -45,14 +38,9 @@ class SocialService extends Service
         return $this->callAndCast('post', "social/invite/{$invite->getProvider()}/share", $request);
     }
 
-    public function inviteConnection(Invite $invite, $subject, $message)
+    public function inviteConnection(Invite $invite)
     {
-        $request = [
-            'invite'  => $invite->toArray(),
-            'subject' => $subject,
-            'message' => $message
-        ];
-
+        $request = ['invite'  => $invite->toArray()];
         return $this->callAndCast('post', "social/invite/{$invite->getProvider()}/connection", $request);
     }
 }
