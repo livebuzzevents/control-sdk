@@ -39,13 +39,9 @@ class SocialService extends Service
         return $this->callAndCast('post', 'social/invite/email', $request);
     }
 
-    public function inviteShare(Invite $invite, $message)
+    public function inviteShare(Invite $invite)
     {
-        $request = [
-            'invite'  => $invite->toArray(),
-            'message' => $message
-        ];
-
+        $request = ['invite' => $invite->toArray()];
         return $this->callAndCast('post', "social/invite/{$invite->getProvider()}/share", $request);
     }
 
