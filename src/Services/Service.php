@@ -136,6 +136,26 @@ abstract class Service
     }
 
     /**
+     * @param Filter $filter
+     *
+     * @return $this
+     */
+    public function setFilter(Filter $filter)
+    {
+        $this->filter = $filter;
+
+        return $this;
+    }
+
+    /**
+     * @return Filter
+     */
+    public function getFilter()
+    {
+        return $this->filter;
+    }
+
+    /**
      * @param string $keyBy
      *
      * @return $this
@@ -198,7 +218,7 @@ abstract class Service
         $request['_settings'] = $this->settings;
 
         if ($this->filter) {
-            $request['_settings']['filters'] = $this->filter->getFilters();
+            $request['_settings']['filters'] = $this->filter->toArray();
         }
 
         $request['_settings']['api_key'] = $this->buzz->getCredentials()->getApiKey();

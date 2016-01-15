@@ -1,31 +1,30 @@
 {
-    "name"             : "livebuzz/control-sdk",
-    "description"      : "LiveBuzz Control SDK",
-    "keywords"         : [
-        "livebuzz",
-        "control",
-        "sdk"
-    ],
-    "license"          : "LiveBuzz",
-    "type"             : "package",
-    "require"          : {
-        "guzzlehttp/guzzle": "~6.0",
-        "doctrine/inflector": "~1.0"
-    },
-    "require-dev"      : {
-        "phpunit/phpunit" : "~4.0",
-        "phpspec/phpspec" : "~2.1",
-        "mockery/mockery" : "*",
-        "fzaninotto/faker": "1.4.0",
-        "theseer/phpdox"  : "*"
-    },
-    "autoload"         : {
-        "psr-4": {
-            "Buzz\\Control\\": "src/"
-        }
-    },
-    "config"           : {
-        "preferred-install": "dist"
-    },
-    "minimum-stability": "dev"
+  "name": "livebuzz/control-sdk",
+  "description": "LiveBuzz Control SDK",
+  "keywords": [
+    "livebuzz",
+    "control",
+    "sdk"
+  ],
+  "license": "LiveBuzz",
+  "type": "package",
+  "require": {
+    "guzzlehttp/guzzle": "~6.0",
+    "doctrine/inflector": "~1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0",
+    "phpspec/phpspec": "~2.1",
+    "mockery/mockery": "*",
+    "fzaninotto/faker": "1.4.0",
+    "theseer/phpdox": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Buzz\\Control\\": "src/"
+    }
+  },
+  "config": {
+    "preferred-install": "dist"
+  }
 }

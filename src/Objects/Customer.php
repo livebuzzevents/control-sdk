@@ -354,7 +354,7 @@ class Customer extends Object
      */
     public function setEmail($email)
     {
-        if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+        if ($email && filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
             throw new ErrorException("Invalid email address '{$email}'!");
         }
 
