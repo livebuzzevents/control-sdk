@@ -42,6 +42,11 @@ class Customer extends Object
     protected $password;
 
     /**
+     * @var bool
+     */
+    protected $has_password;
+
+    /**
      * @var string
      */
     protected $remember_token;
@@ -195,6 +200,14 @@ class Customer extends Object
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getHasPassword()
+    {
+        return $this->has_password;
     }
 
     /**

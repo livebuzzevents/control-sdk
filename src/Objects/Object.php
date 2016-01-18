@@ -147,6 +147,8 @@ abstract class Object implements Arrayable, JsonSerializable
             return intval($value);
         } elseif ($type === 'float') {
             return floatval($value);
+        } elseif ($type === 'bool') {
+            return boolval($value);
         } elseif (class_exists($type)) {
             if ($type === '\DateTime') {
                 return (new \DateTime())->setTimestamp(strtotime($value));
