@@ -1,30 +1,30 @@
 <?php namespace Buzz\Control\Objects\Traits;
 
 /**
- * Class HasSharedId
+ * Class HasMatchId
  *
  * @package Buzz\Control\Objects\Traits
  */
-trait HasSharedId
+trait HasMatchId
 {
     /**
      * @var string
      */
-    protected $shared_id;
+    protected $match_id;
 
     /**
      * @return string
      */
-    public function getSharedId()
+    public function getMatchId()
     {
-        return $this->shared_id;
+        return $this->match_id;
     }
 
     /**
-     * @param string $shared_id
+     * @param string $match_id
      */
-    public function setSharedId($shared_id)
+    public function setMatchId($match_id)
     {
-        $this->shared_id = $shared_id;
+        $this->match_id = $match_id;
     }
 }
