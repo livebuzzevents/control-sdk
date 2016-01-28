@@ -33,19 +33,19 @@ class BadgeService extends Service
 
     /**
      * @param Badge $badge
-     * @param array $configuration
+     * @param array $badgeStockConfiguration
      *
      * @return Badge
      * @throws ErrorException
      */
-    public function smartPrint(Badge $badge, array $configuration)
+    public function smartPrint(Badge $badge, array $badgeStockConfiguration)
     {
         if (!$badge->getId()) {
             throw new ErrorException('Badge id required!');
         }
 
         return $this->cast(
-            $this->call('post', "badge/{$badge->getId()}/smart-print", compact('configuration')),
+            $this->call('post', "badge/{$badge->getId()}/smart-print", compact('badgeStockConfiguration')),
             Printer::class
         );
     }
