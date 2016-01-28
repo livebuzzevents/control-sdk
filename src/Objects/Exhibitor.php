@@ -37,7 +37,7 @@ class Exhibitor extends Object
     protected $image;
 
     /**
-     * @var int
+     * @var string
      */
     protected $owner_id;
 
@@ -246,7 +246,7 @@ class Exhibitor extends Object
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getOwnerId()
     {
@@ -254,7 +254,7 @@ class Exhibitor extends Object
     }
 
     /**
-     * @param mixed $owner_id
+     * @param string $owner_id
      */
     public function setOwnerId($owner_id)
     {

@@ -10,7 +10,7 @@ use Buzz\Control\Objects\Stream;
 trait BelongsToStream
 {
     /**
-     * @var int
+     * @var string
      */
     protected $stream_id;
 
@@ -36,7 +36,7 @@ trait BelongsToStream
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getStreamId()
     {
@@ -44,7 +44,7 @@ trait BelongsToStream
     }
 
     /**
-     * @param int $stream_id
+     * @param string $stream_id
      */
     public function setStreamId($stream_id)
     {

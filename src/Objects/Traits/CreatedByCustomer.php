@@ -8,7 +8,7 @@
 trait CreatedByCustomer
 {
     /**
-     * @var int
+     * @var string
      */
     protected $created_by_customer_id;
 
@@ -26,7 +26,7 @@ trait CreatedByCustomer
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getCreatedByCustomerId()
     {
@@ -34,7 +34,7 @@ trait CreatedByCustomer
     }
 
     /**
-     * @param int $created_by_customer_id
+     * @param string $created_by_customer_id
      */
     public function setCreatedByCustomerId($created_by_customer_id)
     {

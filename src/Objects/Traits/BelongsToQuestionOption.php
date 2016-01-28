@@ -10,7 +10,7 @@ use Buzz\Control\Objects\Question\Option;
 trait BelongsToQuestionOption
 {
     /**
-     * @var int
+     * @var string
      */
     protected $question_option_id;
 
@@ -36,7 +36,7 @@ trait BelongsToQuestionOption
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getQuestionOptionId()
     {
@@ -44,7 +44,7 @@ trait BelongsToQuestionOption
     }
 
     /**
-     * @param int $question_option_id
+     * @param string $question_option_id
      */
     public function setQuestionOptionId($question_option_id)
     {

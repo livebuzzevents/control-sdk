@@ -22,7 +22,7 @@ class Scan extends Object
     protected $scanner;
 
     /**
-     * @var int
+     * @var string
      */
     protected $scanner_id;
 
@@ -59,7 +59,7 @@ class Scan extends Object
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getScannerId()
     {
@@ -67,7 +67,7 @@ class Scan extends Object
     }
 
     /**
-     * @param int $scanner_id
+     * @param string $scanner_id
      */
     public function setScannerId($scanner_id)
     {

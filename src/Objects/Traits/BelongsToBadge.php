@@ -8,7 +8,7 @@
 trait BelongsToBadge
 {
     /**
-     * @var int
+     * @var string
      */
     protected $badge_id;
 
@@ -26,7 +26,7 @@ trait BelongsToBadge
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getBadgeId()
     {
@@ -34,7 +34,7 @@ trait BelongsToBadge
     }
 
     /**
-     * @param int $badge_id
+     * @param string $badge_id
      */
     public function setBadgeId($badge_id)
     {

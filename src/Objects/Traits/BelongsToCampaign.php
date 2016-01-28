@@ -10,7 +10,7 @@ use Buzz\Control\Objects\Campaign;
 trait BelongsToCampaign
 {
     /**
-     * @var int
+     * @var string
      */
     protected $campaign_id;
 
@@ -36,7 +36,7 @@ trait BelongsToCampaign
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getCampaignId()
     {
@@ -44,7 +44,7 @@ trait BelongsToCampaign
     }
 
     /**
-     * @param int $campaign_id
+     * @param string $campaign_id
      */
     public function setCampaignId($campaign_id)
     {

@@ -13,7 +13,7 @@ class Option extends Object
     use BelongsToQuestionOption;
 
     /**
-     * @var int
+     * @var string
      */
     protected $customer_answer_id;
 
@@ -28,7 +28,7 @@ class Option extends Object
     protected $text;
 
     /**
-     * @return int
+     * @return string
      */
     public function getBadgeAnswerId()
     {
@@ -36,7 +36,7 @@ class Option extends Object
     }
 
     /**
-     * @param int $customer_answer_id
+     * @param string $customer_answer_id
      */
     public function setBadgeAnswerId($customer_answer_id)
     {

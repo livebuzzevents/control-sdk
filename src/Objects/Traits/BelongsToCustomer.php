@@ -8,7 +8,7 @@
 trait BelongsToCustomer
 {
     /**
-     * @var int
+     * @var string
      */
     protected $customer_id;
 
@@ -26,7 +26,7 @@ trait BelongsToCustomer
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getCustomerId()
     {
@@ -34,7 +34,7 @@ trait BelongsToCustomer
     }
 
     /**
-     * @param int $customer_id
+     * @param string $customer_id
      */
     public function setCustomerId($customer_id)
     {

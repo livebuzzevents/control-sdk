@@ -17,16 +17,6 @@ class Channel extends Object
     protected $name;
 
     /**
-     * @var int
-     */
-    protected $organization_id;
-
-    /**
-     * @var Organization
-     */
-    protected $organization;
-
-    /**
      * @return string
      */
     public function getName()
@@ -40,37 +30,5 @@ class Channel extends Object
     public function setName($name)
     {
         $this->name = $name;
-    }
-
-    /**
-     * @return int
-     */
-    public function getOrganizationId()
-    {
-        return $this->organization_id;
-    }
-
-    /**
-     * @param int $organization_id
-     */
-    public function setOrganizationId($organization_id)
-    {
-        $this->organization_id = $organization_id;
-    }
-
-    /**
-     * @return Organization
-     */
-    public function getOrganization()
-    {
-        return $this->organization;
-    }
-
-    /**
-     * @param Organization $organization
-     */
-    public function setOrganization(Organization $organization)
-    {
-        $this->organization = $organization;
     }
 }

@@ -22,7 +22,7 @@ class Customer extends Object
     use BelongsToCampaign, HasSharedId, HasSource, HasStatus, HasAnswersCommon, HasPropertiesCommon, HasPivot, HasBadges, HasCreatedBadges;
 
     /**
-     * @var int
+     * @var string
      */
     protected $owner_id;
 
@@ -147,7 +147,7 @@ class Customer extends Object
     protected $exhibitors;
 
     /**
-     * @return int
+     * @return string
      */
     public function getOwnerId()
     {
@@ -155,7 +155,7 @@ class Customer extends Object
     }
 
     /**
-     * @param int $owner_id
+     * @param string $owner_id
      */
     public function setOwnerId($owner_id)
     {

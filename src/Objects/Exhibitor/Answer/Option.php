@@ -10,7 +10,7 @@ use Buzz\Control\Objects\Object;
 class Option extends Object
 {
     /**
-     * @var int
+     * @var string
      */
     protected $exhibitor_answer_id;
 
@@ -25,7 +25,7 @@ class Option extends Object
     protected $text;
 
     /**
-     * @return int
+     * @return string
      */
     public function getExhibitorAnswerId()
     {
@@ -33,7 +33,7 @@ class Option extends Object
     }
 
     /**
-     * @param int $exhibitor_answer_id
+     * @param string $exhibitor_answer_id
      */
     public function setExhibitorAnswerId($exhibitor_answer_id)
     {

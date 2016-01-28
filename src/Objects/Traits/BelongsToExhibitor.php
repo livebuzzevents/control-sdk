@@ -8,7 +8,7 @@
 trait BelongsToExhibitor
 {
     /**
-     * @var int
+     * @var string
      */
     protected $exhibitor_id;
 
@@ -26,7 +26,7 @@ trait BelongsToExhibitor
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getExhibitorId()
     {
@@ -34,7 +34,7 @@ trait BelongsToExhibitor
     }
 
     /**
-     * @param int $exhibitor_id
+     * @param string $exhibitor_id
      */
     public function setExhibitorId($exhibitor_id)
     {

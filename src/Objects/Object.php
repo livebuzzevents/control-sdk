@@ -18,7 +18,7 @@ use ReflectionProperty;
 abstract class Object implements Arrayable, JsonSerializable
 {
     /**
-     * @var int
+     * @var string
      */
     protected $id;
 
@@ -240,7 +240,7 @@ abstract class Object implements Arrayable, JsonSerializable
     }
 
     /**
-     * @return null
+     * @return string
      */
     public function getId()
     {

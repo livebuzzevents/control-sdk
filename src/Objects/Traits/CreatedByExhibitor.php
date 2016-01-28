@@ -8,7 +8,7 @@
 trait CreatedByExhibitor
 {
     /**
-     * @var int
+     * @var string
      */
     protected $created_by_exhibitor_id;
 
@@ -26,7 +26,7 @@ trait CreatedByExhibitor
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getCreatedByExhibitorId()
     {
@@ -34,7 +34,7 @@ trait CreatedByExhibitor
     }
 
     /**
-     * @param int $created_by_exhibitor_id
+     * @param string $created_by_exhibitor_id
      */
     public function setCreatedByExhibitorId($created_by_exhibitor_id)
     {

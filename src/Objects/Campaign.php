@@ -17,7 +17,7 @@ class Campaign extends Object
     protected $name;
 
     /**
-     * @var int
+     * @var string
      */
     protected $channel_id;
 
@@ -43,7 +43,7 @@ class Campaign extends Object
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getChannelId()
     {
@@ -51,7 +51,7 @@ class Campaign extends Object
     }
 
     /**
-     * @param int $channel_id
+     * @param string $channel_id
      */
     public function setChannelId($channel_id)
     {

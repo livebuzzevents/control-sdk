@@ -10,7 +10,7 @@ use Buzz\Control\Objects\Question;
 trait BelongsToQuestion
 {
     /**
-     * @var int
+     * @var string
      */
     protected $question_id;
 
@@ -36,7 +36,7 @@ trait BelongsToQuestion
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getQuestionId()
     {
@@ -44,7 +44,7 @@ trait BelongsToQuestion
     }
 
     /**
-     * @param int $question_id
+     * @param string $question_id
      */
     public function setQuestionId($question_id)
     {

@@ -10,7 +10,7 @@ use Buzz\Control\Objects\Entrance;
 trait BelongsToEntrance
 {
     /**
-     * @var int
+     * @var string
      */
     protected $entrance_id;
 
@@ -36,7 +36,7 @@ trait BelongsToEntrance
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getEntranceId()
     {
@@ -44,7 +44,7 @@ trait BelongsToEntrance
     }
 
     /**
-     * @param int $entrance_id
+     * @param string $entrance_id
      */
     public function setEntranceId($entrance_id)
     {

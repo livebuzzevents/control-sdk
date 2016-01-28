@@ -10,7 +10,7 @@ use Buzz\Control\Objects\BadgeType;
 trait HasBadgeType
 {
     /**
-     * @var int
+     * @var string
      */
     protected $badge_type_id;
 
@@ -36,7 +36,7 @@ trait HasBadgeType
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getBadgeTypeId()
     {
@@ -44,7 +44,7 @@ trait HasBadgeType
     }
 
     /**
-     * @param int $badge_type_id
+     * @param string $badge_type_id
      */
     public function setBadgeTypeId($badge_type_id)
     {

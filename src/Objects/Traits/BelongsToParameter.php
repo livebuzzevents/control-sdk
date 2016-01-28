@@ -10,7 +10,7 @@ use Buzz\Control\Objects\Parameter;
 trait BelongsToParameter
 {
     /**
-     * @var int
+     * @var string
      */
     protected $parameter_id;
 
@@ -36,7 +36,7 @@ trait BelongsToParameter
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getParameterId()
     {
@@ -44,7 +44,7 @@ trait BelongsToParameter
     }
 
     /**
-     * @param int $parameter_id
+     * @param string $parameter_id
      */
     public function setParameterId($parameter_id)
     {

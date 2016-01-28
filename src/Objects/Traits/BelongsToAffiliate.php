@@ -10,7 +10,7 @@ use Buzz\Control\Objects\Affiliate;
 trait BelongsToAffiliate
 {
     /**
-     * @var int
+     * @var string
      */
     protected $affiliate_id;
 
@@ -36,7 +36,7 @@ trait BelongsToAffiliate
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getAffiliateId()
     {
@@ -44,7 +44,7 @@ trait BelongsToAffiliate
     }
 
     /**
-     * @param int $affiliate_id
+     * @param string $affiliate_id
      */
     public function setAffiliateId($affiliate_id)
     {
