@@ -2,6 +2,7 @@
 
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Badge;
+use Buzz\Control\Objects\Printer;
 
 /**
  * Class BadgeService
@@ -28,6 +29,22 @@ class BadgeService extends Service
         }
 
         return $this->callAndCast('get', "badge/{$badge->getId()}");
+    }
+
+    /**
+     * @param Badge $badge
+     * @param array $configuration
+     *
+     * @return Badge
+     * @throws ErrorException
+     */
+    public function smartPrint(Badge $badge, array $configuration)
+    {
+        if (!$badge->getId()) {
+            throw new ErrorException('Badge id required!');
+        }
+
+        return $this->cast($this->call('post', "badge/{$badge->getId()}", compact('configuration')), Printer::class);
     }
 
     /**
