@@ -130,6 +130,22 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, Arrayable
     }
 
     /**
+     * @param $keyBy
+     *
+     * @return static
+     */
+    public function groupBy($keyBy)
+    {
+        $results = [];
+
+        foreach ($this->items as $item) {
+            $results[$item->$keyBy][] = $item;
+        }
+
+        return new static($results);
+    }
+
+    /**
      * Convert the collection to its string representation.
      *
      * @return string
