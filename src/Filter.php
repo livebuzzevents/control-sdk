@@ -96,7 +96,7 @@ class Filter
     {
         $group = new self();
 
-        $this->groups[] = [$group, $or];
+        $this->groups[] = compact('group', 'or');
 
         $callback($group);
 
