@@ -1,5 +1,7 @@
 <?php namespace Buzz\Control\Objects\Traits;
 
+use Buzz\Control\Objects\Scanner;
+
 /**
  * Class BelongsToScanner
  *
@@ -23,6 +25,16 @@ trait BelongsToScanner
     public function getScanner()
     {
         return $this->scanner;
+    }
+
+    /**
+     * @param Scanner $scanner
+     *
+     * @return Scanner
+     */
+    public function setScanner(Scanner $scanner)
+    {
+        $this->scanner = $scanner;
     }
 
     /**
