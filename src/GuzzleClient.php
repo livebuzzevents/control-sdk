@@ -52,11 +52,11 @@ class GuzzleClient implements Client
 
             $contents = $response->getBody()->getContents();
 
-            $decodedResponse = json_decode($contents, true);
-
             if (empty($contents)) {
                 return $contents;
             }
+
+            $decodedResponse = json_decode($contents, true);
 
             if ((json_last_error() == JSON_ERROR_NONE)) {
                 return $decodedResponse;
