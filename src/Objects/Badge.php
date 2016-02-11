@@ -61,6 +61,11 @@ class Badge extends Object
     protected $properties;
 
     /**
+     * @var bool
+     */
+    protected $attended;
+
+    /**
      * @return int
      */
     public function getParticipants()
@@ -162,5 +167,13 @@ class Badge extends Object
     public function addAnswer(Badge\Answer $answer)
     {
         $this->add($this->answers, $answer);
+    }
+
+    /**
+     * @return bool
+     */
+    public function getAttended()
+    {
+        return $this->attended;
     }
 }
