@@ -52,7 +52,7 @@ class ScanService extends Service
      */
     public function save(Scan $scan)
     {
-        if (!$scan->getId() && !$scan->getCampaignId() && !$scan->getCampaign()) {
+        if (!$scan->getId() && !$scan->getScannerId() && !$scan->getScanner()) {
             throw new ErrorException('Scan id or Campaign id/identifier required!');
         }
 
@@ -92,7 +92,7 @@ class ScanService extends Service
     public function saveMany(array $scans)
     {
         foreach ($scans as $key => $scan) {
-            if (!$scan->getId() && !$scan->getCampaignId() && !$scan->getCampaign()) {
+            if (!$scan->getId() && !$scan->getScannerId() && !$scan->getScanner()) {
                 throw new ErrorException('Scan id or Campaign id/identifier required!');
             }
 

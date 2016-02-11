@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Objects\Traits\BelongsToBadge;
+use Buzz\Control\Objects\Traits\BelongsToScanner;
 
 /**
  * Class Scan
@@ -9,22 +10,12 @@ use Buzz\Control\Objects\Traits\BelongsToBadge;
  */
 class Scan extends Object
 {
-    use BelongsToBadge;
+    use BelongsToBadge, BelongsToScanner;
 
     /**
      * @var string
      */
     protected $barcode;
-
-    /**
-     * @var \Buzz\Control\Objects\Scanner
-     */
-    protected $scanner;
-
-    /**
-     * @var string
-     */
-    protected $scanner_id;
 
     /**
      * @return mixed
@@ -40,37 +31,5 @@ class Scan extends Object
     public function setBarcode($barcode)
     {
         $this->barcode = $barcode;
-    }
-
-    /**
-     * @return Scanner
-     */
-    public function getScanner()
-    {
-        return $this->scanner;
-    }
-
-    /**
-     * @param Scanner $scanner
-     */
-    public function setScanner(Scanner $scanner)
-    {
-        $this->scanner = $scanner;
-    }
-
-    /**
-     * @return string
-     */
-    public function getScannerId()
-    {
-        return $this->scanner_id;
-    }
-
-    /**
-     * @param string $scanner_id
-     */
-    public function setScannerId($scanner_id)
-    {
-        $this->scanner_id = $scanner_id;
     }
 }
