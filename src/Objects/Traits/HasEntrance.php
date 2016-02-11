@@ -15,12 +15,12 @@ trait HasEntrance
     protected $entrance_id;
 
     /**
-     * @var Entrance
+     * @var \Buzz\Control\Objects\Entrance
      */
     protected $entrance;
 
     /**
-     * @return Entrance
+     * @return \Buzz\Control\Objects\Entrance
      */
     public function getEntrance()
     {
