@@ -17,7 +17,7 @@ class Scan extends Object
     protected $barcode;
 
     /**
-     * @var \Buzz\Control\Objects\Entrance\Scanner
+     * @var \Buzz\Control\Objects\Scanner
      */
     protected $scanner;
 
@@ -43,7 +43,7 @@ class Scan extends Object
     }
 
     /**
-     * @return Entrance\Scanner
+     * @return Scanner
      */
     public function getScanner()
     {
@@ -51,9 +51,9 @@ class Scan extends Object
     }
 
     /**
-     * @param Entrance\Scanner $scanner
+     * @param Scanner $scanner
      */
-    public function setScanner(Entrance\Scanner $scanner)
+    public function setScanner(Scanner $scanner)
     {
         $this->scanner = $scanner;
     }

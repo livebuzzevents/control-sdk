@@ -1,7 +1,7 @@
-<?php namespace Buzz\Control\Objects\Entrance;
+<?php namespace Buzz\Control\Objects;
 
-use Buzz\Control\Objects\Object;
-use Buzz\Control\Objects\Traits\BelongsToEntrance;
+use Buzz\Control\Objects\Traits\BelongsToCampaign;
+use Buzz\Control\Objects\Traits\HasEntrance;
 use Buzz\Control\Objects\Traits\HasIdentifier;
 
 /**
@@ -11,7 +11,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  */
 class Scanner extends Object
 {
-    use BelongsToEntrance, HasIdentifier;
+    use BelongsToCampaign, HasEntrance, HasIdentifier;
 
     /**
      * @var string

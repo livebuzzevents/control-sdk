@@ -7,7 +7,7 @@ use Buzz\Control\Objects\Entrance;
  *
  * @package Buzz\Control\Objects\Traits
  */
-trait BelongsToEntrance
+trait HasEntrance
 {
     /**
      * @var string
