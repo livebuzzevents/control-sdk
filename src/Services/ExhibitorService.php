@@ -2,6 +2,7 @@
 
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Exhibitor;
+use Buzz\Control\Objects\Invite;
 
 /**
  * Class ExhibitorService
@@ -118,5 +119,14 @@ class ExhibitorService extends Service
         }
 
         $this->call('delete', "exhibitor/{$exhibitor->getId()}/customer", ['customers' => $customers]);
+    }
+
+    public function getEmailInvites(Exhibitor $exhibitor)
+    {
+        if (!$exhibitor->getId()) {
+            throw new ErrorException('Exhibitor id required!');
+        }
+
+        return $this->castMany($this->call('get', "exhibitor/{$exhibitor->getId()}/email-invites"), Invite::class);
     }
 }
