@@ -77,6 +77,10 @@ class GuzzleClient implements Client
                 throw new ResponseException('Unexpected error! Invalid response code!');
             }
         } catch (GuzzleServerException $e) {
+            if ($e->getCode()) {
+                throw new ErrorException('System in maintenance mode!');
+            }
+
             throw new ServerException('Unexpected error! Please contact LiveBuzz for more information!');
         } catch (Exception $e) {
             throw new ResponseException($e->getMessage());
