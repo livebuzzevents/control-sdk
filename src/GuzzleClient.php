@@ -77,7 +77,7 @@ class GuzzleClient implements Client
                 throw new ResponseException('Unexpected error! Invalid response code!');
             }
         } catch (GuzzleServerException $e) {
-            if ($e->getCode()) {
+            if ($e->getCode() == 503) {
                 throw new ErrorException('System in maintenance mode!');
             }
 
