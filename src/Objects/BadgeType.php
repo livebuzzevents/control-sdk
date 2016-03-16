@@ -18,6 +18,11 @@ class BadgeType extends Object
     protected $name;
 
     /**
+     * @var array
+     */
+    protected $settings;
+
+    /**
      * @return mixed
      */
     public function getName()
@@ -31,5 +36,21 @@ class BadgeType extends Object
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSettings()
+    {
+        return $this->settings;
+    }
+
+    /**
+     * @param array $settings
+     */
+    public function setSettings($settings)
+    {
+        $this->settings = $settings;
     }
 }
