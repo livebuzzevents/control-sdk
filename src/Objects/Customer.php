@@ -590,4 +590,12 @@ class Customer extends Object
     {
         return $this->exhibitors;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getInvites()
+    {
+        return $this->invites;
+    }
 }
