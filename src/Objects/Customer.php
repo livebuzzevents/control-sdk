@@ -147,6 +147,11 @@ class Customer extends Object
     protected $exhibitors;
 
     /**
+     * @var \Buzz\Control\Objects\Invite[]
+     */
+    protected $invites;
+
+    /**
      * @return string
      */
     public function getOwnerId()
