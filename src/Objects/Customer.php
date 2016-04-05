@@ -122,7 +122,7 @@ class Customer extends Object
     protected $socials;
 
     /**
-     * @var \Buzz\Control\Objects\Customer\Affiliates[]
+     * @var \Buzz\Control\Objects\Customer\Affiliate[]
      */
     protected $affiliates;
 

@@ -7,6 +7,11 @@ namespace Buzz\Control;
  *
  * @package Buzz\Control
  */
+/**
+ * Class Paging
+ *
+ * @package Buzz\Control
+ */
 class Paging extends Collection
 {
     /**
@@ -133,5 +138,21 @@ class Paging extends Collection
     public function setLastPage($last_page)
     {
         $this->last_page = $last_page;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isLastPage()
+    {
+        return $this->page == $this->last_page;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFirstPage()
+    {
+        return $this->page == 1;
     }
 }
