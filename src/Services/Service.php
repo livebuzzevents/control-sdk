@@ -120,7 +120,7 @@ abstract class Service
      *
      * @return Service
      */
-    public final function where($parameter, $operator, $value)
+    public final function where($parameter, $operator, $value = null)
     {
         $clone = clone $this;
 
