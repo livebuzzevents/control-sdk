@@ -281,6 +281,7 @@ abstract class Service
         if (isset($response['total']) && isset($response['data'])) { //for paging
             $paging = new Paging();
 
+            $paging->setPage($response['current_page']);
             $paging->setTotal($response['total']);
             $paging->setLastPage($response['last_page']);
             $paging->setFrom($response['from']);
