@@ -122,7 +122,7 @@ class Customer extends Object
     protected $socials;
 
     /**
-     * @var \Buzz\Control\Objects\Customer\Affiliates[]
+     * @var \Buzz\Control\Objects\Customer\Affiliate[]
      */
     protected $affiliates;
 
@@ -145,6 +145,11 @@ class Customer extends Object
      * @var \Buzz\Control\Objects\Exhibitor[]
      */
     protected $exhibitors;
+
+    /**
+     * @var \Buzz\Control\Objects\Invite[]
+     */
+    protected $invites;
 
     /**
      * @return string
@@ -584,5 +589,13 @@ class Customer extends Object
     public function getExhibitors()
     {
         return $this->exhibitors;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInvites()
+    {
+        return $this->invites;
     }
 }
