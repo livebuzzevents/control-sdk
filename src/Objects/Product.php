@@ -1,7 +1,8 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
-use Buzz\Control\Objects\Traits\HasBadgeType;
+use Buzz\Control\Objects\Traits\HasActive;
+use Buzz\Control\Objects\Traits\HasDestination;
 use Buzz\Control\Objects\Traits\HasIdentifier;
 
 /**
@@ -11,7 +12,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  */
 class Product extends Object
 {
-    use BelongsToCampaign, HasBadgeType, HasIdentifier;
+    use BelongsToCampaign, HasIdentifier, HasDestination, HasActive;
 
     /**
      * @var string
@@ -29,6 +30,11 @@ class Product extends Object
     protected $cost;
 
     /**
+     * @var int
+     */
+    protected $vat_percentage;
+
+    /**
      * @var string
      */
     protected $currency;
@@ -37,6 +43,21 @@ class Product extends Object
      * @var string
      */
     protected $shippable;
+
+    /**
+     * @var array
+     */
+    protected $components;
+
+    /**
+     * @var \DateTime
+     */
+    protected $valid_from;
+
+    /**
+     * @var \DateTime
+     */
+    protected $valid_to;
 
     /**
      * @return string
@@ -116,5 +137,69 @@ class Product extends Object
     public function setCurrency($currency)
     {
         $this->currency = $currency;
+    }
+
+    /**
+     * @return array
+     */
+    public function getComponents()
+    {
+        return $this->components;
+    }
+
+    /**
+     * @param array $components
+     */
+    public function setComponents($components)
+    {
+        $this->components = $components;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getValidFrom()
+    {
+        return $this->valid_from;
+    }
+
+    /**
+     * @param \DateTime $valid_from
+     */
+    public function setValidFrom($valid_from)
+    {
+        $this->valid_from = $valid_from;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getValidTo()
+    {
+        return $this->valid_to;
+    }
+
+    /**
+     * @param \DateTime $valid_to
+     */
+    public function setValidTo($valid_to)
+    {
+        $this->valid_to = $valid_to;
+    }
+
+    /**
+     * @return int
+     */
+    public function getVatPercentage()
+    {
+        return $this->vat_percentage;
+    }
+
+    /**
+     * @param int $vat_percentage
+     */
+    public function setVatPercentage($vat_percentage)
+    {
+        $this->vat_percentage = $vat_percentage;
     }
 }
