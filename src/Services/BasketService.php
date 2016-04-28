@@ -160,25 +160,6 @@ class BasketService extends Service
     }
 
     /**
-     * @param Basket $basket
-     *
-     * @return Basket
-     * @throws ErrorException
-     *
-     */
-    public function getAvailablePaymentProviders(Basket $basket)
-    {
-        if (!$basket->getId()) {
-            throw new ErrorException('Basket id required!');
-        }
-
-        return $this->castMany(
-            $this->call('get', "basket/payment-providers/{$basket->getId()}"),
-            PaymentProvider::class
-        );
-    }
-
-    /**
      * @param Basket          $basket
      * @param PaymentProvider $paymentProvider
      *

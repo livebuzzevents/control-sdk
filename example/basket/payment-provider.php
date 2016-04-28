@@ -8,9 +8,7 @@ $service = new \Buzz\Control\Services\BasketService($buzz);
 
 $paymentProvider = new \Buzz\Control\Objects\PaymentProvider('4dda85c4-d9b9-47f7-bf9c-6757eea40000');
 
-//$basket = $service->setPaymentProvider($basket, $paymentProvider);
-$basket = $service->unsetPaymentProvider($basket);
-
-//$paymentProviders = $service->getAvailablePaymentProviders($basket);
+$basket = $service->setPaymentProvider($basket, $paymentProvider);
+//$basket = $service->unsetPaymentProvider($basket);
 
 dd($basket);
