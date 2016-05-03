@@ -27,4 +27,52 @@ class PaymentProvider extends Object
      * @var array
      */
     protected $fees;
+
+    /**
+     * @return array
+     */
+    public function getFees()
+    {
+        return $this->fees;
+    }
+
+    /**
+     * @param array $fees
+     */
+    public function setFees($fees)
+    {
+        $this->fees = $fees;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProvider()
+    {
+        return $this->provider;
+    }
+
+    /**
+     * @param string $provider
+     */
+    public function setProvider($provider)
+    {
+        $this->provider = $provider;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSettings()
+    {
+        return $this->settings;
+    }
+
+    /**
+     * @param array $settings
+     */
+    public function setSettings($settings)
+    {
+        $this->settings = $settings;
+    }
 }
