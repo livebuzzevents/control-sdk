@@ -2,6 +2,7 @@
 
 use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
+use Buzz\Control\Objects\Campaign;
 use Buzz\Control\Objects\Customer;
 use Buzz\Control\Objects\Exhibitor;
 use Buzz\Control\Objects\Invite;
@@ -113,6 +114,27 @@ class CustomerService extends Service
         }
 
         $this->call('delete', "customer/{$customer->getId()}");
+    }
+
+    /**
+     * @param Customer $customer
+     *
+     * @param Campaign $campaign
+     *
+     * @return mixed
+     * @throws ErrorException
+     */
+    public function cloneForCampaign(Customer $customer, Campaign $campaign)
+    {
+        if (!$customer->getId()) {
+            throw new ErrorException('Customer id required!');
+        }
+
+        if (!$campaign->getId()) {
+            throw new ErrorException('Campaign id required!');
+        }
+
+        return $this->callAndCast('delete', "customer/{$customer->getId()}/clone-for-campaign/{$customer->getId()}");
     }
 
     /**
