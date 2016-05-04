@@ -134,7 +134,7 @@ class CustomerService extends Service
             throw new ErrorException('Campaign id required!');
         }
 
-        return $this->callAndCast('delete', "customer/{$customer->getId()}/clone-for-campaign/{$customer->getId()}");
+        return $this->callAndCast('get', "customer/{$customer->getId()}/clone-for-campaign/{$customer->getId()}");
     }
 
     /**
