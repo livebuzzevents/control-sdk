@@ -16,6 +16,11 @@ class PaymentProvider extends Object
     /**
      * @var string
      */
+    protected $instructions;
+
+    /**
+     * @var string
+     */
     protected $provider;
 
     /**
@@ -27,6 +32,22 @@ class PaymentProvider extends Object
      * @var array
      */
     protected $fees;
+
+    /**
+     * @return string
+     */
+    public function getInstructions()
+    {
+        return $this->instructions;
+    }
+
+    /**
+     * @param string $instructions
+     */
+    public function setInstructions($instructions)
+    {
+        $this->instructions = $instructions;
+    }
 
     /**
      * @return array
