@@ -47,6 +47,21 @@ class OrderService extends Service
     }
 
     /**
+     * @param Order $order
+     *
+     * @return Order
+     * @throws ErrorException
+     */
+    public function getInvoice(Order $order)
+    {
+        if (!$order->getId()) {
+            throw new ErrorException('Order id required!');
+        }
+
+        return base64_decode($this->call('get', "order/{$order->getId()}/invoice")['invoice']);
+    }
+
+    /**
      * @return Order[]
      */
     public function getMany()
