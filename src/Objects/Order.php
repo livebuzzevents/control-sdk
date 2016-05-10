@@ -179,12 +179,12 @@ class Order extends Object
     /**
      * @var \Buzz\Control\Objects\BillingDetails
      */
-    protected $billingDetails;
+    protected $billing_details;
 
     /**
      * @var \Buzz\Control\Objects\ShippingDetails
      */
-    protected $shippingDetails;
+    protected $shipping_details;
 
     /**
      * @var \Buzz\Control\Objects\Invoice
