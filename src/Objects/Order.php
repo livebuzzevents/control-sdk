@@ -388,15 +388,15 @@ class Order extends Object
      */
     public function getBillingDetails()
     {
-        return $this->billingDetails;
+        return $this->billing_details;
     }
 
     /**
-     * @param BillingDetails $billingDetails
+     * @param BillingDetails $billing_details
      */
-    public function setBillingDetails($billingDetails)
+    public function setBillingDetails($billing_details)
     {
-        $this->billingDetails = $billingDetails;
+        $this->billing_details = $billing_details;
     }
 
     /**
@@ -548,15 +548,15 @@ class Order extends Object
      */
     public function getShippingDetails()
     {
-        return $this->shippingDetails;
+        return $this->shipping_details;
     }
 
     /**
-     * @param ShippingDetails $shippingDetails
+     * @param ShippingDetails $shipping_details
      */
-    public function setShippingDetails($shippingDetails)
+    public function setShippingDetails($shipping_details)
     {
-        $this->shippingDetails = $shippingDetails;
+        $this->shipping_details = $shipping_details;
     }
 
     /**
