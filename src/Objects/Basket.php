@@ -40,6 +40,16 @@ class Basket extends Object
     protected $shipping_details;
 
     /**
+     * @var string
+     */
+    protected $po_number;
+
+    /**
+     * @var string
+     */
+    protected $vat_exempt;
+
+    /**
      * @return array
      */
     public function getBillingDetails()
@@ -101,5 +111,37 @@ class Basket extends Object
     public function setShippingDetails(array $shipping_details = null)
     {
         $this->shipping_details = $shipping_details;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPoNumber()
+    {
+        return $this->po_number;
+    }
+
+    /**
+     * @param string $po_number
+     */
+    public function setPoNumber($po_number)
+    {
+        $this->po_number = $po_number;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVatExempt()
+    {
+        return $this->vat_exempt;
+    }
+
+    /**
+     * @param string $vat_exempt
+     */
+    public function setVatExempt($vat_exempt)
+    {
+        $this->vat_exempt = $vat_exempt;
     }
 }

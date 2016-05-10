@@ -155,6 +155,16 @@ class Order extends Object
      */
     protected $total_formatted;
 
+    /**
+     * @var string
+     */
+    protected $po_number;
+
+    /**
+     * @var string
+     */
+    protected $vat_exempt;
+
     //RELATIONS
     /**
      * @var
@@ -693,4 +703,35 @@ class Order extends Object
         $this->vat_formatted = $vat_formatted;
     }
 
+    /**
+     * @return string
+     */
+    public function getPoNumber()
+    {
+        return $this->po_number;
+    }
+
+    /**
+     * @param string $po_number
+     */
+    public function setPoNumber($po_number)
+    {
+        $this->po_number = $po_number;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVatExempt()
+    {
+        return $this->vat_exempt;
+    }
+
+    /**
+     * @param string $vat_exempt
+     */
+    public function setVatExempt($vat_exempt)
+    {
+        $this->vat_exempt = $vat_exempt;
+    }
 }
