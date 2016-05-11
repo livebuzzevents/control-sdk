@@ -121,4 +121,37 @@ class BadgeService extends Service
 
         return $this->callAndCastMany('post', 'badges', ['batch' => $badges]);
     }
+
+    /**
+     * @param Badge $badge
+     * @param int   $width
+     * @param int   $height
+     *
+     * @return string
+     * @throws ErrorException
+     */
+    public function getBarcodeImage(Badge $badge, $width = 1, $height = 30)
+    {
+        if (!$badge->getId()) {
+            throw new ErrorException('Badge id required!');
+        }
+
+        return $this->call('get', "badge/{$badge->getId()}/barcode-image", compact('width', 'height'))['image'];
+    }
+
+    /**
+     * @param Badge $badge
+     * @param int   $size
+     *
+     * @return string
+     * @throws ErrorException
+     */
+    public function getQrCodeImage(Badge $badge, $size = 125)
+    {
+        if (!$badge->getId()) {
+            throw new ErrorException('Badge id required!');
+        }
+
+        return $this->call('get', "badge/{$badge->getId()}/qrcode-image", compact('size'))['image'];
+    }
 }
