@@ -6,9 +6,9 @@ use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
 use Buzz\Control\Objects\Traits\HasBadges;
 use Buzz\Control\Objects\Traits\HasCreatedBadges;
+use Buzz\Control\Objects\Traits\HasMatchId;
 use Buzz\Control\Objects\Traits\HasPivot;
 use Buzz\Control\Objects\Traits\HasPropertiesCommon;
-use Buzz\Control\Objects\Traits\HasMatchId;
 use Buzz\Control\Objects\Traits\HasSource;
 use Buzz\Control\Objects\Traits\HasStatus;
 
@@ -150,6 +150,11 @@ class Customer extends Object
      * @var \Buzz\Control\Objects\Invite[]
      */
     protected $invites;
+
+    /**
+     * @var \Buzz\Control\Objects\Customer\Lead[]
+     */
+    protected $leads;
 
     /**
      * @return string
@@ -597,5 +602,29 @@ class Customer extends Object
     public function getInvites()
     {
         return $this->invites;
+    }
+
+    /**
+     * @param Customer\Lead $lead
+     */
+    public function addLead(Customer\Lead $lead)
+    {
+        $this->add($this->leads, $lead);
+    }
+
+    /**
+     * @return Customer\Lead[]
+     */
+    public function getLeads()
+    {
+        return $this->leads;
+    }
+
+    /**
+     * @param Customer\Lead[] $leads
+     */
+    public function setLeads(array $leads)
+    {
+        $this->leads = $leads;
     }
 }

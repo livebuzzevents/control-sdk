@@ -80,6 +80,16 @@ class Lead extends Object
     protected $socials;
 
     /**
+     * @var \Buzz\Control\Objects\Customer\Lead[]
+     */
+    protected $customers;
+
+    /**
+     * @var \Buzz\Control\Objects\LeadGroup
+     */
+    protected $group;
+
+    /**
      * @return mixed
      */
     public function getSocials()
@@ -338,8 +348,48 @@ class Lead extends Object
     /**
      * @param Lead\Phone[]|Collection $phones
      */
-    public function setPhones($phones)
+    public function setPhones(array $phones)
     {
         $this->phones = new Collection($phones);
+    }
+
+    /**
+     * @param Customer\Lead $customer
+     */
+    public function addCustomer(Customer\Lead $customer)
+    {
+        $this->add($this->customers, $customer);
+    }
+
+    /**
+     * @return Customer\Lead[]
+     */
+    public function getCustomers()
+    {
+        return $this->customers;
+    }
+
+    /**
+     * @param Customer\Lead[] $customers
+     */
+    public function setCustomers(array $customers)
+    {
+        $this->customers = $customers;
+    }
+
+    /**
+     * @return LeadGroup
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
+     * @param LeadGroup $group
+     */
+    public function setGroup(LeadGroup $group)
+    {
+        $this->group = $group;
     }
 }
