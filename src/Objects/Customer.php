@@ -625,6 +625,6 @@ class Customer extends Object
      */
     public function setLeads(array $leads)
     {
-        $this->leads = $leads;
+        $this->leads = new Collection($leads);
     }
 }
