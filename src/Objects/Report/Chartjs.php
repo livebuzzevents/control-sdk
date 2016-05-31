@@ -15,6 +15,11 @@ class Chartjs extends Object
     protected $series;
 
     /**
+     * @var string
+     */
+    protected $type;
+
+    /**
      * @return mixed
      */
     public function getSeries()
@@ -23,10 +28,18 @@ class Chartjs extends Object
     }
 
     /**
-     * @param array $series
+     * @return string
      */
-    public function setSeries(array $series)
+    public function getType()
     {
-        $this->series = $series;
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 }
