@@ -18,6 +18,20 @@ class Scan extends Object
      */
     protected $barcode;
 
+    public function __construct($data)
+    {
+        parent::__construct($data);
+
+        if (!empty($this->badge->customer)) {
+            $this->customer    = $this->badge->customer;
+            $this->customer_id = $this->customer->id;
+        }
+
+        if (!empty($this->badge)) {
+            $this->barcode = $this->badge->barcode;
+        }
+    }
+
     /**
      * @return mixed
      */
