@@ -6,9 +6,9 @@ use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
 use Buzz\Control\Objects\Traits\HasBadges;
 use Buzz\Control\Objects\Traits\HasCreatedBadges;
+use Buzz\Control\Objects\Traits\HasMatchId;
 use Buzz\Control\Objects\Traits\HasPivot;
 use Buzz\Control\Objects\Traits\HasPropertiesCommon;
-use Buzz\Control\Objects\Traits\HasMatchId;
 use Buzz\Control\Objects\Traits\HasSource;
 use Buzz\Control\Objects\Traits\HasStatus;
 
@@ -57,6 +57,16 @@ class Exhibitor extends Object
     protected $active;
 
     /**
+     * @var string
+     */
+    protected $is_a_clone;
+
+    /**
+     * @var string
+     */
+    protected $cloned_exhibitor_id;
+
+    /**
      * @var \Buzz\Control\Objects\Customer[]
      */
     protected $customers;
@@ -90,6 +100,11 @@ class Exhibitor extends Object
      * @var \Buzz\Control\Objects\Exhibitor\Property[]
      */
     protected $properties;
+
+    /**
+     * @var \Buzz\Control\Objects\Exhibitor
+     */
+    protected $cloned_exhibitor;
 
     /**
      * @return array
@@ -339,5 +354,53 @@ class Exhibitor extends Object
     public function setAnswers($answers)
     {
         $this->answers = new Collection($answers);
+    }
+
+    /**
+     * @return Exhibitor
+     */
+    public function getClonedExhibitor()
+    {
+        return $this->cloned_exhibitor;
+    }
+
+    /**
+     * @param Exhibitor $cloned_exhibitor
+     */
+    public function setClonedExhibitor(Exhibitor $cloned_exhibitor)
+    {
+        $this->cloned_exhibitor = $cloned_exhibitor;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClonedExhibitorId()
+    {
+        return $this->cloned_exhibitor_id;
+    }
+
+    /**
+     * @param string $cloned_exhibitor_id
+     */
+    public function setClonedExhibitorId($cloned_exhibitor_id)
+    {
+        $this->cloned_exhibitor_id = $cloned_exhibitor_id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIsAClone()
+    {
+        return $this->is_a_clone;
+    }
+
+    /**
+     * @param string $is_a_clone
+     */
+    public function setIsAClone($is_a_clone)
+    {
+        $this->is_a_clone = $is_a_clone;
     }
 }

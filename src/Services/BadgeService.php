@@ -51,6 +51,27 @@ class BadgeService extends Service
     }
 
     /**
+     * @param Badge   $badge
+     * @param Printer $printer
+     * @param array   $options
+     *
+     * @return Badge
+     * @throws ErrorException
+     */
+    public function print(Badge $badge, Printer $printer, array $options = [])
+    {
+        if (!$badge->getId()) {
+            throw new ErrorException('Badge id required!');
+        }
+
+        if (!$printer->getId()) {
+            throw new ErrorException('Printer id required!');
+        }
+
+        return $this->call('post', "badge/{$badge->getId()}/print/{$printer->getId()}", $options);
+    }
+
+    /**
      * @param Badge $badge
      *
      * @throws ErrorException

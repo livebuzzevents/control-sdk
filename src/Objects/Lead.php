@@ -60,6 +60,21 @@ class Lead extends Object
     protected $language;
 
     /**
+     * @var string
+     */
+    protected $is_a_clone;
+
+    /**
+     * @var string
+     */
+    protected $cloned_customer_id;
+
+    /**
+     * @var string
+     */
+    protected $cloned_lead_id;
+
+    /**
      * @var \Buzz\Control\Objects\Lead\Phone[]
      */
     protected $phones;
@@ -88,6 +103,16 @@ class Lead extends Object
      * @var \Buzz\Control\Objects\LeadGroup
      */
     protected $group;
+
+    /**
+     * @var \Buzz\Control\Objects\Customer
+     */
+    protected $cloned_customer;
+
+    /**
+     * @var \Buzz\Control\Objects\Lead
+     */
+    protected $cloned_lead;
 
     /**
      * @return mixed
@@ -391,5 +416,85 @@ class Lead extends Object
     public function setGroup(LeadGroup $group)
     {
         $this->group = $group;
+    }
+
+    /**
+     * @return Customer
+     */
+    public function getClonedCustomer()
+    {
+        return $this->cloned_customer;
+    }
+
+    /**
+     * @param Customer $cloned_customer
+     */
+    public function setClonedCustomer(Customer $cloned_customer)
+    {
+        $this->cloned_customer = $cloned_customer;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClonedCustomerId()
+    {
+        return $this->cloned_customer_id;
+    }
+
+    /**
+     * @param string $cloned_customer_id
+     */
+    public function setClonedCustomerId($cloned_customer_id)
+    {
+        $this->cloned_customer_id = $cloned_customer_id;
+    }
+
+    /**
+     * @return Lead
+     */
+    public function getClonedLead()
+    {
+        return $this->cloned_lead;
+    }
+
+    /**
+     * @param Lead $cloned_lead
+     */
+    public function setClonedLead(Lead $cloned_lead)
+    {
+        $this->cloned_lead = $cloned_lead;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClonedLeadId()
+    {
+        return $this->cloned_lead_id;
+    }
+
+    /**
+     * @param string $cloned_lead_id
+     */
+    public function setClonedLeadId($cloned_lead_id)
+    {
+        $this->cloned_lead_id = $cloned_lead_id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIsAClone()
+    {
+        return $this->is_a_clone;
+    }
+
+    /**
+     * @param string $is_a_clone
+     */
+    public function setIsAClone($is_a_clone)
+    {
+        $this->is_a_clone = $is_a_clone;
     }
 }

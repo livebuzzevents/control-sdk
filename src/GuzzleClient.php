@@ -64,13 +64,13 @@ class GuzzleClient implements Client
                 throw new ResponseException('Unexpected error! Response not valid JSON!');
             }
         } catch (GuzzleClientException $e) {
-
             $response = $e->getResponse();
             $contents = $response->getBody()->getContents();
+
             if ($response->getStatusCode() === 400 || $response->getStatusCode() === 422) {
                 throw new ErrorException(json_decode($contents, true)['error']);
             } elseif ($response->getStatusCode() === 401) {
-                throw new UnauthorizedException("Invalid API key or your IP is not in the whitelist!");
+                throw new UnauthorizedException($contents);
             } elseif ($response->getStatusCode() === 404) {
                 throw new ResponseException('Resource not found! Check you endpoint url!');
             } else {
