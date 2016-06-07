@@ -16,12 +16,15 @@ if ($skip_till) {
 
 $badges = (new \Buzz\Control\Services\BadgeService($buzz))
     ->where('campaign.identifier', 'is', $campaign->getIdentifier())
-    ->where('badgeType.identifier', 'is', 'schaeffler-vvip')
+    ->where('badgeType.identifier', 'is', 'smmt-vip')
+    ->where('prints', 'has not')
     ->where('status', 'is', 'active')
     ->where('customer', 'has')
     ->with('customer')
     ->perPage(5000)
     ->getMany();
+
+//dd($badges->getTotal());
 
 $badges = $badges->sort(function ($a, $b) {
     return strtolower($a->customer->last_name) > strtolower($b->customer->last_name);
