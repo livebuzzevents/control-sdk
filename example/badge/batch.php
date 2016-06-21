@@ -5,7 +5,7 @@ require_once '../bootstrap.php';
 set_time_limit(0);
 
 $printer = new \Buzz\Control\Objects\Printer();
-$printer->setId(2);
+$printer->setId(1);
 
 $skip_till  = '';
 $skip_found = true;

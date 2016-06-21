@@ -3,8 +3,8 @@
 require_once(__DIR__ . '/../vendor/autoload.php');
 
 $api_key      = '55bb6fa8e9eb7';
-$endpoint     = 'http://n3.control.onsite.buzz/rest/v1/';
-$organization = 'automechanika';
+$endpoint     = 'http://n5.control.onsite.buzz/rest/v1/';
+$organization = 'monomax';
 
 $buzz = new \Buzz\Control\Buzz();
 
@@ -20,7 +20,7 @@ $buzz->setCredentials($credentials);
 //$buzz->setScope($scope);
 
 $campaign = new \Buzz\Control\Objects\Campaign();
-$campaign->setIdentifier('automechanika-2016');
+$campaign->setIdentifier('imbibe-2016');
 
 //$stream = new \Buzz\Control\Objects\Stream();
 //$stream->setIdentifier('visitor-registration');
