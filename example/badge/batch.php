@@ -5,7 +5,7 @@ require_once '../bootstrap.php';
 set_time_limit(0);
 
 $printer = new \Buzz\Control\Objects\Printer();
-$printer->setId(2);
+$printer->setId(1);
 
 $skip_till  = '';
 $skip_found = true;
@@ -16,7 +16,8 @@ if ($skip_till) {
 
 $badges = (new \Buzz\Control\Services\BadgeService($buzz))
     ->where('campaign.identifier', 'is', $campaign->getIdentifier())
-    ->where('badgeType.identifier', 'is', 'schaeffler-vvip')
+    ->where('badgeType.identifier', 'is', 'smmt-vip')
+    ->where('prints', 'has not')
     ->where('status', 'is', 'active')
     ->where('customer', 'has')
     ->with('customer')

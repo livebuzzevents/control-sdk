@@ -72,6 +72,22 @@ class BadgeService extends Service
     }
 
     /**
+     * @param Printer $printer
+     * @param array   $options
+     *
+     * @return Badge
+     * @throws ErrorException
+     */
+    public function printSeparator(Printer $printer, array $options = [])
+    {
+        if (!$printer->getId()) {
+            throw new ErrorException('Printer id required!');
+        }
+
+        return $this->call('post', "badge/print-separator/{$printer->getId()}", $options);
+    }
+
+    /**
      * @param Badge $badge
      *
      * @throws ErrorException
