@@ -61,6 +61,11 @@ class Badge extends Object
     protected $properties;
 
     /**
+     * @var \Buzz\Control\Objects\Badge\BadgePrint[]
+     */
+    protected $prints;
+
+    /**
      * @var bool
      */
     protected $attended;
@@ -175,5 +180,29 @@ class Badge extends Object
     public function getAttended()
     {
         return $this->attended;
+    }
+
+    /**
+     * @return Badge\BadgePrint[]|null
+     */
+    public function getPrints()
+    {
+        return $this->prints;
+    }
+
+    /**
+     * @param Badge\BadgePrint[]|Collection $prints
+     */
+    public function setPrints($prints)
+    {
+        $this->prints = new Collection($prints);
+    }
+
+    /**
+     * @param Badge\BadgePrint $print
+     */
+    public function addPrint(Badge\BadgePrint $print)
+    {
+        $this->add($this->prints, $print);
     }
 }
