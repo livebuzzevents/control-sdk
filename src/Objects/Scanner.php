@@ -52,6 +52,11 @@ class Scanner extends Object
     protected $details;
 
     /**
+     * @var \Buzz\Control\Objects\Scan[]
+     */
+    protected $scans;
+
+    /**
      * @return string
      */
     public function getActive()
@@ -161,5 +166,21 @@ class Scanner extends Object
     public function setDetails(array $details)
     {
         $this->details = $details;
+    }
+
+    /**
+     * @return Scan[]
+     */
+    public function getScans()
+    {
+        return $this->scans;
+    }
+
+    /**
+     * @param Scan[] $scans
+     */
+    public function setScans($scans)
+    {
+        $this->scans = $scans;
     }
 }

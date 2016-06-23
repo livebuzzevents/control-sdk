@@ -84,6 +84,11 @@ class Customer extends Object
     /**
      * @var string
      */
+    protected $name;
+
+    /**
+     * @var string
+     */
     protected $sex;
 
     /**
@@ -455,6 +460,14 @@ class Customer extends Object
     public function setLastName($last_name)
     {
         $this->last_name = $last_name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**

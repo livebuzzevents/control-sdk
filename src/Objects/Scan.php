@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Objects\Traits\BelongsToBadge;
+use Buzz\Control\Objects\Traits\BelongsToCustomer;
 use Buzz\Control\Objects\Traits\BelongsToScanner;
 
 /**
@@ -10,12 +11,26 @@ use Buzz\Control\Objects\Traits\BelongsToScanner;
  */
 class Scan extends Object
 {
-    use BelongsToBadge, BelongsToScanner;
+    use BelongsToBadge, BelongsToScanner, BelongsToCustomer;
 
     /**
      * @var string
      */
     protected $barcode;
+
+    public function __construct($data)
+    {
+        parent::__construct($data);
+
+        if (!empty($this->badge->customer)) {
+            $this->customer    = $this->badge->customer;
+            $this->customer_id = $this->customer->id;
+        }
+
+        if (!empty($this->badge)) {
+            $this->barcode = $this->badge->barcode;
+        }
+    }
 
     /**
      * @return mixed

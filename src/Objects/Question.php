@@ -2,6 +2,7 @@
 
 use Buzz\Control\Collection;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
+use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 use Buzz\Control\Objects\Traits\HasIdentifier;
 
 /**
@@ -11,7 +12,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  */
 class Question extends Object
 {
-    use BelongsToCampaign, HasIdentifier;
+    use BelongsToCampaign, BelongsToExhibitor, HasIdentifier;
 
     /**
      * @var string

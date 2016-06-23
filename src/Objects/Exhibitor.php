@@ -52,6 +52,11 @@ class Exhibitor extends Object
     protected $settings;
 
     /**
+     * @var array
+     */
+    protected $stands;
+
+    /**
      * @var string
      */
     protected $active;
@@ -306,6 +311,22 @@ class Exhibitor extends Object
     public function setSetting(array $settings)
     {
         $this->settings = $settings;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStands()
+    {
+        return $this->stands;
+    }
+
+    /**
+     * @param array $stands
+     */
+    public function setStands(array $stands)
+    {
+        $this->stands = $stands;
     }
 
     /**
