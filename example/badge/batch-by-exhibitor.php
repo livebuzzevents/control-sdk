@@ -10,7 +10,7 @@ $printer->setId(2);
 $page    = 0;
 $printed = 0;
 
-$skip_till_exhibitor = 'Dalston Cola';
+$skip_till_exhibitor = '';
 $skip_found          = true;
 
 if ($skip_till_exhibitor) {
@@ -44,7 +44,7 @@ while (true) {
 
         $badges = (new \Buzz\Control\Services\BadgeService($buzz))
             ->where('exhibitor_id', 'is', $exhibitor->getId())
-//            ->where('prints', 'has not')
+            ->where('prints', 'has not')
             ->where('status', 'is', 'active')
             ->where('customer', 'has')
             ->with('customer')
