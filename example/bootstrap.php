@@ -3,7 +3,7 @@
 require_once(__DIR__ . '/../vendor/autoload.php');
 
 $api_key      = '55bb6fa8e9eb7';
-$endpoint     = 'http://n5.control.onsite.buzz/rest/v1/';
+$endpoint     = 'http://control.dev/rest/v1/';
 $organization = 'monomax';
 
 $buzz = new \Buzz\Control\Buzz();

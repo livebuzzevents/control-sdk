@@ -275,4 +275,60 @@ class CustomerService extends Service
 
         return new Collection($this->call('get', "customer/{$customer->getId()}/invite/{$invite->getId()}/detach"));
     }
+
+    /**
+     * @param Customer $customer
+     * @param string   $tag
+     *
+     * @return Customer
+     * @throws ErrorException
+     */
+    public function tag(Customer $customer, $tag)
+    {
+        if (!$customer->getId()) {
+            throw new ErrorException('Customer id required!');
+        }
+
+        if (!$tag) {
+            throw new ErrorException('Tag is required!');
+        }
+
+        return $this->callAndCast('post', "customer/{$customer->getId()}/tag/{$tag}");
+    }
+
+    /**
+     * @param Customer $customer
+     * @param string   $tag
+     *
+     * @return Customer
+     * @throws ErrorException
+     */
+    public function untag(Customer $customer, $tag)
+    {
+        if (!$customer->getId()) {
+            throw new ErrorException('Customer id required!');
+        }
+
+        if (!$tag) {
+            throw new ErrorException('Tag is required!');
+        }
+
+        return $this->callAndCast('delete', "customer/{$customer->getId()}/tag/{$tag}");
+    }
+
+    /**
+     * @param Customer $customer
+     * @param array    $tags
+     *
+     * @return Customer
+     * @throws ErrorException*
+     */
+    public function syncTags(Customer $customer, array $tags = [])
+    {
+        if (!$customer->getId()) {
+            throw new ErrorException('Customer id required!');
+        }
+
+        return $this->callAndCast('post', "customer/{$customer->getId()}/tags", compact('tags'));
+    }
 }
