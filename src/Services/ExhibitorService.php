@@ -129,4 +129,60 @@ class ExhibitorService extends Service
 
         return $this->castMany($this->call('get', "exhibitor/{$exhibitor->getId()}/email-invites"), Invite::class);
     }
+
+    /**
+     * @param Exhibitor $exhibitor
+     * @param string    $tag
+     *
+     * @return Exhibitor
+     * @throws ErrorException
+     */
+    public function tag(Exhibitor $exhibitor, $tag)
+    {
+        if (!$exhibitor->getId()) {
+            throw new ErrorException('Exhibitor id required!');
+        }
+
+        if (!$tag) {
+            throw new ErrorException('Tag is required!');
+        }
+
+        return $this->callAndCast('post', "exhibitor/{$exhibitor->getId()}/tag/{$tag}");
+    }
+
+    /**
+     * @param Exhibitor $exhibitor
+     * @param string    $tag
+     *
+     * @return Exhibitor
+     * @throws ErrorException
+     */
+    public function untag(Exhibitor $exhibitor, $tag)
+    {
+        if (!$exhibitor->getId()) {
+            throw new ErrorException('Exhibitor id required!');
+        }
+
+        if (!$tag) {
+            throw new ErrorException('Tag is required!');
+        }
+
+        return $this->callAndCast('delete', "exhibitor/{$exhibitor->getId()}/tag/{$tag}");
+    }
+
+    /**
+     * @param Exhibitor $exhibitor
+     * @param array     $tags
+     *
+     * @return Exhibitor
+     * @throws ErrorException*
+     */
+    public function syncTags(Exhibitor $exhibitor, array $tags = [])
+    {
+        if (!$exhibitor->getId()) {
+            throw new ErrorException('Exhibitor id required!');
+        }
+
+        return $this->callAndCast('post', "exhibitor/{$exhibitor->getId()}/tags", compact('tags'));
+    }
 }
