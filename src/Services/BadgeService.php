@@ -58,7 +58,7 @@ class BadgeService extends Service
      * @return Badge
      * @throws ErrorException
      */
-    public function print(Badge $badge, Printer $printer, array $options = [])
+    public function printBadge(Badge $badge, Printer $printer, array $options = [])
     {
         if (!$badge->getId()) {
             throw new ErrorException('Badge id required!');
