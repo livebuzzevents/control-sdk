@@ -1,9 +1,11 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
+use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 use Buzz\Control\Objects\Traits\HasActive;
 use Buzz\Control\Objects\Traits\HasDestination;
 use Buzz\Control\Objects\Traits\HasIdentifier;
+use Buzz\Control\Objects\Traits\HasPropertiesCommon;
 
 /**
  * Class Product
@@ -12,7 +14,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  */
 class Product extends Object
 {
-    use BelongsToCampaign, HasIdentifier, HasDestination, HasActive;
+    use BelongsToCampaign, BelongsToExhibitor, HasIdentifier, HasDestination, HasActive, HasPropertiesCommon;
 
     /**
      * @var string
@@ -58,6 +60,11 @@ class Product extends Object
      * @var \DateTime
      */
     protected $valid_to;
+
+    /**
+     * @var \Buzz\Control\Objects\Badge\Property[]
+     */
+    protected $properties;
 
     /**
      * @return string
