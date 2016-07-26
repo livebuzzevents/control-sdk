@@ -107,6 +107,11 @@ class Exhibitor extends Object
     protected $properties;
 
     /**
+     * @var \Buzz\Control\Objects\Product[]
+     */
+    protected $products;
+
+    /**
      * @var \Buzz\Control\Objects\Exhibitor
      */
     protected $cloned_exhibitor;
