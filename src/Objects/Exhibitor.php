@@ -359,6 +359,14 @@ class Exhibitor extends Object
     }
 
     /**
+     * @return Product[]
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
      * @param Customer[]|Collection $customers
      */
     public function setCustomers($customers)
