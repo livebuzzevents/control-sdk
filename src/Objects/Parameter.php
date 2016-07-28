@@ -23,6 +23,26 @@ class Parameter extends Object
     protected $rules;
 
     /**
+     * @var Customer\Property[]
+     */
+    protected $customerProperties;
+
+    /**
+     * @var Exhibitor\Property[]
+     */
+    protected $exhibitorProperties;
+
+    /**
+     * @var Badge\Property[]
+     */
+    protected $badgeProperties;
+
+    /**
+     * @var Product\Property[]
+     */
+    protected $productProperties;
+
+    /**
      * @return array
      */
     public function getRules()
@@ -52,5 +72,37 @@ class Parameter extends Object
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return Customer\Property[]
+     */
+    public function getCustomerProperties()
+    {
+        return $this->customerProperties;
+    }
+
+    /**
+     * @return Exhibitor\Property[]
+     */
+    public function getExhibitorProperties()
+    {
+        return $this->exhibitorProperties;
+    }
+
+    /**
+     * @return Badge\Property[]
+     */
+    public function getBadgeProperties()
+    {
+        return $this->badgeProperties;
+    }
+
+    /**
+     * @return Product\Property[]
+     */
+    public function getProductProperties()
+    {
+        return $this->productProperties;
     }
 }
