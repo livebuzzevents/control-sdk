@@ -120,6 +120,11 @@ class Customer extends Object
     /**
      * @var string
      */
+    protected $registration_type;
+
+    /**
+     * @var string
+     */
     protected $is_a_clone;
 
     /**
@@ -226,6 +231,11 @@ class Customer extends Object
      * @var \Buzz\Control\Objects\BadgePrint[]
      */
     protected $badge_prints;
+
+    /**
+     * @var \Buzz\Control\Objects\Extra[]
+     */
+    protected $extras;
 
     /**
      * @return string
@@ -620,6 +630,22 @@ class Customer extends Object
     }
 
     /**
+     * @return string
+     */
+    public function getRegistrationType()
+    {
+        return $this->registration_type;
+    }
+
+    /**
+     * @param string $registration_type
+     */
+    public function setRegistrationType($registration_type)
+    {
+        $this->registration_type = $registration_type;
+    }
+
+    /**
      * @param Customer\Address $address
      */
     public function addAddress(Customer\Address $address)
@@ -897,5 +923,29 @@ class Customer extends Object
     public function addBadgePrint(BadgePrint $print)
     {
         $this->add($this->badge_prints, $print);
+    }
+
+    /**
+     * @return Extra[]|null
+     */
+    public function getExtras()
+    {
+        return $this->extras;
+    }
+
+    /**
+     * @param Extra[]|Collection $extras
+     */
+    public function setExtras($extras)
+    {
+        $this->extras = new Collection($extras);
+    }
+
+    /**
+     * @param Extra $extra
+     */
+    public function addExtra(Extra $extra)
+    {
+        $this->add($this->extras, $extra);
     }
 }
