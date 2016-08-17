@@ -23,7 +23,7 @@ $report->setData([
                                         'value'     => 'cacb1f0c-af37-497f-9637-2c48d6820000',
                                     ],
                                     [
-                                        'parameter' => 'customerAnswer.customer.badges.scans.scanner.exhibitor_id',
+                                        'parameter' => 'customerAnswer.customer.scans.scanner.exhibitor_id',
                                         'operator'  => 'is',
                                         'value'     => '1b3c774b-afb8-42e0-8928-f6a240120000',
                                     ],

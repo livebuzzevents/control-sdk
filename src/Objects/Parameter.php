@@ -33,16 +33,6 @@ class Parameter extends Object
     protected $exhibitorProperties;
 
     /**
-     * @var Badge\Property[]
-     */
-    protected $badgeProperties;
-
-    /**
-     * @var Product\Property[]
-     */
-    protected $productProperties;
-
-    /**
      * @return array
      */
     public function getRules()
@@ -88,21 +78,5 @@ class Parameter extends Object
     public function getExhibitorProperties()
     {
         return $this->exhibitorProperties;
-    }
-
-    /**
-     * @return Badge\Property[]
-     */
-    public function getBadgeProperties()
-    {
-        return $this->badgeProperties;
-    }
-
-    /**
-     * @return Product\Property[]
-     */
-    public function getProductProperties()
-    {
-        return $this->productProperties;
     }
 }

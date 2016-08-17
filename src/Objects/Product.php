@@ -5,7 +5,6 @@ use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 use Buzz\Control\Objects\Traits\HasActive;
 use Buzz\Control\Objects\Traits\HasDestination;
 use Buzz\Control\Objects\Traits\HasIdentifier;
-use Buzz\Control\Objects\Traits\HasPropertiesCommon;
 
 /**
  * Class Product
@@ -14,7 +13,7 @@ use Buzz\Control\Objects\Traits\HasPropertiesCommon;
  */
 class Product extends Object
 {
-    use BelongsToCampaign, BelongsToExhibitor, HasIdentifier, HasDestination, HasActive, HasPropertiesCommon;
+    use BelongsToCampaign, BelongsToExhibitor, HasIdentifier, HasDestination, HasActive;
 
     /**
      * @var string
@@ -60,11 +59,6 @@ class Product extends Object
      * @var \DateTime
      */
     protected $valid_to;
-
-    /**
-     * @var \Buzz\Control\Objects\Badge\Property[]
-     */
-    protected $properties;
 
     /**
      * @return string

@@ -1,16 +1,15 @@
-<?php namespace Buzz\Control\Objects\Badge;
+<?php namespace Buzz\Control\Objects;
 
-use Buzz\Control\Objects\Object;
-use Buzz\Control\Objects\Traits\BelongsToBadge;
+use Buzz\Control\Objects\Traits\BelongsToCustomer;
 
 /**
- * Class Badge
+ * Class BadgePrint
  *
  * @package Buzz\Control\Objects
  */
 class BadgePrint extends Object
 {
-    use BelongsToBadge;
+    use BelongsToCustomer;
 
     /**
      * @var string
