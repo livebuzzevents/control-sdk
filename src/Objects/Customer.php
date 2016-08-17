@@ -3,11 +3,10 @@
 use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
+use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
-use Buzz\Control\Objects\Traits\HasBadges;
-use Buzz\Control\Objects\Traits\HasCreatedBadges;
+use Buzz\Control\Objects\Traits\HasBadgeType;
 use Buzz\Control\Objects\Traits\HasMatchId;
-use Buzz\Control\Objects\Traits\HasPivot;
 use Buzz\Control\Objects\Traits\HasPropertiesCommon;
 use Buzz\Control\Objects\Traits\HasSource;
 use Buzz\Control\Objects\Traits\HasStatus;
@@ -19,7 +18,14 @@ use Buzz\Control\Objects\Traits\HasStatus;
  */
 class Customer extends Object
 {
-    use BelongsToCampaign, HasMatchId, HasSource, HasStatus, HasAnswersCommon, HasPropertiesCommon, HasPivot, HasBadges, HasCreatedBadges;
+    use BelongsToCampaign,
+        BelongsToExhibitor,
+        HasMatchId,
+        HasSource,
+        HasStatus,
+        HasAnswersCommon,
+        HasPropertiesCommon,
+        HasBadgeType;
 
     /**
      * @var string
@@ -30,6 +36,11 @@ class Customer extends Object
      * @var \Buzz\Control\Objects\Customer
      */
     protected $owner;
+
+    /**
+     * @var string
+     */
+    protected $exhibitor_role;
 
     /**
      * @var string
@@ -84,6 +95,11 @@ class Customer extends Object
     /**
      * @var string
      */
+    protected $biography;
+
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
@@ -115,6 +131,21 @@ class Customer extends Object
      * @var string
      */
     protected $cloned_lead_id;
+
+    /**
+     * @var string
+     */
+    protected $barcode;
+
+    /**
+     * @var bool
+     */
+    protected $attended;
+
+    /**
+     * @var bool
+     */
+    protected $badge_printed;
 
     /**
      * @var \Buzz\Control\Objects\Customer\Phone[]
@@ -187,6 +218,16 @@ class Customer extends Object
     protected $cloned_lead;
 
     /**
+     * @var \Buzz\Control\Objects\Scan[]
+     */
+    protected $scans;
+
+    /**
+     * @var \Buzz\Control\Objects\BadgePrint[]
+     */
+    protected $badge_prints;
+
+    /**
      * @return string
      */
     public function getOwnerId()
@@ -208,6 +249,22 @@ class Customer extends Object
     public function getOwner()
     {
         return $this->owner;
+    }
+
+    /**
+     * @return string
+     */
+    public function getExhibitorRole()
+    {
+        return $this->exhibitor_role;
+    }
+
+    /**
+     * @param string $exhibitor_role
+     */
+    public function setExhibitorRole($exhibitor_role)
+    {
+        $this->exhibitor_role = $exhibitor_role;
     }
 
     /**
@@ -393,6 +450,38 @@ class Customer extends Object
     }
 
     /**
+     * @return string
+     */
+    public function getBarcode()
+    {
+        return $this->barcode;
+    }
+
+    /**
+     * @param string $barcode
+     */
+    public function setBarcode($barcode)
+    {
+        $this->barcode = $barcode;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getAttended()
+    {
+        return $this->attended;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getBadgePrinted()
+    {
+        return $this->badge_printed;
+    }
+
+    /**
      * @return mixed
      */
     public function getEmail()
@@ -468,6 +557,22 @@ class Customer extends Object
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBiography()
+    {
+        return $this->biography;
+    }
+
+    /**
+     * @param string $biography
+     */
+    public function setBiography($biography)
+    {
+        $this->biography = $biography;
     }
 
     /**
@@ -744,5 +849,53 @@ class Customer extends Object
     public function setIsAClone($is_a_clone)
     {
         $this->is_a_clone = $is_a_clone;
+    }
+
+    /**
+     * @return Scan[]|null
+     */
+    public function getScans()
+    {
+        return $this->scans;
+    }
+
+    /**
+     * @param Scan[]|Collection $scans
+     */
+    public function setScans($scans)
+    {
+        $this->scans = new Collection($scans);
+    }
+
+    /**
+     * @param Scan $scan
+     */
+    public function addScan(Scan $scan)
+    {
+        $this->add($this->scans, $scan);
+    }
+
+    /**
+     * @return BadgePrint[]|null
+     */
+    public function getBadgePrints()
+    {
+        return $this->badge_prints;
+    }
+
+    /**
+     * @param BadgePrint[]|Collection $prints
+     */
+    public function setBadgePrints($prints)
+    {
+        $this->badge_prints = new Collection($prints);
+    }
+
+    /**
+     * @param BadgePrint $print
+     */
+    public function addBadgePrint(BadgePrint $print)
+    {
+        $this->add($this->badge_prints, $print);
     }
 }

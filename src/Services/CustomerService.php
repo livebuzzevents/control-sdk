@@ -6,6 +6,7 @@ use Buzz\Control\Objects\Campaign;
 use Buzz\Control\Objects\Customer;
 use Buzz\Control\Objects\Exhibitor;
 use Buzz\Control\Objects\Invite;
+use Buzz\Control\Objects\Printer;
 
 /**
  * Class CustomerService
@@ -330,5 +331,94 @@ class CustomerService extends Service
         }
 
         return $this->callAndCast('post', "customer/{$customer->getId()}/tags", compact('tags'));
+    }
+
+    /**
+     * @param Customer $customer
+     * @param int      $width
+     * @param int      $height
+     *
+     * @return string
+     * @throws ErrorException
+     */
+    public function getBarcodeImage(Customer $customer, $width = 1, $height = 30)
+    {
+        if (!$customer->getId()) {
+            throw new ErrorException('Customer id required!');
+        }
+
+        return $this->call('get', "customer/{$customer->getId()}/barcode-image", compact('width', 'height'))['image'];
+    }
+
+    /**
+     * @param Customer $customer
+     * @param int      $size
+     *
+     * @return string
+     * @throws ErrorException
+     */
+    public function getQrCodeImage(Customer $customer, $size = 125)
+    {
+        if (!$customer->getId()) {
+            throw new ErrorException('Customer id required!');
+        }
+
+        return $this->call('get', "customer/{$customer->getId()}/qrcode-image", compact('size'))['image'];
+    }
+
+    /**
+     * @param Customer $customer
+     * @param array    $badgeStockConfiguration
+     *
+     * @return Customer
+     * @throws ErrorException
+     */
+    public function smartPrint(Customer $customer, array $badgeStockConfiguration)
+    {
+        if (!$customer->getId()) {
+            throw new ErrorException('Customer id required!');
+        }
+
+        return $this->cast(
+            $this->call('post', "customer/{$customer->getId()}/smart-print", compact('badgeStockConfiguration')),
+            Printer::class
+        );
+    }
+
+    /**
+     * @param Customer $customer
+     * @param Printer  $printer
+     * @param array    $options
+     *
+     * @return Customer
+     * @throws ErrorException
+     */
+    public function printBadge(Customer $customer, Printer $printer, array $options = [])
+    {
+        if (!$customer->getId()) {
+            throw new ErrorException('Customer id required!');
+        }
+
+        if (!$printer->getId()) {
+            throw new ErrorException('Printer id required!');
+        }
+
+        return $this->call('post', "customer/{$customer->getId()}/print/{$printer->getId()}", $options);
+    }
+
+    /**
+     * @param Printer $printer
+     * @param array   $options
+     *
+     * @return Customer
+     * @throws ErrorException
+     */
+    public function printSeparator(Printer $printer, array $options = [])
+    {
+        if (!$printer->getId()) {
+            throw new ErrorException('Printer id required!');
+        }
+
+        return $this->call('post', "customer/print-separator/{$printer->getId()}", $options);
     }
 }

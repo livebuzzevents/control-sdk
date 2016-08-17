@@ -4,10 +4,7 @@ use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
-use Buzz\Control\Objects\Traits\HasBadges;
-use Buzz\Control\Objects\Traits\HasCreatedBadges;
 use Buzz\Control\Objects\Traits\HasMatchId;
-use Buzz\Control\Objects\Traits\HasPivot;
 use Buzz\Control\Objects\Traits\HasPropertiesCommon;
 use Buzz\Control\Objects\Traits\HasSource;
 use Buzz\Control\Objects\Traits\HasStatus;
@@ -19,7 +16,7 @@ use Buzz\Control\Objects\Traits\HasStatus;
  */
 class Exhibitor extends Object
 {
-    use BelongsToCampaign, HasMatchId, HasSource, HasStatus, HasAnswersCommon, HasPropertiesCommon, HasPivot, HasBadges, HasCreatedBadges;
+    use BelongsToCampaign, HasMatchId, HasSource, HasStatus, HasAnswersCommon, HasPropertiesCommon;
 
     /**
      * @var string
