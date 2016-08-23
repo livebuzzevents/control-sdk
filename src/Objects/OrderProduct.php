@@ -11,5 +11,4 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
 class OrderProduct extends Object
 {
     use BelongsToOrder, HasIdentifier;
-
 }

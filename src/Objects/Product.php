@@ -46,11 +46,6 @@ class Product extends Object
     protected $shippable;
 
     /**
-     * @var array
-     */
-    protected $components;
-
-    /**
      * @var \DateTime
      */
     protected $valid_from;
@@ -138,22 +133,6 @@ class Product extends Object
     public function setCurrency($currency)
     {
         $this->currency = $currency;
-    }
-
-    /**
-     * @return array
-     */
-    public function getComponents()
-    {
-        return $this->components;
-    }
-
-    /**
-     * @param array $components
-     */
-    public function setComponents($components)
-    {
-        $this->components = $components;
     }
 
     /**
