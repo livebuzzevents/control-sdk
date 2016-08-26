@@ -6,4 +6,4 @@ $service = new \Buzz\Control\Services\SeminarService($buzz);
 
 $seminars = $service->getMany();
 
-dd($customers);
+dd($seminars);

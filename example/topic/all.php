@@ -2,8 +2,8 @@
 
 require_once '../bootstrap.php';
 
-$service = new \Buzz\Control\Services\SeminarService($buzz);
+$service = new \Buzz\Control\Services\TopicService($buzz);
 
-$seminars = $service->getMany();
+$topic = $service->getMany();
 
-dd($customers);
+dd($topic);
