@@ -11,12 +11,12 @@ $topic->setIdentifier('sdk_test');
 $topic->setDescription('test description');
 
 $topic = $service->save($topic);
-var_dump($topic);
+dump($topic);
 
 $topic->setName('sdk test 2');
 
 $topic = $service->save($topic);
-var_dump($topic);
+dump($topic);
 
 $topic = $service->delete($topic);
-var_dump($topic);
+dump($topic);
