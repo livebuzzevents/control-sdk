@@ -47,7 +47,7 @@ class BasketService extends Service
             throw new ErrorException('Basket id required!');
         }
 
-        return $this->call('get', "basket/generate/{$basket->getId()}");
+        return $this->call('get', "basket/{$basket->getId()}/generate");
     }
 
     /**
@@ -62,7 +62,7 @@ class BasketService extends Service
             throw new ErrorException('Basket id required!');
         }
 
-        return $this->callAndCast('delete', "basket/reset/{$basket->getId()}");
+        return $this->callAndCast('delete', "basket/{$basket->getId()}/reset");
     }
 
     /**
@@ -83,7 +83,7 @@ class BasketService extends Service
             throw new ErrorException('Product id required!');
         }
 
-        return $this->callAndCast('post', "basket/product/{$basket->getId()}/{$product->getId()}/{$quantity}");
+        return $this->callAndCast('post', "basket/{$basket->getId()}/product/{$product->getId()}/{$quantity}");
     }
 
     /**
@@ -104,7 +104,7 @@ class BasketService extends Service
             throw new ErrorException('Product id required!');
         }
 
-        return $this->callAndCast('put', "basket/product/{$basket->getId()}/{$product->getId()}/{$quantity}");
+        return $this->callAndCast('put', "basket/{$basket->getId()}/product/{$product->getId()}/{$quantity}");
     }
 
     /**
@@ -124,7 +124,7 @@ class BasketService extends Service
             throw new ErrorException('Product id required!');
         }
 
-        return $this->callAndCast('delete', "basket/product/{$basket->getId()}/{$product->getId()}");
+        return $this->callAndCast('delete', "basket/{$basket->getId()}/product/{$product->getId()}");
     }
 
     /**
@@ -140,7 +140,7 @@ class BasketService extends Service
             throw new ErrorException('Basket id required!');
         }
 
-        return $this->callAndCast('delete', "basket/products/{$basket->getId()}", compact('product_ids'));
+        return $this->callAndCast('delete', "basket/{$basket->getId()}/products", compact('product_ids'));
     }
 
     /**
@@ -156,7 +156,78 @@ class BasketService extends Service
             throw new ErrorException('Basket id required!');
         }
 
-        return $this->callAndCast('put', "basket/products/{$basket->getId()}", compact('products'));
+        return $this->callAndCast('put', "basket/{$basket->getId()}/products", compact('products'));
+    }
+
+    /**
+     * @param Basket  $basket
+     * @param Product $product
+     * @param string  $name
+     * @param array   $parameters
+     *
+     * @return Basket
+     * @throws ErrorException
+     */
+    public function addAction(Basket $basket, Product $product, string $name, array $parameters)
+    {
+        if (!$basket->getId()) {
+            throw new ErrorException('Basket id required!');
+        }
+
+        if (!$product->getId()) {
+            throw new ErrorException('Product id required!');
+        }
+
+        return $this->callAndCast(
+            'post',
+            "basket/{$basket->getId()}/action/{$product->getId()}",
+            compact('name', 'parameters')
+        );
+    }
+
+    /**
+     * @param Basket  $basket
+     * @param Product $product
+     * @param array   $actions
+     *
+     * @return Basket
+     * @throws ErrorException
+     */
+    public function updateActions(Basket $basket, Product $product, array $actions)
+    {
+        if (!$basket->getId()) {
+            throw new ErrorException('Basket id required!');
+        }
+
+        if (!$product->getId()) {
+            throw new ErrorException('Product id required!');
+        }
+
+        return $this->callAndCast(
+            'put',
+            "basket/{$basket->getId()}/actions/{$product->getId()}",
+            compact('actions')
+        );
+    }
+
+    /**
+     * @param Basket  $basket
+     * @param Product $product
+     *
+     * @return Basket
+     * @throws ErrorException
+     */
+    public function removeActions(Basket $basket, Product $product)
+    {
+        if (!$basket->getId()) {
+            throw new ErrorException('Basket id required!');
+        }
+
+        if (!$product->getId()) {
+            throw new ErrorException('Product id required!');
+        }
+
+        return $this->callAndCast('delete', "basket/{$basket->getId()}/actions/{$product->getId()}");
     }
 
     /**
@@ -176,7 +247,7 @@ class BasketService extends Service
             throw new ErrorException('Payment provider id required!');
         }
 
-        return $this->callAndCast('post', "basket/payment-provider/{$basket->getId()}/{$paymentProvider->getId()}");
+        return $this->callAndCast('post', "basket/{$basket->getId()}/payment-provider/{$paymentProvider->getId()}");
     }
 
     /**
@@ -192,7 +263,7 @@ class BasketService extends Service
             throw new ErrorException('Basket id required!');
         }
 
-        return $this->callAndCast('delete', "basket/payment-provider/{$basket->getId()}");
+        return $this->callAndCast('delete', "basket/{$basket->getId()}/payment-provider");
     }
 
     /**
@@ -213,7 +284,7 @@ class BasketService extends Service
             throw new ErrorException('Code required!');
         }
 
-        return $this->callAndCast('post', "basket/discount-code/{$basket->getId()}/{$code}");
+        return $this->callAndCast('post', "basket/{$basket->getId()}/discount-code/{$code}");
     }
 
     /**
@@ -229,7 +300,7 @@ class BasketService extends Service
             throw new ErrorException('Basket id required!');
         }
 
-        return $this->callAndCast('delete', "basket/discount-code/{$basket->getId()}");
+        return $this->callAndCast('delete', "basket/{$basket->getId()}/discount-code");
     }
 
     /**
@@ -245,7 +316,7 @@ class BasketService extends Service
             throw new ErrorException('Basket id required!');
         }
 
-        return $this->callAndCast('post', "basket/billing-details/{$basket->getId()}", $details);
+        return $this->callAndCast('post', "basket/{$basket->getId()}/billing-details", $details);
     }
 
     /**
@@ -260,7 +331,7 @@ class BasketService extends Service
             throw new ErrorException('Basket id required!');
         }
 
-        return $this->callAndCast('delete', "basket/billing-details/{$basket->getId()}");
+        return $this->callAndCast('delete', "basket/{$basket->getId()}/billing-details");
     }
 
     /**
@@ -276,7 +347,7 @@ class BasketService extends Service
             throw new ErrorException('Basket id required!');
         }
 
-        return $this->callAndCast('post', "basket/shipping-details/{$basket->getId()}", $details);
+        return $this->callAndCast('post', "basket/{$basket->getId()}/shipping-details", $details);
     }
 
     /**
@@ -291,7 +362,7 @@ class BasketService extends Service
             throw new ErrorException('Basket id required!');
         }
 
-        return $this->callAndCast('delete', "basket/shipping-details/{$basket->getId()}");
+        return $this->callAndCast('delete', "basket/{$basket->getId()}/shipping-details");
     }
 
     /**
@@ -307,7 +378,7 @@ class BasketService extends Service
             throw new ErrorException('Basket id required!');
         }
 
-        return $this->callAndCast('post', "basket/po-number/{$basket->getId()}/$po_number");
+        return $this->callAndCast('post', "basket/{$basket->getId()}/po-number/{$po_number}");
     }
 
     /**
@@ -322,7 +393,7 @@ class BasketService extends Service
             throw new ErrorException('Basket id required!');
         }
 
-        return $this->callAndCast('delete', "basket/po-number/{$basket->getId()}");
+        return $this->callAndCast('delete', "basket/{$basket->getId()}/po-number");
     }
 
     /**
@@ -338,7 +409,7 @@ class BasketService extends Service
             throw new ErrorException('Basket id required!');
         }
 
-        return $this->callAndCast('post', "basket/vat-exempt/{$basket->getId()}/$vat_exempt");
+        return $this->callAndCast('post', "basket/{$basket->getId()}/vat-exempt/{$vat_exempt}");
     }
 
     /**
@@ -354,7 +425,7 @@ class BasketService extends Service
         }
 
         return $this->cast(
-            $this->call('get', "basket/place/{$basket->getId()}"),
+            $this->call('get', "basket/{$basket->getId()}/place"),
             Order::class
         );
     }
