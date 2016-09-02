@@ -3,14 +3,14 @@
 require_once(__DIR__ . '/../vendor/autoload.php');
 
 $api_key      = '55bb6fa8e9eb7';
-$endpoint     = 'http://control.dev/rest/v1/';
+$host         = 'http://control.dev';
 $organization = 'monomax';
 
 $buzz = new \Buzz\Control\Buzz();
 
 $credentials = new \Buzz\Control\Credentials();
 $credentials->setApiKey($api_key);
-$credentials->setEndpoint($endpoint);
+$credentials->setHost($host);
 $credentials->setOrganization($organization);
 
 $buzz->setCredentials($credentials);

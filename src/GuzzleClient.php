@@ -72,7 +72,7 @@ class GuzzleClient implements Client
             } elseif ($response->getStatusCode() === 401) {
                 throw new UnauthorizedException($contents);
             } elseif ($response->getStatusCode() === 404) {
-                throw new ResponseException('Resource not found! Check you endpoint url!');
+                throw new ResponseException('Resource not found! Check you host!');
             } else {
                 throw new ResponseException('Unexpected error! Invalid response code!');
             }
