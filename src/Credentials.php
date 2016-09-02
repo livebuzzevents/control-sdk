@@ -17,23 +17,28 @@ class Credentials
     /**
      * @var string
      */
-    protected $endpoint;
+    protected $organization;
 
     /**
      * @var string
      */
-    protected $organization;
+    protected $host;
+
+    /**
+     * @var string
+     */
+    protected $version = 'rest/v2';
 
     /**
      * @param null $api_key
      * @param null $organization
-     * @param null $endpoint
+     * @param null $host
      */
-    public function __construct($api_key = null, $organization = null, $endpoint = null)
+    public function __construct($api_key = null, $organization = null, $host = null)
     {
         $this->setApiKey($api_key);
         $this->setOrganization($organization);
-        $this->setEndpoint($endpoint);
+        $this->setHost($host);
     }
 
     /**
@@ -71,20 +76,28 @@ class Credentials
     }
 
     /**
-     * Retrieves Event endpoint url
+     * Retrieves Event host
      *
      * @return string
      */
-    public function getEndpoint()
+    public function getHost()
     {
-        return $this->endpoint;
+        return $this->host;
     }
 
     /**
-     * @param string $endpoint
+     * @param string $host
      */
-    public function setEndpoint($endpoint)
+    public function setHost($host)
     {
-        $this->endpoint = $endpoint;
+        $this->host = $host;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->version;
     }
 }

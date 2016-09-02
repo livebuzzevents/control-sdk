@@ -249,8 +249,10 @@ abstract class Service
      */
     private function getUrl($method)
     {
-        return $this->buzz->getCredentials()->getEndpoint() . $this->buzz->getCredentials()
-            ->getOrganization() . '/' . $method;
+        return $this->buzz->getCredentials()->getHost() . "/"
+        . $this->buzz->getCredentials()->getVersion() . "/"
+        . $this->buzz->getCredentials()->getOrganization() . "/"
+        . $method;
     }
 
     /**
