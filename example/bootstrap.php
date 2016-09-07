@@ -2,9 +2,17 @@
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
-$api_key      = '55bb6fa8e9eb7';
-$host         = 'http://control.dev';
-$organization = 'monomax';
+if (file_exists(__DIR__ . '/config.php')) {
+    require __DIR__ . '/config.php';
+} else {
+    require __DIR__ . '/config.example.php';
+}
+
+if ($showErrors) {
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+}
 
 $buzz = new \Buzz\Control\Buzz();
 
@@ -20,7 +28,7 @@ $buzz->setCredentials($credentials);
 //$buzz->setScope($scope);
 
 $campaign = new \Buzz\Control\Objects\Campaign();
-$campaign->setIdentifier('imbibe-2016');
+$campaign->setIdentifier($campaignIdentifier);
 
 //$stream = new \Buzz\Control\Objects\Stream();
 //$stream->setIdentifier('visitor-registration');
@@ -32,8 +40,13 @@ $campaign->setIdentifier('imbibe-2016');
 
 function dd($v)
 {
+    dump($v);
+    exit();
+}
+
+function dump($v)
+{
     echo '<pre>';
     var_dump($v);
     echo '</pre>';
-    exit();
 }
