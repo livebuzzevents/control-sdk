@@ -168,7 +168,7 @@ class BasketService extends Service
      * @return Basket
      * @throws ErrorException
      */
-    public function addAction(Basket $basket, Product $product, string $name, array $parameters)
+    public function addAction(Basket $basket, Product $product, $name, array $parameters)
     {
         if (!$basket->getId()) {
             throw new ErrorException('Basket id required!');
