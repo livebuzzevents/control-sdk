@@ -238,6 +238,16 @@ class Customer extends Object
     protected $extras;
 
     /**
+     * @var \Buzz\Control\Objects\Basket
+     */
+    protected $basket;
+
+    /**
+     * @var \Buzz\Control\Objects\Basket[]
+     */
+    protected $baskets;
+
+    /**
      * @return string
      */
     public function getOwnerId()
@@ -947,5 +957,21 @@ class Customer extends Object
     public function addExtra(Extra $extra)
     {
         $this->add($this->extras, $extra);
+    }
+
+    /**
+     * @return Basket
+     */
+    public function getBasket()
+    {
+        return $this->basket;
+    }
+
+    /**
+     * @return Basket
+     */
+    public function getBaskets()
+    {
+        return $this->baskets;
     }
 }
