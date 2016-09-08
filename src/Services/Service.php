@@ -213,8 +213,11 @@ abstract class Service
      * @throws \Buzz\Control\Exceptions\ServerException
      * @throws \Buzz\Control\Exceptions\UnauthorizedException
      */
-    protected final function call($verb, $method, array $request = [])
+    protected final function call($verb, $method, array $request = null)
     {
+        if (is_null($request)) {
+            $request = [];
+        }
         $request['_settings'] = $this->settings;
 
         if ($this->filter) {
