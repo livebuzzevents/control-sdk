@@ -35,7 +35,7 @@ class EmailService extends Service
             $request['email_template'] = $emailTemplate->toArray();
         }
 
-        $this->call('post', 'email/send', $request);
+        $this->call('post', 'email-message/send', $request);
     }
 
     /**
@@ -62,6 +62,6 @@ class EmailService extends Service
             $request['email_template'] = $emailTemplate->toArray();
         }
 
-        $this->call('post', 'email/send', $request);
+        $this->call('post', 'email-message/send', $request);
     }
 }
