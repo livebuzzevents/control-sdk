@@ -36,6 +36,16 @@ class Product extends Object
     protected $vat_percentage;
 
     /**
+     * @var int
+     */
+    protected $vat;
+
+    /**
+     * @var int
+     */
+    protected $total;
+
+    /**
      * @var string
      */
     protected $currency;
@@ -181,5 +191,21 @@ class Product extends Object
     public function setVatPercentage($vat_percentage)
     {
         $this->vat_percentage = $vat_percentage;
+    }
+
+    /**
+     * @return int
+     */
+    public function getVat()
+    {
+        return $this->vat;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotal()
+    {
+        return $this->total;
     }
 }
