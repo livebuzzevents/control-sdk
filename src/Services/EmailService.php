@@ -2,7 +2,7 @@
 
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
-use Buzz\Control\Objects\EmailTemplate;
+use Buzz\Control\Objects\EmailMessageTemplate;
 use Buzz\Control\Objects\Exhibitor;
 
 /**
@@ -13,15 +13,15 @@ use Buzz\Control\Objects\Exhibitor;
 class EmailService extends Service
 {
     /**
-     * @param Customer      $customer
-     * @param EmailTemplate $emailTemplate
-     * @param array         $settings
+     * @param Customer             $customer
+     * @param EmailMessageTemplate $emailMessageTemplate
+     * @param array                $settings
      *
      * @throws ErrorException
      */
-    public function sendToCustomer(Customer $customer, EmailTemplate $emailTemplate, array $settings = [])
+    public function sendToCustomer(Customer $customer, EmailMessageTemplate $emailMessageTemplate, array $settings = [])
     {
-        if ((!$emailTemplate->getId() && !$emailTemplate->getIdentifier()) && !$customer->getId()) {
+        if ((!$emailMessageTemplate->getId() && !$emailMessageTemplate->getIdentifier()) && !$customer->getId()) {
             throw new ErrorException('Email and Customer required!');
         }
 
@@ -29,26 +29,26 @@ class EmailService extends Service
 
         $request['customer_id'] = $customer->getId();
 
-        if ($emailTemplate->getId()) {
-            $request['email_template_id'] = $emailTemplate->getId();
+        if ($emailMessageTemplate->getId()) {
+            $request['email_message_template_id'] = $emailMessageTemplate->getId();
         } else {
-            $request['email_template'] = $emailTemplate->toArray();
+            $request['email_message_template'] = $emailMessageTemplate->toArray();
         }
 
         $this->call('post', 'email-message/send', $request);
     }
 
     /**
-     * @param Exhibitor     $exhibitor
-     * @param EmailTemplate $emailTemplate
-     * @param array         $settings
+     * @param Exhibitor            $exhibitor
+     * @param EmailMessageTemplate $emailMessageTemplate
+     * @param array                $settings
      *
      * @throws ErrorException
      * @internal param Customer $customer
      */
-    public function sendToExhibitor(Exhibitor $exhibitor, EmailTemplate $emailTemplate, array $settings = [])
+    public function sendToExhibitor(Exhibitor $exhibitor, EmailMessageTemplate $emailMessageTemplate, array $settings = [])
     {
-        if ((!$emailTemplate->getId() && !$emailTemplate->getIdentifier()) && !$exhibitor->getId()) {
+        if ((!$emailMessageTemplate->getId() && !$emailMessageTemplate->getIdentifier()) && !$exhibitor->getId()) {
             throw new ErrorException('Email and Exhibitor required!');
         }
 
@@ -56,10 +56,10 @@ class EmailService extends Service
 
         $request['exhibitor_id'] = $exhibitor->getId();
 
-        if ($emailTemplate->getId()) {
-            $request['email_template_id'] = $emailTemplate->getId();
+        if ($emailMessageTemplate->getId()) {
+            $request['email_message_template_id'] = $emailMessageTemplate->getId();
         } else {
-            $request['email_template'] = $emailTemplate->toArray();
+            $request['email_message_template'] = $emailMessageTemplate->toArray();
         }
 
         $this->call('post', 'email-message/send', $request);

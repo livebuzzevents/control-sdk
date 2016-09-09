@@ -2,7 +2,7 @@
 
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
-use Buzz\Control\Objects\EmailTemplate;
+use Buzz\Control\Objects\EmailMessageTemplate;
 use Buzz\Control\Objects\Exhibitor;
 use Buzz\Control\Objects\Invite;
 
@@ -15,18 +15,18 @@ class SocialService extends Service
 {
     protected static $cast = Invite::class;
 
-    public function inviteEmail(Invite $invite, EmailTemplate $emailTemplate)
+    public function inviteEmail(Invite $invite, EmailMessageTemplate $emailTemplate)
     {
         if (!$invite->getProviderRecipient()) {
             throw new ErrorException('Email required!');
         }
 
-        $request = ['invite'  => $invite->toArray()];
+        $request = ['invite' => $invite->toArray()];
 
         if ($emailTemplate->getId()) {
-            $request['email_template_id'] = $emailTemplate->getId();
+            $request['email_message_template_id'] = $emailTemplate->getId();
         } else {
-            $request['email_template'] = $emailTemplate->toArray();
+            $request['email_message_template'] = $emailTemplate->toArray();
         }
 
         return $this->callAndCast('post', 'social/invite/email', $request);
@@ -35,12 +35,14 @@ class SocialService extends Service
     public function inviteShare(Invite $invite)
     {
         $request = ['invite' => $invite->toArray()];
+
         return $this->callAndCast('post', "social/invite/{$invite->getProvider()}/share", $request);
     }
 
     public function inviteConnection(Invite $invite)
     {
-        $request = ['invite'  => $invite->toArray()];
+        $request = ['invite' => $invite->toArray()];
+
         return $this->callAndCast('post', "social/invite/{$invite->getProvider()}/connection", $request);
     }
 }
