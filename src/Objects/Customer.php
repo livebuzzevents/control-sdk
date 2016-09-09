@@ -248,6 +248,16 @@ class Customer extends Object
     protected $baskets;
 
     /**
+     * @var \Buzz\Control\Objects\Seminar[]
+     */
+    protected $seminars;
+
+    /**
+     * @var \Buzz\Control\Objects\Seminar[]
+     */
+    protected $created_seminars;
+
+    /**
      * @return string
      */
     public function getOwnerId()
@@ -981,5 +991,21 @@ class Customer extends Object
     public function getBaskets()
     {
         return $this->baskets;
+    }
+
+    /**
+     * @return Seminar
+     */
+    public function getSeminars()
+    {
+        return $this->seminars;
+    }
+
+    /**
+     * @return Seminar
+     */
+    public function getCreatedSeminars()
+    {
+        return $this->created_seminars;
     }
 }
