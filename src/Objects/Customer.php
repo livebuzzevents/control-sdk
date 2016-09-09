@@ -248,12 +248,12 @@ class Customer extends Object
     protected $baskets;
 
     /**
-     * @var \Buzz\Control\Objects\Seminar[]
+     * @var \Buzz\Control\Objects\CustomerSeminar[]
      */
     protected $seminars;
 
     /**
-     * @var \Buzz\Control\Objects\Seminar[]
+     * @var \Buzz\Control\Objects\CustomerSeminar[]
      */
     protected $created_seminars;
 
@@ -994,7 +994,7 @@ class Customer extends Object
     }
 
     /**
-     * @return Seminar
+     * @return CustomerSeminar
      */
     public function getSeminars()
     {
@@ -1002,7 +1002,7 @@ class Customer extends Object
     }
 
     /**
-     * @return Seminar
+     * @return CustomerSeminar
      */
     public function getCreatedSeminars()
     {
