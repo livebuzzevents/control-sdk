@@ -143,7 +143,7 @@ class Customer extends Object
     protected $barcode;
 
     /**
-     * @var bool
+     * @var string
      */
     protected $attended;
 
@@ -486,11 +486,19 @@ class Customer extends Object
     }
 
     /**
-     * @return boolean
+     * @return string
      */
     public function getAttended()
     {
         return $this->attended;
+    }
+
+    /**
+     * @return string
+     */
+    public function setAttended($attended)
+    {
+        $this->attended = $attended;
     }
 
     /**
