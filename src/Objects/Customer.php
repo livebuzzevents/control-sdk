@@ -95,6 +95,16 @@ class Customer extends Object
     /**
      * @var string
      */
+    protected $job_title;
+
+    /**
+     * @var string
+     */
+    protected $company;
+
+    /**
+     * @var string
+     */
     protected $biography;
 
     /**
@@ -156,11 +166,6 @@ class Customer extends Object
      * @var \Buzz\Control\Objects\Customer\Phone[]
      */
     protected $phones;
-
-    /**
-     * @var \Buzz\Control\Objects\Customer\Job[]
-     */
-    protected $jobs;
 
     /**
      * @var \Buzz\Control\Objects\Customer\Address[]
@@ -600,6 +605,38 @@ class Customer extends Object
     /**
      * @return string
      */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param string $company
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
+    }
+
+    /**
+     * @return string
+     */
+    public function getJobTitle()
+    {
+        return $this->job_title;
+    }
+
+    /**
+     * @param string $job_title
+     */
+    public function setJobTitle($job_title)
+    {
+        $this->job_title = $job_title;
+    }
+
+    /**
+     * @return string
+     */
     public function getBiography()
     {
         return $this->biography;
@@ -695,30 +732,6 @@ class Customer extends Object
     public function setAddresses($addresses)
     {
         $this->addresses = new Collection($addresses);
-    }
-
-    /**
-     * @param Customer\Job $job
-     */
-    public function addJob(Customer\Job $job)
-    {
-        $this->add($this->jobs, $job);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getJobs()
-    {
-        return $this->jobs;
-    }
-
-    /**
-     * @param Customer\Job[]|Collection $jobs
-     */
-    public function setJobs($jobs)
-    {
-        $this->jobs = new Collection($jobs);
     }
 
     /**

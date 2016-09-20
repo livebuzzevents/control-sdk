@@ -16,7 +16,7 @@ $companies = [
 
 $customers = $service->where('campaign.identifier', 'is', 'bbf16')
     ->where('badgeType.identifier', 'is', 'crew')
-    ->where('customer.jobs.company', 'is', $companies[4])
+    ->where('customer.company', 'is', $companies[4])
     ->perPage(1000)
     ->getMany();
 

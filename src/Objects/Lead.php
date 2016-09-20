@@ -47,6 +47,16 @@ class Lead extends Object
     /**
      * @var string
      */
+    protected $job_title;
+
+    /**
+     * @var string
+     */
+    protected $company;
+
+    /**
+     * @var string
+     */
     protected $sex;
 
     /**
@@ -78,11 +88,6 @@ class Lead extends Object
      * @var \Buzz\Control\Objects\Lead\Phone[]
      */
     protected $phones;
-
-    /**
-     * @var \Buzz\Control\Objects\Lead\Job[]
-     */
-    protected $jobs;
 
     /**
      * @var \Buzz\Control\Objects\Lead\Address[]
@@ -263,6 +268,38 @@ class Lead extends Object
     }
 
     /**
+     * @return string
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param string $company
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
+    }
+
+    /**
+     * @return string
+     */
+    public function getJobTitle()
+    {
+        return $this->job_title;
+    }
+
+    /**
+     * @param string $job_title
+     */
+    public function setJobTitle($job_title)
+    {
+        $this->job_title = $job_title;
+    }
+
+    /**
      * @return mixed
      */
     public function getNationality()
@@ -328,30 +365,6 @@ class Lead extends Object
     public function setAddresses($addresses)
     {
         $this->addresses = new Collection($addresses);
-    }
-
-    /**
-     * @param Lead\Job $job
-     */
-    public function addJob(Lead\Job $job)
-    {
-        $this->add($this->jobs, $job);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getJobs()
-    {
-        return $this->jobs;
-    }
-
-    /**
-     * @param Lead\Job[]|Collection $jobs
-     */
-    public function setJobs($jobs)
-    {
-        $this->jobs = new Collection($jobs);
     }
 
     /**
