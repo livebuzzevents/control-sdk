@@ -22,7 +22,7 @@ class Credentials
     /**
      * @var string
      */
-    protected $host;
+    protected $domain;
 
     /**
      * @var string
@@ -30,15 +30,24 @@ class Credentials
     protected $version = 'rest/v2';
 
     /**
-     * @param null $api_key
-     * @param null $organization
-     * @param null $host
+     * @var string
      */
-    public function __construct($api_key = null, $organization = null, $host = null)
+    protected $protocol;
+
+    /**
+     * @param null   $api_key
+     * @param null   $organization
+     * @param null   $domain
+     * @param string $protocol
+     *
+     * @internal param bool $ssl
+     */
+    public function __construct($api_key = null, $organization = null, $domain = null, $protocol = 'https')
     {
         $this->setApiKey($api_key);
         $this->setOrganization($organization);
-        $this->setHost($host);
+        $this->setDomain($domain);
+        $this->setProtocol($protocol);
     }
 
     /**
@@ -80,17 +89,17 @@ class Credentials
      *
      * @return string
      */
-    public function getHost()
+    public function getDomain()
     {
-        return $this->host;
+        return $this->domain;
     }
 
     /**
-     * @param string $host
+     * @param string $domain
      */
-    public function setHost($host)
+    public function setDomain($domain)
     {
-        $this->host = $host;
+        $this->domain = $domain;
     }
 
     /**
@@ -100,4 +109,21 @@ class Credentials
     {
         return $this->version;
     }
+
+    /**
+     * @return string
+     */
+    public function getProtocol()
+    {
+        return $this->protocol;
+    }
+
+    /**
+     * @param string $protocol
+     */
+    public function setProtocol($protocol)
+    {
+        $this->protocol = $protocol;
+    }
+
 }

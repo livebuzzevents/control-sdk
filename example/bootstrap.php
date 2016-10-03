@@ -18,7 +18,8 @@ $buzz = new \Buzz\Control\Buzz();
 
 $credentials = new \Buzz\Control\Credentials();
 $credentials->setApiKey($api_key);
-$credentials->setHost($host);
+$credentials->setDomain($domain);
+$credentials->setProtocol($protocol);
 $credentials->setOrganization($organization);
 
 $buzz->setCredentials($credentials);

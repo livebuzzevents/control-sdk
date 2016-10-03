@@ -218,6 +218,7 @@ abstract class Service
         if (is_null($request)) {
             $request = [];
         }
+
         $request['_settings'] = $this->settings;
 
         if ($this->filter) {
@@ -252,14 +253,20 @@ abstract class Service
      */
     private function getUrl($method)
     {
-        return $this->buzz->getCredentials()->getHost() . "/"
-        . $this->buzz->getCredentials()->getVersion() . "/"
-        . $this->buzz->getCredentials()->getOrganization() . "/"
-        . $method;
+        $endpoint = sprintf(
+            '%s://%s.%s/%s/%s',
+            $this->buzz->getCredentials()->getProtocol(),
+            $this->buzz->getCredentials()->getOrganization(),
+            $this->buzz->getCredentials()->getDomain(),
+            $this->buzz->getCredentials()->getVersion(),
+            $method
+        );
+
+        return $endpoint;
     }
 
     /**
-     * @param ...$parameters
+     * @param array ...$parameters
      *
      * @return mixed
      */
