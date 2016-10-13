@@ -21,6 +21,7 @@ $credentials->setApiKey($api_key);
 $credentials->setDomain($domain);
 $credentials->setProtocol($protocol);
 $credentials->setOrganization($organization);
+$credentials->setVerifySsl(false);
 
 $buzz->setCredentials($credentials);
 

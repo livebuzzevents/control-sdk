@@ -35,6 +35,16 @@ class Credentials
     protected $protocol;
 
     /**
+     * @var string
+     */
+    protected $proxy = null;
+
+    /**
+     * @var bool
+     */
+    protected $verify_ssl = null;
+
+    /**
      * @param null   $api_key
      * @param null   $organization
      * @param null   $domain
@@ -126,4 +136,51 @@ class Credentials
         $this->protocol = $protocol;
     }
 
+    /**
+     * @return string
+     */
+    public function getProxy()
+    {
+        return $this->proxy;
+    }
+
+    /**
+     * @param string $proxy
+     */
+    public function setProxy($proxy)
+    {
+        $this->proxy = $proxy;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getVerifySsl()
+    {
+        return $this->verify_ssl;
+    }
+
+    /**
+     * @param bool $verify_ssl
+     */
+    public function setVerifySsl($verify_ssl)
+    {
+        $this->verify_ssl = $verify_ssl;
+    }
+
+    /**
+     * @return bool
+     */
+    public function verify()
+    {
+        if (!is_null($this->verify_ssl)) {
+            return $this->verify_ssl;
+        }
+
+        if (!is_null($this->proxy)) {
+            return false;
+        }
+
+        return true;
+    }
 }

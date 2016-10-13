@@ -9,6 +9,7 @@ use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Filter;
 use Buzz\Control\GuzzleClient;
 use Buzz\Control\Paging;
+use GuzzleHttp\Client as Guzzle;
 
 /**
  * Class Service
@@ -57,7 +58,10 @@ abstract class Service
     public final function __construct(Buzz $buzz, Client $client = null)
     {
         $this->buzz   = $buzz;
-        $this->client = $client ?: new GuzzleClient();
+        $this->client = $client ?: new GuzzleClient(new Guzzle([
+            'proxy'  => $buzz->getCredentials()->getProxy(),
+            'verify' => $buzz->getCredentials()->verify(),
+        ]));
     }
 
     /**
