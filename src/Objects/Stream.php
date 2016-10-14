@@ -24,6 +24,26 @@ class Stream extends Object
     protected $origin_url;
 
     /**
+     * @var string
+     */
+    protected $secret;
+
+    /**
+     * @var string
+     */
+    protected $audience;
+
+    /**
+     * @var string
+     */
+    protected $provider;
+
+    /**
+     * @var string
+     */
+    protected $repository;
+
+    /**
      * @var \Buzz\Control\Objects\Affiliate[]
      */
     protected $affiliates;
@@ -58,6 +78,70 @@ class Stream extends Object
     public function setOriginUrl($origin_url)
     {
         $this->origin_url = $origin_url;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSecret()
+    {
+        return $this->secret;
+    }
+
+    /**
+     * @param mixed
+     */
+    public function setSecret($secret)
+    {
+        $this->secret = $secret;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAudience()
+    {
+        return $this->audience;
+    }
+
+    /**
+     * @param mixed
+     */
+    public function setAudience($audience)
+    {
+        $this->audience = $audience;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProvider()
+    {
+        return $this->provider;
+    }
+
+    /**
+     * @param mixed
+     */
+    public function setProvider($provider)
+    {
+        $this->provider = $provider;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRepository()
+    {
+        return $this->repository;
+    }
+
+    /**
+     * @param mixed
+     */
+    public function setRepository($repository)
+    {
+        $this->repository = $repository;
     }
 
     /**
