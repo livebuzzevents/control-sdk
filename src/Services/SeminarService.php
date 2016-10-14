@@ -177,7 +177,7 @@ class SeminarService extends Service
             throw new ErrorException('Creator id required!');
         }
 
-        $url = "seminar/{$seminar->getId()}/creator/{$creator->getId()}/role/{$role}/customer/{$customer->getId()}/allocate-space";
+        $url = "seminar/{$seminar->getId()}/creator/{$creator->getId()}/role/{$role}/allocate-space";
 
         if ($type) {
             $url .= "/{$type}";
