@@ -2,6 +2,7 @@
 
 use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
+use Buzz\Control\Objects\Customer\Tag;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
@@ -261,6 +262,11 @@ class Customer extends Object
      * @var \Buzz\Control\Objects\CustomerSeminar[]
      */
     protected $created_seminars;
+
+    /**
+     * @var \Buzz\Control\Objects\Customer\Tag[]
+     */
+    protected $tags;
 
     /**
      * @return string
@@ -1020,5 +1026,13 @@ class Customer extends Object
     public function getCreatedSeminars()
     {
         return $this->created_seminars;
+    }
+
+    /**
+     * @return Tag[]|Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }
