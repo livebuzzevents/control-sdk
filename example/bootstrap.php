@@ -22,6 +22,7 @@ $credentials->setDomain($domain);
 $credentials->setProtocol($protocol);
 $credentials->setOrganization($organization);
 $credentials->setVerifySsl(false);
+$credentials->setProxy($proxy);
 
 $buzz->setCredentials($credentials);
 
