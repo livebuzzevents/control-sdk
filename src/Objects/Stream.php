@@ -44,6 +44,11 @@ class Stream extends Object
     protected $repository;
 
     /**
+     * @var \Buzz\Control\Objects\File[]
+     */
+    protected $files;
+
+    /**
      * @var \Buzz\Control\Objects\Affiliate[]
      */
     protected $affiliates;
@@ -166,5 +171,21 @@ class Stream extends Object
     public function addAffiliate(Affiliate $affiliate)
     {
         $this->add($this->affiliates, $affiliate);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param File[]|Collection $files
+     */
+    public function setFiles($files)
+    {
+        $this->files = new Collection($files);
     }
 }

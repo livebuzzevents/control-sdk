@@ -79,6 +79,11 @@ class StreamMenuItem extends Object
     protected $properties;
 
     /**
+     * @var \Buzz\Control\Objects\File[]
+     */
+    protected $files;
+
+    /**
      * @return string
      */
     public function getParentId()
@@ -260,5 +265,21 @@ class StreamMenuItem extends Object
     public function addProperty(StreamMenuItem\Property $property)
     {
         $this->add($this->properties, $property);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param File[]|Collection $files
+     */
+    public function setFiles($files)
+    {
+        $this->files = new Collection($files);
     }
 }

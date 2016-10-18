@@ -1,5 +1,6 @@
 <?php namespace Buzz\Control\Objects;
 
+use Buzz\Control\Collection;
 use Buzz\Control\Objects\Traits\HasIdentifier;
 
 /**
@@ -25,6 +26,11 @@ class Campaign extends Object
      * @var Channel
      */
     protected $channel;
+
+    /**
+     * @var \Buzz\Control\Objects\File[]
+     */
+    protected $files;
 
     /**
      * @return string
@@ -72,5 +78,21 @@ class Campaign extends Object
     public function setChannel(Channel $channel)
     {
         $this->channel = $channel;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param File[]|Collection $files
+     */
+    public function setFiles($files)
+    {
+        $this->files = new Collection($files);
     }
 }

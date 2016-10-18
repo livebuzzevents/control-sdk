@@ -114,6 +114,11 @@ class Exhibitor extends Object
     protected $cloned_exhibitor;
 
     /**
+     * @var \Buzz\Control\Objects\File[]
+     */
+    protected $files;
+
+    /**
      * @return array
      */
     public function getAddresses()
@@ -433,5 +438,21 @@ class Exhibitor extends Object
     public function setIsAClone($is_a_clone)
     {
         $this->is_a_clone = $is_a_clone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param File[]|Collection $files
+     */
+    public function setFiles($files)
+    {
+        $this->files = new Collection($files);
     }
 }

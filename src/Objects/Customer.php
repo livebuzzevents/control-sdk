@@ -269,6 +269,11 @@ class Customer extends Object
     protected $tags;
 
     /**
+     * @var \Buzz\Control\Objects\File[]
+     */
+    protected $files;
+
+    /**
      * @return string
      */
     public function getOwnerId()
@@ -1034,5 +1039,21 @@ class Customer extends Object
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param File[]|Collection $files
+     */
+    public function setFiles($files)
+    {
+        $this->files = new Collection($files);
     }
 }

@@ -1,5 +1,6 @@
 <?php namespace Buzz\Control\Objects;
 
+use Buzz\Control\Collection;
 use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 use Buzz\Control\Objects\Traits\HasActive;
@@ -64,6 +65,11 @@ class Product extends Object
      * @var \DateTime
      */
     protected $valid_to;
+
+    /**
+     * @var \Buzz\Control\Objects\File[]
+     */
+    protected $files;
 
     /**
      * @return string
@@ -207,5 +213,21 @@ class Product extends Object
     public function getTotal()
     {
         return $this->total;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param File[]|Collection $files
+     */
+    public function setFiles($files)
+    {
+        $this->files = new Collection($files);
     }
 }
