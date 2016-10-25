@@ -192,6 +192,11 @@ class Order extends Object
     protected $invoice;
 
     /**
+     * @var \Buzz\Control\Objects\OrderAction[]
+     */
+    protected $actions;
+
+    /**
      * @return int
      */
     public function getAmountChargebacked()
@@ -429,6 +434,22 @@ class Order extends Object
     public function setCharges($charges)
     {
         $this->charges = new Collection($charges);
+    }
+
+    /**
+     * @return OrderAction[]
+     */
+    public function getActions()
+    {
+        return $this->actions;
+    }
+
+    /**
+     * @param OrderAction[] $actions
+     */
+    public function setActions($actions)
+    {
+        $this->actions = new Collection($actions);
     }
 
     /**
