@@ -214,6 +214,11 @@ class Customer extends Object
     protected $invites;
 
     /**
+     * @var \Buzz\Control\Objects\Customer[]
+     */
+    protected $created_customers;
+
+    /**
      * @var \Buzz\Control\Objects\Customer\Lead[]
      */
     protected $leads;
@@ -823,6 +828,30 @@ class Customer extends Object
     public function getInvites()
     {
         return $this->invites;
+    }
+
+    /**
+     * @param Customer $createdCustomer
+     */
+    public function addCreatedCustomer(Customer $createdCustomer)
+    {
+        $this->add($this->created_customers, $createdCustomer);
+    }
+
+    /**
+     * @return Customer[]
+     */
+    public function getCreatedCustomers()
+    {
+        return $this->created_customers;
+    }
+
+    /**
+     * @param Customer[] $createdCustomers
+     */
+    public function setCreatedCustomers(array $createdCustomers)
+    {
+        $this->created_customers = new Collection($createdCustomers);
     }
 
     /**
