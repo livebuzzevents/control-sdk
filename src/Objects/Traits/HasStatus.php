@@ -13,11 +13,6 @@ trait HasStatus
     protected $status;
 
     /**
-     * @var string
-     */
-    protected $custom_status;
-
-    /**
      * @return string
      */
     public function getStatus()
@@ -31,21 +26,5 @@ trait HasStatus
     public function setStatus($status)
     {
         $this->status = $status;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCustomStatus()
-    {
-        return $this->custom_status;
-    }
-
-    /**
-     * @param string $custom_status
-     */
-    public function setCustomStatus($custom_status)
-    {
-        $this->custom_status = $custom_status;
     }
 }
