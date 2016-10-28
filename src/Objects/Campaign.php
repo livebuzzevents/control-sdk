@@ -28,6 +28,16 @@ class Campaign extends Object
     protected $channel;
 
     /**
+     * @var DateTime
+     */
+    protected $starts_at;
+
+    /**
+     * @var DateTime
+     */
+    protected $ends_at;
+
+    /**
      * @var \Buzz\Control\Objects\File[]
      */
     protected $files;
@@ -78,6 +88,38 @@ class Campaign extends Object
     public function setChannel(Channel $channel)
     {
         $this->channel = $channel;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getStartsAt()
+    {
+        return $this->starts_at;
+    }
+
+    /**
+     * @param DateTime $starts_at
+     */
+    public function setStartsAt($starts_at)
+    {
+        $this->starts_at = $starts_at;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getEndsAt()
+    {
+        return $this->ends_at;
+    }
+
+    /**
+     * @param DateTime $ends_at
+     */
+    public function setEndsAt($ends_at)
+    {
+        $this->ends_at = $ends_at;
     }
 
     /**
