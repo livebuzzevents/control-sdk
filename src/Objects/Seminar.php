@@ -53,22 +53,22 @@ class Seminar extends Object
 
     //RELATIONS
     /**
-     * @var Customer[]
+     * @var \Buzz\Control\Objects\Customer[]
      */
     protected $customers;
 
     /**
-     * @var Customer[]
+     * @var \Buzz\Control\Objects\Customer[]
      */
     protected $speakers;
 
     /**
-     * @var Customer[]
+     * @var \Buzz\Control\Objects\Customer[]
      */
     protected $attendees;
 
     /**
-     * @var Topics[]
+     * @var \Buzz\Control\Objects\Topics[]
      */
     protected $topics;
 
