@@ -51,6 +51,27 @@ class Seminar extends Object
      */
     protected $title;
 
+    //RELATIONS
+    /**
+     * @var \Buzz\Control\Objects\Customer[]
+     */
+    protected $customers;
+
+    /**
+     * @var \Buzz\Control\Objects\Customer[]
+     */
+    protected $speakers;
+
+    /**
+     * @var \Buzz\Control\Objects\Customer[]
+     */
+    protected $attendees;
+
+    /**
+     * @var \Buzz\Control\Objects\Topics[]
+     */
+    protected $topics;
+
     /**
      * Gets value of capacity.
      *
@@ -189,5 +210,85 @@ class Seminar extends Object
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    /**
+     * Gets value of customers.
+     *
+     * @return Customer[]
+     */
+    public function getCustomers()
+    {
+        return $this->customers;
+    }
+
+    /**
+     * Sets value of customers.
+     *
+     * @param Customer[] $customers
+     */
+    public function setCustomers($customers)
+    {
+        $this->customers = $customers;
+    }
+
+    /**
+     * Gets value of speakers.
+     *
+     * @return Customer[]
+     */
+    public function getSpeakers()
+    {
+        return $this->speakers;
+    }
+
+    /**
+     * Sets value of speakers.
+     *
+     * @param Customer[] $speakers
+     */
+    public function setSpeakers($speakers)
+    {
+        $this->speakers = $speakers;
+    }
+
+    /**
+     * Gets value of attendees.
+     *
+     * @return Customer[]
+     */
+    public function getAttendees()
+    {
+        return $this->attendees;
+    }
+
+    /**
+     * Sets value of attendees.
+     *
+     * @param Customer[] $attendees
+     */
+    public function setAttendees($attendees)
+    {
+        $this->attendees = $attendees;
+    }
+
+    /**
+     * Gets value of topics.
+     *
+     * @return Topics[]
+     */
+    public function getTopics()
+    {
+        return $this->topics;
+    }
+
+    /**
+     * Sets value of topics.
+     *
+     * @param Topics[] $topics
+     */
+    public function setTopics($topics)
+    {
+        $this->topics = $topics;
     }
 }

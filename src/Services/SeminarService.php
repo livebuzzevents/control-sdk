@@ -165,66 +165,73 @@ class SeminarService extends Service
 
     /**
      * @param Seminar  $seminar
-     * @param Customer $customer
+     * @param Customer $creator
+     * @param string   $role
+     * @param string   $type
      */
-    public function attachAttendee(Seminar $seminar, Customer $customer)
+    public function allocateSpace(Seminar $seminar, Customer $creator, string $role, string $type = null)
     {
         $this->validateSeminar($seminar);
 
-        if (!$customer->getId()) {
-            throw new ErrorException('Customer id required!');
+        if (!$creator->getId()) {
+            throw new ErrorException('Creator id required!');
         }
 
-        $this->call('get', "seminar/{$seminar->getId()}/attendee/{$customer->getId()}/attach");
+        $url = "seminar/{$seminar->getId()}/creator/{$creator->getId()}/role/{$role}/allocate-space";
+
+        if ($type) {
+            $url .= "/{$type}";
+        }
+
+        $this->call('get', $url);
     }
 
     /**
      * @param Seminar  $seminar
+     * @param Customer $creator
      * @param Customer $customer
      */
-    public function detachAttendee(Seminar $seminar, Customer $customer)
+    public function assignCustomer(Seminar $seminar, Customer $creator, Customer $customer)
     {
         $this->validateSeminar($seminar);
+
+        if (!$creator->getId()) {
+            throw new ErrorException('Creator id required!');
+        }
 
         if (!$customer->getId()) {
             throw new ErrorException('Customer id required!');
         }
 
-        $this->call('get', "seminar/{$seminar->getId()}/attendee/{$customer->getId()}/detach");
-    }
-
-    /**
-     * @param Seminar    $seminar
-     * @param Customer[] $customers
-     */
-    public function syncAttendees(Seminar $seminar, array $customers)
-    {
-        $this->validateSeminar($seminar);
-
-        foreach ($customers as $key => $customer) {
-            if (!$customer->getId() && !$customer->getCampaignId() && !$customer->getCampaign()) {
-                throw new ErrorException('Customer id or Campaign id/identifier required!');
-            }
-
-            $customers[$key] = $customer->toArray();
-        }
-
-        $this->call('post', "seminar/{$seminar->getId()}/attendee/sync", ['batch' => $customers]);
+        $this->call('get', "seminar/{$seminar->getId()}/creator/{$creator->getId()}/customer/{$customer->getId()}/assign");
     }
 
     /**
      * @param Seminar  $seminar
+     * @param Customer $creator
+     * @param string   $role
      * @param Customer $customer
+     * @param string   $type
      */
-    public function attachSpeaker(Seminar $seminar, Customer $customer)
+    public function attachCustomer(Seminar $seminar, Customer $creator, string $role, Customer $customer, string $type = null)
     {
         $this->validateSeminar($seminar);
+
+        if (!$creator->getId()) {
+            throw new ErrorException('Creator id required!');
+        }
 
         if (!$customer->getId()) {
             throw new ErrorException('Customer id required!');
         }
 
-        $this->call('get', "seminar/{$seminar->getId()}/speaker/{$customer->getId()}/attach");
+        $url = "seminar/{$seminar->getId()}/creator/{$creator->getId()}/role/{$role}/customer/{$customer->getId()}/attach";
+
+        if ($type) {
+            $url .= "/{$type}";
+        }
+
+        $this->call('get', $url);
     }
 
     /**
@@ -239,25 +246,6 @@ class SeminarService extends Service
             throw new ErrorException('Customer id required!');
         }
 
-        $this->call('get', "seminar/{$seminar->getId()}/speaker/{$customer->getId()}/detach");
-    }
-
-    /**
-     * @param Seminar    $seminar
-     * @param Customer[] $customers
-     */
-    public function syncSpeakers(Seminar $seminar, array $customers)
-    {
-        $this->validateSeminar($seminar);
-
-        foreach ($customers as $key => $customer) {
-            if (!$customer->getId() && !$customer->getCampaignId() && !$customer->getCampaign()) {
-                throw new ErrorException('Customer id or Campaign id/identifier required!');
-            }
-
-            $customers[$key] = $customer->toArray();
-        }
-
-        $this->call('post', "seminar/{$seminar->getId()}/speaker/sync", ['batch' => $customers]);
+        $this->call('get', "seminar/{$seminar->getId()}/customer/{$customer->getId()}/detach");
     }
 }
