@@ -22,6 +22,11 @@ class Credentials
     /**
      * @var string
      */
+    protected $campaign;
+
+    /**
+     * @var string
+     */
     protected $domain;
 
     /**
@@ -45,17 +50,22 @@ class Credentials
     protected $verify_ssl = null;
 
     /**
-     * @param null   $api_key
-     * @param null   $organization
-     * @param null   $domain
+     * @param string $api_key
+     * @param string $organization
+     * @param string $campaign
+     * @param string $domain
      * @param string $protocol
-     *
-     * @internal param bool $ssl
      */
-    public function __construct($api_key = null, $organization = null, $domain = null, $protocol = 'https')
-    {
+    public function __construct(
+        $api_key = null,
+        $organization = null,
+        $campaign = null,
+        $domain = null,
+        $protocol = 'https'
+    ) {
         $this->setApiKey($api_key);
         $this->setOrganization($organization);
+        $this->setCampaign($campaign);
         $this->setDomain($domain);
         $this->setProtocol($protocol);
     }
@@ -92,6 +102,22 @@ class Credentials
     public function setOrganization($organization)
     {
         $this->organization = $organization;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCampaign()
+    {
+        return $this->campaign;
+    }
+
+    /**
+     * @param string $campaign
+     */
+    public function setCampaign($campaign)
+    {
+        $this->campaign = $campaign;
     }
 
     /**

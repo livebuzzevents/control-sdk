@@ -52,10 +52,6 @@ class StreamService extends Service
      */
     public function save(Stream $stream)
     {
-        if (!$stream->getId() && !$stream->getCampaignId() && !$stream->getCampaign()) {
-            throw new ErrorException('Stream id or Campaign id/identifier required!');
-        }
-
         if ($stream->getId()) {
             $verb = 'put';
             $url  = 'stream/' . $stream->getId();
@@ -92,10 +88,6 @@ class StreamService extends Service
     public function saveMany(array $streams)
     {
         foreach ($streams as $key => $stream) {
-            if (!$stream->getId() && !$stream->getCampaignId() && !$stream->getCampaign()) {
-                throw new ErrorException('Stream id or Campaign id/identifier required!');
-            }
-
             $streams[$key] = $stream->toArray();
         }
 

@@ -64,10 +64,6 @@ class SeminarService extends Service
      */
     public function save(Seminar $seminar)
     {
-        if (!$seminar->getId() && !$seminar->getCampaignId() && !$seminar->getCampaign()) {
-            throw new ErrorException('Seminar id or Campaign id/identifier required!');
-        }
-
         if ($seminar->getId()) {
             $verb = 'put';
             $url  = 'seminar/' . $seminar->getId();
@@ -104,10 +100,6 @@ class SeminarService extends Service
     public function saveMany(array $seminars)
     {
         foreach ($seminars as $key => $seminar) {
-            if (!$seminar->getId() && !$seminar->getCampaignId() && !$seminar->getCampaign()) {
-                throw new ErrorException('Seminar id or Campaign id/identifier required!');
-            }
-
             $seminars[$key] = $seminar->toArray();
         }
 
@@ -117,6 +109,8 @@ class SeminarService extends Service
     /**
      * @param Seminar $seminar
      * @param Topic   $topic
+     *
+     * @throws ErrorException
      */
     public function attachTopic(Seminar $seminar, Topic $topic)
     {
@@ -132,6 +126,8 @@ class SeminarService extends Service
     /**
      * @param Seminar $seminar
      * @param Topic   $topic
+     *
+     * @throws ErrorException
      */
     public function detachTopic(Seminar $seminar, Topic $topic)
     {
@@ -153,10 +149,6 @@ class SeminarService extends Service
         $this->validateSeminar($seminar);
 
         foreach ($topics as $key => $topic) {
-            if (!$topic->getId() && !$topic->getCampaignId() && !$topic->getCampaign()) {
-                throw new ErrorException('Topic id or Campaign id/identifier required!');
-            }
-
             $topics[$key] = $topic->toArray();
         }
 
@@ -168,6 +160,8 @@ class SeminarService extends Service
      * @param Customer $creator
      * @param string   $role
      * @param string   $type
+     *
+     * @throws ErrorException
      */
     public function allocateSpace(Seminar $seminar, Customer $creator, string $role, string $type = null)
     {

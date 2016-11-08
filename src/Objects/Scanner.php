@@ -1,6 +1,5 @@
 <?php namespace Buzz\Control\Objects;
 
-use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\BelongsToCustomer;
 use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 use Buzz\Control\Objects\Traits\BelongsToOrderProduct;
@@ -14,7 +13,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  */
 class Scanner extends Object
 {
-    use BelongsToCampaign, BelongsToExhibitor, BelongsToCustomer, BelongsToOrderProduct, HasEntrance, HasIdentifier;
+    use BelongsToExhibitor, BelongsToCustomer, BelongsToOrderProduct, HasEntrance, HasIdentifier;
 
     /**
      * @var string

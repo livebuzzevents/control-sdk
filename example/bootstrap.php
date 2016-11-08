@@ -21,17 +21,11 @@ $credentials->setApiKey($api_key);
 $credentials->setDomain($domain);
 $credentials->setProtocol($protocol);
 $credentials->setOrganization($organization);
+$credentials->setCampaign($campaign);
 $credentials->setVerifySsl(false);
 $credentials->setProxy($proxy);
 
 $buzz->setCredentials($credentials);
-
-//$scope = new \Buzz\Control\Scope();
-//$scope->add(1);
-//$buzz->setScope($scope);
-
-$campaign = new \Buzz\Control\Objects\Campaign();
-$campaign->setIdentifier($campaignIdentifier);
 
 //$stream = new \Buzz\Control\Objects\Stream();
 //$stream->setIdentifier('visitor-registration');

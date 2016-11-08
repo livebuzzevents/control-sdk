@@ -1,6 +1,5 @@
 <?php namespace Buzz\Control\Objects;
 
-use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasActive;
 use Buzz\Control\Objects\Traits\HasDestination;
 
@@ -11,7 +10,7 @@ use Buzz\Control\Objects\Traits\HasDestination;
  */
 class PaymentProvider extends Object
 {
-    use BelongsToCampaign, HasDestination, HasActive;
+    use HasDestination, HasActive;
 
     /**
      * @var string

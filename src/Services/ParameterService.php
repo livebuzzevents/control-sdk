@@ -52,10 +52,6 @@ class ParameterService extends Service
      */
     public function save(Parameter $parameter)
     {
-        if (!$parameter->getId() && !$parameter->getCampaignId() && !$parameter->getCampaign()) {
-            throw new ErrorException('Parameter id or Campaign id/identifier required!');
-        }
-
         if ($parameter->getId()) {
             $verb = 'put';
             $url  = 'parameter/' . $parameter->getId();
@@ -92,9 +88,6 @@ class ParameterService extends Service
     public function saveMany(array $parameters)
     {
         foreach ($parameters as $key => $parameter) {
-            if (!$parameters->getId() && !$parameters->getCampaignId() && !$parameters->getCampaign()) {
-                throw new ErrorException('BadgeType id or Campaign id/identifier required!');
-            }
             $parameters[$key] = $parameter->toArray();
         }
 

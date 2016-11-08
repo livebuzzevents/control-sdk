@@ -2,8 +2,6 @@
 
 namespace Buzz\Control\Objects;
 
-use Buzz\Control\Objects\Traits;
-
 /**
  * Class Topic
  *
@@ -11,7 +9,6 @@ use Buzz\Control\Objects\Traits;
  */
 class Topic extends Object
 {
-    use Traits\BelongsToCampaign;
     use Traits\HasIdentifier;
 
     /**

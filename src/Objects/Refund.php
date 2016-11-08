@@ -1,6 +1,5 @@
 <?php namespace Buzz\Control\Objects;
 
-use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\BelongsToCharge;
 use Buzz\Control\Objects\Traits\BelongsToCustomer;
 
@@ -11,8 +10,7 @@ use Buzz\Control\Objects\Traits\BelongsToCustomer;
  */
 class Refund extends Object
 {
-    use BelongsToCampaign,
-        BelongsToCustomer,
+    use BelongsToCustomer,
         BelongsToCharge;
 
     /**

@@ -15,11 +15,6 @@ class Buzz
     protected $credentials;
 
     /**
-     * @var Scope
-     */
-    protected $scope;
-
-    /**
      * @var Stream
      */
     protected $stream;
@@ -43,22 +38,6 @@ class Buzz
     public function setCredentials(Credentials $credentials)
     {
         $this->credentials = $credentials;
-    }
-
-    /**
-     * @return Scope
-     */
-    public function getScope()
-    {
-        return $this->scope;
-    }
-
-    /**
-     * @param Scope $scope
-     */
-    public function setScope(Scope $scope)
-    {
-        $this->scope = $scope;
     }
 
     /**

@@ -1,7 +1,6 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Collection;
-use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\BelongsToCustomer;
 use Buzz\Control\Objects\Traits\BelongsToOrder;
 
@@ -12,8 +11,7 @@ use Buzz\Control\Objects\Traits\BelongsToOrder;
  */
 class Charge extends Object
 {
-    use BelongsToCampaign,
-        BelongsToCustomer,
+    use BelongsToCustomer,
         BelongsToOrder;
 
     /**

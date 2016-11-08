@@ -2,8 +2,6 @@
 
 namespace Buzz\Control\Objects;
 
-use Buzz\Control\Objects\Traits;
-
 /**
  * Class Seminar
  *
@@ -11,7 +9,6 @@ use Buzz\Control\Objects\Traits;
  */
 class Seminar extends Object
 {
-    use Traits\BelongsToCampaign;
     use Traits\BelongsToExhibitor;
     use Traits\HasIdentifier;
     use Traits\HasSource;

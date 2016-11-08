@@ -52,10 +52,6 @@ class QuestionService extends Service
      */
     public function save(Question $question)
     {
-        if (!$question->getId() && !$question->getCampaignId() && !$question->getCampaign()) {
-            throw new ErrorException('Question id or Campaign id/identifier required!');
-        }
-
         if ($question->getId()) {
             $verb = 'put';
             $url  = 'question/' . $question->getId();
@@ -92,9 +88,6 @@ class QuestionService extends Service
     public function saveMany(array $questions)
     {
         foreach ($questions as $key => $question) {
-            if (!$questions->getId() && !$questions->getCampaignId() && !$questions->getCampaign()) {
-                throw new ErrorException('Question id or Campaign id/identifier required!');
-            }
             $questions[$key] = $question->toArray();
         }
 

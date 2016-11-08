@@ -3,7 +3,6 @@
 use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer\Tag;
-use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
 use Buzz\Control\Objects\Traits\HasBadgeType;
@@ -19,8 +18,7 @@ use Buzz\Control\Objects\Traits\HasStatus;
  */
 class Customer extends Object
 {
-    use BelongsToCampaign,
-        BelongsToExhibitor,
+    use BelongsToExhibitor,
         HasMatchId,
         HasSource,
         HasStatus,

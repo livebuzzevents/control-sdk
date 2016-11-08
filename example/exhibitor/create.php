@@ -3,7 +3,6 @@
 require_once '../bootstrap.php';
 
 $exhibitor = new \Buzz\Control\Objects\Exhibitor();
-$campaign  = new \Buzz\Control\Objects\Campaign(11);
 
 $exhibitor->setName('API TEST');
 $exhibitor->setImage(__DIR__ . '/example.png');
@@ -19,7 +18,7 @@ $customer = new \Buzz\Control\Objects\Exhibitor\Customer(2);
 $customer->setRole('basic');
 $exhibitor->addCustomer($customer);
 
-$service  = new \Buzz\Control\Services\Exhibitor\Create($exhibitor, $campaign);
+$service  = new \Buzz\Control\Services\Exhibitor\Create($exhibitor);
 $response = $serviceHandler->execute($service);
 
 var_dump($response);

@@ -1,7 +1,6 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Collection;
-use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\BelongsToStream;
 use Buzz\Control\Objects\Traits\HasIdentifier;
 use Buzz\Control\Objects\Traits\HasPropertiesCommon;
@@ -13,8 +12,7 @@ use Buzz\Control\Objects\Traits\HasPropertiesCommon;
  */
 class StreamMenuItem extends Object
 {
-    use BelongsToCampaign,
-        BelongsToStream,
+    use BelongsToStream,
         HasPropertiesCommon,
         HasIdentifier;
 

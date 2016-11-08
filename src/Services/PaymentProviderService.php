@@ -34,22 +34,17 @@ class PaymentProviderService extends Service
     }
 
     /**
-     * @param Campaign $campaign
      * @param string   $destination
      * @param null     $amount
      *
      * @return PaymentProvider
      * @throws ErrorException
      */
-    public function getAvailableForCampaign(Campaign $campaign, $destination, $amount)
+    public function getAvailableForCampaign($destination, $amount)
     {
-        if (!$campaign->getId()) {
-            throw new ErrorException('Basket id required!');
-        }
-
         return $this->callAndCastMany(
             'get',
-            "paymentProvider/available-for-campaign/{$campaign->getId()}",
+            "paymentProvider/available-for-campaign",
             compact('destination', 'amount')
         );
     }
@@ -116,10 +111,6 @@ class PaymentProviderService extends Service
      */
     public function save(PaymentProvider $paymentProvider)
     {
-        if (!$paymentProvider->getId() && !$paymentProvider->getCampaignId() && !$paymentProvider->getCampaign()) {
-            throw new ErrorException('PaymentProvider id or Campaign id/identifier required!');
-        }
-
         if ($paymentProvider->getId()) {
             $verb = 'put';
             $url  = 'paymentProvider/' . $paymentProvider->getId();
@@ -156,10 +147,6 @@ class PaymentProviderService extends Service
     public function saveMany(array $paymentProviders)
     {
         foreach ($paymentProviders as $key => $paymentProvider) {
-            if (!$paymentProvider->getId() && !$paymentProvider->getCampaignId() && !$paymentProvider->getCampaign()) {
-                throw new ErrorException('PaymentProvider id or Campaign id/identifier required!');
-            }
-
             $paymentProviders[$key] = $paymentProvider->toArray();
         }
 

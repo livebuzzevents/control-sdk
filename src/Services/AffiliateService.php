@@ -52,10 +52,6 @@ class AffiliateService extends Service
      */
     public function save(Affiliate $affiliate)
     {
-        if (!$affiliate->getId() && !$affiliate->getCampaignId() && !$affiliate->getCampaign()) {
-            throw new ErrorException('Affiliate id or Campaign id/identifier required!');
-        }
-
         if ($affiliate->getId()) {
             $verb = 'put';
             $url  = 'affiliate/' . $affiliate->getId();
@@ -92,10 +88,6 @@ class AffiliateService extends Service
     public function saveMany(array $affiliates)
     {
         foreach ($affiliates as $key => $affiliate) {
-            if (!$affiliate->getId() && !$affiliate->getCampaignId() && !$affiliate->getCampaign()) {
-                throw new ErrorException('Affiliate id or Campaign id/identifier required!');
-            }
-
             $affiliates[$key] = $affiliate->toArray();
         }
 

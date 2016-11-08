@@ -53,10 +53,6 @@ class ExhibitorService extends Service
      */
     public function save(Exhibitor $exhibitor)
     {
-        if (!$exhibitor->getId() && !$exhibitor->getCampaignId() && !$exhibitor->getCampaign()) {
-            throw new ErrorException('Exhibitor id or Campaign id/identifier required!');
-        }
-
         if ($exhibitor->getId()) {
             $verb = 'put';
             $url  = 'exhibitor/' . $exhibitor->getId();
@@ -93,10 +89,6 @@ class ExhibitorService extends Service
     public function saveMany(array $exhibitors)
     {
         foreach ($exhibitors as $key => $exhibitor) {
-            if (!$exhibitor->getId() && !$exhibitor->getCampaignId() && !$exhibitor->getCampaign()) {
-                throw new ErrorException('Exhibitor id or Campaign id/identifier required!');
-            }
-
             $exhibitors[$key] = $exhibitor->toArray();
         }
 

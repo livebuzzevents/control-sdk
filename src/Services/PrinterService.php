@@ -52,10 +52,6 @@ class PrinterService extends Service
      */
     public function save(Printer $printer)
     {
-        if (!$printer->getId() && !$printer->getCampaignId() && !$printer->getCampaign()) {
-            throw new ErrorException('Printer id or Campaign id/identifier required!');
-        }
-
         if ($printer->getId()) {
             $verb = 'put';
             $url  = 'printer/' . $printer->getId();

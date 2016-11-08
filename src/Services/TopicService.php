@@ -54,10 +54,6 @@ class TopicService extends Service
      */
     public function save(Topic $topic)
     {
-        if (!$topic->getId() && !$topic->getCampaignId() && !$topic->getCampaign()) {
-            throw new ErrorException('Topic id or Campaign id/identifier required!');
-        }
-
         if ($topic->getId()) {
             $verb = 'put';
             $url  = 'topic/' . $topic->getId();
@@ -94,10 +90,6 @@ class TopicService extends Service
     public function saveMany(array $topics)
     {
         foreach ($topics as $key => $topic) {
-            if (!$topic->getId() && !$topic->getCampaignId() && !$topic->getCampaign()) {
-                throw new ErrorException('Topic id or Campaign id/identifier required!');
-            }
-
             $topics[$key] = $topic->toArray();
         }
 

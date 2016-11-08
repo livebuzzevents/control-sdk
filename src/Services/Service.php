@@ -229,11 +229,8 @@ abstract class Service
             $request['_settings']['filters'] = $this->filter->toArray();
         }
 
-        $request['_settings']['api_key'] = $this->buzz->getCredentials()->getApiKey();
-
-        if ($this->buzz->getScope()) {
-            $request['_settings']['scope'] = $this->buzz->getScope()->getScope();
-        }
+        $request['_settings']['api_key']  = $this->buzz->getCredentials()->getApiKey();
+        $request['_settings']['campaign'] = $this->buzz->getCredentials()->getCampaign();
 
         if ($this->buzz->getCustomerFlow()) {
             $request['_settings']['customer_flow'] = $this->buzz->getCustomerFlow()->getFlow();

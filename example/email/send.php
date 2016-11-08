@@ -2,12 +2,8 @@
 
 require_once '../bootstrap.php';
 
-$campaign = new \Buzz\Control\Objects\Campaign();
-$campaign->setIdentifier('bbf16');
-
-$email = new \Buzz\Control\Objects\Email();
+$email = new \Buzz\Control\Objects\EmailMessageTemplate();
 $email->setIdentifier('visitor-registered');
-$email->setCampaign($campaign);
 
 $service = new \Buzz\Control\Services\EmailService($buzz);
 

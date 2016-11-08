@@ -1,7 +1,5 @@
 <?php namespace Buzz\Control\Objects;
 
-use Buzz\Control\Objects\Traits\BelongsToCampaign;
-
 /**
  * Class Report
  *
@@ -9,8 +7,6 @@ use Buzz\Control\Objects\Traits\BelongsToCampaign;
  */
 class Report extends Object
 {
-    use BelongsToCampaign;
-
     /**
      * @var string
      */

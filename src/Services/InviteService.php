@@ -52,10 +52,6 @@ class InviteService extends Service
      */
     public function save(Invite $invite)
     {
-        if (!$invite->getId() && !$invite->getCampaignId() && !$invite->getCampaign()) {
-            throw new ErrorException('Invite id or Campaign id/identifier required!');
-        }
-
         if ($invite->getId()) {
             $verb = 'put';
             $url  = 'invite/' . $invite->getId();
@@ -92,10 +88,6 @@ class InviteService extends Service
     public function saveMany(array $invites)
     {
         foreach ($invites as $key => $invite) {
-            if (!$invite->getId() && !$invite->getCampaignId() && !$invite->getCampaign()) {
-                throw new ErrorException('Invite id or Campaign id/identifier required!');
-            }
-
             $invites[$key] = $invite->toArray();
         }
 

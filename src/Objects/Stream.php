@@ -1,7 +1,6 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Collection;
-use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\HasIdentifier;
 
 /**
@@ -11,7 +10,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  */
 class Stream extends Object
 {
-    use BelongsToCampaign, HasIdentifier;
+    use HasIdentifier;
 
     /**
      * @var string

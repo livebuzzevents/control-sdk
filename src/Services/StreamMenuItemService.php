@@ -52,10 +52,6 @@ class StreamMenuItemService extends Service
      */
     public function save(StreamMenuItem $streamMenuItem)
     {
-        if (!$streamMenuItem->getId() && !$streamMenuItem->getCampaignId() && !$streamMenuItem->getCampaign()) {
-            throw new ErrorException('StreamMenuItem id or Campaign id/identifier required!');
-        }
-
         if ($streamMenuItem->getId()) {
             $verb = 'put';
             $url  = 'stream-menu-item/' . $streamMenuItem->getId();
@@ -92,10 +88,6 @@ class StreamMenuItemService extends Service
     public function saveMany(array $streamMenuItems)
     {
         foreach ($streamMenuItems as $key => $streamMenuItem) {
-            if (!$streamMenuItem->getId() && !$streamMenuItem->getCampaignId() && !$streamMenuItem->getCampaign()) {
-                throw new ErrorException('StreamMenuItem id or Campaign id/identifier required!');
-            }
-
             $streamMenuItems[$key] = $streamMenuItem->toArray();
         }
 

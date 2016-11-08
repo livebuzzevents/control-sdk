@@ -120,22 +120,16 @@ class CustomerService extends Service
     /**
      * @param Customer $customer
      *
-     * @param Campaign $campaign
-     *
      * @return mixed
      * @throws ErrorException
      */
-    public function cloneForCampaign(Customer $customer, Campaign $campaign)
+    public function cloneForCampaign(Customer $customer)
     {
         if (!$customer->getId()) {
             throw new ErrorException('Customer id required!');
         }
 
-        if (!$campaign->getId()) {
-            throw new ErrorException('Campaign id required!');
-        }
-
-        return $this->callAndCast('get', "customer/{$customer->getId()}/clone-for-campaign/{$campaign->getId()}");
+        return $this->callAndCast('get', "customer/{$customer->getId()}/clone-for-campaign");
     }
 
     /**
@@ -146,10 +140,6 @@ class CustomerService extends Service
      */
     public function save(Customer $customer)
     {
-        if (!$customer->getId() && !$customer->getCampaignId() && !$customer->getCampaign()) {
-            throw new ErrorException('Customer id or Campaign id/identifier required!');
-        }
-
         if ($customer->getId()) {
             $verb = 'put';
             $url  = 'customer/' . $customer->getId();
@@ -186,10 +176,6 @@ class CustomerService extends Service
     public function saveMany(array $customers)
     {
         foreach ($customers as $key => $customer) {
-            if (!$customer->getId() && !$customer->getCampaignId() && !$customer->getCampaign()) {
-                throw new ErrorException('Customer id or Campaign id/identifier required!');
-            }
-
             $customers[$key] = $customer->toArray();
         }
 

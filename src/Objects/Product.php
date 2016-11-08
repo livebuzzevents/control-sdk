@@ -1,7 +1,6 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Collection;
-use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 use Buzz\Control\Objects\Traits\HasActive;
 use Buzz\Control\Objects\Traits\HasDestination;
@@ -14,7 +13,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  */
 class Product extends Object
 {
-    use BelongsToCampaign, BelongsToExhibitor, HasIdentifier, HasDestination, HasActive;
+    use BelongsToExhibitor, HasIdentifier, HasDestination, HasActive;
 
     /**
      * @var string

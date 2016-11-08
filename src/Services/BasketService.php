@@ -467,10 +467,6 @@ class BasketService extends Service
      */
     public function save(Basket $basket)
     {
-        if (!$basket->getId() && !$basket->getCampaignId() && !$basket->getCampaign()) {
-            throw new ErrorException('Basket id or Campaign id/identifier required!');
-        }
-
         if ($basket->getId()) {
             $verb = 'put';
             $url  = 'basket/' . $basket->getId();
@@ -507,10 +503,6 @@ class BasketService extends Service
     public function saveMany(array $baskets)
     {
         foreach ($baskets as $key => $basket) {
-            if (!$basket->getId() && !$basket->getCampaignId() && !$basket->getCampaign()) {
-                throw new ErrorException('Basket id or Campaign id/identifier required!');
-            }
-
             $baskets[$key] = $basket->toArray();
         }
 

@@ -52,10 +52,6 @@ class BadgeStockService extends Service
      */
     public function save(BadgeStock $badge_stock)
     {
-        if (!$badge_stock->getId() && !$badge_stock->getCampaignId() && !$badge_stock->getCampaign()) {
-            throw new ErrorException('BadgeStock id or Campaign id/identifier required!');
-        }
-
         if ($badge_stock->getId()) {
             $verb = 'put';
             $url  = 'badge-stock/' . $badge_stock->getId();
@@ -92,10 +88,6 @@ class BadgeStockService extends Service
     public function saveMany(array $badge_stocks)
     {
         foreach ($badge_stocks as $key => $badge_stock) {
-            if (!$badge_stock->getId() && !$badge_stock->getCampaignId() && !$badge_stock->getCampaign()) {
-                throw new ErrorException('BadgeStock id or Campaign id/identifier required!');
-            }
-
             $badge_stocks[$key] = $badge_stock->toArray();
         }
 

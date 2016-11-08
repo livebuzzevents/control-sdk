@@ -50,23 +50,17 @@ class LeadService extends Service
     /**
      * @param Lead     $lead
      *
-     * @param Campaign $campaign
-     *
      * @return mixed
      * @throws ErrorException
      */
-    public function cloneForCampaign(Lead $lead, Campaign $campaign)
+    public function cloneForCampaign(Lead $lead)
     {
         if (!$lead->getId()) {
             throw new ErrorException('Lead id required!');
         }
 
-        if (!$campaign->getId()) {
-            throw new ErrorException('Campaign id required!');
-        }
-
         return $this->cast(
-            $this->call('get', "lead/{$lead->getId()}/clone-for-campaign/{$campaign->getId()}"),
+            $this->call('get', "lead/{$lead->getId()}/clone-for-campaign"),
             Customer::class
         );
     }
@@ -79,10 +73,6 @@ class LeadService extends Service
      */
     public function save(Lead $lead)
     {
-        if (!$lead->getId() && !$lead->getCampaignId() && !$lead->getCampaign()) {
-            throw new ErrorException('Lead id or Campaign id/identifier required!');
-        }
-
         if ($lead->getId()) {
             $verb = 'put';
             $url  = 'lead/' . $lead->getId();
@@ -119,10 +109,6 @@ class LeadService extends Service
     public function saveMany(array $leads)
     {
         foreach ($leads as $key => $lead) {
-            if (!$lead->getId() && !$lead->getCampaignId() && !$lead->getCampaign()) {
-                throw new ErrorException('Lead id or Campaign id/identifier required!');
-            }
-
             $leads[$key] = $lead->toArray();
         }
 

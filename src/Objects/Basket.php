@@ -1,6 +1,5 @@
 <?php namespace Buzz\Control\Objects;
 
-use Buzz\Control\Objects\Traits\BelongsToCampaign;
 use Buzz\Control\Objects\Traits\BelongsToCustomer;
 use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 use Buzz\Control\Objects\Traits\BelongsToStream;
@@ -15,7 +14,6 @@ class Basket extends Object
 {
     use BelongsToCustomer,
         BelongsToExhibitor,
-        BelongsToCampaign,
         BelongsToStream,
         HasDestination;
 

@@ -52,10 +52,6 @@ class BadgeTypeService extends Service
      */
     public function save(BadgeType $badge_type)
     {
-        if (!$badge_type->getId() && !$badge_type->getCampaignId() && !$badge_type->getCampaign()) {
-            throw new ErrorException('BadgeType id or Campaign id/identifier required!');
-        }
-
         if ($badge_type->getId()) {
             $verb = 'put';
             $url  = 'badge-type/' . $badge_type->getId();
@@ -92,10 +88,6 @@ class BadgeTypeService extends Service
     public function saveMany(array $badge_types)
     {
         foreach ($badge_types as $key => $badge_type) {
-            if (!$badge_type->getId() && !$badge_type->getCampaignId() && !$badge_type->getCampaign()) {
-                throw new ErrorException('BadgeType id or Campaign id/identifier required!');
-            }
-
             $badge_types[$key] = $badge_type->toArray();
         }
 
