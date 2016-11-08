@@ -120,21 +120,6 @@ class CustomerService extends Service
     /**
      * @param Customer $customer
      *
-     * @return mixed
-     * @throws ErrorException
-     */
-    public function cloneForCampaign(Customer $customer)
-    {
-        if (!$customer->getId()) {
-            throw new ErrorException('Customer id required!');
-        }
-
-        return $this->callAndCast('get', "customer/{$customer->getId()}/clone-for-campaign");
-    }
-
-    /**
-     * @param Customer $customer
-     *
      * @return Customer
      * @throws ErrorException
      */
