@@ -54,6 +54,11 @@ class StreamMenuItem extends Base
     /**
      * @var string
      */
+    protected $content;
+
+    /**
+     * @var string
+     */
     protected $type;
 
     /**
@@ -183,6 +188,22 @@ class StreamMenuItem extends Base
     public function setBackgroundImage($background_image)
     {
         $this->background_image = $background_image;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param mixed
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
     }
 
     /**
