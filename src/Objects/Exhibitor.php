@@ -13,7 +13,7 @@ use Buzz\Control\Objects\Traits\HasStatus;
  *
  * @package Buzz\Control\Objects
  */
-class Exhibitor extends Object
+class Exhibitor extends Base
 {
     use HasMatchId, HasSource, HasStatus, HasAnswersCommon, HasPropertiesCommon;
 

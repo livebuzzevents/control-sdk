@@ -10,7 +10,7 @@ use Buzz\Control\Objects\Traits\HasPropertiesCommon;
  *
  * @package Buzz\Contract\Objects
  */
-class StreamMenuItem extends Object
+class StreamMenuItem extends Base
 {
     use BelongsToStream,
         HasPropertiesCommon,

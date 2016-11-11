@@ -7,7 +7,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  *
  * @package Buzz\Control\Objects
  */
-class BadgeType extends Object
+class BadgeType extends Base
 {
     use HasIdentifier;
 

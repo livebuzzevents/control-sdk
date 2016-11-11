@@ -1,6 +1,6 @@
 <?php namespace Buzz\Control\Objects\Customer;
 
-use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Base;
 use Buzz\Control\Objects\Traits\BelongsToCustomer;
 
 /**
@@ -8,7 +8,7 @@ use Buzz\Control\Objects\Traits\BelongsToCustomer;
  *
  * @package Buzz\Control\Objects\Customer
  */
-class Phone extends Object
+class Phone extends Base
 {
     use BelongsToCustomer;
 

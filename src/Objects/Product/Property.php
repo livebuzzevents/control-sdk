@@ -1,6 +1,6 @@
 <?php namespace Buzz\Control\Objects\Product;
 
-use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Base;
 use Buzz\Control\Objects\Traits\BelongsToProduct;
 use Buzz\Control\Objects\Traits\BelongsToParameter;
 
@@ -9,7 +9,7 @@ use Buzz\Control\Objects\Traits\BelongsToParameter;
  *
  * @package Buzz\Control\Product
  */
-class Property extends Object
+class Property extends Base
 {
     use BelongsToProduct, BelongsToParameter;
 

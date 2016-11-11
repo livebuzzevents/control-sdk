@@ -9,7 +9,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  *
  * @package Buzz\Control\Objects
  */
-class OrderProduct extends Object
+class OrderProduct extends Base
 {
     use BelongsToOrder, HasIdentifier;
 

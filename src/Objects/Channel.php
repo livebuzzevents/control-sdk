@@ -7,7 +7,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  *
  * @package Buzz\Control\Objects
  */
-class Channel extends Object
+class Channel extends Base
 {
     use HasIdentifier;
 

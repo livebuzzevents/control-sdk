@@ -5,7 +5,7 @@
  *
  * @package Buzz\Control\Objects
  */
-class Tag extends Object
+class Tag extends Base
 {
     /**
      * @var string

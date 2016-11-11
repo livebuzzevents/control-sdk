@@ -8,7 +8,7 @@ use Buzz\Control\Objects\Traits\BelongsToScanner;
  *
  * @package Buzz\Control\Objects
  */
-class Scan extends Object
+class Scan extends Base
 {
     use BelongsToScanner, BelongsToCustomer;
 

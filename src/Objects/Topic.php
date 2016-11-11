@@ -7,7 +7,7 @@ namespace Buzz\Control\Objects;
  *
  * @package Buzz\Control\Objects
  */
-class Topic extends Object
+class Topic extends Base
 {
     use Traits\HasIdentifier;
 

@@ -8,7 +8,7 @@ use Buzz\Control\Objects\Traits\HasDestination;
  *
  * @package Buzz\Control\Objects\Channel
  */
-class PaymentProvider extends Object
+class PaymentProvider extends Base
 {
     use HasDestination, HasActive;
 

@@ -50,6 +50,11 @@ class Filter
      */
     public function add($parameter, $operator, $value = null, $or = false)
     {
+        //@todo REMOVE THIS ONES CAMPAIGN IS REMOVE FROM ALL PROJECTS
+        if (strpos($parameter, 'campaign') !== false) {
+            return $this;
+        }
+
         array_push(
             $this->filters,
             [$parameter, $operator, $value, $or]

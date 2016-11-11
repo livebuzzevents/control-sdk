@@ -1,6 +1,6 @@
 <?php namespace Buzz\Control\Objects\Lead;
 
-use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Base;
 use Buzz\Control\Objects\Traits\BelongsToLead;
 
 /**
@@ -8,7 +8,7 @@ use Buzz\Control\Objects\Traits\BelongsToLead;
  *
  * @package Buzz\Control\Objects\Lead
  */
-class Phone extends Object
+class Phone extends Base
 {
     use BelongsToLead;
 

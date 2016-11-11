@@ -1,7 +1,7 @@
 <?php namespace Buzz\Control\Objects\Exhibitor;
 
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Base;
 use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 
 /**
@@ -9,7 +9,7 @@ use Buzz\Control\Objects\Traits\BelongsToExhibitor;
  *
  * @package Buzz\Control\Objects\Exhibitor
  */
-class Address extends Object
+class Address extends Base
 {
     use BelongsToExhibitor;
 

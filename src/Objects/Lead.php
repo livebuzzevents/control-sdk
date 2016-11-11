@@ -10,7 +10,7 @@ use Buzz\Control\Objects\Traits\HasSource;
  *
  * @package Buzz\Contract\Objects
  */
-class Lead extends Object
+class Lead extends Base
 {
     use HasMatchId, HasSource;
 

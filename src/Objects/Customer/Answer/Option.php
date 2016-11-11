@@ -1,6 +1,6 @@
 <?php namespace Buzz\Control\Objects\Customer\Answer;
 
-use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Base;
 use Buzz\Control\Objects\Traits\BelongsToQuestionOption;
 
 /**
@@ -8,7 +8,7 @@ use Buzz\Control\Objects\Traits\BelongsToQuestionOption;
  *
  * @package Buzz\Control\Objects\Customer\Answer
  */
-class Option extends Object
+class Option extends Base
 {
     use BelongsToQuestionOption;
 

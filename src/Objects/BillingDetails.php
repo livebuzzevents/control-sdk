@@ -7,7 +7,7 @@ use Buzz\Control\Objects\Traits\BelongsToOrder;
  *
  * @package Buzz\Control\Objects
  */
-class BillingDetails extends Object
+class BillingDetails extends Base
 {
     use BelongsToOrder;
 

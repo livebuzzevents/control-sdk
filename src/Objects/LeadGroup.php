@@ -7,7 +7,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  *
  * @package Buzz\Control\Objects
  */
-class LeadGroup extends Object
+class LeadGroup extends Base
 {
     use HasIdentifier;
 

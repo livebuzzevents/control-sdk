@@ -11,7 +11,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  *
  * @package Buzz\Control\Objects\Entrance
  */
-class Scanner extends Object
+class Scanner extends Base
 {
     use BelongsToExhibitor, BelongsToCustomer, BelongsToOrderProduct, HasEntrance, HasIdentifier;
 

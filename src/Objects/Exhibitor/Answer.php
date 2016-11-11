@@ -3,7 +3,7 @@
 use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Exhibitor\Answer\Option;
-use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Base;
 use Buzz\Control\Objects\Question;
 use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 use Buzz\Control\Objects\Traits\BelongsToQuestion;
@@ -14,7 +14,7 @@ use Buzz\Control\Objects\Traits\HasAnswerOptionsCommon;
  *
  * @package Buzz\Control\Objects\Exhibitor
  */
-class Answer extends Object
+class Answer extends Base
 {
     use BelongsToExhibitor, BelongsToQuestion, HasAnswerOptionsCommon;
 

@@ -11,7 +11,7 @@ use Buzz\Control\Objects\Traits\HasSource;
  *
  * @package Buzz\Control\Objects
  */
-class Order extends Object
+class Order extends Base
 {
     use BelongsToCustomer,
         BelongsToExhibitor,

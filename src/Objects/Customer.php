@@ -16,7 +16,7 @@ use Buzz\Control\Objects\Traits\HasStatus;
  *
  * @package Buzz\Contract\Objects
  */
-class Customer extends Object
+class Customer extends Base
 {
     use BelongsToExhibitor,
         HasMatchId,

@@ -7,7 +7,7 @@ use Buzz\Control\Objects\Traits\BelongsToCustomer;
  *
  * @package Buzz\Control\Objects
  */
-class Extra extends Object
+class Extra extends Base
 {
     use BelongsToCustomer;
 

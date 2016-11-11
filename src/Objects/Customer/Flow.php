@@ -1,6 +1,6 @@
 <?php namespace Buzz\Control\Objects\Customer;
 
-use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Base;
 use Buzz\Control\Objects\Traits\BelongsToCustomer;
 use Buzz\Control\Objects\Traits\BelongsToStream;
 
@@ -9,7 +9,7 @@ use Buzz\Control\Objects\Traits\BelongsToStream;
  *
  * @package Buzz\Control\Objects\Customer
  */
-class Flow extends Object
+class Flow extends Base
 {
     use BelongsToCustomer, BelongsToStream;
 

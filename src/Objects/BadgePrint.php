@@ -7,7 +7,7 @@ use Buzz\Control\Objects\Traits\BelongsToCustomer;
  *
  * @package Buzz\Control\Objects
  */
-class BadgePrint extends Object
+class BadgePrint extends Base
 {
     use BelongsToCustomer;
 

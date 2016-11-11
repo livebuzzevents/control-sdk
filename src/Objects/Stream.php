@@ -8,7 +8,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  *
  * @package Buzz\Control\Objects
  */
-class Stream extends Object
+class Stream extends Base
 {
     use HasIdentifier;
 

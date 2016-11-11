@@ -7,7 +7,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  *
  * @package Buzz\Control\Objects
  */
-class Entrance extends Object
+class Entrance extends Base
 {
     use HasIdentifier;
 

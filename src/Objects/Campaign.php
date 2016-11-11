@@ -8,7 +8,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  *
  * @package Buzz\Control\Objects
  */
-class Campaign extends Object
+class Campaign extends Base
 {
     use HasIdentifier;
 

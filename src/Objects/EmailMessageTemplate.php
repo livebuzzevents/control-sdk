@@ -8,7 +8,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  *
  * @package Buzz\Control\Objects\EmailMessageTemplate
  */
-class EmailMessageTemplate extends Object
+class EmailMessageTemplate extends Base
 {
     use HasIdentifier;
 

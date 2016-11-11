@@ -1,13 +1,13 @@
 <?php namespace Buzz\Control\Objects\Exhibitor\Answer;
 
-use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Base;
 
 /**
  * Class Option
  *
  * @package Buzz\Control\Objects\Exhibitor\Answer
  */
-class Option extends Object
+class Option extends Base
 {
     /**
      * @var string

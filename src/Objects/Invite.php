@@ -10,7 +10,7 @@ use Buzz\Control\Objects\Traits\CreatedByExhibitor;
  *
  * @package Buzz\Control\Objects
  */
-class Invite extends Object
+class Invite extends Base
 {
     use BelongsToStream, BelongsToCustomer, CreatedByCustomer, CreatedByExhibitor;
 

@@ -7,7 +7,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  *
  * @package Buzz\Control\Objects\Channel
  */
-class BadgeStock extends Object
+class BadgeStock extends Base
 {
     use HasIdentifier;
 

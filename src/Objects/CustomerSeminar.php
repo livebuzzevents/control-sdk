@@ -9,7 +9,7 @@ use Buzz\Control\Objects\Traits\BelongsToSeminar;
  *
  * @package Buzz\Contract\Objects
  */
-class CustomerSeminar extends Object
+class CustomerSeminar extends Base
 {
     use BelongsToCreator,
         BelongsToCustomer,

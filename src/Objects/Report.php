@@ -5,7 +5,7 @@
  *
  * @package Buzz\Control\Objects
  */
-class Report extends Object
+class Report extends Base
 {
     /**
      * @var string

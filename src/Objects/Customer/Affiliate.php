@@ -1,6 +1,6 @@
 <?php namespace Buzz\Control\Objects\Customer;
 
-use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Base;
 use Buzz\Control\Objects\Traits\BelongsToAffiliate;
 use Buzz\Control\Objects\Traits\BelongsToCustomer;
 
@@ -9,7 +9,7 @@ use Buzz\Control\Objects\Traits\BelongsToCustomer;
  *
  * @package Buzz\Control\Objects\Customer
  */
-class Affiliate extends Object
+class Affiliate extends Base
 {
     use BelongsToCustomer, BelongsToAffiliate;
 

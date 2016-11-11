@@ -10,7 +10,7 @@ use Buzz\Control\Objects\Traits\HasDestination;
  *
  * @package Buzz\Control\Objects
  */
-class Basket extends Object
+class Basket extends Base
 {
     use BelongsToCustomer,
         BelongsToExhibitor,

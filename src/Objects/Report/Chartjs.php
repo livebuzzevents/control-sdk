@@ -1,13 +1,13 @@
 <?php namespace Buzz\Control\Objects\Report;
 
-use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Base;
 
 /**
  * Class Chartjs
  *
  * @package Buzz\Control\Objects
  */
-class Chartjs extends Object
+class Chartjs extends Base
 {
     /**
      * @var array

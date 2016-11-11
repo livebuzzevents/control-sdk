@@ -8,7 +8,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  *
  * @package Buzz\Control\Objects\Channel
  */
-class Printer extends Object
+class Printer extends Base
 {
     use HasIdentifier, HasBadgeStock;
 

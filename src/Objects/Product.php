@@ -11,7 +11,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  *
  * @package Buzz\Control\Objects\Channel
  */
-class Product extends Object
+class Product extends Base
 {
     use BelongsToExhibitor, HasIdentifier, HasDestination, HasActive;
 

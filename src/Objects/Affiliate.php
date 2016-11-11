@@ -7,7 +7,7 @@ use Buzz\Control\Objects\Traits\BelongsToStream;
  *
  * @package Buzz\Control\Objects
  */
-class Affiliate extends Object
+class Affiliate extends Base
 {
     use BelongsToStream;
 

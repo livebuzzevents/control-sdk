@@ -1,6 +1,6 @@
 <?php namespace Buzz\Control\Objects\Question;
 
-use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Base;
 use Buzz\Control\Objects\Traits\BelongsToQuestion;
 use Buzz\Control\Objects\Traits\HasIdentifier;
 
@@ -9,7 +9,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  *
  * @package Buzz\Control\Objects\Question
  */
-class Option extends Object
+class Option extends Base
 {
     use BelongsToQuestion, HasIdentifier;
 

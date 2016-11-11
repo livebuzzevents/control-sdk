@@ -9,7 +9,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  *
  * @package Buzz\Control\Objects
  */
-class Question extends Object
+class Question extends Base
 {
     use BelongsToExhibitor, HasIdentifier;
 

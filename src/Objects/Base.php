@@ -11,11 +11,11 @@ use ReflectionProperty;
 
 /**
  * @Annotation
- * Class Object
+ * Class Base
  *
  * @package Buzz\Control\Objects
  */
-abstract class Object implements Arrayable, JsonSerializable
+abstract class Base implements Arrayable, JsonSerializable
 {
     /**
      * @var string
@@ -48,6 +48,29 @@ abstract class Object implements Arrayable, JsonSerializable
         } else {
             $this->id = $data;
         }
+    }
+
+    /**
+     * @todo REMOVE THOSE LINES WHEN CAMPAIGN IS REMOVED FROM ALL CONSUMER PROJECTS
+     */
+    public function setCampaign()
+    {
+        //do nothing
+    }
+
+    public function setCampaignId()
+    {
+        //do nothing
+    }
+
+    public function getCampaign()
+    {
+        return null;
+    }
+
+    public function getCampaignId()
+    {
+        return null;
     }
 
     /**

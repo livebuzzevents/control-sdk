@@ -8,7 +8,7 @@ use Buzz\Control\Objects\Traits\BelongsToOrderProduct;
  *
  * @package Buzz\Control\Objects
  */
-class OrderAction extends Object
+class OrderAction extends Base
 {
     use BelongsToOrder, BelongsToOrderProduct;
 

@@ -9,7 +9,7 @@ use Buzz\Control\Objects\Traits\BelongsToOrder;
  *
  * @package Buzz\Control\Objects
  */
-class Charge extends Object
+class Charge extends Base
 {
     use BelongsToCustomer,
         BelongsToOrder;

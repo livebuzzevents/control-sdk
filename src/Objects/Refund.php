@@ -8,7 +8,7 @@ use Buzz\Control\Objects\Traits\BelongsToCustomer;
  *
  * @package Buzz\Control\Objects
  */
-class Refund extends Object
+class Refund extends Base
 {
     use BelongsToCustomer,
         BelongsToCharge;

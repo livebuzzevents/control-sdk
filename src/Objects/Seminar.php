@@ -7,7 +7,7 @@ namespace Buzz\Control\Objects;
  *
  * @package Buzz\Control\Objects
  */
-class Seminar extends Object
+class Seminar extends Base
 {
     use Traits\BelongsToExhibitor;
     use Traits\HasIdentifier;

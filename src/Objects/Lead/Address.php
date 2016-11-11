@@ -1,7 +1,7 @@
 <?php namespace Buzz\Control\Objects\Lead;
 
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\Object;
+use Buzz\Control\Objects\Base;
 use Buzz\Control\Objects\Traits\BelongsToLead;
 
 /**
@@ -9,7 +9,7 @@ use Buzz\Control\Objects\Traits\BelongsToLead;
  *
  * @package Buzz\Control\Objects\Lead
  */
-class Address extends Object
+class Address extends Base
 {
     use BelongsToLead;
 
