@@ -237,7 +237,7 @@ abstract class Service
         }
 
         if ($this->buzz->getStream()) {
-            $request['_settings']['stream'] = $this->buzz->getStream()->toArray();
+            $request['_settings']['stream'] = $this->buzz->getStream();
         }
 
         return $this->client->request(

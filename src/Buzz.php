@@ -41,9 +41,9 @@ class Buzz
     }
 
     /**
-     * @param Stream $stream
+     * @param $stream
      */
-    public function setStream(Stream $stream)
+    public function setStream($stream)
     {
         $this->stream = $stream;
     }
