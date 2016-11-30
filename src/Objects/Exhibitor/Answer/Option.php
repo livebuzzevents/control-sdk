@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects\Exhibitor\Answer;
 
 use Buzz\Control\Objects\Base;
+use Buzz\Control\Objects\Traits\BelongsToQuestionOption;
 
 /**
  * Class Option
@@ -9,6 +10,8 @@ use Buzz\Control\Objects\Base;
  */
 class Option extends Base
 {
+    use BelongsToQuestionOption;
+
     /**
      * @var string
      */
