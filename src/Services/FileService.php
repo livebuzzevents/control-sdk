@@ -77,7 +77,7 @@ class FileService extends Service
         return $this->call('get', "file/{$model_name}/{$model_id}/{$identifier}/file-settings");
     }
 
-    public function addSystem($model_name, $model_id, $identifier)
+    public function addSystem($model_name, $model_id, $identifier, $filename, $content)
     {
         if (!$model_name) {
             throw new ErrorException('Model name required!');
@@ -91,7 +91,12 @@ class FileService extends Service
             throw new ErrorException('Identifier required!');
         }
 
-        return $this->callAndCast('post', "file/{$model_name}/{$model_id}/{$identifier}/add");
+        return $this->callAndCast('post', "file/{$model_name}/{$model_id}/{$identifier}/add", [
+            'file' => [
+                'content' => $content,
+                'name'    => $filename,
+            ],
+        ]);
     }
 
     public function download(File $file)
