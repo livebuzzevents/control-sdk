@@ -37,7 +37,7 @@ class FileService extends Service
 
         return $this->callAndCast('post', "file/{$model_name}/{$model_id}/add", [
             'file' => [
-                'content' => $content,
+                'content' => base64_encode($content),
                 'name'    => $filename,
             ],
         ]);
@@ -93,7 +93,7 @@ class FileService extends Service
 
         return $this->callAndCast('post', "file/{$model_name}/{$model_id}/{$identifier}/add", [
             'file' => [
-                'content' => $content,
+                'content' => base64_encode($content),
                 'name'    => $filename,
             ],
         ]);
