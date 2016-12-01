@@ -392,4 +392,24 @@ class CustomerService extends Service
 
         return $this->call('post', "customer/print-separator/{$printer->getId()}", $options);
     }
+
+    /**
+     * @param Customer $customer
+     *
+     * @return array|false
+     * @throws ErrorException
+     */
+    public function dupeCheck(Customer $customer)
+    {
+        $verb = 'post';
+        $url  = 'customer/dupe-check';
+
+        try {
+            $this->call($verb, $url, $customer->toArray());
+        } catch (ErrorException $e) {
+            return explode(', ', str_replace('Duped on: ', '', $e->getError()));
+        }
+
+        return false;
+    }
 }
