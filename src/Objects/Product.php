@@ -72,6 +72,11 @@ class Product extends Base
     protected $files;
 
     /**
+     * @var \Buzz\Control\Objects\Product\Property[]
+     */
+    protected $properties;
+
+    /**
      * @return string
      */
     public function getShippable()
@@ -229,5 +234,23 @@ class Product extends Base
     public function setFiles($files)
     {
         $this->files = new Collection($files);
+    }
+
+    /**
+     * @param Product\Property[]|Collection $properties
+     */
+    public function setProperties($properties)
+    {
+        $this->properties = new Collection($properties);
+    }
+
+    /**
+     * @param Product\Property $property
+     *
+     * @return array
+     */
+    public function addProperty(Product\Property $property)
+    {
+        $this->add($this->properties, $property);
     }
 }
