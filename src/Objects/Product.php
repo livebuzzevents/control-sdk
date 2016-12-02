@@ -5,6 +5,7 @@ use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 use Buzz\Control\Objects\Traits\HasActive;
 use Buzz\Control\Objects\Traits\HasDestination;
 use Buzz\Control\Objects\Traits\HasIdentifier;
+use Buzz\Control\Objects\Traits\HasPropertiesCommon;
 
 /**
  * Class Product
@@ -13,7 +14,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  */
 class Product extends Base
 {
-    use BelongsToExhibitor, HasIdentifier, HasDestination, HasActive;
+    use BelongsToExhibitor, HasIdentifier, HasDestination, HasActive, HasPropertiesCommon;
 
     /**
      * @var string
