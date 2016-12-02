@@ -2,6 +2,7 @@
 
 use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
+use Buzz\Control\Objects\Exhibitor\Tag;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
 use Buzz\Control\Objects\Traits\HasMatchId;
 use Buzz\Control\Objects\Traits\HasPropertiesCommon;
@@ -116,6 +117,11 @@ class Exhibitor extends Base
      * @var \Buzz\Control\Objects\File[]
      */
     protected $files;
+
+    /**
+     * @var \Buzz\Control\Objects\Exhibitor\Tag[]
+     */
+    protected $tags;
 
     /**
      * @return array
@@ -453,5 +459,13 @@ class Exhibitor extends Base
     public function setFiles($files)
     {
         $this->files = new Collection($files);
+    }
+
+    /**
+     * @return Tag[]|Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }
