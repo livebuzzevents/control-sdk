@@ -5,5 +5,5 @@ $protocol     = 'http';
 $domain       = 'control.localhost';
 $proxy        = null;
 $organization = 'demo';
-$campaign     = 'demo-2017';
+$campaign     = 'demo-2016';
 $showErrors   = false;

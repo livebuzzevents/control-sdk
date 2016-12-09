@@ -331,4 +331,50 @@ abstract class Service
     {
         return isset($this->settings[$key]) ? $this->settings[$key] : null;
     }
+
+    /**
+     * @param array ...$parameters
+     *
+     * @return mixed
+     * @throws ErrorException
+     */
+    public function getOne(...$parameters)
+    {
+        if (!method_exists($this, 'getMany')) {
+            throw new ErrorException('This service does not support getOne()');
+        }
+
+        return $this->perPage(1)->getMany(...$parameters)->first();
+    }
+
+    /**
+     * @param       $identifiers
+     * @param array ...$parameters
+     *
+     * @return mixed
+     * @throws ErrorException
+     */
+    public function getByIdentifiers($identifiers, ...$parameters)
+    {
+        if (!method_exists($this, 'getMany')) {
+            throw new ErrorException('This service does not support getByIdentifiers()');
+        }
+
+        return $this->where('identifier', 'in', $identifiers)->getMany(...$parameters)->keyBy('identifier');
+    }
+
+    /**
+     * @param array ...$parameters
+     *
+     * @return mixed
+     * @throws ErrorException
+     */
+    public function getByIdentifier($identifier, ...$parameters)
+    {
+        if (!method_exists($this, 'getByIdentifiers')) {
+            throw new ErrorException('This service does not support getByIdentifier()');
+        }
+
+        return $this->perPage(1)->getByIdentifiers([$identifier], ...$parameters)->first();
+    }
 }
