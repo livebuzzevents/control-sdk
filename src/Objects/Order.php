@@ -195,6 +195,11 @@ class Order extends Base
     protected $actions;
 
     /**
+     * @var \Buzz\Control\Objects\OrderProduct[]
+     */
+    protected $products;
+
+    /**
      * @return int
      */
     public function getAmountChargebacked()
@@ -448,6 +453,22 @@ class Order extends Base
     public function setActions($actions)
     {
         $this->actions = new Collection($actions);
+    }
+
+    /**
+     * @return OrderProduct[]
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * @param OrderProduct[] $products
+     */
+    public function setProducts($products)
+    {
+        $this->products = new Collection($products);
     }
 
     /**
