@@ -1,14 +1,15 @@
-<?php namespace Buzz\Control\Services;
+<?php namespace Buzz\Control\Services\Order;
 
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Charge;
 use Buzz\Control\Objects\Order;
 use Buzz\Control\Objects\PaymentProvider;
+use Buzz\Control\Services\Service;
 
 /**
  * Class PaymentService
  *
- * @package Buzz\Control\Services
+ * @package Buzz\Control\Services\Order
  */
 class PaymentService extends Service
 {
@@ -29,7 +30,10 @@ class PaymentService extends Service
         if (!$order->getId()) {
             throw new ErrorException('Order id required!');
         }
+        if (!$paymentProvider->getId()) {
+            throw new ErrorException('Order id required!');
+        }
 
-        return $this->call('post', "order/{$order->getId()}/payment/generate", $paymentProvider);
+        return $this->call('post', "order/{$order->getId()}/payment/generate/{$paymentProvider->getId()}");
     }
 }
