@@ -32,6 +32,11 @@ class Parameter extends Base
     protected $exhibitorProperties;
 
     /**
+     * @var Product\Property[]
+     */
+    protected $productProperties;
+
+    /**
      * @return array
      */
     public function getRules()
@@ -77,5 +82,13 @@ class Parameter extends Base
     public function getExhibitorProperties()
     {
         return $this->exhibitorProperties;
+    }
+
+    /**
+     * @return Product\Property[]
+     */
+    public function getProductProperties()
+    {
+        return $this->productProperties;
     }
 }
