@@ -431,7 +431,7 @@ class CustomerService extends Service
         }
 
         return $this->cast(
-            $this->call('get', "customer/clone/" . $campaign->id ?? $campaign->identifier . "/{$customer->getId()}"),
+            $this->call('get', "customer/clone/" . ($campaign->id ?? $campaign->identifier) . "/{$customer->getId()}"),
             Customer::class
         );
     }

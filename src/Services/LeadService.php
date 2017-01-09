@@ -64,7 +64,7 @@ class LeadService extends Service
         }
 
         return $this->cast(
-            $this->call('get', "lead/clone/" . $campaign->id ?? $campaign->identifier . "/{$lead->getId()}"),
+            $this->call('get', "lead/clone/" . ($campaign->id ?? $campaign->identifier) . "/{$lead->getId()}"),
             Customer::class
         );
     }
