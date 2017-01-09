@@ -3,7 +3,6 @@
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Campaign;
 use Buzz\Control\Objects\Customer;
-use Buzz\Control\Objects\Exhibitor;
 use Buzz\Control\Objects\Lead;
 
 /**
@@ -48,19 +47,24 @@ class LeadService extends Service
     }
 
     /**
+     * @param Campaign $campaign
      * @param Lead     $lead
      *
      * @return mixed
      * @throws ErrorException
      */
-    public function cloneForCampaign(Lead $lead)
+    public function clone(Campaign $campaign, Lead $lead)
     {
+        if (!$campaign->getId() && $campaign->getIdentifier()) {
+            throw new ErrorException('Campaign id or identifier required!');
+        }
+
         if (!$lead->getId()) {
             throw new ErrorException('Lead id required!');
         }
 
         return $this->cast(
-            $this->call('get', "lead/{$lead->getId()}/clone-for-campaign"),
+            $this->call('get', "lead/clone/" . $campaign->id ?? $campaign->identifier . "/{$lead->getId()}"),
             Customer::class
         );
     }

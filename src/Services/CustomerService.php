@@ -412,4 +412,27 @@ class CustomerService extends Service
 
         return false;
     }
+
+    /**
+     * @param Campaign $campaign
+     * @param Customer $customer
+     *
+     * @return mixed
+     * @throws ErrorException
+     */
+    public function clone(Campaign $campaign, Customer $customer)
+    {
+        if (!$campaign->getId() && $campaign->getIdentifier()) {
+            throw new ErrorException('Campaign id or identifier required!');
+        }
+
+        if (!$customer->getId()) {
+            throw new ErrorException('Custoemr id required!');
+        }
+
+        return $this->cast(
+            $this->call('get', "customer/clone/" . $campaign->id ?? $campaign->identifier . "/{$customer->getId()}"),
+            Customer::class
+        );
+    }
 }
