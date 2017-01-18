@@ -68,4 +68,19 @@ class OrderService extends Service
     {
         return $this->callAndCastMany('get', 'orders');
     }
+
+    /**
+     * @param Order $order
+     *
+     * @return Order
+     * @throws ErrorException
+     */
+    public function complete(Order $order)
+    {
+        if (!$order->getId()) {
+            throw new ErrorException('Order id required!');
+        }
+
+        return $this->callAndCast('get', "order/{$order->getId()}/complete");
+    }
 }
