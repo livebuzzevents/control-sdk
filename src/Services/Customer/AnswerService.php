@@ -115,11 +115,12 @@ class AnswerService extends Service
     /**
      * @param Customer          $customer
      * @param Customer\Answer[] $answers
+     * @param array             $rules
      *
      * @return Customer\Answer[]
      * @throws ErrorException
      */
-    public function saveMany(Customer $customer, array $answers)
+    public function saveMany(Customer $customer, array $answers, array $rules)
     {
         if (!$customer->getId()) {
             throw new ErrorException('Customer id required!');
@@ -133,6 +134,9 @@ class AnswerService extends Service
             $answers[$key] = $answer->toArray();
         }
 
-        return $this->callAndCastMany('post', "customer/{$customer->getId()}/answers", ['batch' => $answers]);
+        return $this->callAndCastMany('post', "customer/{$customer->getId()}/answers", [
+            'batch' => $answers,
+            'rules' => $rules,
+        ]);
     }
 }

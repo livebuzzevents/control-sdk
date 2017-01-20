@@ -56,7 +56,7 @@ class LookupService extends Service
         }
 
         if (filter_var($ip, FILTER_VALIDATE_IP) === false) {
-            throw new ErrorException('Invalid email address');
+            throw new ErrorException('Invalid IP address');
         }
 
         return $this->call('get', "lookup/ip/{$ip}");
