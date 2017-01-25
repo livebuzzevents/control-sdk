@@ -113,14 +113,13 @@ class AnswerService extends Service
     }
 
     /**
-     * @param Customer          $customer
-     * @param Customer\Answer[] $answers
-     * @param array             $rules
-     *
-     * @return Customer\Answer[]
+     * @param Customer $customer
+     * @param array    $answers
+     * @param array    $rules
+     * @return mixed
      * @throws ErrorException
      */
-    public function saveMany(Customer $customer, array $answers, array $rules)
+    public function saveMany(Customer $customer, array $answers, array $rules = [])
     {
         if (!$customer->getId()) {
             throw new ErrorException('Customer id required!');
