@@ -22,6 +22,11 @@ class Parameter extends Base
     protected $rules;
 
     /**
+     * @var Property[]
+     */
+    protected $properties;
+
+    /**
      * @var Customer\Property[]
      */
     protected $customerProperties;
@@ -66,6 +71,14 @@ class Parameter extends Base
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return Property[]
+     */
+    public function getProperties()
+    {
+        return $this->properties;
     }
 
     /**
