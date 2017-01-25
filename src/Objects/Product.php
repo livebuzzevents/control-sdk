@@ -57,6 +57,11 @@ class Product extends Base
     protected $shippable;
 
     /**
+     * @var string
+     */
+    protected $publish;
+
+    /**
      * @var \DateTime
      */
     protected $valid_from;
@@ -90,6 +95,22 @@ class Product extends Base
     public function setShippable($shippable)
     {
         $this->shippable = $shippable;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublish()
+    {
+        return $this->publish;
+    }
+
+    /**
+     * @param mixed $publish
+     */
+    public function setPublish($publish)
+    {
+        $this->publish = $publish;
     }
 
     /**

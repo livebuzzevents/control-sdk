@@ -39,6 +39,11 @@ class Seminar extends Base
     protected $settings;
 
     /**
+     * @var string
+     */
+    protected $publish;
+
+    /**
      * @var \DateTime
      */
     protected $starts_at;
@@ -167,6 +172,22 @@ class Seminar extends Base
     public function setSettings($settings)
     {
         $this->settings = $settings;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublish()
+    {
+        return $this->publish;
+    }
+
+    /**
+     * @param mixed $publish
+     */
+    public function setPublish($publish)
+    {
+        $this->publish = $publish;
     }
 
     /**

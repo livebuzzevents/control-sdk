@@ -26,6 +26,11 @@ class Exhibitor extends Base
     /**
      * @var string
      */
+    protected $publish;
+
+    /**
+     * @var string
+     */
     protected $description;
 
     /**
@@ -259,6 +264,22 @@ class Exhibitor extends Base
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublish()
+    {
+        return $this->publish;
+    }
+
+    /**
+     * @param mixed $publish
+     */
+    public function setPublish($publish)
+    {
+        $this->publish = $publish;
     }
 
     /**
