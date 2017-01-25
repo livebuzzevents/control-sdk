@@ -242,11 +242,6 @@ class Customer extends Base
     protected $badge_prints;
 
     /**
-     * @var \Buzz\Control\Objects\Extra[]
-     */
-    protected $extras;
-
-    /**
      * @var \Buzz\Control\Objects\Basket
      */
     protected $basket;
@@ -1002,30 +997,6 @@ class Customer extends Base
     public function addBadgePrint(BadgePrint $print)
     {
         $this->add($this->badge_prints, $print);
-    }
-
-    /**
-     * @return Extra[]|null
-     */
-    public function getExtras()
-    {
-        return $this->extras;
-    }
-
-    /**
-     * @param Extra[]|Collection $extras
-     */
-    public function setExtras($extras)
-    {
-        $this->extras = new Collection($extras);
-    }
-
-    /**
-     * @param Extra $extra
-     */
-    public function addExtra(Extra $extra)
-    {
-        $this->add($this->extras, $extra);
     }
 
     /**
