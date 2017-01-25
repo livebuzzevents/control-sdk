@@ -27,19 +27,19 @@ class Parameter extends Base
     protected $properties;
 
     /**
-     * @var Customer\Property[]
+     * @var Property[]
      */
-    protected $customerProperties;
+    protected $customer_properties;
 
     /**
-     * @var Exhibitor\Property[]
+     * @var Property[]
      */
-    protected $exhibitorProperties;
+    protected $exhibitor_properties;
 
     /**
-     * @var Product\Property[]
+     * @var Property[]
      */
-    protected $productProperties;
+    protected $product_properties;
 
     /**
      * @return array
@@ -82,26 +82,26 @@ class Parameter extends Base
     }
 
     /**
-     * @return Customer\Property[]
+     * @return Property[]
      */
     public function getCustomerProperties()
     {
-        return $this->customerProperties;
+        return $this->customer_properties;
     }
 
     /**
-     * @return Exhibitor\Property[]
+     * @return Property[]
      */
     public function getExhibitorProperties()
     {
-        return $this->exhibitorProperties;
+        return $this->exhibitor_properties;
     }
 
     /**
-     * @return Product\Property[]
+     * @return Property[]
      */
     public function getProductProperties()
     {
-        return $this->productProperties;
+        return $this->product_properties;
     }
 }
