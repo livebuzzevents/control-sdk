@@ -68,7 +68,9 @@ class GuzzleClient implements Client
             $contents = $response->getBody()->getContents();
 
             if ($response->getStatusCode() === 400 || $response->getStatusCode() === 422) {
-                throw new ErrorException(json_decode($contents, true)['error']);
+                $responseContent = json_decode($contents, true);
+
+                throw new ErrorException($responseContent['error'], $responseContent['code'] ?? 0);
             } elseif ($response->getStatusCode() === 401) {
                 throw new UnauthorizedException($contents);
             } elseif ($response->getStatusCode() === 404) {
@@ -83,7 +85,7 @@ class GuzzleClient implements Client
 
             throw new ServerException('Unexpected error! Please contact LiveBuzz for more information!');
         } catch (Exception $e) {
-            throw new ResponseException($e->getMessage());
+            throw new ResponseException($e->getMessage(), $e->getCode());
         }
     }
 
