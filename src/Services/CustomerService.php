@@ -119,11 +119,12 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
+     * @param boolean  $disableDupeCheck
      *
      * @return Customer
      * @throws ErrorException
      */
-    public function save(Customer $customer)
+    public function save(Customer $customer, bool $disableDupeCheck = false)
     {
         if ($customer->getId()) {
             $verb = 'put';
@@ -133,7 +134,13 @@ class CustomerService extends Service
             $url  = 'customer';
         }
 
-        return $this->callAndCast($verb, $url, $customer->toArray());
+        $data = $customer->toArray();
+
+        if ($disableDupeCheck) {
+            $data['disable_dupecheck'] = true;
+        }
+
+        return $this->callAndCast($verb, $url, $data);
     }
 
     /**
