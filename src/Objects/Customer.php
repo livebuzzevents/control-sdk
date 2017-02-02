@@ -6,6 +6,7 @@ use Buzz\Control\Objects\Customer\Tag;
 use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
 use Buzz\Control\Objects\Traits\HasBadgeType;
+use Buzz\Control\Objects\Traits\HasIdentifier;
 use Buzz\Control\Objects\Traits\HasMatchId;
 use Buzz\Control\Objects\Traits\HasPropertiesCommon;
 use Buzz\Control\Objects\Traits\HasSource;
@@ -19,6 +20,7 @@ use Buzz\Control\Objects\Traits\HasStatus;
 class Customer extends Base
 {
     use BelongsToExhibitor,
+        HasIdentifier,
         HasMatchId,
         HasSource,
         HasStatus,
@@ -105,6 +107,11 @@ class Customer extends Base
      * @var string
      */
     protected $biography;
+
+    /**
+     * @var string
+     */
+    protected $publish;
 
     /**
      * @var string
@@ -657,6 +664,22 @@ class Customer extends Base
     public function setBiography($biography)
     {
         $this->biography = $biography;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublish()
+    {
+        return $this->publish;
+    }
+
+    /**
+     * @param mixed $publish
+     */
+    public function setPublish($publish)
+    {
+        $this->publish = $publish;
     }
 
     /**

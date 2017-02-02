@@ -4,6 +4,7 @@ use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Exhibitor\Tag;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
+use Buzz\Control\Objects\Traits\HasIdentifier;
 use Buzz\Control\Objects\Traits\HasMatchId;
 use Buzz\Control\Objects\Traits\HasPropertiesCommon;
 use Buzz\Control\Objects\Traits\HasSource;
@@ -16,7 +17,7 @@ use Buzz\Control\Objects\Traits\HasStatus;
  */
 class Exhibitor extends Base
 {
-    use HasMatchId, HasSource, HasStatus, HasAnswersCommon, HasPropertiesCommon;
+    use HasIdentifier, HasMatchId, HasSource, HasStatus, HasAnswersCommon, HasPropertiesCommon;
 
     /**
      * @var string
