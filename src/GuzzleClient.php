@@ -70,7 +70,10 @@ class GuzzleClient implements Client
             if ($response->getStatusCode() === 400 || $response->getStatusCode() === 422) {
                 $responseContent = json_decode($contents, true);
 
-                throw new ErrorException($responseContent['error'], $responseContent['code'] ?? 0);
+                throw new ErrorException(
+                    $responseContent['error'],
+                    !empty($responseContent['code']) ? $responseContent['code'] : 0
+                );
             } elseif ($response->getStatusCode() === 401) {
                 throw new UnauthorizedException($contents);
             } elseif ($response->getStatusCode() === 404) {
