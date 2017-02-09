@@ -16,9 +16,20 @@ use Buzz\Control\Objects\Printer;
 class CustomerService extends Service
 {
     /**
+     * @var bool
+     */
+    protected $dupe_check = true;
+
+    /**
      * @var
      */
     protected static $cast = Customer::class;
+
+    public function disableDupeCheck()
+    {
+        $this->dupe_check = false;
+        return $this;
+    }
 
     /**
      * @param array $credentials
@@ -119,12 +130,11 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
-     * @param boolean  $disableDupeCheck
      *
      * @return Customer
      * @throws ErrorException
      */
-    public function save(Customer $customer, bool $disableDupeCheck = false)
+    public function save(Customer $customer)
     {
         if ($customer->getId()) {
             $verb = 'put';
@@ -136,8 +146,9 @@ class CustomerService extends Service
 
         $data = $customer->toArray();
 
-        if ($disableDupeCheck) {
+        if (!$this->dupe_check) {
             $data['disable_dupecheck'] = true;
+            $this->dupe_check          = true;
         }
 
         return $this->callAndCast($verb, $url, $data);

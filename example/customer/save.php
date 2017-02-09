@@ -14,6 +14,6 @@ $customer->setNationality('BG');
 $customer->setLanguage('en');
 
 $service  = new \Buzz\Control\Services\CustomerService($buzz);
-$response = $service->save($customer);
+$response = $service->disableDupeCheck()->save($customer);
 
 var_dump($response);
