@@ -56,6 +56,11 @@ class Scanner extends Base
     protected $scans;
 
     /**
+     * @var \Buzz\Control\Objects\SmartScanCode[]
+     */
+    protected $smart_scan_codes;
+
+    /**
      * @return string
      */
     public function getActive()
@@ -86,7 +91,7 @@ class Scanner extends Base
     {
         $this->serial_number = $serial_number;
     }
-    
+
     /**
      * @return string
      */
@@ -102,7 +107,7 @@ class Scanner extends Base
     {
         $this->type = $type;
     }
-    
+
     /**
      * @return string
      */
@@ -182,4 +187,21 @@ class Scanner extends Base
     {
         $this->scans = $scans;
     }
+
+    /**
+     * @return SmartScanCode[]
+     */
+    public function getSmartScanCodes()
+    {
+        return $this->smart_scan_codes;
+    }
+
+    /**
+     * @param SmartScanCode[] $smart_scan_codes
+     */
+    public function setSmartScanCodes($smart_scan_codes)
+    {
+        $this->smart_scan_codes = new Collection($smart_scan_codes);
+    }
+
 }
