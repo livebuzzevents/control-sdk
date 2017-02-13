@@ -1,7 +1,6 @@
 <?php namespace Buzz\Control\Services;
 
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\Campaign;
 use Buzz\Control\Objects\Report;
 
 /**
@@ -17,21 +16,16 @@ class ReportService extends Service
     protected static $cast = Report\Chartjs::class;
 
     /**
-     * @param Report   $report
-     * @param Campaign $campaign
+     * @param Report $report
      * @return mixed
      * @throws ErrorException
      */
-    public function get(Report $report, Campaign $campaign)
+    public function get(Report $report)
     {
         if (!$report->getData()) {
             throw new ErrorException('Report data required!');
         }
 
-        if (!$campaign->getId()) {
-            throw new ErrorException('Campaign id required!');
-        }
-
-        return $this->callAndCast('get', "reports/{$campaign->getId()}", $report->toArray());
+        return $this->callAndCast('get', "report", $report->toArray());
     }
 }
