@@ -45,7 +45,7 @@ class Answer extends Base
     }
 
     /**
-     * @return \Buzz\Control\Objects\Customer\Answer\Option[]
+     * @return \Buzz\Control\Objects\Customer\Answer\Option[]|Collection
      */
     public function getOptions()
     {

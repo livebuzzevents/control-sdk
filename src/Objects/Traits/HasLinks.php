@@ -48,7 +48,7 @@ trait HasLinks
     }
 
     /**
-     * @return Collection|null
+     * @return \Buzz\Control\Objects\Link[]|Collection|null
      */
     public function getLinksGroupedByType()
     {
@@ -68,7 +68,7 @@ trait HasLinks
     /**
      * @param array $types
      *
-     * @return Collection|null
+     * @return \Buzz\Control\Objects\Link[]|Collection|null
      */
     public function getLinksByTypes(array $types)
     {
@@ -90,7 +90,7 @@ trait HasLinks
     }
 
     /**
-     * @return mixed
+     * @return \Buzz\Control\Objects\Link[]|Collection|null
      */
     public function getLinks()
     {
