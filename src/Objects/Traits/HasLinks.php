@@ -1,7 +1,6 @@
 <?php namespace Buzz\Control\Objects\Traits;
 
 use Buzz\Control\Collection;
-use Buzz\Control\Objects\Link;
 
 /**
  * Class HasLinks
@@ -11,7 +10,7 @@ use Buzz\Control\Objects\Link;
 trait HasLinks
 {
     /**
-     * @var Link[]
+     * @var \Buzz\Control\Objects\Link[]
      */
     protected $links;
 
@@ -26,7 +25,7 @@ trait HasLinks
 
     /**
      * @param $type
-     * @return Link|null
+     * @return \Buzz\Control\Objects\Link|null
      */
     public function getLinkByType($type)
     {
