@@ -7,6 +7,7 @@ use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
 use Buzz\Control\Objects\Traits\HasBadgeType;
 use Buzz\Control\Objects\Traits\HasIdentifier;
+use Buzz\Control\Objects\Traits\HasLinks;
 use Buzz\Control\Objects\Traits\HasMatchId;
 use Buzz\Control\Objects\Traits\HasPropertiesCommon;
 use Buzz\Control\Objects\Traits\HasSource;
@@ -26,7 +27,8 @@ class Customer extends Base
         HasStatus,
         HasAnswersCommon,
         HasPropertiesCommon,
-        HasBadgeType;
+        HasBadgeType,
+        HasLinks;
 
     /**
      * @var string
@@ -1031,7 +1033,7 @@ class Customer extends Base
     }
 
     /**
-     * @return Basket
+     * @return Basket[]
      */
     public function getBaskets()
     {
@@ -1039,7 +1041,7 @@ class Customer extends Base
     }
 
     /**
-     * @return CustomerSeminar
+     * @return CustomerSeminar[]
      */
     public function getSeminars()
     {
@@ -1047,7 +1049,7 @@ class Customer extends Base
     }
 
     /**
-     * @return CustomerSeminar
+     * @return CustomerSeminar[]
      */
     public function getCreatedSeminars()
     {
