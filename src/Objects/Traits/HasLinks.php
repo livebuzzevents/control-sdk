@@ -26,7 +26,7 @@ trait HasLinks
 
     /**
      * @param $type
-     * @return null
+     * @return Link|null
      */
     public function getLinkByType($type)
     {
