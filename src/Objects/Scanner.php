@@ -23,6 +23,11 @@ class Scanner extends Base
     /**
      * @var string
      */
+    protected $paid;
+
+    /**
+     * @var string
+     */
     protected $serial_number;
 
     /**
@@ -74,6 +79,22 @@ class Scanner extends Base
     public function setActive($active)
     {
         $this->active = $active;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaid()
+    {
+        return $this->paid;
+    }
+
+    /**
+     * @param string $paid
+     */
+    public function setPaid($paid)
+    {
+        $this->paid = $paid;
     }
 
     /**
