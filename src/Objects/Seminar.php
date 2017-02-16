@@ -55,22 +55,22 @@ class Seminar extends Base
 
     //RELATIONS
     /**
-     * @var \Buzz\Control\Objects\Customer[]
+     * @var \Buzz\Control\Objects\CustomerSeminar[]
      */
     protected $customers;
 
     /**
-     * @var \Buzz\Control\Objects\Customer[]
+     * @var \Buzz\Control\Objects\CustomerSeminar[]
      */
     protected $speakers;
 
     /**
-     * @var \Buzz\Control\Objects\Customer[]
+     * @var \Buzz\Control\Objects\CustomerSeminar[]
      */
     protected $attendees;
 
     /**
-     * @var \Buzz\Control\Objects\Topics[]
+     * @var \Buzz\Control\Objects\SeminarTopic[]
      */
     protected $topics;
 
@@ -233,7 +233,7 @@ class Seminar extends Base
     /**
      * Gets value of customers.
      *
-     * @return Customer[]
+     * @return \Buzz\Control\Objects\CustomerSeminar[]
      */
     public function getCustomers()
     {
@@ -243,7 +243,7 @@ class Seminar extends Base
     /**
      * Sets value of customers.
      *
-     * @param Customer[] $customers
+     * @param \Buzz\Control\Objects\CustomerSeminar[] $customers
      */
     public function setCustomers($customers)
     {
@@ -253,7 +253,7 @@ class Seminar extends Base
     /**
      * Gets value of speakers.
      *
-     * @return Customer[]
+     * @return \Buzz\Control\Objects\CustomerSeminar[]
      */
     public function getSpeakers()
     {
@@ -263,7 +263,7 @@ class Seminar extends Base
     /**
      * Sets value of speakers.
      *
-     * @param Customer[] $speakers
+     * @param \Buzz\Control\Objects\CustomerSeminar[] $speakers
      */
     public function setSpeakers($speakers)
     {
@@ -273,7 +273,7 @@ class Seminar extends Base
     /**
      * Gets value of attendees.
      *
-     * @return Customer[]
+     * @return \Buzz\Control\Objects\CustomerSeminar[]
      */
     public function getAttendees()
     {
@@ -283,7 +283,7 @@ class Seminar extends Base
     /**
      * Sets value of attendees.
      *
-     * @param Customer[] $attendees
+     * @param \Buzz\Control\Objects\CustomerSeminar[] $attendees
      */
     public function setAttendees($attendees)
     {
@@ -293,7 +293,7 @@ class Seminar extends Base
     /**
      * Gets value of topics.
      *
-     * @return Topics[]
+     * @return \Buzz\Control\Objects\SeminarTopic[]
      */
     public function getTopics()
     {
@@ -303,7 +303,7 @@ class Seminar extends Base
     /**
      * Sets value of topics.
      *
-     * @param Topics[] $topics
+     * @param \Buzz\Control\Objects\SeminarTopic[] $topics
      */
     public function setTopics($topics)
     {
