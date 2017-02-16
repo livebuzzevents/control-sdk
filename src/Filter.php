@@ -64,6 +64,37 @@ class Filter
     }
 
     /**
+     * @param array $parameters
+     * @param       $term_string
+     *
+     * @return $this
+     */
+    public function addSearchTerm(array $parameters, $term_string)
+    {
+        if (empty($term_string) || empty($parameters)) {
+            return;
+        }
+
+        $terms = preg_split('/\s+/', $term_string);
+
+        $parameters[] = 'id';
+
+        $parameter_first = reset($parameters);
+
+        foreach ($terms as $term) {
+            $group = new self();
+
+            foreach ($parameters as $parameter) {
+                $group->add($parameter, 'contains', $term, $parameter !== $parameter_first);
+            }
+
+            $this->addGroup($group);
+        }
+
+        return $this;
+    }
+
+    /**
      * @param Filter $group
      * @param bool   $or
      *
