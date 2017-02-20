@@ -238,6 +238,25 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, Arrayable
     }
 
     /**
+     * Filter items by the given key value pair.
+     *
+     * @param  string $key
+     * @param  array  $values
+     * @param  bool   $strict
+     * @return static
+     */
+    public function whereIn($key, $values, $strict = false)
+    {
+        return $this->filter(function ($item) use ($key, $values, $strict) {
+            if (is_object($item)) {
+                return in_array($item->$key, $values, $strict);
+            } else {
+                return in_array($item[$key], $values, $strict);
+            }
+        });
+    }
+
+    /**
      * @param callable $filter
      *
      * @return static
