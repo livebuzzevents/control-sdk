@@ -324,6 +324,21 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
+     *
+     * @return mixed
+     * @throws ErrorException
+     */
+    public function viewedBadge(Customer $customer)
+    {
+        if (!$customer->getId()) {
+            throw new ErrorException('Customer id required!');
+        }
+
+        return $this->call('post', "customer/{$customer->getId()}/viewed");
+    }
+
+    /**
+     * @param Customer $customer
      * @param int      $width
      * @param int      $height
      *
