@@ -30,7 +30,7 @@ class PaymentProviderService extends Service
             throw new ErrorException('PaymentProvider id required!');
         }
 
-        return $this->callAndCast('get', "paymentProvider/{$paymentProvider->getId()}");
+        return $this->callAndCast('get', "payment-provider/{$paymentProvider->getId()}");
     }
 
     /**
@@ -44,7 +44,7 @@ class PaymentProviderService extends Service
     {
         return $this->callAndCastMany(
             'get',
-            "paymentProvider/available-for-campaign",
+            "payment-provider/available-for-campaign",
             compact('destination', 'amount')
         );
     }
@@ -64,7 +64,7 @@ class PaymentProviderService extends Service
 
         return $this->callAndCastMany(
             'get',
-            "paymentProvider/available-for-basket/{$basket->getId()}",
+            "payment-provider/available-for-basket/{$basket->getId()}",
             compact('amount')
         );
     }
@@ -84,7 +84,7 @@ class PaymentProviderService extends Service
 
         return $this->callAndCastMany(
             'get',
-            "paymentProvider/available-for-order/{$order->getId()}",
+            "payment-provider/available-for-order/{$order->getId()}",
             compact('amount')
         );
     }
@@ -100,7 +100,7 @@ class PaymentProviderService extends Service
             throw new ErrorException('PaymentProvider id required!');
         }
 
-        $this->call('delete', "paymentProvider/{$paymentProvider->getId()}");
+        $this->call('delete', "payment-provider/{$paymentProvider->getId()}");
     }
 
     /**
@@ -113,10 +113,10 @@ class PaymentProviderService extends Service
     {
         if ($paymentProvider->getId()) {
             $verb = 'put';
-            $url  = 'paymentProvider/' . $paymentProvider->getId();
+            $url  = 'payment-provider/' . $paymentProvider->getId();
         } else {
             $verb = 'post';
-            $url  = 'paymentProvider';
+            $url  = 'payment-provider';
         }
 
         return $this->callAndCast($verb, $url, $paymentProvider->toArray());
@@ -127,7 +127,7 @@ class PaymentProviderService extends Service
      */
     public function deleteMany()
     {
-        $this->call('delete', 'paymentProviders');
+        $this->call('delete', 'payment-providers');
     }
 
     /**
@@ -135,7 +135,7 @@ class PaymentProviderService extends Service
      */
     public function getMany()
     {
-        return $this->callAndCastMany('get', 'paymentProviders');
+        return $this->callAndCastMany('get', 'payment-providers');
     }
 
     /**
@@ -150,6 +150,6 @@ class PaymentProviderService extends Service
             $paymentProviders[$key] = $paymentProvider->toArray();
         }
 
-        return $this->callAndCastMany('post', 'paymentProviders', ['batch' => $paymentProviders]);
+        return $this->callAndCastMany('post', 'payment-providers', ['batch' => $paymentProviders]);
     }
 }
