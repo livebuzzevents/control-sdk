@@ -2,6 +2,7 @@
 
 use Buzz\Control\Objects\Traits\BelongsToCustomer;
 use Buzz\Control\Objects\Traits\BelongsToScanner;
+use Buzz\Control\Objects\Traits\HasAnswersCommon;
 
 /**
  * Class Scan
@@ -10,12 +11,22 @@ use Buzz\Control\Objects\Traits\BelongsToScanner;
  */
 class Scan extends Base
 {
-    use BelongsToScanner, BelongsToCustomer;
+    use BelongsToScanner, BelongsToCustomer, HasAnswersCommon;
 
     /**
      * @var string
      */
     protected $barcode;
+
+    /**
+     * @var \Buzz\Control\Objects\Scan\Answer[]
+     */
+    protected $answers;
+
+    /**
+     * @var \Buzz\Control\Objects\Note[]
+     */
+    protected $notes;
 
     public function __construct($data)
     {
@@ -40,5 +51,21 @@ class Scan extends Base
     public function setBarcode($barcode)
     {
         $this->barcode = $barcode;
+    }
+
+    /**
+     * @param $notes
+     */
+    public function setNotes($notes)
+    {
+        $this->notes = $notes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNotes()
+    {
+        return $this->notes;
     }
 }
