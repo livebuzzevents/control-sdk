@@ -53,6 +53,11 @@ class Seminar extends Base
      */
     protected $title;
 
+    /**
+     * @var string
+     */
+    protected $colour;
+
     //RELATIONS
     /**
      * @var \Buzz\Control\Objects\CustomerSeminar[]
@@ -308,5 +313,25 @@ class Seminar extends Base
     public function setTopics($topics)
     {
         $this->topics = $topics;
+    }
+
+    /**
+     * Gets value of colour.
+     *
+     * @return string
+     */
+    public function getColour()
+    {
+        return $this->colour;
+    }
+
+    /**
+     * Sets value of colour.
+     *
+     * @param string $colour
+     */
+    public function setColour($colour)
+    {
+        $this->colour = $colour;
     }
 }
