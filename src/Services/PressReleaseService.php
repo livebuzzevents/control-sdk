@@ -1,7 +1,6 @@
 <?php namespace Buzz\Control\Services;
 
 use Buzz\Control\Exceptions\ErrorException;
-use Buzz\Control\Objects\Exhibitor;
 use Buzz\Control\Objects\Exhibitor\PressRelease;
 
 /**
@@ -17,109 +16,79 @@ class PressReleaseService extends Service
     protected static $cast = PressRelease::class;
 
     /**
-     * @param Exhibitor    $exhibitor
      * @param PressRelease $pressRelease
      * @return mixed
      * @throws ErrorException
      */
-    public function get(Exhibitor $exhibitor, PressRelease $pressRelease)
+    public function get(PressRelease $pressRelease)
     {
-        if (!$exhibitor->getId()) {
-            throw new ErrorException('Exhibitor id required!');
-        }
-
         if (!$pressRelease->getId()) {
             throw new ErrorException('PressRelease id required!');
         }
 
-        return $this->callAndCast('get', "exhibitor/{$exhibitor->getId()}/press-release/{$pressRelease->getId()}");
+        return $this->callAndCast('get', "exhibitor-press-release/{$pressRelease->getId()}");
     }
 
     /**
-     * @param Exhibitor    $exhibitor
      * @param PressRelease $pressRelease
      * @throws ErrorException
      */
-    public function delete(Exhibitor $exhibitor, PressRelease $pressRelease)
+    public function delete(PressRelease $pressRelease)
     {
-        if (!$exhibitor->getId()) {
-            throw new ErrorException('Exhibitor id required!');
-        }
-
         if (!$pressRelease->getId()) {
             throw new ErrorException('PressRelease id required!');
         }
 
-        $this->call('delete', "exhibitor/{$exhibitor->getId()}/press-release/{$pressRelease->getId()}");
+        $this->call('delete', "exhibitor-press-release/{$pressRelease->getId()}");
     }
 
     /**
-     * @param Exhibitor    $exhibitor
      * @param PressRelease $pressRelease
      * @return mixed
      * @throws ErrorException
      */
-    public function save(Exhibitor $exhibitor, PressRelease $pressRelease)
+    public function save(PressRelease $pressRelease)
     {
-        if (!$exhibitor->getId()) {
-            throw new ErrorException('Exhibitor id required!');
-        }
 
         if ($pressRelease->getId()) {
             $verb = 'put';
-            $url  = 'press-release/' . $pressRelease->getId();
+            $url  = 'exhibitor-press-release/' . $pressRelease->getId();
         } else {
             $verb = 'post';
-            $url  = 'press-release';
+            $url  = 'exhibitor-press-release';
         }
 
-        return $this->callAndCast($verb, "exhibitor/{$exhibitor->getId()}/{$url}", $pressRelease->toArray());
+        return $this->callAndCast($verb, $url, $pressRelease->toArray());
     }
 
     /**
-     * @param Exhibitor $exhibitor
      * @throws ErrorException
      */
-    public function deleteMany(Exhibitor $exhibitor)
+    public function deleteMany()
     {
-        if (!$exhibitor->getId()) {
-            throw new ErrorException('Exhibitor id required!');
-        }
-
-        $this->call('delete', "exhibitor/{$exhibitor->getId()}/press-releases");
+        $this->call('delete', "exhibitor-press-releases");
     }
 
     /**
-     * @param Exhibitor $exhibitor
      * @return PressRelease[]
      * @throws ErrorException
      */
-    public function getMany(Exhibitor $exhibitor)
+    public function getMany()
     {
-        if (!$exhibitor->getId()) {
-            throw new ErrorException('Exhibitor id required!');
-        }
-
-        return $this->callAndCastMany('get', "exhibitor/{$exhibitor->getId()}/press-releases");
+        return $this->callAndCastMany('get', "exhibitor-press-releases");
     }
 
     /**
-     * @param Exhibitor      $exhibitor
      * @param PressRelease[] $pressReleases
      * @return PressRelease[]
      * @throws ErrorException
      */
-    public function saveMany(Exhibitor $exhibitor, array $pressReleases)
+    public function saveMany(array $pressReleases)
     {
-        if (!$exhibitor->getId()) {
-            throw new ErrorException('Exhibitor id required!');
-        }
-
         foreach ($pressReleases as $key => $pressRelease) {
             $pressReleases[$key] = $pressRelease->toArray();
         }
 
-        return $this->callAndCastMany('post', "exhibitor/{$exhibitor->getId()}/press-releases",
-            ['batch' => $pressReleases]);
+        return $this->callAndCastMany('post', "exhibitor-press-releases", ['batch' => $pressReleases]);
     }
 }
