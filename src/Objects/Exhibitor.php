@@ -2,6 +2,7 @@
 
 use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
+use Buzz\Control\Objects\Exhibitor\PressRelease;
 use Buzz\Control\Objects\Exhibitor\Tag;
 use Buzz\Control\Objects\Traits\HasAnswersCommon;
 use Buzz\Control\Objects\Traits\HasIdentifier;
@@ -104,6 +105,11 @@ class Exhibitor extends Base
      * @var \Buzz\Control\Objects\Exhibitor\Answer[]
      */
     protected $answers;
+
+    /**
+     * @var \Buzz\Control\Objects\Exhibitor\PressRelease[]
+     */
+    protected $press_releases;
 
     /**
      * @var \Buzz\Control\Objects\Exhibitor\Property[]
@@ -386,6 +392,14 @@ class Exhibitor extends Base
     public function getCustomers()
     {
         return $this->customers;
+    }
+
+    /**
+     * @return PressRelease[]
+     */
+    public function getPressReleases()
+    {
+        return $this->press_releases;
     }
 
     /**
