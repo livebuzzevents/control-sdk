@@ -242,4 +242,19 @@ class SeminarService extends Service
 
         $this->call('get', "seminar/{$seminar->getId()}/customer/{$customer->getId()}/detach");
     }
+
+    /**
+     * @param Seminar  $seminar
+     * @param Customer $customer
+     */
+    public function detachCustomer(Seminar $seminar, Customer $customer)
+    {
+        $this->validateSeminar($seminar);
+
+        if (!$customer->getId()) {
+            throw new ErrorException('Customer id required!');
+        }
+
+        $this->call('get', "seminar/{$seminar->getId()}/customer/{$customer->getId()}/detach");
+    }
 }

@@ -236,86 +236,6 @@ class Seminar extends Base
     }
 
     /**
-     * Gets value of customers.
-     *
-     * @return \Buzz\Control\Objects\CustomerSeminar[]
-     */
-    public function getCustomers()
-    {
-        return $this->customers;
-    }
-
-    /**
-     * Sets value of customers.
-     *
-     * @param \Buzz\Control\Objects\CustomerSeminar[] $customers
-     */
-    public function setCustomers($customers)
-    {
-        $this->customers = $customers;
-    }
-
-    /**
-     * Gets value of speakers.
-     *
-     * @return \Buzz\Control\Objects\CustomerSeminar[]
-     */
-    public function getSpeakers()
-    {
-        return $this->speakers;
-    }
-
-    /**
-     * Sets value of speakers.
-     *
-     * @param \Buzz\Control\Objects\CustomerSeminar[] $speakers
-     */
-    public function setSpeakers($speakers)
-    {
-        $this->speakers = $speakers;
-    }
-
-    /**
-     * Gets value of attendees.
-     *
-     * @return \Buzz\Control\Objects\CustomerSeminar[]
-     */
-    public function getAttendees()
-    {
-        return $this->attendees;
-    }
-
-    /**
-     * Sets value of attendees.
-     *
-     * @param \Buzz\Control\Objects\CustomerSeminar[] $attendees
-     */
-    public function setAttendees($attendees)
-    {
-        $this->attendees = $attendees;
-    }
-
-    /**
-     * Gets value of topics.
-     *
-     * @return \Buzz\Control\Objects\SeminarTopic[]
-     */
-    public function getTopics()
-    {
-        return $this->topics;
-    }
-
-    /**
-     * Sets value of topics.
-     *
-     * @param \Buzz\Control\Objects\SeminarTopic[] $topics
-     */
-    public function setTopics($topics)
-    {
-        $this->topics = $topics;
-    }
-
-    /**
      * Gets value of colour.
      *
      * @return string
@@ -333,5 +253,45 @@ class Seminar extends Base
     public function setColour($colour)
     {
         $this->colour = $colour;
+    }
+
+    /**
+     * Gets value of customers.
+     *
+     * @return \Buzz\Control\Objects\CustomerSeminar[]
+     */
+    public function getCustomers()
+    {
+        return $this->customers;
+    }
+
+    /**
+     * Gets value of speakers.
+     *
+     * @return \Buzz\Control\Objects\CustomerSeminar[]
+     */
+    public function getSpeakers()
+    {
+        return $this->speakers;
+    }
+
+    /**
+     * Gets value of attendees.
+     *
+     * @return \Buzz\Control\Objects\CustomerSeminar[]
+     */
+    public function getAttendees()
+    {
+        return $this->attendees;
+    }
+
+    /**
+     * Gets value of topics.
+     *
+     * @return \Buzz\Control\Objects\SeminarTopic[]
+     */
+    public function getTopics()
+    {
+        return $this->topics;
     }
 }
