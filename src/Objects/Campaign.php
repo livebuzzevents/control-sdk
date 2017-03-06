@@ -38,6 +38,16 @@ class Campaign extends Base
     protected $ends_at;
 
     /**
+     * @var DateTime
+     */
+    protected $show_starts_at;
+
+    /**
+     * @var DateTime
+     */
+    protected $show_ends_at;
+
+    /**
      * @var \Buzz\Control\Objects\File[]
      */
     protected $files;
@@ -120,6 +130,38 @@ class Campaign extends Base
     public function setEndsAt($ends_at)
     {
         $this->ends_at = $ends_at;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getShowStartsAt()
+    {
+        return $this->show_starts_at;
+    }
+
+    /**
+     * @param DateTime $show_starts_at
+     */
+    public function setShowStartsAt($show_starts_at)
+    {
+        $this->show_starts_at = $show_starts_at;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getShowEndsAt()
+    {
+        return $this->show_ends_at;
+    }
+
+    /**
+     * @param DateTime $ends_at
+     */
+    public function setShowEndsAt($show_ends_at)
+    {
+        $this->show_ends_at = $show_ends_at;
     }
 
     /**
