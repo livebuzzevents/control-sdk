@@ -48,6 +48,11 @@ class Campaign extends Base
     protected $show_ends_at;
 
     /**
+     * @var DateTime
+     */
+    protected $reg_ends_at;
+
+    /**
      * @var \Buzz\Control\Objects\File[]
      */
     protected $files;
@@ -162,6 +167,22 @@ class Campaign extends Base
     public function setShowEndsAt($show_ends_at)
     {
         $this->show_ends_at = $show_ends_at;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getRegEndsAt()
+    {
+        return $this->reg_ends_at;
+    }
+
+    /**
+     * @param DateTime $reg_ends_at
+     */
+    public function setRegEndsAt($reg_ends_at)
+    {
+        $this->reg_ends_at = $reg_ends_at;
     }
 
     /**
