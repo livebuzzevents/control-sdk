@@ -271,6 +271,11 @@ class Customer extends Base
     protected $created_seminars;
 
     /**
+     * @var \Buzz\Control\Objects\Order[]
+     */
+    protected $orders;
+
+    /**
      * @var \Buzz\Control\Objects\Customer\Tag[]
      */
     protected $tags;
@@ -438,6 +443,14 @@ class Customer extends Base
     public function setProperties($properties)
     {
         $this->properties = new Collection($properties);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrders()
+    {
+        return $this->orders;
     }
 
     /**
