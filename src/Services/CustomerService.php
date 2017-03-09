@@ -382,7 +382,18 @@ class CustomerService extends Service
             throw new ErrorException('Customer id required!');
         }
 
-        return $this->call('get', "customer/{$customer->getId()}/e-badge")['e-badge'];
+        $buffer = $this->call('get', "customer/{$customer->getId()}/e-badge");
+
+        header('Content-Type: application/pdf');
+        header('Content-disposition: inline; filename="badge.pdf"');
+        header('Cache-Control: public, must-revalidate, max-age=0');
+        header('Pragma: public');
+        header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+
+        echo $buffer;
+
+        return '';
     }
 
     /**
