@@ -372,6 +372,21 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
+     *
+     * @return string
+     * @throws ErrorException
+     */
+    public function getEBadge(Customer $customer)
+    {
+        if (!$customer->getId()) {
+            throw new ErrorException('Customer id required!');
+        }
+
+        return $this->call('get', "customer/{$customer->getId()}/e-badge")['e-badge'];
+    }
+
+    /**
+     * @param Customer $customer
      * @param array    $badgeStockConfiguration
      *
      * @return Customer
