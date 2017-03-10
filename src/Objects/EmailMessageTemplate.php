@@ -13,6 +13,21 @@ class EmailMessageTemplate extends Base
     use HasIdentifier;
 
     /**
+     * @var string
+     */
+    protected $html;
+
+    /**
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * @var string
+     */
+    protected $subject;
+
+    /**
      * @var \Buzz\Control\Objects\File[]
      */
     protected $files;
@@ -31,5 +46,53 @@ class EmailMessageTemplate extends Base
     public function setFiles($files)
     {
         $this->files = new Collection($files);
+    }
+
+    /**
+     * @return string
+     */
+    public function getHtml()
+    {
+        return $this->html;
+    }
+
+    /**
+     * @param string $html
+     */
+    public function setHtml($html)
+    {
+        $this->html = $html;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+
+    /**
+     * @param string $subject
+     */
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
     }
 }
