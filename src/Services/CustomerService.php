@@ -382,7 +382,7 @@ class CustomerService extends Service
             throw new ErrorException('Customer id required!');
         }
 
-        $buffer = $this->call('get', "customer/{$customer->getId()}/e-badge", null, false);
+        $buffer = $this->call('get', "customer/{$customer->getId()}/e-badge");
 
         header('Content-Type: application/pdf');
         header('Content-disposition: inline; filename="badge.pdf"');

@@ -34,15 +34,14 @@ class GuzzleClient implements Client
      * @param       $verb
      * @param       $url
      * @param array $request
-     * @param bool  $expect_json
      *
-     * @return mixed|string
+     * @return mixed
      * @throws ErrorException
      * @throws ResponseException
      * @throws ServerException
      * @throws UnauthorizedException
      */
-    public function request($verb, $url, array $request = [], $expect_json = true)
+    public function request($verb, $url, array $request = [])
     {
         try {
             $response = $this->guzzle->request(
@@ -57,18 +56,13 @@ class GuzzleClient implements Client
                 return $contents;
             }
 
-            if ($expect_json) {
-                $decodedResponse = json_decode($contents, true);
+            $decodedResponse = json_decode($contents, true);
 
-                if ((json_last_error() == JSON_ERROR_NONE)) {
-                    return $decodedResponse;
-                } else {
-                    throw new ResponseException('Unexpected error! Response not valid JSON!');
-                }
+            if ((json_last_error() == JSON_ERROR_NONE)) {
+                return $decodedResponse;
             } else {
-                return $contents;
+                throw new ResponseException('Unexpected error! Response not valid JSON!');
             }
-
         } catch (GuzzleClientException $e) {
             $response = $e->getResponse();
             $contents = $response->getBody()->getContents();

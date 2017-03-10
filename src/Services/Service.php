@@ -210,7 +210,6 @@ abstract class Service
      * @param       $verb
      * @param       $method
      * @param array $request
-     * @param bool  $expect_json
      *
      * @return mixed
      * @throws \Buzz\Control\Exceptions\ErrorException
@@ -218,7 +217,7 @@ abstract class Service
      * @throws \Buzz\Control\Exceptions\ServerException
      * @throws \Buzz\Control\Exceptions\UnauthorizedException
      */
-    protected final function call($verb, $method, array $request = null, $expect_json = true)
+    protected final function call($verb, $method, array $request = null)
     {
         if (is_null($request)) {
             $request = [];
@@ -244,8 +243,7 @@ abstract class Service
         return $this->client->request(
             $verb,
             $this->getUrl($method),
-            $request,
-            $expect_json
+            $request
         );
     }
 
