@@ -34,6 +34,7 @@ class GuzzleClient implements Client
      * @param       $verb
      * @param       $url
      * @param array $request
+     * @param array $headers
      *
      * @return mixed
      * @throws ErrorException
@@ -41,13 +42,13 @@ class GuzzleClient implements Client
      * @throws ServerException
      * @throws UnauthorizedException
      */
-    public function request($verb, $url, array $request = [])
+    public function request($verb, $url, array $request = [], array $headers = [])
     {
         try {
             $response = $this->guzzle->request(
                 $verb,
                 $url,
-                $this->buildRequest($verb, $request)
+                $this->buildRequest($verb, $request, $headers)
             );
 
             $contents = $response->getBody()->getContents();
@@ -77,7 +78,7 @@ class GuzzleClient implements Client
             } elseif ($response->getStatusCode() === 401) {
                 throw new UnauthorizedException($contents);
             } elseif ($response->getStatusCode() === 404) {
-                throw new ResponseException('Resource not found! Check you host!');
+                throw new ResponseException('Resource not found! Check your host!');
             } else {
                 throw new ResponseException('Unexpected error! Invalid response code!');
             }
@@ -96,16 +97,13 @@ class GuzzleClient implements Client
      * Build on top of the request and sends the required data for rest authorization
      *
      * @param array $request
+     * @param array $headers
      *
      * @return array
      */
-    protected function buildRequest($verb, array $request = [])
+    protected function buildRequest($verb, array $request = [], array $headers = [])
     {
-        $result = [
-            'headers' => [
-                'Accept' => 'application/json',
-            ],
-        ];
+        $result = ['headers' => array_merge($headers, ['Accept' => 'application/json'])];
 
         if (in_array($verb, ['post', 'put'])) {
             foreach ($request as $key => $value) {

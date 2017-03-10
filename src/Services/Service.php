@@ -52,6 +52,11 @@ abstract class Service
     protected $filter;
 
     /**
+     * @var array
+     */
+    protected $headers;
+
+    /**
      * @param Buzz   $buzz
      * @param Client $client
      */
@@ -160,6 +165,25 @@ abstract class Service
     }
 
     /**
+     * @return mixed
+     */
+    public function getHeaders()
+    {
+        return $this->headers ?: [];
+    }
+
+    /**
+     * @param array $headers
+     * @return $this
+     */
+    public function setHeaders(array $headers)
+    {
+        $this->headers = $headers;
+
+        return $this;
+    }
+
+    /**
      * @param string $keyBy
      *
      * @return $this
@@ -243,7 +267,8 @@ abstract class Service
         return $this->client->request(
             $verb,
             $this->getUrl($method),
-            $request
+            $request,
+            $this->getHeaders()
         );
     }
 
