@@ -15,7 +15,7 @@ class EmailMessage extends Base
     /**
      * @var \Buzz\Control\Objects\EmailMessageTemplate
      */
-    protected $email_message_template;
+    protected $template;
 
     /**
      * @var string
@@ -45,9 +45,9 @@ class EmailMessage extends Base
     /**
      * @return \Buzz\Control\Objects\EmailMessageTemplate
      */
-    public function getEmailMessageTemplate()
+    public function getTemplate()
     {
-        return $this->email_message_template;
+        return $this->template;
     }
 
     /**
