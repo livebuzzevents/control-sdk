@@ -286,6 +286,11 @@ class Customer extends Base
     protected $files;
 
     /**
+     * @var \Buzz\Control\Objects\EmailMessage[]
+     */
+    protected $email_messages;
+
+    /**
      * @return string
      */
     public function getOwnerId()
@@ -1091,5 +1096,13 @@ class Customer extends Base
     public function setFiles($files)
     {
         $this->files = new Collection($files);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmailMessages()
+    {
+        return $this->email_messages;
     }
 }

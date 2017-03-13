@@ -120,6 +120,11 @@ class Lead extends Base
     protected $cloned_lead;
 
     /**
+     * @var \Buzz\Control\Objects\EmailMessage[]
+     */
+    protected $email_messages;
+
+    /**
      * @return mixed
      */
     public function getSocials()
@@ -509,5 +514,13 @@ class Lead extends Base
     public function setIsAClone($is_a_clone)
     {
         $this->is_a_clone = $is_a_clone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmailMessages()
+    {
+        return $this->email_messages;
     }
 }
