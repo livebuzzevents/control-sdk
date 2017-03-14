@@ -2,6 +2,8 @@
 
 namespace Buzz\Control\Objects;
 
+use Buzz\Control\Collection;
+
 /**
  * Class Seminar
  *
@@ -88,6 +90,11 @@ class Seminar extends Base
      * @var \Buzz\Control\Objects\SeminarTopic[]
      */
     protected $topics;
+
+    /**
+     * @var \Buzz\Control\Objects\File[]
+     */
+    protected $files;
 
     /**
      * Gets value of capacity.
@@ -303,5 +310,21 @@ class Seminar extends Base
     public function getTopics()
     {
         return $this->topics;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param File[]|Collection $files
+     */
+    public function setFiles($files)
+    {
+        $this->files = new Collection($files);
     }
 }
