@@ -58,6 +58,16 @@ class Seminar extends Base
      */
     protected $colour;
 
+    /**
+     * @var int
+     */
+    protected $spacesTaken;
+
+    /**
+     * @var int
+     */
+    protected $spacesAvailable;
+
     //RELATIONS
     /**
      * @var \Buzz\Control\Objects\CustomerSeminar[]
