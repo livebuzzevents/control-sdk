@@ -97,6 +97,35 @@ class Seminar extends Base
     protected $files;
 
     /**
+     * Get amount of spaces left
+     *
+     * @var int
+     */
+    public function getSpacesAvailable()
+    {
+        return $this->spacesAvailable;
+    }
+
+    /**
+     * Get amount of spaces left
+     *
+     * @var int
+     */
+    public function setSpacesAvailable($spaces)
+    {
+        $this->spacesAvailable = $spaces;
+    }
+
+    /**
+     * Get amount of spaces allocated
+     *
+     * @var int
+     */
+    public function getSpacesTaken()
+    {
+        return $this->spacesTaken;
+    }
+    /**
      * Gets value of capacity.
      *
      * @return int
