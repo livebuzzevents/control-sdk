@@ -4,6 +4,7 @@ namespace Buzz\Control\Services;
 
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Customer;
+use Buzz\Control\Objects\CustomerSeminar;
 use Buzz\Control\Objects\Seminar;
 use Buzz\Control\Objects\Topic;
 
@@ -178,6 +179,27 @@ class SeminarService extends Service
         }
 
         $this->call('get', $url);
+    }
+
+    /**
+     * @param Seminar  $seminar
+     * @param Customer $creator
+     * @param string   $role
+     * @param string   $type
+     *
+     * @throws ErrorException
+     */
+    public function unallocateSpace(Seminar $seminar, CustomerSeminar $customerSeminar)
+    {
+        $this->validateSeminar($seminar);
+
+        if (!$customerSeminar->getId()) {
+            throw new ErrorException('Customer seminar id required!');
+        }
+
+        $url = "seminar/{$seminar->getId()}/customer-seminar/{$customerSeminar->getId()}";
+
+        $this->call('delete', $url);
     }
 
     /**
