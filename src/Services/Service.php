@@ -60,7 +60,7 @@ abstract class Service
      * @param Buzz   $buzz
      * @param Client $client
      */
-    public final function __construct(Buzz $buzz, Client $client = null)
+    public function __construct(Buzz $buzz, Client $client = null)
     {
         $this->buzz   = $buzz;
         $this->client = $client ?: new GuzzleClient(new Guzzle([
