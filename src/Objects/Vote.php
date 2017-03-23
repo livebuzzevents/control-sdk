@@ -19,6 +19,11 @@ class Vote extends Base
     /**
      * @var string
      */
+    protected $group_id;
+
+    /**
+     * @var string
+     */
     protected $model_type;
 
     /**
@@ -50,6 +55,22 @@ class Vote extends Base
     public function setGroup(VoteGroup $group)
     {
         $this->group = $group;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGroupId()
+    {
+        return $this->group_id;
+    }
+
+    /**
+     * @param string $group_id
+     */
+    public function setGroupId($group_id)
+    {
+        $this->group_id = $group_id;
     }
 
     /**
