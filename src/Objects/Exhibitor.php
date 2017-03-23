@@ -137,6 +137,18 @@ class Exhibitor extends Base
     protected $tags;
 
     /**
+     * @var \Buzz\Control\Objects\Link[]
+     */
+    protected $videos;
+
+    public function __construct($data)
+    {
+        parent::__construct($data);
+
+        $this->videos = $this->getVideos();
+    }
+
+    /**
      * @return array
      */
     public function getAddresses()
@@ -504,5 +516,15 @@ class Exhibitor extends Base
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * @return \Buzz\Control\Objects\Link[]|Collection|null
+     */
+    public function getVideos()
+    {
+        return $this->getLinks() ? $this->getLinks()->filter(function ($link) {
+            return in_array($link->type, ['youtube', 'vimeo']);
+        }) : null;
     }
 }
