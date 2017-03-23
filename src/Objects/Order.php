@@ -104,6 +104,11 @@ class Order extends Base
     protected $amount_due;
 
     /**
+     * @var int
+     */
+    protected $balance;
+
+    /**
      * @var string
      */
     protected $amount_charged_formatted;
@@ -132,6 +137,11 @@ class Order extends Base
      * @var string
      */
     protected $amount_due_formatted;
+
+    /**
+     * @var string
+     */
+    protected $balance_formatted;
 
     /**
      * @var string
@@ -389,6 +399,38 @@ class Order extends Base
     public function setAmountRefundedFormatted($amount_refunded_formatted)
     {
         $this->amount_refunded_formatted = $amount_refunded_formatted;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBalance()
+    {
+        return $this->balance;
+    }
+
+    /**
+     * @param int $balance
+     */
+    public function setBalance($balance)
+    {
+        $this->balance = $balance;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBalanceFormatted()
+    {
+        return $this->balance_formatted;
+    }
+
+    /**
+     * @param string $balance_formatted
+     */
+    public function setBalanceFormatted($balance_formatted)
+    {
+        $this->balance_formatted = $balance_formatted;
     }
 
     /**
