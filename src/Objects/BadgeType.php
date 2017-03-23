@@ -17,6 +17,11 @@ class BadgeType extends Base
     protected $name;
 
     /**
+     * @var string
+     */
+    protected $print_name;
+
+    /**
      * @var array
      */
     protected $settings;
@@ -27,6 +32,14 @@ class BadgeType extends Base
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrintName()
+    {
+        return $this->print_name;
     }
 
     /**
