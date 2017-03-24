@@ -3,6 +3,7 @@
 use Buzz\Control\Collection;
 use Buzz\Control\Objects\Traits\BelongsToOrder;
 use Buzz\Control\Objects\Traits\HasIdentifier;
+use Buzz\Control\Objects\Traits\HasProduct;
 
 /**
  * Class OrderProduct
@@ -11,7 +12,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  */
 class OrderProduct extends Base
 {
-    use BelongsToOrder, HasIdentifier;
+    use BelongsToOrder, HasProduct, HasIdentifier;
 
     /**
      * @var string
