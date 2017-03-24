@@ -80,6 +80,11 @@ class Charge extends Base
     protected $payment_provider_id;
 
     /**
+     * @var \Buzz\Control\Objects\PaymentProvider
+     */
+    protected $payment_provider;
+
+    /**
      * @var string
      */
     protected $reference_id;
@@ -441,6 +446,22 @@ class Charge extends Base
     public function setPaymentProviderId($payment_provider_id)
     {
         $this->payment_provider_id = $payment_provider_id;
+    }
+
+    /**
+     * @return \Buzz\Control\Objects\PaymentProvider
+     */
+    public function getPaymentProvider()
+    {
+        return $this->payment_provider;
+    }
+
+    /**
+     * @param PaymentProvider $payment_provider
+     */
+    public function setPaymentProvider(PaymentProvider $payment_provider)
+    {
+        $this->payment_provider = $payment_provider;
     }
 
     /**
