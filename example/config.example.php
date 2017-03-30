@@ -1,9 +1,9 @@
 <?php
 
-$api_key      = '55bb6fa8e9eb7';
+$api_key      = '';
 $protocol     = 'http';
-$domain       = 'control.localhost';
+$domain       = 'control.n4';
 $proxy        = null;
-$organization = 'demo';
-$campaign     = 'demo-2016';
+$organization = '';
+$campaign     = '';
 $showErrors   = false;

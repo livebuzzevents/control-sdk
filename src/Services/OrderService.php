@@ -83,4 +83,60 @@ class OrderService extends Service
 
         return $this->callAndCast('get', "order/{$order->getId()}/complete");
     }
+
+    /**
+     * @param Order  $order
+     * @param string $tag
+     *
+     * @return Order
+     * @throws ErrorException
+     */
+    public function tag(Order $order, $tag)
+    {
+        if (!$order->getId()) {
+            throw new ErrorException('Order id required!');
+        }
+
+        if (!$tag) {
+            throw new ErrorException('Tag is required!');
+        }
+
+        return $this->callAndCast('post', "order/{$order->getId()}/tag/{$tag}");
+    }
+
+    /**
+     * @param Order  $order
+     * @param string $tag
+     *
+     * @return Order
+     * @throws ErrorException
+     */
+    public function untag(Order $order, $tag)
+    {
+        if (!$order->getId()) {
+            throw new ErrorException('Order id required!');
+        }
+
+        if (!$tag) {
+            throw new ErrorException('Tag is required!');
+        }
+
+        return $this->callAndCast('delete', "order/{$order->getId()}/tag/{$tag}");
+    }
+
+    /**
+     * @param Order $order
+     * @param array $tags
+     *
+     * @return Order
+     * @throws ErrorException*
+     */
+    public function syncTags(Order $order, array $tags = [])
+    {
+        if (!$order->getId()) {
+            throw new ErrorException('Order id required!');
+        }
+
+        return $this->callAndCast('post', "order/{$order->getId()}/tags", compact('tags'));
+    }
 }

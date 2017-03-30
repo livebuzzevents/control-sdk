@@ -6,31 +6,34 @@ set_time_limit(0);
 
 $service = new \Buzz\Control\Services\CustomerService($buzz);
 
-$companies = [
-    'fresh',
-    'The Hollywood Special Effects Show',
-    'Gastronaut',
-    'MARS (Gastronaut)',
-    'LiveBuzz',
-];
-
-$customers = $service->where('campaign.identifier', 'is', 'bbf16')
-    ->where('badgeType.identifier', 'is', 'crew')
-    ->where('customer.company', 'is', $companies[4])
+$customers = $service
+    ->where('badgeType.identifier', 'is', 'volunteer-events')
+    ->where('answers.options.questionOption.identifier', 'is', 'saturday')
     ->perPage(1000)
+    ->order('last_name')
     ->getMany();
 
-dd($customers->toArray());
+//dd($customers->getTotal());
 
 foreach ($customers as $key => $customer) {
-    $service->smartPrint($customer, [
-        '3d44b10b-a9a5-4270-b178-6005354e0000' => [
-            ['id' => 1, 'priority' => 1],
-        ],
-    ]);
+    while (true) {
+        try {
+            $service->smartPrint($customer, [
+                '7f6c1452-3faa-4bfa-a754-dce2a8ef0004' => [
+                    ['id' => 2, 'priority' => 1],
+                ],
+            ]);
 
-    // 0.5 seconds
-    usleep(2000000);
+            print 'Printed: ' . $customer->id . PHP_EOL;
+
+            usleep(2000000);
+
+            break;
+        } catch (\Exception $e) {
+
+            print 'Error: ' . $customer->id . '||' . $e->getMessage() . PHP_EOL;
+        }
+    }
 }
 
 echo '<pre>';
