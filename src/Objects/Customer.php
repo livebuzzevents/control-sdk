@@ -717,11 +717,7 @@ class Customer extends Base
      */
     public function setNationality($nationality)
     {
-        if (strlen($nationality) !== 2) {
-            throw new ErrorException("Nationality must be in ISO 3166 format '{$nationality}'");
-        }
-
-        $this->nationality = mb_strtoupper($nationality);
+        $this->nationality = $nationality;
     }
 
     /**
@@ -739,11 +735,7 @@ class Customer extends Base
      */
     public function setLanguage($language)
     {
-        if (strlen($language) !== 2) {
-            throw new ErrorException("Language must be in ISO 639 format '{$language}'");
-        }
-
-        $this->language = mb_strtolower($language);
+        $this->language = $language;
     }
 
     /**
