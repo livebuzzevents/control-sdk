@@ -118,4 +118,60 @@ class LeadService extends Service
 
         return $this->callAndCastMany('post', 'leads', ['batch' => $leads]);
     }
+
+    /**
+     * @param Lead   $lead
+     * @param string $tag
+     *
+     * @return Lead
+     * @throws ErrorException
+     */
+    public function tag(Lead $lead, $tag)
+    {
+        if (!$lead->getId()) {
+            throw new ErrorException('Lead id required!');
+        }
+
+        if (!$tag) {
+            throw new ErrorException('Tag is required!');
+        }
+
+        return $this->callAndCast('post', "lead/{$lead->getId()}/tag/{$tag}");
+    }
+
+    /**
+     * @param Lead   $lead
+     * @param string $tag
+     *
+     * @return Lead
+     * @throws ErrorException
+     */
+    public function untag(Lead $lead, $tag)
+    {
+        if (!$lead->getId()) {
+            throw new ErrorException('Lead id required!');
+        }
+
+        if (!$tag) {
+            throw new ErrorException('Tag is required!');
+        }
+
+        return $this->callAndCast('delete', "lead/{$lead->getId()}/tag/{$tag}");
+    }
+
+    /**
+     * @param Lead  $lead
+     * @param array $tags
+     *
+     * @return Lead
+     * @throws ErrorException*
+     */
+    public function syncTags(Lead $lead, array $tags = [])
+    {
+        if (!$lead->getId()) {
+            throw new ErrorException('Lead id required!');
+        }
+
+        return $this->callAndCast('post', "lead/{$lead->getId()}/tags", compact('tags'));
+    }
 }
