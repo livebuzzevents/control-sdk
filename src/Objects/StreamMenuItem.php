@@ -87,6 +87,11 @@ class StreamMenuItem extends Base
     protected $files;
 
     /**
+     * @var \Buzz\Control\Objects\StreamPageQuestion[]
+     */
+    protected $questions;
+
+    /**
      * @return string
      */
     public function getParentId()
@@ -300,5 +305,13 @@ class StreamMenuItem extends Base
     public function setFiles($files)
     {
         $this->files = new Collection($files);
+    }
+
+    /**
+     * @return \Buzz\Control\Objects\StreamPageQuestion[]|Collection
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
     }
 }
