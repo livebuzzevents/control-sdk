@@ -92,6 +92,11 @@ class StreamMenuItem extends Base
     protected $questions;
 
     /**
+     * @var array
+     */
+    protected $settings;
+
+    /**
      * @return string
      */
     public function getParentId()
@@ -313,5 +318,21 @@ class StreamMenuItem extends Base
     public function getQuestions()
     {
         return $this->questions;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSettings()
+    {
+        return $this->settings;
+    }
+
+    /**
+     * @param array $settings
+     */
+    public function setSetting(array $settings)
+    {
+        $this->settings = $settings;
     }
 }
