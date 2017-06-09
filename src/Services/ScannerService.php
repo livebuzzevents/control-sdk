@@ -94,4 +94,14 @@ class ScannerService extends Service
 
         return $this->callAndCastMany('post', "scanners", ['batch' => $scanners]);
     }
+
+    /**
+     * @param array $options
+     *
+     * @return Scanner
+     */
+    public function createSmartScan(array $options)
+    {
+        return $this->callAndCast('post', 'scanner/smart-scan', $options);
+    }
 }
