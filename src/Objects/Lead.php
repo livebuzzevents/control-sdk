@@ -2,6 +2,7 @@
 
 use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
+use Buzz\Control\Objects\Lead\Tag;
 use Buzz\Control\Objects\Traits\HasMatchId;
 use Buzz\Control\Objects\Traits\HasSource;
 
@@ -123,6 +124,11 @@ class Lead extends Base
      * @var \Buzz\Control\Objects\EmailMessage[]
      */
     protected $email_messages;
+
+    /**
+     * @var \Buzz\Control\Objects\Lead\Tag[]
+     */
+    protected $tags;
 
     /**
      * @return mixed
@@ -522,5 +528,13 @@ class Lead extends Base
     public function getEmailMessages()
     {
         return $this->email_messages;
+    }
+
+    /**
+     * @return Tag[]|Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

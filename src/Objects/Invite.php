@@ -4,6 +4,7 @@ use Buzz\Control\Objects\Traits\BelongsToCustomer;
 use Buzz\Control\Objects\Traits\BelongsToStream;
 use Buzz\Control\Objects\Traits\CreatedByCustomer;
 use Buzz\Control\Objects\Traits\CreatedByExhibitor;
+use Buzz\Control\Objects\Traits\HasBadgeType;
 
 /**
  * Class Affiliate
@@ -12,7 +13,7 @@ use Buzz\Control\Objects\Traits\CreatedByExhibitor;
  */
 class Invite extends Base
 {
-    use BelongsToStream, BelongsToCustomer, CreatedByCustomer, CreatedByExhibitor;
+    use BelongsToStream, BelongsToCustomer, CreatedByCustomer, CreatedByExhibitor, HasBadgeType;
 
     /**
      * @var string

@@ -119,7 +119,7 @@ class Filter
     {
         $params[] = true;
 
-        return $this->group(...$params);
+        return $this->addGroup(...$params);
     }
 
     /**
@@ -151,13 +151,18 @@ class Filter
     }
 
     /**
-     * @param ...$params
-     *
+     * @param array ...$params
      * @return Filter
      */
     public function orAdd(...$params)
     {
-        $params[] = true;
+        if (count($params) == 2) {
+            $params[] = null;
+        }
+
+        if (count($params) == 3) {
+            $params[] = true;
+        }
 
         return $this->add(...$params);
     }

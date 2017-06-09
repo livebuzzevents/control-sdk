@@ -138,4 +138,26 @@ class AnswerService extends Service
             'rules' => $rules,
         ]);
     }
+
+    /**
+     * @param array $answers
+     * @param array $rules
+     *
+     * @throws ErrorException
+     */
+    public function validateMany(array $answers, array $rules = [])
+    {
+        foreach ($answers as $key => $answer) {
+            if (!$answer->getId() && !$answer->getQuestionId() && !$answer->getQuestion()) {
+                throw new ErrorException('Answer id or Question id required!');
+            }
+
+            $answers[$key] = $answer->toArray();
+        }
+
+        return $this->callAndCastMany('post', "answers/validate-many", [
+            'batch' => $answers,
+            'rules' => $rules,
+        ]);
+    }
 }
