@@ -348,6 +348,35 @@ abstract class Service
     }
 
     /**
+     * @param          $count
+     * @param callable $callback
+     * @return bool
+     */
+    public function chunk($count, callable $callback)
+    {
+        $results = $this->perPage($count)->page($page = 1)->getMany();
+        $total   = $results->getTotal();
+
+        $processed = 0;
+
+        while (true) {
+            if (call_user_func($callback, $results) === false) {
+                return false;
+            }
+
+            $processed += $results->count();
+
+            if ($processed < $total) {
+                $results = $this->perPage($count)->page(++$page)->getMany();
+            } else {
+                break;
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * @param $key
      *
      * @return string
