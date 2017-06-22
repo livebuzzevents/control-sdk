@@ -381,6 +381,28 @@ abstract class Service
         return true;
     }
 
+    public function getAll($chunkSize = 250)
+    {
+        $items = [];
+
+        $this->chunk($chunkSize, function ($results) use (&$items) {
+            foreach ($results as $result) {
+                $items[] = $result;
+            }
+        });
+
+        $paging = new Paging();
+
+        $paging->setPage(1);
+        $paging->setTotal(count($items));
+        $paging->setLastPage(1);
+        $paging->setFrom(1);
+        $paging->setTo(count($items));
+        $paging->setItems($items);
+
+        return $paging;
+    }
+
     /**
      * @param $key
      *
