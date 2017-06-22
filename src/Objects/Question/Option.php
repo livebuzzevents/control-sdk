@@ -3,6 +3,7 @@
 use Buzz\Control\Objects\Base;
 use Buzz\Control\Objects\Traits\BelongsToQuestion;
 use Buzz\Control\Objects\Traits\HasIdentifier;
+use Buzz\Control\Objects\Traits\Translatable;
 
 /**
  * Class Option
@@ -11,7 +12,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  */
 class Option extends Base
 {
-    use BelongsToQuestion, HasIdentifier;
+    use BelongsToQuestion, HasIdentifier, Translatable;
 
     /**
      * @var string

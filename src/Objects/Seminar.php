@@ -14,6 +14,7 @@ class Seminar extends Base
     use Traits\BelongsToExhibitor;
     use Traits\HasIdentifier;
     use Traits\HasSource;
+    use Traits\Translatable;
 
     /**
      * @var int
@@ -125,6 +126,7 @@ class Seminar extends Base
     {
         return $this->spacesTaken;
     }
+
     /**
      * Gets value of capacity.
      *

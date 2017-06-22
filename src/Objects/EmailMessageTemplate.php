@@ -2,6 +2,7 @@
 
 use Buzz\Control\Collection;
 use Buzz\Control\Objects\Traits\HasIdentifier;
+use Buzz\Control\Objects\Traits\Translatable;
 
 /**
  * Class EmailMessageTemplate
@@ -10,7 +11,8 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  */
 class EmailMessageTemplate extends Base
 {
-    use HasIdentifier;
+    use HasIdentifier,
+        Translatable;
 
     /**
      * @var string

@@ -9,7 +9,8 @@ namespace Buzz\Control\Objects;
  */
 class Topic extends Base
 {
-    use Traits\HasIdentifier;
+    use Traits\HasIdentifier,
+        Traits\Translatable;
 
     /**
      * @var string

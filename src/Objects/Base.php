@@ -4,7 +4,6 @@ namespace Buzz\Control\Objects;
 
 use Buzz\Control\Arrayable;
 use Buzz\Control\Collection;
-use Buzz\Control\Objects\Traits\Translatable;
 use DateTime;
 use JsonSerializable;
 use ReflectionClass;
@@ -18,8 +17,6 @@ use ReflectionProperty;
  */
 abstract class Base implements Arrayable, JsonSerializable
 {
-    use Translatable;
-
     /**
      * @var string
      */
@@ -182,7 +179,7 @@ abstract class Base implements Arrayable, JsonSerializable
                 return new $type($value);
             }
         } elseif ($type === 'object') {
-            return (object) $value;
+            return (object)$value;
         } else { //all other types, including non specified arrays
             return $value;
         }

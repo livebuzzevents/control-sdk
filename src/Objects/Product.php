@@ -6,6 +6,7 @@ use Buzz\Control\Objects\Traits\HasActive;
 use Buzz\Control\Objects\Traits\HasDestination;
 use Buzz\Control\Objects\Traits\HasIdentifier;
 use Buzz\Control\Objects\Traits\HasPropertiesCommon;
+use Buzz\Control\Objects\Traits\Translatable;
 
 /**
  * Class Product
@@ -14,7 +15,7 @@ use Buzz\Control\Objects\Traits\HasPropertiesCommon;
  */
 class Product extends Base
 {
-    use BelongsToExhibitor, HasIdentifier, HasDestination, HasActive, HasPropertiesCommon;
+    use BelongsToExhibitor, HasIdentifier, HasDestination, HasActive, HasPropertiesCommon, Translatable;
 
     /**
      * @var string

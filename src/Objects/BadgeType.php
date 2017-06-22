@@ -1,6 +1,7 @@
 <?php namespace Buzz\Control\Objects;
 
 use Buzz\Control\Objects\Traits\HasIdentifier;
+use Buzz\Control\Objects\Traits\Translatable;
 
 /**
  * Class BadgeType
@@ -9,7 +10,8 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  */
 class BadgeType extends Base
 {
-    use HasIdentifier;
+    use HasIdentifier,
+        Translatable;
 
     /**
      * @var string

@@ -3,6 +3,7 @@
 use Buzz\Control\Collection;
 use Buzz\Control\Objects\Traits\BelongsToExhibitor;
 use Buzz\Control\Objects\Traits\HasIdentifier;
+use Buzz\Control\Objects\Traits\Translatable;
 
 /**
  * Class Question
@@ -11,7 +12,7 @@ use Buzz\Control\Objects\Traits\HasIdentifier;
  */
 class Question extends Base
 {
-    use BelongsToExhibitor, HasIdentifier;
+    use BelongsToExhibitor, HasIdentifier, Translatable;
 
     /**
      * @var string
