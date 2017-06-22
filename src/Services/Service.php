@@ -354,12 +354,17 @@ abstract class Service
     /**
      * @param          $count
      * @param callable $callback
-     *
+     * @param array    ...$parameters
      * @return bool
+     * @throws ErrorException
      */
-    public function chunk($count, callable $callback)
+    public function chunk($count, callable $callback, ...$parameters)
     {
-        $results = $this->perPage($count)->page($page = 1)->getMany();
+        if (!method_exists($this, 'getMany')) {
+            throw new ErrorException('This service does not support chunk()');
+        }
+
+        $results = $this->perPage($count)->page($page = 1)->getMany(...$parameters);
         $total   = $results->getTotal();
 
         $processed = 0;
@@ -381,15 +386,24 @@ abstract class Service
         return true;
     }
 
-    public function getAll($chunkSize = 250)
+    /**
+     * @param array ...$parameters
+     * @return Paging
+     * @throws ErrorException
+     */
+    public function getAll(...$parameters)
     {
+        if (!method_exists($this, 'getMany')) {
+            throw new ErrorException('This service does not support getAll()');
+        }
+
         $items = [];
 
-        $this->chunk($chunkSize, function ($results) use (&$items) {
+        $this->chunk($this->settings['per_page'], function ($results) use (&$items) {
             foreach ($results as $result) {
                 $items[] = $result;
             }
-        });
+        }, ...$parameters);
 
         $paging = new Paging();
 
