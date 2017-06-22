@@ -174,6 +174,7 @@ abstract class Service
 
     /**
      * @param array $headers
+     *
      * @return $this
      */
     public function setHeaders(array $headers)
@@ -264,11 +265,14 @@ abstract class Service
             $request['_settings']['stream'] = $this->buzz->getStream();
         }
 
+        $headers                    = $this->getHeaders();
+        $headers['Accept-Language'] = $this->buzz->getCredentials()->getLanguage();
+
         return $this->client->request(
             $verb,
             $this->getUrl($method),
             $request,
-            $this->getHeaders()
+            $headers
         );
     }
 
@@ -350,6 +354,7 @@ abstract class Service
     /**
      * @param          $count
      * @param callable $callback
+     *
      * @return bool
      */
     public function chunk($count, callable $callback)

@@ -22,6 +22,7 @@ $credentials->setDomain($domain);
 $credentials->setProtocol($protocol);
 $credentials->setOrganization($organization);
 $credentials->setCampaign($campaign);
+$credentials->setLanguage($language);
 $credentials->setVerifySsl(false);
 $credentials->setProxy($proxy);
 

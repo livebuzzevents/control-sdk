@@ -4,6 +4,7 @@ namespace Buzz\Control\Objects;
 
 use Buzz\Control\Arrayable;
 use Buzz\Control\Collection;
+use Buzz\Control\Objects\Traits\Translatable;
 use DateTime;
 use JsonSerializable;
 use ReflectionClass;
@@ -17,6 +18,8 @@ use ReflectionProperty;
  */
 abstract class Base implements Arrayable, JsonSerializable
 {
+    use Translatable;
+
     /**
      * @var string
      */
@@ -162,7 +165,7 @@ abstract class Base implements Arrayable, JsonSerializable
      * @param $type
      * @param $value
      *
-     * @return DateTime|float|int
+     * @return DateTime|float|int|object
      */
     private static function castSingleProperty($type, $value)
     {
@@ -178,6 +181,8 @@ abstract class Base implements Arrayable, JsonSerializable
             } else {
                 return new $type($value);
             }
+        } elseif ($type === 'object') {
+            return (object) $value;
         } else { //all other types, including non specified arrays
             return $value;
         }

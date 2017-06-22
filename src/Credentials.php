@@ -1,5 +1,7 @@
 <?php namespace Buzz\Control;
 
+use Buzz\Control\Exceptions\ErrorException;
+
 /**
  * Class Credentials
  *
@@ -33,6 +35,11 @@ class Credentials
      * @var string
      */
     protected $version = 'rest/v2';
+
+    /**
+     * @var string
+     */
+    protected $language = 'en';
 
     /**
      * @var string
@@ -136,6 +143,24 @@ class Credentials
     public function setDomain($domain)
     {
         $this->domain = $domain;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLanguage(): string
+    {
+        return $this->language;
+    }
+
+    /**
+     * @param string $language
+     *
+     * @throws ErrorException
+     */
+    public function setLanguage(string $language)
+    {
+        $this->language = $language;
     }
 
     /**

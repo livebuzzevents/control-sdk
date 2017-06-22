@@ -1,9 +1,10 @@
 <?php
 
 $api_key      = '55bb6fa8e9eb7';
-$protocol     = 'https';
-$domain       = 'control.buzz';
+$protocol     = 'http';
+$domain       = 'control.localhost';
 $proxy        = null;
-$organization = 'lofa-ltd';
-$campaign     = 'solex-2017';
+$organization = 'broadway-events';
+$campaign     = 'child-care-manchester';
+$language     = 'bg';
 $showErrors   = false;

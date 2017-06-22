@@ -8,4 +8,4 @@ require_once '../bootstrap.php';
 
 $service  = new \Buzz\Control\Services\QuestionService($buzz);
 
-dd($service->getByIdentifiers(['abc']));
+dd($service->getByIdentifiers(['are-you-interested-in-any-of-the-following'])->first()->translation);
