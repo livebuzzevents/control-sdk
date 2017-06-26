@@ -365,7 +365,12 @@ abstract class Service
         }
 
         $results = $this->perPage($count)->page($page = 1)->getMany(...$parameters);
-        $total   = $results->getTotal();
+
+        if ($results instanceof Paging) {
+            $total = $results->getTotal();
+        } else {
+            throw new ErrorException('chunk() does not support transformation before response, such as keyBy()');
+        }
 
         $processed = 0;
 
