@@ -246,9 +246,9 @@ class CustomerService extends Service
             throw new ErrorException('Customer id and Invite id required!');
         }
 
-        $exhibitors = $this->call('get', "customer/{$customer->getId()}/invite/{$invite->getId()}/attach");
+        $invite = $this->call('get', "customer/{$customer->getId()}/invite/{$invite->getId()}/attach");
 
-        return $this->castMany($exhibitors, Exhibitor::class);
+        return $this->cast($invite, Invite::class);
     }
 
     /**
