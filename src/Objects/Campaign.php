@@ -58,6 +58,26 @@ class Campaign extends Base
     protected $files;
 
     /**
+     * @var string
+     */
+    protected $multilingual;
+
+    /**
+     * @var string
+     */
+    protected $language;
+
+    /**
+     * @var array
+     */
+    protected $additional_languages;
+
+    /**
+     * @var \Buzz\Control\Objects\Language[]
+     */
+    protected $supported_languages;
+
+    /**
      * @return string
      */
     public function getName()
@@ -199,5 +219,53 @@ class Campaign extends Base
     public function setFiles($files)
     {
         $this->files = new Collection($files);
+    }
+
+    /**
+     * @return string
+     */
+    public function getMultilingual()
+    {
+        return $this->multilingual;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * @param string $language
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAdditionalLanguages()
+    {
+        return $this->additional_languages;
+    }
+
+    /**
+     * @param array $additional_languages
+     */
+    public function setAdditionalLanguages($additional_languages)
+    {
+        $this->additional_languages = $additional_languages;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSupportedLanguages()
+    {
+        return $this->supported_languages;
     }
 }
