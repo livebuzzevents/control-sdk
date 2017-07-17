@@ -1,65 +1,87 @@
 <?php
 
-namespace Buzz\Control;
+namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Service;
+use JTDSoft\EssentialsSdk\Core\Cast;
+use JTDSoft\EssentialsSdk\Core\Collection;
 use JTDSoft\EssentialsSdk\Core\Object;
 
 /**
  * Class Customer
  *
- * @property string    $id
- * @property string    $username
- * @property string    $password
- * @property bool      $has_password
- * @property string    $remember_token
- * @property string    $avatar
+ * @property string    $exhibitor_id
+ * @property string    $import_id
+ * @property string    $badge_type_id
+ * @property string    $owner_id
+ * @property string    $publish
+ * @property bool      $is_managed
+ * @property bool      $manages_customers
+ * @property int       $managed_customers_count
+ * @property string    $identifier
  * @property string    $email
+ * @property string    $source
+ * @property string    $source_id
+ * @property string    $biography
+ * @property string    $barcode
+ * @property string    $qrcode
+ * @property string    $exhibitor_role
+ * @property string    $username
+ * @property bool      $has_password
+ * @property string    $password
  * @property string    $title
+ * @property string    $name
  * @property string    $first_name
  * @property string    $middle_name
  * @property string    $last_name
  * @property string    $job_title
  * @property string    $company
- * @property string    $name
  * @property string    $sex
- * @property string    $nationality
  * @property string    $language
+ * @property string    $nationality
+ * @property string    $status
+ * @property string    $registration_type
+ * @property string    $registration_social_provider
+ * @property string    $attended
+ * @property bool      $printable
+ * @property bool      $badge_printed
+ * @property bool      $badge_preprinted
+ * @property bool      $badge_printed_onsite
+ * @property bool      $badge_viewed
+ * @property string    $is_a_clone
+ * @property string    $cloned_id
+ * @property string    $cloned_type
+ * @property string    $cloned_campaign_id
+ * @property string    $remember_token
  * @property \DateTime $updated_at
  * @property \DateTime $created_at
  *
- * @package Identity\Contract\Objects
  */
 class Customer extends Object
 {
-    /**
-     * @param string $id
-     * @param array  $expand
-     *
-     * @return Customer
-     */
-    public static function find(string $id, array $expand = [])
+    public static function find(string $id, array $expand = []): ?Customer
     {
-        return (new Service())->callAndCast(self::class, 'get', "customers/{$id}", compact('expand'));
+        return Cast::single(self::class, (new Service())->get("customers/{$id}", compact('expand')));
     }
 
-    public static function get(array $expand = [], array $options = [])
+    public static function get(array $expand = [], array $options = []): Collection
     {
-        return (new Service())->callAndCast(self::class, 'get', "customers", compact('expand', 'options'));
+        return Cast::many(self::class, (new Service())->get("customers", compact('expand', 'options')));
     }
 
-    public static function first(array $expand = [], array $options = [])
+    public static function first(array $expand = [], array $options = []): ?Customer
     {
         return self::get($expand, $options)->first();
     }
 
     public static function saveMany($customers, array $expand = [])
     {
-        return (new Service())->callAndCast(self::class, 'post', "customers", $customers + compact('expand'));
+        return Cast::many(self::class, (new Service())->post("customers", $customers + compact('expand')));
     }
 
     public static function deleteMany(array $options = [])
     {
-        return (new Service())->call('delete', "customers", compact('options'));
+        return (new Service())->delete("customers", compact('options'));
     }
 
     public static function create(array $attributes)
@@ -75,18 +97,18 @@ class Customer extends Object
     {
         if ($this->id) {
             $this->copyFromArray(
-                (new Service())->call('put', "customers/{$this->id}", $this->data + compact('expand'))
+                (new Service())->put("customers/{$this->id}", $this->data + compact('expand'))
             );
         } else {
             $this->copyFromArray(
-                (new Service())->call('post', "customers", $this->data + compact('expand'))
+                (new Service())->post("customers", $this->data + compact('expand'))
             );
         }
     }
 
     public function delete()
     {
-        return (new Service())->call('delete', "customers/{$this->id}");
+        return (new Service())->delete("customers/{$this->id}");
     }
 
     public static function login(array $credentials)
@@ -106,6 +128,6 @@ class Customer extends Object
 
         $credentials['user_information'] = $user_information;
 
-        return (new Service())->callAndCast(self::class, 'get', "customers/login", $credentials);
+        return Cast::single(self::class, (new Service())->get("customers/login", $credentials));
     }
 }

@@ -14,27 +14,15 @@ if ($showErrors) {
     error_reporting(E_ALL);
 }
 
-$buzz = new \Buzz\Control\Buzz();
+\Buzz\Control\Service::setApiKey($api_key);
+\Buzz\Control\Service::setDomain($domain);
+\Buzz\Control\Service::setProtocol($protocol);
+\Buzz\Control\Service::setOrganization($organization);
+\Buzz\Control\Service::setCampaign($campaign);
+\Buzz\Control\Service::setLanguage($language);
+\Buzz\Control\Service::setVerifySsl(false);
+\Buzz\Control\Service::setProxy($proxy);
 
-$credentials = new \Buzz\Control\Credentials();
-$credentials->setApiKey($api_key);
-$credentials->setDomain($domain);
-$credentials->setProtocol($protocol);
-$credentials->setOrganization($organization);
-$credentials->setCampaign($campaign);
-$credentials->setLanguage($language);
-$credentials->setVerifySsl(false);
-$credentials->setProxy($proxy);
-
-$buzz->setCredentials($credentials);
-
-//$stream = new \Buzz\Control\Objects\Stream();
-//$stream->setIdentifier('visitor-registration');
-//$stream->setCampaign($campaign);
-//$buzz->setStream($stream);
-
-//$customerFlow = new \Buzz\Control\CustomerFlow(new Buzz\Control\Objects\Customer(1));
-//$buzz->setCustomerFlow($customerFlow);
 
 function dd($v)
 {
