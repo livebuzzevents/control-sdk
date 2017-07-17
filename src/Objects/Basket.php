@@ -45,6 +45,11 @@ class Basket extends Base
     /**
      * @var string
      */
+    protected $vat_number;
+
+    /**
+     * @var string
+     */
     protected $vat_exempt;
 
     /**
@@ -125,6 +130,22 @@ class Basket extends Base
     public function setPoNumber($po_number)
     {
         $this->po_number = $po_number;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVatNumber()
+    {
+        return $this->vat_number;
+    }
+
+    /**
+     * @param string $vat_number
+     */
+    public function setVatNumber($vat_number)
+    {
+        $this->vat_number = $vat_number;
     }
 
     /**

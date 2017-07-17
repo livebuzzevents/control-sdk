@@ -398,6 +398,37 @@ class BasketService extends Service
 
     /**
      * @param Basket $basket
+     * @param string $vat_number
+     *
+     * @return mixed
+     * @throws ErrorException
+     */
+    public function setVatNumber(Basket $basket, $vat_number)
+    {
+        if (!$basket->getId()) {
+            throw new ErrorException('Basket id required!');
+        }
+
+        return $this->callAndCast('post', "basket/{$basket->getId()}/vat-number/{$vat_number}");
+    }
+
+    /**
+     * @param Basket $basket
+     *
+     * @return mixed
+     * @throws ErrorException
+     */
+    public function unsetVatNumber(Basket $basket)
+    {
+        if (!$basket->getId()) {
+            throw new ErrorException('Basket id required!');
+        }
+
+        return $this->callAndCast('delete', "basket/{$basket->getId()}/vat-number");
+    }
+
+    /**
+     * @param Basket $basket
      * @param string $vat_exempt
      *
      * @return mixed
