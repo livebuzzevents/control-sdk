@@ -2,16 +2,17 @@
 
 namespace Buzz\Control\Campaign;
 
-use JTDSoft\EssentialsSdk\Core\Object;
+use Buzz\Control\Object;
 
 /**
  * Class Address
  *
- * @property string $model
+ * @property-read object $model
+ * @property string $model_type
  * @property string $model_id
  * @property string $type
  * @property string $postcode
- * @property string $line
+ * @property-read string $line
  * @property string $line_1
  * @property string $line_2
  * @property string $line_3

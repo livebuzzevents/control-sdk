@@ -21,7 +21,7 @@ class BasketService extends Service
 
     /**
      * @param Customer $customer
-     * @param array    $options
+     * @param array $options
      *
      * @return Basket
      * @throws ErrorException
@@ -66,9 +66,9 @@ class BasketService extends Service
     }
 
     /**
-     * @param Basket  $basket
+     * @param Basket $basket
      * @param Product $product
-     * @param int     $quantity
+     * @param int $quantity
      *
      * @return Basket
      * @throws ErrorException
@@ -87,9 +87,9 @@ class BasketService extends Service
     }
 
     /**
-     * @param Basket  $basket
+     * @param Basket $basket
      * @param Product $product
-     * @param int     $quantity
+     * @param int $quantity
      *
      * @return Basket
      * @throws ErrorException
@@ -108,7 +108,7 @@ class BasketService extends Service
     }
 
     /**
-     * @param Basket  $basket
+     * @param Basket $basket
      * @param Product $product
      *
      * @return Basket
@@ -129,7 +129,7 @@ class BasketService extends Service
 
     /**
      * @param Basket $basket
-     * @param array  $product_ids
+     * @param array $product_ids
      *
      * @return Basket
      * @throws ErrorException
@@ -145,7 +145,7 @@ class BasketService extends Service
 
     /**
      * @param Basket $basket
-     * @param array  $products
+     * @param array $products
      *
      * @return Basket
      * @throws ErrorException
@@ -160,10 +160,10 @@ class BasketService extends Service
     }
 
     /**
-     * @param Basket  $basket
+     * @param Basket $basket
      * @param Product $product
-     * @param string  $name
-     * @param array   $parameters
+     * @param string $name
+     * @param array $parameters
      *
      * @return Basket
      * @throws ErrorException
@@ -186,9 +186,9 @@ class BasketService extends Service
     }
 
     /**
-     * @param Basket  $basket
+     * @param Basket $basket
      * @param Product $product
-     * @param array   $actions
+     * @param array $actions
      *
      * @return Basket
      * @throws ErrorException
@@ -211,7 +211,7 @@ class BasketService extends Service
     }
 
     /**
-     * @param Basket  $basket
+     * @param Basket $basket
      * @param Product $product
      *
      * @return Basket
@@ -231,7 +231,7 @@ class BasketService extends Service
     }
 
     /**
-     * @param Basket          $basket
+     * @param Basket $basket
      * @param PaymentProvider $paymentProvider
      *
      * @return Basket
@@ -305,7 +305,7 @@ class BasketService extends Service
 
     /**
      * @param Basket $basket
-     * @param array  $details
+     * @param array $details
      *
      * @return mixed
      * @throws ErrorException
@@ -336,7 +336,7 @@ class BasketService extends Service
 
     /**
      * @param Basket $basket
-     * @param array  $details
+     * @param array $details
      *
      * @return mixed
      * @throws ErrorException

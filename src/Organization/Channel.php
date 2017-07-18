@@ -1,0 +1,17 @@
+<?php
+
+namespace Buzz\Control\Organization;
+
+use Buzz\Control\Object;
+
+/**
+ * Class Channel
+ *
+ * @property string $identifier
+ * @property string $name
+ *
+ * @property-read \Buzz\Control\Organization\Campaign[] $campaigns
+ */
+class Channel extends Object
+{
+}

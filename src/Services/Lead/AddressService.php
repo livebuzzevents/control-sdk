@@ -17,7 +17,7 @@ class AddressService extends Service
     protected static $cast = Lead\Address::class;
 
     /**
-     * @param Lead         $lead
+     * @param Lead $lead
      * @param Lead\Address $address
      *
      * @return Lead\Address
@@ -37,7 +37,7 @@ class AddressService extends Service
     }
 
     /**
-     * @param Lead         $lead
+     * @param Lead $lead
      * @param Lead\Address $address
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class AddressService extends Service
     }
 
     /**
-     * @param Lead         $lead
+     * @param Lead $lead
      * @param Lead\Address $address
      *
      * @return Lead\Address
@@ -109,7 +109,7 @@ class AddressService extends Service
     }
 
     /**
-     * @param Lead           $lead
+     * @param Lead $lead
      * @param Lead\Address[] $addresses
      *
      * @return Lead\Address

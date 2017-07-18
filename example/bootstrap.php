@@ -23,7 +23,6 @@ if ($showErrors) {
 \Buzz\Control\Service::setVerifySsl(false);
 \Buzz\Control\Service::setProxy($proxy);
 
-
 function dd($v)
 {
     dump($v);

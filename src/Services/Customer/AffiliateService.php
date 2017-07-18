@@ -17,7 +17,7 @@ class AffiliateService extends Service
     protected static $cast = Customer\Affiliate::class;
 
     /**
-     * @param Customer           $customer
+     * @param Customer $customer
      * @param Customer\Affiliate $affiliate
      *
      * @return Customer\Affiliate
@@ -37,7 +37,7 @@ class AffiliateService extends Service
     }
 
     /**
-     * @param Customer           $customer
+     * @param Customer $customer
      * @param Customer\Affiliate $affiliate
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class AffiliateService extends Service
     }
 
     /**
-     * @param Customer           $customer
+     * @param Customer $customer
      * @param Customer\Affiliate $affiliate
      *
      * @return Customer\Affiliate
@@ -109,7 +109,7 @@ class AffiliateService extends Service
     }
 
     /**
-     * @param Customer             $customer
+     * @param Customer $customer
      * @param Customer\Affiliate[] $affiliates
      *
      * @return Customer\Affiliate[]

@@ -17,6 +17,7 @@ class PressReleaseService extends Service
 
     /**
      * @param PressRelease $pressRelease
+     *
      * @return mixed
      * @throws ErrorException
      */
@@ -31,6 +32,7 @@ class PressReleaseService extends Service
 
     /**
      * @param PressRelease $pressRelease
+     *
      * @throws ErrorException
      */
     public function delete(PressRelease $pressRelease)
@@ -44,6 +46,7 @@ class PressReleaseService extends Service
 
     /**
      * @param PressRelease $pressRelease
+     *
      * @return mixed
      * @throws ErrorException
      */
@@ -80,6 +83,7 @@ class PressReleaseService extends Service
 
     /**
      * @param PressRelease[] $pressReleases
+     *
      * @return PressRelease[]
      * @throws ErrorException
      */

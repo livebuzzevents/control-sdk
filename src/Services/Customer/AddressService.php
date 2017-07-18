@@ -17,7 +17,7 @@ class AddressService extends Service
     protected static $cast = Customer\Address::class;
 
     /**
-     * @param Customer         $customer
+     * @param Customer $customer
      * @param Customer\Address $address
      *
      * @return Customer\Address
@@ -37,7 +37,7 @@ class AddressService extends Service
     }
 
     /**
-     * @param Customer         $customer
+     * @param Customer $customer
      * @param Customer\Address $address
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class AddressService extends Service
     }
 
     /**
-     * @param Customer         $customer
+     * @param Customer $customer
      * @param Customer\Address $address
      *
      * @return Customer\Address
@@ -109,7 +109,7 @@ class AddressService extends Service
     }
 
     /**
-     * @param Customer           $customer
+     * @param Customer $customer
      * @param Customer\Address[] $addresses
      *
      * @return Customer\Address

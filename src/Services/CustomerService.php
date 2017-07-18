@@ -16,18 +16,19 @@ use Buzz\Control\Objects\Printer;
 class CustomerService extends Service
 {
     /**
-     * @var bool
-     */
-    protected $dupe_check = true;
-
-    /**
      * @var
      */
     protected static $cast = Customer::class;
 
+    /**
+     * @var bool
+     */
+    protected $dupe_check = true;
+
     public function disableDupeCheck()
     {
         $this->dupe_check = false;
+
         return $this;
     }
 
@@ -81,7 +82,7 @@ class CustomerService extends Service
     }
 
     /**
-     * @param string   $provider
+     * @param string $provider
      * @param Customer $customer
      *
      * @return mixed
@@ -187,7 +188,7 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
-     * @param int      $count
+     * @param int $count
      *
      * @return mixed
      * @throws ErrorException
@@ -235,7 +236,7 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
-     * @param Invite   $invite
+     * @param Invite $invite
      *
      * @return mixed
      * @throws ErrorException
@@ -268,7 +269,7 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
-     * @param string   $tag
+     * @param string $tag
      *
      * @return Customer
      * @throws ErrorException
@@ -288,7 +289,7 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
-     * @param string   $tag
+     * @param string $tag
      *
      * @return Customer
      * @throws ErrorException
@@ -308,7 +309,7 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
-     * @param array    $tags
+     * @param array $tags
      *
      * @return Customer
      * @throws ErrorException*
@@ -339,8 +340,8 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
-     * @param int      $width
-     * @param int      $height
+     * @param int $width
+     * @param int $height
      *
      * @return string
      * @throws ErrorException
@@ -356,7 +357,7 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
-     * @param int      $size
+     * @param int $size
      *
      * @return string
      * @throws ErrorException
@@ -396,7 +397,7 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
-     * @param array    $badgeStockConfiguration
+     * @param array $badgeStockConfiguration
      *
      * @return Customer
      * @throws ErrorException
@@ -415,8 +416,8 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
-     * @param Printer  $printer
-     * @param array    $options
+     * @param Printer $printer
+     * @param array $options
      *
      * @return Customer
      * @throws ErrorException
@@ -436,7 +437,7 @@ class CustomerService extends Service
 
     /**
      * @param Printer $printer
-     * @param array   $options
+     * @param array $options
      *
      * @return Customer
      * @throws ErrorException

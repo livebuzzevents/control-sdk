@@ -17,7 +17,7 @@ class PropertyService extends Service
     protected static $cast = StreamMenuItem\Property::class;
 
     /**
-     * @param StreamMenuItem          $streamMenuItem
+     * @param StreamMenuItem $streamMenuItem
      * @param StreamMenuItem\Property $property
      *
      * @return StreamMenuItem\Property
@@ -37,7 +37,7 @@ class PropertyService extends Service
     }
 
     /**
-     * @param StreamMenuItem          $streamMenuItem
+     * @param StreamMenuItem $streamMenuItem
      * @param StreamMenuItem\Property $property
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class PropertyService extends Service
     }
 
     /**
-     * @param StreamMenuItem          $streamMenuItem
+     * @param StreamMenuItem $streamMenuItem
      * @param StreamMenuItem\Property $property
      *
      * @return StreamMenuItem\Property
@@ -109,7 +109,7 @@ class PropertyService extends Service
     }
 
     /**
-     * @param StreamMenuItem            $streamMenuItem
+     * @param StreamMenuItem $streamMenuItem
      * @param StreamMenuItem\Property[] $properties
      *
      * @return StreamMenuItem\Property[]
@@ -125,6 +125,7 @@ class PropertyService extends Service
             $properties[$key] = $property->toArray();
         }
 
-        return $this->callAndCastMany('post', "stream-menu-item/{$streamMenuItem->getId()}/properties", ['batch' => $properties]);
+        return $this->callAndCastMany('post', "stream-menu-item/{$streamMenuItem->getId()}/properties",
+            ['batch' => $properties]);
     }
 }

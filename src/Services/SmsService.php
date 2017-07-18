@@ -16,9 +16,9 @@ use Buzz\Control\Objects\SmsMessageTemplate;
 class SmsService extends Service
 {
     /**
-     * @param Customer           $customer
+     * @param Customer $customer
      * @param SmsMessageTemplate $smsMessageTemplate
-     * @param array              $settings
+     * @param array $settings
      *
      * @throws ErrorException
      */
@@ -42,9 +42,9 @@ class SmsService extends Service
     }
 
     /**
-     * @param Exhibitor          $exhibitor
+     * @param Exhibitor $exhibitor
      * @param SmsMessageTemplate $smsMessageTemplate
-     * @param array              $settings
+     * @param array $settings
      *
      * @throws ErrorException
      */
@@ -68,9 +68,9 @@ class SmsService extends Service
     }
 
     /**
-     * @param Lead               $lead
+     * @param Lead $lead
      * @param SmsMessageTemplate $smsMessageTemplate
-     * @param array              $settings
+     * @param array $settings
      *
      * @throws ErrorException
      */

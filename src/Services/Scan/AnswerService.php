@@ -17,7 +17,7 @@ class AnswerService extends Service
     protected static $cast = Scan\Answer::class;
 
     /**
-     * @param Scan        $scan
+     * @param Scan $scan
      * @param Scan\Answer $answer
      *
      * @return Scan\Answer[]
@@ -37,7 +37,7 @@ class AnswerService extends Service
     }
 
     /**
-     * @param Scan        $scan
+     * @param Scan $scan
      * @param Scan\Answer $answer
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class AnswerService extends Service
     }
 
     /**
-     * @param Scan        $scan
+     * @param Scan $scan
      * @param Scan\Answer $answer
      *
      * @return Scan\Answer[]
@@ -113,7 +113,7 @@ class AnswerService extends Service
     }
 
     /**
-     * @param Scan          $scan
+     * @param Scan $scan
      * @param Scan\Answer[] $answers
      *
      * @return Scan\Answer[]

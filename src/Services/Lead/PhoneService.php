@@ -17,7 +17,7 @@ class PhoneService extends Service
     protected static $cast = Lead\Phone::class;
 
     /**
-     * @param Lead       $lead
+     * @param Lead $lead
      * @param Lead\Phone $phone
      *
      * @return Lead\Phone
@@ -37,7 +37,7 @@ class PhoneService extends Service
     }
 
     /**
-     * @param Lead       $lead
+     * @param Lead $lead
      * @param Lead\Phone $phone
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class PhoneService extends Service
     }
 
     /**
-     * @param Lead       $lead
+     * @param Lead $lead
      * @param Lead\Phone $phone
      *
      * @return Lead\Phone
@@ -109,7 +109,7 @@ class PhoneService extends Service
     }
 
     /**
-     * @param Lead         $lead
+     * @param Lead $lead
      * @param Lead\Phone[] $phones
      *
      * @return Lead\Phone[]

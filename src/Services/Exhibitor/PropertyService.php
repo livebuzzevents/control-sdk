@@ -17,7 +17,7 @@ class PropertyService extends Service
     protected static $cast = Exhibitor\Property::class;
 
     /**
-     * @param Exhibitor          $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Exhibitor\Property $property
      *
      * @return Exhibitor\Property
@@ -37,7 +37,7 @@ class PropertyService extends Service
     }
 
     /**
-     * @param Exhibitor          $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Exhibitor\Property $property
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class PropertyService extends Service
     }
 
     /**
-     * @param Exhibitor          $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Exhibitor\Property $property
      *
      * @return Exhibitor\Property
@@ -109,7 +109,7 @@ class PropertyService extends Service
     }
 
     /**
-     * @param Exhibitor            $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Exhibitor\Property[] $properties
      *
      * @return Exhibitor\Property[]

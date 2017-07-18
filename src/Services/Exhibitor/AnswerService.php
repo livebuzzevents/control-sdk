@@ -17,7 +17,7 @@ class AnswerService extends Service
     protected static $cast = Exhibitor\Answer::class;
 
     /**
-     * @param Exhibitor        $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Exhibitor\Answer $answer
      *
      * @return Exhibitor\Answer[]
@@ -37,7 +37,7 @@ class AnswerService extends Service
     }
 
     /**
-     * @param Exhibitor        $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Exhibitor\Answer $answer
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class AnswerService extends Service
     }
 
     /**
-     * @param Exhibitor        $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Exhibitor\Answer $answer
      *
      * @return Exhibitor\Answer[]
@@ -113,7 +113,7 @@ class AnswerService extends Service
     }
 
     /**
-     * @param Exhibitor          $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Exhibitor\Answer[] $answers
      *
      * @return Exhibitor\Answer[]

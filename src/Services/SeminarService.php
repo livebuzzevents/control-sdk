@@ -23,18 +23,6 @@ class SeminarService extends Service
     /**
      * @param Seminar $seminar
      *
-     * @throws ErrorException
-     */
-    private function validateSeminar(Seminar $seminar)
-    {
-        if (!$seminar->getId()) {
-            throw new ErrorException('Seminar id required!');
-        }
-    }
-
-    /**
-     * @param Seminar $seminar
-     *
      * @return Seminar
      * @throws ErrorException
      */
@@ -43,6 +31,18 @@ class SeminarService extends Service
         $this->validateSeminar($seminar);
 
         return $this->callAndCast('get', "seminar/{$seminar->getId()}");
+    }
+
+    /**
+     * @param Seminar $seminar
+     *
+     * @throws ErrorException
+     */
+    private function validateSeminar(Seminar $seminar)
+    {
+        if (!$seminar->getId()) {
+            throw new ErrorException('Seminar id required!');
+        }
     }
 
     /**
@@ -109,7 +109,7 @@ class SeminarService extends Service
 
     /**
      * @param Seminar $seminar
-     * @param Topic   $topic
+     * @param Topic $topic
      *
      * @throws ErrorException
      */
@@ -126,7 +126,7 @@ class SeminarService extends Service
 
     /**
      * @param Seminar $seminar
-     * @param Topic   $topic
+     * @param Topic $topic
      *
      * @throws ErrorException
      */
@@ -157,10 +157,10 @@ class SeminarService extends Service
     }
 
     /**
-     * @param Seminar  $seminar
+     * @param Seminar $seminar
      * @param Customer $creator
-     * @param string   $role
-     * @param string   $type
+     * @param string $role
+     * @param string $type
      *
      * @throws ErrorException
      */
@@ -182,10 +182,10 @@ class SeminarService extends Service
     }
 
     /**
-     * @param Seminar  $seminar
+     * @param Seminar $seminar
      * @param Customer $creator
-     * @param string   $role
-     * @param string   $type
+     * @param string $role
+     * @param string $type
      *
      * @throws ErrorException
      */
@@ -203,7 +203,7 @@ class SeminarService extends Service
     }
 
     /**
-     * @param Seminar  $seminar
+     * @param Seminar $seminar
      * @param Customer $creator
      * @param Customer $customer
      */
@@ -219,18 +219,24 @@ class SeminarService extends Service
             throw new ErrorException('Customer id required!');
         }
 
-        $this->call('get', "seminar/{$seminar->getId()}/creator/{$creator->getId()}/customer/{$customer->getId()}/assign");
+        $this->call('get',
+            "seminar/{$seminar->getId()}/creator/{$creator->getId()}/customer/{$customer->getId()}/assign");
     }
 
     /**
-     * @param Seminar  $seminar
+     * @param Seminar $seminar
      * @param Customer $creator
-     * @param string   $role
+     * @param string $role
      * @param Customer $customer
-     * @param string   $type
+     * @param string $type
      */
-    public function attachCustomer(Seminar $seminar, Customer $creator, string $role, Customer $customer, string $type = null)
-    {
+    public function attachCustomer(
+        Seminar $seminar,
+        Customer $creator,
+        string $role,
+        Customer $customer,
+        string $type = null
+    ) {
         $this->validateSeminar($seminar);
 
         if (!$creator->getId()) {
@@ -251,7 +257,7 @@ class SeminarService extends Service
     }
 
     /**
-     * @param Seminar  $seminar
+     * @param Seminar $seminar
      * @param Customer $customer
      */
     public function detachSpeaker(Seminar $seminar, Customer $customer)
@@ -266,7 +272,7 @@ class SeminarService extends Service
     }
 
     /**
-     * @param Seminar  $seminar
+     * @param Seminar $seminar
      * @param Customer $customer
      */
     public function detachCustomer(Seminar $seminar, Customer $customer)

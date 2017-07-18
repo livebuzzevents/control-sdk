@@ -19,7 +19,7 @@ class LinkService extends Service
 
     /**
      * @param Exhibitor $exhibitor
-     * @param Link      $link
+     * @param Link $link
      *
      * @return Link
      * @throws ErrorException
@@ -39,7 +39,7 @@ class LinkService extends Service
 
     /**
      * @param Exhibitor $exhibitor
-     * @param Link      $link
+     * @param Link $link
      *
      * @throws ErrorException
      */
@@ -58,7 +58,7 @@ class LinkService extends Service
 
     /**
      * @param Exhibitor $exhibitor
-     * @param Link      $link
+     * @param Link $link
      *
      * @return Link
      * @throws ErrorException
@@ -111,7 +111,7 @@ class LinkService extends Service
 
     /**
      * @param Exhibitor $exhibitor
-     * @param Link[]    $links
+     * @param Link[] $links
      *
      * @return Link[]
      * @throws ErrorException

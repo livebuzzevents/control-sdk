@@ -2,59 +2,59 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Object;
 use Buzz\Control\Service;
 use JTDSoft\EssentialsSdk\Core\Cast;
 use JTDSoft\EssentialsSdk\Core\Collection;
-use JTDSoft\EssentialsSdk\Core\Object;
 
 /**
  * Class Exhibitor
  *
- * @property string    $exhibitor_id
- * @property string    $import_id
- * @property string    $badge_type_id
- * @property string    $owner_id
- * @property string    $publish
- * @property bool      $is_managed
- * @property bool      $manages_exhibitors
- * @property int       $managed_exhibitors_count
- * @property string    $identifier
- * @property string    $email
- * @property string    $source
- * @property string    $source_id
- * @property string    $biography
- * @property string    $barcode
- * @property string    $qrcode
- * @property string    $exhibitor_role
- * @property string    $username
- * @property bool      $has_password
- * @property string    $password
- * @property string    $title
- * @property string    $name
- * @property string    $first_name
- * @property string    $middle_name
- * @property string    $last_name
- * @property string    $job_title
- * @property string    $company
- * @property string    $sex
- * @property string    $language
- * @property string    $nationality
- * @property string    $status
- * @property string    $registration_type
- * @property string    $registration_social_provider
- * @property string    $attended
- * @property bool      $printable
- * @property bool      $badge_printed
- * @property bool      $badge_preprinted
- * @property bool      $badge_printed_onsite
- * @property bool      $badge_viewed
- * @property string    $is_a_clone
- * @property string    $cloned_id
- * @property string    $cloned_type
- * @property string    $cloned_campaign_id
- * @property string    $remember_token
- * @property \DateTime $updated_at
- * @property \DateTime $created_at
+ * @property string $import_id
+ * @property string $owner_id
+ * @property string $publish
+ * @property string $avatar
+ * @property string $identifier
+ * @property string $name
+ * @property string $exhibiting_name
+ * @property string $source
+ * @property string $source_id
+ * @property string $website
+ * @property array $details
+ * @property array $settings
+ * @property array $stands
+ * @property string $status
+ * @property string $is_a_clone
+ * @property string $cloned_id
+ * @property string $cloned_type
+ * @property string $cloned_campaign_id
+ *
+ * @property-read \Buzz\Control\Campaign\Address[] $addresses
+ * @property-read \Buzz\Control\Campaign\Answer[] $answers
+ * @property-read \Buzz\Control\Campaign\Basket $basket
+ * @property-read \Buzz\Control\Campaign\Baskets[] $baskets
+ * @property-read \Buzz\Control\Campaign\Invite[] $created_invites
+ * @property-read \Buzz\Control\Campaign\Vote[] $created_votes
+ * @property-read \Buzz\Control\Campaign\Exhibitor $owner
+ * @property-read \Buzz\Control\Campaign\File[] $files
+ * @property-read \Buzz\Control\Campaign\Import $import
+ * @property-read \Buzz\Control\Campaign\Invite[] $invites
+ * @property-read \Buzz\Control\Campaign\Link[] $links
+ * @property-read \Buzz\Control\Campaign\Log[] $logs
+ * @property-read \Buzz\Control\Campaign\Note[] $notes
+ * @property-read \Buzz\Control\Campaign\Order[] $orders
+ * @property-read \Buzz\Control\Campaign\Phone[] $phones
+ * @property-read \Buzz\Control\Campaign\Property[] $properties
+ * @property-read \Buzz\Control\Campaign\Scanner[] $scanners
+ * @property-read \Buzz\Control\Campaign\Scan[] $scans
+ * @property-read \Buzz\Control\Campaign\StreamPageActivity[] $stream_page_activities
+ * @property-read \Buzz\Control\Campaign\ExhibitorPressRelease[] $press_releases
+ * @property-read \Buzz\Control\Campaign\ModelTag[] $tags
+ * @property-read \Buzz\Control\Campaign\Vote[] $votes
+ * @property-read \Buzz\Control\Campaign\Question[] $questions
+ * @property-read \Buzz\Control\Campaign\Product[] $products
+ * @property-read \Buzz\Control\Campaign\Customer $main_contact
+ * @property-read \Buzz\Control\Campaign\Customer[] $customers
  *
  */
 class Exhibitor extends Object
@@ -64,14 +64,14 @@ class Exhibitor extends Object
         return Cast::single(self::class, (new Service())->get("exhibitors/{$id}", compact('expand')));
     }
 
-    public static function get(array $expand = [], array $options = []): Collection
-    {
-        return Cast::many(self::class, (new Service())->get("exhibitors", compact('expand', 'options')));
-    }
-
     public static function first(array $expand = [], array $options = []): ?Exhibitor
     {
         return self::get($expand, $options)->first();
+    }
+
+    public static function get(array $expand = [], array $options = []): Collection
+    {
+        return Cast::many(self::class, (new Service())->get("exhibitors", compact('expand', 'options')));
     }
 
     public static function saveMany($exhibitors, array $expand = [])
@@ -104,6 +104,26 @@ class Exhibitor extends Object
                 (new Service())->post("exhibitors", $this->data + compact('expand'))
             );
         }
+    }
+
+    public static function login(array $credentials)
+    {
+        $user_information = [
+            'user_agent'      => !empty($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null,
+            'accept_language' => !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : null,
+        ];
+
+        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $user_information['x_ip'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+
+        if (!empty($_SERVER['REMOTE_ADDR'])) {
+            $user_information['ip'] = $_SERVER['REMOTE_ADDR'];
+        }
+
+        $credentials['user_information'] = $user_information;
+
+        return Cast::single(self::class, (new Service())->get("exhibitors/login", $credentials));
     }
 
     public function delete()

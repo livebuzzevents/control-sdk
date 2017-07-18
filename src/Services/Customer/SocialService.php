@@ -17,7 +17,7 @@ class SocialService extends Service
     protected static $cast = Customer\Social::class;
 
     /**
-     * @param Customer        $customer
+     * @param Customer $customer
      * @param Customer\Social $social
      *
      * @return Customer\Social
@@ -37,7 +37,7 @@ class SocialService extends Service
     }
 
     /**
-     * @param Customer        $customer
+     * @param Customer $customer
      * @param Customer\Social $social
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class SocialService extends Service
     }
 
     /**
-     * @param Customer        $customer
+     * @param Customer $customer
      * @param Customer\Social $social
      *
      * @return Customer\Social
@@ -109,7 +109,7 @@ class SocialService extends Service
     }
 
     /**
-     * @param Customer          $customer
+     * @param Customer $customer
      * @param Customer\Social[] $socials
      *
      * @return Customer\Social[]

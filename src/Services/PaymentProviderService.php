@@ -34,8 +34,8 @@ class PaymentProviderService extends Service
     }
 
     /**
-     * @param string   $destination
-     * @param null     $amount
+     * @param string $destination
+     * @param null $amount
      *
      * @return PaymentProvider
      * @throws ErrorException
@@ -51,7 +51,7 @@ class PaymentProviderService extends Service
 
     /**
      * @param Basket $basket
-     * @param null   $amount
+     * @param null $amount
      *
      * @return PaymentProvider
      * @throws ErrorException
@@ -71,7 +71,7 @@ class PaymentProviderService extends Service
 
     /**
      * @param Order $order
-     * @param null  $amount
+     * @param null $amount
      *
      * @return PaymentProvider
      * @throws ErrorException

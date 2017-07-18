@@ -17,7 +17,7 @@ class SocialService extends Service
     protected static $cast = Lead\Social::class;
 
     /**
-     * @param Lead        $lead
+     * @param Lead $lead
      * @param Lead\Social $social
      *
      * @return Lead\Social
@@ -37,7 +37,7 @@ class SocialService extends Service
     }
 
     /**
-     * @param Lead        $lead
+     * @param Lead $lead
      * @param Lead\Social $social
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class SocialService extends Service
     }
 
     /**
-     * @param Lead        $lead
+     * @param Lead $lead
      * @param Lead\Social $social
      *
      * @return Lead\Social
@@ -109,7 +109,7 @@ class SocialService extends Service
     }
 
     /**
-     * @param Lead          $lead
+     * @param Lead $lead
      * @param Lead\Social[] $socials
      *
      * @return Lead\Social[]

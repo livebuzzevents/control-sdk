@@ -57,7 +57,7 @@ abstract class Service
     protected $headers;
 
     /**
-     * @param Buzz   $buzz
+     * @param Buzz $buzz
      * @param Client $client
      */
     public function __construct(Buzz $buzz, Client $client = null)
@@ -70,13 +70,13 @@ abstract class Service
     }
 
     /**
-     * @param int $page
+     * @param string $order
      *
      * @return $this
      */
-    public function page($page)
+    public function order($order)
     {
-        return $this->setSetting('page', $page);
+        return $this->setSetting('order', $order);
     }
 
     /**
@@ -93,26 +93,6 @@ abstract class Service
     }
 
     /**
-     * @param int $per_page
-     *
-     * @return $this
-     */
-    public function perPage($per_page)
-    {
-        return $this->setSetting('per_page', $per_page);
-    }
-
-    /**
-     * @param string $order
-     *
-     * @return $this
-     */
-    public function order($order)
-    {
-        return $this->setSetting('order', $order);
-    }
-
-    /**
      * @param string $direction
      *
      * @return $this
@@ -120,40 +100,6 @@ abstract class Service
     public function direction($direction)
     {
         return $this->setSetting('direction', $direction);
-    }
-
-    /**
-     * @param $parameter
-     * @param $operator
-     * @param $value
-     *
-     * @return Service
-     */
-    public final function where($parameter, $operator, $value = null)
-    {
-        $clone = clone $this;
-
-        if (!$clone->filter) {
-            $clone->filter = new Filter();
-        }
-
-        if ($clone->filter) {
-            $clone->filter->add($parameter, $operator, $value);
-        }
-
-        return $clone;
-    }
-
-    /**
-     * @param Filter $filter
-     *
-     * @return $this
-     */
-    public function setFilter(Filter $filter)
-    {
-        $this->filter = $filter;
-
-        return $this;
     }
 
     /**
@@ -165,21 +111,13 @@ abstract class Service
     }
 
     /**
-     * @return mixed
-     */
-    public function getHeaders()
-    {
-        return $this->headers ?: [];
-    }
-
-    /**
-     * @param array $headers
+     * @param Filter $filter
      *
      * @return $this
      */
-    public function setHeaders(array $headers)
+    public function setFilter(Filter $filter)
     {
-        $this->headers = $headers;
+        $this->filter = $filter;
 
         return $this;
     }
@@ -206,6 +144,167 @@ abstract class Service
         }
 
         return $this->setSetting('with', $relations);
+    }
+
+    /**
+     * @param array ...$parameters
+     *
+     * @return Paging
+     * @throws ErrorException
+     */
+    public function getAll(...$parameters)
+    {
+        if (!method_exists($this, 'getMany')) {
+            throw new ErrorException('This service does not support getAll()');
+        }
+
+        $items = [];
+
+        $this->chunk($this->settings['per_page'], function ($results) use (&$items) {
+            foreach ($results as $result) {
+                $items[] = $result;
+            }
+        }, ...$parameters);
+
+        $paging = new Paging();
+
+        $paging->setPage(1);
+        $paging->setTotal(count($items));
+        $paging->setLastPage(1);
+        $paging->setFrom(1);
+        $paging->setTo(count($items));
+        $paging->setItems($items);
+
+        return $paging;
+    }
+
+    /**
+     * @param          $count
+     * @param callable $callback
+     * @param array ...$parameters
+     *
+     * @return bool
+     * @throws ErrorException
+     */
+    public function chunk($count, callable $callback, ...$parameters)
+    {
+        if (!method_exists($this, 'getMany')) {
+            throw new ErrorException('This service does not support chunk()');
+        }
+
+        $results = $this->perPage($count)->page($page = 1)->getMany(...$parameters);
+
+        if ($results instanceof Paging) {
+            $total = $results->getTotal();
+        } else {
+            throw new ErrorException('chunk() does not support transformation before response, such as keyBy()');
+        }
+
+        $processed = 0;
+
+        while (true) {
+            if (call_user_func($callback, $results) === false) {
+                return false;
+            }
+
+            $processed += $results->count();
+
+            if ($processed < $total) {
+                $results = $this->perPage($count)->page(++$page)->getMany();
+            } else {
+                break;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * @param int $page
+     *
+     * @return $this
+     */
+    public function page($page)
+    {
+        return $this->setSetting('page', $page);
+    }
+
+    /**
+     * @param int $per_page
+     *
+     * @return $this
+     */
+    public function perPage($per_page)
+    {
+        return $this->setSetting('per_page', $per_page);
+    }
+
+    /**
+     * @param array ...$parameters
+     *
+     * @return mixed
+     * @throws ErrorException
+     */
+    public function getOne(...$parameters)
+    {
+        if (!method_exists($this, 'getMany')) {
+            throw new ErrorException('This service does not support getOne()');
+        }
+
+        return $this->perPage(1)->getMany(...$parameters)->first();
+    }
+
+    /**
+     * @param array ...$parameters
+     *
+     * @return mixed
+     * @throws ErrorException
+     */
+    public function getByIdentifier($identifier, ...$parameters)
+    {
+        if (!method_exists($this, 'getByIdentifiers')) {
+            throw new ErrorException('This service does not support getByIdentifier()');
+        }
+
+        return $this->perPage(1)->getByIdentifiers([$identifier], ...$parameters)->first();
+    }
+
+    /**
+     * @param       $identifiers
+     * @param array ...$parameters
+     *
+     * @return mixed
+     * @throws ErrorException
+     */
+    public function getByIdentifiers($identifiers, ...$parameters)
+    {
+        if (!method_exists($this, 'getMany')) {
+            throw new ErrorException('This service does not support getByIdentifiers()');
+        }
+
+        return $this->where('identifier', 'in', $identifiers)->getMany(...$parameters)->keyBy('identifier');
+    }
+
+    /**
+     * @param $parameter
+     * @param $operator
+     * @param $value
+     *
+     * @return Service
+     */
+    public final function where($parameter, $operator, $value = null)
+    {
+        $clone = clone $this;
+
+        if (!$clone->filter) {
+            $clone->filter = new Filter();
+        }
+
+        if ($clone->filter) {
+            $clone->filter->add($parameter, $operator, $value);
+        }
+
+        return $clone;
     }
 
     /**
@@ -274,6 +373,26 @@ abstract class Service
             $request,
             $headers
         );
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHeaders()
+    {
+        return $this->headers ?: [];
+    }
+
+    /**
+     * @param array $headers
+     *
+     * @return $this
+     */
+    public function setHeaders(array $headers)
+    {
+        $this->headers = $headers;
+
+        return $this;
     }
 
     /**
@@ -352,77 +471,6 @@ abstract class Service
     }
 
     /**
-     * @param          $count
-     * @param callable $callback
-     * @param array    ...$parameters
-     * @return bool
-     * @throws ErrorException
-     */
-    public function chunk($count, callable $callback, ...$parameters)
-    {
-        if (!method_exists($this, 'getMany')) {
-            throw new ErrorException('This service does not support chunk()');
-        }
-
-        $results = $this->perPage($count)->page($page = 1)->getMany(...$parameters);
-
-        if ($results instanceof Paging) {
-            $total = $results->getTotal();
-        } else {
-            throw new ErrorException('chunk() does not support transformation before response, such as keyBy()');
-        }
-
-        $processed = 0;
-
-        while (true) {
-            if (call_user_func($callback, $results) === false) {
-                return false;
-            }
-
-            $processed += $results->count();
-
-            if ($processed < $total) {
-                $results = $this->perPage($count)->page(++$page)->getMany();
-            } else {
-                break;
-            }
-        }
-
-        return true;
-    }
-
-    /**
-     * @param array ...$parameters
-     * @return Paging
-     * @throws ErrorException
-     */
-    public function getAll(...$parameters)
-    {
-        if (!method_exists($this, 'getMany')) {
-            throw new ErrorException('This service does not support getAll()');
-        }
-
-        $items = [];
-
-        $this->chunk($this->settings['per_page'], function ($results) use (&$items) {
-            foreach ($results as $result) {
-                $items[] = $result;
-            }
-        }, ...$parameters);
-
-        $paging = new Paging();
-
-        $paging->setPage(1);
-        $paging->setTotal(count($items));
-        $paging->setLastPage(1);
-        $paging->setFrom(1);
-        $paging->setTo(count($items));
-        $paging->setItems($items);
-
-        return $paging;
-    }
-
-    /**
      * @param $key
      *
      * @return string
@@ -430,51 +478,5 @@ abstract class Service
     public function getSetting($key)
     {
         return isset($this->settings[$key]) ? $this->settings[$key] : null;
-    }
-
-    /**
-     * @param array ...$parameters
-     *
-     * @return mixed
-     * @throws ErrorException
-     */
-    public function getOne(...$parameters)
-    {
-        if (!method_exists($this, 'getMany')) {
-            throw new ErrorException('This service does not support getOne()');
-        }
-
-        return $this->perPage(1)->getMany(...$parameters)->first();
-    }
-
-    /**
-     * @param       $identifiers
-     * @param array ...$parameters
-     *
-     * @return mixed
-     * @throws ErrorException
-     */
-    public function getByIdentifiers($identifiers, ...$parameters)
-    {
-        if (!method_exists($this, 'getMany')) {
-            throw new ErrorException('This service does not support getByIdentifiers()');
-        }
-
-        return $this->where('identifier', 'in', $identifiers)->getMany(...$parameters)->keyBy('identifier');
-    }
-
-    /**
-     * @param array ...$parameters
-     *
-     * @return mixed
-     * @throws ErrorException
-     */
-    public function getByIdentifier($identifier, ...$parameters)
-    {
-        if (!method_exists($this, 'getByIdentifiers')) {
-            throw new ErrorException('This service does not support getByIdentifier()');
-        }
-
-        return $this->perPage(1)->getByIdentifiers([$identifier], ...$parameters)->first();
     }
 }

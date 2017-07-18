@@ -17,7 +17,7 @@ class PhoneService extends Service
     protected static $cast = Exhibitor\Phone::class;
 
     /**
-     * @param Exhibitor       $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Exhibitor\Phone $phone
      *
      * @return Exhibitor\Phone
@@ -37,7 +37,7 @@ class PhoneService extends Service
     }
 
     /**
-     * @param Exhibitor       $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Exhibitor\Phone $phone
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class PhoneService extends Service
     }
 
     /**
-     * @param Exhibitor       $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Exhibitor\Phone $phone
      *
      * @return Exhibitor\Phone
@@ -109,7 +109,7 @@ class PhoneService extends Service
     }
 
     /**
-     * @param Exhibitor         $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Exhibitor\Phone[] $phones
      *
      * @return Exhibitor\Phone[]

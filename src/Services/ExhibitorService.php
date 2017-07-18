@@ -124,7 +124,7 @@ class ExhibitorService extends Service
 
     /**
      * @param Exhibitor $exhibitor
-     * @param string    $tag
+     * @param string $tag
      *
      * @return Exhibitor
      * @throws ErrorException
@@ -144,7 +144,7 @@ class ExhibitorService extends Service
 
     /**
      * @param Exhibitor $exhibitor
-     * @param string    $tag
+     * @param string $tag
      *
      * @return Exhibitor
      * @throws ErrorException
@@ -164,7 +164,7 @@ class ExhibitorService extends Service
 
     /**
      * @param Exhibitor $exhibitor
-     * @param array     $tags
+     * @param array $tags
      *
      * @return Exhibitor
      * @throws ErrorException*

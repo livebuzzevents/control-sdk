@@ -2,59 +2,52 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Object;
 use Buzz\Control\Service;
 use JTDSoft\EssentialsSdk\Core\Cast;
 use JTDSoft\EssentialsSdk\Core\Collection;
-use JTDSoft\EssentialsSdk\Core\Object;
 
 /**
  * Class Lead
  *
- * @property string    $exhibitor_id
- * @property string    $import_id
- * @property string    $badge_type_id
- * @property string    $owner_id
- * @property string    $publish
- * @property bool      $is_managed
- * @property bool      $manages_leads
- * @property int       $managed_leads_count
- * @property string    $identifier
- * @property string    $email
- * @property string    $source
- * @property string    $source_id
- * @property string    $biography
- * @property string    $barcode
- * @property string    $qrcode
- * @property string    $exhibitor_role
- * @property string    $username
- * @property bool      $has_password
- * @property string    $password
- * @property string    $title
- * @property string    $name
- * @property string    $first_name
- * @property string    $middle_name
- * @property string    $last_name
- * @property string    $job_title
- * @property string    $company
- * @property string    $sex
- * @property string    $language
- * @property string    $nationality
- * @property string    $status
- * @property string    $registration_type
- * @property string    $registration_social_provider
- * @property string    $attended
- * @property bool      $printable
- * @property bool      $badge_printed
- * @property bool      $badge_preprinted
- * @property bool      $badge_printed_onsite
- * @property bool      $badge_viewed
- * @property string    $is_a_clone
- * @property string    $cloned_id
- * @property string    $cloned_type
- * @property string    $cloned_campaign_id
- * @property string    $remember_token
- * @property \DateTime $updated_at
- * @property \DateTime $created_at
+ * @property string $group_id
+ * @property string $import_id
+ * @property-read string $avatar
+ * @property string $identifier
+ * @property string $email
+ * @property string $source
+ * @property string $source_id
+ * @property string $title
+ * @property-read string $name
+ * @property string $first_name
+ * @property string $middle_name
+ * @property string $last_name
+ * @property string $job_title
+ * @property string $company
+ * @property string $sex
+ * @property string $language
+ * @property string $nationality
+ * @property string $is_a_clone
+ * @property string $cloned_id
+ * @property string $cloned_type
+ * @property string $cloned_campaign_id
+ * @property array $details
+ * @property \DateTime $expires_at
+ *
+ * @property-read \Buzz\Control\Campaign\LeadGroup $group
+ * @property-read \Buzz\Control\Campaign\Address[] $addresses
+ * @property-read \Buzz\Control\Campaign\Answer[] $answers
+ * @property-read \Buzz\Control\Campaign\EmailMessage[] $email_messages
+ * @property-read \Buzz\Control\Campaign\File[] $files
+ * @property-read \Buzz\Control\Campaign\Import $import
+ * @property-read \Buzz\Control\Campaign\Link[] $links
+ * @property-read \Buzz\Control\Campaign\Log[] $logs
+ * @property-read \Buzz\Control\Campaign\Note[] $notes
+ * @property-read \Buzz\Control\Campaign\Phone[] $phones
+ * @property-read \Buzz\Control\Campaign\Property[] $properties
+ * @property-read \Buzz\Control\Campaign\SmsMessage[] $sms_messages
+ * @property-read \Buzz\Control\Campaign\Social[] $socials
+ * @property-read \Buzz\Control\Campaign\ModelTag[] $tags
  *
  */
 class Lead extends Object
@@ -64,14 +57,14 @@ class Lead extends Object
         return Cast::single(self::class, (new Service())->get("leads/{$id}", compact('expand')));
     }
 
-    public static function get(array $expand = [], array $options = []): Collection
-    {
-        return Cast::many(self::class, (new Service())->get("leads", compact('expand', 'options')));
-    }
-
     public static function first(array $expand = [], array $options = []): ?Lead
     {
         return self::get($expand, $options)->first();
+    }
+
+    public static function get(array $expand = [], array $options = []): Collection
+    {
+        return Cast::many(self::class, (new Service())->get("leads", compact('expand', 'options')));
     }
 
     public static function saveMany($leads, array $expand = [])
@@ -104,6 +97,26 @@ class Lead extends Object
                 (new Service())->post("leads", $this->data + compact('expand'))
             );
         }
+    }
+
+    public static function login(array $credentials)
+    {
+        $user_information = [
+            'user_agent'      => !empty($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null,
+            'accept_language' => !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : null,
+        ];
+
+        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $user_information['x_ip'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+
+        if (!empty($_SERVER['REMOTE_ADDR'])) {
+            $user_information['ip'] = $_SERVER['REMOTE_ADDR'];
+        }
+
+        $credentials['user_information'] = $user_information;
+
+        return Cast::single(self::class, (new Service())->get("leads/login", $credentials));
     }
 
     public function delete()

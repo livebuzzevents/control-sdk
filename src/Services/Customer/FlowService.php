@@ -27,7 +27,7 @@ class FlowService extends Service
 
     /**
      * @param Customer $customer
-     * @param int      $step
+     * @param int $step
      *
      * @throws ErrorException
      */
@@ -42,7 +42,7 @@ class FlowService extends Service
 
     /**
      * @param Customer $customer
-     * @param int      $step
+     * @param int $step
      *
      * @throws ErrorException
      *

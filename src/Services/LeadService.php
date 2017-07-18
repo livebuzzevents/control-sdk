@@ -48,7 +48,7 @@ class LeadService extends Service
 
     /**
      * @param Campaign $campaign
-     * @param Lead     $lead
+     * @param Lead $lead
      *
      * @return mixed
      * @throws ErrorException
@@ -120,7 +120,7 @@ class LeadService extends Service
     }
 
     /**
-     * @param Lead   $lead
+     * @param Lead $lead
      * @param string $tag
      *
      * @return Lead
@@ -140,7 +140,7 @@ class LeadService extends Service
     }
 
     /**
-     * @param Lead   $lead
+     * @param Lead $lead
      * @param string $tag
      *
      * @return Lead
@@ -160,7 +160,7 @@ class LeadService extends Service
     }
 
     /**
-     * @param Lead  $lead
+     * @param Lead $lead
      * @param array $tags
      *
      * @return Lead

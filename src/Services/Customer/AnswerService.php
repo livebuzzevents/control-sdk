@@ -17,7 +17,7 @@ class AnswerService extends Service
     protected static $cast = Customer\Answer::class;
 
     /**
-     * @param Customer        $customer
+     * @param Customer $customer
      * @param Customer\Answer $answer
      *
      * @return Customer\Answer[]
@@ -37,7 +37,7 @@ class AnswerService extends Service
     }
 
     /**
-     * @param Customer        $customer
+     * @param Customer $customer
      * @param Customer\Answer $answer
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class AnswerService extends Service
     }
 
     /**
-     * @param Customer        $customer
+     * @param Customer $customer
      * @param Customer\Answer $answer
      *
      * @return Customer\Answer[]
@@ -114,8 +114,9 @@ class AnswerService extends Service
 
     /**
      * @param Customer $customer
-     * @param array    $answers
-     * @param array    $rules
+     * @param array $answers
+     * @param array $rules
+     *
      * @return mixed
      * @throws ErrorException
      */

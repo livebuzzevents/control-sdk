@@ -17,7 +17,7 @@ class PropertyService extends Service
     protected static $cast = Product\Property::class;
 
     /**
-     * @param Product          $product
+     * @param Product $product
      * @param Product\Property $property
      *
      * @return Product\Property
@@ -37,7 +37,7 @@ class PropertyService extends Service
     }
 
     /**
-     * @param Product          $product
+     * @param Product $product
      * @param Product\Property $property
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class PropertyService extends Service
     }
 
     /**
-     * @param Product          $product
+     * @param Product $product
      * @param Product\Property $property
      *
      * @return Product\Property
@@ -109,7 +109,7 @@ class PropertyService extends Service
     }
 
     /**
-     * @param Product            $product
+     * @param Product $product
      * @param Product\Property[] $properties
      *
      * @return Product\Property[]

@@ -17,7 +17,7 @@ class AddressService extends Service
     protected static $cast = Exhibitor\Address::class;
 
     /**
-     * @param Exhibitor         $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Exhibitor\Address $address
      *
      * @return Exhibitor\Address
@@ -37,7 +37,7 @@ class AddressService extends Service
     }
 
     /**
-     * @param Exhibitor         $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Exhibitor\Address $address
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class AddressService extends Service
     }
 
     /**
-     * @param Exhibitor         $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Exhibitor\Address $address
      *
      * @return Exhibitor\Address
@@ -109,7 +109,7 @@ class AddressService extends Service
     }
 
     /**
-     * @param Exhibitor           $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Exhibitor\Address[] $addresses
      *
      * @return Exhibitor\Address

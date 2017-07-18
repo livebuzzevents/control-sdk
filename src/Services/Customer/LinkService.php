@@ -18,7 +18,7 @@ class LinkService extends Service
     protected static $cast = Link::class;
 
     /**
-     * @param Customer      $customer
+     * @param Customer $customer
      * @param Link $link
      *
      * @return Link
@@ -38,7 +38,7 @@ class LinkService extends Service
     }
 
     /**
-     * @param Customer      $customer
+     * @param Customer $customer
      * @param Link $link
      *
      * @throws ErrorException
@@ -57,7 +57,7 @@ class LinkService extends Service
     }
 
     /**
-     * @param Customer      $customer
+     * @param Customer $customer
      * @param Link $link
      *
      * @return Link
@@ -110,7 +110,7 @@ class LinkService extends Service
     }
 
     /**
-     * @param Customer        $customer
+     * @param Customer $customer
      * @param Link[] $links
      *
      * @return Link[]

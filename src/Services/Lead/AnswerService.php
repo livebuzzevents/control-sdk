@@ -17,7 +17,7 @@ class AnswerService extends Service
     protected static $cast = Lead\Answer::class;
 
     /**
-     * @param Lead        $lead
+     * @param Lead $lead
      * @param Lead\Answer $answer
      *
      * @return Lead\Answer[]
@@ -37,7 +37,7 @@ class AnswerService extends Service
     }
 
     /**
-     * @param Lead        $lead
+     * @param Lead $lead
      * @param Lead\Answer $answer
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class AnswerService extends Service
     }
 
     /**
-     * @param Lead        $lead
+     * @param Lead $lead
      * @param Lead\Answer $answer
      *
      * @return Lead\Answer[]
@@ -113,7 +113,7 @@ class AnswerService extends Service
     }
 
     /**
-     * @param Lead          $lead
+     * @param Lead $lead
      * @param Lead\Answer[] $answers
      *
      * @return Lead\Answer[]

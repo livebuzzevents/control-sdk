@@ -2,14 +2,9 @@
 
 require_once '../bootstrap.php';
 
-$customer = new \Buzz\Control\Objects\Customer('f1d6a89b-6f52-4c02-85aa-1a7b71140000');
+$customer = \Buzz\Control\Campaign\Customer::find('490ed86f-3a5d-452a-8b97-1a4b9c750000');
 
-$service = new \Buzz\Control\Services\CustomerService($buzz);
+//$customer = \Buzz\Control\Campaign\Customer::first();
 
-$customer = $service->with('phones', 'badgeType')->get($customer);
+dd($customer->id);
 
-dd($customer->getLeads()->first()->getLead()->getGroup());
-
-dd($customer->getAnswersGroupedByIdentifier());
-
-var_dump($customer->getPhones()->first('type', 'mobile'));

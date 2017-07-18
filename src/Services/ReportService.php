@@ -17,6 +17,7 @@ class ReportService extends Service
 
     /**
      * @param Report $report
+     *
      * @return mixed
      * @throws ErrorException
      */

@@ -17,7 +17,7 @@ class AnswerService extends Service
     protected static $cast = Vote\Answer::class;
 
     /**
-     * @param Vote        $vote
+     * @param Vote $vote
      * @param Vote\Answer $answer
      *
      * @return Vote\Answer[]
@@ -37,7 +37,7 @@ class AnswerService extends Service
     }
 
     /**
-     * @param Vote        $vote
+     * @param Vote $vote
      * @param Vote\Answer $answer
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class AnswerService extends Service
     }
 
     /**
-     * @param Vote        $vote
+     * @param Vote $vote
      * @param Vote\Answer $answer
      *
      * @return Vote\Answer[]
@@ -113,7 +113,7 @@ class AnswerService extends Service
     }
 
     /**
-     * @param Vote          $vote
+     * @param Vote $vote
      * @param Vote\Answer[] $answers
      *
      * @return Vote\Answer[]

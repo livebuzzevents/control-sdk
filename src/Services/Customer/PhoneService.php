@@ -17,7 +17,7 @@ class PhoneService extends Service
     protected static $cast = Customer\Phone::class;
 
     /**
-     * @param Customer       $customer
+     * @param Customer $customer
      * @param Customer\Phone $phone
      *
      * @return Customer\Phone
@@ -37,7 +37,7 @@ class PhoneService extends Service
     }
 
     /**
-     * @param Customer       $customer
+     * @param Customer $customer
      * @param Customer\Phone $phone
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class PhoneService extends Service
     }
 
     /**
-     * @param Customer       $customer
+     * @param Customer $customer
      * @param Customer\Phone $phone
      *
      * @return Customer\Phone
@@ -109,7 +109,7 @@ class PhoneService extends Service
     }
 
     /**
-     * @param Customer         $customer
+     * @param Customer $customer
      * @param Customer\Phone[] $phones
      *
      * @return Customer\Phone[]

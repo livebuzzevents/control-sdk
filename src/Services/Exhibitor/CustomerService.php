@@ -18,7 +18,7 @@ class CustomerService extends Service
     protected static $cast = Exhibitor\Customer::class;
 
     /**
-     * @param Exhibitor  $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Customer[] $customers
      *
      * @return Customer[]
@@ -42,7 +42,7 @@ class CustomerService extends Service
     }
 
     /**
-     * @param Exhibitor  $exhibitor
+     * @param Exhibitor $exhibitor
      * @param Customer[] $customers
      *
      * @return Customer[]

@@ -41,6 +41,22 @@ class Filter
     }
 
     /**
+     * @param Filter $group
+     * @param bool $or
+     *
+     * @return $this
+     */
+    public function addGroup(Filter $group, $or = false)
+    {
+        array_push(
+            $this->groups,
+            compact('group', 'or')
+        );
+
+        return $this;
+    }
+
+    /**
      * @param      $parameter
      * @param      $operator
      * @param      $value
@@ -95,22 +111,6 @@ class Filter
     }
 
     /**
-     * @param Filter $group
-     * @param bool   $or
-     *
-     * @return $this
-     */
-    public function addGroup(Filter $group, $or = false)
-    {
-        array_push(
-            $this->groups,
-            compact('group', 'or')
-        );
-
-        return $this;
-    }
-
-    /**
      * @param ...$params
      *
      * @return Filter
@@ -124,7 +124,7 @@ class Filter
 
     /**
      * @param callable $callback
-     * @param bool     $or
+     * @param bool $or
      *
      * @return $this
      */
@@ -152,6 +152,7 @@ class Filter
 
     /**
      * @param array ...$params
+     *
      * @return Filter
      */
     public function orAdd(...$params)

@@ -85,7 +85,7 @@ class OrderService extends Service
     }
 
     /**
-     * @param Order  $order
+     * @param Order $order
      * @param string $tag
      *
      * @return Order
@@ -105,7 +105,7 @@ class OrderService extends Service
     }
 
     /**
-     * @param Order  $order
+     * @param Order $order
      * @param string $tag
      *
      * @return Order

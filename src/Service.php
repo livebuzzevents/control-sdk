@@ -30,20 +30,9 @@ class Service extends \JTDSoft\EssentialsSdk\Core\Service
     protected static $custom_header_prefix = 'BUZZ-';
 
     /**
-     * @return string
+     * @var string
      */
-    public static function getOrganization(): string
-    {
-        return self::$organization;
-    }
-
-    /**
-     * @param string $organization
-     */
-    public static function setOrganization(string $organization)
-    {
-        self::$organization = $organization;
-    }
+    protected static $version = 'v2';
 
     /**
      * @return string
@@ -59,22 +48,6 @@ class Service extends \JTDSoft\EssentialsSdk\Core\Service
     public static function setCampaign(string $campaign)
     {
         self::$campaign = $campaign;
-    }
-
-    /**
-     * @return string
-     */
-    public static function getDomain(): string
-    {
-        return self::$domain;
-    }
-
-    /**
-     * @param string $domain
-     */
-    public static function setDomain(string $domain)
-    {
-        self::$domain = $domain;
     }
 
     /**
@@ -102,6 +75,10 @@ class Service extends \JTDSoft\EssentialsSdk\Core\Service
             $this->setCustomHeader('Stream', self::$stream);
         }
 
+        if (self::$campaign) {
+            $this->setCustomHeader('Campaign', self::$campaign);
+        }
+
         parent::prepareHeaders();
     }
 
@@ -113,7 +90,7 @@ class Service extends \JTDSoft\EssentialsSdk\Core\Service
     protected function getUrl($method)
     {
         $endpoint = sprintf(
-            '%s://%s.%s/%s/%s',
+            '%s://%s.%s/rest/%s/%s',
             static::getProtocol(),
             static::getOrganization(),
             static::getDomain(),
@@ -122,5 +99,37 @@ class Service extends \JTDSoft\EssentialsSdk\Core\Service
         );
 
         return $endpoint;
+    }
+
+    /**
+     * @return string
+     */
+    public static function getOrganization(): string
+    {
+        return self::$organization;
+    }
+
+    /**
+     * @param string $organization
+     */
+    public static function setOrganization(string $organization)
+    {
+        self::$organization = $organization;
+    }
+
+    /**
+     * @return string
+     */
+    public static function getDomain(): string
+    {
+        return self::$domain;
+    }
+
+    /**
+     * @param string $domain
+     */
+    public static function setDomain(string $domain)
+    {
+        self::$domain = $domain;
     }
 }

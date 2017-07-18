@@ -13,9 +13,9 @@ use Buzz\Control\Objects\Exhibitor;
 class EmailService extends Service
 {
     /**
-     * @param Customer             $customer
+     * @param Customer $customer
      * @param EmailMessageTemplate $emailMessageTemplate
-     * @param array                $settings
+     * @param array $settings
      *
      * @throws ErrorException
      */
@@ -39,15 +39,18 @@ class EmailService extends Service
     }
 
     /**
-     * @param Exhibitor            $exhibitor
+     * @param Exhibitor $exhibitor
      * @param EmailMessageTemplate $emailMessageTemplate
-     * @param array                $settings
+     * @param array $settings
      *
      * @throws ErrorException
      * @internal param Customer $customer
      */
-    public function sendToExhibitor(Exhibitor $exhibitor, EmailMessageTemplate $emailMessageTemplate, array $settings = [])
-    {
+    public function sendToExhibitor(
+        Exhibitor $exhibitor,
+        EmailMessageTemplate $emailMessageTemplate,
+        array $settings = []
+    ) {
         if ((!$emailMessageTemplate->getId() && !$emailMessageTemplate->getIdentifier()) && !$exhibitor->getId()) {
             throw new ErrorException('Email and Exhibitor required!');
         }

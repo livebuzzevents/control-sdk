@@ -17,7 +17,7 @@ class PropertyService extends Service
     protected static $cast = Lead\Property::class;
 
     /**
-     * @param Lead          $lead
+     * @param Lead $lead
      * @param Lead\Property $property
      *
      * @return Lead\Property
@@ -37,7 +37,7 @@ class PropertyService extends Service
     }
 
     /**
-     * @param Lead          $lead
+     * @param Lead $lead
      * @param Lead\Property $property
      *
      * @throws ErrorException
@@ -56,7 +56,7 @@ class PropertyService extends Service
     }
 
     /**
-     * @param Lead          $lead
+     * @param Lead $lead
      * @param Lead\Property $property
      *
      * @return Lead\Property
@@ -109,7 +109,7 @@ class PropertyService extends Service
     }
 
     /**
-     * @param Lead            $lead
+     * @param Lead $lead
      * @param Lead\Property[] $properties
      *
      * @return Lead\Property[]
