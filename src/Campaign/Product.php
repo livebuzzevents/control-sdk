@@ -3,7 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Object;
-use Buzz\Control\Objects\Traits\Translatable;
+use Buzz\Control\Campaign\Traits\Translatable;
 
 /**
  * Class Product

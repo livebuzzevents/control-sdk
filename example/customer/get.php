@@ -2,7 +2,9 @@
 
 require_once '../bootstrap.php';
 
-$customer = \Buzz\Control\Campaign\Customer::find('490ed86f-3a5d-452a-8b97-1a4b9c750000');
+$customer = (new \Buzz\Control\Campaign\Customer());
+
+$customer->fresh();
 
 //$customer = \Buzz\Control\Campaign\Customer::first();
 

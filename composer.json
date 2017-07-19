@@ -9,6 +9,7 @@
   "license": "LiveBuzz",
   "type": "package",
   "require": {
+    "php": "^7.1",
     "jtdsoft/essentials-sdk": "dev-master"
   },
   "require-dev": {

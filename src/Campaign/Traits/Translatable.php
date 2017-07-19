@@ -1,4 +1,4 @@
-<?php namespace Buzz\Control\Objects\Traits;
+<?php namespace Buzz\Control\Campaign\Traits;
 
 /**
  * trait Translatable

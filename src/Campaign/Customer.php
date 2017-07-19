@@ -3,8 +3,6 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Object;
-use Buzz\Control\Service;
-use JTDSoft\EssentialsSdk\Core\Cast;
 use JTDSoft\EssentialsSdk\Core\Collection;
 
 /**
@@ -54,7 +52,6 @@ use JTDSoft\EssentialsSdk\Core\Collection;
  * @property string $cloned_type
  * @property string $cloned_campaign_id
  * @property string $remember_token
- *
  * @property-read \Buzz\Control\Campaign\CustomerAffiliate[] $affiliates
  * @property-read \Buzz\Control\Campaign\Address[] $addresses
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
@@ -100,54 +97,7 @@ use JTDSoft\EssentialsSdk\Core\Collection;
  */
 class Customer extends Object
 {
-    public static function find(string $id, array $expand = []): ?Customer
-    {
-        return Cast::single(self::class, (new Service())->get("customers/{$id}", compact('expand')));
-    }
-
-    public static function first(array $expand = [], array $options = []): ?Customer
-    {
-        return self::get($expand, $options)->first();
-    }
-
-    public static function get(array $expand = [], array $options = []): Collection
-    {
-        return Cast::many(self::class, (new Service())->get("customers", compact('expand', 'options')));
-    }
-
-    public static function saveMany($customers, array $expand = [])
-    {
-        return Cast::many(self::class, (new Service())->post("customers", $customers + compact('expand')));
-    }
-
-    public static function deleteMany(array $options = [])
-    {
-        return (new Service())->delete("customers", compact('options'));
-    }
-
-    public static function create(array $attributes)
-    {
-        $customer = (new self($attributes));
-
-        $customer->save();
-
-        return $customer;
-    }
-
-    public function save()
-    {
-        if ($this->id) {
-            $this->copyFromArray(
-                (new Service())->put("customers/{$this->id}", $this->data + compact('expand'))
-            );
-        } else {
-            $this->copyFromArray(
-                (new Service())->post("customers", $this->data + compact('expand'))
-            );
-        }
-    }
-
-    public static function login(array $credentials)
+    public function login(array $credentials)
     {
         $user_information = [
             'user_agent'      => !empty($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null,
@@ -164,11 +114,41 @@ class Customer extends Object
 
         $credentials['user_information'] = $user_information;
 
-        return Cast::single(self::class, (new Service())->get("customers/login", $credentials));
+        return new self($this->api()->get($this->getEndpoint('login'), $credentials));
     }
 
-    public function delete()
+    public function create(array $attributes): Customer
     {
-        return (new Service())->delete("customers/{$this->id}");
+        return $this->_create($attributes);
+    }
+
+    public function save(): void
+    {
+        $this->_save();
+    }
+
+    public function get(array $filters = [], $page = 1, $per_page = 50): Collection
+    {
+        return $this->_get($filters, $page, $per_page);
+    }
+
+    public function first(array $filters = []): ?Customer
+    {
+        return $this->_first($filters);
+    }
+
+    public function find(string $id): ?Customer
+    {
+        return $this->_find($id);
+    }
+
+    public function delete(): void
+    {
+        $this->_delete();
+    }
+
+    public function reload(): void
+    {
+        $this->_reload();
     }
 }
