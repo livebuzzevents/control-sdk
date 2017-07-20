@@ -53,6 +53,11 @@ class Stream extends Base
     protected $affiliates;
 
     /**
+     * @var array
+     */
+    protected $settings;
+
+    /**
      * @return mixed
      */
     public function getName()
@@ -186,5 +191,21 @@ class Stream extends Base
     public function setFiles($files)
     {
         $this->files = new Collection($files);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSettings()
+    {
+        return $this->settings;
+    }
+
+    /**
+     * @param array $settings
+     */
+    public function setSetting(array $settings)
+    {
+        $this->settings = $settings;
     }
 }
