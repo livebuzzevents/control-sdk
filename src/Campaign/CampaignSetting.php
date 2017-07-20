@@ -2,39 +2,17 @@
 
 namespace Buzz\Control\Campaign;
 
-use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Object;
 use JTDSoft\EssentialsSdk\Core\Collection;
 
 /**
- * Class Topic
+ * Class CampaignSettings
  *
  * @property string $identifier
- * @property string $name
- * @property string $description
+ * @property string $value
  */
-class Topic extends Object
+class CampaignSetting extends Object
 {
-    use Translatable;
-
-    /**
-     * @param array $attributes
-     *
-     * @return \Buzz\Control\Campaign\Topic
-     */
-    public function create(array $attributes): self
-    {
-        return $this->_create($attributes);
-    }
-
-    /**
-     *
-     */
-    public function save(): void
-    {
-        $this->_save();
-    }
-
     /**
      * @param array $filters
      * @param int $page
@@ -50,7 +28,7 @@ class Topic extends Object
     /**
      * @param array $filters
      *
-     * @return \Buzz\Control\Campaign\Topic|null
+     * @return \Buzz\Control\Campaign\CampaignSetting|null
      */
     public function first(array $filters = []): ?self
     {
@@ -60,7 +38,7 @@ class Topic extends Object
     /**
      * @param string $id
      *
-     * @return \Buzz\Control\Campaign\Topic|null
+     * @return \Buzz\Control\Campaign\CampaignSetting|null
      */
     public function find(string $id): ?self
     {

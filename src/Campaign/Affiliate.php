@@ -25,7 +25,7 @@ class Affiliate extends Object
      *
      * @return \Buzz\Control\Campaign\Affiliate
      */
-    public function create(array $attributes): Affiliate
+    public function create(array $attributes): self
     {
         return $this->_create($attributes);
     }
@@ -55,7 +55,7 @@ class Affiliate extends Object
      *
      * @return \Buzz\Control\Campaign\Affiliate|null
      */
-    public function first(array $filters = []): ?Affiliate
+    public function first(array $filters = []): ?self
     {
         return $this->_first($filters);
     }
@@ -65,7 +65,7 @@ class Affiliate extends Object
      *
      * @return \Buzz\Control\Campaign\Affiliate|null
      */
-    public function find(string $id): ?Affiliate
+    public function find(string $id): ?self
     {
         return $this->_find($id);
     }

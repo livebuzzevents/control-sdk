@@ -103,6 +103,10 @@ class Object extends \JTDSoft\EssentialsSdk\Core\Object
      */
     protected function _save(): void
     {
+        if (!$this->isDirty()) {
+            return;
+        }
+
         if ($this->id) {
             $this->copyFromArray(
                 $this->api()->put($this->getEndpoint($this->id), $this->data)
@@ -112,6 +116,8 @@ class Object extends \JTDSoft\EssentialsSdk\Core\Object
                 $this->api()->post($this->getEndpoint(), $this->data)
             );
         }
+
+        $this->cleanDirtyAttributes();
     }
 
     /**

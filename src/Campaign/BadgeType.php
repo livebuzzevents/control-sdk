@@ -35,7 +35,7 @@ class BadgeType extends Object
      *
      * @return \Buzz\Control\Campaign\BadgeType
      */
-    public function create(array $attributes): BadgeType
+    public function create(array $attributes): self
     {
         return $this->_create($attributes);
     }
@@ -65,7 +65,7 @@ class BadgeType extends Object
      *
      * @return \Buzz\Control\Campaign\BadgeType|null
      */
-    public function first(array $filters = []): ?BadgeType
+    public function first(array $filters = []): ?self
     {
         return $this->_first($filters);
     }
@@ -75,7 +75,7 @@ class BadgeType extends Object
      *
      * @return \Buzz\Control\Campaign\BadgeType|null
      */
-    public function find(string $id): ?BadgeType
+    public function find(string $id): ?self
     {
         return $this->_find($id);
     }

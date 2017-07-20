@@ -27,7 +27,7 @@ use JTDSoft\EssentialsSdk\Core\Collection;
  * @property string $exhibitor_role
  * @property string $username
  * @property-read bool $has_password
- * @property string $password
+ * @property-write string $password
  * @property string $title
  * @property-read string $name
  * @property string $first_name

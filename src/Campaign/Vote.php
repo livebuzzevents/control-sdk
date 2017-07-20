@@ -14,7 +14,6 @@ use Buzz\Control\Object;
  * @property string $email
  * @property string $group_id
  * @property string $created_by_customer_id
- *
  * @property-read \Buzz\Control\Campaign\VoteGroup[] $group
  * @property-read \Buzz\Control\Campaign\Customer $created_by_customer
  * @property-read \Buzz\Control\Campaign\Answer[] $answers

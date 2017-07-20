@@ -360,23 +360,24 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jtdsoft/essentials-sdk.git",
-                "reference": "25621ea7b36a395f4eded1e8c0095c2179614121"
+                "reference": "78f1c89d7c0501633326176511ee0296499252bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jtdsoft/essentials-sdk/zipball/25621ea7b36a395f4eded1e8c0095c2179614121",
-                "reference": "25621ea7b36a395f4eded1e8c0095c2179614121",
+                "url": "https://api.github.com/repos/jtdsoft/essentials-sdk/zipball/78f1c89d7c0501633326176511ee0296499252bf",
+                "reference": "78f1c89d7c0501633326176511ee0296499252bf",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "~6.0",
-                "illuminate/support": "^5.4"
+                "illuminate/support": "^5.4",
+                "php": "^7.1"
             },
             "require-dev": {
                 "fzaninotto/faker": "1.4.0",
                 "mockery/mockery": "*",
                 "phpspec/phpspec": "~2.1",
-                "phpunit/phpunit": "~4.0",
+                "phpunit/phpunit": "~6.0",
                 "theseer/phpdox": "*"
             },
             "type": "package",
@@ -399,7 +400,7 @@
                 "php",
                 "sdk"
             ],
-            "time": "2017-07-19 15:53:55"
+            "time": "2017-07-20 13:11:26"
         },
         {
             "name": "paragonie/random_compat",
