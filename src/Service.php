@@ -7,6 +7,11 @@ class Service extends \JTDSoft\EssentialsSdk\Core\Service
     /**
      * @var string
      */
+    protected static $gateway = 'www';
+
+    /**
+     * @var string
+     */
     protected static $organization;
 
     /**
@@ -33,6 +38,11 @@ class Service extends \JTDSoft\EssentialsSdk\Core\Service
      * @var string
      */
     protected static $version = 'v2';
+
+    /**
+     * @var string
+     */
+    protected $section = 'gateway';
 
     /**
      * @return string
@@ -75,10 +85,6 @@ class Service extends \JTDSoft\EssentialsSdk\Core\Service
             $this->setCustomHeader('Stream', self::$stream);
         }
 
-        if (self::$campaign) {
-            $this->setCustomHeader('Campaign', self::$campaign);
-        }
-
         parent::prepareHeaders();
     }
 
@@ -89,14 +95,35 @@ class Service extends \JTDSoft\EssentialsSdk\Core\Service
      */
     protected function getUrl($method)
     {
-        $endpoint = sprintf(
-            '%s://%s.%s/rest/%s/%s',
-            static::getProtocol(),
-            static::getOrganization(),
-            static::getDomain(),
-            static::getVersion(),
-            $method
-        );
+        if ($this->section == 'organization') {
+            $endpoint = sprintf(
+                '%s://%s.%s/rest/%s/%s',
+                static::getProtocol(),
+                static::getOrganization(),
+                static::getDomain(),
+                static::getVersion(),
+                $method
+            );
+        } elseif ($this->section == 'campaign') {
+            $endpoint = sprintf(
+                '%s://%s.%s/rest/%s/campaign/%s/%s',
+                static::getProtocol(),
+                static::getOrganization(),
+                static::getDomain(),
+                static::getVersion(),
+                static::getCampaign(),
+                $method
+            );
+        } else {
+            $endpoint = sprintf(
+                '%s://%s.%s/rest/%s/%s',
+                static::getProtocol(),
+                static::getGateway(),
+                static::getDomain(),
+                static::getVersion(),
+                $method
+            );
+        }
 
         return $endpoint;
     }
@@ -120,6 +147,22 @@ class Service extends \JTDSoft\EssentialsSdk\Core\Service
     /**
      * @return string
      */
+    public static function getGateway(): string
+    {
+        return self::$gateway;
+    }
+
+    /**
+     * @param string $gateway
+     */
+    public static function setGateway(string $gateway)
+    {
+        self::$gateway = $gateway;
+    }
+
+    /**
+     * @return string
+     */
     public static function getDomain(): string
     {
         return self::$domain;
@@ -131,5 +174,13 @@ class Service extends \JTDSoft\EssentialsSdk\Core\Service
     public static function setDomain(string $domain)
     {
         self::$domain = $domain;
+    }
+
+    /**
+     * @param string $section
+     */
+    public function setSection(string $section): void
+    {
+        $this->section = $section;
     }
 }

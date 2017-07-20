@@ -5,6 +5,7 @@ namespace Buzz\Control;
 use JTDSoft\EssentialsSdk\Core\Cast;
 use JTDSoft\EssentialsSdk\Core\Collection;
 use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
+use ReflectionClass;
 
 /**
  * Class Object
@@ -28,6 +29,23 @@ class Object extends \JTDSoft\EssentialsSdk\Core\Object
     protected function service(): Service
     {
         return new Service();
+    }
+
+    /**
+     *
+     */
+    protected function api()
+    {
+        $api = parent::api();
+
+        $reflection = new ReflectionClass($this);
+        $namespace  = $reflection->getNamespaceName();
+
+        $section = strtolower(basename(str_replace('\\', '/', $namespace)));
+
+        $api->setSection(basename($section));
+
+        return $api;
     }
 
     /**

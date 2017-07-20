@@ -17,6 +17,7 @@ if ($showErrors) {
 \Buzz\Control\Service::setApiKey($api_key);
 \Buzz\Control\Service::setDomain($domain);
 \Buzz\Control\Service::setProtocol($protocol);
+\Buzz\Control\Service::setGateway($gateway);
 \Buzz\Control\Service::setOrganization($organization);
 \Buzz\Control\Service::setCampaign($campaign);
 \Buzz\Control\Service::setLanguage($language);
