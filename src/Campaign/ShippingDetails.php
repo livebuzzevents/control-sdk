@@ -23,7 +23,6 @@ use Buzz\Control\Object;
  * @property string $city
  * @property string $county
  * @property string $country
- *
  * @property-read \Buzz\Control\Campaign\Order $order;
  */
 class ShippingDetails extends Object

@@ -11,7 +11,6 @@ use JTDSoft\EssentialsSdk\Core\Collection;
  * @property string $barcode
  * @property string $customer_id
  * @property string $scanner_id
- *
  * @property-read \Buzz\Control\Campaign\Scanner $scanner
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Answer[] $answers

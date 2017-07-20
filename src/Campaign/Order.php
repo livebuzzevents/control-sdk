@@ -34,7 +34,6 @@ use Buzz\Control\Object;
  * @property string $destination
  * @property string $source
  * @property string $source_id
- *
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\Note[] $notes

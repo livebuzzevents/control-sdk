@@ -21,7 +21,6 @@ use Buzz\Control\Object;
  * @property integer $clicks
  * @property array $details
  * @property string $process_id
- *
  * @property-read \Buzz\Control\Campaign\SingleShot $single_shot
  * @property-read \Buzz\Control\Campaign\Automation $automation
  * @property-read \Buzz\Control\Campaign\SmsMessageTemplate $template

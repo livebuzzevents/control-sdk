@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Object;
+use Buzz\Control\Traits\SupportCrud;
 
 /**
  * Class Link
@@ -16,4 +17,5 @@ use Buzz\Control\Object;
  */
 class Link extends Object
 {
+    use SupportCrud;
 }

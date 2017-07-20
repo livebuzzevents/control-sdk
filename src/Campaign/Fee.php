@@ -19,7 +19,6 @@ use Buzz\Control\Object;
  * @property array $settings
  * @property array $details
  * @property string $settled
- *
  * @property-read \Buzz\Control\Campaign\Charge $charge
  * @property-read \Buzz\Control\Campaign\Refund $refund
  * @property-read \Buzz\Control\Campaign\Dispute $dispute

@@ -17,7 +17,6 @@ use Buzz\Control\Object;
  * @property integer $sequence
  * @property string $number
  * @property string $paid
- *
  * @property-read \Buzz\Control\Campaign\Invoice $invoice
  * @property-read \Buzz\Control\Campaign\CreditNoteItem[] $items
  * @property-read \Buzz\Control\Campaign\Credit[] $credits

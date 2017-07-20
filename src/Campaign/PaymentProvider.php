@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Object;
+use Buzz\Control\Traits\SupportRead;
 
 /**
  * Class PaymentProvider
@@ -18,4 +19,5 @@ use Buzz\Control\Object;
  */
 class PaymentProvider extends Object
 {
+    use SupportRead;
 }

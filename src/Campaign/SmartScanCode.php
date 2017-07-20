@@ -12,9 +12,7 @@ use Buzz\Control\Object;
  * @property string $device_id
  * @property boolean $used
  * @property boolean $active
- *
  * @property-read \Buzz\Control\Campaign\Scanner $scanner
- *
  */
 class SmartScanCode extends Object
 {

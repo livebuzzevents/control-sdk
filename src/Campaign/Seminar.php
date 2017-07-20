@@ -2,8 +2,10 @@
 
 namespace Buzz\Control\Campaign;
 
-use Buzz\Control\Object;
 use Buzz\Control\Campaign\Traits\Translatable;
+use Buzz\Control\Object;
+use Buzz\Control\Traits\SupportRead;
+use Buzz\Control\Traits\SupportWrite;
 
 /**
  * Class Seminar
@@ -30,5 +32,7 @@ use Buzz\Control\Campaign\Traits\Translatable;
  */
 class Seminar extends Object
 {
-    use Translatable;
+    use SupportRead,
+        SupportWrite,
+        Translatable;
 }

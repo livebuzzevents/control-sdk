@@ -17,7 +17,6 @@ use Buzz\Control\Object;
  * @property integer $total
  * @property string $returned
  * @property-read string $currency
- *
  * @property-read \Buzz\Control\Campaign\CreditNote $credit_note
  * @property-read \Buzz\Control\Campaign\OrderProduct $order_product
  */

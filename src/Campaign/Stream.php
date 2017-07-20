@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Object;
+use Buzz\Control\Traits\SupportRead;
 
 /**
  * Class Stream
@@ -28,4 +29,5 @@ use Buzz\Control\Object;
  */
 class Stream extends Object
 {
+    use SupportRead;
 }

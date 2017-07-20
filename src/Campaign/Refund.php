@@ -21,7 +21,6 @@ use Buzz\Control\Object;
  * @property array $settled
  * @property array $status
  * @property \DateTime $caputed_at
- *
  * @property-read \Buzz\Control\Campaign\Charge $charge
  * @property-read \Buzz\Control\Campaign\CreditNote $credit_note
  * @property-read \Buzz\Control\Campaign\Fee[] $fees

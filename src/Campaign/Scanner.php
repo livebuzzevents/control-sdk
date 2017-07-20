@@ -3,6 +3,8 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Object;
+use Buzz\Control\Traits\SupportRead;
+use Buzz\Control\Traits\SupportWrite;
 
 /**
  * Class Scanner
@@ -21,11 +23,12 @@ use Buzz\Control\Object;
  * @property string $delivery_status
  * @property array $details
  * @property-read boolean $handles_crossovers
- *
  * @property-read \Buzz\Control\Campaign\Scan[] $scan
  * @property-read \Buzz\Control\Campaign\SmartScanCode[] $smart_scan_codes
  *
  */
 class Scanner extends Object
 {
+    use SupportRead,
+        SupportWrite;
 }

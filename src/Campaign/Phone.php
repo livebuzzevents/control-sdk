@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Object;
+use Buzz\Control\Traits\SupportCrud;
 
 /**
  * Class Phone
@@ -17,4 +18,5 @@ use Buzz\Control\Object;
  */
 class Phone extends Object
 {
+    use SupportCrud;
 }

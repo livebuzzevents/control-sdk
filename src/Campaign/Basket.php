@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Object;
+use Buzz\Control\Traits\SupportCrud;
 
 /**
  * Class Basket
@@ -18,7 +19,6 @@ use Buzz\Control\Object;
  * @property string $vat_exempt
  * @property string $po_number
  * @property-read string currency
- *
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\PaymentProvider $payment_provider
@@ -27,4 +27,5 @@ use Buzz\Control\Object;
  */
 class Basket extends Object
 {
+    use SupportCrud;
 }

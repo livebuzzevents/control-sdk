@@ -20,7 +20,6 @@ use Buzz\Control\Object;
  * @property array $response
  * @property string $settled
  * @property \DateTime $captured_at
- *
  * @property-read \Buzz\Control\Campaign\Order $order
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\PaymentProvider $payment_provider

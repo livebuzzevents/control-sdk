@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Object;
+use Buzz\Control\Traits\SupportCrud;
 
 /**
  * Class Address
@@ -24,4 +25,5 @@ use Buzz\Control\Object;
  */
 class Address extends Object
 {
+    use SupportCrud;
 }
