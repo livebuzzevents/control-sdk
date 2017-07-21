@@ -2,7 +2,6 @@
 
 namespace Buzz\Control\Campaign;
 
-use Buzz\Control\Object;
 use Buzz\Control\Traits\SupportDelete;
 use Buzz\Control\Traits\SupportRead;
 

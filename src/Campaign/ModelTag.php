@@ -2,8 +2,6 @@
 
 namespace Buzz\Control\Campaign;
 
-use Buzz\Control\Object;
-
 /**
  * Class BadgeStock
  *

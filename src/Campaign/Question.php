@@ -3,7 +3,6 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Translatable;
-use Buzz\Control\Object;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
 

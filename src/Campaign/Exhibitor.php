@@ -2,10 +2,8 @@
 
 namespace Buzz\Control\Campaign;
 
-use Buzz\Control\Object;
-use Buzz\Control\Service;
-use JTDSoft\EssentialsSdk\Core\Cast;
-use JTDSoft\EssentialsSdk\Core\Collection;
+use Buzz\Control\Campaign\Traits\Taggable;
+use Buzz\Control\Traits\SupportCrud;
 
 /**
  * Class Exhibitor
@@ -59,75 +57,6 @@ use JTDSoft\EssentialsSdk\Core\Collection;
  */
 class Exhibitor extends Object
 {
-    public static function find(string $id, array $expand = []): ?Exhibitor
-    {
-        return Cast::single(self::class, (new Service())->get("exhibitors/{$id}", compact('expand')));
-    }
-
-    public static function first(array $expand = [], array $options = []): ?Exhibitor
-    {
-        return self::get($expand, $options)->first();
-    }
-
-    public static function get(array $expand = [], array $options = []): Collection
-    {
-        return Cast::many(self::class, (new Service())->get("exhibitors", compact('expand', 'options')));
-    }
-
-    public static function saveMany($exhibitors, array $expand = [])
-    {
-        return Cast::many(self::class, (new Service())->post("exhibitors", $exhibitors + compact('expand')));
-    }
-
-    public static function deleteMany(array $options = [])
-    {
-        return (new Service())->delete("exhibitors", compact('options'));
-    }
-
-    public static function create(array $attributes)
-    {
-        $exhibitor = (new self($attributes));
-
-        $exhibitor->save();
-
-        return $exhibitor;
-    }
-
-    public function save()
-    {
-        if ($this->id) {
-            $this->copyFromArray(
-                (new Service())->put("exhibitors/{$this->id}", $this->data + compact('expand'))
-            );
-        } else {
-            $this->copyFromArray(
-                (new Service())->post("exhibitors", $this->data + compact('expand'))
-            );
-        }
-    }
-
-    public static function login(array $credentials)
-    {
-        $user_information = [
-            'user_agent'      => !empty($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null,
-            'accept_language' => !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : null,
-        ];
-
-        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $user_information['x_ip'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        }
-
-        if (!empty($_SERVER['REMOTE_ADDR'])) {
-            $user_information['ip'] = $_SERVER['REMOTE_ADDR'];
-        }
-
-        $credentials['user_information'] = $user_information;
-
-        return Cast::single(self::class, (new Service())->get("exhibitors/login", $credentials));
-    }
-
-    public function delete()
-    {
-        return (new Service())->delete("exhibitors/{$this->id}");
-    }
+    use SupportCrud,
+        Taggable;
 }

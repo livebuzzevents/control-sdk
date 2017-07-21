@@ -2,7 +2,8 @@
 
 namespace Buzz\Control\Campaign;
 
-use Buzz\Control\Object;
+use Buzz\Control\Campaign\Traits\Taggable;
+use Buzz\Control\Traits\SupportRead;
 
 /**
  * Class Order
@@ -50,4 +51,6 @@ use Buzz\Control\Object;
  */
 class Order extends Object
 {
+    use SupportRead,
+        Taggable;
 }

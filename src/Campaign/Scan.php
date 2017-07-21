@@ -2,7 +2,6 @@
 
 namespace Buzz\Control\Campaign;
 
-use Buzz\Control\Object;
 use JTDSoft\EssentialsSdk\Core\Collection;
 
 /**

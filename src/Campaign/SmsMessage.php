@@ -2,8 +2,6 @@
 
 namespace Buzz\Control\Campaign;
 
-use Buzz\Control\Object;
-
 /**
  * Class SmsMessage
  *
@@ -27,4 +25,22 @@ use Buzz\Control\Object;
  */
 class SmsMessage extends Object
 {
+    /**
+     * @param Object $model
+     * @param string $sms_message_template_id
+     * @param string|null $phone_number
+     */
+    public function send(
+        Object $model,
+        string $sms_message_template_id,
+        string $phone_number = null
+    ) {
+        $model_type = class_basename($model);
+        $model_id   = $model->id;
+
+        $this->api()->post(
+            'send/' . $sms_message_template_id,
+            compact('model_id', 'model_type', 'phone_number')
+        );
+    }
 }

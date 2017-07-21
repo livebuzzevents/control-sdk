@@ -2,7 +2,6 @@
 
 namespace Buzz\Control\Campaign;
 
-use Buzz\Control\Object;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
 
@@ -31,4 +30,24 @@ class Scanner extends Object
 {
     use SupportRead,
         SupportWrite;
+
+    /**
+     * @param string|null $exhibitor_id
+     * @param string|null $customer_id
+     * @param string|null $paid
+     *
+     * @return static
+     */
+    public function createSmartScanner(
+        string $exhibitor_id = null,
+        string $customer_id = null,
+        string $paid = null
+    ) {
+        return new static(
+            $this->api()->post(
+                $this->getEndpoint('create-smart-scanner'),
+                compact('exhibitor_id', 'customer_id', 'paid')
+            )
+        );
+    }
 }

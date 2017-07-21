@@ -2,8 +2,10 @@
 
 namespace Buzz\Control\Campaign;
 
-use Buzz\Control\Object;
-use JTDSoft\EssentialsSdk\Core\Collection;
+use Buzz\Control\Campaign\Traits\CanSendEmailMessage;
+use Buzz\Control\Campaign\Traits\CanSendSmsMessage;
+use Buzz\Control\Campaign\Traits\Taggable;
+use Buzz\Control\Traits\SupportCrud;
 
 /**
  * Class Customer
@@ -97,6 +99,16 @@ use JTDSoft\EssentialsSdk\Core\Collection;
  */
 class Customer extends Object
 {
+    use SupportCrud,
+        CanSendEmailMessage,
+        CanSendSmsMessage,
+        Taggable;
+
+    /**
+     * @param array $credentials
+     *
+     * @return \Buzz\Control\Campaign\Customer
+     */
     public function login(array $credentials)
     {
         $user_information = [
@@ -115,40 +127,5 @@ class Customer extends Object
         $credentials['user_information'] = $user_information;
 
         return new self($this->api()->get($this->getEndpoint('login'), $credentials));
-    }
-
-    public function create(array $attributes): Customer
-    {
-        return $this->_create($attributes);
-    }
-
-    public function save(): void
-    {
-        $this->_save();
-    }
-
-    public function get(array $filters = [], $page = 1, $per_page = 50): Collection
-    {
-        return $this->_get($filters, $page, $per_page);
-    }
-
-    public function first(array $filters = []): ?Customer
-    {
-        return $this->_first($filters);
-    }
-
-    public function find(string $id): ?Customer
-    {
-        return $this->_find($id);
-    }
-
-    public function delete(): void
-    {
-        $this->_delete();
-    }
-
-    public function reload(): void
-    {
-        $this->_reload();
     }
 }
