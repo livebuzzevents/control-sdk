@@ -7,6 +7,7 @@ use Buzz\Control\Campaign\Traits\CanSendSmsMessage;
 use Buzz\Control\Campaign\Traits\Taggable;
 use Buzz\Control\Traits\SupportCrud;
 use Illuminate\Support\Collection;
+use JTDSoft\EssentialsSdk\Core\Cast;
 
 /**
  * Class Customer
@@ -153,7 +154,7 @@ class Customer extends Object
 
     /**
      * @param $clone_campaign_id
-     * @param $clone_customer_id
+     * @param $clone_lead_id
      *
      * @return \Buzz\Control\Campaign\Customer
      */
