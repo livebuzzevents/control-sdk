@@ -2,15 +2,13 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\Morphable;
 use Buzz\Control\Traits\SupportCrud;
 use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
 
 /**
  * Class Social
  *
- * @property-read object $model
- * @property string $model_type
- * @property string $model_id
  * @property string $provider
  * @property string $provider_id
  * @property string $provider_token
@@ -20,7 +18,8 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  */
 class Social extends Object
 {
-    use SupportCrud;
+    use Morphable,
+        SupportCrud;
 
     /**
      * @param \Buzz\Control\Campaign\Invite $invite

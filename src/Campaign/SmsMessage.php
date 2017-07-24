@@ -2,12 +2,11 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\Morphable;
+
 /**
  * Class SmsMessage
  *
- * @property-read object $model
- * @property string $model_type
- * @property string $model_id
  * @property string $single_shot_id
  * @property string $automation_id
  * @property string $sms_message_template_id
@@ -25,6 +24,8 @@ namespace Buzz\Control\Campaign;
  */
 class SmsMessage extends Object
 {
+    use Morphable;
+
     /**
      * @param Object $model
      * @param string $sms_message_template_id

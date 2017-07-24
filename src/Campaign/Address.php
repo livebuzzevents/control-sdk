@@ -2,14 +2,12 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\Morphable;
 use Buzz\Control\Traits\SupportCrud;
 
 /**
  * Class Address
  *
- * @property-read object $model
- * @property string $model_type
- * @property string $model_id
  * @property string $type
  * @property string $postcode
  * @property-read string $line
@@ -24,5 +22,6 @@ use Buzz\Control\Traits\SupportCrud;
  */
 class Address extends Object
 {
-    use SupportCrud;
+    use Morphable,
+        SupportCrud;
 }

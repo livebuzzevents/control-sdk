@@ -2,19 +2,16 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\Morphable;
 use Buzz\Control\Object as BaseObject;
 use Buzz\Control\Traits\SupportDelete;
 use Buzz\Control\Traits\SupportRead;
 use JTDSoft\EssentialsSdk\Core\Cast;
 use JTDSoft\EssentialsSdk\Core\Collection;
-use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
 
 /**
  * Class File
  *
- * @property-read object $model
- * @property string $model_type
- * @property string $model_id
  * @property string $identifier
  * @property string $title
  * @property string $description
@@ -26,7 +23,8 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  */
 class File extends Object
 {
-    use SupportRead,
+    use Morphable,
+        SupportRead,
         SupportDelete;
 
     /**

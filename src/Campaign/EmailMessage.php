@@ -5,9 +5,6 @@ namespace Buzz\Control\Campaign;
 /**
  * Class EmailMessage
  *
- * @property-read object $model
- * @property string $model_type
- * @property string $model_id
  * @property string $single_shot_id
  * @property string $automation_id
  * @property string $email_message_template_id
@@ -29,6 +26,9 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\Automation $automation
  * @property-read \Buzz\Control\Campaign\EmailMessageTemplate $template
  */
+
+use Buzz\Control\Campaign\Traits\Morphable;
+
 /**
  * Class EmailMessage
  *
@@ -36,6 +36,7 @@ namespace Buzz\Control\Campaign;
  */
 class EmailMessage extends Object
 {
+    use Morphable;
     /**
      * @param Object $model
      * @param string $email_message_template_id

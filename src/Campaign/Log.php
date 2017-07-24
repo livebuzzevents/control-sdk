@@ -2,12 +2,11 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\Morphable;
+
 /**
  * Class Log
  *
- * @property-read object $model
- * @property string $model_type
- * @property string $model_id
  * @property string $stream_id
  * @property string $user_id
  * @property string $section
@@ -20,4 +19,5 @@ namespace Buzz\Control\Campaign;
  */
 class Log extends Object
 {
+    use Morphable;
 }

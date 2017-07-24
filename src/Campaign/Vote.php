@@ -2,12 +2,11 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\Morphable;
+
 /**
  * Class Vote
  *
- * @property-read object $model
- * @property string $model_type
- * @property string $model_id
  * @property string $name
  * @property string $email
  * @property string $group_id
@@ -19,4 +18,5 @@ namespace Buzz\Control\Campaign;
  */
 class Vote extends Object
 {
+    use Morphable;
 }

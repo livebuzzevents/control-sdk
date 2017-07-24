@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\Morphable;
 use Buzz\Control\Traits\SupportCrud;
 use JTDSoft\EssentialsSdk\Core\Cast;
 use JTDSoft\EssentialsSdk\Core\Collection;
@@ -10,9 +11,6 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
 /**
  * Class Answer
  *
- * @property-read object $model
- * @property string $model_type
- * @property string $model_id
  * @property string $question_id
  * @property string $text
  *
@@ -20,7 +18,8 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  */
 class Answer extends Object
 {
-    use SupportCrud;
+    use Morphable,
+        SupportCrud;
 
     /**
      * @param iterable $answers

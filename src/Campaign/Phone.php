@@ -2,14 +2,12 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\Morphable;
 use Buzz\Control\Traits\SupportCrud;
 
 /**
  * Class Phone
  *
- * @property-read object $model
- * @property string $model_type
- * @property string $model_id
  * @property string $type
  * @property string $number
  * @property string $verified
@@ -17,5 +15,6 @@ use Buzz\Control\Traits\SupportCrud;
  */
 class Phone extends Object
 {
-    use SupportCrud;
+    use Morphable,
+        SupportCrud;
 }

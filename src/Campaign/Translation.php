@@ -2,12 +2,11 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\Morphable;
+
 /**
  * Class Translation
  *
- * @property-read object $model
- * @property string $model_type
- * @property string $model_id
  * @property string $language
  * @property string $field
  * @property string $translation
@@ -15,4 +14,5 @@ namespace Buzz\Control\Campaign;
  */
 class Translation extends Object
 {
+    use Morphable;
 }
