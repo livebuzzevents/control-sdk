@@ -2,6 +2,8 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Traits\SupportCrud;
+
 /**
  * Class CustomerSeminar
  *
@@ -16,4 +18,5 @@ namespace Buzz\Control\Campaign;
  */
 class CustomerSeminar extends Object
 {
+    use SupportCrud;
 }

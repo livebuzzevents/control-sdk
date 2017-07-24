@@ -6,6 +6,7 @@ use Buzz\Control\Campaign\Traits\CanSendEmailMessage;
 use Buzz\Control\Campaign\Traits\CanSendSmsMessage;
 use Buzz\Control\Campaign\Traits\Taggable;
 use Buzz\Control\Traits\SupportCrud;
+use Illuminate\Support\Collection;
 
 /**
  * Class Customer
@@ -105,11 +106,19 @@ class Customer extends Object
         Taggable;
 
     /**
+     * @param $affiliate_id
+     */
+    public function attachAffiliate($affiliate_id): void
+    {
+        $this->api()->post($this->id . '/attach-affiliate/' . $affiliate_id);
+    }
+
+    /**
      * @param array $credentials
      *
      * @return \Buzz\Control\Campaign\Customer
      */
-    public function login(array $credentials)
+    public function login(array $credentials): self
     {
         $user_information = [
             'user_agent'      => !empty($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null,
@@ -127,5 +136,193 @@ class Customer extends Object
         $credentials['user_information'] = $user_information;
 
         return new self($this->api()->get($this->getEndpoint('login'), $credentials));
+    }
+
+    /**
+     * @param $clone_campaign_id
+     * @param $clone_customer_id
+     *
+     * @return \Buzz\Control\Campaign\Customer
+     */
+    public function clone($clone_campaign_id, $clone_customer_id): self
+    {
+        return new self($this->api()->post(
+            $this->getEndpoint("clone/{$clone_campaign_id}/{$clone_customer_id}")
+        ));
+    }
+
+    /**
+     * @param $clone_campaign_id
+     * @param $clone_customer_id
+     *
+     * @return \Buzz\Control\Campaign\Customer
+     */
+    public function cloneLead($clone_campaign_id, $clone_lead_id): self
+    {
+        return new self($this->api()->post(
+            $this->getEndpoint("clone-lead/{$clone_campaign_id}/{$clone_lead_id}")
+        ));
+    }
+
+    /**
+     *
+     */
+    public function sendPasswordResetEmail(): void
+    {
+        $this->api()->post(
+            $this->getEndpoint($this->id . '/send-password-reset-email')
+        );
+    }
+
+    /**
+     * @param string $token
+     *
+     * @return \Buzz\Control\Campaign\Customer
+     */
+    public function activatePasswordReset(string $token): self
+    {
+        return new self($this->api()->post(
+            $this->getEndpoint('activate-password-reset/' . $token)
+        ));
+    }
+
+    /**
+     *
+     */
+    public function dupeCheck(): void
+    {
+        $this->api()->post(
+            $this->getEndpoint('dupe-check'), $this->data
+        );
+    }
+
+    /**
+     * Suggests connections
+     */
+    public function suggestConnections(): ?array
+    {
+        return $this->api()->get(
+            $this->getEndpoint($this->id . '/suggest-connections')
+        );
+    }
+
+    /**
+     * Suggests exhibitors
+     */
+    public function suggestExhibitors(int $count = 15): Collection
+    {
+        return Cast::many(Exhibitor::class, $this->api()->get(
+            $this->getEndpoint($this->id . '/suggest-exhibitors/' . $count)
+        ));
+    }
+
+    /**
+     * Suggests connections
+     */
+    public function setBadgeViewed()
+    {
+        $this->api()->post(
+            $this->getEndpoint($this->id . '/set-badge-viewed')
+        );
+    }
+
+    /**
+     * @param int $width
+     * @param int $height
+     *
+     * @return string
+     */
+    public function getBarcodeImage($width = 1, $height = 30): string
+    {
+        return $this->api()->get(
+            $this->getEndpoint($this->id . '/barcode-image'), compact('width', 'height')
+        )['image'];
+    }
+
+    /**
+     * @param int $width
+     * @param int $height
+     *
+     * @return string
+     */
+    public function getQrCodeImage($size = 125): string
+    {
+        return $this->api()->get(
+            $this->getEndpoint($this->id . '/qrcode-image'), compact('size')
+        )['image'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getEBadge(): string
+    {
+        return $this->api()->get(
+            $this->getEndpoint($this->id . '/e-badge')
+        )['e-badge'];
+    }
+
+    /**
+     * @param string $pinter_id
+     */
+    public function printBadge(string $pinter_id): void
+    {
+        $this->api()->post(
+            $this->getEndpoint($this->id . '/print-badge/' . $pinter_id)
+        );
+    }
+
+    /**
+     * @param string $invite_id
+     */
+    public function attachInvite(string $invite_id): void
+    {
+        $this->api()->post(
+            $this->getEndpoint($this->id . '/attach-invite/' . $invite_id)
+        );
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function getEmailInvites(): Collection
+    {
+        return Cast::many(Invite::class, $this->api()->get(
+            $this->getEndpoint($this->id . '/email-invites')
+        ));
+    }
+
+    /**
+     * @param int $step
+     */
+    public function startFlow(integer $step = 1): void
+    {
+        $this->api()->get($this->getEndpoint($this->id . '/start-flow/' . $step));
+    }
+
+    /**
+     *
+     */
+    public function completeFlow(): void
+    {
+        $this->api()->get($this->getEndpoint($this->id . '/complete-flow'));
+    }
+
+    /**
+     * @param int $step
+     */
+    public function setFlowStep(integer $step): void
+    {
+        $this->api()->get($this->getEndpoint($this->id . '/set-flow-step/' . $step));
+    }
+
+    /**
+     * @param string $stream_id
+     *
+     * @return string
+     */
+    public function getSignedUrl(string $stream_id): string
+    {
+        return $this->api()->get($this->getEndpoint($this->id . '/signed-url/' . $stream_id))['url'];
     }
 }

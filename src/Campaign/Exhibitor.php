@@ -59,4 +59,14 @@ class Exhibitor extends Object
 {
     use SupportCrud,
         Taggable;
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function getEmailInvites(): Collection
+    {
+        return Cast::many(Invite::class, $this->api()->get(
+            $this->getEndpoint($this->id . '/email-invites')
+        ));
+    }
 }

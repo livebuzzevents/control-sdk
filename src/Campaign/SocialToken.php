@@ -17,4 +17,23 @@ namespace Buzz\Control\Campaign;
  */
 class SocialToken extends Object
 {
+
+    /**
+     * @param string $provider
+     * @param string|null $customer_id
+     *
+     * @return \Buzz\Control\Campaign\SocialToken
+     */
+    public function request(string $provider, string $customer_id = null): self
+    {
+        if ($customer_id) {
+            return new self(
+                $this->api()->get($this->getEndpoint("/request/{$provider}/{$customer_id}"))
+            );
+        } else {
+            return new self(
+                $this->api()->get($this->getEndpoint("/request/{$provider}"))
+            );
+        }
+    }
 }
