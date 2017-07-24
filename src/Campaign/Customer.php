@@ -8,6 +8,7 @@ use Buzz\Control\Campaign\Traits\Taggable;
 use Buzz\Control\Traits\SupportCrud;
 use Illuminate\Support\Collection;
 use JTDSoft\EssentialsSdk\Core\Cast;
+use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
 
 /**
  * Class Customer
@@ -188,13 +189,19 @@ class Customer extends Object
     }
 
     /**
-     *
+     * @return bool
      */
-    public function dupeCheck(): void
+    public function dupeCheck(): bool
     {
-        $this->api()->post(
-            $this->getEndpoint('dupe-check'), $this->data
-        );
+        try {
+            $this->api()->post(
+                $this->getEndpoint('dupe-check'), $this->data
+            );
+        } catch (ErrorException $e) {
+            return explode(', ', str_replace('Duped on: ', '', $e->getError()));
+        }
+
+        return false;
     }
 
     /**
