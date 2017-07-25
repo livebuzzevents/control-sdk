@@ -15,6 +15,7 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property string $text
  *
  * @property-read \Buzz\Control\Campaign\Question $question
+ * @property \Buzz\Control\Campaign\Question $options
  */
 class Answer extends Object
 {
@@ -50,7 +51,7 @@ class Answer extends Object
      */
     public function getOptionByIdentifier($identifier)
     {
-        return $this->options->where('questionOption.identifier', $identifier)->first();
+        return $this->data['options']->where('questionOption.identifier', $identifier)->first();
     }
 
     /**
@@ -58,6 +59,6 @@ class Answer extends Object
      */
     public function getOptionsIdentifiers()
     {
-        return $this->options->pluck('questionOption.identifier');
+        return $this->data['options']->pluck('questionOption.identifier');
     }
 }
