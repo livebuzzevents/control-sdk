@@ -8,9 +8,9 @@ namespace Buzz\Control\Campaign;
  * @property string $charge_id
  * @property string $credit_note_id
  * @property string $currency
- * @property integer $amount
- * @property integer $fee
- * @property integer $fee_refunded
+ * @property int $amount
+ * @property int $fee
+ * @property int $fee_refunded
  * @property string $reason
  * @property string $reference_id
  * @property string $description

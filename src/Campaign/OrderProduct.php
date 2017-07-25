@@ -12,12 +12,12 @@ namespace Buzz\Control\Campaign;
  * @property string $order_id
  * @property string $customer_id
  * @property string $shippable
- * @property integer $cost
- * @property integer $cost_final
+ * @property int $cost
+ * @property int $cost_final
  * @property-read boolean $cost_overridden
- * @property-read integer $cost_refundable
- * @property-read integer $cost_refunded
- * @property integer $total
+ * @property-read int $cost_refundable
+ * @property-read int $cost_refunded
+ * @property int $total
  * @property string $vat_percentage
  * @property string $vat_percentage_final
  * @property-read boolean $vat_percentage_overridden

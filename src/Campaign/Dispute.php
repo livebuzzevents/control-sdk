@@ -7,7 +7,7 @@ namespace Buzz\Control\Campaign;
  *
  * @property string $charge_id
  * @property string $currency
- * @property integer $amount
+ * @property int $amount
  * @property string $reason
  * @property string $reference_id
  * @property string $description

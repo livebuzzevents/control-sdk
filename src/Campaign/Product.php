@@ -14,10 +14,10 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $description
  * @property string $destination
  * @property string $exhibitor_id
- * @property integer $cost
- * @property-read integer $vat
- * @property integer $vat_percentage
- * @property-read integer $total
+ * @property int $cost
+ * @property-read int $vat
+ * @property int $vat_percentage
+ * @property-read int $total
  * @property string $shippable
  * @property string $publish
  * @property-read string $currency

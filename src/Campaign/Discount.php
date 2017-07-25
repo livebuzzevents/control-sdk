@@ -13,8 +13,8 @@ use Buzz\Control\Campaign\Traits\Translatable;
  * @property string $destination
  * @property string $type
  * @property string $code
- * @property integer $usages
- * @property integer $max_usages
+ * @property int $usages
+ * @property int $max_usages
  * @property array $settings
  * @property string $active
  * @property \DateTime $valid_from

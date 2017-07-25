@@ -13,7 +13,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $printer_identifier
  * @property boolean $printed
  * @property boolean $onsite
- * @property integer $order
+ * @property int $order
  *
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\BulkPrint $bulk_print

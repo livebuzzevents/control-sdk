@@ -11,7 +11,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $identifier
  * @property string $name
  * @property string $description
- * @property-read integer $votes_count
+ * @property-read int $votes_count
  * @property \DateTime $deadline_at
  * @property-read \Buzz\Control\Campaign\Vote[] $votes
  */

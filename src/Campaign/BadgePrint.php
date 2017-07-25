@@ -7,8 +7,8 @@ namespace Buzz\Control\Campaign;
  *
  * @property string $identifier
  * @property string $name
- * @property integer $width
- * @property integer $height
+ * @property int $width
+ * @property int $height
  * @property array $elements
  * @property array $images
  *

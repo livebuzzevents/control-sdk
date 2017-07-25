@@ -306,7 +306,7 @@ class Customer extends Object
     /**
      * @param int $step
      */
-    public function startFlow(integer $step = 1): void
+    public function startFlow(int $step = 1): void
     {
         $this->api()->get($this->getEndpoint($this->id . '/start-flow/' . $step));
     }
@@ -322,7 +322,7 @@ class Customer extends Object
     /**
      * @param int $step
      */
-    public function setFlowStep(integer $step): void
+    public function setFlowStep(int $step): void
     {
         $this->api()->get($this->getEndpoint($this->id . '/set-flow-step/' . $step));
     }

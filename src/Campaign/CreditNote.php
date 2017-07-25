@@ -9,10 +9,10 @@ namespace Buzz\Control\Campaign;
  * @property string $destination
  * @property string $currency
  * @property string $subtotal
- * @property integer $vat
- * @property integer $total
- * @property integer $node
- * @property integer $sequence
+ * @property int $vat
+ * @property int $total
+ * @property int $node
+ * @property int $sequence
  * @property string $number
  * @property string $paid
  * @property-read \Buzz\Control\Campaign\Invoice $invoice

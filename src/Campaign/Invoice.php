@@ -9,13 +9,13 @@ namespace Buzz\Control\Campaign;
  * @property string $destination
  * @property string $currency
  * @property string $subtotal
- * @property-read integer $subtotal_refundable
- * @property-read integer $total_refundable
- * @property-read integer $vat_refundable
- * @property integer $vat
- * @property integer $total
- * @property integer $node
- * @property integer $sequence
+ * @property-read int $subtotal_refundable
+ * @property-read int $total_refundable
+ * @property-read int $vat_refundable
+ * @property int $vat
+ * @property int $total
+ * @property int $node
+ * @property int $sequence
  * @property string $number
  * @property string $paid
  *

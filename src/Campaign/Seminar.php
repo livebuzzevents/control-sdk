@@ -13,15 +13,15 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $title
  * @property string $description
  * @property string $exhibitor_id
- * @property integer $capacity
+ * @property int $capacity
  * @property string $colour
  * @property string $location
  * @property string $publish
  * @property array $settings
  * @property \DateTime $ends_at
  * @property \DateTime $starts_at
- * @property-read integer $spaces_taken
- * @property-read integer $spaces_available
+ * @property-read int $spaces_taken
+ * @property-read int $spaces_available
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $customers
  * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $attendees

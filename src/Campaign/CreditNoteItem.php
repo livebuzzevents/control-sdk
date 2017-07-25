@@ -9,10 +9,10 @@ namespace Buzz\Control\Campaign;
  * @property string $order_product_id
  * @property string $reason
  * @property string $description
- * @property integer $cost
- * @property integer $vat
- * @property integer $vat_percentage
- * @property integer $total
+ * @property int $cost
+ * @property int $vat
+ * @property int $vat_percentage
+ * @property int $total
  * @property string $returned
  * @property-read string $currency
  * @property-read \Buzz\Control\Campaign\CreditNote $credit_note

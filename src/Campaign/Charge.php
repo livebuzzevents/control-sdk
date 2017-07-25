@@ -10,12 +10,12 @@ namespace Buzz\Control\Campaign;
  * @property string $payment_provider_id
  * @property string $invoice_id
  * @property string $currency
- * @property integer $amount
- * @property integer $amount_refunded
- * @property integer $amount_disputed
- * @property integer $amount_chargebacked
- * @property-read integer $balance
- * @property-read integer $amount_refundable
+ * @property int $amount
+ * @property int $amount_refunded
+ * @property int $amount_disputed
+ * @property int $amount_chargebacked
+ * @property-read int $balance
+ * @property-read int $amount_refundable
  * @property string $authorized
  * @property string $captured
  * @property string $refunded

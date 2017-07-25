@@ -11,19 +11,19 @@ use Buzz\Control\Traits\SupportRead;
  * @property string $customer_id
  * @property string $exhibitor_id
  * @property string $currency
- * @property integer $subtotal
- * @property integer $subtotal_final
- * @property integer $vat
- * @property integer $total
- * @property-read integer $amount_charged
- * @property-read integer $amount_refunded
- * @property-read integer $amount_disputed
- * @property-read integer $amount_chargebacked
- * @property-read integer $amount_refundable
- * @property-read integer $balance
- * @property-read integer $amount_due
- * @property-read integer $total_items
- * @property-read integer $total_scanners
+ * @property int $subtotal
+ * @property int $subtotal_final
+ * @property int $vat
+ * @property int $total
+ * @property-read int $amount_charged
+ * @property-read int $amount_refunded
+ * @property-read int $amount_disputed
+ * @property-read int $amount_chargebacked
+ * @property-read int $amount_refundable
+ * @property-read int $balance
+ * @property-read int $amount_due
+ * @property-read int $total_items
+ * @property-read int $total_scanners
  * @property string $status
  * @property string $fulfilled
  * @property string $shipped

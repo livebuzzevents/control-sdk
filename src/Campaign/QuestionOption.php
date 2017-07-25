@@ -13,7 +13,7 @@ use Buzz\Control\Campaign\Traits\Translatable;
  * @property string $question_id
  * @property string $open
  * @property array $rules
- * @property integer order
+ * @property int $order
  * @property-read \Buzz\Control\Campaign\Question $question
  * @property-read \Buzz\Control\Campaign\AnswerOption[] $answer_options
  */

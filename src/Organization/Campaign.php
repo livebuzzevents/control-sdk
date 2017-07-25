@@ -12,7 +12,7 @@ use JTDSoft\EssentialsSdk\Core\Collection;
  * @property string $name
  * @property string $channel_id
  * @property string $currency
- * @property integer $sequence
+ * @property int $sequence
  * @property boolean $migrated
  * @property string $dupe_cancelled
  * @property string $dupe_exhibitors

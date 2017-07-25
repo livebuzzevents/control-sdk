@@ -10,7 +10,7 @@ namespace Buzz\Control\Campaign;
  * @property string $payment_provider_id
  * @property string $credit_note_id
  * @property string $currency
- * @property integer $amount
+ * @property int $amount
  * @property string $reason
  * @property string $status
  * @property string $reference_id

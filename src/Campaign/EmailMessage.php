@@ -17,8 +17,8 @@ namespace Buzz\Control\Campaign;
  * @property string $status
  * @property string $bounced
  * @property string $complained
- * @property integer $clicks
- * @property integer $opens
+ * @property int $clicks
+ * @property int $opens
  * @property array $details
  * @property string $process_id
  * @property \DateTime $provider_deleted_at

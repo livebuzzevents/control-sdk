@@ -12,7 +12,7 @@ namespace Buzz\Control\Campaign;
  * @property string $type
  * @property array $settings
  * @property string $delay_unit
- * @property integer $delay_offset
+ * @property int $delay_offset
  * @property array $days
  * @property string $range_start
  * @property string $range_end

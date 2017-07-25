@@ -21,7 +21,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $type
  * @property string $value
  * @property string $locked
- * @property integer $order
+ * @property int $order
  * @property string $settings
  * @property-read \Buzz\Control\Campaign\Stream $stream
  * @property-read \Buzz\Control\Campaign\StreamMenuItem $parent

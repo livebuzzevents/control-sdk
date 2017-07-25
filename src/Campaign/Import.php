@@ -10,7 +10,7 @@ namespace Buzz\Control\Campaign;
  * @property string $type
  * @property array $settings
  * @property boolean $configured
- * @property-read integer $imported
+ * @property-read int $imported
  * @property-read \Buzz\Control\Gateway\User $user
  */
 class Import extends Object

@@ -15,7 +15,7 @@ use Buzz\Control\Campaign\Traits\Morphable;
  * @property string $message
  * @property string $phone_number
  * @property string $status
- * @property integer $clicks
+ * @property int $clicks
  * @property array $details
  * @property string $process_id
  * @property-read \Buzz\Control\Campaign\SingleShot $single_shot

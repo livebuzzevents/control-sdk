@@ -15,7 +15,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $driver
  * @property string $version
  * @property string $ip
- * @property integer $port
+ * @property int $port
  * @property-read \Buzz\Control\Campaign\BadgeStock $badge_stock
  */
 class Printer extends Object

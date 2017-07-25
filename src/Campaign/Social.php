@@ -13,7 +13,7 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property string $provider_id
  * @property string $provider_token
  * @property array $details
- * @property integer $reach
+ * @property int $reach
  *
  */
 class Social extends Object
