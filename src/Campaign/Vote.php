@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Morphable;
+use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 
 /**
  * Class Vote
@@ -18,5 +19,6 @@ use Buzz\Control\Campaign\Traits\Morphable;
  */
 class Vote extends Object
 {
-    use Morphable;
+    use Morphable,
+        WithAnswerHelpers;
 }

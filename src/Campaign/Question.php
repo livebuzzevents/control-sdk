@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Translatable;
+use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
 
@@ -23,5 +24,6 @@ class Question extends Object
 {
     use SupportRead,
         SupportWrite,
-        Translatable;
+        Translatable,
+        WithAnswerHelpers;
 }

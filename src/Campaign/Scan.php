@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use JTDSoft\EssentialsSdk\Core\Collection;
 
 /**
@@ -19,6 +20,8 @@ use JTDSoft\EssentialsSdk\Core\Collection;
  */
 class Scan extends Object
 {
+    use WithAnswerHelpers;
+
     /**
      * @param array $attributes
      *

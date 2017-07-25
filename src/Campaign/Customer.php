@@ -5,6 +5,7 @@ namespace Buzz\Control\Campaign;
 use Buzz\Control\Campaign\Traits\CanSendEmailMessage;
 use Buzz\Control\Campaign\Traits\CanSendSmsMessage;
 use Buzz\Control\Campaign\Traits\Taggable;
+use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Traits\SupportCrud;
 use Illuminate\Support\Collection;
 use JTDSoft\EssentialsSdk\Core\Cast;
@@ -105,7 +106,8 @@ class Customer extends Object
     use SupportCrud,
         CanSendEmailMessage,
         CanSendSmsMessage,
-        Taggable;
+        Taggable,
+        WithAnswerHelpers;
 
     /**
      * @param $affiliate_id

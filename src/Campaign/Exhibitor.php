@@ -3,7 +3,10 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Taggable;
+use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Traits\SupportCrud;
+use JTDSoft\EssentialsSdk\Core\Cast;
+use JTDSoft\EssentialsSdk\Core\Collection;
 
 /**
  * Class Exhibitor
@@ -26,7 +29,6 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $cloned_id
  * @property string $cloned_type
  * @property string $cloned_campaign_id
- *
  * @property-read \Buzz\Control\Campaign\Address[] $addresses
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
  * @property-read \Buzz\Control\Campaign\Basket $basket
@@ -53,15 +55,15 @@ use Buzz\Control\Traits\SupportCrud;
  * @property-read \Buzz\Control\Campaign\Product[] $products
  * @property-read \Buzz\Control\Campaign\Customer $main_contact
  * @property-read \Buzz\Control\Campaign\Customer[] $customers
- *
  */
 class Exhibitor extends Object
 {
     use SupportCrud,
-        Taggable;
+        Taggable,
+        WithAnswerHelpers;
 
     /**
-     * @return \Illuminate\Support\Collection
+     * @return \JTDSoft\EssentialsSdk\Core\Collection
      */
     public function getEmailInvites(): Collection
     {
