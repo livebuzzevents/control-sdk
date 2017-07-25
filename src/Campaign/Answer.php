@@ -42,4 +42,22 @@ class Answer extends Object
             'rules' => $rules,
         ]));
     }
+
+    /**
+     * @param $identifier
+     *
+     * @return null
+     */
+    public function getOptionByIdentifier($identifier)
+    {
+        return $this->options->where('questionOption.identifier', $identifier)->first();
+    }
+
+    /**
+     * @return static
+     */
+    public function getOptionsIdentifiers()
+    {
+        return $this->options->pluck('questionOption.identifier');
+    }
 }
