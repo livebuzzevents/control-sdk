@@ -216,6 +216,10 @@ class Customer extends Object
 
     /**
      * Suggests exhibitors
+     *
+     * @param int $count
+     *
+     * @return \Illuminate\Support\Collection
      */
     public function suggestExhibitors(int $count = 15): Collection
     {
@@ -248,8 +252,7 @@ class Customer extends Object
     }
 
     /**
-     * @param int $width
-     * @param int $height
+     * @param int $size
      *
      * @return string
      */
