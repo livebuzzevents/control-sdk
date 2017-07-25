@@ -3,6 +3,7 @@
 namespace Buzz\Control\Traits;
 
 use JTDSoft\EssentialsSdk\Core\Collection;
+use Traversable;
 
 /**
  * Trait SupportRead

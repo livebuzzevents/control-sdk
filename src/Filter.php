@@ -1,6 +1,9 @@
 <?php namespace Buzz\Control;
 
-class Filter
+use ArrayIterator;
+use IteratorAggregate;
+
+class Filter implements IteratorAggregate
 {
     /**
      * @var array
@@ -182,5 +185,15 @@ class Filter
         }
 
         return array_merge($this->filters, $groups);
+    }
+
+    /**
+     * Get an iterator for the filters.
+     *
+     * @return \ArrayIterator
+     */
+    public function getIterator()
+    {
+        return new ArrayIterator($this->toArray());
     }
 }

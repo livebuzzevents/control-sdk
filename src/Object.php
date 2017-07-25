@@ -6,6 +6,7 @@ use JTDSoft\EssentialsSdk\Core\Cast;
 use JTDSoft\EssentialsSdk\Core\Collection;
 use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
 use ReflectionClass;
+use Traversable;
 
 /**
  * Class Object
@@ -161,8 +162,8 @@ class Object extends \JTDSoft\EssentialsSdk\Core\Object
      */
     protected function _get(iterable $filters = null, $page = 1, $per_page = 50): Collection
     {
-        if ($filters instanceof Filter) {
-            $filters = $filters->toArray();
+        if ($filters instanceof Traversable) {
+            $filters = iterator_to_array($filters);
         }
 
         return Cast::many(
@@ -178,8 +179,8 @@ class Object extends \JTDSoft\EssentialsSdk\Core\Object
      */
     protected function _first(iterable $filters = null): ?Object
     {
-        if ($filters instanceof Filter) {
-            $filters = $filters->toArray();
+        if ($filters instanceof Traversable) {
+            $filters = iterator_to_array($filters);
         }
 
         return $this->_get($filters, 1, 1)->first();
