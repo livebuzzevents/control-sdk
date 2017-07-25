@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Traits;
 
+use Buzz\Control\Filter;
 use JTDSoft\EssentialsSdk\Core\Collection;
 
 /**
@@ -12,23 +13,29 @@ use JTDSoft\EssentialsSdk\Core\Collection;
 trait SupportRead
 {
     /**
-     * @param array $filters
+     * @param iterable $filters
      * @param int $page
      * @param int $per_page
      *
      * @return \JTDSoft\EssentialsSdk\Core\Collection
      */
-    public function get(array $filters = [], $page = 1, $per_page = 50): Collection
+    public function get(iterable $filters = null, $page = 1, $per_page = 50): Collection
     {
+        if (!$filters) {
+            $filters = [];
+        } elseif ($filters instanceof Filter) {
+            $filters = $filters->toArray();
+        }
+
         return $this->_get($filters, $page, $per_page);
     }
 
     /**
-     * @param array $filters
+     * @param iterable $filters
      *
      * @return static|null
      */
-    public function first(array $filters = []): ?self
+    public function first(iterable $filters = null): ?self
     {
         return $this->_first($filters);
     }

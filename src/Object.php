@@ -153,14 +153,18 @@ class Object extends \JTDSoft\EssentialsSdk\Core\Object
     }
 
     /**
-     * @param array $filters
+     * @param iterable $filters
      * @param int $page
      * @param int $per_page
      *
      * @return \JTDSoft\EssentialsSdk\Core\Collection
      */
-    protected function _get(array $filters = [], $page = 1, $per_page = 50): Collection
+    protected function _get(iterable $filters = null, $page = 1, $per_page = 50): Collection
     {
+        if ($filters instanceof Filter) {
+            $filters = $filters->toArray();
+        }
+
         return Cast::many(
             static::class,
             $this->api()->get($this->getEndpoint(), compact('filters', 'page', 'per_page'))
@@ -168,12 +172,16 @@ class Object extends \JTDSoft\EssentialsSdk\Core\Object
     }
 
     /**
-     * @param array $filters
+     * @param iterable $filters
      *
      * @return Object|mixed
      */
-    protected function _first(array $filters = []): ?Object
+    protected function _first(iterable $filters = null): ?Object
     {
+        if ($filters instanceof Filter) {
+            $filters = $filters->toArray();
+        }
+
         return $this->_get($filters, 1, 1)->first();
     }
 }
