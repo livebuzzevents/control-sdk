@@ -15,7 +15,7 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property string $text
  *
  * @property-read \Buzz\Control\Campaign\Question $question
- * @property \Buzz\Control\Campaign\Question $options
+ * @property \Buzz\Control\Campaign\AnswerOption[] $options
  */
 class Answer extends Object
 {
