@@ -360,12 +360,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jtdsoft/essentials-sdk.git",
-                "reference": "e23e52942530d6f4f9c0103e5a70206b438f0f60"
+                "reference": "34962d87034182c12dc9f99f9d7af1afcda24aa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jtdsoft/essentials-sdk/zipball/e23e52942530d6f4f9c0103e5a70206b438f0f60",
-                "reference": "e23e52942530d6f4f9c0103e5a70206b438f0f60",
+                "url": "https://api.github.com/repos/jtdsoft/essentials-sdk/zipball/34962d87034182c12dc9f99f9d7af1afcda24aa8",
+                "reference": "34962d87034182c12dc9f99f9d7af1afcda24aa8",
                 "shasum": ""
             },
             "require": {
@@ -401,7 +401,7 @@
                 "php",
                 "sdk"
             ],
-            "time": "2017-07-25 09:27:53"
+            "time": "2017-07-25 10:07:07"
         },
         {
             "name": "nesbot/carbon",
