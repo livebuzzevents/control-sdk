@@ -107,7 +107,9 @@ class Object extends \JTDSoft\EssentialsSdk\Core\Object
      */
     protected function _find(string $id): ?Object
     {
-        $object = new static();
+        $object = clone $this;
+
+        $object->data = [];
 
         $object->id = $id;
 
