@@ -21,12 +21,6 @@ trait SupportRead
      */
     public function get(iterable $filters = null, $page = 1, $per_page = 50): Collection
     {
-        if (!$filters) {
-            $filters = [];
-        } elseif ($filters instanceof Filter) {
-            $filters = $filters->toArray();
-        }
-
         return $this->_get($filters, $page, $per_page);
     }
 
