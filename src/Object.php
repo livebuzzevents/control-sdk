@@ -127,11 +127,11 @@ class Object extends \JTDSoft\EssentialsSdk\Core\Object
 
         if ($this->id) {
             $this->copyFromArray(
-                $this->api()->put($this->getEndpoint($this->id), $this->data)
+                $this->api()->put($this->getEndpoint($this->id), $this->getDirty())
             );
         } else {
             $this->copyFromArray(
-                $this->api()->post($this->getEndpoint(), $this->data)
+                $this->api()->post($this->getEndpoint(), $this->toArray())
             );
         }
 
