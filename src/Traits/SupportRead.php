@@ -2,7 +2,6 @@
 
 namespace Buzz\Control\Traits;
 
-use Buzz\Control\Filter;
 use JTDSoft\EssentialsSdk\Core\Collection;
 
 /**
