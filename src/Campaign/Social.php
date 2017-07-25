@@ -42,7 +42,7 @@ class Social extends Object
             $request['email_message_template'] = $emailMessageTemplate->toArray();
         }
 
-        return new Invite($this->post($this->getEndpoint('invite/email'), $request));
+        return new Invite($this->api()->post($this->getEndpoint('invite/email'), $request));
     }
 
     /**
@@ -54,7 +54,7 @@ class Social extends Object
     {
         $request = ['invite' => $invite->toArray()];
 
-        return new Invite($this->post($this->getEndpoint("invite/{$invite->provider}/share"), $request));
+        return new Invite($this->api()->post($this->getEndpoint("invite/{$invite->provider}/share"), $request));
     }
 
     /**
@@ -66,6 +66,6 @@ class Social extends Object
     {
         $request = ['invite' => $invite->toArray()];
 
-        return new Invite($this->post($this->getEndpoint("invite/{$invite->provider}/connection"), $request));
+        return new Invite($this->api()->post($this->getEndpoint("invite/{$invite->provider}/connection"), $request));
     }
 }
