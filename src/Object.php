@@ -95,6 +95,8 @@ class Object extends \JTDSoft\EssentialsSdk\Core\Object
         $this->copyFromArray(
             $this->api()->get($this->getEndpoint($this->id))
         );
+
+        $this->cleanDirtyAttributes();
     }
 
     /**
