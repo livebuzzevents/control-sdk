@@ -11,7 +11,6 @@ namespace Buzz\Control\Campaign;
  * @property int $step
  * @property string $status
  * @property-read string $signed_url
- *
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Stream $stream
  */
