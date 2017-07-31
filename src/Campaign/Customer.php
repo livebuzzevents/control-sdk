@@ -75,7 +75,6 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\EmailMessage[] $email_messages
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\CustomerFlow $flow
- * @property-read \Buzz\Control\Campaign\CustomerFlow[] $flows
  * @property-read \Buzz\Control\Campaign\File[] $files
  * @property-read \Buzz\Control\Campaign\Import $import
  * @property-read \Buzz\Control\Campaign\Invite[] $invites
@@ -150,9 +149,11 @@ class Customer extends Object
      */
     public function clone($clone_campaign_id, $clone_customer_id): self
     {
-        return new self($this->api()->post(
-            $this->getEndpoint("clone/{$clone_campaign_id}/{$clone_customer_id}")
-        ));
+        return new self(
+            $this->api()->post(
+                $this->getEndpoint("clone/{$clone_campaign_id}/{$clone_customer_id}")
+            )
+        );
     }
 
     /**
@@ -163,9 +164,11 @@ class Customer extends Object
      */
     public function cloneLead($clone_campaign_id, $clone_lead_id): self
     {
-        return new self($this->api()->post(
-            $this->getEndpoint("clone-lead/{$clone_campaign_id}/{$clone_lead_id}")
-        ));
+        return new self(
+            $this->api()->post(
+                $this->getEndpoint("clone-lead/{$clone_campaign_id}/{$clone_lead_id}")
+            )
+        );
     }
 
     /**
@@ -185,9 +188,11 @@ class Customer extends Object
      */
     public function activatePasswordReset(string $token): self
     {
-        return new self($this->api()->post(
-            $this->getEndpoint('activate-password-reset/' . $token)
-        ));
+        return new self(
+            $this->api()->post(
+                $this->getEndpoint('activate-password-reset/' . $token)
+            )
+        );
     }
 
     /**
@@ -197,7 +202,8 @@ class Customer extends Object
     {
         try {
             $this->api()->post(
-                $this->getEndpoint('dupe-check'), $this->toArray()
+                $this->getEndpoint('dupe-check'),
+                $this->toArray()
             );
         } catch (ErrorException $e) {
             return explode(', ', str_replace('Duped on: ', '', $e->getError()));
@@ -225,9 +231,12 @@ class Customer extends Object
      */
     public function suggestExhibitors(int $count = 15): Collection
     {
-        return Cast::many(Exhibitor::class, $this->api()->get(
-            $this->getEndpoint($this->id . '/suggest-exhibitors/' . $count)
-        ));
+        return Cast::many(
+            Exhibitor::class,
+            $this->api()->get(
+                $this->getEndpoint($this->id . '/suggest-exhibitors/' . $count)
+            )
+        );
     }
 
     /**
@@ -249,7 +258,8 @@ class Customer extends Object
     public function getBarcodeImage($width = 1, $height = 30): string
     {
         return $this->api()->get(
-            $this->getEndpoint($this->id . '/barcode-image'), compact('width', 'height')
+            $this->getEndpoint($this->id . '/barcode-image'),
+            compact('width', 'height')
         )['image'];
     }
 
@@ -261,7 +271,8 @@ class Customer extends Object
     public function getQrCodeImage($size = 125): string
     {
         return $this->api()->get(
-            $this->getEndpoint($this->id . '/qrcode-image'), compact('size')
+            $this->getEndpoint($this->id . '/qrcode-image'),
+            compact('size')
         )['image'];
     }
 
@@ -300,9 +311,12 @@ class Customer extends Object
      */
     public function getEmailInvites(): Collection
     {
-        return Cast::many(Invite::class, $this->api()->get(
-            $this->getEndpoint($this->id . '/email-invites')
-        ));
+        return Cast::many(
+            Invite::class,
+            $this->api()->get(
+                $this->getEndpoint($this->id . '/email-invites')
+            )
+        );
     }
 
     /**
