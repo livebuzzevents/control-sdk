@@ -9,8 +9,6 @@ namespace Buzz\Control\Campaign;
  * @property string $customer_id
  * @property string $stream_id
  * @property int $step
- * @property array $current_items
- * @property array $saved_items
  * @property string $status
  * @property-read string $signed_url
  *
