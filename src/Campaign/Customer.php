@@ -64,7 +64,6 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\BadgePrint[] $badge_prints
  * @property-read \Buzz\Control\Campaign\BadgeType $badge_type
  * @property-read \Buzz\Control\Campaign\BadgeView[] $badge_views
- * @property-read \Buzz\Control\Campaign\Basket $basket
  * @property-read \Buzz\Control\Campaign\Basket[] $baskets
  * @property-read \Buzz\Control\Campaign\Balance[] $balances
  * @property-read \Buzz\Control\Campaign\Charge[] $charges
