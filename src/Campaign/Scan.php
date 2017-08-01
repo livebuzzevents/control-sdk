@@ -29,7 +29,7 @@ class Scan extends Object
      */
     public function create(array $attributes): self
     {
-        return $this->_create($attributes);
+        return $this->execCreate($attributes);
     }
 
     /**
@@ -37,7 +37,7 @@ class Scan extends Object
      */
     public function save(): void
     {
-        $this->_save();
+        $this->execSave();
     }
 
     /**
@@ -49,7 +49,7 @@ class Scan extends Object
      */
     public function get(array $filters = [], $page = 1, $per_page = 50): Collection
     {
-        return $this->_get($filters, $page, $per_page);
+        return $this->execGet($filters, $page, $per_page);
     }
 
     /**
@@ -59,7 +59,7 @@ class Scan extends Object
      */
     public function first(array $filters = []): ?self
     {
-        return $this->_first($filters);
+        return $this->execFirst($filters);
     }
 
     /**
@@ -69,7 +69,7 @@ class Scan extends Object
      */
     public function find(string $id): ?self
     {
-        return $this->_find($id);
+        return $this->execFind($id);
     }
 
     /**
@@ -77,6 +77,6 @@ class Scan extends Object
      */
     public function reload(): void
     {
-        $this->_reload();
+        $this->execReload();
     }
 }

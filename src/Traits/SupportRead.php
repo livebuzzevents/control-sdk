@@ -2,7 +2,9 @@
 
 namespace Buzz\Control\Traits;
 
+use JTDSoft\EssentialsSdk\Core\Cast;
 use JTDSoft\EssentialsSdk\Core\Collection;
+use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
 use Traversable;
 
 /**
@@ -21,7 +23,14 @@ trait SupportRead
      */
     public function get(iterable $filters = null, $page = 1, $per_page = 50): Collection
     {
-        return $this->_get($filters, $page, $per_page);
+        if ($filters instanceof Traversable) {
+            $filters = iterator_to_array($filters);
+        }
+
+        return Cast::many(
+            static::class,
+            $this->api()->get($this->getEndpoint(), compact('filters', 'page', 'per_page'))
+        );
     }
 
     /**
@@ -31,7 +40,11 @@ trait SupportRead
      */
     public function first(iterable $filters = null): ?self
     {
-        return $this->_first($filters);
+        if ($filters instanceof Traversable) {
+            $filters = iterator_to_array($filters);
+        }
+
+        return $this->get($filters, 1, 1)->first();
     }
 
     /**
@@ -41,7 +54,15 @@ trait SupportRead
      */
     public function find(string $id): ?self
     {
-        return $this->_find($id);
+        $object = clone $this;
+
+        $object->data = [];
+
+        $object->id = $id;
+
+        $object->execReload();
+
+        return $object;
     }
 
     /**
@@ -49,6 +70,14 @@ trait SupportRead
      */
     public function reload(): void
     {
-        $this->_reload();
+        if (!$this->id) {
+            throw new ErrorException('id required for reload');
+        }
+
+        $this->copyFromArray(
+            $this->api()->get($this->getEndpoint($this->id))
+        );
+
+        $this->cleanDirtyAttributes();
     }
 }

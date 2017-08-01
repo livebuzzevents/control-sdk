@@ -24,7 +24,7 @@ class Channel extends Object
      */
     public function get(array $filters = [], $page = 1, $per_page = 50): Collection
     {
-        return $this->_get($filters, $page, $per_page);
+        return $this->execGet($filters, $page, $per_page);
     }
 
     /**
@@ -34,7 +34,7 @@ class Channel extends Object
      */
     public function first(array $filters = []): ?self
     {
-        return $this->_first($filters);
+        return $this->execFirst($filters);
     }
 
     /**
@@ -44,7 +44,7 @@ class Channel extends Object
      */
     public function find(string $id): ?self
     {
-        return $this->_find($id);
+        return $this->execFind($id);
     }
 
     /**
@@ -52,6 +52,6 @@ class Channel extends Object
      */
     public function reload(): void
     {
-        $this->_reload();
+        $this->execReload();
     }
 }

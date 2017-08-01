@@ -10,10 +10,10 @@ namespace Buzz\Control\Traits;
 trait SupportDelete
 {
     /**
-     *
+     * Deletes by id
      */
     public function delete(): void
     {
-        $this->_delete();
+        $this->api()->delete($this->getEndpoint($this->id));
     }
 }
