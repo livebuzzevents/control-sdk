@@ -31,8 +31,7 @@ use JTDSoft\EssentialsSdk\Core\Collection;
  * @property string $cloned_campaign_id
  * @property-read \Buzz\Control\Campaign\Address[] $addresses
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
- * @property-read \Buzz\Control\Campaign\Basket $basket
- * @property-read \Buzz\Control\Campaign\Baskets[] $baskets
+ * @property-read \Buzz\Control\Campaign\Basket[] $baskets
  * @property-read \Buzz\Control\Campaign\Invite[] $created_invites
  * @property-read \Buzz\Control\Campaign\Vote[] $created_votes
  * @property-read \Buzz\Control\Campaign\Exhibitor $owner
@@ -67,8 +66,11 @@ class Exhibitor extends Object
      */
     public function getEmailInvites(): Collection
     {
-        return Cast::many(Invite::class, $this->api()->get(
-            $this->getEndpoint($this->id . '/email-invites')
-        ));
+        return Cast::many(
+            Invite::class,
+            $this->api()->get(
+                $this->getEndpoint($this->id . '/email-invites')
+            )
+        );
     }
 }
