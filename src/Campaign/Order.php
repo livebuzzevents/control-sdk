@@ -53,4 +53,54 @@ class Order extends Object
 {
     use SupportRead,
         Taggable;
+
+    /**
+     * Returns checkout link
+     *
+     * @return string
+     */
+    public function getCheckoutLink(): string
+    {
+        return $this->api()->get($this->id . '/checkout-link')['checkout-link'];
+    }
+
+    /**
+     * Gets invoice in base64 format
+     *
+     * @return string
+     */
+    public function getInvoice(): string
+    {
+        return $this->api()->get($this->id . '/invoice')['invoice'];
+    }
+
+    /**
+     * Gets invoice in base64 format
+     *
+     * @return self
+     */
+    public function complete(): self
+    {
+        return new self($this->api()->get($this->id . '/complete'));
+    }
+
+    /**
+     * Generates new charge
+     *
+     * @param string $payment_provider_id
+     */
+    public function generateCharge(string $payment_provider_id): void
+    {
+        $this->api()->post($this->id . '/generate-charge/' . $payment_provider_id);
+    }
+
+    /**
+     * Cancel existing charge
+     *
+     * @param string $charge_id
+     */
+    public function cancelCharge(string $charge_id): void
+    {
+        $this->api()->post($this->id . '/cancel-charge/' . $charge_id);
+    }
 }
