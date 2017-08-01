@@ -171,11 +171,17 @@ class Filter implements IteratorAggregate
         return $this->add(...$params);
     }
 
+    /**
+     * @return array
+     */
     public function getFilters()
     {
         return $this->filters;
     }
 
+    /**
+     * @return array
+     */
     public function toArray()
     {
         $groups = $this->groups;
