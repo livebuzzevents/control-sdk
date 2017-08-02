@@ -4,8 +4,6 @@ namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Morphable;
 use Buzz\Control\Traits\SupportCrud;
-use JTDSoft\EssentialsSdk\Core\Cast;
-use JTDSoft\EssentialsSdk\Core\Collection;
 use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
 
 /**
@@ -26,10 +24,9 @@ class Answer extends Object
      * @param iterable $answers
      * @param array $rules
      *
-     * @return \JTDSoft\EssentialsSdk\Core\Collection
      * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
      */
-    public function validateMany(iterable $answers, array $rules = []): Collection
+    public function validateMany(iterable $answers, array $rules = []): void
     {
         foreach ($answers as $key => $answer) {
             if (!$answer->id && !$answer->question_id) {
@@ -38,10 +35,15 @@ class Answer extends Object
             $answers[$key] = $answer->toArray();
         }
 
-        return Cast::many(self::class, $this->api()->post($this->getEndpoint("validate-many"), [
-            'batch' => $answers,
-            'rules' => $rules,
-        ]));
+        $this->api()->post($this->getEndpoint("validate-many"), compact('answers', 'rules'));
+    }
+
+    /**
+     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
+     */
+    public function validate(): void
+    {
+        $this->api()->post($this->getEndpoint("validate"), $this->toArray());
     }
 
     /**
