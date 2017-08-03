@@ -3,7 +3,7 @@
 namespace Buzz\Control\Organization;
 
 use Buzz\Control\Object;
-use JTDSoft\EssentialsSdk\Core\Collection;
+use JTDSoft\EssentialsSdk\Collection;
 
 /**
  * Class Campaign
@@ -42,7 +42,7 @@ class Campaign extends Object
      * @param int $page
      * @param int $per_page
      *
-     * @return \JTDSoft\EssentialsSdk\Core\Collection
+     * @return \JTDSoft\EssentialsSdk\Collection
      */
     public function get(array $filters = [], $page = 1, $per_page = 50): Collection
     {

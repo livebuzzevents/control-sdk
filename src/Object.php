@@ -11,7 +11,7 @@ use ReflectionClass;
  * @property \DateTime $updated_at
  * @property \DateTime $created_at
  */
-class Object extends \JTDSoft\EssentialsSdk\Core\Object
+class Object extends \JTDSoft\EssentialsSdk\Object
 {
     /**
      * @var string

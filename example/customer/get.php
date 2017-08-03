@@ -5,9 +5,9 @@ require_once '../bootstrap.php';
 $filter = new \Buzz\Control\Filter();
 $filter->add('status', 'is not', 'active');
 
-$customer = (new \Buzz\Control\Campaign\Customer())->get($filter);
+$customer = (new \Buzz\Control\Campaign\Customer())->first($filter);
 
-dd('here22');
+dd($customer);
 
 $customer = (new \Buzz\Control\Campaign\Customer());
 

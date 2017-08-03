@@ -8,7 +8,7 @@ use Buzz\Control\Campaign\Traits\Taggable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Traits\SupportCrud;
 use Illuminate\Support\Collection;
-use JTDSoft\EssentialsSdk\Core\Cast;
+use JTDSoft\EssentialsSdk\Cast;
 use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
 
 /**

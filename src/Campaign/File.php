@@ -6,8 +6,8 @@ use Buzz\Control\Campaign\Traits\Morphable;
 use Buzz\Control\Object as BaseObject;
 use Buzz\Control\Traits\SupportDelete;
 use Buzz\Control\Traits\SupportRead;
-use JTDSoft\EssentialsSdk\Core\Cast;
-use JTDSoft\EssentialsSdk\Core\Collection;
+use JTDSoft\EssentialsSdk\Cast;
+use JTDSoft\EssentialsSdk\Collection;
 
 /**
  * Class File
@@ -30,7 +30,7 @@ class File extends Object
     /**
      * @param \Buzz\Control\Object $object
      *
-     * @return \JTDSoft\EssentialsSdk\Core\Collection
+     * @return \JTDSoft\EssentialsSdk\Collection
      */
     public function listFiles(BaseObject $object): Collection
     {

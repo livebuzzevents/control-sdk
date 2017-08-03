@@ -2,8 +2,8 @@
 
 namespace Buzz\Control\Traits;
 
-use JTDSoft\EssentialsSdk\Core\Cast;
-use JTDSoft\EssentialsSdk\Core\Collection;
+use JTDSoft\EssentialsSdk\Cast;
+use JTDSoft\EssentialsSdk\Collection;
 use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
 use Traversable;
 
@@ -19,7 +19,7 @@ trait SupportRead
      * @param int $page
      * @param int $per_page
      *
-     * @return \JTDSoft\EssentialsSdk\Core\Collection
+     * @return \JTDSoft\EssentialsSdk\Collection
      */
     public function get(iterable $filters = null, $page = 1, $per_page = 50): Collection
     {
