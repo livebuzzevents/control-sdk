@@ -69,6 +69,11 @@ class Exhibitor extends Base
     /**
      * @var string
      */
+    protected $website;
+
+    /**
+     * @var string
+     */
     protected $is_a_clone;
 
     /**
@@ -396,6 +401,22 @@ class Exhibitor extends Base
     public function setActive($active)
     {
         $this->active = $active;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * @param string $website
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
     }
 
     /**
