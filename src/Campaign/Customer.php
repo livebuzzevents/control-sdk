@@ -58,6 +58,7 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property string $cloned_type
  * @property string $cloned_campaign_id
  * @property string $remember_token
+ * @property-read string $signed_e_badge_link
  * @property-read \Buzz\Control\Campaign\CustomerAffiliate[] $affiliates
  * @property-read \Buzz\Control\Campaign\Address[] $addresses
  * @property-read \Buzz\Control\Campaign\Answer[] $answers

@@ -18,7 +18,7 @@ namespace Buzz\Control\Campaign;
  * @property int $sequence
  * @property string $number
  * @property string $paid
- *
+ * @property-read string $signed_link
  * @property-read \Buzz\Control\Campaign\Order $order
  * @property-read \Buzz\Control\Campaign\CreditNote[] $credit_notes
  * @property-read \Buzz\Control\Campaign\Charge[] $charges
