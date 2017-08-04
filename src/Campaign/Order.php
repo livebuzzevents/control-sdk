@@ -67,16 +67,6 @@ class Order extends Object
     /**
      * Gets invoice in base64 format
      *
-     * @return string
-     */
-    public function getInvoice(): string
-    {
-        return $this->api()->get($this->id . '/invoice')['invoice'];
-    }
-
-    /**
-     * Gets invoice in base64 format
-     *
      * @return self
      */
     public function complete(): self
