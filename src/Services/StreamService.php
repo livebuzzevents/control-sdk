@@ -93,4 +93,31 @@ class StreamService extends Service
 
         return $this->callAndCastMany('post', 'streams', ['batch' => $streams]);
     }
+
+    /**
+     * @param Stream $stream
+     * @param array  $parameters
+     *
+     * @return mixed
+     * @throws ErrorException
+     */
+    public function signedUrl(Stream $stream, array $parameters)
+    {
+        if (!$stream->getId() && !$stream->getIdentifier()) {
+            throw new ErrorException('Stream id or identifier required!');
+        }
+
+        if (!isset($parameters['customer_id'])
+            && !isset($parameters['exhibitor_id'])
+            && !isset($parameters['source_id'])
+        ) {
+            throw new ErrorException('customer_id, exhibitor_id or source_id required!');
+        }
+
+        return $this->call(
+            'get',
+            "stream/" . ($stream->getId() ?: $stream->getIdentifier()) . "/signed-url",
+            $parameters
+        );
+    }
 }
