@@ -172,16 +172,6 @@ class Basket extends Object
     }
 
     /**
-     * Sets/Unsets Payment provider
-     *
-     * @param string|null $payment_provider_id
-     */
-    public function setPaymentProvider(string $payment_provider_id = null): void
-    {
-        $this->api()->post($this->id . '/set-payment-provider/' . $payment_provider_id);
-    }
-
-    /**
      * Sets/Unsets PO Number
      *
      * @param string|null $po_number
