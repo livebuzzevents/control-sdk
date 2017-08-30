@@ -60,7 +60,7 @@ trait SupportRead
 
         $object->id = $id;
 
-        $object->execReload();
+        $object->reload();
 
         return $object;
     }
