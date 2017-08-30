@@ -13,8 +13,8 @@ trait Morphable
 {
     public function associate(Object $object)
     {
-        $this->model      = $object;
-        $this->model_type = class_basename($object);
-        $this->model_id   = $object->id;
+        $this->data['model'] = $object;
+        $this->model_type    = class_basename($object);
+        $this->model_id      = $object->id;
     }
 }
