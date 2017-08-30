@@ -22,4 +22,17 @@ class Affiliate extends Object
 {
     use SupportRead,
         SupportDelete;
+
+    /**
+     * @param int $size
+     *
+     * @return string
+     */
+    public function getQrCodeImage($size = 125): string
+    {
+        return $this->api()->get(
+            $this->getEndpoint($this->id . '/qrcode-image'),
+            compact('size')
+        )['image'];
+    }
 }
