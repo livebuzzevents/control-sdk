@@ -42,7 +42,7 @@ class Object extends \JTDSoft\EssentialsSdk\Object
     protected function api()
     {
         $api = parent::api();
-
+        
         $api->setSection($this->section);
 
         return $api;
