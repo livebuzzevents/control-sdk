@@ -17,11 +17,6 @@ class Object extends \JTDSoft\EssentialsSdk\Object
     protected $section;
 
     /**
-     * @var
-     */
-    protected static $resource;
-
-    /**
      * @var string
      */
     protected $endpoint_prefix = '';
@@ -42,7 +37,7 @@ class Object extends \JTDSoft\EssentialsSdk\Object
     protected function api()
     {
         $api = parent::api();
-        
+
         $api->setSection($this->section);
 
         return $api;
@@ -55,7 +50,7 @@ class Object extends \JTDSoft\EssentialsSdk\Object
      */
     protected function getEndpoint(string $path = null): string
     {
-        $resource = static::$resource ?? kebab_case(str_plural(class_basename(static::class)));
+        $resource = kebab_case(str_plural(class_basename(static::class)));
 
         if ($this->endpoint_prefix) {
             $endpoint = $this->endpoint_prefix . '/' . $resource;
