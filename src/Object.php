@@ -2,8 +2,6 @@
 
 namespace Buzz\Control;
 
-use ReflectionClass;
-
 /**
  * Class Object
  *
@@ -13,6 +11,16 @@ use ReflectionClass;
  */
 class Object extends \JTDSoft\EssentialsSdk\Object
 {
+    /**
+     * @var
+     */
+    protected $section;
+
+    /**
+     * @var
+     */
+    protected static $resource;
+
     /**
      * @var string
      */
@@ -35,12 +43,7 @@ class Object extends \JTDSoft\EssentialsSdk\Object
     {
         $api = parent::api();
 
-        $reflection = new ReflectionClass($this);
-        $namespace  = $reflection->getNamespaceName();
-
-        $section = strtolower(basename(str_replace('\\', '/', $namespace)));
-
-        $api->setSection(basename($section));
+        $api->setSection($this->section);
 
         return $api;
     }
@@ -52,7 +55,7 @@ class Object extends \JTDSoft\EssentialsSdk\Object
      */
     protected function getEndpoint(string $path = null): string
     {
-        $resource = kebab_case(str_plural(class_basename(static::class)));
+        $resource = static::$resource ?? kebab_case(str_plural(class_basename(static::class)));
 
         if ($this->endpoint_prefix) {
             $endpoint = $this->endpoint_prefix . '/' . $resource;

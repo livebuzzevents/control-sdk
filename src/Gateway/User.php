@@ -2,8 +2,6 @@
 
 namespace Buzz\Control\Gateway;
 
-use Buzz\Control\Object;
-
 /**
  * Class User
  *

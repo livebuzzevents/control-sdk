@@ -2,9 +2,7 @@
 
 namespace Buzz\Control\Organization;
 
-use Buzz\Control\Object;
 use Buzz\Control\Traits\SupportRead;
-use JTDSoft\EssentialsSdk\Collection;
 
 /**
  * Class Campaign
