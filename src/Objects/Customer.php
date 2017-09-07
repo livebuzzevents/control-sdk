@@ -211,6 +211,11 @@ class Customer extends Base
     protected $flows;
 
     /**
+     * @var \Buzz\Control\Objects\Customer\Log[]
+     */
+    protected $logs;
+
+    /**
      * @var \Buzz\Control\Objects\Exhibitor[]
      */
     protected $exhibitors;
@@ -824,6 +829,14 @@ class Customer extends Base
     public function getFlows()
     {
         return $this->flows;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLogs()
+    {
+        return $this->logs;
     }
 
     /**
