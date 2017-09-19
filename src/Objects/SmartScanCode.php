@@ -25,6 +25,11 @@ class SmartScanCode extends Base
     protected $used;
 
     /**
+     * @var bool
+     */
+    protected $active;
+
+    /**
      * @return string
      */
     public function getCode(): string
@@ -70,5 +75,21 @@ class SmartScanCode extends Base
     public function setUsed(bool $used)
     {
         $this->used = $used;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getActive(): bool
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param bool $active
+     */
+    public function setActive(bool $active)
+    {
+        $this->active = $active;
     }
 }
