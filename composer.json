@@ -10,7 +10,7 @@
   "type": "package",
   "require": {
     "php": "^7.1",
-    "jtdsoft/essentials-sdk": "dev-master"
+    "jtdsoft/essentials-sdk": "~1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",
@@ -27,7 +27,7 @@
   },
   "config": {
     "preferred-install": "dist",
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "sort-packages": true,
+    "optimize-autoloader": true
   }
 }
