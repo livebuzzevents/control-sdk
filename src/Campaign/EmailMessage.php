@@ -55,8 +55,8 @@ class EmailMessage extends Object
         $model_id   = $model->id;
 
         $this->api()->post(
-            'send/' . $email_message_template_id,
-            compact('model_id', 'model_type', 'to_address', 'subject', 'custom_data')
+            'send',
+            compact('email_message_template_id', 'model_id', 'model_type', 'to_address', 'subject', 'custom_data')
         );
     }
 }
