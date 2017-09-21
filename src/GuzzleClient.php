@@ -105,7 +105,7 @@ class GuzzleClient implements Client
     {
         $result = ['headers' => array_merge($headers, ['Accept' => 'application/json'])];
 
-        if (in_array($verb, ['post', 'put'])) {
+        if (in_array($verb, ['post', 'put', 'delete'])) {
             foreach ($request as $key => $value) {
                 if (is_resource($value)) {
                     $request[$key] = base64_encode(file_get_contents($request[$key]));
@@ -113,7 +113,7 @@ class GuzzleClient implements Client
             }
 
             $result['json'] = $request;
-        } elseif (in_array($verb, ['get', 'delete'])) {
+        } elseif (in_array($verb, ['get'])) {
             $result['query'] = $request;
         }
 
