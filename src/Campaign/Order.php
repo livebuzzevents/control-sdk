@@ -12,7 +12,6 @@ use Buzz\Control\Traits\SupportRead;
  * @property string $exhibitor_id
  * @property string $currency
  * @property int $subtotal
- * @property int $subtotal_final
  * @property int $vat
  * @property int $total
  * @property-read int $amount_charged
@@ -24,6 +23,8 @@ use Buzz\Control\Traits\SupportRead;
  * @property-read int $amount_due
  * @property-read int $total_items
  * @property-read int $total_scanners
+ * @property-read bool $awaiting_interactions
+ * @property-read string $summary_url
  * @property string $status
  * @property string $fulfilled
  * @property string $shipped
@@ -33,6 +34,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property string $chargebacked
  * @property string $vat_exempt
  * @property string $destination
+ * @property string $return_url
  * @property string $source
  * @property string $source_id
  * @property-read \Buzz\Control\Campaign\Customer $customer

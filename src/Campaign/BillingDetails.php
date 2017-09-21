@@ -2,10 +2,11 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\Morphable;
+
 /**
  * Class BillingDetails
  *
- * @property string $order_id
  * @property-read string $client
  * @property string $email
  * @property string $title
@@ -22,9 +23,8 @@ namespace Buzz\Control\Campaign;
  * @property string $city
  * @property string $county
  * @property string $country
- *
- * @property-read \Buzz\Control\Campaign\Order $order;
  */
 class BillingDetails extends Object
 {
+    use Morphable;
 }

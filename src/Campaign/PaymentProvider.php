@@ -8,6 +8,12 @@ use JTDSoft\EssentialsSdk\Cast;
 /**
  * Class PaymentProvider
  *
+ * @property string $identifier
+ * @property string $name
+ * @property bool $hide_onsite
+ * @property bool $hide_prereg
+ * @property int $min_amount
+ * @property int $max_amount
  * @property string $provider
  * @property string $instructions
  * @property array $settings

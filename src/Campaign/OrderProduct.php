@@ -17,9 +17,13 @@ namespace Buzz\Control\Campaign;
  * @property-read boolean $cost_overridden
  * @property-read int $cost_refundable
  * @property-read int $cost_refunded
+ * @property int $vat
  * @property int $total
  * @property string $vat_percentage
  * @property string $vat_percentage_final
+ * @property-read int $vat_refundable
+ * @property-read int $vat_refunded
+ * @property-read int $total_refunded
  * @property-read boolean $vat_percentage_overridden
  * @property-read string $currency
  * @property-read boolean $returned

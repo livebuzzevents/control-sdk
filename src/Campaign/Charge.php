@@ -2,10 +2,11 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\Morphable;
+
 /**
  * Class Charge
  *
- * @property string $order_id
  * @property string $customer_id
  * @property string $payment_provider_id
  * @property string $invoice_id
@@ -25,11 +26,8 @@ namespace Buzz\Control\Campaign;
  * @property string $reference_id
  * @property string $description
  * @property array $response
- * @property string $success_url
- * @property string $cancel_url
  * @property string $settled
  * @property \DateTime $captured_at
- * @property-read \Buzz\Control\Campaign\Order $order
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\PaymentProvider $payment_provider
  * @property-read \Buzz\Control\Campaign\Invoice $invoice
@@ -39,4 +37,5 @@ namespace Buzz\Control\Campaign;
  */
 class Charge extends Object
 {
+    use Morphable;
 }

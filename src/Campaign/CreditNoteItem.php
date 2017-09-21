@@ -8,7 +8,6 @@ namespace Buzz\Control\Campaign;
  * @property string $credit_note_id
  * @property string $order_product_id
  * @property string $reason
- * @property string $description
  * @property int $cost
  * @property int $vat
  * @property int $vat_percentage

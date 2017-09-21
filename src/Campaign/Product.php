@@ -20,6 +20,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read int $total
  * @property string $shippable
  * @property string $publish
+ * @property array $actions
  * @property-read string $currency
  * @property string $active
  * @property \DateTime $valid_from

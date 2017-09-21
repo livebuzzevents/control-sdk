@@ -8,7 +8,6 @@ namespace Buzz\Control\Campaign;
  * @property string $basket_id
  * @property string $product_id
  * @property string $customer_id
- * @property-read array $actions
  * @property int $cost
  * @property-read int $cost_final
  * @property-read boolean $cost_overridden
@@ -19,6 +18,7 @@ namespace Buzz\Control\Campaign;
  * @property-read int $vat_percentage_final
  * @property-read boolean $vat_percentage_overridden
  *
+ * @property-read \Buzz\Control\Campaign\BasketActions[] $basket_actions
  * @property-read \Buzz\Control\Campaign\Basket $basket
  * @property-read \Buzz\Control\Campaign\Product $product
  * @property-read \Buzz\Control\Campaign\Customer $customer

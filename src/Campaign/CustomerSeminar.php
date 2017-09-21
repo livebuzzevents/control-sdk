@@ -12,6 +12,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $seminar_id
  * @property string $role
  * @property string $type
+ * @property string $status
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Customer $creator
  * @property-read \Buzz\Control\Campaign\Seminar $seminar

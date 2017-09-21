@@ -10,6 +10,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property string $identifier
  * @property string $name
  * @property string $channel_id
+ * @property string $database_id
  * @property string $currency
  * @property int $sequence
  * @property boolean $migrated
@@ -26,6 +27,8 @@ use Buzz\Control\Traits\SupportRead;
  * @property string $language
  * @property array $additional_languages
  * @property array $supported_languages
+ * @property string $show_timezone
+ * @property string $version
  * @property-read string $full_name
  * @property-read string $status
  * @property-read array $show_days
