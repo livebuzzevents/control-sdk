@@ -22,50 +22,53 @@ class Social extends Object
         SupportCrud;
 
     /**
+     * @param \Buzz\Control\Campaign\Customer $customer
      * @param \Buzz\Control\Campaign\Invite $invite
-     * @param \Buzz\Control\Campaign\EmailMessageTemplate $emailMessageTemplate
+     * @param string $email_message_template_id
      *
      * @return \Buzz\Control\Campaign\Invite
      * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
      */
-    public function inviteEmail(Invite $invite, EmailMessageTemplate $emailMessageTemplate)
+    public function inviteEmail(Customer $customer, Invite $invite, string $email_message_template_id)
     {
         if (!$invite->provider_recipient) {
             throw new ErrorException('Email required!');
         }
 
-        $request = ['invite' => $invite->toArray()];
+        $request = $invite->toArray() + compact('email_message_template_id');
 
-        if ($emailMessageTemplate->id) {
-            $request['email_message_template_id'] = $emailMessageTemplate->id;
-        } else {
-            $request['email_message_template'] = $emailMessageTemplate->toArray();
-        }
-
-        return new Invite($this->api()->post($this->getEndpoint('invite/email'), $request));
+        return new Invite($this->api()->post($this->getEndpoint("invite/{$customer->id}/email"), $request));
     }
 
     /**
+     * @param \Buzz\Control\Campaign\Customer $customer
      * @param \Buzz\Control\Campaign\Invite $invite
      *
      * @return \Buzz\Control\Campaign\Invite
      */
-    public function inviteShare(Invite $invite)
+    public function inviteShare(Customer $customer, Invite $invite)
     {
-        $request = ['invite' => $invite->toArray()];
-
-        return new Invite($this->api()->post($this->getEndpoint("invite/{$invite->provider}/share"), $request));
+        return new Invite(
+            $this->api()->post(
+                $this->getEndpoint("invite/{$customer->id}/{$invite->provider}/share"),
+                $invite->toArray()
+            )
+        );
     }
 
     /**
+     * @param \Buzz\Control\Campaign\Customer $customer
      * @param \Buzz\Control\Campaign\Invite $invite
      *
      * @return \Buzz\Control\Campaign\Invite
      */
-    public function inviteConnection(Invite $invite)
+    public function inviteConnection(Customer $customer, Invite $invite)
     {
-        $request = ['invite' => $invite->toArray()];
-
-        return new Invite($this->api()->post($this->getEndpoint("invite/{$invite->provider}/connection"), $request));
+        return new Invite(
+            $this->api()->post(
+                $this->getEndpoint("invite/{$customer->id}/{$invite->provider}/connection"),
+                $invite->toArray()
+            )
+        );
     }
 }
