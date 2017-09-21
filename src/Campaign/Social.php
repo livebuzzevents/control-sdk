@@ -35,9 +35,12 @@ class Social extends Object
             throw new ErrorException('Email required!');
         }
 
-        $request = $invite->toArray() + compact('email_message_template_id');
-
-        return new Invite($this->api()->post($this->getEndpoint("invite/{$customer->id}/email"), $request));
+        return new Invite(
+            $this->api()->post(
+                $this->getEndpoint("invite/{$customer->id}/email/{$email_message_template_id}"),
+                $invite->toArray()
+            )
+        );
     }
 
     /**
