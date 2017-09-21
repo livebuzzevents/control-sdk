@@ -40,7 +40,7 @@ class SmsMessage extends Object
         $model_id   = $model->id;
 
         $this->api()->post(
-            'send/' . $sms_message_template_id,
+            $this->getEndpoint("send/{$sms_message_template_id}"),
             compact('model_id', 'model_type', 'phone_number')
         );
     }
