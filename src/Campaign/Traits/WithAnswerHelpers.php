@@ -14,7 +14,7 @@ trait WithAnswerHelpers
      */
     public function getAnswerByIdentifier($identifier)
     {
-        return $this->answers->where('question.identifier', $identifier)->first();
+        return $this->answers ? $this->answers->where('question.identifier', $identifier)->first() : null;
     }
 
     /**
@@ -22,6 +22,6 @@ trait WithAnswerHelpers
      */
     public function getAnsweredIdentifiers()
     {
-        return $this->answers->pluck('question.identifier');
+        return $this->answers ? $this->answers->pluck('question.identifier') : null;
     }
 }
