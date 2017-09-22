@@ -296,6 +296,11 @@ class Customer extends Base
     protected $email_messages;
 
     /**
+     * @var string
+     */
+    protected $qrcode;
+
+    /**
      * @return string
      */
     public function getOwnerId()
@@ -997,6 +1002,14 @@ class Customer extends Base
     public function setIsAClone($is_a_clone)
     {
         $this->is_a_clone = $is_a_clone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getQrcode()
+    {
+        return $this->qrcode;
     }
 
     /**
