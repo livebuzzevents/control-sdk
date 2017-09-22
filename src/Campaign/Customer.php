@@ -113,7 +113,9 @@ class Customer extends Object
      */
     public function attachAffiliate($affiliate_id): void
     {
-        $this->api()->post($this->id . '/attach-affiliate/' . $affiliate_id);
+        $this->api()->post(
+            $this->getEndpoint($this->id . '/attach-affiliate/' . $affiliate_id)
+        );
     }
 
     /**
