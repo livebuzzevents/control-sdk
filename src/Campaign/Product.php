@@ -14,6 +14,8 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $description
  * @property string $destination
  * @property string $exhibitor_id
+ * @property string $product_id
+ * @property string $type
  * @property int $cost
  * @property-read int $vat
  * @property int $vat_percentage
@@ -26,6 +28,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property \DateTime $valid_from
  * @property \DateTime $valid_to
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
+ * @property-read \Buzz\Control\Campaign\Seminar $seminar
  * @property-read \Buzz\Control\Campaign\OrderProduct[] $order_products
  */
 class Product extends Object

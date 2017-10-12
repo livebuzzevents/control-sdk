@@ -23,6 +23,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read int $spaces_taken
  * @property-read int $spaces_available
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
+ * @property-read \Buzz\Control\Campaign\Product $product
  * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $customers
  * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $attendees
  * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $speakers
