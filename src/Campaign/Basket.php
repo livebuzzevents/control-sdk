@@ -31,7 +31,7 @@ class Basket extends Object
      */
     public function generate(): self
     {
-        return new self($this->api()->get($this->id . '/generate'));
+        return new self($this->api()->get($this->getEndpoint($this->id . '/generate')));
     }
 
     /**
@@ -51,7 +51,7 @@ class Basket extends Object
         int $vat_percentage = null
     ): void {
         $this->api()->post(
-            $this->id . '/add-product/' . $product_id . '/' . $customer_id,
+            $this->getEndpoint($this->id . '/add-product/' . $product_id . '/' . $customer_id),
             compact('quantity', 'cost', 'vat_percentage')
         );
     }
@@ -63,7 +63,7 @@ class Basket extends Object
      */
     public function addDiscountCode(string $code): void
     {
-        $this->api()->post($this->id . '/add-discount-code/' . $code);
+        $this->api()->post($this->getEndpoint($this->id . '/add-discount-code/' . $code));
     }
 
     /**
@@ -73,7 +73,7 @@ class Basket extends Object
      */
     public function removeDiscountCode(string $code): void
     {
-        $this->api()->delete($this->id . '/remove-discount-code/' . $code);
+        $this->api()->delete($this->getEndpoint($this->id . '/remove-discount-code/' . $code));
     }
 
     /**
@@ -83,7 +83,7 @@ class Basket extends Object
      */
     public function removeByProduct(string $product_id): void
     {
-        $this->api()->delete($this->id . '/remove-by-product/' . $product_id);
+        $this->api()->delete($this->getEndpoint($this->id . '/remove-by-product/' . $product_id));
     }
 
     /**
@@ -94,7 +94,7 @@ class Basket extends Object
      */
     public function removeByCustomerProduct(string $product_id, string $customer_id = null): void
     {
-        $this->api()->delete($this->id . '/remove-by-customer-product/' . $product_id . '/' . $customer_id);
+        $this->api()->delete($this->getEndpoint($this->id . '/remove-by-customer-product/' . $product_id . '/' . $customer_id));
     }
 
     /**
@@ -104,7 +104,7 @@ class Basket extends Object
      */
     public function removeByCustomer(string $customer_id = null): void
     {
-        $this->api()->delete($this->id . '/remove-by-customer/' . $customer_id);
+        $this->api()->delete($this->getEndpoint($this->id . '/remove-by-customer/' . $customer_id));
     }
 
     /**
@@ -114,7 +114,7 @@ class Basket extends Object
      */
     public function removeBasketProduct(string $basket_product_id = null): void
     {
-        $this->api()->delete($this->id . '/remove-basket-product/' . $basket_product_id);
+        $this->api()->delete($this->getEndpoint($this->id . '/remove-basket-product/' . $basket_product_id));
     }
 
     /**
@@ -122,7 +122,7 @@ class Basket extends Object
      */
     public function removeProducts(): void
     {
-        $this->api()->delete($this->id . '/remove-products');
+        $this->api()->delete($this->getEndpoint($this->id . '/remove-products'));
     }
 
     /**
@@ -130,7 +130,7 @@ class Basket extends Object
      */
     public function reset(): void
     {
-        $this->api()->delete($this->id . '/reset');
+        $this->api()->delete($this->getEndpoint($this->id . '/reset'));
     }
 
     /**
@@ -140,7 +140,7 @@ class Basket extends Object
      */
     public function setBillingDetails(array $details): void
     {
-        $this->api()->post($this->id . '/set-billing-details', $details);
+        $this->api()->post($this->getEndpoint($this->id . '/set-billing-details', $details));
     }
 
     /**
@@ -148,7 +148,7 @@ class Basket extends Object
      */
     public function unsetBillingDetails(): void
     {
-        $this->api()->delete($this->id . '/unset-billing-details');
+        $this->api()->delete($this->getEndpoint($this->id . '/unset-billing-details'));
     }
 
     /**
@@ -158,7 +158,7 @@ class Basket extends Object
      */
     public function setShippingDetails(array $details): void
     {
-        $this->api()->post($this->id . '/set-shipping-details', $details);
+        $this->api()->post($this->getEndpoint($this->id . '/set-shipping-details', $details));
     }
 
     /**
@@ -166,7 +166,7 @@ class Basket extends Object
      */
     public function unsetShippingDetails(): void
     {
-        $this->api()->delete($this->id . '/unset-shipping-details');
+        $this->api()->delete($this->getEndpoint($this->id . '/unset-shipping-details'));
     }
 
     /**
@@ -176,7 +176,7 @@ class Basket extends Object
      */
     public function setPoNumber(string $po_number = null): void
     {
-        $this->api()->post($this->id . '/set-po-number/' . $po_number);
+        $this->api()->post($this->getEndpoint($this->id . '/set-po-number/' . $po_number));
     }
 
     /**
@@ -186,7 +186,7 @@ class Basket extends Object
      */
     public function setVatExempt(string $vat_exempt = 'no'): void
     {
-        $this->api()->post($this->id . '/set-vat-exempt/' . $vat_exempt);
+        $this->api()->post($this->getEndpoint($this->id . '/set-vat-exempt/' . $vat_exempt));
     }
 
     /**
@@ -196,6 +196,6 @@ class Basket extends Object
      */
     public function place(): Order
     {
-        return new Order($this->api()->post($this->id . '/place'));
+        return new Order($this->api()->post($this->getEndpoint($this->id . '/place')));
     }
 }
