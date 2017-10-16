@@ -46,9 +46,9 @@ class Basket extends Object
     public function addProduct(
         string $product_id,
         string $customer_id = null,
-        integer $quantity = 1,
-        integer $cost = null,
-        integer $vat_percentage = null
+        int $quantity = 1,
+        int $cost = null,
+        int $vat_percentage = null
     ): void {
         $this->api()->post(
             $this->id . '/add-product/' . $product_id . '/' . $customer_id,

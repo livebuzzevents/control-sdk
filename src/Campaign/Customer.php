@@ -338,7 +338,7 @@ class Customer extends Object
     }
 
     /**
-     * @param int $step
+     * @param int $stepB
      */
     public function setFlowStep(int $step): void
     {
