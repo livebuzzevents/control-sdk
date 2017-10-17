@@ -94,7 +94,9 @@ class Basket extends Object
      */
     public function removeByCustomerProduct(string $product_id, string $customer_id = null): void
     {
-        $this->api()->delete($this->getEndpoint($this->id . '/remove-by-customer-product/' . $product_id . '/' . $customer_id));
+        $this->api()->delete(
+            $this->getEndpoint($this->id . '/remove-by-customer-product/' . $product_id . '/' . $customer_id)
+        );
     }
 
     /**

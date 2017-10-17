@@ -69,7 +69,7 @@ class Answer extends Object
      */
     public function getOptionByIdentifier($identifier)
     {
-        return $this->data['options']->where('questionOption.identifier', $identifier)->first();
+        return $this->data['options']->where('question_option.identifier', $identifier)->first();
     }
 
     /**
@@ -77,6 +77,6 @@ class Answer extends Object
      */
     public function getOptionsIdentifiers()
     {
-        return $this->data['options']->pluck('questionOption.identifier');
+        return $this->data['options']->pluck('question_option.identifier');
     }
 }
