@@ -32,7 +32,7 @@ class Answer extends Object
         }
 
         $this->copyFromArray(
-            $this->api()->post($this->getEndpoint(), $this->toArray())
+            $this->api()->post($this->getEndpoint(), $this->toArray(true))
         );
 
         $this->cleanDirtyAttributes();
@@ -50,7 +50,7 @@ class Answer extends Object
             if (!$answer->id && !$answer->question_id) {
                 throw new ErrorException('Answer id or Question id required!');
             }
-            $answers[$key] = $answer->toArray();
+            $answers[$key] = $answer->toArray(true);
         }
 
         return Cast::many(
@@ -71,7 +71,7 @@ class Answer extends Object
             if (!$answer->id && !$answer->question_id) {
                 throw new ErrorException('Answer id or Question id required!');
             }
-            $answers[$key] = $answer->toArray();
+            $answers[$key] = $answer->toArray(true);
         }
 
         $this->api()->post($this->getEndpoint("validate-many"), compact('answers', 'rules'));
@@ -122,7 +122,7 @@ class Answer extends Object
      */
     public function validate(): void
     {
-        $this->api()->post($this->getEndpoint("validate"), $this->toArray());
+        $this->api()->post($this->getEndpoint("validate"), $this->toArray(true));
     }
 
     /**

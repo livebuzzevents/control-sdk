@@ -30,11 +30,11 @@ trait SupportWrite
 
         if ($this->id) {
             $this->copyFromArray(
-                $this->api()->put($this->getEndpoint($this->id), $this->getDirty())
+                $this->api()->put($this->getEndpoint($this->id), $this->toArray(true))
             );
         } else {
             $this->copyFromArray(
-                $this->api()->post($this->getEndpoint(), $this->toArray())
+                $this->api()->post($this->getEndpoint(), $this->toArray(true))
             );
         }
 

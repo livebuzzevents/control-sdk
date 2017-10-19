@@ -205,7 +205,7 @@ class Customer extends Object
         try {
             $this->api()->post(
                 $this->getEndpoint('dupe-check'),
-                $this->toArray()
+                $this->toArray(true)
             );
         } catch (ErrorException $e) {
             return explode(', ', str_replace('Duped on: ', '', $e->getError()));

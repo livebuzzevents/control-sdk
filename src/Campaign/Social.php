@@ -38,7 +38,7 @@ class Social extends Object
         return new Invite(
             $this->api()->post(
                 $this->getEndpoint("invite/{$customer->id}/email/{$email_message_template_id}"),
-                $invite->toArray()
+                $invite->toArray(true)
             )
         );
     }
@@ -54,7 +54,7 @@ class Social extends Object
         return new Invite(
             $this->api()->post(
                 $this->getEndpoint("invite/{$customer->id}/{$invite->provider}/share"),
-                $invite->toArray()
+                $invite->toArray(true)
             )
         );
     }
@@ -70,7 +70,7 @@ class Social extends Object
         return new Invite(
             $this->api()->post(
                 $this->getEndpoint("invite/{$customer->id}/{$invite->provider}/connection"),
-                $invite->toArray()
+                $invite->toArray(true)
             )
         );
     }
