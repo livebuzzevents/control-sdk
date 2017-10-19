@@ -83,7 +83,10 @@ class Answer extends Object
      */
     public function deleteByIdentifiers(Object $object, array $identifiers)
     {
-        $this->api()->delete($this->getEndpoint(class_basename($object) . '/' . $object->id), compact('identifiers'));
+        $this->api()->delete(
+            $this->getEndpoint('by-identifiers/' . class_basename($object) . '/' . $object->id),
+            compact('identifiers')
+        );
     }
 
     /**
