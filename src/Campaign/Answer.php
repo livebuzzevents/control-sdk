@@ -4,6 +4,8 @@ namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Morphable;
 use Buzz\Control\Traits\SupportCrud;
+use JTDSoft\EssentialsSdk\Cast;
+use JTDSoft\EssentialsSdk\Collection;
 use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
 
 /**
@@ -38,6 +40,27 @@ class Answer extends Object
 
     /**
      * @param iterable $answers
+     *
+     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
+     * @return \JTDSoft\EssentialsSdk\Collection
+     */
+    public function saveMany(iterable $answers): Collection
+    {
+        foreach ($answers as $key => $answer) {
+            if (!$answer->id && !$answer->question_id) {
+                throw new ErrorException('Answer id or Question id required!');
+            }
+            $answers[$key] = $answer->toArray();
+        }
+
+        return Cast::many(
+            static::class,
+            $this->api()->post($this->getEndpoint("save-many"), compact('answers'))
+        );
+    }
+
+    /**
+     * @param iterable $answers
      * @param array $rules
      *
      * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
@@ -52,6 +75,39 @@ class Answer extends Object
         }
 
         $this->api()->post($this->getEndpoint("validate-many"), compact('answers', 'rules'));
+    }
+
+    /**
+     * @param Object $object
+     * @param array $identifiers
+     */
+    public function deleteByIdentifiers(Object $object, array $identifiers)
+    {
+        $this->api()->delete($this->getEndpoint(class_basename($object) . '/' . $object->id), compact('identifiers'));
+    }
+
+    /**
+     * @param Object $source
+     * @param Object $target
+     * @param array $identifiers
+     *
+     * @return \JTDSoft\EssentialsSdk\Collection
+     */
+    public function copy(Object $source, Object $target, array $identifiers): Collection
+    {
+        return Cast::many(
+            static::class,
+            $this->api()->post(
+                $this->getEndpoint('copy'),
+                [
+                    'source_type' => class_basename($source),
+                    'source_id'   => $source->id,
+                    'target_type' => class_basename($target),
+                    'target_id'   => $target->id,
+                    'identifiers' => $identifiers,
+                ]
+            )
+        );
     }
 
     /**
