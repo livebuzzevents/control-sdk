@@ -93,12 +93,12 @@ class Answer extends Object
      *
      * @return \JTDSoft\EssentialsSdk\Collection
      */
-    public function copy(Object $source, Object $target, array $identifiers): Collection
+    public function copyByIdentifiers(Object $source, Object $target, array $identifiers): Collection
     {
         return Cast::many(
             static::class,
             $this->api()->post(
-                $this->getEndpoint('copy'),
+                $this->getEndpoint('copy-by-identifiers'),
                 [
                     'source_type' => class_basename($source),
                     'source_id'   => $source->id,
