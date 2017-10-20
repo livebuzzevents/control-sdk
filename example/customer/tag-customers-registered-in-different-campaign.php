@@ -28,7 +28,7 @@ while (true) {
         ->perPage(50)
         ->getMany();
 
-    if (!$customers->getTotal()) {
+    if (!$customers->count()) {
         break;
     }
 
