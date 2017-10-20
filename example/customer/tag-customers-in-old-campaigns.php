@@ -96,7 +96,7 @@ foreach (array_slice($campaigns, 0, -1) as $campaign) {
             }
 
             if (!$alreadyRegistered) {
-                //                $customerService->tag($customer, $nextTag);
+                $customerService->tag($customer, $nextTag);
                 echo "Not Registered. Adding Tag          " . $lineSuffix;
             }
         }
