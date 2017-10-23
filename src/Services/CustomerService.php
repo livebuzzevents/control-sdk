@@ -372,18 +372,19 @@ class CustomerService extends Service
 
     /**
      * @param Customer $customer
+     * @param string $filename
      *
      * @return string
      * @throws ErrorException
      */
-    public function getEBadge(Customer $customer)
+    public function getEBadge(Customer $customer, $filename = 'badge.pdf')
     {
         if (!$customer->getId()) {
             throw new ErrorException('Customer id required!');
         }
 
         header('Content-Type: application/pdf');
-        header('Content-disposition: inline; filename="badge.pdf"');
+        header('Content-disposition: inline; filename="' . $filename . '"');
         header('Cache-Control: public, must-revalidate, max-age=0');
         header('Pragma: public');
         header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
