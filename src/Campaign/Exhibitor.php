@@ -67,7 +67,7 @@ class Exhibitor extends Object
     public function getEmailInvites(): Collection
     {
         return Cast::many(
-            Invite::class,
+            (new Invite()),
             $this->api()->get(
                 $this->getEndpoint($this->id . '/email-invites')
             )

@@ -234,7 +234,7 @@ class Customer extends Object
     public function suggestExhibitors(int $count = 15): Collection
     {
         return Cast::many(
-            Exhibitor::class,
+            (new Exhibitor()),
             $this->api()->get(
                 $this->getEndpoint($this->id . '/suggest-exhibitors/' . $count)
             )
@@ -314,7 +314,7 @@ class Customer extends Object
     public function getEmailInvites(): Collection
     {
         return Cast::many(
-            Invite::class,
+            (new Invite()),
             $this->api()->get(
                 $this->getEndpoint($this->id . '/email-invites')
             )

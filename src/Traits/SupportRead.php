@@ -28,7 +28,7 @@ trait SupportRead
         }
 
         return Cast::many(
-            static::class,
+            $this,
             $this->api()->get($this->getEndpoint(), compact('filters', 'page', 'per_page'))
         );
     }

@@ -38,7 +38,7 @@ class File extends Object
         $model_id   = $object->id;
 
         return Cast::many(
-            self::class,
+            $this,
             $this->api()->get($this->getEndpoint("{$model_type}/{$model_id}/list"))
         );
     }

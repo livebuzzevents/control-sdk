@@ -35,7 +35,7 @@ class PaymentProvider extends Object
     public function availableForBasket(string $basket_id)
     {
         return Cast::many(
-            static::class,
+            $this,
             $this->api()->get('available-for-basket/' . $basket_id)
         );
     }
@@ -48,7 +48,7 @@ class PaymentProvider extends Object
     public function availableForOrder(string $order_id)
     {
         return Cast::many(
-            static::class,
+            $this,
             $this->api()->get('available-for-order/' . $order_id)
         );
     }

@@ -54,7 +54,7 @@ class Answer extends Object
         }
 
         return Cast::many(
-            static::class,
+            $this,
             $this->api()->post($this->getEndpoint("save-many"), compact('answers'))
         );
     }
@@ -103,7 +103,7 @@ class Answer extends Object
     public function copyByIdentifiers(Object $source, Object $target, array $identifiers): Collection
     {
         return Cast::many(
-            static::class,
+            $this,
             $this->api()->post(
                 $this->getEndpoint('copy-by-identifiers'),
                 [
