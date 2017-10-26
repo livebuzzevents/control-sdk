@@ -18,18 +18,25 @@ trait SupportRead
      * @param iterable $filters
      * @param int $page
      * @param int $per_page
+     * @param null $order
+     * @param null $direction
      *
      * @return \JTDSoft\EssentialsSdk\Collection
      */
-    public function get(iterable $filters = null, $page = 1, $per_page = 50): Collection
-    {
+    public function get(
+        iterable $filters = null,
+        $page = 1,
+        $per_page = 50,
+        $order = null,
+        $direction = null
+    ): Collection {
         if ($filters instanceof Traversable) {
             $filters = iterator_to_array($filters);
         }
 
         return Cast::many(
             $this,
-            $this->api()->get($this->getEndpoint(), compact('filters', 'page', 'per_page'))
+            $this->api()->get($this->getEndpoint(), compact('filters', 'page', 'per_page', 'order', 'direction'))
         );
     }
 
