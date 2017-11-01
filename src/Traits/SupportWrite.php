@@ -16,7 +16,11 @@ trait SupportWrite
      */
     public function create(array $attributes): self
     {
-        return (new static($attributes))->save();
+        $instance = (new static($attributes));
+
+        $instance->save();
+
+        return $instance;
     }
 
     /**
