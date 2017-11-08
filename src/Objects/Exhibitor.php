@@ -87,6 +87,11 @@ class Exhibitor extends Base
     protected $customers;
 
     /**
+     * @var \Buzz\Control\Objects\Customer
+     */
+    protected $main_contact;
+
+    /**
      * @var \Buzz\Control\Objects\Exhibitor[]
      */
     protected $exhibitors;
@@ -425,6 +430,14 @@ class Exhibitor extends Base
     public function getCustomers()
     {
         return $this->customers;
+    }
+
+    /**
+     * @return Customer
+     */
+    public function getMainContact()
+    {
+        return $this->main_contact;
     }
 
     /**
