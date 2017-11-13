@@ -13,7 +13,8 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $discount_code
  * @property string $vat_exempt
  * @property string $po_number
- * @property-read string currency
+ * @property-read string $currency
+ * @property-read int $basket_products_count
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\BasketProduct[] $basket_products
