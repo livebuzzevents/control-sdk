@@ -23,6 +23,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property-read string $origin_url
  * @property-read string $custom_origin_url
  * @property-read string $default_origin_url
+ * @property-read string $forgotten_password_url
  * @property-read \Buzz\Control\Campaign\Affiliate[] $affiliates
  * @property-read \Buzz\Control\Campaign\BadgeType[] $badge_types
  * @property-read \Buzz\Control\Campaign\CustomerFlow[] $flows
