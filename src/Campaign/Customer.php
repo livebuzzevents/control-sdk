@@ -29,6 +29,7 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property string $source_id
  * @property string $biography
  * @property string $barcode
+ * @property-read string $barcode_short
  * @property-read string $qrcode
  * @property string $exhibitor_role
  * @property string $username
