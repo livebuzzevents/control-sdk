@@ -13,7 +13,7 @@ trait BelongsToOrderProduct
     protected $order_product_id;
 
     /**
-     * @var \Buzz\Control\Objects\Order
+     * @var \Buzz\Control\Objects\OrderProduct
      */
     protected $order_product;
 
