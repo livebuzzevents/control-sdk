@@ -210,6 +210,19 @@ class Order extends Base
     protected $products;
 
     /**
+     * @var \Buzz\Control\Objects\Order\Tag[]
+     */
+    protected $tags;
+
+    /**
+     * @return Order\Tag[]
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
      * @return int
      */
     public function getAmountChargebacked()
