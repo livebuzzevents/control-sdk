@@ -16,8 +16,8 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $exhibitor_id
  * @property string $type
  * @property array $rules
+ * @property \Buzz\Control\Campaign\QuestionOption[] $options
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
- * @property-read \Buzz\Control\Campaign\QuestionOption[] $options
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
  */
 class Question extends Object
