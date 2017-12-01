@@ -29,6 +29,10 @@ use JTDSoft\EssentialsSdk\Collection;
  * @property string $cloned_id
  * @property string $cloned_type
  * @property string $cloned_campaign_id
+ * @property-read int smartscan_count
+ * @property-read int smartscan_purchased_count
+ * @property-read int handiscan_count
+ * @property-read int handiscan_purchased_count
  * @property-read \Buzz\Control\Campaign\Address[] $addresses
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
  * @property-read \Buzz\Control\Campaign\Basket[] $baskets
