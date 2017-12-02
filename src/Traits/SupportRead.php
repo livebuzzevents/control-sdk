@@ -3,8 +3,8 @@
 namespace Buzz\Control\Traits;
 
 use JTDSoft\EssentialsSdk\Cast;
-use JTDSoft\EssentialsSdk\Collection;
 use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
+use JTDSoft\EssentialsSdk\Paging;
 use Traversable;
 
 /**
@@ -21,7 +21,8 @@ trait SupportRead
      * @param null $order
      * @param null $direction
      *
-     * @return \JTDSoft\EssentialsSdk\Collection
+     * @return \JTDSoft\EssentialsSdk\Paging
+     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
      */
     public function get(
         iterable $filters = null,
@@ -29,7 +30,7 @@ trait SupportRead
         $per_page = 50,
         $order = null,
         $direction = null
-    ): Collection {
+    ): Paging {
         if ($filters instanceof Traversable) {
             $filters = iterator_to_array($filters);
         }
