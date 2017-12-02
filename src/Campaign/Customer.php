@@ -6,6 +6,7 @@ use Buzz\Control\Campaign\Traits\CanSendEmailMessage;
 use Buzz\Control\Campaign\Traits\CanSendSmsMessage;
 use Buzz\Control\Campaign\Traits\Taggable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
+use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportCrud;
 use Illuminate\Support\Collection;
 use JTDSoft\EssentialsSdk\Cast;
@@ -107,7 +108,8 @@ class Customer extends Object
         CanSendEmailMessage,
         CanSendSmsMessage,
         Taggable,
-        WithAnswerHelpers;
+        WithAnswerHelpers,
+        WithPropertyHelpers;
 
     /**
      * @param $affiliate_id

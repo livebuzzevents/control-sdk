@@ -6,6 +6,7 @@ use Buzz\Control\Campaign\Traits\CanSendEmailMessage;
 use Buzz\Control\Campaign\Traits\CanSendSmsMessage;
 use Buzz\Control\Campaign\Traits\Taggable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
+use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportCrud;
 
 /**
@@ -56,5 +57,6 @@ class Lead extends Object
         CanSendEmailMessage,
         CanSendSmsMessage,
         Taggable,
-        WithAnswerHelpers;
+        WithAnswerHelpers,
+        WithPropertyHelpers;
 }

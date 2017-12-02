@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Translatable;
+use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
 
@@ -33,5 +34,6 @@ class StreamMenuItem extends Object
 {
     use SupportRead,
         SupportWrite,
-        Translatable;
+        Translatable,
+        WithPropertyHelpers;
 }

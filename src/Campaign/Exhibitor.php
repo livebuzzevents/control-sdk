@@ -4,6 +4,7 @@ namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Taggable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
+use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportCrud;
 use JTDSoft\EssentialsSdk\Cast;
 use JTDSoft\EssentialsSdk\Collection;
@@ -63,10 +64,12 @@ class Exhibitor extends Object
 {
     use SupportCrud,
         Taggable,
-        WithAnswerHelpers;
+        WithAnswerHelpers,
+        WithPropertyHelpers;
 
     /**
      * @return \JTDSoft\EssentialsSdk\Collection
+     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
      */
     public function getEmailInvites(): Collection
     {

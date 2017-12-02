@@ -1,7 +1,7 @@
 <?php namespace Buzz\Control\Campaign\Traits;
 
 /**
- * Class HasAnswersCommon
+ * Class WithAnswerHelpers
  *
  * @package Buzz\Control\Objects\Traits
  */
