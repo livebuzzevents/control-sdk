@@ -15,6 +15,8 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $po_number
  * @property-read string $currency
  * @property-read int $basket_products_count
+ * @property-read string $checkout_url,
+ * @property-read string $return_url,
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\BasketProduct[] $basket_products
