@@ -22,9 +22,13 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $delivery_status
  * @property array $details
  * @property-read boolean $handles_crossovers
- * @property-read \Buzz\Control\Campaign\Scan[] $scan
+ * @property-read \Buzz\Control\Campaign\Customer $customer
+ * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
+ * @property-read \Buzz\Control\Campaign\Seminar $seminar
+ * @property-read \Buzz\Control\Campaign\OrderProduct $order_product
+ * @property-read \Buzz\Control\Campaign\Entrance $entrance
+ * @property-read \Buzz\Control\Campaign\Scan[] $scans
  * @property-read \Buzz\Control\Campaign\SmartScanCode[] $smart_scan_codes
- *
  */
 class Scanner extends Object
 {
