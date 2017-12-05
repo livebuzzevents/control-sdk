@@ -18,13 +18,11 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $title
  * @property string $icon
  * @property string $color
- * @property string $background_image
- * @property string $content
  * @property string $type
  * @property string $value
- * @property string $locked
  * @property int $order
- * @property string $settings
+ * @property array $settings
+ * @property array $components
  * @property-read \Buzz\Control\Campaign\Stream $stream
  * @property-read \Buzz\Control\Campaign\Page $parent
  * @property-read \Buzz\Control\Campaign\File[] $files
