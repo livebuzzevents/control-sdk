@@ -97,7 +97,7 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\SocialToken[] $social_tokens
  * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $seminars
  * @property-read \Buzz\Control\Campaign\Scan[] $scans
- * @property-read \Buzz\Control\Campaign\StreamPageActivity[] $stream_page_activities
+ * @property-read \Buzz\Control\Campaign\PageActivity[] $page_activities
  * @property-read \Buzz\Control\Campaign\ModelTag[] $tags
  * @property-read \Buzz\Control\Campaign\Vote[] $votes
  * @property-read \Buzz\Control\Campaign\BadgePrint[] $queued_badge_prints

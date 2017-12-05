@@ -28,7 +28,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property-read \Buzz\Control\Campaign\Affiliate[] $affiliates
  * @property-read \Buzz\Control\Campaign\BadgeType[] $badge_types
  * @property-read \Buzz\Control\Campaign\CustomerFlow[] $flows
- * @property-read \Buzz\Control\Campaign\StreamMenuItem[] $stream_menu_items
+ * @property-read \Buzz\Control\Campaign\Page[] $pages
  */
 class Stream extends Object
 {

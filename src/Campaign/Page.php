@@ -8,7 +8,7 @@ use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
 
 /**
- * Class StreamMenuItem
+ * Class Page
  *
  * @property string $identifier
  * @property string $active
@@ -26,11 +26,11 @@ use Buzz\Control\Traits\SupportWrite;
  * @property int $order
  * @property string $settings
  * @property-read \Buzz\Control\Campaign\Stream $stream
- * @property-read \Buzz\Control\Campaign\StreamMenuItem $parent
+ * @property-read \Buzz\Control\Campaign\Page $parent
  * @property-read \Buzz\Control\Campaign\File[] $files
  * @property-read \Buzz\Control\Campaign\Property[] $properties
  */
-class StreamMenuItem extends Object
+class Page extends Object
 {
     use SupportRead,
         SupportWrite,
