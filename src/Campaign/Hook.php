@@ -3,7 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 /**
- * Class Stream
+ * Class Hook
  *
  * @property string $identifier
  * @property string $name
