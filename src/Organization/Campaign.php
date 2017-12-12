@@ -35,7 +35,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property-read boolean $run_cron_jobs
  * @property-read string $system_currency
  * @property-read \Buzz\Control\Organization\Channel $channel
- * @property-read \Buzz\Control\Campaign\File $files
+ * @property-read \Buzz\Control\Campaign\File[] $files
  */
 class Campaign extends Object
 {
