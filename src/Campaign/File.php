@@ -34,7 +34,7 @@ class File extends Object
      */
     public function listFiles(BaseObject $object): Collection
     {
-        $model_type = basename($object);
+        $model_type = class_basename($object);
         $model_id   = $object->id;
 
         return Cast::many(
@@ -52,7 +52,7 @@ class File extends Object
      */
     public function add(BaseObject $object, string $filename, string $content)
     {
-        $model_type = basename($object);
+        $model_type = class_basename($object);
         $model_id   = $object->id;
 
         return new self(
@@ -76,7 +76,7 @@ class File extends Object
      */
     public function systemFile(BaseObject $object, string $identifier)
     {
-        $model_type = basename($object);
+        $model_type = class_basename($object);
         $model_id   = $object->id;
 
         return new self(
@@ -92,7 +92,7 @@ class File extends Object
      */
     public function fileSettings(BaseObject $object, string $identifier)
     {
-        $model_type = basename($object);
+        $model_type = class_basename($object);
         $model_id   = $object->id;
 
         return new self(
@@ -110,7 +110,7 @@ class File extends Object
      */
     public function addSystem(BaseObject $object, string $identifier, string $filename, string $content)
     {
-        $model_type = basename($object);
+        $model_type = class_basename($object);
         $model_id   = $object->id;
 
         return new self(
