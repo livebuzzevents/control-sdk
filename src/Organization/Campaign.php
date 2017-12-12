@@ -23,12 +23,12 @@ use Buzz\Control\Traits\SupportRead;
  * @property \DateTime $show_starts_at
  * @property \DateTime $show_ends_at
  * @property \DateTime $reg_ends_at
- * @property \DateTime $multilingual
  * @property string $language
  * @property array $additional_languages
- * @property array $supported_languages
  * @property string $show_timezone
  * @property string $version
+ * @property-read array $supported_languages
+ * @property-read boolean $multilingual
  * @property-read string $full_name
  * @property-read string $status
  * @property-read array $show_days
