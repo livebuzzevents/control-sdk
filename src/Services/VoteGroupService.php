@@ -27,7 +27,7 @@ class VoteGroupService extends Service
             throw new ErrorException('VoteGroup id required!');
         }
 
-        return $this->callAndCast('get', "voteGroup/{$voteGroup->getId()}");
+        return $this->callAndCast('get', "vote-group/{$voteGroup->getId()}");
     }
 
     /**
@@ -41,7 +41,7 @@ class VoteGroupService extends Service
             throw new ErrorException('VoteGroup id required!');
         }
 
-        $this->call('delete', "voteGroup/{$voteGroup->getId()}");
+        $this->call('delete', "vote-group/{$voteGroup->getId()}");
     }
 
     /**
