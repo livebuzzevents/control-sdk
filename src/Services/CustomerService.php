@@ -493,4 +493,18 @@ class CustomerService extends Service
             Customer::class
         );
     }
+
+    /**
+     * @param Customer $customer
+     *
+     * @return void
+     * @throws ErrorException
+     */
+    public function createAvailabilitySlots(Customer $customer)
+    {
+        $verb = 'post';
+        $url  = "customer/{$customer->getId()}/create-availability-slots";
+
+        $this->call($verb, $url);
+    }
 }
