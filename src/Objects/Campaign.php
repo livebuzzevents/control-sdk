@@ -78,6 +78,11 @@ class Campaign extends Base
     protected $supported_languages;
 
     /**
+     * @var array
+     */
+    protected $show_days;
+
+    /**
      * @return string
      */
     public function getName()
@@ -267,5 +272,13 @@ class Campaign extends Base
     public function getSupportedLanguages()
     {
         return $this->supported_languages;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getShowDays()
+    {
+        return $this->show_days;
     }
 }
