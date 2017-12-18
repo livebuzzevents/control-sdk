@@ -16,4 +16,20 @@ class Property extends Object
 {
     use Morphable,
         SupportCrud;
+
+    /**
+     * Answers a question
+     */
+    public function save(): void
+    {
+        if (!$this->isDirty()) {
+            return;
+        }
+
+        $this->copyFromArray(
+            $this->api()->post($this->getEndpoint(), $this->toArray(true))
+        );
+
+        $this->cleanDirtyAttributes();
+    }
 }
