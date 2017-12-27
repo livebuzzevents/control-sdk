@@ -12,6 +12,7 @@ use Buzz\Control\Traits\SupportRead;
  *
  * @property string $allowance_id
  * @property-read \Buzz\Control\Campaign\Allowance $allowance
+ * @property-read \Buzz\Control\Campaign\Customer $customer
  */
 class Redemption extends Object
 {
