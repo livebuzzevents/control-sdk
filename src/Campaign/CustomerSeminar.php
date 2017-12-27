@@ -17,6 +17,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Customer $creator
  * @property-read \Buzz\Control\Campaign\Seminar $seminar
+ * @property-read \Buzz\Control\Campaign\Redemption[] $redemptions
  */
 class CustomerSeminar extends Object
 {

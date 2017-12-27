@@ -60,6 +60,7 @@ use JTDSoft\EssentialsSdk\Collection;
  * @property-read \Buzz\Control\Campaign\Product[] $products
  * @property-read \Buzz\Control\Campaign\Customer $main_contact
  * @property-read \Buzz\Control\Campaign\Customer[] $customers
+ * @property-read \Buzz\Control\Campaign\Allowance[] $allowances
  */
 class Exhibitor extends Object
 {

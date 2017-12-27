@@ -101,6 +101,8 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\ModelTag[] $tags
  * @property-read \Buzz\Control\Campaign\Vote[] $votes
  * @property-read \Buzz\Control\Campaign\BadgePrint[] $queued_badge_prints
+ * @property-read \Buzz\Control\Campaign\Allowance[] $allowances
+ * @property-read \Buzz\Control\Campaign\Redemption[] $redemptions
  *
  */
 class Customer extends Object
