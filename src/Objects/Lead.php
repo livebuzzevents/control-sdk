@@ -4,6 +4,7 @@ use Buzz\Control\Collection;
 use Buzz\Control\Exceptions\ErrorException;
 use Buzz\Control\Objects\Lead\Tag;
 use Buzz\Control\Objects\Traits\HasMatchId;
+use Buzz\Control\Objects\Traits\HasPropertiesCommon;
 use Buzz\Control\Objects\Traits\HasSource;
 
 /**
@@ -13,7 +14,7 @@ use Buzz\Control\Objects\Traits\HasSource;
  */
 class Lead extends Base
 {
-    use HasMatchId, HasSource;
+    use HasMatchId, HasSource, HasPropertiesCommon;
 
     /**
      * @var string
@@ -94,6 +95,11 @@ class Lead extends Base
      * @var \Buzz\Control\Objects\Lead\Address[]
      */
     protected $addresses;
+
+    /**
+     * @var \Buzz\Control\Objects\Lead\Property[]
+     */
+    protected $properties;
 
     /**
      * @var \Buzz\Control\Objects\Lead\Social[]
@@ -536,5 +542,21 @@ class Lead extends Base
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * @param Lead\Property[]|Collection $properties
+     */
+    public function setProperties($properties)
+    {
+        $this->properties = new Collection($properties);
+    }
+
+    /**
+     * @param Lead\Property $property
+     */
+    public function addProperty(Lead\Property $property)
+    {
+        $this->add($this->properties, $property);
     }
 }
