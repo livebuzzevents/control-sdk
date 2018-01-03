@@ -9,6 +9,7 @@ use Buzz\Control\Traits\SupportRead;
  *
  * @property string $name
  * @property string $identifier
+ * @property string $render_url
  * @property int $width
  * @property int $height
  * @property array $elements
