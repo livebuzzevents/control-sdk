@@ -8,15 +8,15 @@ use Buzz\Control\Traits\SupportWrite;
 /**
  * Class BadgeStock
  *
- * @property string $customer_id
- * @property string $bulk_print_id
- * @property string $printer_identifier
- * @property boolean $printed
- * @property boolean $onsite
- * @property int $order
+ * @property string $name
+ * @property string $identifier
+ * @property int $width
+ * @property int $height
+ * @property array $elements
+ * @property array $images
  *
- * @property-read \Buzz\Control\Campaign\Customer $customer
- * @property-read \Buzz\Control\Campaign\BulkPrint $bulk_print
+ * @property-read \Buzz\Control\Campaign\Printer[] $printers
+ * @property-read \Buzz\Control\Campaign\BadgeType[] $badgeTypes
  */
 class BadgeStock extends Object
 {
