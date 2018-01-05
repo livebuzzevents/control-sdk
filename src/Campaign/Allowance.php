@@ -15,6 +15,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $order_product_id
  * @property-read int $redeemed
  * @property-read int $remaining
+ * @property-read bool $unlimited
  * @property-read \Buzz\Control\Campaign\OrderProduct $orderProduct
  * @property-read \Buzz\Control\Campaign\Redemption[] $redemptions
  */
