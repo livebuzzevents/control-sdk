@@ -27,7 +27,7 @@ class Property extends Object
         }
 
         $this->copyFromArray(
-            $this->api()->post($this->getEndpoint(), $this->toArray(true))
+            $this->api()->post($this->getEndpoint(), $this->toArray())
         );
 
         $this->cleanDirtyAttributes();
