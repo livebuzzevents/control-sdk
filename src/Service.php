@@ -37,7 +37,7 @@ class Service extends \JTDSoft\EssentialsSdk\Service
     /**
      * @var string
      */
-    protected static $version = 'v2';
+    protected static $version = 'v3';
 
     /**
      * @var string
