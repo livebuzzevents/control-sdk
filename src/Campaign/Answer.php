@@ -32,7 +32,7 @@ class Answer extends Object
         }
 
         $this->copyFromArray(
-            $this->api()->post($this->getEndpoint(), $this->toArray())
+            $this->api()->post($this->getEndpoint(), $this->toArray(true))
         );
 
         $this->cleanDirtyAttributes();
