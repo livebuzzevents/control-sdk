@@ -27,7 +27,7 @@ class Tag extends Object
         $model_id   = $model->id;
 
         $this->api()->post(
-            'tag/' . $tag,
+            'tags/tag/' . $tag,
             compact('model_type', 'model_id')
         );
     }
@@ -42,7 +42,7 @@ class Tag extends Object
         $model_id   = $model->id;
 
         $this->api()->post(
-            'untag/' . $tag,
+            'tags/untag/' . $tag,
             compact('model_type', 'model_id')
         );
     }
@@ -57,7 +57,7 @@ class Tag extends Object
         $model_id   = $model->id;
 
         $this->api()->post(
-            'sync',
+            'tags/sync',
             compact('tags', 'model_type', 'model_id')
         );
     }
