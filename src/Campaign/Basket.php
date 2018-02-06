@@ -145,7 +145,7 @@ class Basket extends Object
      */
     public function setBillingDetails(array $details): void
     {
-        $this->api()->post($this->getEndpoint($this->id . '/set-billing-details', $details));
+        $this->api()->post($this->getEndpoint($this->id . '/set-billing-details'), $details);
     }
 
     /**
@@ -163,7 +163,7 @@ class Basket extends Object
      */
     public function setShippingDetails(array $details): void
     {
-        $this->api()->post($this->getEndpoint($this->id . '/set-shipping-details', $details));
+        $this->api()->post($this->getEndpoint($this->id . '/set-shipping-details'), $details);
     }
 
     /**
