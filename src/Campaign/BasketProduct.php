@@ -2,6 +2,9 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
+use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
+
 /**
  * Class BasketProduct
  *
@@ -25,4 +28,6 @@ namespace Buzz\Control\Campaign;
  */
 class BasketProduct extends Object
 {
+    use WithAnswerHelpers,
+        WithPropertyHelpers;
 }

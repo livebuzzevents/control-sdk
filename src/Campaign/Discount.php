@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Translatable;
+use Buzz\Control\Traits\SupportCrud;
 
 /**
  * Class Discount
@@ -24,5 +25,6 @@ use Buzz\Control\Campaign\Traits\Translatable;
  */
 class Discount extends Object
 {
-    use Translatable;
+    use Translatable,
+        SupportCrud;
 }

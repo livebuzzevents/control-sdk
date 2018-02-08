@@ -2,6 +2,9 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
+use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
+
 /**
  * Class OrderProduct
  *
@@ -36,4 +39,6 @@ namespace Buzz\Control\Campaign;
  */
 class OrderProduct extends Object
 {
+    use WithAnswerHelpers,
+        WithPropertyHelpers;
 }
