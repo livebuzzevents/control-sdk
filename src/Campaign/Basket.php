@@ -3,6 +3,8 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Traits\SupportCrud;
+use JTDSoft\EssentialsSdk\Cast;
+use JTDSoft\EssentialsSdk\Collection;
 
 /**
  * Class Basket
@@ -45,6 +47,9 @@ class Basket extends Object
      * @param int $quantity
      * @param int|null $cost
      * @param int|null $vat_percentage
+     *
+     * @return Collection
+     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
      */
     public function addProduct(
         string $product_id,
@@ -52,10 +57,13 @@ class Basket extends Object
         int $quantity = 1,
         int $cost = null,
         int $vat_percentage = null
-    ): void {
-        $this->api()->post(
-            $this->getEndpoint($this->id . '/add-product/' . $product_id . '/' . $customer_id),
-            compact('quantity', 'cost', 'vat_percentage')
+    ): Collection {
+        return Cast::many(
+            new BasketProduct(),
+            $this->api()->post(
+                $this->getEndpoint($this->id . '/add-product/' . $product_id . '/' . $customer_id),
+                compact('quantity', 'cost', 'vat_percentage')
+            )
         );
     }
 
