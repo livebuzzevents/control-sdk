@@ -47,6 +47,7 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property string $language
  * @property string $nationality
  * @property string $status
+ * @property string $custom_status_id
  * @property string $registration_type
  * @property string $registration_social_provider
  * @property string $attended
@@ -72,6 +73,7 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\Balance[] $balances
  * @property-read \Buzz\Control\Campaign\Charge[] $charges
  * @property-read \Buzz\Control\Campaign\Customer[] $created_customers
+ * @property-read \Buzz\Control\Campaign\CustomStatus $custom_status
  * @property-read \Buzz\Control\Campaign\Invite[] $created_invites
  * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $created_seminars
  * @property-read \Buzz\Control\Campaign\Vote[] $created_votes
