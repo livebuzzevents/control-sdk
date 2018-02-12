@@ -48,6 +48,7 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property string $nationality
  * @property string $status
  * @property string $custom_status_id
+ * @property string $registration_method
  * @property string $registration_type
  * @property string $registration_social_provider
  * @property string $attended
