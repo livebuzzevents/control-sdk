@@ -12,7 +12,7 @@ use Buzz\Control\Traits\SupportRead;
  *
  * @property-read \Buzz\Control\Organization\Campaign[] $campaigns
  */
-class Channel extends Object
+class Channel extends SdkObject
 {
     use SupportRead;
 }

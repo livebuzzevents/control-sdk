@@ -19,6 +19,6 @@ namespace Buzz\Control\Campaign;
  *
  * @property-read \Buzz\Control\Campaign\EntityList $entity_list
  */
-class Automation extends Object
+class Automation extends SdkObject
 {
 }

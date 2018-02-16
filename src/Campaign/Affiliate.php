@@ -18,7 +18,7 @@ use Buzz\Control\Traits\SupportRead;
  *
  * @property-read \Buzz\Control\Campaign\Stream $stream
  */
-class Affiliate extends Object
+class Affiliate extends SdkObject
 {
     use SupportRead,
         SupportDelete;

@@ -13,6 +13,6 @@ namespace Buzz\Control\Campaign;
  * @property-read int $imported
  * @property-read \Buzz\Control\Gateway\User $user
  */
-class Import extends Object
+class Import extends SdkObject
 {
 }

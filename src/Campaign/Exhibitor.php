@@ -62,7 +62,7 @@ use JTDSoft\EssentialsSdk\Collection;
  * @property-read \Buzz\Control\Campaign\Customer[] $customers
  * @property-read \Buzz\Control\Campaign\Allowance[] $allowances
  */
-class Exhibitor extends Object
+class Exhibitor extends SdkObject
 {
     use SupportCrud,
         Taggable,

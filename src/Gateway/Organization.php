@@ -12,6 +12,6 @@ namespace Buzz\Control\Gateway;
  * @property string $version
  * @property-read string $database_name
  */
-class Organization extends Object
+class Organization extends SdkObject
 {
 }

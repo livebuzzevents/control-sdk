@@ -13,6 +13,6 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\Charge $charge
  * @property-read \Buzz\Control\Campaign\PaymentProvider $payment_provider
  */
-class PrepaidCode extends Object
+class PrepaidCode extends SdkObject
 {
 }

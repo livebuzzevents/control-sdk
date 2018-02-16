@@ -13,7 +13,7 @@ use Buzz\Control\Campaign\Traits\Morphable;
  * @property-read \Buzz\Control\Gateway\User $user
  *
  */
-class Note extends Object
+class Note extends SdkObject
 {
     use Morphable;
 }

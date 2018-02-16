@@ -12,6 +12,6 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\Answer $answer
  * @property-read \Buzz\Control\Campaign\QuestionOption $question_option
  */
-class AnswerOption extends Object
+class AnswerOption extends SdkObject
 {
 }

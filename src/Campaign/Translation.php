@@ -12,7 +12,7 @@ use Buzz\Control\Campaign\Traits\Morphable;
  * @property string $translation
  *
  */
-class Translation extends Object
+class Translation extends SdkObject
 {
     use Morphable;
 }

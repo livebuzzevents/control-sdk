@@ -27,7 +27,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read \Buzz\Control\Campaign\Stream $stream
  * @property-read \Buzz\Control\Campaign\BadgeType $badge_type
  */
-class Invite extends Object
+class Invite extends SdkObject
 {
     use SupportRead,
         SupportWrite;

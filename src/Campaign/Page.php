@@ -28,7 +28,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read \Buzz\Control\Campaign\File[] $files
  * @property-read \Buzz\Control\Campaign\Property[] $properties
  */
-class Page extends Object
+class Page extends SdkObject
 {
     use SupportRead,
         SupportWrite,

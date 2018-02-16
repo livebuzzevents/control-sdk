@@ -11,7 +11,7 @@ use Buzz\Control\Campaign\Traits\Morphable;
  *
  * @property-read \Buzz\Control\Campaign\EntityList $entity_list
  */
-class EntityListMember extends Object
+class EntityListMember extends SdkObject
 {
     use Morphable;
 }

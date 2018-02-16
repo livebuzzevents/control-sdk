@@ -25,7 +25,7 @@ use JTDSoft\EssentialsSdk\Collection;
  * @property-read \Buzz\Control\Campaign\BillingDetails $billing_details
  * @property-read \Buzz\Control\Campaign\ShippingDetails $shipping_details
  */
-class Basket extends Object
+class Basket extends SdkObject
 {
     use SupportCrud;
 

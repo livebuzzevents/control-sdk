@@ -15,13 +15,13 @@ namespace Buzz\Control\Campaign;
  *
  * @package Buzz\Control\Campaign
  */
-class Tag extends Object
+class Tag extends SdkObject
 {
     /**
-     * @param Object $model
+     * @param SdkObject $model
      * @param string $tag
      */
-    public function tag(Object $model, string $tag)
+    public function tag(SdkObject $model, string $tag)
     {
         $model_type = class_basename($model);
         $model_id   = $model->id;
@@ -33,10 +33,10 @@ class Tag extends Object
     }
 
     /**
-     * @param Object $model
+     * @param SdkObject $model
      * @param string $tag
      */
-    public function untag(Object $model, string $tag)
+    public function untag(SdkObject $model, string $tag)
     {
         $model_type = class_basename($model);
         $model_id   = $model->id;
@@ -48,10 +48,10 @@ class Tag extends Object
     }
 
     /**
-     * @param Object $model
+     * @param SdkObject $model
      * @param array|null $tags
      */
-    public function sync(Object $model, array $tags = null)
+    public function sync(SdkObject $model, array $tags = null)
     {
         $model_type = class_basename($model);
         $model_id   = $model->id;

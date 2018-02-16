@@ -15,7 +15,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\File $file
  */
-class FileActivity extends Object
+class FileActivity extends SdkObject
 {
     use SupportRead,
         SupportWrite;

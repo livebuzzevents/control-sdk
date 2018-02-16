@@ -7,7 +7,7 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
 /**
  * Class Lookup
  */
-class Lookup extends Object
+class Lookup extends SdkObject
 {
     /**
      * @param string $country

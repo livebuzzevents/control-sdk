@@ -14,6 +14,6 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\Basket $basket
  * @property-read \Buzz\Control\Campaign\BasketProduct $basket_product
  */
-class BasketAction extends Object
+class BasketAction extends SdkObject
 {
 }

@@ -14,6 +14,6 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\Stream $stream
  *
  */
-class CustomerLoginToken extends Object
+class CustomerLoginToken extends SdkObject
 {
 }

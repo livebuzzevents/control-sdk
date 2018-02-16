@@ -35,7 +35,7 @@ use Buzz\Control\Campaign\Traits\Morphable;
  * @property-read \Buzz\Control\Campaign\Refund[] $refunds
  * @property-read \Buzz\Control\Campaign\Fee[] $fees
  */
-class Charge extends Object
+class Charge extends SdkObject
 {
     use Morphable;
 }

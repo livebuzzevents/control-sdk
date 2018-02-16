@@ -20,6 +20,6 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\Order $order
  * @property-read \Buzz\Control\Campaign\OrderProduct $order_product
  */
-class OrderAction extends Object
+class OrderAction extends SdkObject
 {
 }

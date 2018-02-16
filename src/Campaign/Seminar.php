@@ -30,7 +30,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read \Buzz\Control\Campaign\Scanner[] $scanners
  * @property-read \Buzz\Control\Campaign\SeminarTopic[] $topics
  */
-class Seminar extends Object
+class Seminar extends SdkObject
 {
     use SupportRead,
         SupportWrite,

@@ -23,6 +23,6 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\CreditNote[] $credit_notes
  * @property-read \Buzz\Control\Campaign\Charge[] $charges
  */
-class Invoice extends Object
+class Invoice extends SdkObject
 {
 }

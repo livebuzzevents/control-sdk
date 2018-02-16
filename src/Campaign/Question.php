@@ -21,7 +21,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
  */
-class Question extends Object
+class Question extends SdkObject
 {
     use SupportCrud,
         Translatable,

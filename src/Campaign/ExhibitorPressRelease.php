@@ -14,7 +14,7 @@ use Buzz\Control\Traits\SupportWrite;
  *
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  */
-class ExhibitorPressRelease extends Object
+class ExhibitorPressRelease extends SdkObject
 {
     use SupportRead,
         SupportWrite;

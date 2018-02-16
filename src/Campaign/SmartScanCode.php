@@ -12,6 +12,6 @@ namespace Buzz\Control\Campaign;
  * @property boolean $active
  * @property-read \Buzz\Control\Campaign\Scanner $scanner
  */
-class SmartScanCode extends Object
+class SmartScanCode extends SdkObject
 {
 }

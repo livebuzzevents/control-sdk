@@ -34,18 +34,18 @@ use Buzz\Control\Campaign\Traits\Morphable;
  *
  * @package Buzz\Control\Campaign
  */
-class EmailMessage extends Object
+class EmailMessage extends SdkObject
 {
     use Morphable;
     /**
-     * @param Object $model
+     * @param SdkObject $model
      * @param string $email_message_template_id
      * @param string|null $to_address
      * @param string|null $subject
      * @param array|null $custom_data
      */
     public function send(
-        Object $model,
+        SdkObject $model,
         string $email_message_template_id,
         string $to_address = null,
         string $subject = null,

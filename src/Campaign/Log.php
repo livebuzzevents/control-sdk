@@ -17,7 +17,7 @@ use Buzz\Control\Campaign\Traits\Morphable;
  * @property-read \Buzz\Control\Campaign\Stream $stream
  * @property-read \Buzz\Control\Gateway\User $user
  */
-class Log extends Object
+class Log extends SdkObject
 {
     use Morphable;
 }

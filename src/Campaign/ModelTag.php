@@ -11,7 +11,7 @@ use Buzz\Control\Campaign\Traits\Morphable;
  *
  * @property-read \Buzz\Control\Campaign\Tag $tag
  */
-class ModelTag extends Object
+class ModelTag extends SdkObject
 {
     use Morphable;
 }

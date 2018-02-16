@@ -3,7 +3,7 @@
 /**
  * Class WithPropertyHelpers
  *
- * @package Buzz\Control\Objects\Traits
+ * @package Buzz\Control\Campaign\Traits
  */
 trait WithPropertyHelpers
 {

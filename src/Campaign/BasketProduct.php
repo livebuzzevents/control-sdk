@@ -26,7 +26,7 @@ use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
  * @property-read \Buzz\Control\Campaign\Product $product
  * @property-read \Buzz\Control\Campaign\Customer $customer
  */
-class BasketProduct extends Object
+class BasketProduct extends SdkObject
 {
     use WithAnswerHelpers,
         WithPropertyHelpers;

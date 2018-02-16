@@ -12,7 +12,7 @@ use Buzz\Control\Campaign\Traits\Translatable;
  * @property string $text_colour
  * @property-read \Buzz\Control\Campaign\Customer[] $customers
  */
-class CustomStatus extends Object
+class CustomStatus extends SdkObject
 {
     use Translatable;
 }

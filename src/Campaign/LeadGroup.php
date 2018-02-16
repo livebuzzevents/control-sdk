@@ -11,6 +11,6 @@ namespace Buzz\Control\Campaign;
  * @property-read int $leads_count
  * @property \DateTime $expired_at
  */
-class LeadGroup extends Object
+class LeadGroup extends SdkObject
 {
 }

@@ -3,7 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Morphable;
-use Buzz\Control\Object as BaseObject;
+use Buzz\Control\SdkObject;
 use Buzz\Control\Traits\SupportDelete;
 use Buzz\Control\Traits\SupportRead;
 use JTDSoft\EssentialsSdk\Cast;
@@ -21,18 +21,19 @@ use JTDSoft\EssentialsSdk\Collection;
  * @property boolean $system
  * @property-read string $url
  */
-class File extends Object
+class File extends SdkObject
 {
     use Morphable,
         SupportRead,
         SupportDelete;
 
     /**
-     * @param \Buzz\Control\Object $object
+     * @param \Buzz\Control\SdkObject $object
      *
      * @return \JTDSoft\EssentialsSdk\Collection
+     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
      */
-    public function listFiles(BaseObject $object): Collection
+    public function listFiles(SdkObject $object): Collection
     {
         $model_type = class_basename($object);
         $model_id   = $object->id;
@@ -44,13 +45,13 @@ class File extends Object
     }
 
     /**
-     * @param \Buzz\Control\Object $object
+     * @param \Buzz\Control\SdkObject $object
      * @param string $filename
      * @param string $content
      *
      * @return \Buzz\Control\Campaign\File
      */
-    public function add(BaseObject $object, string $filename, string $content)
+    public function add(SdkObject $object, string $filename, string $content)
     {
         $model_type = class_basename($object);
         $model_id   = $object->id;
@@ -69,12 +70,12 @@ class File extends Object
     }
 
     /**
-     * @param \Buzz\Control\Object $object
+     * @param \Buzz\Control\SdkObject $object
      * @param string $identifier
      *
      * @return \Buzz\Control\Campaign\File
      */
-    public function systemFile(BaseObject $object, string $identifier)
+    public function systemFile(SdkObject $object, string $identifier)
     {
         $model_type = class_basename($object);
         $model_id   = $object->id;
@@ -85,12 +86,12 @@ class File extends Object
     }
 
     /**
-     * @param \Buzz\Control\Object $object
+     * @param \Buzz\Control\SdkObject $object
      * @param string $identifier
      *
      * @return \Buzz\Control\Campaign\File
      */
-    public function fileSettings(BaseObject $object, string $identifier)
+    public function fileSettings(SdkObject $object, string $identifier)
     {
         $model_type = class_basename($object);
         $model_id   = $object->id;
@@ -101,14 +102,14 @@ class File extends Object
     }
 
     /**
-     * @param \Buzz\Control\Object $object
+     * @param \Buzz\Control\SdkObject $object
      * @param string $identifier
      * @param string $filename
      * @param string $content
      *
      * @return \Buzz\Control\Campaign\File
      */
-    public function addSystem(BaseObject $object, string $identifier, string $filename, string $content)
+    public function addSystem(SdkObject $object, string $identifier, string $filename, string $content)
     {
         $model_type = class_basename($object);
         $model_id   = $object->id;

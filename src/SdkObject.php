@@ -3,13 +3,13 @@
 namespace Buzz\Control;
 
 /**
- * Class Object
+ * Class SdkObject
  *
  * @property string $id
  * @property \DateTime $updated_at
  * @property \DateTime $created_at
  */
-class Object extends \JTDSoft\EssentialsSdk\Object
+class SdkObject extends \JTDSoft\EssentialsSdk\SdkObject
 {
     /**
      * @var

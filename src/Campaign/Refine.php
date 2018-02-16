@@ -10,7 +10,7 @@ use Buzz\Control\Campaign\Traits\Morphable;
  * @property string $field
  * @property array $filters
  */
-class Refine extends Object
+class Refine extends SdkObject
 {
     use Morphable;
 }

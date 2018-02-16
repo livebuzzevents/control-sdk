@@ -17,7 +17,7 @@ use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
  *
  */
-class Vote extends Object
+class Vote extends SdkObject
 {
     use Morphable,
         WithAnswerHelpers;

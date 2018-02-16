@@ -19,7 +19,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property-read \Buzz\Control\Campaign\OrderProduct $orderProduct
  * @property-read \Buzz\Control\Campaign\Redemption[] $redemptions
  */
-class Allowance extends Object
+class Allowance extends SdkObject
 {
     use Morphable,
         Refinable,

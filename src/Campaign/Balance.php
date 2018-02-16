@@ -13,6 +13,6 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\BalanceTransaction[] $transactions
  *
  */
-class Balance extends Object
+class Balance extends SdkObject
 {
 }

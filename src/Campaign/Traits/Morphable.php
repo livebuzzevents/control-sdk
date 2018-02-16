@@ -1,6 +1,6 @@
 <?php namespace Buzz\Control\Campaign\Traits;
 
-use Buzz\Control\Object;
+use Buzz\Control\SdkObject;
 
 /**
  * trait Morphable
@@ -11,7 +11,7 @@ use Buzz\Control\Object;
  */
 trait Morphable
 {
-    public function associate(Object $object)
+    public function associate(SdkObject $object)
     {
         $this->data['model'] = $object;
         $this->model_type    = class_basename($object);

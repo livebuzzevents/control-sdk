@@ -18,7 +18,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read \Buzz\Control\Campaign\Printer[] $printers
  * @property-read \Buzz\Control\Campaign\BadgeType[] $badgeTypes
  */
-class BadgeStock extends Object
+class BadgeStock extends SdkObject
 {
     use SupportRead,
         SupportWrite;

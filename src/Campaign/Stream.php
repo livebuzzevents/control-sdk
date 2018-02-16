@@ -32,7 +32,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property-read \Buzz\Control\Campaign\File[] $system_files
  * @property-read \Buzz\Control\Campaign\File[] $non_system_files
  */
-class Stream extends Object
+class Stream extends SdkObject
 {
     use SupportRead;
 }

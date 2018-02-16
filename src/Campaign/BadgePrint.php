@@ -15,6 +15,6 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\Printer[] $printers
  * @property-read \Buzz\Control\Campaign\BadgeType[] $badge_types
  */
-class BadgePrint extends Object
+class BadgePrint extends SdkObject
 {
 }

@@ -23,7 +23,7 @@ use JTDSoft\EssentialsSdk\Cast;
  *
  * @property-read \Buzz\Control\Campaign\Charge[] $charges
  */
-class PaymentProvider extends Object
+class PaymentProvider extends SdkObject
 {
     use SupportRead;
 

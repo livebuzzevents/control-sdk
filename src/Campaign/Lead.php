@@ -51,7 +51,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property-read \Buzz\Control\Campaign\ModelTag[] $tags
  *
  */
-class Lead extends Object
+class Lead extends SdkObject
 {
     use SupportCrud,
         CanSendEmailMessage,

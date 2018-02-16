@@ -15,7 +15,7 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\Stream $stream
  *
  */
-class SocialToken extends Object
+class SocialToken extends SdkObject
 {
 
     /**

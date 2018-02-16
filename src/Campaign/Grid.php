@@ -15,7 +15,7 @@ use Buzz\Control\Campaign\Traits\Refinable;
  * @property int $user_id
  * @property-read \Buzz\Control\Gateway\User $user
  */
-class Grid extends Object
+class Grid extends SdkObject
 {
     use Refinable;
 }

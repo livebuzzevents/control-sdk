@@ -13,7 +13,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property boolean $handles_crossovers
  * @property-read \Buzz\Control\Campaign\Scanner $scanners
  */
-class Entrance extends Object
+class Entrance extends SdkObject
 {
     use SupportRead,
         SupportWrite;

@@ -15,7 +15,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property \DateTime $deadline_at
  * @property-read \Buzz\Control\Campaign\Vote[] $votes
  */
-class VoteGroup extends Object
+class VoteGroup extends SdkObject
 {
     use SupportRead,
         SupportWrite;

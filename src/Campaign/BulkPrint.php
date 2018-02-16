@@ -19,6 +19,6 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\BadgeStock $badge_stock
  * @property-read \Buzz\Control\Campaign\User $user
  */
-class BulkPrint extends Object
+class BulkPrint extends SdkObject
 {
 }

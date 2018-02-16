@@ -23,7 +23,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property-read string $currency
  * @property-read string $overview
  */
-class Discount extends Object
+class Discount extends SdkObject
 {
     use Translatable,
         SupportCrud;

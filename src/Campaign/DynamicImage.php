@@ -15,7 +15,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property array $elements
  * @property array $images
  */
-class DynamicImage extends Object
+class DynamicImage extends SdkObject
 {
     use SupportRead;
 }

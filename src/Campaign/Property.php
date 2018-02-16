@@ -12,7 +12,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $value
  * @property-read \Buzz\Control\Campaign\Parameter $parameter
  */
-class Property extends Object
+class Property extends SdkObject
 {
     use Morphable,
         SupportCrud;
@@ -27,7 +27,7 @@ class Property extends Object
         }
 
         $this->copyFromArray(
-            $this->api()->post($this->getEndpoint(), $this->toArray(true))
+            $this->api()->post($this->getEndpoint(), $this->prepareRequestData(false))
         );
 
         $this->cleanDirtyAttributes();

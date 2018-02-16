@@ -22,17 +22,17 @@ use Buzz\Control\Campaign\Traits\Morphable;
  * @property-read \Buzz\Control\Campaign\Automation $automation
  * @property-read \Buzz\Control\Campaign\SmsMessageTemplate $template
  */
-class SmsMessage extends Object
+class SmsMessage extends SdkObject
 {
     use Morphable;
 
     /**
-     * @param Object $model
+     * @param SdkObject $model
      * @param string $sms_message_template_id
      * @param string|null $phone_number
      */
     public function send(
-        Object $model,
+        SdkObject $model,
         string $sms_message_template_id,
         string $phone_number = null
     ) {

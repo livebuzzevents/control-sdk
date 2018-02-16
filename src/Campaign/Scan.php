@@ -19,7 +19,7 @@ use JTDSoft\EssentialsSdk\Collection;
  * @property-read \Buzz\Control\Campaign\Note[] $notes
  *
  */
-class Scan extends Object
+class Scan extends SdkObject
 {
     use WithAnswerHelpers,
         WithPropertyHelpers;

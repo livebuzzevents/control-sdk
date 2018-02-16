@@ -12,6 +12,6 @@ namespace Buzz\Control\Campaign;
  * @property array $settings
  * @property-read \Buzz\Control\Campaign\EntityListMember[] $members
  */
-class EntityList extends Object
+class EntityList extends SdkObject
 {
 }

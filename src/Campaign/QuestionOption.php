@@ -17,7 +17,7 @@ use Buzz\Control\Campaign\Traits\Translatable;
  * @property-read \Buzz\Control\Campaign\Question $question
  * @property-read \Buzz\Control\Campaign\AnswerOption[] $answer_options
  */
-class QuestionOption extends Object
+class QuestionOption extends SdkObject
 {
     use Translatable;
 }

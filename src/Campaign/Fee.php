@@ -22,6 +22,6 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\Dispute $dispute
  * @property-read \Buzz\Control\Campaign\Credit $credit
  */
-class Fee extends Object
+class Fee extends SdkObject
 {
 }

@@ -17,7 +17,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read \Buzz\Control\Campaign\Property[] $exhibitor_properties
  * @property-read \Buzz\Control\Campaign\Property[] $product_properties
  */
-class Parameter extends Object
+class Parameter extends SdkObject
 {
     use SupportRead,
         SupportWrite,

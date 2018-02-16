@@ -14,7 +14,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property-read \Buzz\Control\Campaign\Allowance $allowance
  * @property-read \Buzz\Control\Campaign\Customer $customer
  */
-class Redemption extends Object
+class Redemption extends SdkObject
 {
     use Morphable,
         Refinable,
@@ -23,12 +23,12 @@ class Redemption extends Object
 
     /**
      * @param $allowance_id
-     * @param Object $object
+     * @param SdkObject $object
      * @param $type
      *
      * @return \Buzz\Control\Campaign\Redemption
      */
-    public function redeemScanner($allowance_id, Object $object, $type)
+    public function redeemScanner($allowance_id, SdkObject $object, $type)
     {
         return new self(
             $this->api()->post(

@@ -18,6 +18,6 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\SingleShotEntityListMember[] $members
  * @property-read \Buzz\Control\Campaign\EntityList[] $entity_list
  */
-class SingleShot extends Object
+class SingleShot extends SdkObject
 {
 }

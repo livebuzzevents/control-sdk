@@ -24,7 +24,7 @@ use Buzz\Control\Campaign\Traits\Morphable;
  * @property string $county
  * @property string $country
  */
-class BillingDetails extends Object
+class BillingDetails extends SdkObject
 {
     use Morphable;
 }

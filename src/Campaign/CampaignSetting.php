@@ -10,7 +10,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property string $identifier
  * @property string $value
  */
-class CampaignSetting extends Object
+class CampaignSetting extends SdkObject
 {
     use SupportRead;
 }

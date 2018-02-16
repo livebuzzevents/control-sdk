@@ -17,7 +17,7 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\Question $question
  * @property \Buzz\Control\Campaign\AnswerOption[] $options
  */
-class Answer extends Object
+class Answer extends SdkObject
 {
     use Morphable,
         SupportCrud;
@@ -32,7 +32,7 @@ class Answer extends Object
         }
 
         $this->copyFromArray(
-            $this->api()->post($this->getEndpoint(), $this->toArray(true))
+            $this->api()->post($this->getEndpoint(), $this->prepareRequestData(false))
         );
 
         $this->cleanDirtyAttributes();
@@ -50,7 +50,7 @@ class Answer extends Object
             if (!$answer->id && !$answer->question_id) {
                 throw new ErrorException('Answer id or Question id required!');
             }
-            $answers[$key] = $answer->toArray(true);
+            $answers[$key] = $answer->prepareRequestData(false);
         }
 
         return Cast::many(
@@ -71,17 +71,17 @@ class Answer extends Object
             if (!$answer->id && !$answer->question_id) {
                 throw new ErrorException('Answer id or Question id required!');
             }
-            $answers[$key] = $answer->toArray(true);
+            $answers[$key] = $answer->prepareRequestData(false);
         }
 
         $this->api()->post($this->getEndpoint("validate-many"), compact('answers', 'rules'));
     }
 
     /**
-     * @param Object $object
+     * @param SdkObject $object
      * @param array $identifiers
      */
-    public function deleteByIdentifiers(Object $object, array $identifiers)
+    public function deleteByIdentifiers(SdkObject $object, array $identifiers)
     {
         $this->api()->delete(
             $this->getEndpoint('by-identifiers'),
@@ -94,13 +94,13 @@ class Answer extends Object
     }
 
     /**
-     * @param Object $source
-     * @param Object $target
+     * @param SdkObject $source
+     * @param SdkObject $target
      * @param array $identifiers
      *
      * @return \JTDSoft\EssentialsSdk\Collection
      */
-    public function copyByIdentifiers(Object $source, Object $target, array $identifiers): Collection
+    public function copyByIdentifiers(SdkObject $source, SdkObject $target, array $identifiers): Collection
     {
         return Cast::many(
             $this,
@@ -118,11 +118,10 @@ class Answer extends Object
     }
 
     /**
-     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
      */
     public function validate(): void
     {
-        $this->api()->post($this->getEndpoint("validate"), $this->toArray(true));
+        $this->api()->post($this->getEndpoint("validate"), $this->prepareRequestData(false));
     }
 
     /**

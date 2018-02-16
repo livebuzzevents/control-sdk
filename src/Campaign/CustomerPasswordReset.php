@@ -12,6 +12,6 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Stream $stream
  */
-class CustomerPasswordReset extends Object
+class CustomerPasswordReset extends SdkObject
 {
 }

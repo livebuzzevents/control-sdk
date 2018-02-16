@@ -23,7 +23,7 @@ use Buzz\Control\Campaign\Traits\Morphable;
  * @property string $county
  * @property string $country
  */
-class ShippingDetails extends Object
+class ShippingDetails extends SdkObject
 {
     use Morphable;
 }

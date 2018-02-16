@@ -20,7 +20,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $verified
  *
  */
-class Address extends Object
+class Address extends SdkObject
 {
     use Morphable,
         SupportCrud;

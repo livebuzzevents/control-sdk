@@ -19,7 +19,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property-read \Buzz\Control\Campaign\Seminar $seminar
  * @property-read \Buzz\Control\Campaign\Redemption[] $redemptions
  */
-class CustomerSeminar extends Object
+class CustomerSeminar extends SdkObject
 {
     use SupportCrud;
     use Morphable;

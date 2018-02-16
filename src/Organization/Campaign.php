@@ -37,7 +37,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property-read \Buzz\Control\Organization\Channel $channel
  * @property-read \Buzz\Control\Campaign\File[] $files
  */
-class Campaign extends Object
+class Campaign extends SdkObject
 {
     use SupportRead;
 }

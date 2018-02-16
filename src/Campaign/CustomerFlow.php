@@ -15,6 +15,6 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Stream $stream
  */
-class CustomerFlow extends Object
+class CustomerFlow extends SdkObject
 {
 }

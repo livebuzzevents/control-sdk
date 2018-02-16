@@ -2,7 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
-abstract class Object extends \Buzz\Control\Object
+abstract class SdkObject extends \Buzz\Control\SdkObject
 {
     protected $section = 'campaign';
 }

@@ -13,7 +13,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $name
  * @property string $description
  */
-class Topic extends Object
+class Topic extends SdkObject
 {
     use SupportRead,
         SupportWrite,

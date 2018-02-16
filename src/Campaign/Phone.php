@@ -13,7 +13,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $verified
  *
  */
-class Phone extends Object
+class Phone extends SdkObject
 {
     use Morphable,
         SupportCrud;

@@ -14,7 +14,7 @@ use Buzz\Control\Campaign\Traits\Refinable;
  * @property array $parameters
  * @property int $priority
  */
-class Hook extends Object
+class Hook extends SdkObject
 {
     use Refinable;
 }

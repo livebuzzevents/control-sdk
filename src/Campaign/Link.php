@@ -12,7 +12,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $url
  *
  */
-class Link extends Object
+class Link extends SdkObject
 {
     use Morphable,
         SupportCrud;

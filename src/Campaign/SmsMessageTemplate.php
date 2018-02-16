@@ -15,7 +15,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $message
  * @property-read \Buzz\Control\Campaign\SingleShot[] $single_shots
  */
-class SmsMessageTemplate extends Object
+class SmsMessageTemplate extends SdkObject
 {
     use SupportRead,
         SupportWrite,

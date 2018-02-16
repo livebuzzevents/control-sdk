@@ -32,7 +32,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read \Buzz\Control\Campaign\Seminar $seminar
  * @property-read \Buzz\Control\Campaign\OrderProduct[] $order_products
  */
-class Product extends Object
+class Product extends SdkObject
 {
     use SupportRead,
         SupportWrite,

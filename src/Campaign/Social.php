@@ -16,7 +16,7 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property int $reach
  *
  */
-class Social extends Object
+class Social extends SdkObject
 {
     use Morphable,
         SupportCrud;
@@ -38,7 +38,7 @@ class Social extends Object
         return new Invite(
             $this->api()->post(
                 $this->getEndpoint("invite/{$customer->id}/email/{$email_message_template_id}"),
-                $invite->toArray(true)
+                $invite->prepareRequestData()
             )
         );
     }
@@ -54,7 +54,7 @@ class Social extends Object
         return new Invite(
             $this->api()->post(
                 $this->getEndpoint("invite/{$customer->id}/{$invite->provider}/share"),
-                $invite->toArray(true)
+                $invite->prepareRequestData()
             )
         );
     }
@@ -70,7 +70,7 @@ class Social extends Object
         return new Invite(
             $this->api()->post(
                 $this->getEndpoint("invite/{$customer->id}/{$invite->provider}/connection"),
-                $invite->toArray(true)
+                $invite->prepareRequestData()
             )
         );
     }

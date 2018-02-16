@@ -22,7 +22,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read \Buzz\Control\Campaign\SingleShot[] $single_shots
  * @property-read \Buzz\Control\Campaign\File[] $files
  */
-class EmailMessageTemplate extends Object
+class EmailMessageTemplate extends SdkObject
 {
     use SupportRead,
         SupportWrite,

@@ -32,7 +32,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read \Buzz\Control\Campaign\SmartScanCode[] $smart_scan_codes
  * @property-read \Buzz\Control\Campaign\Redemption[] $redemptions
  */
-class Scanner extends Object
+class Scanner extends SdkObject
 {
     use SupportRead,
         SupportWrite;

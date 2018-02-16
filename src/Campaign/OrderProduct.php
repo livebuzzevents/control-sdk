@@ -37,7 +37,7 @@ use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
  * @property-read \Buzz\Control\Campaign\OrderAction[] $actions
  * @property-read \Buzz\Control\Campaign\OrderAction[] $rollbackable_actions
  */
-class OrderProduct extends Object
+class OrderProduct extends SdkObject
 {
     use WithAnswerHelpers,
         WithPropertyHelpers;

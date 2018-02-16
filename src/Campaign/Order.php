@@ -51,7 +51,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property-read \Buzz\Control\Campaign\Invoice $invoice
  * @property-read \Buzz\Control\Campaign\OrderAction[] $actions
  */
-class Order extends Object
+class Order extends SdkObject
 {
     use SupportRead,
         Taggable;

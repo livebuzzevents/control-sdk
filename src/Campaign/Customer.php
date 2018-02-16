@@ -108,7 +108,7 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\Redemption[] $redemptions
  *
  */
-class Customer extends Object
+class Customer extends SdkObject
 {
     use SupportCrud,
         CanSendEmailMessage,
@@ -214,7 +214,7 @@ class Customer extends Object
         try {
             $this->api()->post(
                 $this->getEndpoint('dupe-check'),
-                $this->toArray(true)
+                $this->prepareRequestData()
             );
         } catch (ErrorException $e) {
             return explode(', ', str_replace('Duped on: ', '', $e->getError()));

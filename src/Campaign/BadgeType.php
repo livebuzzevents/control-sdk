@@ -26,7 +26,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read \Buzz\Control\Campaign\Stream $stream
  * @property-read \Buzz\Control\Campaign\Customer[] $customers
  */
-class BadgeType extends Object
+class BadgeType extends SdkObject
 {
     use SupportRead,
         SupportWrite,
