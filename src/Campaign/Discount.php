@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\Morphable;
 use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Traits\SupportCrud;
 
@@ -26,5 +27,6 @@ use Buzz\Control\Traits\SupportCrud;
 class Discount extends SdkObject
 {
     use Translatable,
+        Morphable,
         SupportCrud;
 }
