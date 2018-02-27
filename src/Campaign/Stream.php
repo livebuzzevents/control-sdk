@@ -18,6 +18,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property string $run_gulp
  * @property string $run_scheduler
  * @property array $settings
+ * @property array $theme
  * @property-read \DateTime $last_deployed_at
  * @property-read string $origin_url
  * @property-read string $custom_origin_url
