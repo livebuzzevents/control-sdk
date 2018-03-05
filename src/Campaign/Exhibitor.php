@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Taggable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
@@ -41,7 +42,6 @@ use JTDSoft\EssentialsSdk\Collection;
  * @property-read \Buzz\Control\Campaign\Invite[] $created_invites
  * @property-read \Buzz\Control\Campaign\Vote[] $created_votes
  * @property-read \Buzz\Control\Campaign\Exhibitor $owner
- * @property-read \Buzz\Control\Campaign\File[] $files
  * @property-read \Buzz\Control\Campaign\Import $import
  * @property-read \Buzz\Control\Campaign\Invite[] $invites
  * @property-read \Buzz\Control\Campaign\Link[] $links
@@ -67,7 +67,8 @@ class Exhibitor extends SdkObject
     use SupportCrud,
         Taggable,
         WithAnswerHelpers,
-        WithPropertyHelpers;
+        WithPropertyHelpers,
+        HasFiles;
 
     /**
      * @return \JTDSoft\EssentialsSdk\Collection

@@ -4,6 +4,7 @@ namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\CanSendEmailMessage;
 use Buzz\Control\Campaign\Traits\CanSendSmsMessage;
+use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Taggable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
@@ -81,7 +82,6 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\EmailMessage[] $email_messages
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\CustomerFlow $flow
- * @property-read \Buzz\Control\Campaign\File[] $files
  * @property-read \Buzz\Control\Campaign\Import $import
  * @property-read \Buzz\Control\Campaign\Invite[] $invites
  * @property-read \Buzz\Control\Campaign\Link[] $links
@@ -115,7 +115,8 @@ class Customer extends SdkObject
         CanSendSmsMessage,
         Taggable,
         WithAnswerHelpers,
-        WithPropertyHelpers;
+        WithPropertyHelpers,
+        HasFiles;
 
     /**
      * @param $affiliate_id

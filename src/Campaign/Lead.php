@@ -4,6 +4,7 @@ namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\CanSendEmailMessage;
 use Buzz\Control\Campaign\Traits\CanSendSmsMessage;
+use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Taggable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
@@ -39,7 +40,6 @@ use Buzz\Control\Traits\SupportCrud;
  * @property-read \Buzz\Control\Campaign\Address[] $addresses
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
  * @property-read \Buzz\Control\Campaign\EmailMessage[] $email_messages
- * @property-read \Buzz\Control\Campaign\File[] $files
  * @property-read \Buzz\Control\Campaign\Import $import
  * @property-read \Buzz\Control\Campaign\Link[] $links
  * @property-read \Buzz\Control\Campaign\Log[] $logs
@@ -58,5 +58,6 @@ class Lead extends SdkObject
         CanSendSmsMessage,
         Taggable,
         WithAnswerHelpers,
-        WithPropertyHelpers;
+        WithPropertyHelpers,
+        HasFiles;
 }

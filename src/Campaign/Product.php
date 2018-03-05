@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportRead;
@@ -37,5 +38,6 @@ class Product extends SdkObject
     use SupportRead,
         SupportWrite,
         Translatable,
-        WithPropertyHelpers;
+        WithPropertyHelpers,
+        HasFiles;
 }

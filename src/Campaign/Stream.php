@@ -29,11 +29,9 @@ use Buzz\Control\Traits\SupportRead;
  * @property-read \Buzz\Control\Campaign\BadgeType[] $badge_types
  * @property-read \Buzz\Control\Campaign\CustomerFlow[] $flows
  * @property-read \Buzz\Control\Campaign\Page[] $pages
- * @property-read \Buzz\Control\Campaign\File[] $files
- * @property-read \Buzz\Control\Campaign\File[] $system_files
- * @property-read \Buzz\Control\Campaign\File[] $non_system_files
  */
 class Stream extends SdkObject
 {
-    use SupportRead;
+    use SupportRead,
+        HasFiles;
 }
