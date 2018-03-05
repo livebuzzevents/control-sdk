@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Traits\SupportRead;
 
 /**
