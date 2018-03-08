@@ -3,7 +3,6 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Morphable;
-use Buzz\Control\SdkObject;
 use Buzz\Control\Traits\SupportDelete;
 use Buzz\Control\Traits\SupportRead;
 use JTDSoft\EssentialsSdk\Cast;

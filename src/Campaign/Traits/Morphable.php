@@ -1,6 +1,6 @@
 <?php namespace Buzz\Control\Campaign\Traits;
 
-use Buzz\Control\SdkObject;
+use Buzz\Control\Campaign\SdkObject;
 
 /**
  * trait Morphable
