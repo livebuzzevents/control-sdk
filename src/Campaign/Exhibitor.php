@@ -20,6 +20,7 @@ use JTDSoft\EssentialsSdk\Collection;
  * @property string $identifier
  * @property string $name
  * @property string $exhibiting_name
+ * @property string $biography
  * @property string $source
  * @property string $source_id
  * @property string $website

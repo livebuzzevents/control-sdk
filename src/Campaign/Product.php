@@ -4,6 +4,7 @@ namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Translatable;
+use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
@@ -31,6 +32,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property \DateTime $valid_to
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\Seminar $seminar
+ * @property-read \Buzz\Control\Campaign\Answer[] $answers
  * @property-read \Buzz\Control\Campaign\OrderProduct[] $order_products
  */
 class Product extends SdkObject
@@ -38,6 +40,7 @@ class Product extends SdkObject
     use SupportRead,
         SupportWrite,
         Translatable,
+        WithAnswerHelpers,
         WithPropertyHelpers,
         HasFiles;
 }
