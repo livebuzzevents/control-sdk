@@ -43,10 +43,12 @@ class Page extends SdkObject
      */
     public function loadComponents(...$targets)
     {
-        $request = [];
+        $request = [
+            'targets' => []
+        ];
 
         foreach ($targets as $target) {
-            $request[] = [
+            $request['targets'][] = [
                 'model_type' => class_basename($target),
                 'model_id'   => $target->id,
             ];
