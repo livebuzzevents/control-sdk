@@ -35,4 +35,26 @@ class Page extends SdkObject
         Translatable,
         HasFiles,
         WithPropertyHelpers;
+
+    /**
+     * @param \Buzz\Control\Campaign\SdkObject[] ...$targets
+     *
+     * @return iterable
+     */
+    public function loadComponents(...$targets)
+    {
+        $request = [];
+
+        foreach ($targets as $target) {
+            $request[] = [
+                'model_type' => class_basename($target),
+                'model_id'   => $target->id,
+            ];
+        }
+
+        return $this->api()->post(
+            $this->getEndpoint($this->id . '/load-components'),
+            $request
+        );
+    }
 }
