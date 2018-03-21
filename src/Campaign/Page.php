@@ -7,6 +7,7 @@ use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
+use JTDSoft\EssentialsSdk\Cast;
 
 /**
  * Class Page
@@ -23,10 +24,10 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $value
  * @property int $order
  * @property array $settings
- * @property array $components
  * @property-read \Buzz\Control\Campaign\Stream $stream
  * @property-read \Buzz\Control\Campaign\Page $parent
  * @property-read \Buzz\Control\Campaign\Property[] $properties
+ * @property-read \Buzz\Control\Campaign\Component[] $components
  */
 class Page extends SdkObject
 {
@@ -39,12 +40,12 @@ class Page extends SdkObject
     /**
      * @param \Buzz\Control\Campaign\SdkObject[] ...$targets
      *
-     * @return iterable
+     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
      */
     public function loadComponents(...$targets)
     {
         $request = [
-            'targets' => []
+            'targets' => [],
         ];
 
         foreach ($targets as $target) {
@@ -54,9 +55,12 @@ class Page extends SdkObject
             ];
         }
 
-        return $this->api()->post(
-            $this->getEndpoint($this->id . '/load-components'),
-            $request
+        $this->data['components'] = Cast::many(
+            (new Component()),
+            $this->api()->post(
+                $this->getEndpoint($this->id . '/load-components'),
+                $request
+            )
         );
     }
 }
