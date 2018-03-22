@@ -8,6 +8,7 @@ use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
 use JTDSoft\EssentialsSdk\Cast;
+use JTDSoft\EssentialsSdk\Collection;
 
 /**
  * Class Page
@@ -40,10 +41,10 @@ class Page extends SdkObject
     /**
      * @param \Buzz\Control\Campaign\SdkObject[] ...$targets
      *
-     * @return iterable|mixed
+     * @return \JTDSoft\EssentialsSdk\Collection
      * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
      */
-    public function loadComponents(...$targets)
+    public function loadComponents(...$targets): Collection
     {
         $request = [
             'targets' => [],
@@ -68,8 +69,6 @@ class Page extends SdkObject
     /**
      * @param array $input
      * @param \Buzz\Control\Campaign\SdkObject[] ...$targets
-     *
-     * @return iterable|mixed
      */
     public function saveComponents(array $input, ...$targets)
     {
