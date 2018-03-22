@@ -40,6 +40,7 @@ class Page extends SdkObject
     /**
      * @param \Buzz\Control\Campaign\SdkObject[] ...$targets
      *
+     * @return iterable|mixed
      * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
      */
     public function loadComponents(...$targets)
@@ -55,12 +56,38 @@ class Page extends SdkObject
             ];
         }
 
-        $this->data['components'] = Cast::many(
+        return Cast::many(
             (new Component()),
             $this->api()->post(
                 $this->getEndpoint($this->id . '/load-components'),
                 $request
             )
+        );
+    }
+
+    /**
+     * @param array $input
+     * @param \Buzz\Control\Campaign\SdkObject[] ...$targets
+     *
+     * @return iterable|mixed
+     */
+    public function saveComponents(array $input, ...$targets)
+    {
+        $request = [
+            'targets'    => [],
+            'components' => $input,
+        ];
+
+        foreach ($targets as $target) {
+            $request['targets'][] = [
+                'model_type' => class_basename($target),
+                'model_id'   => $target->id,
+            ];
+        }
+
+        $this->api()->post(
+            $this->getEndpoint($this->id . '/save-components'),
+            $request
         );
     }
 }
