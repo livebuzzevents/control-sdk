@@ -6,6 +6,7 @@ use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
+use Buzz\Control\Traits\SupportCrud;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
 
@@ -37,8 +38,7 @@ use Buzz\Control\Traits\SupportWrite;
  */
 class Product extends SdkObject
 {
-    use SupportRead,
-        SupportWrite,
+    use SupportCrud,
         Translatable,
         WithAnswerHelpers,
         WithPropertyHelpers,
