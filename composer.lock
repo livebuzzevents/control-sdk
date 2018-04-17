@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "10f17b0076c3e2f03b3a61d8136b5e46",
+    "content-hash": "dd22b267b1d1663494596bf012dd2028",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -357,16 +357,16 @@
         },
         {
             "name": "jtdsoft/essentials-sdk",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jtdsoft/essentials-sdk.git",
-                "reference": "74c6f2b766fee984a4f9726efdeceba3c6a9730e"
+                "url": "https://github.com/deetoouk/essentials-sdk.git",
+                "reference": "b29b47a21a01faba6db5c0afd6a287d5dff2e726"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jtdsoft/essentials-sdk/zipball/74c6f2b766fee984a4f9726efdeceba3c6a9730e",
-                "reference": "74c6f2b766fee984a4f9726efdeceba3c6a9730e",
+                "url": "https://api.github.com/repos/deetoouk/essentials-sdk/zipball/b29b47a21a01faba6db5c0afd6a287d5dff2e726",
+                "reference": "b29b47a21a01faba6db5c0afd6a287d5dff2e726",
                 "shasum": ""
             },
             "require": {
@@ -403,7 +403,7 @@
                 "php",
                 "sdk"
             ],
-            "time": "2018-02-16T10:48:06+00:00"
+            "time": "2018-04-17T07:44:12+00:00"
         },
         {
             "name": "nesbot/carbon",
