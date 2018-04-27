@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Translatable;
+use Buzz\Control\Traits\SupportCrud;
 
 /**
  * Class Question
@@ -19,5 +20,6 @@ use Buzz\Control\Campaign\Traits\Translatable;
  */
 class QuestionOption extends SdkObject
 {
-    use Translatable;
+    use SupportCrud,
+        Translatable;
 }
