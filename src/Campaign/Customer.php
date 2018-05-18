@@ -58,6 +58,7 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property bool $badge_preprinted
  * @property bool $badge_printed_onsite
  * @property bool $badge_viewed
+ * @property bool $smart_match_synced
  * @property string $is_a_clone
  * @property string $cloned_id
  * @property string $cloned_type
