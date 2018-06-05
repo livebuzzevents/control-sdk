@@ -2,6 +2,8 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Traits\SupportCrud;
+
 /**
  * Class PrepaidCode
  *
@@ -15,4 +17,5 @@ namespace Buzz\Control\Campaign;
  */
 class PrepaidCode extends SdkObject
 {
+    use SupportCrud;
 }
