@@ -87,6 +87,16 @@ class Order extends SdkObject
     }
 
     /**
+     * Pay order with prepaid code
+     *
+     * @param string $code
+     */
+    public function payWithPrepaidCode(string $code): void
+    {
+        $this->api()->post($this->id . '/pay-with-prepaid-code/' . $code);
+    }
+
+    /**
      * Cancel existing charge
      *
      * @param string $charge_id
