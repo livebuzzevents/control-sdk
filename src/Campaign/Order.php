@@ -63,7 +63,7 @@ class Order extends SdkObject
      */
     public function getCheckoutLink(): string
     {
-        return $this->api()->get($this->id . '/checkout-link')['checkout-link'];
+        return $this->api()->get($this->getEndpoint($this->id . '/checkout-link'))['checkout-link'];
     }
 
     /**
@@ -73,7 +73,7 @@ class Order extends SdkObject
      */
     public function complete(): self
     {
-        return new self($this->api()->get($this->id . '/complete'));
+        return new self($this->api()->get($this->getEndpoint($this->id . '/complete')));
     }
 
     /**
@@ -83,7 +83,7 @@ class Order extends SdkObject
      */
     public function generateCharge(string $payment_provider_id): void
     {
-        $this->api()->post($this->id . '/generate-charge/' . $payment_provider_id);
+        $this->api()->post($this->getEndpoint($this->id . '/generate-charge/' . $payment_provider_id));
     }
 
     /**
@@ -93,7 +93,7 @@ class Order extends SdkObject
      */
     public function payWithPrepaidCode(string $code): void
     {
-        $this->api()->post($this->id . '/pay-with-prepaid-code/' . $code);
+        $this->api()->post($this->getEndpoint($this->id . '/pay-with-prepaid-code/' . $code));
     }
 
     /**
@@ -103,6 +103,6 @@ class Order extends SdkObject
      */
     public function cancelCharge(string $charge_id): void
     {
-        $this->api()->post($this->id . '/cancel-charge/' . $charge_id);
+        $this->api()->post($this->getEndpoint($this->id . '/cancel-charge/' . $charge_id));
     }
 }
