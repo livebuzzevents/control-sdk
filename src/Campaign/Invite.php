@@ -41,6 +41,6 @@ class Invite extends SdkObject
         return $this->api()->post(
             $this->getEndpoint("preview/{$email_message_template_id}"),
             $this->prepareRequestData()
-        );
+        )['html'];
     }
 }
