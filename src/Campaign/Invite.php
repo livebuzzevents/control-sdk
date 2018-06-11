@@ -31,4 +31,16 @@ class Invite extends SdkObject
 {
     use SupportRead,
         SupportWrite;
+
+    /**
+     * @param string $email_message_template_id
+     * @return string
+     */
+    public function preview(string $email_message_template_id): string
+    {
+        return $this->api()->post(
+            $this->getEndpoint("preview/{$email_message_template_id}"),
+            $this->prepareRequestData()
+        );
+    }
 }
