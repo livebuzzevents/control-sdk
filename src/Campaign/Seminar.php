@@ -18,6 +18,8 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $location
  * @property string $publish
  * @property array $settings
+ * @property string $source
+ * @property string $source_id
  * @property \DateTime $ends_at
  * @property \DateTime $starts_at
  * @property-read int $spaces_taken
