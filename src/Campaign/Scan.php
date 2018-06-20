@@ -4,7 +4,7 @@ namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
-use JTDSoft\EssentialsSdk\Collection;
+use Buzz\Control\Traits\SupportRead;
 
 /**
  * Class Scan
@@ -21,64 +21,7 @@ use JTDSoft\EssentialsSdk\Collection;
  */
 class Scan extends SdkObject
 {
-    use WithAnswerHelpers,
+    use SupportRead,
+        WithAnswerHelpers,
         WithPropertyHelpers;
-
-    /**
-     * @param array $attributes
-     *
-     * @return \Buzz\Control\Campaign\Scan
-     */
-    public function create(array $attributes): self
-    {
-        return $this->execCreate($attributes);
-    }
-
-    /**
-     *
-     */
-    public function save(): void
-    {
-        $this->execSave();
-    }
-
-    /**
-     * @param array $filters
-     * @param int $page
-     * @param int $per_page
-     *
-     * @return \JTDSoft\EssentialsSdk\Collection
-     */
-    public function get(array $filters = [], $page = 1, $per_page = 50): Collection
-    {
-        return $this->execGet($filters, $page, $per_page);
-    }
-
-    /**
-     * @param array $filters
-     *
-     * @return \Buzz\Control\Campaign\Scan|null
-     */
-    public function first(array $filters = []): ?self
-    {
-        return $this->execFirst($filters);
-    }
-
-    /**
-     * @param string $id
-     *
-     * @return \Buzz\Control\Campaign\Scan|null
-     */
-    public function find(string $id): ?self
-    {
-        return $this->execFind($id);
-    }
-
-    /**
-     *
-     */
-    public function reload(): void
-    {
-        $this->execReload();
-    }
 }
