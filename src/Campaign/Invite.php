@@ -4,6 +4,7 @@ namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
+use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
 
 /**
  * Class Invite
@@ -31,6 +32,20 @@ class Invite extends SdkObject
 {
     use SupportRead,
         SupportWrite;
+
+    /**
+     * Deletes by id
+     *
+     * @throws ErrorException
+     */
+    public function delete(): void
+    {
+        if (in_array($this->status, ['accepted', 'bypassed'])) {
+            throw new ErrorException("Delete is forbidden for invite with status " . $this->status);
+        }
+
+        $this->api()->delete($this->getEndpoint($this->id));
+    }
 
     /**
      * @param string $email_message_template_id
