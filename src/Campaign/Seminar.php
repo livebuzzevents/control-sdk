@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
@@ -36,7 +37,8 @@ class Seminar extends SdkObject
 {
     use SupportRead,
         SupportWrite,
-        Translatable;
+        Translatable,
+        HasFiles;
 
     /**
      * @param string $topic_id
