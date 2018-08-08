@@ -4,6 +4,7 @@ namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Morphable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
+use Buzz\Control\Traits\SupportCrud;
 
 /**
  * Class Vote
@@ -20,5 +21,6 @@ use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 class Vote extends SdkObject
 {
     use Morphable,
+        SupportCrud,
         WithAnswerHelpers;
 }
