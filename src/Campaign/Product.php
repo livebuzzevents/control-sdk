@@ -35,6 +35,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read \Buzz\Control\Campaign\Seminar $seminar
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
  * @property-read \Buzz\Control\Campaign\OrderProduct[] $order_products
+ * @property-read \Buzz\Control\Campaign\Property[] $properties
  */
 class Product extends SdkObject
 {
