@@ -39,6 +39,19 @@ class Page extends SdkObject
         WithPropertyHelpers;
 
     /**
+     * @var bool
+     */
+    protected $dupeCheckEnabled = true;
+
+    /**
+     * @param bool $dupeCheckEnabled
+     */
+    public function setDupeCheck(bool $dupeCheckEnabled)
+    {
+        $this->dupeCheckEnabled = $dupeCheckEnabled;
+    }
+
+    /**
      * @param \Buzz\Control\Campaign\SdkObject[] ...$targets
      *
      * @return \JTDSoft\EssentialsSdk\Collection
@@ -76,6 +89,10 @@ class Page extends SdkObject
             'targets'    => [],
             'components' => $input,
         ];
+
+        if (!$this->dupeCheckEnabled) {
+            $request['disable_dupecheck'] = true;
+        }
 
         foreach ($targets as $target) {
             $request['targets'][] = [
