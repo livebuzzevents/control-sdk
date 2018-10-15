@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\HasAreas;
 use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Taggable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
@@ -66,6 +67,7 @@ use JTDSoft\EssentialsSdk\Collection;
 class Exhibitor extends SdkObject
 {
     use SupportCrud,
+        HasAreas,
         Taggable,
         WithAnswerHelpers,
         WithPropertyHelpers,
