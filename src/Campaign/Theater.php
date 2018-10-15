@@ -3,12 +3,14 @@
 namespace Buzz\Control\Campaign;
 
 /**
- * Class Area
+ * Class Theater
  *
  * @property string $identifier
  * @property string $name
  * @property string $color
+ *
+ * @property-read \Buzz\Control\Campaign\Seminar[] $pages
  */
-class Area extends SdkObject
+class Theater extends SdkObject
 {
 }

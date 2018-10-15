@@ -14,6 +14,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $title
  * @property string $description
  * @property string $exhibitor_id
+ * @property string $theater_id
  * @property int $capacity
  * @property string $colour
  * @property string $location
@@ -25,6 +26,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property \DateTime $starts_at
  * @property-read int $spaces_taken
  * @property-read int $spaces_available
+ * @property-read \Buzz\Control\Campaign\Theater $theater
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\Product $product
  * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $customer_seminars
