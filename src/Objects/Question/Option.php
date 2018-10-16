@@ -1,5 +1,6 @@
 <?php namespace Buzz\Control\Objects\Question;
 
+use Buzz\Control\Collection;
 use Buzz\Control\Objects\Base;
 use Buzz\Control\Objects\Traits\BelongsToQuestion;
 use Buzz\Control\Objects\Traits\HasIdentifier;
@@ -18,6 +19,11 @@ class Option extends Base
      * @var string
      */
     protected $body;
+
+    /**
+     * @var \Buzz\Control\Objects\Question\Option\AnswerOption[]
+     */
+    protected $answer_options;
 
     /**
      * @var string
@@ -58,6 +64,22 @@ class Option extends Base
     public function setRules($rules)
     {
         $this->rules = $rules;
+    }
+
+    /**
+     * @param \Buzz\Control\Objects\Question\Option\AnswerOption[]|Collection $options
+     */
+    public function setAnswerOptions($options)
+    {
+        $this->answer_options = new Collection($options);
+    }
+
+    /**
+     * @return \Buzz\Control\Objects\Question\Option\AnswerOption[]
+     */
+    public function getAnswerOptions()
+    {
+        return $this->answer_options;
     }
 
     /**
