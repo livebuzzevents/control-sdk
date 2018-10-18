@@ -302,12 +302,14 @@ class Customer extends SdkObject
     }
 
     /**
-     * @param string $pinter_id
+     * @param string $printer_id
+     * @param string|null $badge_stock_id
      */
-    public function printBadge(string $pinter_id): void
+    public function printBadge(string $printer_id, string $badge_stock_id = null): void
     {
         $this->api()->post(
-            $this->getEndpoint($this->id . '/print-badge/' . $pinter_id)
+            $this->getEndpoint($this->id . '/print-badge/' . $printer_id),
+            $badge_stock_id ? ['badge_stock_id' => $badge_stock_id] : null
         );
     }
 
