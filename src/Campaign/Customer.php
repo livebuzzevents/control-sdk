@@ -369,4 +369,14 @@ class Customer extends SdkObject
     {
         return $this->api()->get($this->getEndpoint($this->id . '/signed-url/' . $stream_id))['url'];
     }
+
+    /**
+     * @param string $integration_provider_id
+     *
+     * @return array|null
+     */
+    public function getOutgoingSsoOptions(string $integration_provider_id): ?array
+    {
+        return $this->api()->get($this->getEndpoint($this->id . '/outgoing-sso-options/' . $integration_provider_id));
+    }
 }
