@@ -5,6 +5,7 @@ namespace Buzz\Control\Campaign;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportRead;
+use Buzz\Control\Traits\SupportWrite;
 
 /**
  * Class Scan
@@ -22,6 +23,7 @@ use Buzz\Control\Traits\SupportRead;
 class Scan extends SdkObject
 {
     use SupportRead,
+        SupportWrite,
         WithAnswerHelpers,
         WithPropertyHelpers;
 }
