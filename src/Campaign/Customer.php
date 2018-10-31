@@ -302,6 +302,17 @@ class Customer extends SdkObject
     }
 
     /**
+     * @param string $audience
+     * @return string
+     */
+    public function generateOAuthToken(string $audience): string
+    {
+        return $this->api()->get(
+            $this->getEndpoint($this->id . '/generate-oauth-token/' . $audience)
+        )['token'];
+    }
+
+    /**
      * @param string $printer_id
      * @param string|null $badge_stock_id
      */
