@@ -139,7 +139,7 @@ class Customer extends SdkObject
     public function login(array $credentials): self
     {
         $user_information = [
-            'user_agent'      => !empty($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null,
+            'user_agent' => !empty($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null,
             'accept_language' => !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : null,
         ];
 
@@ -299,6 +299,17 @@ class Customer extends SdkObject
         return $this->api()->get(
             $this->getEndpoint($this->id . '/e-badge')
         )['e-badge'];
+    }
+
+    /**
+     * @param string $audience
+     * @return string
+     */
+    public function generateOAuthToken(string $audience): string
+    {
+        return $this->api()->get(
+            $this->getEndpoint($this->id . '/generate-oauth-token/' . $audience)
+        )['token'];
     }
 
     /**
