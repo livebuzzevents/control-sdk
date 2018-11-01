@@ -303,12 +303,15 @@ class Customer extends SdkObject
 
     /**
      * @param string $audience
+     * @param int $lifetime_seconds
+     *
      * @return string
      */
-    public function generateOAuthToken(string $audience): string
+    public function generateOAuthToken(string $audience, int $lifetime_seconds = null): string
     {
-        return $this->api()->get(
-            $this->getEndpoint($this->id . '/generate-oauth-token/' . $audience)
+        return $this->api()->post(
+            $this->getEndpoint($this->id . '/generate-oauth-token/' . $audience),
+            compact('lifetime_seconds')
         )['token'];
     }
 
