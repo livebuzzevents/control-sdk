@@ -17,97 +17,103 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
 /**
  * Class Customer
  *
- * @property string $exhibitor_id
- * @property string $import_id
- * @property string $badge_type_id
- * @property string $owner_id
- * @property string $publish
- * @property bool $is_managed
- * @property bool $manages_customers
- * @property-read int $managed_customers_count
- * @property-read string $avatar
- * @property string $identifier
- * @property string $email
- * @property string $source
- * @property string $source_id
- * @property string $biography
- * @property string $barcode
- * @property-read string $barcode_short
- * @property-read string $qrcode
- * @property string $exhibitor_role
- * @property string $username
- * @property-read bool $has_password
- * @property-write string $password
- * @property string $title
- * @property-read string $name
- * @property string $first_name
- * @property string $middle_name
- * @property string $last_name
- * @property string $job_title
- * @property string $company
- * @property string $sex
- * @property string $language
- * @property string $nationality
- * @property string $status
- * @property string $custom_status_id
- * @property string $registration_method
- * @property string $registration_type
- * @property string $registration_social_provider
- * @property string $attended
- * @property-read bool $printable
- * @property bool $badge_printed
  * @property bool $badge_preprinted
+ * @property bool $badge_printed
  * @property bool $badge_printed_onsite
  * @property bool $badge_viewed
+ * @property bool $is_managed
+ * @property bool $manages_customers
+ * @property bool $meetings_enabled
  * @property bool $smart_match_synced
- * @property string $is_a_clone
+ * @property string $attended
+ * @property string $badge_type_id
+ * @property string $barcode
+ * @property string $biography
+ * @property string $cloned_campaign_id
  * @property string $cloned_id
  * @property string $cloned_type
- * @property string $cloned_campaign_id
+ * @property string $company
+ * @property string $custom_status_id
+ * @property string $email
+ * @property string $exhibitor_id
+ * @property string $exhibitor_role
+ * @property string $first_name
+ * @property string $identifier
+ * @property string $import_id
+ * @property string $is_a_clone
+ * @property string $job_title
+ * @property string $language
+ * @property string $last_name
+ * @property string $middle_name
+ * @property string $nationality
+ * @property string $owner_id
+ * @property string $publish
+ * @property string $registration_method
+ * @property string $registration_social_provider
+ * @property string $registration_type
  * @property string $remember_token
- * @property-read string $signed_e_badge_link
+ * @property string $sex
+ * @property string $source
+ * @property string $source_id
+ * @property string $status
+ * @property string $title
+ * @property string $username
+ * @property-read bool $has_password
+ * @property-read bool $printable
+ * @property-read int $managed_customers_count
+ * @property-read string $avatar
+ * @property-read string $barcode_short
+ * @property-read string $name
+ * @property-read string $qrcode
  * @property-read string $signed_accept_terms_link
- * @property-read \Buzz\Control\Campaign\CustomerAffiliate[] $affiliates
+ * @property-read string $signed_e_badge_link
+ * @property-write string $password
  * @property-read \Buzz\Control\Campaign\Address[] $addresses
+ * @property-read \Buzz\Control\Campaign\Allowance[] $allowances
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
  * @property-read \Buzz\Control\Campaign\BadgePrint[] $badge_prints
+ * @property-read \Buzz\Control\Campaign\BadgePrint[] $queued_badge_prints
  * @property-read \Buzz\Control\Campaign\BadgeType $badge_type
  * @property-read \Buzz\Control\Campaign\BadgeView[] $badge_views
- * @property-read \Buzz\Control\Campaign\Basket[] $baskets
  * @property-read \Buzz\Control\Campaign\Balance[] $balances
+ * @property-read \Buzz\Control\Campaign\Basket[] $baskets
  * @property-read \Buzz\Control\Campaign\Charge[] $charges
+ * @property-read \Buzz\Control\Campaign\Customer $owner
  * @property-read \Buzz\Control\Campaign\Customer[] $created_customers
- * @property-read \Buzz\Control\Campaign\CustomStatus $custom_status
- * @property-read \Buzz\Control\Campaign\Invite[] $created_invites
+ * @property-read \Buzz\Control\Campaign\CustomerAffiliate[] $affiliates
+ * @property-read \Buzz\Control\Campaign\CustomerFlow $flow
+ * @property-read \Buzz\Control\Campaign\CustomerLoginToken[] $login_tokens
+ * @property-read \Buzz\Control\Campaign\CustomerPasswordReset[] $password_resets
  * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $created_seminars
- * @property-read \Buzz\Control\Campaign\Vote[] $created_votes
+ * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $seminars
+ * @property-read \Buzz\Control\Campaign\CustomStatus $custom_status
  * @property-read \Buzz\Control\Campaign\EmailMessage[] $email_messages
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
- * @property-read \Buzz\Control\Campaign\CustomerFlow $flow
  * @property-read \Buzz\Control\Campaign\Import $import
+ * @property-read \Buzz\Control\Campaign\Invite[] $created_invites
  * @property-read \Buzz\Control\Campaign\Invite[] $invites
  * @property-read \Buzz\Control\Campaign\Link[] $links
- * @property-read \Buzz\Control\Campaign\CustomerLoginToken[] $login_tokens
  * @property-read \Buzz\Control\Campaign\Log[] $logs
+ * @property-read \Buzz\Control\Campaign\Meeting[] $guested_meetings
+ * @property-read \Buzz\Control\Campaign\Meeting[] $hosted_meetings
+ * @property-read \Buzz\Control\Campaign\Meeting[] $unavailable_meetings
+ * @property-read \Buzz\Control\Campaign\MeetingRequest[] $guested_meetings_request
+ * @property-read \Buzz\Control\Campaign\MeetingRequest[] $hosted_meetings_request
+ * @property-read \Buzz\Control\Campaign\ModelTag[] $tags
  * @property-read \Buzz\Control\Campaign\Note[] $notes
  * @property-read \Buzz\Control\Campaign\Order[] $orders
  * @property-read \Buzz\Control\Campaign\OrderProduct[] $order_products
- * @property-read \Buzz\Control\Campaign\Customer $owner
- * @property-read \Buzz\Control\Campaign\CustomerPasswordReset[] $password_resets
+ * @property-read \Buzz\Control\Campaign\PageActivity[] $page_activities
  * @property-read \Buzz\Control\Campaign\Phone[] $phones
  * @property-read \Buzz\Control\Campaign\Property[] $properties
+ * @property-read \Buzz\Control\Campaign\Redemption[] $redemptions
+ * @property-read \Buzz\Control\Campaign\Scan[] $scans
+ * @property-read \Buzz\Control\Campaign\Scanner[] $scanners
  * @property-read \Buzz\Control\Campaign\SmsMessage[] $sms_messages
  * @property-read \Buzz\Control\Campaign\Social[] $socials
- * @property-read \Buzz\Control\Campaign\Scanner[] $scanners
  * @property-read \Buzz\Control\Campaign\SocialToken[] $social_tokens
- * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $seminars
- * @property-read \Buzz\Control\Campaign\Scan[] $scans
- * @property-read \Buzz\Control\Campaign\PageActivity[] $page_activities
- * @property-read \Buzz\Control\Campaign\ModelTag[] $tags
+ * @property-read \Buzz\Control\Campaign\Vote[] $created_votes
  * @property-read \Buzz\Control\Campaign\Vote[] $votes
- * @property-read \Buzz\Control\Campaign\BadgePrint[] $queued_badge_prints
- * @property-read \Buzz\Control\Campaign\Allowance[] $allowances
- * @property-read \Buzz\Control\Campaign\Redemption[] $redemptions
  *
  */
 class Customer extends SdkObject
