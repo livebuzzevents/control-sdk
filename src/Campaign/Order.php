@@ -110,9 +110,13 @@ class Order extends SdkObject
      * Capture existing charge
      *
      * @param string $charge_id
+     * @param string $reference_id
      */
-    public function captureCharge(string $charge_id): void
+    public function captureCharge(string $charge_id, string $reference_id): void
     {
-        $this->api()->post($this->getEndpoint($this->id . '/capture-charge/' . $charge_id));
+        $this->api()->post(
+            $this->getEndpoint($this->id . '/capture-charge/' . $charge_id),
+            ['reference_id' => $reference_id]
+        );
     }
 }
