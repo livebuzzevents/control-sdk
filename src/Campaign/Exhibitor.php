@@ -40,6 +40,7 @@ use JTDSoft\EssentialsSdk\Collection;
  * @property-read string $signed_leads_download_link
  * @property-read \Buzz\Control\Campaign\Address[] $addresses
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
+ * @property-read \Buzz\Control\Campaign\Article[] $articles
  * @property-read \Buzz\Control\Campaign\Basket[] $baskets
  * @property-read \Buzz\Control\Campaign\Invite[] $created_invites
  * @property-read \Buzz\Control\Campaign\Vote[] $created_votes
