@@ -105,4 +105,14 @@ class Order extends SdkObject
     {
         $this->api()->post($this->getEndpoint($this->id . '/cancel-charge/' . $charge_id));
     }
+
+    /**
+     * Capture existing charge
+     *
+     * @param string $charge_id
+     */
+    public function captureCharge(string $charge_id): void
+    {
+        $this->api()->post($this->getEndpoint($this->id . '/capture-charge/' . $charge_id));
+    }
 }
