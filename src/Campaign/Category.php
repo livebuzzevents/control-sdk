@@ -2,6 +2,8 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Traits\SupportRead;
+
 /**
  * Class Category
  *
@@ -12,4 +14,5 @@ namespace Buzz\Control\Campaign;
  */
 class Category extends SdkObject
 {
+    use SupportRead;
 }

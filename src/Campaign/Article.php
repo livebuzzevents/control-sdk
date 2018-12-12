@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Morphable;
 use Buzz\Control\Traits\SupportCrud;
 
@@ -18,5 +19,6 @@ use Buzz\Control\Traits\SupportCrud;
 class Article extends SdkObject
 {
     use Morphable,
-        SupportCrud;
+        SupportCrud,
+        HasFiles;
 }
