@@ -103,7 +103,7 @@ class Order extends SdkObject
      */
     public function cancelCharge(string $charge_id): void
     {
-        $this->api()->post($this->getEndpoint($this->id . '/cancel-charge/' . $charge_id));
+        $this->api()->delete($this->getEndpoint($this->id . '/cancel-charge/' . $charge_id));
     }
 
     /**
