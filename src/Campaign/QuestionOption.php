@@ -6,7 +6,7 @@ use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Traits\SupportCrud;
 
 /**
- * Class Question
+ * Class QuestionOption
  *
  * @property string $identifier
  * @property string $body
@@ -16,6 +16,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property array $rules
  * @property int $order
  * @property-read \Buzz\Control\Campaign\Question $question
+ * @property-read \Buzz\Control\Campaign\QuestionOptionGroup $question_option_group
  * @property-read \Buzz\Control\Campaign\AnswerOption[] $answer_options
  */
 class QuestionOption extends SdkObject
