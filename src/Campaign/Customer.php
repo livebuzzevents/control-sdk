@@ -70,6 +70,7 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property-write string $password
  * @property-read \Buzz\Control\Campaign\Address[] $addresses
  * @property-read \Buzz\Control\Campaign\Allowance[] $allowances
+ * @property-read \Buzz\Control\Campaign\AlternativeId[] $alternative_ids
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
  * @property-read \Buzz\Control\Campaign\BadgePrint[] $badge_prints
  * @property-read \Buzz\Control\Campaign\BadgePrint[] $queued_badge_prints
