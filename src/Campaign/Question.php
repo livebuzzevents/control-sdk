@@ -5,8 +5,6 @@ namespace Buzz\Control\Campaign;
 use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Traits\SupportCrud;
-use Buzz\Control\Traits\SupportRead;
-use Buzz\Control\Traits\SupportWrite;
 
 /**
  * Class Question
@@ -19,6 +17,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property array $rules
  * @property \Buzz\Control\Campaign\QuestionOption[] $options
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
+ * @property-read \Buzz\Control\Campaign\QuestionOptionGroup[] $question_option_groups
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
  */
 class Question extends SdkObject
