@@ -9,6 +9,7 @@ use Buzz\Control\Traits\SupportWrite;
 /**
  * Class BadgeType
  *
+ * @property string $role
  * @property string $identifier
  * @property string $name
  * @property string $print_name
