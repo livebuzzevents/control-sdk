@@ -2,6 +2,9 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Traits\SupportRead;
+use Buzz\Control\Traits\SupportWrite;
+
 /**
  * Class Theater
  *
@@ -13,4 +16,6 @@ namespace Buzz\Control\Campaign;
  */
 class Theater extends SdkObject
 {
+    use SupportRead,
+        SupportWrite;
 }
