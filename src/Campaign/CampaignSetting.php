@@ -13,4 +13,12 @@ use Buzz\Control\Traits\SupportRead;
 class CampaignSetting extends SdkObject
 {
     use SupportRead;
+
+    /**
+     * @return array
+     */
+    public function all(): array
+    {
+        return $this->api()->get($this->getEndpoint("/all"));
+    }
 }
