@@ -26,6 +26,7 @@ use JTDSoft\EssentialsSdk\Collection;
  * @property string $source_id
  * @property string $website
  * @property string $contact_email
+ * @property string $website_email
  * @property array $details
  * @property array $settings
  * @property array $stands
