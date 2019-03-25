@@ -66,6 +66,7 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property-read string $name
  * @property-read string $qrcode
  * @property-read string $signed_accept_terms_link
+ * @property-read string $signed_apple_wallet_pass_link
  * @property-read string $signed_e_badge_link
  * @property-write string $password
  * @property-read \Buzz\Control\Campaign\Address[] $addresses
