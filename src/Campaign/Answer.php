@@ -15,6 +15,12 @@ use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
  * @property string $text
  *
  * @property-read \Buzz\Control\Campaign\Question $question
+ * @property-read \Buzz\Control\Campaign\Customer $customer
+ * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
+ * @property-read \Buzz\Control\Campaign\Lead $lead
+ * @property-read \Buzz\Control\Campaign\Scan $scan
+ * @property-read \Buzz\Control\Campaign\Vote $vote
+ * @property-read \Buzz\Control\Campaign\Product $product
  * @property \Buzz\Control\Campaign\AnswerOption[] $options
  */
 class Answer extends SdkObject
