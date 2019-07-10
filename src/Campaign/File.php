@@ -5,8 +5,8 @@ namespace Buzz\Control\Campaign;
 use Buzz\Control\Campaign\Traits\Morphable;
 use Buzz\Control\Traits\SupportDelete;
 use Buzz\Control\Traits\SupportRead;
-use JTDSoft\EssentialsSdk\Cast;
-use JTDSoft\EssentialsSdk\Collection;
+use Buzz\EssentialsSdk\Cast;
+use Buzz\EssentialsSdk\Collection;
 
 /**
  * Class File
@@ -29,8 +29,8 @@ class File extends SdkObject
     /**
      * @param \Buzz\Control\SdkObject $object
      *
-     * @return \JTDSoft\EssentialsSdk\Collection
-     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
+     * @return \Buzz\EssentialsSdk\Collection
+     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
     public function listFiles(SdkObject $object): Collection
     {

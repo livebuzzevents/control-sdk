@@ -9,7 +9,7 @@ namespace Buzz\Control;
  * @property \DateTime $updated_at
  * @property \DateTime $created_at
  */
-class SdkObject extends \JTDSoft\EssentialsSdk\SdkObject
+class SdkObject extends \Buzz\EssentialsSdk\SdkObject
 {
     /**
      * @var

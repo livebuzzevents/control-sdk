@@ -2,9 +2,9 @@
 
 namespace Buzz\Control\Traits;
 
-use JTDSoft\EssentialsSdk\Cast;
-use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
-use JTDSoft\EssentialsSdk\Paging;
+use Buzz\EssentialsSdk\Cast;
+use Buzz\EssentialsSdk\Exceptions\ErrorException;
+use Buzz\EssentialsSdk\Paging;
 use Traversable;
 
 /**
@@ -21,8 +21,8 @@ trait SupportRead
      * @param null $order
      * @param null $direction
      *
-     * @return \JTDSoft\EssentialsSdk\Paging
-     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
+     * @return \Buzz\EssentialsSdk\Paging
+     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
     public function get(
         iterable $filters = null,

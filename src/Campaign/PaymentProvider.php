@@ -3,7 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Traits\SupportRead;
-use JTDSoft\EssentialsSdk\Cast;
+use Buzz\EssentialsSdk\Cast;
 
 /**
  * Class PaymentProvider

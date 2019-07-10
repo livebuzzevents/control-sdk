@@ -2,7 +2,7 @@
 
 namespace Buzz\Control;
 
-class Service extends \JTDSoft\EssentialsSdk\Service
+class Service extends \Buzz\EssentialsSdk\Service
 {
     /**
      * @var string

@@ -4,9 +4,9 @@ namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Morphable;
 use Buzz\Control\Traits\SupportCrud;
-use JTDSoft\EssentialsSdk\Cast;
-use JTDSoft\EssentialsSdk\Collection;
-use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
+use Buzz\EssentialsSdk\Cast;
+use Buzz\EssentialsSdk\Collection;
+use Buzz\EssentialsSdk\Exceptions\ErrorException;
 
 /**
  * Class Answer
@@ -47,8 +47,8 @@ class Answer extends SdkObject
     /**
      * @param iterable $answers
      *
-     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
-     * @return \JTDSoft\EssentialsSdk\Collection
+     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
+     * @return \Buzz\EssentialsSdk\Collection
      */
     public function saveMany(iterable $answers): Collection
     {
@@ -69,7 +69,7 @@ class Answer extends SdkObject
      * @param iterable $answers
      * @param array $rules
      *
-     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
+     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
     public function validateMany(iterable $answers, array $rules = []): void
     {
@@ -104,7 +104,7 @@ class Answer extends SdkObject
      * @param SdkObject $target
      * @param array $identifiers
      *
-     * @return \JTDSoft\EssentialsSdk\Collection
+     * @return \Buzz\EssentialsSdk\Collection
      */
     public function copyByIdentifiers(SdkObject $source, SdkObject $target, array $identifiers): Collection
     {

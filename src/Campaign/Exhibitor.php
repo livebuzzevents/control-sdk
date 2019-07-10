@@ -8,8 +8,8 @@ use Buzz\Control\Campaign\Traits\Taggable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportCrud;
-use JTDSoft\EssentialsSdk\Cast;
-use JTDSoft\EssentialsSdk\Collection;
+use Buzz\EssentialsSdk\Cast;
+use Buzz\EssentialsSdk\Collection;
 
 /**
  * Class Exhibitor
@@ -77,8 +77,8 @@ class Exhibitor extends SdkObject
         HasFiles;
 
     /**
-     * @return \JTDSoft\EssentialsSdk\Collection
-     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
+     * @return \Buzz\EssentialsSdk\Collection
+     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
     public function getEmailInvites(): Collection
     {

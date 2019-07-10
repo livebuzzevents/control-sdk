@@ -4,7 +4,7 @@ namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Morphable;
 use Buzz\Control\Traits\SupportCrud;
-use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
+use Buzz\EssentialsSdk\Exceptions\ErrorException;
 
 /**
  * Class Social
@@ -27,7 +27,7 @@ class Social extends SdkObject
      * @param string $email_message_template_id
      *
      * @return \Buzz\Control\Campaign\Invite
-     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
+     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
     public function inviteEmail(Customer $customer, Invite $invite, string $email_message_template_id)
     {

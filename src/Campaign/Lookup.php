@@ -2,7 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
-use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
+use Buzz\EssentialsSdk\Exceptions\ErrorException;
 
 /**
  * Class Lookup
@@ -14,7 +14,7 @@ class Lookup extends SdkObject
      * @param string $postcode
      *
      * @return mixed
-     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
+     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
     public function addressByPostcode(string $country, string $postcode)
     {
@@ -33,7 +33,7 @@ class Lookup extends SdkObject
      * @param string $term
      *
      * @return mixed
-     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
+     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
     public function addressByTerm(string $country, string $term)
     {
@@ -51,7 +51,7 @@ class Lookup extends SdkObject
      * @param string $email
      *
      * @return mixed
-     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
+     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
     public function email(string $email)
     {
@@ -69,7 +69,7 @@ class Lookup extends SdkObject
      * @param string $ip
      *
      * @return mixed
-     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
+     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
     public function ip(string $ip)
     {

@@ -11,8 +11,8 @@ use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportCrud;
 use Illuminate\Support\Collection;
-use JTDSoft\EssentialsSdk\Cast;
-use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
+use Buzz\EssentialsSdk\Cast;
+use Buzz\EssentialsSdk\Exceptions\ErrorException;
 
 /**
  * Class Customer

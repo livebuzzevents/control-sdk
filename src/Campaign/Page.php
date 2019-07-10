@@ -7,8 +7,8 @@ use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
-use JTDSoft\EssentialsSdk\Cast;
-use JTDSoft\EssentialsSdk\Collection;
+use Buzz\EssentialsSdk\Cast;
+use Buzz\EssentialsSdk\Collection;
 
 /**
  * Class Page
@@ -54,8 +54,8 @@ class Page extends SdkObject
     /**
      * @param \Buzz\Control\Campaign\SdkObject[] ...$targets
      *
-     * @return \JTDSoft\EssentialsSdk\Collection
-     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
+     * @return \Buzz\EssentialsSdk\Collection
+     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
     public function loadComponents(...$targets): Collection
     {

@@ -4,7 +4,7 @@ namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
-use JTDSoft\EssentialsSdk\Exceptions\ErrorException;
+use Buzz\EssentialsSdk\Exceptions\ErrorException;
 
 /**
  * Class Invite

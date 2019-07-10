@@ -3,8 +3,8 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Traits\SupportCrud;
-use JTDSoft\EssentialsSdk\Cast;
-use JTDSoft\EssentialsSdk\Collection;
+use Buzz\EssentialsSdk\Cast;
+use Buzz\EssentialsSdk\Collection;
 
 /**
  * Class Basket
@@ -49,7 +49,7 @@ class Basket extends SdkObject
      * @param int|null $vat_percentage
      *
      * @return Collection
-     * @throws \JTDSoft\EssentialsSdk\Exceptions\ErrorException
+     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
     public function addProduct(
         string $product_id,
