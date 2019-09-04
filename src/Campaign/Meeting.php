@@ -5,7 +5,7 @@ namespace Buzz\Control\Campaign;
 /**
  * Class Meeting
  *
- * @property int $status
+ * @property string $status
  * @property string $guest_id
  * @property string $host_id
  * @property string $meeting_slot_id
