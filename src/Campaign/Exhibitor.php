@@ -37,8 +37,10 @@ use Buzz\EssentialsSdk\Collection;
  * @property string $cloned_campaign_id
  * @property-read int smartscan_count
  * @property-read int smartscan_purchased_count
+ * @property-read int smartscan_orphaned_count
  * @property-read int handiscan_count
  * @property-read int handiscan_purchased_count
+ * @property-read int handiscan_orphaned_count
  * @property-read string $signed_leads_download_link
  * @property-read \Buzz\Control\Campaign\Address[] $addresses
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
