@@ -2,8 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
-use Buzz\Control\Traits\SupportDelete;
-use Buzz\Control\Traits\SupportRead;
+use Buzz\Control\Traits\SupportCrud;
 
 /**
  * Class Affiliate
@@ -20,8 +19,7 @@ use Buzz\Control\Traits\SupportRead;
  */
 class Affiliate extends SdkObject
 {
-    use SupportRead,
-        SupportDelete;
+    use SupportCrud;
 
     /**
      * @param int $size
