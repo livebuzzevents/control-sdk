@@ -165,6 +165,16 @@ class Customer extends SdkObject
     }
 
     /**
+     * @param array $parameters
+     *
+     * @return string
+     */
+    public function fetchRecommendations(array $parameters): self
+    {
+        return new self($this->api()->get($this->getEndpoint('fetch-recommendations'), $parameters));
+    }
+
+    /**
      * @param $clone_campaign_id
      * @param $clone_customer_id
      *
