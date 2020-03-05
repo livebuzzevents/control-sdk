@@ -119,4 +119,17 @@ class Order extends SdkObject
             ['reference_id' => $reference_id]
         );
     }
+
+    /**
+     * Refund, return, and cancel order
+     *
+     * @param string $reason
+     */
+    public function refund(string $reason): void
+    {
+        $this->api()->post(
+            $this->getEndpoint($this->id . '/refund'),
+            ['reason' => $reason]
+        );
+    }
 }
