@@ -13,6 +13,7 @@ use Buzz\EssentialsSdk\Collection;
  * @property string $exhibitor_id
  * @property string $destination
  * @property string $discount_code
+ * @property string $vat_number
  * @property string $vat_exempt
  * @property string $po_number
  * @property-read string $currency
@@ -190,6 +191,16 @@ class Basket extends SdkObject
     public function setPoNumber(string $po_number = null): void
     {
         $this->api()->post($this->getEndpoint($this->id . '/set-po-number/' . $po_number));
+    }
+
+    /**
+     * Sets/Unsets VAT Number
+     *
+     * @param string|null $vat_number
+     */
+    public function setVatNumber(string $vat_number = null): void
+    {
+        $this->api()->post($this->getEndpoint($this->id . '/set-vat-number/' . $vat_number));
     }
 
     /**
