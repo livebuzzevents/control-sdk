@@ -4,6 +4,8 @@ php:
   - '7.1'
 
 install:
+  - composer self-update 1.10.16
+  - composer --version
   - composer install --no-interaction --prefer-source
 
 script:
