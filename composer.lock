@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "b94ef7dbcb8d1ccc3c246c333e21bd09",
@@ -416,12 +416,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/livebuzzevents/essentials-sdk.git",
-                "reference": "ed8662a9808e25a0c48546a5ca85587f5919dcb5"
+                "reference": "eb01a9a581bbb0079ec6bc4945976fbd15c16987"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livebuzzevents/essentials-sdk/zipball/ed8662a9808e25a0c48546a5ca85587f5919dcb5",
-                "reference": "ed8662a9808e25a0c48546a5ca85587f5919dcb5",
+                "url": "https://api.github.com/repos/livebuzzevents/essentials-sdk/zipball/eb01a9a581bbb0079ec6bc4945976fbd15c16987",
+                "reference": "eb01a9a581bbb0079ec6bc4945976fbd15c16987",
                 "shasum": ""
             },
             "require": {
@@ -440,12 +440,12 @@
             },
             "type": "package",
             "autoload": {
-                "psr-4": {
-                    "Buzz\\EssentialsSdk\\": "src/"
-                },
                 "files": [
                     "src/helpers.php"
-                ]
+                ],
+                "psr-4": {
+                    "Buzz\\EssentialsSdk\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -458,7 +458,7 @@
                 "php",
                 "sdk"
             ],
-            "time": "2019-07-10T10:42:30+00:00"
+            "time": "2022-07-19T13:24:39+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -934,6 +934,7 @@
                 "faker",
                 "fixtures"
             ],
+            "abandoned": true,
             "time": "2014-06-04T14:43:02+00:00"
         },
         {
@@ -1667,6 +1668,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2017-02-27T10:12:30+00:00"
         },
         {
@@ -2390,6 +2392,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
+            "abandoned": "symfony/error-handler",
             "time": "2017-10-02T06:42:24+00:00"
         },
         {
@@ -2688,6 +2691,7 @@
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
             "homepage": "https://github.com/theseer/fDOMDocument",
+            "abandoned": true,
             "time": "2017-06-30T11:53:12+00:00"
         },
         {
@@ -2733,6 +2737,7 @@
                 }
             ],
             "description": "An XSL wrapper / extension to the PHP 5.x XSLTProcessor with Exception and extended Callback support",
+            "abandoned": true,
             "time": "2014-11-27T20:08:52+00:00"
         },
         {
@@ -2791,12 +2796,12 @@
             "version": "1.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "2db61e59ff05fe5126d152bd0655c9ea113e550f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/2db61e59ff05fe5126d152bd0655c9ea113e550f",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/2db61e59ff05fe5126d152bd0655c9ea113e550f",
                 "reference": "2db61e59ff05fe5126d152bd0655c9ea113e550f",
                 "shasum": ""
             },
@@ -2845,5 +2850,6 @@
     "platform": {
         "php": "^7.1"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
