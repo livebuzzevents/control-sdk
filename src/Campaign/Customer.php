@@ -58,6 +58,7 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property string $status
  * @property string $title
  * @property string $username
+ * @property integer $profile_score
  * @property-read bool $has_password
  * @property-read bool $printable
  * @property-read int $managed_customers_count
