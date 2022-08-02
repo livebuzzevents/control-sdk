@@ -41,8 +41,7 @@ class Scan extends SdkObject
         Customer $customer,
         $page = 1,
         $per_page = 50
-    ): Collection
-    {
+    ): Collection {
         return Cast::many(
             $this,
             $this->api()->get($this->getEndpoint("visitor-connect/{$customer->id}"), compact('page', 'per_page'))
