@@ -23,6 +23,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property \DateTime $show_starts_at
  * @property \DateTime $show_ends_at
  * @property \DateTime $reg_ends_at
+ * @property \DateTime $hub_ends_at
  * @property string $language
  * @property array $additional_languages
  * @property string $show_timezone
