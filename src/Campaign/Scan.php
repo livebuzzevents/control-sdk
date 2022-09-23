@@ -6,6 +6,9 @@ use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
+use Buzz\EssentialsSdk\Cast;
+use Buzz\EssentialsSdk\Collection;
+use Buzz\EssentialsSdk\Exceptions\ErrorException;
 
 /**
  * Class Scan
@@ -27,4 +30,21 @@ class Scan extends SdkObject
         SupportWrite,
         WithAnswerHelpers,
         WithPropertyHelpers;
+
+    /**
+     * @param Customer $customer
+     *
+     * @return \Buzz\EssentialsSdk\Collection
+     * @throws ErrorException
+     */
+    public function visitorConnect(
+        Customer $customer,
+        $page = 1,
+        $per_page = 50
+    ): Collection {
+        return Cast::many(
+            $this,
+            $this->api()->get($this->getEndpoint("visitor-connect/{$customer->id}"), compact('page', 'per_page'))
+        );
+    }
 }
