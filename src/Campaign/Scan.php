@@ -47,4 +47,14 @@ class Scan extends SdkObject
             $this->api()->get($this->getEndpoint("visitor-connect/{$customer->id}"), compact('page', 'per_page'))
         );
     }
+
+    /**
+     * @param Exhibitor $exhibitor
+     *
+     * @return array
+     */
+    public function leadScores(Exhibitor $exhibitor): array
+    {
+        return $this->api()->get($this->getEndpoint("lead-scores/{$exhibitor->id}"));
+    }
 }
