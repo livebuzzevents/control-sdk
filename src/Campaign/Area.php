@@ -2,6 +2,8 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Traits\SupportCrud;
+
 /**
  * Class Area
  *
@@ -11,4 +13,5 @@ namespace Buzz\Control\Campaign;
  */
 class Area extends SdkObject
 {
+    use SupportCrud;
 }
