@@ -33,18 +33,21 @@ class Scan extends SdkObject
 
     /**
      * @param Customer $customer
-     *
-     * @return \Buzz\EssentialsSdk\Collection
+     * @param string $type
+     * @param int $page
+     * @param int $per_page
+     * @return Collection
      * @throws ErrorException
      */
     public function visitorConnect(
         Customer $customer,
+        string $type,
         $page = 1,
         $per_page = 50
     ): Collection {
         return Cast::many(
             $this,
-            $this->api()->get($this->getEndpoint("visitor-connect/{$customer->id}"), compact('page', 'per_page'))
+            $this->api()->get($this->getEndpoint("visitor-connect/{$customer->id}/$type"), compact('page', 'per_page'))
         );
     }
 
