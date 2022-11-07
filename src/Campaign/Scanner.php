@@ -11,6 +11,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $identifier
  * @property string $seminar_id
  * @property string $exhibitor_id
+ * @property string $product_id
  * @property string $customer_id
  * @property string $order_product_id
  * @property string $entrance_id
