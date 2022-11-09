@@ -30,18 +30,20 @@ class SmsMessage extends SdkObject
      * @param SdkObject $model
      * @param string $sms_message_template_id
      * @param string|null $phone_number
+     * @param bool $send_instantly
      */
     public function send(
         SdkObject $model,
         string $sms_message_template_id,
-        string $phone_number = null
+        string $phone_number = null,
+        bool $send_instantly = false
     ) {
         $model_type = class_basename($model);
         $model_id   = $model->id;
 
         $this->api()->post(
             $this->getEndpoint("send/{$sms_message_template_id}"),
-            compact('model_id', 'model_type', 'phone_number')
+            compact('model_id', 'model_type', 'phone_number', 'send_instantly')
         );
     }
 }
