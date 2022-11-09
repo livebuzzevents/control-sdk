@@ -25,6 +25,13 @@ trait CanSendEmailMessage
         array $custom_data = null,
         bool $send_instantly = false
     ) {
-        (new EmailMessage())->send($this, $email_message_template_id, $to_address, $subject, $custom_data, $send_instantly);
+        (new EmailMessage())->send(
+            $this,
+            $email_message_template_id,
+            $to_address,
+            $subject,
+            $custom_data, 
+            $send_instantly
+        );
     }
 }
