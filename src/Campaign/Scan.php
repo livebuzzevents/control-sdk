@@ -39,7 +39,7 @@ class Scan extends SdkObject
      * @return Collection
      * @throws ErrorException
      */
-    public function visitorConnect(
+    public function contentCapture(
         Customer $customer,
         string $type,
         $page = 1,
@@ -47,7 +47,7 @@ class Scan extends SdkObject
     ): Collection {
         return Cast::many(
             $this,
-            $this->api()->get($this->getEndpoint("visitor-connect/{$customer->id}/$type"), compact('page', 'per_page'))
+            $this->api()->get($this->getEndpoint("content-capture/{$customer->id}/$type"), compact('page', 'per_page'))
         );
     }
 
