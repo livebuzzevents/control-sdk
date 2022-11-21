@@ -7,6 +7,7 @@ use Buzz\Control\Traits\SupportDelete;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\EssentialsSdk\Cast;
 use Buzz\EssentialsSdk\Collection;
+use Buzz\Control\SdkObject as BaseSdkObject;
 
 /**
  * Class File
@@ -27,12 +28,12 @@ class File extends SdkObject
         SupportDelete;
 
     /**
-     * @param \Buzz\Control\SdkObject $object
+     * @param BaseSdkObject $object
      *
      * @return \Buzz\EssentialsSdk\Collection
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
-    public function listFiles(SdkObject $object): Collection
+    public function listFiles(BaseSdkObject $object): Collection
     {
         $model_type = class_basename($object);
         $model_id   = $object->id;
@@ -44,13 +45,13 @@ class File extends SdkObject
     }
 
     /**
-     * @param \Buzz\Control\SdkObject $object
+     * @param BaseSdkObject $object
      * @param string $filename
      * @param string $content
      *
      * @return \Buzz\Control\Campaign\File
      */
-    public function add(SdkObject $object, string $filename, string $content)
+    public function add(BaseSdkObject $object, string $filename, string $content)
     {
         $model_type = class_basename($object);
         $model_id   = $object->id;
@@ -69,12 +70,12 @@ class File extends SdkObject
     }
 
     /**
-     * @param \Buzz\Control\SdkObject $object
+     * @param BaseSdkObject $object
      * @param string $identifier
      *
      * @return \Buzz\Control\Campaign\File
      */
-    public function systemFile(SdkObject $object, string $identifier)
+    public function systemFile(BaseSdkObject $object, string $identifier)
     {
         $model_type = class_basename($object);
         $model_id   = $object->id;
@@ -85,12 +86,12 @@ class File extends SdkObject
     }
 
     /**
-     * @param \Buzz\Control\SdkObject $object
+     * @param BaseSdkObject $object
      * @param string $identifier
      *
      * @return \Buzz\Control\Campaign\File
      */
-    public function fileSettings(SdkObject $object, string $identifier)
+    public function fileSettings(BaseSdkObject $object, string $identifier)
     {
         $model_type = class_basename($object);
         $model_id   = $object->id;
@@ -101,14 +102,14 @@ class File extends SdkObject
     }
 
     /**
-     * @param \Buzz\Control\SdkObject $object
+     * @param BaseSdkObject $object
      * @param string $identifier
      * @param string $filename
      * @param string $content
      *
      * @return \Buzz\Control\Campaign\File
      */
-    public function addSystem(SdkObject $object, string $identifier, string $filename, string $content)
+    public function addSystem(BaseSdkObject $object, string $identifier, string $filename, string $content)
     {
         $model_type = class_basename($object);
         $model_id   = $object->id;
