@@ -24,6 +24,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $source_id
  * @property \DateTime $ends_at
  * @property \DateTime $starts_at
+ * @property-read string $content_capture_qr_code
  * @property-read int $spaces_taken
  * @property-read int $spaces_available
  * @property-read string $signed_attendees_download_link

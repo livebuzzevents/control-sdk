@@ -31,6 +31,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $active
  * @property \DateTime $valid_from
  * @property \DateTime $valid_to
+ * @property-read string $content_capture_qr_code
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\Seminar $seminar
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
