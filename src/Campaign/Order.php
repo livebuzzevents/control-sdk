@@ -10,6 +10,7 @@ use Buzz\Control\Traits\SupportRead;
  *
  * @property string $customer_id
  * @property string $exhibitor_id
+ * @property string $po_number
  * @property string $currency
  * @property int $subtotal
  * @property int $vat
