@@ -40,6 +40,9 @@ use Buzz\EssentialsSdk\Collection;
  * @property-read int handiscan_count
  * @property-read int handiscan_purchased_count
  * @property-read string $content_capture_qr_code
+ * @property-read string $content_capture_image
+ * @property-read string $content_capture_pdf
+ * @property-read string $content_capture_zip
  * @property-read string $exhibitor_list_url
  * @property-read string $signed_leads_download_link
  * @property-read string $signed_hot_leads_download_link
