@@ -45,6 +45,7 @@ use Buzz\EssentialsSdk\Collection;
  * @property-read string $content_capture_zip
  * @property-read string $exhibitor_list_url
  * @property-read string $signed_leads_download_link
+ * @property-read string $signed_content_capture_link
  * @property-read string $signed_hot_leads_download_link
  * @property-read string $signed_warm_leads_download_link
  * @property-read string $signed_other_leads_download_link
