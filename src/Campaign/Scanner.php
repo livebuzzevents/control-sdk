@@ -24,6 +24,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property array $details
  * @property-read boolean $handles_crossovers
  * @property-read string $signed_leads_download_link
+ * @property-read string $signed_product_leads_download_link
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\Seminar $seminar
