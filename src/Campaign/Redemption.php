@@ -88,4 +88,52 @@ class Redemption extends SdkObject
             )
         );
     }
+
+    /**
+     * @param $allowance_id
+     * @param $exhibitor_id
+     * @param $article_id
+     *
+     * @return \Buzz\Control\Campaign\Redemption
+     */
+    public function redeemArticle($allowance_id, $exhibitor_id, $article_id)
+    {
+        return new self(
+            $this->api()->post(
+                $this->getEndpoint("redeem/article/{$allowance_id}/{$exhibitor_id}/{$article_id}")
+            )
+        );
+    }
+
+    /**
+     * @param $allowance_id
+     * @param $exhibitor_id
+     * @param $link_id
+     *
+     * @return \Buzz\Control\Campaign\Redemption
+     */
+    public function redeemVideo($allowance_id, $exhibitor_id, $link_id)
+    {
+        return new self(
+            $this->api()->post(
+                $this->getEndpoint("redeem/video/{$allowance_id}/{$exhibitor_id}/{$link_id}")
+            )
+        );
+    }
+
+    /**
+     * @param $allowance_id
+     * @param $exhibitor_id
+     * @param $product_id
+     *
+     * @return \Buzz\Control\Campaign\Redemption
+     */
+    public function redeemProduct($allowance_id, $exhibitor_id, $product_id)
+    {
+        return new self(
+            $this->api()->post(
+                $this->getEndpoint("redeem/product/{$allowance_id}/{$exhibitor_id}/{$product_id}")
+            )
+        );
+    }
 }
