@@ -22,7 +22,6 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
  * @property-read \Buzz\Control\Campaign\Property[] $properties
  * @property-read \Buzz\Control\Campaign\Note[] $notes
- *
  */
 class Scan extends SdkObject
 {
@@ -46,18 +45,28 @@ class Scan extends SdkObject
      * @param string $type
      * @param int $page
      * @param int $per_page
+     * @param string $order
+     * @param string $direction
+     * @param array $filters
+     *
      * @return Collection
      * @throws ErrorException
      */
     public function contentCapture(
         Customer $customer,
         string $type,
-                 $page = 1,
-                 $per_page = 50
+        int $page = 1,
+        int $per_page = 50,
+        string $order = '',
+        string $direction = '',
+        array $filters = []
     ): Collection {
         return Cast::many(
             $this,
-            $this->api()->get($this->getEndpoint("content-capture/{$customer->id}/$type"), compact('page', 'per_page'))
+            $this->api()->get(
+                $this->getEndpoint("content-capture/{$customer->id}/$type"),
+                compact('page', 'per_page', 'order', 'direction', 'filters')
+            )
         );
     }
 }
