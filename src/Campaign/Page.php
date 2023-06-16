@@ -57,6 +57,31 @@ class Page extends SdkObject
      * @return \Buzz\EssentialsSdk\Collection
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
+    public function load(...$targets): Collection
+    {
+        $request = [
+            'targets' => [],
+        ];
+
+        foreach ($targets as $target) {
+            $request['targets'][] = [
+                'model_type' => class_basename($target),
+                'model_id'   => $target->id,
+            ];
+        }
+
+        return Cast::many(
+            (new Page()),
+            $this->api()->post('pages-for-hub', $request)
+        );
+    }
+
+    /**
+     * @param \Buzz\Control\Campaign\SdkObject[] ...$targets
+     *
+     * @return \Buzz\EssentialsSdk\Collection
+     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
+     */
     public function loadComponents(...$targets): Collection
     {
         $request = [

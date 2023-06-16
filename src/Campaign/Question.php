@@ -9,6 +9,7 @@ use Buzz\Control\Traits\SupportCrud;
 /**
  * Class Question
  *
+ * @property boolean $active
  * @property string $identifier
  * @property string $body
  * @property string $description
