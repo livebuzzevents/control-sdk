@@ -51,7 +51,7 @@ class File extends SdkObject
      *
      * @return \Buzz\Control\Campaign\File
      */
-    public function add(BaseSdkObject $object, string $filename, string $content)
+    public function add(BaseSdkObject $object, string $filename, string $content, string $description)
     {
         $model_type = class_basename($object);
         $model_id   = $object->id;
@@ -61,8 +61,9 @@ class File extends SdkObject
                 $this->getEndpoint("{$model_type}/{$model_id}/add"),
                 [
                     'file' => [
-                        'content' => base64_encode($content),
-                        'name'    => $filename,
+                        'content'     => base64_encode($content),
+                        'name'        => $filename,
+                        'description' => $description,
                     ],
                 ]
             )
