@@ -30,6 +30,11 @@ class Service extends \Buzz\EssentialsSdk\Service
     protected static $stream;
 
     /**
+     * @var bool
+     */
+    protected static $force_campaign_timezone = false;
+
+    /**
      * @var string
      */
     protected static $custom_header_prefix = 'BUZZ-';
@@ -77,12 +82,29 @@ class Service extends \Buzz\EssentialsSdk\Service
     }
 
     /**
+     * Sets headers for forcing timezone which forces
+     * all date-times to return in the campaign
+     * timezone so no more messing around with
+     * configuring date and times
+     *
+     * @return void
+     */
+    public static function forceCampaignTimezones(bool $toggle)
+    {
+        self::$force_campaign_timezone = $toggle;
+    }
+
+    /**
      *
      */
     protected function prepareHeaders()
     {
         if (self::$stream) {
             $this->setCustomHeader('Stream', self::$stream);
+        }
+
+        if (self::$force_campaign_timezone) {
+            $this->setCustomHeader('force-campaign-timezone', true);
         }
 
         parent::prepareHeaders();
