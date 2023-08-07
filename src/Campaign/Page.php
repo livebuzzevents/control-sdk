@@ -52,15 +52,17 @@ class Page extends SdkObject
     }
 
     /**
-     * @param \Buzz\Control\Campaign\SdkObject[] ...$targets
+     * @param Stream $stream
+     * @param SdkObject[] ...$targets
      *
-     * @return \Buzz\EssentialsSdk\Collection
-     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
+     * @return Collection
+     * @throws Buzz\EssentialsSdk\Exceptions\ErrorException
      */
-    public function load(...$targets): Collection
+    public function load(Stream $stream, ...$targets): Collection
     {
         $request = [
-            'targets' => [],
+            'stream_id' => $stream->id,
+            'targets'   => [],
         ];
 
         foreach ($targets as $target) {
