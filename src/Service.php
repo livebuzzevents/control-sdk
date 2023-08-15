@@ -89,7 +89,7 @@ class Service extends \Buzz\EssentialsSdk\Service
      *
      * @return void
      */
-    public static function forceCampaignTimezones(bool $toggle)
+    public static function forceCampaignTimezones(bool $toggle = true)
     {
         self::$force_campaign_timezone = $toggle;
     }
