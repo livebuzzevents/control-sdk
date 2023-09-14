@@ -10,6 +10,7 @@ use Buzz\Control\Traits\SupportWrite;
  *
  * @property string $customer_id
  * @property string $exhibitor_id
+ * @property string $target_id
  * @property string $page_id
  * @property int $action
  * @property-read \Buzz\Control\Campaign\Customer $customer
