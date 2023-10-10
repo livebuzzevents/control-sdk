@@ -371,6 +371,19 @@ class Customer extends SdkObject
     }
 
     /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function getSeminars(): Collection
+    {
+        return Cast::many(
+            (new Seminar()),
+            $this->api()->get(
+                $this->getEndpoint($this->id . '/seminars')
+            )
+        );
+    }
+
+    /**
      * @param int $step
      */
     public function startFlow(int $step = 1): void
