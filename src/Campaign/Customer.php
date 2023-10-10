@@ -384,6 +384,19 @@ class Customer extends SdkObject
     }
 
     /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function getColleagues(): Collection
+    {
+        return Cast::many(
+            (new Customer()),
+            $this->api()->get(
+                $this->getEndpoint($this->id . '/colleagues')
+            )
+        );
+    }
+
+    /**
      * @param int $step
      */
     public function startFlow(int $step = 1): void
