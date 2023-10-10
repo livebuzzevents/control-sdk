@@ -14,6 +14,7 @@ use Buzz\EssentialsSdk\Collection;
  * Class Page
  *
  * @property string $identifier
+ * @property string $friendly_url
  * @property string $active
  * @property string $description
  * @property string $stream_id
