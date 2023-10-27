@@ -17,6 +17,7 @@ use Buzz\EssentialsSdk\Collection;
  * @property string $friendly_url
  * @property string $active
  * @property string $description
+ * @property string $footer
  * @property string $stream_id
  * @property string $parent_id
  * @property string $title
