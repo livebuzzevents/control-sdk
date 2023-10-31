@@ -5,6 +5,7 @@ namespace Buzz\Control\Traits;
 use Buzz\EssentialsSdk\Cast;
 use Buzz\EssentialsSdk\Exceptions\ErrorException;
 use Buzz\EssentialsSdk\Paging;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Traversable;
 
 /**
@@ -82,9 +83,13 @@ trait SupportRead
             throw new ErrorException('id required for reload');
         }
 
-        $this->copyFromArray(
-            $this->api()->get($this->getEndpoint($this->id))
-        );
+        try {
+            $this->copyFromArray(
+                $this->api()->get($this->getEndpoint($this->id))
+            );
+        } catch (ErrorException $exception) {
+            throw new NotFoundHttpException;
+        }
 
         $this->cleanDirtyAttributes();
     }
