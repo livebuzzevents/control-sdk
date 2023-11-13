@@ -386,6 +386,19 @@ class Customer extends SdkObject
     /**
      * @return \Illuminate\Support\Collection
      */
+    public function getOrders(): Collection
+    {
+        return Cast::many(
+            (new Customer()),
+            $this->api()->get(
+                $this->getEndpoint($this->id . '/orders')
+            )
+        );
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
     public function getColleagues(): Collection
     {
         return Cast::many(
