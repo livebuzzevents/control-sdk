@@ -62,7 +62,7 @@ class Page extends SdkObject
      * @return Collection
      * @throws Buzz\EssentialsSdk\Exceptions\ErrorException
      */
-    public function load(Stream $stream, ...$targets): Collection
+    public function load(Stream $stream, array $targets): Collection
     {
         $request = [
             'stream_id' => $stream->id,
