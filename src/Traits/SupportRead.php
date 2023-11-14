@@ -5,6 +5,7 @@ namespace Buzz\Control\Traits;
 use Buzz\EssentialsSdk\Cast;
 use Buzz\EssentialsSdk\Exceptions\ErrorException;
 use Buzz\EssentialsSdk\Paging;
+use Exception;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Traversable;
 
@@ -87,7 +88,7 @@ trait SupportRead
             $this->copyFromArray(
                 $this->api()->get($this->getEndpoint($this->id))
             );
-        } catch (ErrorException $exception) {
+        } catch (Exception $exception) {
             throw new NotFoundHttpException;
         }
 
