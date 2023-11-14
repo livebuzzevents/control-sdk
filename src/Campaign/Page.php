@@ -88,7 +88,7 @@ class Page extends SdkObject
      * @return \Buzz\EssentialsSdk\Collection
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
-    public function loadComponents(...$targets): Collection
+    public function loadComponents(array $targets): Collection
     {
         $request = [
             'targets' => [],
