@@ -62,12 +62,16 @@ class Page extends SdkObject
      * @return Collection
      * @throws Buzz\EssentialsSdk\Exceptions\ErrorException
      */
-    public function load(Stream $stream, array $targets): Collection
+    public function load(Stream $stream, array $targets, $filter = null): Collection
     {
         $request = [
             'stream_id' => $stream->id,
             'targets'   => [],
         ];
+
+        if ($filter) {
+            $request['filter'] = $filter;
+        }
 
         foreach ($targets as $target) {
             $request['targets'][] = [
