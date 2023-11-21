@@ -27,6 +27,7 @@ use Buzz\EssentialsSdk\Collection;
  * @property string $value
  * @property int $order
  * @property array $settings
+ * @property array $actions
  * @property bool $global_page
  * @property bool $global_components
  * @property-read \Buzz\Control\Campaign\Stream $stream
