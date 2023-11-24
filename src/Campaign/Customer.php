@@ -360,6 +360,19 @@ class Customer extends SdkObject
     /**
      * @return \Illuminate\Support\Collection
      */
+    public function getBasket(): Collection
+    {
+        return Cast::many(
+            (new Basket()),
+            $this->api()->get(
+                $this->getEndpoint($this->id . '/basket')
+            )
+        );
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
     public function getEmailInvites(): Collection
     {
         return Cast::many(
