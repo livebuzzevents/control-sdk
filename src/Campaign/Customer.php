@@ -358,11 +358,11 @@ class Customer extends SdkObject
     }
 
     /**
-     * @return \Illuminate\Support\Collection
+     * @return ?Basket
      */
-    public function getBasket(): Collection
+    public function getBasket(): ?Basket
     {
-        return Cast::many(
+        return Cast::single(
             (new Basket()),
             $this->api()->get(
                 $this->getEndpoint($this->id . '/basket')
