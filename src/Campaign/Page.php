@@ -58,7 +58,7 @@ class Page extends SdkObject
 
     /**
      * @param Stream $stream
-     * @param SdkObject[] ...$targets
+     * @param SdkObject[] $targets
      *
      * @return Collection
      * @throws Buzz\EssentialsSdk\Exceptions\ErrorException
@@ -88,7 +88,7 @@ class Page extends SdkObject
     }
 
     /**
-     * @param \Buzz\Control\Campaign\SdkObject[] ...$targets
+     * @param \Buzz\Control\Campaign\SdkObject[] $targets
      *
      * @return \Buzz\EssentialsSdk\Collection
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
@@ -117,9 +117,9 @@ class Page extends SdkObject
 
     /**
      * @param array $input
-     * @param \Buzz\Control\Campaign\SdkObject[] ...$targets
+     * @param \Buzz\Control\Campaign\SdkObject[] $targets
      */
-    public function saveComponents(array $input, ...$targets)
+    public function saveComponents(array $input, array $targets)
     {
         $request = [
             'targets'    => [],
