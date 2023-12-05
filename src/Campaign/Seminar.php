@@ -6,6 +6,8 @@ use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
+use Buzz\EssentialsSdk\Cast;
+use Illuminate\Support\Collection;
 
 /**
  * Class Seminar
@@ -66,5 +68,18 @@ class Seminar extends SdkObject
     public function syncTopics(array $topic_ids): void
     {
         $this->api()->post($this->getEndpoint("{$this->id}/sync-topics"), $topic_ids);
+    }
+
+    /**
+     * @return array
+     */
+    public function getCapacities(): array
+    {
+        return Cast::many(
+            (new Seminar()),
+            $this->api()->get(
+                $this->getEndpoint($this->id . '/fetch/capacities')
+            )
+        );
     }
 }
