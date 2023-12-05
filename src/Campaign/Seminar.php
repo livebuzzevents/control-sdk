@@ -75,11 +75,8 @@ class Seminar extends SdkObject
      */
     public function getCapacities(): array
     {
-        return Cast::many(
-            (new Seminar()),
-            $this->api()->get(
-                $this->getEndpoint($this->id . '/fetch/capacities')
-            )
+        return $this->api()->get(
+            $this->getEndpoint($this->id . '/fetch/capacities')
         );
     }
 }
