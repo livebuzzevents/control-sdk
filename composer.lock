@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b94ef7dbcb8d1ccc3c246c333e21bd09",
+    "content-hash": "a6017e7d698ebc36fcd576aebcfa2029",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -488,16 +488,16 @@
         },
         {
             "name": "livebuzz/essentials-sdk",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livebuzzevents/essentials-sdk.git",
-                "reference": "eb01a9a581bbb0079ec6bc4945976fbd15c16987"
+                "reference": "65cf7140f2c9bcf7d4fdaa552e5e15c67d55a181"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livebuzzevents/essentials-sdk/zipball/eb01a9a581bbb0079ec6bc4945976fbd15c16987",
-                "reference": "eb01a9a581bbb0079ec6bc4945976fbd15c16987",
+                "url": "https://api.github.com/repos/livebuzzevents/essentials-sdk/zipball/65cf7140f2c9bcf7d4fdaa552e5e15c67d55a181",
+                "reference": "65cf7140f2c9bcf7d4fdaa552e5e15c67d55a181",
                 "shasum": ""
             },
             "require": {
@@ -534,7 +534,7 @@
                 "php",
                 "sdk"
             ],
-            "time": "2022-07-19T13:24:39+00:00"
+            "time": "2023-12-15T11:26:56+00:00"
         },
         {
             "name": "nesbot/carbon",
