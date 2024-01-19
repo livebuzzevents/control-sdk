@@ -386,6 +386,14 @@ class Customer extends SdkObject
     }
 
     /**
+     *
+     */
+    public function removeFlow(): void
+    {
+        $this->api()->get($this->getEndpoint($this->id . '/remove-flow'));
+    }
+
+    /**
      * @param int $stepB
      */
     public function setFlowStep(int $step): void
