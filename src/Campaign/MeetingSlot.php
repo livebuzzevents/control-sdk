@@ -2,6 +2,8 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Traits\SupportRead;
+
 /**
  * Class MeetingSlot
  *
@@ -10,4 +12,5 @@ namespace Buzz\Control\Campaign;
  */
 class MeetingSlot extends SdkObject
 {
+    use SupportRead;
 }
