@@ -10,7 +10,7 @@
   "type": "package",
   "require": {
     "php": "^8.0",
-    "livebuzz/essentials-sdk": "2.0.0"
+    "livebuzz/essentials-sdk": "2.0.1"
   },
   "require-dev": {
     "phpunit/phpunit": "~10.0",
