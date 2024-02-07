@@ -14,5 +14,4 @@ use Buzz\Control\Traits\SupportCrud;
 class PwaSetting extends SdkObject
 {
     use SupportCrud;
-
 }
