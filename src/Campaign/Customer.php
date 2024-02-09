@@ -118,7 +118,6 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\SocialToken[] $social_tokens
  * @property-read \Buzz\Control\Campaign\Vote[] $created_votes
  * @property-read \Buzz\Control\Campaign\Vote[] $votes
- *
  */
 class Customer extends SdkObject
 {
@@ -381,6 +380,14 @@ class Customer extends SdkObject
                 $this->getEndpoint($this->id . '/email-invites')
             )
         );
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function fetchAttendeeFilters(): Collection
+    {
+        return $this->api()->get('fetch-attendee-filters');
     }
 
     /**
