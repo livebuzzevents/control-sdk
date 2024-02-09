@@ -387,7 +387,7 @@ class Customer extends SdkObject
      */
     public function fetchAttendeeFilters(): Collection
     {
-        return $this->api()->get('fetch-attendee-filters');
+        return collect($this->api()->get('fetch-attendee-filters'));
     }
 
     /**
