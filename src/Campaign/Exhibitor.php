@@ -89,6 +89,15 @@ class Exhibitor extends SdkObject
      * @return \Buzz\EssentialsSdk\Collection
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function fetchExhibitorFilters(): Collection
+    {
+        return collect($this->api()->get('fetch-exhibitor-filters'));
+    }
+
     public function getEmailInvites(): Collection
     {
         return Cast::many(
