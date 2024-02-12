@@ -9,7 +9,7 @@ use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportCrud;
 use Buzz\EssentialsSdk\Cast;
-use Buzz\EssentialsSdk\Collection;
+use Illuminate\Support\Collection;
 
 /**
  * Class Exhibitor
