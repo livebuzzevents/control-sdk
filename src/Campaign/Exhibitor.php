@@ -93,7 +93,7 @@ class Exhibitor extends SdkObject
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function fetchExhibitorFilters(): Collection
+    public function fetchFilters(): Collection
     {
         return collect($this->api()->get('fetch-exhibitor-filters'));
     }

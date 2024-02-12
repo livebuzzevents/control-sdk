@@ -385,7 +385,7 @@ class Customer extends SdkObject
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function fetchAttendeeFilters(): Collection
+    public function fetchFilters(): Collection
     {
         return collect($this->api()->get('fetch-attendee-filters'));
     }
