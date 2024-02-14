@@ -60,7 +60,7 @@ class Product extends SdkObject
     public function fetchForPwa(): Collection
     {
         return Cast::many(
-            (new Customer()),
+            (new Product()),
             $this->api()->get('pwa/fetch-products', [
                 'page'     => request('page'),
                 'per_page' => request('per_page'),
