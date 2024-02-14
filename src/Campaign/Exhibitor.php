@@ -106,7 +106,7 @@ class Exhibitor extends SdkObject
      * @return Collection
      * @throws ErrorException
      */
-    public function fetchPwaExhibitors(): Collection
+    public function fetchForPwa(): Collection
     {
         return Cast::many(
             (new Exhibitor()),

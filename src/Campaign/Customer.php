@@ -469,7 +469,7 @@ class Customer extends SdkObject
      * @return Collection
      * @throws ErrorException
      */
-    public function fetchPwaAttendees(): Collection
+    public function fetchForPwa(): Collection
     {
         return Cast::many(
             (new Customer()),
