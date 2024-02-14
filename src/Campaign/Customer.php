@@ -385,14 +385,6 @@ class Customer extends SdkObject
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function fetchFilters(): Collection
-    {
-        return collect($this->api()->get('fetch-attendee-filters'));
-    }
-
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     public function getSeminars(): Collection
     {
         return Cast::many(
@@ -471,5 +463,28 @@ class Customer extends SdkObject
     public function getOutgoingSsoOptions(string $integration_provider_id): ?array
     {
         return $this->api()->get($this->getEndpoint($this->id . '/outgoing-sso-options/' . $integration_provider_id));
+    }
+
+    /**
+     * @return Collection
+     * @throws ErrorException
+     */
+    public function fetchPwaAttendees(): Collection
+    {
+        return Cast::many(
+            (new Customer()),
+            $this->api()->get('pwa/fetch-attendees', [
+                'page'     => request('page'),
+                'per_page' => request('per_page'),
+            ])
+        );
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function fetchFilters(): Collection
+    {
+        return collect($this->api()->get('pwa/fetch-attendee-filters'));
     }
 }
