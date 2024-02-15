@@ -10,8 +10,8 @@ use Buzz\Control\Traits\SupportWrite;
  *
  * @property string $identifier
  * @property string $name
+ * @property string $type
  * @property string $color
- *
  * @property-read \Buzz\Control\Campaign\Seminar[] $pages
  */
 class Theater extends SdkObject
