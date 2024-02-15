@@ -19,7 +19,7 @@ use Illuminate\Support\Collection;
  * @property string $import_id
  * @property string $owner_id
  * @property string $publish
- * @property string $avatar
+ * @property string $image
  * @property string $identifier
  * @property string $name
  * @property string $exhibiting_name
