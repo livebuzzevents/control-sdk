@@ -21,11 +21,14 @@ use Buzz\EssentialsSdk\SdkObject as EssentialsSdkObject;
  */
 class MeetingRequest extends SdkObject
 {
-    public function request(): EssentialsSdkObject
+    public function request(Customer $host, Customer $guest, MeetingSlot $meetingSlot): EssentialsSdkObject
     {
         return Cast::single(
             (new MeetingRequest()),
-            $this->api()->post($this->getEndpoint($this->id . '/request'), request()->all())
+            $this->api()->post(
+                $this->getEndpoint(sprintf('%s/request/%s/%s/%s', $this->id, $host->id, $guest->id, $meetingSlot->id)),
+                request()->all()
+            )
         );
     }
 }
