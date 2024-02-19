@@ -8,7 +8,7 @@ use Buzz\EssentialsSdk\SdkObject as EssentialsSdkObject;
 /**
  * Class MeetingRequest
  *
- * @property int $status
+ * @property string $status
  * @property string $location_id
  * @property string $location_other
  * @property string $guest_id
