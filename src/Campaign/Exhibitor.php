@@ -103,18 +103,15 @@ class Exhibitor extends SdkObject
     }
 
     /**
-     * @return Collection
+     * @return array
      * @throws ErrorException
      */
-    public function fetchForPwa(): Collection
+    public function fetchForPwa(): array
     {
-        return Cast::many(
-            (new Exhibitor()),
-            $this->api()->get('pwa/fetch-exhibitors', [
-                'page'     => request('page'),
-                'per_page' => request('per_page'),
-            ])
-        );
+        return $this->api()->get('pwa/fetch-exhibitors', [
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
+        ]);
     }
 
     /**

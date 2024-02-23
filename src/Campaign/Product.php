@@ -54,18 +54,15 @@ class Product extends SdkObject
         HasFiles;
 
     /**
-     * @return Collection
+     * @return array
      * @throws ErrorException
      */
-    public function fetchForPwa(): Collection
+    public function fetchForPwa(): array
     {
-        return Cast::many(
-            (new Product()),
-            $this->api()->get('pwa/fetch-products', [
-                'page'     => request('page'),
-                'per_page' => request('per_page'),
-            ])
-        );
+        return $this->api()->get('pwa/fetch-products', [
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
+        ]);
     }
 
     /**

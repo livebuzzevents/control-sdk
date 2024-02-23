@@ -466,19 +466,16 @@ class Customer extends SdkObject
     }
 
     /**
-     * @return Collection
+     * @return array
      * @throws ErrorException
      */
-    public function fetchForPwa(Customer $customer): Collection
+    public function fetchForPwa(Customer $customer): array
     {
-        return Cast::many(
-            (new Customer()),
-            $this->api()->get('pwa/fetch-attendees', [
-                'customer_id' => $customer->id,
-                'page'        => request('page'),
-                'per_page'    => request('per_page'),
-            ])
-        );
+        return $this->api()->get('pwa/fetch-attendees', [
+            'customer_id' => $customer->id,
+            'page'        => request('page'),
+            'per_page'    => request('per_page'),
+        ]);
     }
 
     /**
