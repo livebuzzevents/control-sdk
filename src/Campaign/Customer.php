@@ -21,6 +21,7 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property bool $badge_printed
  * @property bool $badge_printed_onsite
  * @property bool $badge_viewed
+ * @property bool $notifications_enabled
  * @property bool $is_managed
  * @property bool $manages_customers
  * @property bool $meetings_enabled
