@@ -9,15 +9,17 @@ use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportCrud;
 use Buzz\EssentialsSdk\Cast;
+use Buzz\EssentialsSdk\Exceptions\ErrorException;
 use Illuminate\Support\Collection;
 
 /**
  * Class Exhibitor
  *
+ * @property bool $featured
  * @property string $import_id
  * @property string $owner_id
  * @property string $publish
- * @property string $avatar
+ * @property string $image
  * @property string $identifier
  * @property string $name
  * @property string $exhibiting_name
@@ -90,14 +92,6 @@ class Exhibitor extends SdkObject
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function fetchFilters(): Collection
-    {
-        return collect($this->api()->get('fetch-exhibitor-filters'));
-    }
-
     public function getEmailInvites(): Collection
     {
         return Cast::many(
@@ -106,5 +100,25 @@ class Exhibitor extends SdkObject
                 $this->getEndpoint($this->id . '/email-invites')
             )
         );
+    }
+
+    /**
+     * @return array
+     * @throws ErrorException
+     */
+    public function fetchForPwa(): array
+    {
+        return $this->api()->get('pwa/fetch-exhibitors', [
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
+        ]);
+    }
+
+    /**
+     * @return Collection
+     */
+    public function fetchFilters(): Collection
+    {
+        return collect($this->api()->get('pwa/fetch-exhibitor-filters'));
     }
 }

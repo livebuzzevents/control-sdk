@@ -9,10 +9,14 @@ use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportCrud;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
+use Buzz\EssentialsSdk\Cast;
+use Buzz\EssentialsSdk\Exceptions\ErrorException;
+use Illuminate\Support\Collection;
 
 /**
  * Class Product
  *
+ * @property bool $featured
  * @property string $identifier
  * @property string $name
  * @property string $description
@@ -31,6 +35,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $active
  * @property \DateTime $valid_from
  * @property \DateTime $valid_to
+ * @property-read string $avatar
  * @property-read string $content_capture_qr_code
  * @property-read string $content_capture_image
  * @property-read string $content_capture_pdf
@@ -47,4 +52,24 @@ class Product extends SdkObject
         WithAnswerHelpers,
         WithPropertyHelpers,
         HasFiles;
+
+    /**
+     * @return array
+     * @throws ErrorException
+     */
+    public function fetchForPwa(): array
+    {
+        return $this->api()->get('pwa/fetch-products', [
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
+        ]);
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function fetchFilters(): Collection
+    {
+        return collect($this->api()->get('pwa/fetch-product-filters'));
+    }
 }
