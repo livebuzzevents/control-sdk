@@ -2,6 +2,10 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\EssentialsSdk\Cast;
+use Buzz\EssentialsSdk\SdkObject as EssentialsSdkObject;
+use Illuminate\Support\Collection;
+
 /**
  * Class Meeting
  *
@@ -18,4 +22,18 @@ namespace Buzz\Control\Campaign;
  */
 class Meeting extends SdkObject
 {
+    public function guestAvailability(Customer $customer): array
+    {
+        return $this->api()->get($this->getEndpoint(sprintf('%s/guest-availability', $customer->id)));
+    }
+
+    public function customerHostAvailability(Customer $guest, Customer $host): array
+    {
+        return $this->api()->get($this->getEndpoint(sprintf('%s/%s/customer-host-availability', $guest->id, $host->id)));
+    }
+
+    public function exhibitorHostAvailability(Customer $guest, Exhibitor $host): array
+    {
+        return $this->api()->get($this->getEndpoint(sprintf('%s/%s/exhibitor-host-availability', $guest->id, $host->id)));
+    }
 }
