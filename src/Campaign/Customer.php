@@ -486,4 +486,12 @@ class Customer extends SdkObject
     {
         return collect($this->api()->get('pwa/fetch-attendee-filters'));
     }
+
+    /**
+     * @return array
+     */
+    public function meetingAgenda(): array
+    {
+        return $this->api()->get($this->getEndpoint($this->id . '/meeting-agenda/'));
+    }
 }
