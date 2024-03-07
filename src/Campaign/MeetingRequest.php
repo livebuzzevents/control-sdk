@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Traits\SupportRead;
 use Buzz\EssentialsSdk\Cast;
 use Buzz\EssentialsSdk\SdkObject as EssentialsSdkObject;
 
@@ -21,6 +22,8 @@ use Buzz\EssentialsSdk\SdkObject as EssentialsSdkObject;
  */
 class MeetingRequest extends SdkObject
 {
+    use SupportRead;
+
     public function requestWithCustomer(Customer $host, Customer $guest, MeetingSlot $meetingSlot): EssentialsSdkObject
     {
         return Cast::single(
@@ -43,6 +46,14 @@ class MeetingRequest extends SdkObject
                 $this->getEndpoint(sprintf('%s/%s/%s/request-with-exhibitor', $host->id, $guest->id, $meetingSlot->id)),
                 request()->all()
             )
+        );
+    }
+
+    public function cancel(Customer $customer, MeetingRequest $meetingRequest): bool
+    {
+        return $this->api()->post(
+            $this->getEndpoint(sprintf('%s/cancel/%s', $this->id, $meetingRequest->id)),
+            request()->all()
         );
     }
 }
