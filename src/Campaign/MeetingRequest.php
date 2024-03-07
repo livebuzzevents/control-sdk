@@ -49,10 +49,10 @@ class MeetingRequest extends SdkObject
         );
     }
 
-    public function cancel(Customer $customer, MeetingRequest $meetingRequest): bool
+    public function cancel(Customer $customer): bool
     {
         return $this->api()->post(
-            $this->getEndpoint(sprintf('%s/cancel/%s', $this->id, $meetingRequest->id)),
+            $this->getEndpoint(sprintf('%s/cancel/%s', $this->id, $customer->id)),
             request()->all()
         );
     }
