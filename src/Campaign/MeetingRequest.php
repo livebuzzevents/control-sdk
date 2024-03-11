@@ -49,11 +49,20 @@ class MeetingRequest extends SdkObject
         );
     }
 
-    public function cancel(Customer $customer): bool
+    public function reschedule(MeetingSlot $meetingSlot): EssentialsSdkObject
+    {
+        return Cast::single(
+            (new MeetingRequest()),
+            $this->api()->post(
+                $this->getEndpoint(sprintf('%s/reschedule/%s', $this->id, $meetingSlot->id)), request()->all()
+            )
+        );
+    }
+
+    public function cancel(): bool
     {
         return $this->api()->post(
-            $this->getEndpoint(sprintf('%s/cancel/%s', $this->id, $customer->id)),
-            request()->all()
+            $this->getEndpoint(sprintf('%s/cancel', $this->id)), request()->all()
         );
     }
 }
