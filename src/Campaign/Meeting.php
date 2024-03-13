@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Traits\SupportRead;
 use Buzz\EssentialsSdk\Cast;
 use Buzz\EssentialsSdk\SdkObject as EssentialsSdkObject;
 use Illuminate\Support\Collection;
@@ -22,9 +23,11 @@ use Illuminate\Support\Collection;
  */
 class Meeting extends SdkObject
 {
-    public function guestAvailability(Customer $customer): array
+    use SupportRead;
+
+    public function customerGuestAvailability(Customer $customer): array
     {
-        return $this->api()->get($this->getEndpoint(sprintf('%s/guest-availability', $customer->id)));
+        return $this->api()->get($this->getEndpoint(sprintf('%s/customer-guest-availability', $customer->id)));
     }
 
     public function customerHostAvailability(Customer $guest, Customer $host): array
@@ -33,9 +36,21 @@ class Meeting extends SdkObject
             ->get($this->getEndpoint(sprintf('%s/%s/customer-host-availability', $guest->id, $host->id)));
     }
 
-    public function exhibitorHostAvailability(Customer $guest, Exhibitor $host): array
+    public function reschedule(Customer $customer, MeetingSlot $meetingSlot): EssentialsSdkObject
     {
-        return $this->api()
-            ->get($this->getEndpoint(sprintf('%s/%s/exhibitor-host-availability', $guest->id, $host->id)));
+        return Cast::single(
+            (new Meeting()),
+            $this->api()->post(
+                $this->getEndpoint(sprintf('%s/%s/reschedule/%s', $customer->id, $this->id, $meetingSlot->id)),
+                request()->all()
+            )
+        );
+    }
+
+    public function cancel(): bool
+    {
+        return $this->api()->post(
+            $this->getEndpoint(sprintf('%s/cancel', $this->id)), request()->all()
+        );
     }
 }
