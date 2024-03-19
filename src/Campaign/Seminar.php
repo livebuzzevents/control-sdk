@@ -7,6 +7,7 @@ use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
 use Buzz\EssentialsSdk\Cast;
+use Buzz\EssentialsSdk\Exceptions\ErrorException;
 use Illuminate\Support\Collection;
 
 /**
@@ -78,5 +79,25 @@ class Seminar extends SdkObject
         return $this->api()->get(
             $this->getEndpoint($this->id . '/fetch/capacities')
         );
+    }
+
+    /**
+     * @return array
+     * @throws ErrorException
+     */
+    public function fetchForPwa(): array
+    {
+        return $this->api()->get('pwa/fetch-seminars', [
+            'page'         => request('page'),
+            'per_page'     => request('per_page'),
+        ]);
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function fetchFilters(): Collection
+    {
+        return collect($this->api()->get('pwa/fetch-seminar-filters'));
     }
 }

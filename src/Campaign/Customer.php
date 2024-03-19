@@ -470,7 +470,7 @@ class Customer extends SdkObject
      * @return array
      * @throws ErrorException
      */
-    public function fetchForPwa(): array
+    public function fetchAttendeesForPwa(): array
     {
         return $this->api()->get('pwa/fetch-attendees', [
             'page'         => request('page'),
@@ -481,9 +481,29 @@ class Customer extends SdkObject
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function fetchFilters(): Collection
+    public function fetchAttendeeFilters(): Collection
     {
         return collect($this->api()->get('pwa/fetch-attendee-filters'));
+    }
+
+    /**
+     * @return array
+     * @throws ErrorException
+     */
+    public function fetchSpeakersForPwa(): array
+    {
+        return $this->api()->get('pwa/fetch-speakers', [
+            'page'         => request('page'),
+            'per_page'     => request('per_page'),
+        ]);
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function fetchSpeakerFilters(): Collection
+    {
+        return collect($this->api()->get('pwa/fetch-speaker-filters'));
     }
 
     /**
