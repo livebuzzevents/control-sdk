@@ -470,11 +470,12 @@ class Customer extends SdkObject
      * @return array
      * @throws ErrorException
      */
-    public function fetchAttendeesForPwa(): array
+    public function fetchAttendeesForPwa(string $exhibitor_id = null): array
     {
         return $this->api()->get('pwa/fetch-attendees', [
-            'page'     => request('page'),
-            'per_page' => request('per_page'),
+            'exhibitor_id' => $exhibitor_id,
+            'page'         => request('page'),
+            'per_page'     => request('per_page'),
         ]);
     }
 
