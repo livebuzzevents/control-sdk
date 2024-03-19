@@ -473,8 +473,8 @@ class Customer extends SdkObject
     public function fetchAttendeesForPwa(): array
     {
         return $this->api()->get('pwa/fetch-attendees', [
-            'page'         => request('page'),
-            'per_page'     => request('per_page'),
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
         ]);
     }
 
@@ -493,8 +493,8 @@ class Customer extends SdkObject
     public function fetchSpeakersForPwa(): array
     {
         return $this->api()->get('pwa/fetch-speakers', [
-            'page'         => request('page'),
-            'per_page'     => request('per_page'),
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
         ]);
     }
 

@@ -88,8 +88,8 @@ class Seminar extends SdkObject
     public function fetchForPwa(): array
     {
         return $this->api()->get('pwa/fetch-seminars', [
-            'page'         => request('page'),
-            'per_page'     => request('per_page'),
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
         ]);
     }
 
