@@ -63,7 +63,8 @@ class MeetingRequest extends SdkObject
     public function cancel(): bool
     {
         return $this->api()->post(
-            $this->getEndpoint(sprintf('%s/cancel', $this->id)), request()->all()
+            $this->getEndpoint(sprintf('%s/cancel', $this->id)),
+            request()->all()
         );
     }
 
@@ -72,7 +73,8 @@ class MeetingRequest extends SdkObject
         return Cast::single(
             (new MeetingRequest()),
             $this->api()->post(
-                $this->getEndpoint(sprintf('%s/accept', $this->id)), request()->all()
+                $this->getEndpoint(sprintf('%s/accept', $this->id)),
+                request()->all()
             )
         );
     }
@@ -82,7 +84,8 @@ class MeetingRequest extends SdkObject
         return Cast::single(
             (new MeetingRequest()),
             $this->api()->post(
-                $this->getEndpoint(sprintf('%s/decline', $this->id)), request()->all()
+                $this->getEndpoint(sprintf('%s/decline', $this->id)),
+                request()->all()
             )
         );
     }

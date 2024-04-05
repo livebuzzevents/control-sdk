@@ -50,7 +50,8 @@ class Meeting extends SdkObject
     public function cancel(): bool
     {
         return $this->api()->post(
-            $this->getEndpoint(sprintf('%s/cancel', $this->id)), request()->all()
+            $this->getEndpoint(sprintf('%s/cancel', $this->id)),
+            request()->all()
         );
     }
 }
