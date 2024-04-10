@@ -512,6 +512,6 @@ class Customer extends SdkObject
      */
     public function meetingAgenda(): array
     {
-        return $this->api()->get($this->getEndpoint($this->id . '/meeting-agenda/'));
+        return $this->api()->get($this->getEndpoint($this->id . '/meeting-agenda'));
     }
 }
