@@ -31,6 +31,7 @@ use Illuminate\Support\Collection;
  * @property-read int $spaces_taken
  * @property-read int $spaces_available
  * @property-read string $signed_attendees_download_link
+ * @property-read \Buzz\Control\Campaign\Link[] $links
  * @property-read \Buzz\Control\Campaign\Theater $theater
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\Product $product
