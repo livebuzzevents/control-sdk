@@ -70,6 +70,7 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property-read string $signed_apple_wallet_pass_link
  * @property-read string $signed_e_badge_link
  * @property-write string $password
+ * @property-read \Buzz\Control\Campaign\OrderProduct[] $assigned_order_products
  * @property-read \Buzz\Control\Campaign\Address[] $addresses
  * @property-read \Buzz\Control\Campaign\Allowance[] $allowances
  * @property-read \Buzz\Control\Campaign\AlternativeId[] $alternative_ids
@@ -117,7 +118,6 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\SocialToken[] $social_tokens
  * @property-read \Buzz\Control\Campaign\Vote[] $created_votes
  * @property-read \Buzz\Control\Campaign\Vote[] $votes
- *
  */
 class Customer extends SdkObject
 {
