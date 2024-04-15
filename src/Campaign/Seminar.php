@@ -2,11 +2,11 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\HasAreas;
 use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
-use Buzz\EssentialsSdk\Cast;
 use Buzz\EssentialsSdk\Exceptions\ErrorException;
 use Illuminate\Support\Collection;
 
@@ -46,6 +46,7 @@ class Seminar extends SdkObject
     use SupportRead,
         SupportWrite,
         Translatable,
+        HasAreas,
         HasFiles;
 
     /**
