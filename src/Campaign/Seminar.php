@@ -87,9 +87,9 @@ class Seminar extends SdkObject
      * @return array
      * @throws ErrorException
      */
-    public function fetchForPwa(): array
+    public function fetchForApp(): array
     {
-        return $this->api()->get('pwa/fetch-seminars', [
+        return $this->api()->get('app/fetch-seminars', [
             'page'     => request('page'),
             'per_page' => request('per_page'),
         ]);
@@ -100,6 +100,6 @@ class Seminar extends SdkObject
      */
     public function fetchFilters(): Collection
     {
-        return collect($this->api()->get('pwa/fetch-seminar-filters'));
+        return collect($this->api()->get('app/fetch-seminar-filters'));
     }
 }

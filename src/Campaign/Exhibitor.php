@@ -106,9 +106,9 @@ class Exhibitor extends SdkObject
      * @return array
      * @throws ErrorException
      */
-    public function fetchForPwa(): array
+    public function fetchForApp(): array
     {
-        return $this->api()->get('pwa/fetch-exhibitors', [
+        return $this->api()->get('app/fetch-exhibitors', [
             'page'     => request('page'),
             'per_page' => request('per_page'),
         ]);
@@ -119,6 +119,6 @@ class Exhibitor extends SdkObject
      */
     public function fetchFilters(): Collection
     {
-        return collect($this->api()->get('pwa/fetch-exhibitor-filters'));
+        return collect($this->api()->get('app/fetch-exhibitor-filters'));
     }
 }

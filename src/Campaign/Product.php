@@ -57,9 +57,9 @@ class Product extends SdkObject
      * @return array
      * @throws ErrorException
      */
-    public function fetchForPwa(): array
+    public function fetchForApp(): array
     {
-        return $this->api()->get('pwa/fetch-products', [
+        return $this->api()->get('app/fetch-products', [
             'page'     => request('page'),
             'per_page' => request('per_page'),
         ]);
@@ -70,6 +70,6 @@ class Product extends SdkObject
      */
     public function fetchFilters(): Collection
     {
-        return collect($this->api()->get('pwa/fetch-product-filters'));
+        return collect($this->api()->get('app/fetch-product-filters'));
     }
 }
