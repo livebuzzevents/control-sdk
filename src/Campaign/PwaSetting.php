@@ -9,6 +9,7 @@ use Buzz\Control\Traits\SupportCrud;
  *
  * @property string $customer_id
  * @property string $device_id
+ * @property string $comet_auth_token
  */
 class PwaSetting extends SdkObject
 {
