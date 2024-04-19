@@ -9,6 +9,7 @@ use Buzz\Control\Traits\SupportCrud;
 /**
  * Class Article
  *
+ * @property-read string $avatar
  * @property string $title
  * @property string $content
  * @property boolean $featured
