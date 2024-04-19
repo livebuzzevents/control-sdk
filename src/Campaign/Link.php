@@ -10,7 +10,8 @@ use Buzz\Control\Traits\SupportCrud;
  *
  * @property string $type
  * @property string $url
- *
+ * @property-read bool $is_video
+ * @property-read bool $is_embeddable_video
  */
 class Link extends SdkObject
 {
