@@ -20,6 +20,7 @@ use Buzz\Control\SdkObject as BaseSdkObject;
  * @property array $settings
  * @property boolean $system
  * @property-read string $url
+ * @property-read string $extension
  */
 class File extends SdkObject
 {
