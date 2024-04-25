@@ -14,6 +14,7 @@ namespace Buzz\Control\Campaign;
  * @property-read array $social_connect_urls
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Stream $stream
+ * @property-read \Buzz\Control\Campaign\CustomerFlowLog[] $logs
  */
 class CustomerFlow extends SdkObject
 {
