@@ -12,7 +12,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $name
  * @property string $type
  * @property string $color
- * @property string $text_color
+ * @property string $text_color_hexstring
  * @property-read \Buzz\Control\Campaign\Seminar[] $pages
  */
 class Theater extends SdkObject
