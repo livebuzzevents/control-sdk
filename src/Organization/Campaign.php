@@ -18,12 +18,12 @@ use Buzz\Control\Traits\SupportRead;
  * @property string $dupe_exhibitors
  * @property array $dupe_rules
  * @property array $dashboard_filters
- * @property \DateTime $starts_at
- * @property \DateTime $ends_at
- * @property \DateTime $show_starts_at
- * @property \DateTime $show_ends_at
- * @property \DateTime $reg_ends_at
- * @property \DateTime $hub_ends_at
+ * @property \Carbon\Carbon $starts_at
+ * @property \Carbon\Carbon $ends_at
+ * @property \Carbon\Carbon $show_starts_at
+ * @property \Carbon\Carbon $show_ends_at
+ * @property \Carbon\Carbon $reg_ends_at
+ * @property \Carbon\Carbon $hub_ends_at
  * @property string $language
  * @property array $additional_languages
  * @property string $show_timezone

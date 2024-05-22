@@ -12,7 +12,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $name
  * @property string $description
  * @property-read int $votes_count
- * @property \DateTime $deadline_at
+ * @property \Carbon\Carbon $deadline_at
  * @property-read \Buzz\Control\Campaign\Vote[] $votes
  */
 class VoteGroup extends SdkObject

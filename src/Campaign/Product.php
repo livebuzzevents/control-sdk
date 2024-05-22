@@ -33,8 +33,8 @@ use Illuminate\Support\Collection;
  * @property array $actions
  * @property-read string $currency
  * @property string $active
- * @property \DateTime $valid_from
- * @property \DateTime $valid_to
+ * @property \Carbon\Carbon $valid_from
+ * @property \Carbon\Carbon $valid_to
  * @property-read string $avatar
  * @property-read string $content_capture_qr_code
  * @property-read string $content_capture_image

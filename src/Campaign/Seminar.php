@@ -8,6 +8,7 @@ use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
 use Buzz\EssentialsSdk\Exceptions\ErrorException;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
 /**
@@ -25,8 +26,8 @@ use Illuminate\Support\Collection;
  * @property array $settings
  * @property string $source
  * @property string $source_id
- * @property \DateTime $ends_at
- * @property \DateTime $starts_at
+ * @property \Carbon\Carbon $ends_at
+ * @property \Carbon\Carbon $starts_at
  * @property-read string $content_capture_qr_code
  * @property-read int $spaces_taken
  * @property-read int $spaces_available

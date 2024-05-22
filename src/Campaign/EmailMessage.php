@@ -21,7 +21,7 @@ namespace Buzz\Control\Campaign;
  * @property int $opens
  * @property array $details
  * @property string $process_id
- * @property \DateTime $provider_deleted_at
+ * @property \Carbon\Carbon $provider_deleted_at
  * @property-read \Buzz\Control\Campaign\SingleShot $single_shot
  * @property-read \Buzz\Control\Campaign\Automation $automation
  * @property-read \Buzz\Control\Campaign\EmailMessageTemplate $template

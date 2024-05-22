@@ -37,7 +37,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $cloned_campaign_id
  * @property bool $smart_match_synced
  * @property array $details
- * @property \DateTime $expires_at
+ * @property \Carbon\Carbon $expires_at
  * @property-read \Buzz\Control\Campaign\LeadGroup $group
  * @property-read \Buzz\Control\Campaign\Address[] $addresses
  * @property-read \Buzz\Control\Campaign\Answer[] $answers

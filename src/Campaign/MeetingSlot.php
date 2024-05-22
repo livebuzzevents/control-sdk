@@ -7,8 +7,8 @@ use Buzz\Control\Traits\SupportRead;
 /**
  * Class MeetingSlot
  *
- * @property \DateTime $ends_at
- * @property \DateTime $starts_at
+ * @property \Carbon\Carbon $ends_at
+ * @property \Carbon\Carbon $starts_at
  */
 class MeetingSlot extends SdkObject
 {

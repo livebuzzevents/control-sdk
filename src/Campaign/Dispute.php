@@ -15,7 +15,7 @@ namespace Buzz\Control\Campaign;
  * @property array $captured
  * @property array $settled
  * @property array $status
- * @property \DateTime $caputed_at
+ * @property \Carbon\Carbon $caputed_at
  *
  * @property-read \Buzz\Control\Campaign\Charge $charge
  * @property-read \Buzz\Control\Campaign\Fee[] $fees

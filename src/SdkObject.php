@@ -6,8 +6,8 @@ namespace Buzz\Control;
  * Class SdkObject
  *
  * @property string $id
- * @property \DateTime $updated_at
- * @property \DateTime $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property \Carbon\Carbon $created_at
  */
 class SdkObject extends \Buzz\EssentialsSdk\SdkObject
 {
