@@ -77,6 +77,7 @@ use Buzz\EssentialsSdk\Collection;
  * @property-read \Buzz\Control\Campaign\Customer $main_contact
  * @property-read \Buzz\Control\Campaign\Customer[] $customers
  * @property-read \Buzz\Control\Campaign\Allowance[] $allowances
+ * @property-read string $signed_all_favourites_download_link
  */
 class Exhibitor extends SdkObject
 {
