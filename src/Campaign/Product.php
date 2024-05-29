@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\HasFavourites;
 use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
@@ -46,5 +47,6 @@ class Product extends SdkObject
         Translatable,
         WithAnswerHelpers,
         WithPropertyHelpers,
+        HasFavourites,
         HasFiles;
 }

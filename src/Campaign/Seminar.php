@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\HasFavourites;
 use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Traits\SupportRead;
@@ -42,6 +43,7 @@ class Seminar extends SdkObject
     use SupportRead,
         SupportWrite,
         Translatable,
+        HasFavourites,
         HasFiles;
 
     /**
