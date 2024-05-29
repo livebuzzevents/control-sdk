@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\HasAreas;
+use Buzz\Control\Campaign\Traits\HasFavourites;
 use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Taggable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
@@ -85,6 +86,7 @@ class Exhibitor extends SdkObject
         Taggable,
         WithAnswerHelpers,
         WithPropertyHelpers,
+        HasFavourites,
         HasFiles;
 
     /**

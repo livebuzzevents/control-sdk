@@ -5,6 +5,7 @@ namespace Buzz\Control\Campaign;
 use Buzz\Control\Campaign\Traits\CanSendEmailMessage;
 use Buzz\Control\Campaign\Traits\CanSendSmsMessage;
 use Buzz\Control\Campaign\Traits\HasAreas;
+use Buzz\Control\Campaign\Traits\HasFavourites;
 use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Taggable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
@@ -130,6 +131,7 @@ class Customer extends SdkObject
         Taggable,
         WithAnswerHelpers,
         WithPropertyHelpers,
+        HasFavourites,
         HasFiles;
 
     /**
