@@ -69,6 +69,7 @@ use Illuminate\Support\Collection;
  * @property-read \Buzz\Control\Campaign\Property[] $properties
  * @property-read \Buzz\Control\Campaign\Scanner[] $scanners
  * @property-read \Buzz\Control\Campaign\Scan[] $scans
+ * @property-read \Buzz\Control\Campaign\Seminar[] $seminars
  * @property-read \Buzz\Control\Campaign\PageActivity[] $page_activities
  * @property-read \Buzz\Control\Campaign\ExhibitorPressRelease[] $press_releases
  * @property-read \Buzz\Control\Campaign\ModelTag[] $tags
