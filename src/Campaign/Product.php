@@ -26,6 +26,7 @@ use Illuminate\Support\Collection;
  * @property string $product_id
  * @property string $type
  * @property int $cost
+ * @property int $dynamic_cost
  * @property-read int $vat
  * @property int $vat_percentage
  * @property-read int $total
