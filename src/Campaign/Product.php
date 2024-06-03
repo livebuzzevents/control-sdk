@@ -26,6 +26,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read int $vat
  * @property int $vat_percentage
  * @property-read int $total
+ * @property int $dynamic_total
  * @property string $shippable
  * @property string $publish
  * @property array $actions
