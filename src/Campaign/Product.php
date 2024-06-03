@@ -30,6 +30,7 @@ use Illuminate\Support\Collection;
  * @property-read int $vat
  * @property int $vat_percentage
  * @property-read int $total
+ * @property-read int $dynamic_total
  * @property string $shippable
  * @property string $publish
  * @property array $actions
