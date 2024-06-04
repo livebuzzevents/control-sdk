@@ -402,6 +402,19 @@ class Customer extends SdkObject
     /**
      * @return \Illuminate\Support\Collection
      */
+    public function getFavourites(): Collection
+    {
+        return Cast::many(
+            (new Favourite()),
+            $this->api()->get(
+                $this->getEndpoint($this->id . '/favourites')
+            )
+        );
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
     public function getOrders(): Collection
     {
         return Cast::many(
