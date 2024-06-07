@@ -137,12 +137,14 @@ class Page extends SdkObject
             ];
         }
 
+        $saveComponents = $this->api()->post(
+            $this->getEndpoint($this->id . '/save-components'),
+            $request
+        );
+
         return Cast::single(
-            app('\\Buzz\\Control\\Campaign\\'. class_basename($target)),
-            $this->api()->post(
-                $this->getEndpoint($this->id . '/save-components'),
-                $request
-            )
+            app('\\Buzz\\Control\\Campaign\\' . key($saveComponents)),
+            $saveComponents[key($saveComponents)]
         );
     }
 }
