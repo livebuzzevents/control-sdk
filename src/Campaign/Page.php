@@ -5,11 +5,11 @@ namespace Buzz\Control\Campaign;
 use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
-use Buzz\Control\SdkObject as BuzzSdkObject;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
 use Buzz\EssentialsSdk\Cast;
 use Buzz\EssentialsSdk\Collection;
+use Illuminate\Support\Str;
 
 /**
  * Class Page
@@ -139,7 +139,7 @@ class Page extends SdkObject
         }
 
         return Cast::single(
-            (new BuzzSdkObject()),
+            app('\\Buzz\\Control\\Campaign\\'. class_basename($target)),
             $this->api()->post(
                 $this->getEndpoint($this->id . '/save-components'),
                 $request
