@@ -9,7 +9,6 @@ use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
 use Buzz\EssentialsSdk\Cast;
 use Buzz\EssentialsSdk\Collection;
-use Illuminate\Support\Str;
 
 /**
  * Class Page
