@@ -11,6 +11,7 @@ use Buzz\EssentialsSdk\Cast;
  * @property string $name
  * @property string $user_id
  * @property string $exhibitor_id
+ * @property array $response
  * @property string $type
  * @property array $settings
  * @property boolean $configured
