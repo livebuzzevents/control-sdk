@@ -125,18 +125,4 @@ class Exhibitor extends SdkObject
     {
         return collect($this->api()->get('app/fetch-exhibitor-filters'));
     }
-
-    /**
-     * @return \Buzz\EssentialsSdk\Collection
-     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
-     */
-    public function getImports(): Collection
-    {
-        return Cast::many(
-            (new Import()),
-            $this->api()->get(
-                $this->getEndpoint($this->id . '/imports')
-            )
-        );
-    }
 }
