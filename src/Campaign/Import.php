@@ -4,7 +4,6 @@ namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Traits\SupportRead;
 use Buzz\EssentialsSdk\Cast;
-use Illuminate\Support\Str;
 
 /**
  * Class Import
@@ -25,19 +24,17 @@ class Import extends SdkObject
 
     public function exhibitor(Exhibitor $exhibitor)
     {
-        $import = Cast::single(
+        return Cast::single(
             (new Import()),
-            $this->api()->post($this->getEndpoint(sprintf('exhibitor/%s', $exhibitor->id)), request()->all())
+            $this->api()->post(
+                $this->getEndpoint(sprintf('exhibitor/%s', $exhibitor->id)),
+                array_merge(request()->except('file'), [
+                    'file' => [
+                        'content' => base64_encode(request()->file('file')->get()),
+                        'name'    => request()->input('filename'),
+                    ],
+                ])
+            )
         );
-
-        (new File())->add(
-            $import,
-            "$import->name.xlsx",
-            request()->file('file')->get(),
-            Str::slug($import->name),
-            'private'
-        );
-
-        return $import;
     }
 }
