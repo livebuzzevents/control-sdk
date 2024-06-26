@@ -389,12 +389,14 @@ class Customer extends SdkObject
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function getSeminars(): Collection
+    public function getSeminars(Seminar $seminar = null): Collection
     {
+        $endpoint = $seminar ? "/seminars/$seminar->id" : '/seminars';
+
         return Cast::many(
             (new Seminar()),
             $this->api()->get(
-                $this->getEndpoint($this->id . '/seminars')
+                $this->getEndpoint($this->id . $endpoint)
             )
         );
     }
