@@ -14,7 +14,6 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $identifier
  * @property string $title
  * @property string $description
- * @property string $exhibitor_id
  * @property string $theater_id
  * @property int $capacity
  * @property string $colour
@@ -37,6 +36,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $speakers
  * @property-read \Buzz\Control\Campaign\Scanner[] $scanners
  * @property-read \Buzz\Control\Campaign\SeminarTopic[] $topics
+ * @property-read \Buzz\Control\Campaign\Exhibitor[] $exhibitors
  */
 class Seminar extends SdkObject
 {
