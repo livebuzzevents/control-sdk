@@ -60,6 +60,17 @@ class MeetingRequest extends SdkObject
         );
     }
 
+    public function reassign(Customer $customer, MeetingSlot $meetingSlot, string $type): EssentialsSdkObject
+    {
+        return Cast::single(
+            (new MeetingRequest()),
+            $this->api()->post(
+                $this->getEndpoint(sprintf('%s/%s/reassign/%s/%s', $customer->id, $this->id, $meetingSlot->id, $type)),
+                request()->all()
+            )
+        );
+    }
+
     public function cancel(): bool
     {
         return $this->api()->post(
