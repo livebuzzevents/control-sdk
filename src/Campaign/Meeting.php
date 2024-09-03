@@ -3,9 +3,9 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Traits\SupportRead;
+use Buzz\Control\Traits\SupportWrite;
 use Buzz\EssentialsSdk\Cast;
 use Buzz\EssentialsSdk\SdkObject as EssentialsSdkObject;
-use Illuminate\Support\Collection;
 
 /**
  * Class Meeting
@@ -16,6 +16,7 @@ use Illuminate\Support\Collection;
  * @property string $guest_id
  * @property string $host_id
  * @property string $meeting_slot_id
+ * @property string $meeting_happened
  * @property-read \Buzz\Control\Campaign\Theater $location
  * @property-read \Buzz\Control\Campaign\Customer $guest
  * @property-read \Buzz\Control\Campaign\Customer $host
@@ -23,7 +24,7 @@ use Illuminate\Support\Collection;
  */
 class Meeting extends SdkObject
 {
-    use SupportRead;
+    use SupportRead, SupportWrite;
 
     public function customerGuestAvailability(Customer $customer): array
     {
@@ -42,6 +43,17 @@ class Meeting extends SdkObject
             (new Meeting()),
             $this->api()->post(
                 $this->getEndpoint(sprintf('%s/%s/reschedule/%s', $customer->id, $this->id, $meetingSlot->id)),
+                request()->all()
+            )
+        );
+    }
+
+    public function reassign(Customer $customer, MeetingSlot $meetingSlot, string $type): EssentialsSdkObject
+    {
+        return Cast::single(
+            (new Meeting()),
+            $this->api()->post(
+                $this->getEndpoint(sprintf('%s/%s/reassign/%s/%s', $customer->id, $this->id, $meetingSlot->id, $type)),
                 request()->all()
             )
         );
