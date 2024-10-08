@@ -8,6 +8,7 @@ use Buzz\Control\Traits\SupportRead;
  * Class Site
  *
  * @property string $site
+ * @property string $type
  * @property string $organization_id
  * @property string $campaign_id
  * @property string $stream_id
