@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8852e85b29b82c28c564c78311d6e2ca",
+    "content-hash": "1c30c52202e407a72fac57229dca936a",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -816,16 +816,16 @@
         },
         {
             "name": "livebuzz/essentials-sdk",
-            "version": "v2.0.4",
+            "version": "v2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livebuzzevents/essentials-sdk.git",
-                "reference": "29f783170ed4a6576cf4314e63dc867d9b7e5f34"
+                "reference": "9c7fb5573191a61efb35e73daa1ca84357f33ee6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livebuzzevents/essentials-sdk/zipball/29f783170ed4a6576cf4314e63dc867d9b7e5f34",
-                "reference": "29f783170ed4a6576cf4314e63dc867d9b7e5f34",
+                "url": "https://api.github.com/repos/livebuzzevents/essentials-sdk/zipball/9c7fb5573191a61efb35e73daa1ca84357f33ee6",
+                "reference": "9c7fb5573191a61efb35e73daa1ca84357f33ee6",
                 "shasum": ""
             },
             "require": {
@@ -833,7 +833,7 @@
                 "illuminate/support": "^10.0",
                 "laravel/helpers": "^1.6",
                 "nesbot/carbon": "^2.16",
-                "php": "^8.0",
+                "php": "^8.2",
                 "symfony/http-kernel": "v7.1.5"
             },
             "require-dev": {
@@ -864,9 +864,9 @@
             ],
             "support": {
                 "issues": "https://github.com/livebuzzevents/essentials-sdk/issues",
-                "source": "https://github.com/livebuzzevents/essentials-sdk/tree/v2.0.4"
+                "source": "https://github.com/livebuzzevents/essentials-sdk/tree/v2.0.5"
             },
-            "time": "2024-10-22T18:05:03+00:00"
+            "time": "2024-10-22T18:26:45+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -4429,7 +4429,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.0"
+        "php": "^8.2"
     },
     "platform-dev": {},
     "plugin-api-version": "2.6.0"
