@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c45fde445025333459d410ec3879ec22",
+    "content-hash": "1c6388045bf317298ee4495e94d91b2b",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -746,16 +746,16 @@
         },
         {
             "name": "livebuzz/essentials-sdk",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livebuzzevents/essentials-sdk.git",
-                "reference": "f1285edc21fac814e244809e7886a9fc76b3c4df"
+                "reference": "5d91d553b432143b0b101aae806507edd3a1fbaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livebuzzevents/essentials-sdk/zipball/f1285edc21fac814e244809e7886a9fc76b3c4df",
-                "reference": "f1285edc21fac814e244809e7886a9fc76b3c4df",
+                "url": "https://api.github.com/repos/livebuzzevents/essentials-sdk/zipball/5d91d553b432143b0b101aae806507edd3a1fbaa",
+                "reference": "5d91d553b432143b0b101aae806507edd3a1fbaa",
                 "shasum": ""
             },
             "require": {
@@ -793,9 +793,9 @@
             ],
             "support": {
                 "issues": "https://github.com/livebuzzevents/essentials-sdk/issues",
-                "source": "https://github.com/livebuzzevents/essentials-sdk/tree/v2.0.2"
+                "source": "https://github.com/livebuzzevents/essentials-sdk/tree/v2.0.3"
             },
-            "time": "2024-01-31T18:18:01+00:00"
+            "time": "2024-10-22T16:31:13+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -3546,12 +3546,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.0"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
