@@ -31,20 +31,28 @@ class Lookup extends SdkObject
     /**
      * @param string $country
      * @param string $term
+     * @param string $id
      *
      * @return mixed
-     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
+     * @throws ErrorException
      */
-    public function addressByTerm(string $country, string $term)
+    public function addressByTerm(string $country, string $term, ?string $id)
     {
         if (!$country) {
             throw new ErrorException('Country required!');
         }
+
         if (!$term) {
             throw new ErrorException('Term required!');
         }
 
-        return $this->api()->get($this->getEndpoint("address-by-term/{$country}/{$term}"));
+        $urlParams = "$country/$term";
+
+        if ($id) {
+            $urlParams .= "/$id";
+        }
+
+        return $this->api()->get($this->getEndpoint("address-by-term/$urlParams"));
     }
 
     /**
