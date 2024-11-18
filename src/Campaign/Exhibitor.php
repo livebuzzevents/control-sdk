@@ -96,11 +96,14 @@ class Exhibitor extends SdkObject
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
 
-    public function getFlattenedAllowances(string $entitlement): Collection
+    public function getFlattenedAllowances(string $entitlement, string $type): Collection
     {
         return collect(
             $this->api()->post(
-                $this->getEndpoint($this->id . '/flattened-allowances'), ['entitlement' => $entitlement]
+                $this->getEndpoint($this->id . '/flattened-allowances'), [
+                    'entitlement' => $entitlement,
+                    'type'        => $type,
+                ]
             )
         );
     }
