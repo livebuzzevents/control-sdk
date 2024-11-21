@@ -11,7 +11,7 @@ trait Taggable
      */
     public function tag(string $tag)
     {
-        return (new Tag())->tag($this, urlencode($tag));
+        return (new Tag())->tag($this, str_replace('/', '', $tag));
     }
 
     /**
@@ -19,7 +19,7 @@ trait Taggable
      */
     public function untag(string $tag)
     {
-        return (new Tag())->untag($this, urlencode($tag));
+        return (new Tag())->untag($this, str_replace('/', '', $tag));
     }
 
     /**
