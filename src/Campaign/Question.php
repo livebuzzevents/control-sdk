@@ -16,6 +16,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $exhibitor_id
  * @property string $type
  * @property array $rules
+ * @property int $order
  * @property \Buzz\Control\Campaign\QuestionOption[] $options
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\QuestionOptionGroup[] $question_option_groups
