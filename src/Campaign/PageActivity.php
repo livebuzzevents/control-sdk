@@ -9,6 +9,7 @@ use Buzz\Control\Traits\SupportWrite;
  * Class PageActivity
  *
  * @property string $customer_id
+ * @property string $target_id
  * @property string $exhibitor_id
  * @property string $page_id
  * @property int $action
