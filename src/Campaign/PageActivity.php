@@ -24,6 +24,13 @@ class PageActivity extends SdkObject
     use SupportRead,
         SupportWrite;
 
+    public function associate(SdkObject $object)
+    {
+        $this->data['target'] = $object;
+        $this->target_type    = class_basename($object);
+        $this->target_id      = $object->id;
+    }
+
     public function complete()
     {
         return $this->api()->post($this->getEndpoint( 'complete'), $this->prepareRequestData());
