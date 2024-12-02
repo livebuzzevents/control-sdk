@@ -20,4 +20,9 @@ class PageActivity extends SdkObject
 {
     use SupportRead,
         SupportWrite;
+
+    public function complete()
+    {
+        return $this->api()->post($this->getEndpoint( 'complete'), $this->prepareRequestData());
+    }
 }
