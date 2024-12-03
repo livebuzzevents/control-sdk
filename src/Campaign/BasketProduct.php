@@ -4,6 +4,8 @@ namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
+use Buzz\Control\Traits\SupportDelete;
+use Buzz\Control\Traits\SupportRead;
 
 /**
  * Class BasketProduct
@@ -28,6 +30,8 @@ use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
  */
 class BasketProduct extends SdkObject
 {
-    use WithAnswerHelpers,
+    use SupportRead,
+        SupportDelete,
+        WithAnswerHelpers,
         WithPropertyHelpers;
 }
