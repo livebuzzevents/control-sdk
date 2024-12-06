@@ -6,7 +6,7 @@ use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
 
 /**
- * Class ChatMessage
+ * Class ChatConversation
  *
  * @property string $sender_type
  * @property string $sender_id
@@ -16,19 +16,16 @@ use Buzz\Control\Traits\SupportWrite;
  * @property bool $read
  * @property string $conversation_id
  */
-class ChatMessage extends SdkObject
+class ChatConversation extends SdkObject
 {
     use SupportRead, SupportWrite;
 
-    public function send(string $message, string $sender_id, string $recipient_id): ChatMessage
+    public function create(string $conversation_id): ChatConversation
     {
         return $this->api()->post(
-            $this->getEndpoint('messages/send'),
+            $this->getEndpoint('conversations/create'),
             [
-                'message' => $message,
-                'sender_id' => $sender_id,
-                'recipient_id' => $recipient_id,
-            ]
+                'id' => $conversation_id,]
         );
     }
 }
