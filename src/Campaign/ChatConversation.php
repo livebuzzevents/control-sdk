@@ -23,7 +23,7 @@ class ChatConversation extends SdkObject
     public function create(string $conversation_id): ChatConversation
     {
         return $this->api()->post(
-            $this->getEndpoint('conversations/create'),
+            $this->getEndpoint('chat-conversations/create'),
             [
                 'id' => $conversation_id,]
         );
