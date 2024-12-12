@@ -20,14 +20,15 @@ class ChatMessage extends SdkObject
 {
     use SupportRead, SupportWrite;
 
-    public function send(string $message, string $sender_id, string $recipient_id): ChatMessage
+    public function send(string $message, string $sender_id, string $recipient_id, string $conversation_id): ChatMessage
     {
         return $this->api()->post(
-            $this->getEndpoint('messages/send'),
+            $this->getEndpoint('send'),
             [
                 'message' => $message,
                 'sender_id' => $sender_id,
                 'recipient_id' => $recipient_id,
+                'conversation_id' => $conversation_id,
             ]
         );
     }
