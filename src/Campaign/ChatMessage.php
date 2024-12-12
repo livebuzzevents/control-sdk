@@ -32,4 +32,15 @@ class ChatMessage extends SdkObject
             ]
         );
     }
+
+    public function markAsRead(array $message_ids, string $recipient_id): ChatMessage
+    {
+        return $this->api()->post(
+            $this->getEndpoint('mark-as-read'),
+            [
+                'message_ids' => $message_ids,
+                'recipient_id' => $recipient_id,
+            ]
+        );
+    }
 }
