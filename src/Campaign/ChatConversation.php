@@ -41,13 +41,8 @@ class ChatConversation extends SdkObject
 
     public function fetchConversations(string $customer_id)
     {
-        try {
-            return $this->api()->get(
-                $this->getEndpoint(`fetch-conversations/{$customer_id}`),
-            );
-        } catch (\Exception $e) {
-            Log::error('Error fetching conversations', ['error' => $e->getMessage()]);
-            throw $e;
-        }
+        return $this->api()->get(
+            $this->getEndpoint('fetch-conversations/' . $customer_id),
+        );
     }
 }
