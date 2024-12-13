@@ -36,23 +36,9 @@ class Lookup extends SdkObject
      * @return mixed
      * @throws ErrorException
      */
-    public function addressByTerm(string $country, string $term, ?string $id)
+    public function addressByTerm(string $country)
     {
-        if (!$country) {
-            throw new ErrorException('Country required!');
-        }
-
-        if (!$term) {
-            throw new ErrorException('Term required!');
-        }
-
-        $urlParams = "$country/$term";
-
-        if ($id) {
-            $urlParams .= "/$id";
-        }
-
-        return $this->api()->get($this->getEndpoint("address-by-term/$urlParams"));
+        return $this->api()->post($this->getEndpoint("address-by-term/$country"), request()->input());
     }
 
     /**

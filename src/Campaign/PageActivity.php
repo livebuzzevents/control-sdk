@@ -33,6 +33,6 @@ class PageActivity extends SdkObject
 
     public function complete()
     {
-        return $this->api()->post($this->getEndpoint( 'complete'), $this->prepareRequestData());
+        return $this->api()->post($this->getEndpoint('complete'), $this->prepareRequestData());
     }
 }
