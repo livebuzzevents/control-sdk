@@ -18,12 +18,12 @@ class ChatConversation extends SdkObject
 
     public function create(string $conversation_id, string $sender_id, string $recipient_id)
     {
-        return $this->api()->post(  
+        return $this->api()->post(
             $this->getEndpoint('create'),
             [
                 'conversation_id' => $conversation_id,
-                'sender_id' => $sender_id,
-                'recipient_id' => $recipient_id,
+                'sender_id'       => $sender_id,
+                'recipient_id'    => $recipient_id,
             ]
         );
     }
@@ -33,7 +33,7 @@ class ChatConversation extends SdkObject
         return $this->api()->get(
             $this->getEndpoint('fetch-messages'),
             [
-                'sender_id' => $sender_id,
+                'sender_id'    => $sender_id,
                 'recipient_id' => $recipient_id,
             ]
         );
