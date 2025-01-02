@@ -100,7 +100,8 @@ class Exhibitor extends SdkObject
     {
         return collect(
             $this->api()->post(
-                $this->getEndpoint($this->id . '/flattened-allowances'), [
+                $this->getEndpoint($this->id . '/flattened-allowances'),
+                [
                     'entitlement' => $entitlement,
                     'type'        => $type,
                 ]
