@@ -35,4 +35,11 @@ class Stream extends SdkObject
 {
     use SupportRead,
         HasFiles;
+
+    public function signedUrl(Customer $customer): string
+    {
+        return $this->api()->get(sprintf('stream/%s/signed-url', $this->id), [
+            'customer_id' => $customer->id
+        ]);
+    }
 }
