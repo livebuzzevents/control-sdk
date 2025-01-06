@@ -20,7 +20,7 @@ class ChatMessage extends SdkObject
 {
     use SupportRead, SupportWrite;
 
-    public function send(string $message, string $sender_id, string $recipient_id, string $conversation_id): ChatMessage
+    public function send(string $message, string $sender_id, string $recipient_id, string $conversation_id)
     {
         return $this->api()->post(
             $this->getEndpoint('send'),
@@ -33,7 +33,7 @@ class ChatMessage extends SdkObject
         );
     }
 
-    public function markAsRead(array $message_ids, string $recipient_id): ChatMessage
+    public function markAsRead(array $message_ids, string $recipient_id)
     {
         return $this->api()->post(
             $this->getEndpoint('mark-as-read'),
