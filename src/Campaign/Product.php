@@ -42,6 +42,7 @@ use Illuminate\Support\Collection;
  * @property-read string $content_capture_qr_code
  * @property-read string $content_capture_image
  * @property-read string $content_capture_pdf
+ * @property-read \Buzz\Control\Campaign\CustomType $custom_type
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\Seminar $seminar
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
