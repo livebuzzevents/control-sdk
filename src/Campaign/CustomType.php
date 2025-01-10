@@ -10,7 +10,7 @@ use Buzz\Control\Campaign\Traits\Translatable;
  * @property string $identifier
  * @property string $name
  * @property string $color
- * @property string $text_colour
+ * @property string $text_color
  * @property string $type
  * @property int $order
  */

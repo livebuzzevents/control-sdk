@@ -94,6 +94,7 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $created_seminars
  * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $seminars
  * @property-read \Buzz\Control\Campaign\CustomStatus $custom_status
+ * @property-read \Buzz\Control\Campaign\CustomType $custom_type
  * @property-read \Buzz\Control\Campaign\EmailMessage[] $email_messages
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\Import $import
