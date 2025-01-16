@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Morphable;
+use Buzz\Control\Traits\SupportCrud;
 
 /**
  * Class Note
@@ -17,5 +18,5 @@ use Buzz\Control\Campaign\Traits\Morphable;
  */
 class Note extends SdkObject
 {
-    use Morphable;
+    use SupportCrud, Morphable;
 }
