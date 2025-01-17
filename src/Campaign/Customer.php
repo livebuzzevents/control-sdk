@@ -417,7 +417,8 @@ class Customer extends SdkObject
         return Cast::many(
             (new Note()),
             $this->api()->get(
-                $this->getEndpoint($this->id . '/notes'), $request ?? null
+                $this->getEndpoint($this->id . '/notes'),
+                $request ?? null
             )
         );
     }
