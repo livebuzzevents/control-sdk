@@ -405,6 +405,26 @@ class Customer extends SdkObject
     /**
      * @return \Illuminate\Support\Collection
      */
+    public function getNotes(string $model_type = null, string $model_id = null): Collection
+    {
+        if ($model_type && $model_id) {
+            $request = [
+                'model_type' => $model_type,
+                'model_id'   => $model_id,
+            ];
+        }
+
+        return Cast::many(
+            (new Note()),
+            $this->api()->get(
+                $this->getEndpoint($this->id . '/notes'), $request ?? null
+            )
+        );
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
     public function getFavourites(): Collection
     {
         return Cast::many(
