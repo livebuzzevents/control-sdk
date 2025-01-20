@@ -30,10 +30,16 @@ class ChatConversation extends SdkObject
         );
     }
 
-    public function fetchMessages(string $sender_id, string $recipient_id, string $after)
+    public function fetchMessages(string $sender_id, string $recipient_id, mixed $after = null)
     {
+        $endpoint = 'fetch-messages/' . $sender_id . '/' . $recipient_id;
+
+        if ($after) {
+            $endpoint .= '/' . $after;
+        }
+
         return $this->api()->get(
-            $this->getEndpoint('fetch-messages/' . $sender_id . '/' . $recipient_id . '/' . $after),
+            $this->getEndpoint($endpoint),
         );
     }
 
