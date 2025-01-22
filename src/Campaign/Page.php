@@ -9,6 +9,7 @@ use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
 use Buzz\EssentialsSdk\Cast;
 use Buzz\EssentialsSdk\Collection;
+use Buzz\EssentialsSdk\Exceptions\ErrorException;
 
 /**
  * Class Page
@@ -53,18 +54,23 @@ class Page extends SdkObject
     }
 
     /**
-     * @param Stream $stream
+     * @param Stream|null $stream
      * @param SdkObject[] ...$targets
+     * @param null $filter
      *
      * @return Collection
-     * @throws Buzz\EssentialsSdk\Exceptions\ErrorException
+     * @throws ErrorException
      */
-    public function load(Stream $stream, ...$targets): Collection
+    public function load(Stream $stream, array $targets, $filter = null): Collection
     {
         $request = [
             'stream_id' => $stream->id,
             'targets'   => [],
         ];
+        
+        if ($filter) {
+            $request['filter'] = $filter;
+        }
 
         foreach ($targets as $target) {
             $request['targets'][] = [
