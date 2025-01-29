@@ -16,6 +16,9 @@ use Illuminate\Support\Collection;
 /**
  * Class Exhibitor
  *
+ * @property bool $show_email
+ * @property bool $show_addresses
+ * @property bool $show_phones
  * @property bool $featured
  * @property string $import_id
  * @property string $owner_id
