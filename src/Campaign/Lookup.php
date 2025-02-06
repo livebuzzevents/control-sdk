@@ -84,6 +84,8 @@ class Lookup extends SdkObject
      */
     public function country(string $country = null)
     {
-        return $this->api()->get($this->getEndpoint(sprintf('country/%s?locale=%s', $country, app()->getLocale())));
+        return $this->api()->get($this->getEndpoint(sprintf('country/%s', $country, app()->getLocale())), [
+            'locale' => app()->getLocale(),
+        ]);
     }
 }
