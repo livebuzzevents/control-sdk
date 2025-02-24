@@ -78,10 +78,12 @@ class Page extends SdkObject
         }
 
         foreach ($targets as $target) {
-            $request['targets'][] = [
-                'model_type' => class_basename($target),
-                'model_id'   => $target->id,
-            ];
+            if ($target) {
+                $request['targets'][] = [
+                    'model_type' => class_basename($target),
+                    'model_id'   => $target->id,
+                ];
+            }
         }
 
         return Cast::many(
@@ -103,10 +105,12 @@ class Page extends SdkObject
         ];
 
         foreach ($targets as $target) {
-            $request['targets'][] = [
-                'model_type' => class_basename($target),
-                'model_id'   => $target->id,
-            ];
+            if ($target) {
+                $request['targets'][] = [
+                    'model_type' => class_basename($target),
+                    'model_id'   => $target->id,
+                ];
+            }
         }
 
         return Cast::many(
@@ -134,10 +138,12 @@ class Page extends SdkObject
         }
 
         foreach ($targets as $target) {
-            $request['targets'][] = [
-                'model_type' => class_basename($target),
-                'model_id'   => $target->id,
-            ];
+            if ($target) {
+                $request['targets'][] = [
+                    'model_type' => class_basename($target),
+                    'model_id'   => $target->id,
+                ];
+            }
         }
 
         $saveComponents = $this->api()->post(
