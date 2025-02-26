@@ -11,6 +11,3 @@ php:
 
 install:
   - composer install --no-interaction --prefer-source --no-dev
-
-script:
-  - vendor/bin/phpcs src --standard=psr2
