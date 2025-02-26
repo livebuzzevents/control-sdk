@@ -10,6 +10,10 @@ use Buzz\Control\Traits\SupportWrite;
 /**
  * Class VisaLetter
  *
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $nationality
+ * @property string $country
  * @property string $status
  * @property string $customer_id
  * @property string $visa_template_id
