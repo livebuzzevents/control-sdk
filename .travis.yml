@@ -10,7 +10,7 @@ php:
   - '8.2'
 
 install:
-  - composer install --no-interaction --prefer-source
+  - composer install --no-interaction --prefer-source --no-dev
 
 script:
   - vendor/bin/phpunit
