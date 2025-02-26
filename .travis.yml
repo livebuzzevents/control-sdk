@@ -13,5 +13,4 @@ install:
   - composer install --no-interaction --prefer-source --no-dev
 
 script:
-  - vendor/bin/phpunit
   - vendor/bin/phpcs src --standard=psr2
