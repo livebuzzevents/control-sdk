@@ -13,6 +13,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $status
  * @property string $customer_id
  * @property string $visa_template_id
+ * @property-read string $signed_visa_letter_link
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\VisaTemplate $visaTemplate
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
