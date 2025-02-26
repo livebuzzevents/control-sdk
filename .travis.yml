@@ -6,7 +6,7 @@ php:
 install:
   - composer self-update 1.10.16
   - composer --version
-  - composer install --no-interaction --prefer-source
+  - composer install --no-interaction --prefer-source --no-dev
 
 script:
   - vendor/bin/phpunit
