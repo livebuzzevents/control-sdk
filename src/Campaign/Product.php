@@ -28,6 +28,7 @@ use Illuminate\Support\Collection;
  * @property int $cost
  * @property int $dynamic_cost
  * @property-read int $vat
+ * @property int $dynamic_vat
  * @property int $vat_percentage
  * @property-read int $total
  * @property-read int $dynamic_total
