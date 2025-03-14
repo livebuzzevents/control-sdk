@@ -146,6 +146,8 @@ class Page extends SdkObject
             }
         }
 
+        $request['components']['initiator_id'] = customer()->id;
+
         $saveComponents = $this->api()->post(
             $this->getEndpoint($this->id . '/save-components'),
             $request
