@@ -66,7 +66,7 @@ class Page extends SdkObject
     public function load(?Stream $stream, array $targets, $filter = null): Collection
     {
         $request = [
-            'targets'   => [],
+            'targets' => [],
         ];
 
         if ($stream) {
@@ -146,7 +146,8 @@ class Page extends SdkObject
             }
         }
 
-        $request['components']['initiator_id'] = customer()->id;
+        $request['components']['initiator']    = true;
+        $request['components']['initiator_id'] = customer()->id ?? null;
 
         $saveComponents = $this->api()->post(
             $this->getEndpoint($this->id . '/save-components'),
