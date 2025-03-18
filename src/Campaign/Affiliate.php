@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Traits\SupportCrud;
 
 /**
@@ -19,7 +20,7 @@ use Buzz\Control\Traits\SupportCrud;
  */
 class Affiliate extends SdkObject
 {
-    use SupportCrud;
+    use SupportCrud, HasFiles;
 
     /**
      * @param int $size
