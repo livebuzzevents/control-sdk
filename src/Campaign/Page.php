@@ -113,6 +113,10 @@ class Page extends SdkObject
             }
         }
 
+        if (exhibitor()) {
+            $request['components']['initiator_role'] = customer()->exhibitor_role;
+        }
+
         return Cast::many(
             (new Component()),
             $this->api()->post(
