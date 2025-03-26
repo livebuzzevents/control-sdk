@@ -86,6 +86,10 @@ class Page extends SdkObject
             }
         }
 
+        if (exhibitor()) {
+            $request['initiator_role'] = customer()->exhibitor_role;
+        }
+
         return Cast::many(
             (new Page()),
             $this->api()->post('pages-for-hub', $request)
@@ -111,10 +115,6 @@ class Page extends SdkObject
                     'model_id'   => $target->id,
                 ];
             }
-        }
-
-        if (exhibitor()) {
-            $request['components']['initiator_role'] = customer()->exhibitor_role;
         }
 
         return Cast::many(
