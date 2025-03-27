@@ -562,4 +562,16 @@ class Customer extends SdkObject
     {
         return $this->api()->get($this->getEndpoint($this->id . '/meeting-agenda'));
     }
+
+    /**
+     * @param string $email_message_template_id
+     * @return string
+     */
+    public function previewInvite(string $email_message_template_id, array $input): string
+    {
+        return $this->api()->post(
+            $this->getEndpoint(customer()->id . "/preview-invite/{$email_message_template_id}"),
+            $input
+        )['html'];
+    }
 }
