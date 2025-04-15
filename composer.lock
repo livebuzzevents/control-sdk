@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dfbacd3fdcdbf7587a86118b4866cee8",
+    "content-hash": "fda0d5d19572b82f4d5c8b29851224d0",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -823,16 +823,16 @@
         },
         {
             "name": "livebuzz/essentials-sdk",
-            "version": "v4.0.1",
+            "version": "v4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livebuzzevents/essentials-sdk.git",
-                "reference": "2a86a8f0ee9a41fa5b300e1e8b7099852fa11263"
+                "reference": "902528fae231c2036ccc3c25e311ccf5685039b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livebuzzevents/essentials-sdk/zipball/2a86a8f0ee9a41fa5b300e1e8b7099852fa11263",
-                "reference": "2a86a8f0ee9a41fa5b300e1e8b7099852fa11263",
+                "url": "https://api.github.com/repos/livebuzzevents/essentials-sdk/zipball/902528fae231c2036ccc3c25e311ccf5685039b2",
+                "reference": "902528fae231c2036ccc3c25e311ccf5685039b2",
                 "shasum": ""
             },
             "require": {
@@ -871,9 +871,9 @@
             ],
             "support": {
                 "issues": "https://github.com/livebuzzevents/essentials-sdk/issues",
-                "source": "https://github.com/livebuzzevents/essentials-sdk/tree/v4.0.1"
+                "source": "https://github.com/livebuzzevents/essentials-sdk/tree/v4.0.2"
             },
-            "time": "2025-03-11T11:46:54+00:00"
+            "time": "2025-04-15T11:34:24+00:00"
         },
         {
             "name": "nesbot/carbon",
