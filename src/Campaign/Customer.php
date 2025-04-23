@@ -78,6 +78,7 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\Allowance[] $allowances
  * @property-read \Buzz\Control\Campaign\AlternativeId[] $alternative_ids
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
+ * @property-read \Buzz\Control\Campaign\PageActivity $app_profile_completion
  * @property-read \Buzz\Control\Campaign\BadgePrint[] $badge_prints
  * @property-read \Buzz\Control\Campaign\BadgePrint[] $queued_badge_prints
  * @property-read \Buzz\Control\Campaign\BadgeType $badge_type
