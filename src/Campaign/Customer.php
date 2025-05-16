@@ -26,6 +26,8 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property bool $is_managed
  * @property bool $manages_customers
  * @property bool $meetings_enabled
+ * @property bool $app_installed_desktop
+ * @property bool $app_installed_mobile
  * @property bool $smart_match_synced
  * @property string $attended
  * @property string $badge_type_id
