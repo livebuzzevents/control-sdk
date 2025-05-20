@@ -11,6 +11,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $owner_id
  * @property string $type
  * @property boolean $scanned
+ * @property boolean $invite
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\Product $product
