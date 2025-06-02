@@ -128,6 +128,24 @@ class Exhibitor extends SdkObject
         );
     }
 
+    public function downloadBadges(Customer $customer, ?string $badgeTypeId = null): string
+    {
+        if ($badgeTypeId) {
+            return $this->api()->get(
+                $this->getEndpoint(
+                    sprintf(
+                        '%s/download-badges/%s/%s',
+                        $this->id,
+                        $customer->id,
+                        $badgeTypeId
+                    )
+                )
+            );
+        }
+
+        return $this->api()->get($this->getEndpoint($this->id . '/download-badges/' . $customer->id));
+    }
+
     /**
      * @return array
      * @throws ErrorException
