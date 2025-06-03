@@ -12,6 +12,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property string $identifier
  * @property string $name
  * @property string $highlight_colour
+ * @property string $publish
  * @property int $order
  */
 class Floorplan extends SdkObject
