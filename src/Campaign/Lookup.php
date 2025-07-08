@@ -88,4 +88,10 @@ class Lookup extends SdkObject
             'locale' => app()->getLocale(),
         ]);
     }
+
+    public function states()
+    {
+        return $this->api()->get($this->getEndpoint('states'));
+    }
 }
+
