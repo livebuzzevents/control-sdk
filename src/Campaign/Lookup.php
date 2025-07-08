@@ -86,4 +86,9 @@ class Lookup extends SdkObject
     {
         return $this->api()->get($this->getEndpoint('country/' . $country));
     }
+
+    public function states()
+    {
+        return $this->api()->get($this->getEndpoint('states'));
+    }
 }
