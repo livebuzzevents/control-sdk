@@ -9,6 +9,7 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
 /**
  * Class Invite
  *
+ * @property string $import_id
  * @property string $token
  * @property string $customer_id
  * @property string $created_by_customer_id
@@ -22,6 +23,7 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property string $subject
  * @property string $message
  * @property-read string $url
+ * @property-read \Buzz\Control\Campaign\Import $import
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Customer $created_by_customer
  * @property-read \Buzz\Control\Campaign\Exhibitor $created_by_exhibitor
