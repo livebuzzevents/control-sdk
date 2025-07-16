@@ -38,4 +38,24 @@ class Import extends SdkObject
             )
         );
     }
+
+    public function invites(Customer $customer, Exhibitor $exhibitor, string $streamId, ?string $badgeTypeId = null)
+    {
+        return Cast::single(
+            (new Import()),
+            $this->api()->post(
+                $this->getEndpoint(sprintf('invites/%s', $exhibitor->id)),
+                array_merge(request()->except('file'), [
+                    'file'          => [
+                        'content' => base64_encode(request()->file('file')->get()),
+                        'name'    => request()->input('filename'),
+                    ],
+                    'filename'      => request()->input('filename'),
+                    'initiator_id'  => $customer->id,
+                    'stream_id'     => $streamId,
+                    'badge_type_id' => $badgeTypeId,
+                ])
+            )
+        );
+    }
 }
