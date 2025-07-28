@@ -80,10 +80,10 @@ class Seminar extends SdkObject
     /**
      * @return array
      */
-    public function getCapacities(): array
+    public function getAdditionalInfo(): array
     {
         return $this->api()->get(
-            $this->getEndpoint($this->id . '/fetch/capacities')
+            $this->getEndpoint($this->id . '/fetch/additional-info')
         );
     }
 
