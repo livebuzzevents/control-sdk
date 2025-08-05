@@ -99,11 +99,11 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\Invite[] $invites
  * @property-read \Buzz\Control\Campaign\Link[] $links
  * @property-read \Buzz\Control\Campaign\Log[] $logs
- * @property-read \Buzz\Control\Campaign\Meeting[] $guested_meetings
- * @property-read \Buzz\Control\Campaign\Meeting[] $hosted_meetings
+ * @property-read \Buzz\Control\Campaign\Meeting[] $requested_meetings
+ * @property-read \Buzz\Control\Campaign\Meeting[] $recipient_meetings
  * @property-read \Buzz\Control\Campaign\Meeting[] $unavailable_meetings
- * @property-read \Buzz\Control\Campaign\MeetingRequest[] $guested_meetings_request
- * @property-read \Buzz\Control\Campaign\MeetingRequest[] $hosted_meetings_request
+ * @property-read \Buzz\Control\Campaign\MeetingRequest[] $requested_meetings_request
+ * @property-read \Buzz\Control\Campaign\MeetingRequest[] $recipient_meetings_request
  * @property-read \Buzz\Control\Campaign\ModelTag[] $tags
  * @property-read \Buzz\Control\Campaign\Note[] $notes
  * @property-read \Buzz\Control\Campaign\Order[] $orders
