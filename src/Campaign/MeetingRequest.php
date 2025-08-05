@@ -12,12 +12,12 @@ use Buzz\EssentialsSdk\SdkObject as EssentialsSdkObject;
  * @property string $status
  * @property string $location_id
  * @property string $location_other
- * @property string $guest_id
- * @property string $host_id
+ * @property string $requester_id
+ * @property string $recipient_id
  * @property string $meeting_slot_id
  * @property-read \Buzz\Control\Campaign\Theater $location
- * @property-read \Buzz\Control\Campaign\Customer $guest
- * @property-read \Buzz\Control\Campaign\Customer $host
+ * @property-read \Buzz\Control\Campaign\Customer $requester
+ * @property-read \Buzz\Control\Campaign\Customer $recipient
  * @property-read \Buzz\Control\Campaign\MeetingSlot $meeting_slot
  */
 class MeetingRequest extends SdkObject
