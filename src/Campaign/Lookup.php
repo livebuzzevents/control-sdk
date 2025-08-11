@@ -91,6 +91,8 @@ class Lookup extends SdkObject
 
     public function states()
     {
-        return $this->api()->get($this->getEndpoint('states'));
+        return $this->api()->get($this->getEndpoint(sprintf('states', app()->getLocale())), [
+            'locale' => app()->getLocale(),
+        ]);
     }
 }
