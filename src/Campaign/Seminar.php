@@ -78,6 +78,17 @@ class Seminar extends SdkObject
     }
 
     /**
+     * @TODO: drop after next update
+     * @return array
+     */
+    public function getCapacities(): array
+    {
+        return $this->api()->get(
+            $this->getEndpoint($this->id . '/fetch/capacities')
+        );
+    }
+
+    /**
      * @return array
      */
     public function getAdditionalInfo(): array
