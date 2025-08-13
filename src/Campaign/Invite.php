@@ -60,4 +60,13 @@ class Invite extends SdkObject
             $this->prepareRequestData()
         )['html'];
     }
+
+    public function byExhibitor(Exhibitor $exhibitor, array $filters = []): array
+    {
+        return $this->api()->get($this->getEndpoint("by-exhibitor/$exhibitor->id"), [
+            'filters'  => $filters,
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
+        ]);
+    }
 }
