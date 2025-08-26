@@ -8,6 +8,7 @@ use Buzz\Control\Traits\SupportRead;
 use Buzz\EssentialsSdk\Cast;
 use Buzz\EssentialsSdk\Collection;
 use Buzz\Control\SdkObject as BaseSdkObject;
+use Buzz\Helpers\ValueObjects\FileValueObject;
 
 /**
  * Class File
@@ -80,16 +81,18 @@ class File extends SdkObject
      * @param BaseSdkObject $object
      * @param string $identifier
      *
-     * @return \Buzz\Control\Campaign\File
+     * @return FileValueObject
      */
     public function systemFile(BaseSdkObject $object, string $identifier)
     {
         $model_type = class_basename($object);
         $model_id   = $object->id;
 
-        return new self(
+        $file = new self(
             $this->api()->get($this->getEndpoint("{$model_type}/{$model_id}/{$identifier}/file"))
         );
+
+        return new FileValueObject($file);
     }
 
     /**
