@@ -1,6 +1,6 @@
 <?php
 
-namespace Buzz\Helpers\ValueObjects;
+namespace Buzz\Control\ValueObjects;
 
 use Buzz\Control\Campaign\File;
 
