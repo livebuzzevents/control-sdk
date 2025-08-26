@@ -5,10 +5,10 @@ namespace Buzz\Control\Campaign;
 use Buzz\Control\Campaign\Traits\Morphable;
 use Buzz\Control\Traits\SupportDelete;
 use Buzz\Control\Traits\SupportRead;
+use Buzz\Control\ValueObjects\FileValueObject;
 use Buzz\EssentialsSdk\Cast;
 use Buzz\EssentialsSdk\Collection;
 use Buzz\Control\SdkObject as BaseSdkObject;
-use Buzz\Helpers\ValueObjects\FileValueObject;
 
 /**
  * Class File
