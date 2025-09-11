@@ -63,11 +63,12 @@ class Product extends SdkObject
      * @return array
      * @throws ErrorException
      */
-    public function fetchForApp(): array
+    public function fetchForApp(string $exhibitor_id = null): array
     {
         return $this->api()->get('app/fetch-products', [
-            'page'     => request('page'),
-            'per_page' => request('per_page'),
+            'exhibitor_id' => $exhibitor_id,
+            'page'         => request('page'),
+            'per_page'     => request('per_page'),
         ]);
     }
 
