@@ -52,6 +52,7 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property string $nationality
  * @property string $owner_id
  * @property string $publish
+ * @property string $reg_code
  * @property string $registration_method
  * @property string $registration_social_provider
  * @property string $registration_type
