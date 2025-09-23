@@ -11,6 +11,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property string $name
  * @property array $settings
  *
+ * @property-read \Buzz\Control\Campaign\ModelCategories[] $model_categories
  * @property-read \Buzz\Control\Campaign\Article[] $articles
  */
 class Category extends SdkObject

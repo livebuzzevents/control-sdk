@@ -5,7 +5,7 @@ namespace Buzz\Control\Campaign;
 use Buzz\Control\Campaign\Traits\Morphable;
 
 /**
- * Class BadgeStock
+ * Class ModelTag
  *
  * @property string $tag_id
  *
