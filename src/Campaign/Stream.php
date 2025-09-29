@@ -2,8 +2,9 @@
 
 namespace Buzz\Control\Campaign;
 
-use Buzz\Control\Campaign\Traits\HasFiles;
+use Buzz\EssentialsSdk\Cast;
 use Buzz\Control\Traits\SupportRead;
+use Buzz\Control\Campaign\Traits\HasFiles;
 
 /**
  * Class Stream
@@ -41,5 +42,15 @@ class Stream extends SdkObject
         return $this->api()->get(sprintf('stream/%s/signed-url', $this->id), [
             'customer_id' => $customer->id
         ]);
+    }
+
+    public function consumableDetails(string $stream): Stream
+    {
+        return Cast::single(
+            (new Stream()),
+            $this->api()->get(
+                $this->getEndpoint($stream.'/consumable-details')
+            )
+        );
     }
 }
