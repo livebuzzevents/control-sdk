@@ -3,8 +3,9 @@
 namespace Buzz\Control\ValueObjects;
 
 use Buzz\Control\Campaign\File;
+use Buzz\Control\Campaign\SdkObject;
 
-class FileValueObject
+class FileValueObject extends SdkObject
 {
     /** @var string */
     public $id;
@@ -44,5 +45,10 @@ class FileValueObject
         $this->filename    = $file->filename;
         $this->extension   = $file->extension;
         $this->category    = $file->category;
+    }
+
+    public function delete()
+    {
+        $this->api()->delete("files/$this->id");
     }
 }
