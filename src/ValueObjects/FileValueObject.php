@@ -51,4 +51,19 @@ class FileValueObject extends SdkObject
     {
         $this->api()->delete("files/$this->id");
     }
+
+    public function toArray($dirty = false): array
+    {
+        return [
+            'id'          => $this->id,
+            'identifier'  => $this->identifier,
+            'model_id'    => $this->model_id,
+            'model_type'  => $this->model_type,
+            'description' => $this->description,
+            'visibility'  => $this->visibility,
+            'filename'    => $this->filename,
+            'extension'   => $this->extension,
+            'category'    => $this->category,
+        ];
+    }
 }
