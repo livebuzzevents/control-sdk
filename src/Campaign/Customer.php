@@ -578,4 +578,24 @@ class Customer extends SdkObject
             $input
         )['html'];
     }
+
+    public function transferAssignedOrderProduct(string $product_id): Customer
+    {
+        return Cast::single(
+            (new Customer()),
+            $this->api()->get(
+                $this->getEndpoint($this->id . '/transfer-assigned-order-product/' . $product_id)
+            )
+        );
+    }
+
+    public function getAllocations()
+    {
+        return $this->api()->post(
+            $this->getEndpoint(
+                $this->id . '/get-allocations'
+            ),
+            ['product_ids' => json_decode(request('product_ids'), true)]
+        );
+    }
 }
