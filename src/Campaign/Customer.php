@@ -581,7 +581,6 @@ class Customer extends SdkObject
 
     public function transferAssignedOrderProduct(string $product_id): Customer
     {
-
         return Cast::single(
             (new Customer()),
             $this->api()->get(
