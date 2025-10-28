@@ -26,15 +26,13 @@ use Buzz\Control\Traits\SupportRead;
  * @property \Carbon\Carbon $hub_ends_at
  * @property string $language
  * @property array $additional_languages
- * @property string $show_timezone
+ * @property string $timezone
  * @property string $version
  * @property-read array $supported_languages
  * @property-read boolean $multilingual
  * @property-read string $full_name
  * @property-read string $status
  * @property-read array $show_days
- * @property-read boolean $run_cron_jobs
- * @property-read string $system_currency
  * @property-read \Buzz\Control\Organization\Channel $channel
  * @property-read \Buzz\Control\Campaign\File[] $files
  */
