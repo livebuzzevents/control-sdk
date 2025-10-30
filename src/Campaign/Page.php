@@ -140,10 +140,8 @@ class Page extends SdkObject
     {
         $request = [
             'targets'    => [],
-            'components' => $input,
+            'components' => array_merge($input, $extraData),
         ];
-
-        $request = array_merge($request, $extraData);
 
         if (!$this->dupeCheckEnabled) {
             $request['disable_dupecheck'] = true;
