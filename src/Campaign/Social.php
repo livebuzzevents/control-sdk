@@ -29,7 +29,7 @@ class Social extends SdkObject
      * @return \Buzz\Control\Campaign\Invite
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
-    public function inviteEmail(Customer $customer, Invite $invite, string $email_message_template_id)
+    public function inviteEmail(Customer $customer, Invite $invite, array $input)
     {
         if (!$invite->provider_recipient) {
             throw new ErrorException('Email required!');
@@ -37,8 +37,8 @@ class Social extends SdkObject
 
         return new Invite(
             $this->api()->post(
-                $this->getEndpoint("invite/{$customer->id}/email/{$email_message_template_id}"),
-                $invite->prepareRequestData()
+                $this->getEndpoint("invite/{$customer->id}/email/{$input['invite_email']}"),
+                array_merge($invite->prepareRequestData(), $input)
             )
         );
     }
@@ -49,11 +49,11 @@ class Social extends SdkObject
      *
      * @return \Buzz\Control\Campaign\Invite
      */
-    public function inviteShare(Customer $customer, Invite $invite)
+    public function inviteShare(Customer $customer, Invite $invite, string $stream_id)
     {
         return new Invite(
             $this->api()->post(
-                $this->getEndpoint("invite/{$customer->id}/{$invite->provider}/share"),
+                $this->getEndpoint("invite/{$customer->id}/{$invite->provider}/share/$stream_id"),
                 $invite->prepareRequestData()
             )
         );
