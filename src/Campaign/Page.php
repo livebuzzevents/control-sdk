@@ -102,11 +102,13 @@ class Page extends SdkObject
      * @return \Buzz\EssentialsSdk\Collection
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
-    public function loadComponents(array $targets): Collection
+    public function loadComponents(array $targets, array $extraData = []): Collection
     {
         $request = [
             'targets' => [],
         ];
+
+        $request = array_merge($request, $extraData);
 
         foreach ($targets as $target) {
             if ($target) {
@@ -134,12 +136,14 @@ class Page extends SdkObject
      * @param array $input
      * @param \Buzz\Control\Campaign\SdkObject[] $targets
      */
-    public function saveComponents(array $input, array $targets)
+    public function saveComponents(array $input, array $targets, array $extraData = [])
     {
         $request = [
             'targets'    => [],
             'components' => $input,
         ];
+
+        $request = array_merge($request, $extraData);
 
         if (!$this->dupeCheckEnabled) {
             $request['disable_dupecheck'] = true;
