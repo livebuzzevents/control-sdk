@@ -49,7 +49,7 @@ class Social extends SdkObject
      *
      * @return \Buzz\Control\Campaign\Invite
      */
-    public function inviteShare(Customer $customer, Invite $invite, string $stream_id)
+    public function inviteShare(Customer $customer, Invite $invite, string $stream_id = null)
     {
         return new Invite(
             $this->api()->post(
