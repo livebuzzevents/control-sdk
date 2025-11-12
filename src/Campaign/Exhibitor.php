@@ -165,4 +165,9 @@ class Exhibitor extends SdkObject
     {
         return collect($this->api()->get('app/fetch-exhibitor-filters'));
     }
+
+    public function smartscanPlus(): array
+    {
+        return $this->api()->get($this->getEndpoint($this->id . '/smartscan-plus'));
+    }
 }
