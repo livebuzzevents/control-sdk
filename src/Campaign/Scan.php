@@ -69,4 +69,8 @@ class Scan extends SdkObject
             )
         );
     }
+
+    public function setStarRating(): void {
+        $this->api()->post($this->getEndpoint('set-star-rating'));
+    }
 }
