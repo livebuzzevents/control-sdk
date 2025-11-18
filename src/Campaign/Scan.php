@@ -70,7 +70,8 @@ class Scan extends SdkObject
         );
     }
 
-    public function setStarRating(): void {
-        $this->api()->post($this->getEndpoint('set-star-rating'));
+    public function setStarRating(): void
+    {
+        $this->api()->post($this->getEndpoint('set-star-rating'), request()->only(['scan_id', 'rating']));
     }
 }
