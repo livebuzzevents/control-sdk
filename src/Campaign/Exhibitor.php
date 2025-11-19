@@ -107,7 +107,7 @@ class Exhibitor extends SdkObject
                 $this->getEndpoint($this->id . '/flattened-allowances'),
                 [
                     'entitlement' => $entitlement,
-                    'type'        => $type,
+                    'type' => $type,
                 ]
             )
         );
@@ -153,7 +153,7 @@ class Exhibitor extends SdkObject
     public function fetchForApp(): array
     {
         return $this->api()->get('app/fetch-exhibitors', [
-            'page'     => request('page'),
+            'page' => request('page'),
             'per_page' => request('per_page'),
         ]);
     }
@@ -169,5 +169,18 @@ class Exhibitor extends SdkObject
     public function smartscanPlus(): array
     {
         return $this->api()->get($this->getEndpoint($this->id . '/smartscan-plus'));
+    }
+
+    public function downloadLeads(Scanner $scanner = null): string
+    {
+        $endpoint = '/download-leads';
+
+        if (optional($scanner)->id) {
+            $endpoint .= '/' . $scanner->id;
+        }
+
+        return $this->api()->post(
+            $this->getEndpoint($this->id . $endpoint), request()->only('scan_filters')
+        );
     }
 }
