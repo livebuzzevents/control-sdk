@@ -19,6 +19,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property array $settings
  * @property string $url
  * @property boolean $has_e_badge
+ * @property boolean $e_badge_live
  * @property string $e_badge_line_1
  * @property string $e_badge_line_2
  * @property string $e_badge_line_3
