@@ -139,6 +139,10 @@ class Page extends SdkObject
             $request['prepop'] = true;
         }
 
+        if ($badgeTypeId = request()->route()?->parameter('badge_type_id')) {
+            $request['badge_type_id'] = $badgeTypeId;
+        }
+
         return Cast::many(
             (new Component()),
             $this->api()->post(
