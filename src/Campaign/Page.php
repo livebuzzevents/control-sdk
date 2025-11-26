@@ -123,6 +123,22 @@ class Page extends SdkObject
             $request['initiator_role'] = customer()->exhibitor_role;
         }
 
+        if (request('affiliate') || session('affiliate') || session('affiliate-name')) {
+            $request['affiliate'] = request('affiliate') ?? session('affiliate') ?? session('affiliate-name');
+        }
+
+        if (request('invite') || session('invite')) {
+            $request['visitor_invite'] = true;
+        }
+
+        if (request('exhibitor-inviter') || session('exhibitor-inviter')) {
+            $request['exhibitor_invite'] = true;
+        }
+
+        if (request()->is('*/clone*') || session('prepop')) {
+            $request['prepop'] = true;
+        }
+
         return Cast::many(
             (new Component()),
             $this->api()->post(
