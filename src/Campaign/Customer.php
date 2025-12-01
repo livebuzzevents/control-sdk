@@ -460,8 +460,9 @@ class Customer extends SdkObject
     {
         return Cast::many(
             (new Customer()),
-            $this->api()->get(
-                $this->getEndpoint($this->id . '/colleagues')
+            $this->api()->post(
+                $this->getEndpoint($this->id . '/colleagues'),
+                ['badge_type_ids' => json_decode(request('badge_type_ids'), true)]
             )
         );
     }
