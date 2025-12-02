@@ -462,7 +462,7 @@ class Customer extends SdkObject
             (new Customer()),
             $this->api()->post(
                 $this->getEndpoint($this->id . '/colleagues'),
-                ['badge_type_ids' => json_decode(request('badge_type_ids'), true)]
+                ['type_ids' => json_decode(request('type_ids'), true)]
             )
         );
     }
