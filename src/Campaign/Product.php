@@ -18,6 +18,7 @@ use Illuminate\Support\Collection;
  * Class Product
  *
  * @property bool $featured
+ * @property string $custom_type_id
  * @property string $identifier
  * @property string $name
  * @property string $description

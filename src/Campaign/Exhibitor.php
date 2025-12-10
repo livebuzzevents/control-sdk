@@ -20,6 +20,7 @@ use Illuminate\Support\Collection;
  * @property string $show_addresses
  * @property string $show_phones
  * @property bool $featured
+ * @property string $custom_type_id
  * @property string $import_id
  * @property string $owner_id
  * @property string $publish

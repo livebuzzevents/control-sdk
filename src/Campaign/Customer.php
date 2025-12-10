@@ -18,6 +18,8 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
 /**
  * Class Customer
  *
+ * @property bool $featured
+ * @property string $custom_type_id
  * @property bool $badge_preprinted
  * @property bool $badge_printed
  * @property bool $badge_printed_onsite

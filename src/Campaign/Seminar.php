@@ -15,6 +15,8 @@ use Illuminate\Support\Collection;
 /**
  * Class Seminar
  *
+ * @property bool $featured
+ * @property string $custom_type_id
  * @property string $identifier
  * @property string $title
  * @property string $description
@@ -75,17 +77,6 @@ class Seminar extends SdkObject
     public function syncTopics(array $topic_ids): void
     {
         $this->api()->post($this->getEndpoint("{$this->id}/sync-topics"), $topic_ids);
-    }
-
-    /**
-     * @TODO: drop after next update
-     * @return array
-     */
-    public function getCapacities(): array
-    {
-        return $this->api()->get(
-            $this->getEndpoint($this->id . '/fetch/capacities')
-        );
     }
 
     /**
