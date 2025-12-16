@@ -180,6 +180,26 @@ class Page extends SdkObject
         $request['components']['initiator_id'] = customer()->id ?? null;
         $request['components']['initiator_exhibitor_id'] = exhibitor()->id ?? null;
 
+        if (request('affiliate') || session('affiliate') || session('affiliate-name')) {
+            $request['components']['affiliate'] = request('affiliate') ?? session('affiliate') ?? session('affiliate-name');
+        }
+
+        if (request('invite') || session('invite')) {
+            $request['components']['visitor_invite'] = true;
+        }
+
+        if (request('exhibitor-inviter') || session('exhibitor-inviter')) {
+            $request['components']['exhibitor_invite'] = true;
+        }
+
+        if (request()->is('*/clone*') || session('prepop')) {
+            $request['components']['prepop'] = true;
+        }
+
+        if ($badgeTypeId = request()->route()?->parameter('badge_type_id')) {
+            $request['components']['badge_type_id'] = $badgeTypeId;
+        }
+
         $saveComponents = $this->api()->post(
             $this->getEndpoint($this->id . '/save-components'),
             $request
