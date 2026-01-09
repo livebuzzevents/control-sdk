@@ -67,7 +67,7 @@ class Page extends SdkObject
             'stream_id' => $stream->id,
             'targets'   => [],
         ];
-        
+
         if ($filter) {
             $request['filter'] = $filter;
         }
@@ -112,6 +112,10 @@ class Page extends SdkObject
             }
         }
 
+        if (request()->route() && $badgeTypeId = request()->route()->parameter('badge_type_id')) {
+            $request['badge_type_id'] = $badgeTypeId;
+        }
+
         return Cast::many(
             (new Component()),
             $this->api()->post(
@@ -143,6 +147,10 @@ class Page extends SdkObject
                     'model_id'   => $target->id,
                 ];
             }
+        }
+
+        if (request()->route() && $badgeTypeId = request()->route()->parameter('badge_type_id')) {
+            $request['badge_type_id'] = $badgeTypeId;
         }
 
         $saveComponents = $this->api()->post(
