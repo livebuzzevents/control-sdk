@@ -469,6 +469,22 @@ class Customer extends SdkObject
         );
     }
 
+    public function getBadgeDownloads(): array
+    {
+        return $this->api()->post($this->getEndpoint($this->id . '/badge-downloads'));
+    }
+
+    public function downloadBadges(Customer $customer, ?string $badgeTypeId = null): string
+    {
+        if ($badgeTypeId) {
+            return $this->api()->get(
+                $this->getEndpoint(sprintf('%s/download-badges/%s', $this->id, $badgeTypeId))
+            );
+        }
+
+        return $this->api()->get($this->getEndpoint(sprintf('%s/download-badges', $this->id)));
+    }
+
     /**
      *
      */
