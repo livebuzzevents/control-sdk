@@ -121,19 +121,14 @@ class Redemption extends SdkObject
         );
     }
 
-    /**
-     * @param $allowance_id
-     * @param $exhibitor_id
-     * @param $product_id
-     *
-     * @return \Buzz\Control\Campaign\Redemption
-     */
-    public function redeemProduct($allowance_id, $exhibitor_id, $product_id)
+    public function redeemProduct(string $allowance_id, string $type, string $model_id, string $product_id = null)
     {
         return new self(
             $this->api()->post(
-                $this->getEndpoint("redeem/product/{$allowance_id}/{$exhibitor_id}/{$product_id}")
-            )
+                $this->getEndpoint("redeem/product/{$allowance_id}/{$model_id}/{$product_id}"), [
+                    'type' => $type,
+                ]
+            ),
         );
     }
 }
