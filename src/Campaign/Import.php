@@ -39,8 +39,13 @@ class Import extends SdkObject
         );
     }
 
-    public function invites(Customer $customer, Exhibitor $exhibitor, string $streamId, ?string $badgeTypeId = null)
-    {
+    public function invites(
+        Customer $customer,
+        Exhibitor $exhibitor,
+        string $streamId,
+        string $type,
+        ?string $modelId = null
+    ) {
         return Cast::single(
             (new Import()),
             $this->api()->post(
@@ -53,7 +58,9 @@ class Import extends SdkObject
                     'filename'      => request()->input('filename'),
                     'initiator_id'  => $customer->id,
                     'stream_id'     => $streamId,
-                    'badge_type_id' => $badgeTypeId,
+                    'badge_type_id' => $modelId, /** @TODO: drop this when v3.127.0 is fully released */
+                    'model_id'      => $modelId,
+                    'type'          => $type,
                 ])
             )
         );

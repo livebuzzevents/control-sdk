@@ -16,6 +16,7 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property string $created_by_exhibitor_id
  * @property string $stream_id
  * @property string $badge_type_id
+ * @property string $product_id
  * @property string $status
  * @property string $provider
  * @property string $provider_sender
@@ -29,6 +30,7 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\Exhibitor $created_by_exhibitor
  * @property-read \Buzz\Control\Campaign\Stream $stream
  * @property-read \Buzz\Control\Campaign\BadgeType $badge_type
+ * @property-read \Buzz\Control\Campaign\Product $product
  */
 class Invite extends SdkObject
 {
