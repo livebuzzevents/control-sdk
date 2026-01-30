@@ -121,14 +121,12 @@ class Redemption extends SdkObject
         );
     }
 
-    public function redeemProduct(string $allowance_id, string $type, string $model_id, string $product_id = null)
+    public function redeemProduct($allowance_id, $exhibitor_id, $product_id)
     {
         return new self(
             $this->api()->post(
-                $this->getEndpoint("redeem/product/{$allowance_id}/{$model_id}/{$product_id}"), [
-                    'type' => $type,
-                ]
-            ),
+                $this->getEndpoint("redeem/product/{$allowance_id}/{$exhibitor_id}/{$product_id}")
+            )
         );
     }
 }
