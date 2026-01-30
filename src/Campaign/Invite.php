@@ -23,7 +23,6 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property string $provider_recipient
  * @property string $subject
  * @property string $message
- * @property bool $redeemed
  * @property-read string $url
  * @property-read \Buzz\Control\Campaign\Import $import
  * @property-read \Buzz\Control\Campaign\Customer $customer
