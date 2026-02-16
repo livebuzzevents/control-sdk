@@ -429,17 +429,9 @@ class Customer extends SdkObject
         );
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function getFavourites(): Collection
+    public function getFavourites(): array
     {
-        return Cast::many(
-            (new Favourite()),
-            $this->api()->get(
-                $this->getEndpoint($this->id . '/favourites')
-            )
-        );
+        return $this->api()->get($this->getEndpoint($this->id . '/favourites'));
     }
 
     /**
