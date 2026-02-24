@@ -58,7 +58,6 @@ class Import extends SdkObject
                     'filename'      => request()->input('filename'),
                     'initiator_id'  => $customer->id,
                     'stream_id'     => $streamId,
-                    'badge_type_id' => $modelId, /** @TODO: drop this when v3.127.0 is fully released */
                     'model_id'      => $modelId,
                     'type'          => $type,
                 ])
