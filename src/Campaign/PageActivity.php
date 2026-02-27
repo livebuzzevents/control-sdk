@@ -13,7 +13,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $target_id
  * @property string $target_type
  * @property string $page_id
- * @property int $action
+ * @property string $action
  * @property-read object $target
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
