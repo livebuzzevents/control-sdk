@@ -386,6 +386,11 @@ class Customer extends SdkObject
         );
     }
 
+    public function getStripeOrders(): array
+    {
+        return $this->api()->get($this->getEndpoint($this->id . '/stripe-orders'));
+    }
+
     /**
      * @param int $step
      */
