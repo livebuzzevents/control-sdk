@@ -14,4 +14,8 @@ class NotificationMessage extends SdkObject
 {
     use SupportCrud, Morphable;
 
+    public function updates(array $request): array
+    {
+        return $this->api()->post($this->getEndpoint('updates'), $request);
+    }
 }
