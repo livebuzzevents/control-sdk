@@ -86,8 +86,8 @@ class Page extends SdkObject
             }
         }
 
-        if (exhibitor()) {
-            $request['initiator_role'] = customer()->exhibitor_role;
+        if (exhibitor() || config('buzz.stream') === 'exhibitor') {
+            $request['initiator_role'] = customer()->exhibitor_role ?? 'basic';
         }
 
         return Cast::many(
@@ -119,8 +119,8 @@ class Page extends SdkObject
             }
         }
 
-        if (exhibitor()) {
-            $request['initiator_role'] = customer()->exhibitor_role;
+        if (exhibitor() || config('buzz.stream') === 'exhibitor') {
+            $request['initiator_role'] = customer()->exhibitor_role ?? 'basic';
         }
 
         if (request('affiliate') || session('affiliate') || session('affiliate-name')) {
