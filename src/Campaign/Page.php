@@ -139,7 +139,7 @@ class Page extends SdkObject
             $request['registration_type'] = request('registration-type') ?? session('registration-type');
         }
 
-        if (request()->is('*/clone*') || session('prepop') || customer()->registration_method === 'prepop') {
+        if (request()->is('*/clone*') || session('prepop') || customer()->registration_method === 'pre-pop') {
             $request['prepop'] = true;
         }
 
@@ -200,7 +200,7 @@ class Page extends SdkObject
             $request['registration_type'] = request('registration-type') ?? session('registration-type');
         }
 
-        if (request()->is('*/clone*') || session('prepop') || customer()->registration_method === 'prepop') {
+        if (request()->is('*/clone*') || session('prepop') || customer()->registration_method === 'pre-pop') {
             $request['prepop'] = true;
         }
 
