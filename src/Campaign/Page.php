@@ -139,7 +139,7 @@ class Page extends SdkObject
             $request['registration_type'] = request('registration-type') ?? session('registration-type');
         }
 
-        if (request()->is('*/clone*') || session('prepop')) {
+        if (request()->is('*/clone*') || session('prepop') || customer()->registration_method === 'prepop') {
             $request['prepop'] = true;
         }
 
@@ -180,8 +180,8 @@ class Page extends SdkObject
             }
         }
 
-        $request['components']['initiator']    = true;
-        $request['components']['initiator_id'] = customer()->id ?? null;
+        $request['components']['initiator']              = true;
+        $request['components']['initiator_id']           = customer()->id ?? null;
         $request['components']['initiator_exhibitor_id'] = exhibitor()->id ?? null;
 
         if (request('affiliate') || session('affiliate') || session('affiliate-name')) {
@@ -200,7 +200,7 @@ class Page extends SdkObject
             $request['registration_type'] = request('registration-type') ?? session('registration-type');
         }
 
-        if (request()->is('*/clone*') || session('prepop')) {
+        if (request()->is('*/clone*') || session('prepop') || customer()->registration_method === 'prepop') {
             $request['prepop'] = true;
         }
 
