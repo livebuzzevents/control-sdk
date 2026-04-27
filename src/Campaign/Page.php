@@ -196,6 +196,10 @@ class Page extends SdkObject
             $request['exhibitor_invite'] = true;
         }
 
+        if (request('registration-type') || session('registration-type')) {
+            $request['registration_type'] = request('registration-type') ?? session('registration-type');
+        }
+
         if (request()->is('*/clone*') || session('prepop')) {
             $request['prepop'] = true;
         }
