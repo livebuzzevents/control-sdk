@@ -614,4 +614,24 @@ class Customer extends SdkObject
             ['product_ids' => json_decode(request('product_ids'), true)]
         );
     }
+
+    public function hasNewMessages(): bool
+    {
+        return $this->api()->post(
+            $this->getEndpoint(customer()->id . '/has-new-messages'),
+            [
+                'last_sync' => request('last_sync'),
+            ]
+        );
+    }
+
+    public function hasMeetingUpdates(): bool
+    {
+        return $this->api()->post(
+            $this->getEndpoint(customer()->id . '/has-meeting-updates'),
+            [
+                'last_sync' => request('last_sync'),
+            ]
+        );
+    }
 }
