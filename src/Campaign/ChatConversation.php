@@ -18,15 +18,14 @@ class ChatConversation extends SdkObject
 {
     use SupportRead, SupportWrite;
 
-    public function create(string $conversation_id, string $sender_id, string $recipient_id, string $message)
+    public function create(string $conversation_id, string $sender_id, string $recipient_id)
     {
         return $this->api()->post(
             $this->getEndpoint('create'),
             [
                 'conversation_id' => $conversation_id,
                 'sender_id'       => $sender_id,
-                'recipient_id'    => $recipient_id,
-                'message'         => $message
+                'recipient_id'    => $recipient_id
             ]
         );
     }
