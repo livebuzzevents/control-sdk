@@ -18,7 +18,7 @@ class ChatConversation extends SdkObject
 {
     use SupportRead, SupportWrite;
 
-    public function create(string $conversation_id, string $sender_id, string $recipient_id)
+    public function create(string $conversation_id, string $sender_id, string $recipient_id, string $message)
     {
         return $this->api()->post(
             $this->getEndpoint('create'),
@@ -26,6 +26,7 @@ class ChatConversation extends SdkObject
                 'conversation_id' => $conversation_id,
                 'sender_id'       => $sender_id,
                 'recipient_id'    => $recipient_id,
+                'message'         => $message
             ]
         );
     }
