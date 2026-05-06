@@ -30,6 +30,7 @@ use Illuminate\Support\Collection;
  * @property string $source_id
  * @property \Carbon\Carbon $ends_at
  * @property \Carbon\Carbon $starts_at
+ * @property \Buzz\Control\Campaign\CustomerSeminar[] $speakers
  * @property-read string $content_capture_qr_code
  * @property-read int $spaces_taken
  * @property-read int $spaces_available
@@ -41,7 +42,6 @@ use Illuminate\Support\Collection;
  * @property-read \Buzz\Control\Campaign\Product $product
  * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $customer_seminars
  * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $attendees
- * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $speakers
  * @property-read \Buzz\Control\Campaign\Scanner[] $scanners
  * @property-read \Buzz\Control\Campaign\SeminarTopic[] $topics
  * @property-read \Buzz\Control\Campaign\Exhibitor[] $exhibitors
