@@ -31,7 +31,8 @@ trait SupportRead
         $page = 1,
         $per_page = 50,
         $order = null,
-        $direction = null
+        $direction = null,
+        $appends = null
     ): Paging {
         if ($filters instanceof Traversable) {
             $filters = iterator_to_array($filters);
@@ -39,7 +40,7 @@ trait SupportRead
 
         return Cast::many(
             $this,
-            $this->api()->get($this->getEndpoint(), compact('filters', 'page', 'per_page', 'order', 'direction'))
+            $this->api()->get($this->getEndpoint(), compact('filters', 'page', 'per_page', 'order', 'direction', 'appends'))
         );
     }
 
