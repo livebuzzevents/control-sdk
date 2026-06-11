@@ -538,10 +538,9 @@ class Customer extends SdkObject
      * @return array
      * @throws ErrorException
      */
-    public function fetchAttendeesForApp(string $exhibitor_id = null): array
+    public function fetchAttendeesForApp(string $entityListId): array
     {
-        return $this->api()->get('app/fetch-attendees', [
-            'exhibitor_id' => $exhibitor_id,
+        return $this->api()->get("app/fetch/$entityListId/attendees", [
             'page'         => request('page'),
             'per_page'     => request('per_page'),
         ]);
@@ -550,18 +549,18 @@ class Customer extends SdkObject
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function fetchAttendeeFilters(): Collection
+    public function fetchAttendeeFilters(string $entityListId): Collection
     {
-        return collect($this->api()->get('app/fetch-attendee-filters'));
+        return collect($this->api()->get("app/fetch/$entityListId/attendee-filters"));
     }
 
     /**
      * @return array
      * @throws ErrorException
      */
-    public function fetchSpeakersForApp(): array
+    public function fetchSpeakersForApp(string $entityListId): array
     {
-        return $this->api()->get('app/fetch-speakers', [
+        return $this->api()->get("app/fetch/$entityListId/speakers", [
             'page'     => request('page'),
             'per_page' => request('per_page'),
         ]);
@@ -570,9 +569,9 @@ class Customer extends SdkObject
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function fetchSpeakerFilters(): Collection
+    public function fetchSpeakerFilters(string $entityListId): Collection
     {
-        return collect($this->api()->get('app/fetch-speaker-filters'));
+        return collect($this->api()->get("app/fetch/$entityListId/speaker-filters"));
     }
 
     /**

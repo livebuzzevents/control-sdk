@@ -64,10 +64,9 @@ class Product extends SdkObject
      * @return array
      * @throws ErrorException
      */
-    public function fetchForApp(string $exhibitor_id = null): array
+    public function fetchForApp(string $entityListId): array
     {
-        return $this->api()->get('app/fetch-products', [
-            'exhibitor_id' => $exhibitor_id,
+        return $this->api()->get("app/fetch/$entityListId/products", [
             'page'         => request('page'),
             'per_page'     => request('per_page'),
         ]);
@@ -76,8 +75,8 @@ class Product extends SdkObject
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function fetchFilters(): Collection
+    public function fetchFilters(string $entityListId): Collection
     {
-        return collect($this->api()->get('app/fetch-product-filters'));
+        return collect($this->api()->get("app/fetch/$entityListId/product-filters"));
     }
 }
