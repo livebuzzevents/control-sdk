@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
 use Buzz\EssentialsSdk\Cast;
@@ -19,7 +20,8 @@ use Buzz\EssentialsSdk\Cast;
 class Theater extends SdkObject
 {
     use SupportRead,
-        SupportWrite;
+        SupportWrite,
+        Translatable;
 
     public function meetingLocations(Customer $customer)
     {

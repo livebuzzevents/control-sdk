@@ -15,5 +15,6 @@ use Buzz\Control\Traits\SupportCrud;
  */
 class Area extends SdkObject
 {
-    use SupportCrud, Translatable;
+    use SupportCrud,
+        Translatable;
 }
