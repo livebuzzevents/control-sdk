@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Traits\SupportCrud;
 
 /**
@@ -14,5 +15,5 @@ use Buzz\Control\Traits\SupportCrud;
  */
 class Area extends SdkObject
 {
-    use SupportCrud;
+    use SupportCrud, Translatable;
 }
