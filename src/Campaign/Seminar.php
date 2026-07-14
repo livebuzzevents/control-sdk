@@ -93,9 +93,9 @@ class Seminar extends SdkObject
      * @return array
      * @throws ErrorException
      */
-    public function fetchForApp(): array
+    public function fetchForApp(string $entityListId): array
     {
-        return $this->api()->get('app/fetch-seminars', [
+        return $this->api()->get("app/fetch/$entityListId/seminars", [
             'page'     => request('page'),
             'per_page' => request('per_page'),
         ]);
@@ -104,8 +104,8 @@ class Seminar extends SdkObject
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function fetchFilters(): Collection
+    public function fetchFilters(string $entityListId): Collection
     {
-        return collect($this->api()->get('app/fetch-seminar-filters'));
+        return collect($this->api()->get("app/fetch/$entityListId/seminar-filters"));
     }
 }

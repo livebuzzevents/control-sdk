@@ -151,9 +151,9 @@ class Exhibitor extends SdkObject
      * @return array
      * @throws ErrorException
      */
-    public function fetchForApp(): array
+    public function fetchForApp(string $entityListId): array
     {
-        return $this->api()->get('app/fetch-exhibitors', [
+        return $this->api()->get("app/fetch/$entityListId/exhibitors", [
             'page' => request('page'),
             'per_page' => request('per_page'),
         ]);
@@ -162,9 +162,9 @@ class Exhibitor extends SdkObject
     /**
      * @return Collection
      */
-    public function fetchFilters(): Collection
+    public function fetchFilters(string $entityListId): Collection
     {
-        return collect($this->api()->get('app/fetch-exhibitor-filters'));
+        return collect($this->api()->get("app/fetch/$entityListId/exhibitor-filters"));
     }
 
     public function smartscanPlus(): array
