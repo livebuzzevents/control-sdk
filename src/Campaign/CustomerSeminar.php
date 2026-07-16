@@ -8,6 +8,7 @@ use Buzz\Control\Traits\SupportCrud;
 /**
  * Class CustomerSeminar
  *
+ * @property string $customer_type_id
  * @property string $customer_id
  * @property string $creator_id
  * @property string $seminar_id
