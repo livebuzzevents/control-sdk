@@ -36,6 +36,8 @@ use Buzz\EssentialsSdk\Collection;
  * @property string $cloned_id
  * @property string $cloned_type
  * @property string $cloned_campaign_id
+ * @property boolean $featured
+ * @property string $custom_type_id
  * @property-read int smartscan_count
  * @property-read int smartscan_purchased_count
  * @property-read int handiscan_count
@@ -77,6 +79,7 @@ use Buzz\EssentialsSdk\Collection;
  * @property-read \Buzz\Control\Campaign\Customer $main_contact
  * @property-read \Buzz\Control\Campaign\Customer[] $customers
  * @property-read \Buzz\Control\Campaign\Allowance[] $allowances
+ * @property-read \Buzz\Control\Campaign\CustomType $customType
  * @property-read string $signed_all_favourites_download_link
  */
 class Exhibitor extends SdkObject
@@ -101,7 +104,7 @@ class Exhibitor extends SdkObject
                 $this->getEndpoint($this->id . '/flattened-allowances'),
                 [
                     'entitlement' => $entitlement,
-                    'type'        => $type,
+                    'type' => $type,
                 ]
             )
         );

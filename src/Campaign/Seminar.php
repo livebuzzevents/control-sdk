@@ -22,6 +22,8 @@ use Buzz\Control\Traits\SupportWrite;
  * @property array $settings
  * @property string $source
  * @property string $source_id
+ * @property boolean $featured
+ * @property string $custom_type_id
  * @property \DateTime $ends_at
  * @property \DateTime $starts_at
  * @property-read string $content_capture_qr_code
@@ -37,6 +39,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read \Buzz\Control\Campaign\Scanner[] $scanners
  * @property-read \Buzz\Control\Campaign\SeminarTopic[] $topics
  * @property-read \Buzz\Control\Campaign\Exhibitor[] $exhibitors
+ * @property-read \Buzz\Control\Campaign\CustomType $customType
  */
 class Seminar extends SdkObject
 {

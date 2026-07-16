@@ -61,6 +61,8 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property string $title
  * @property string $username
  * @property integer $profile_score
+ * @property boolean $featured
+ * @property string $custom_type_id
  * @property-read bool $has_password
  * @property-read bool $printable
  * @property-read int $managed_customers_count
@@ -121,6 +123,7 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\VisaLetter $visa_letter
  * @property-read \Buzz\Control\Campaign\Vote[] $created_votes
  * @property-read \Buzz\Control\Campaign\Vote[] $votes
+ * @property-read \Buzz\Control\Campaign\CustomType $customType
  */
 class Customer extends SdkObject
 {

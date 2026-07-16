@@ -33,6 +33,8 @@ use Buzz\Control\Traits\SupportWrite;
  * @property array $actions
  * @property-read string $currency
  * @property string $active
+ * @property boolean $featured
+ * @property string $custom_type_id
  * @property \DateTime $valid_from
  * @property \DateTime $valid_to
  * @property-read string $content_capture_qr_code
@@ -43,6 +45,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
  * @property-read \Buzz\Control\Campaign\OrderProduct[] $order_products
  * @property-read \Buzz\Control\Campaign\Property[] $properties
+ * @property-read \Buzz\Control\Campaign\CustomType $customType
  */
 class Product extends SdkObject
 {
