@@ -57,7 +57,6 @@ use Buzz\EssentialsSdk\Collection;
  * @property-read \Buzz\Control\Campaign\Article[] $articles
  * @property-read \Buzz\Control\Campaign\Basket[] $baskets
  * @property-read \Buzz\Control\Campaign\Invite[] $created_invites
- * @property-read \Buzz\Control\Campaign\Vote[] $created_votes
  * @property-read \Buzz\Control\Campaign\Exhibitor $owner
  * @property-read \Buzz\Control\Campaign\Import $import
  * @property-read \Buzz\Control\Campaign\Invite[] $invites
@@ -73,7 +72,6 @@ use Buzz\EssentialsSdk\Collection;
  * @property-read \Buzz\Control\Campaign\PageActivity[] $page_activities
  * @property-read \Buzz\Control\Campaign\ExhibitorPressRelease[] $press_releases
  * @property-read \Buzz\Control\Campaign\ModelTag[] $tags
- * @property-read \Buzz\Control\Campaign\Vote[] $votes
  * @property-read \Buzz\Control\Campaign\Question[] $questions
  * @property-read \Buzz\Control\Campaign\Product[] $products
  * @property-read \Buzz\Control\Campaign\Customer $main_contact

@@ -121,8 +121,6 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property-read \Buzz\Control\Campaign\Social[] $socials
  * @property-read \Buzz\Control\Campaign\SocialToken[] $social_tokens
  * @property-read \Buzz\Control\Campaign\VisaLetter $visa_letter
- * @property-read \Buzz\Control\Campaign\Vote[] $created_votes
- * @property-read \Buzz\Control\Campaign\Vote[] $votes
  * @property-read \Buzz\Control\Campaign\CustomType $customType
  */
 class Customer extends SdkObject
