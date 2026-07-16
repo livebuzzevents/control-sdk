@@ -19,7 +19,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property-read \Buzz\Control\Campaign\Customer $creator
  * @property-read \Buzz\Control\Campaign\Seminar $seminar
  * @property-read \Buzz\Control\Campaign\Redemption[] $redemptions
- * @property-read \Buzz\Control\Campaign\CustomType $customType
+ * @property-read \Buzz\Control\Campaign\CustomType $custom_type
  */
 class CustomerSeminar extends SdkObject
 {

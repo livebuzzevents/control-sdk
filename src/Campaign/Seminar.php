@@ -39,7 +39,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property-read \Buzz\Control\Campaign\Scanner[] $scanners
  * @property-read \Buzz\Control\Campaign\SeminarTopic[] $topics
  * @property-read \Buzz\Control\Campaign\Exhibitor[] $exhibitors
- * @property-read \Buzz\Control\Campaign\CustomType $customType
+ * @property-read \Buzz\Control\Campaign\CustomType $custom_type
  */
 class Seminar extends SdkObject
 {
