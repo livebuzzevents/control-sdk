@@ -16,6 +16,6 @@ class NotificationMessage extends SdkObject
 
     public function updates(array $request): array
     {
-        return $this->api()->post($this->getEndpoint('updates'), $request);
+        return $this->api()->post($this->getEndpoint('updates'), array_merge($request, ['model_id' => customer()->id]));
     }
 }
