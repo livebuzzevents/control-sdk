@@ -11,7 +11,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $identifier
  * @property string $name
  * @property string $text_colour
- * @property-read \Buzz\Control\Campaign\Customer[] $customers
+ * @property-read Customer[] $customers
  */
 class CustomStatus extends SdkObject
 {

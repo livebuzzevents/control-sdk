@@ -11,8 +11,8 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $identifier
  * @property string $name
  * @property string $question_id
- * @property-read \Buzz\Control\Campaign\Question $question
- * @property-read \Buzz\Control\Campaign\QuestionOption[] $question_options
+ * @property-read Question $question
+ * @property-read QuestionOption[] $question_options
  */
 class QuestionOptionGroup extends SdkObject
 {

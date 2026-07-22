@@ -17,15 +17,15 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $subject
  * @property string $from_email
  * @property string $from_name
- * @property boolean $marketing
+ * @property bool $marketing
  * @property array $settings
- * @property-read \Buzz\Control\Campaign\EmailMessage[] $email_messages
- * @property-read \Buzz\Control\Campaign\SingleShot[] $single_shots
+ * @property-read EmailMessage[] $email_messages
+ * @property-read SingleShot[] $single_shots
  */
 class EmailMessageTemplate extends SdkObject
 {
-    use SupportRead,
+    use HasFiles,
+        SupportRead,
         SupportWrite,
-        Translatable,
-        HasFiles;
+        Translatable;
 }

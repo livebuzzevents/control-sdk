@@ -1,11 +1,13 @@
-<?php namespace Buzz\Control\Campaign\Traits;
+<?php
+
+namespace Buzz\Control\Campaign\Traits;
+
+use Buzz\Control\Campaign\Favourite;
 
 /**
  * trait HasFavourites
  *
- * @property-read \Buzz\Control\Campaign\Favourite[] $favourites
+ * @property-read Favourite[] $favourites
  * @property-read string $signed_favourites_download_link
  */
-trait HasFavourites
-{
-}
+trait HasFavourites {}

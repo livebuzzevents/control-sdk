@@ -18,7 +18,7 @@ use Buzz\Control\Traits\SupportRead;
  */
 class Floorplan extends SdkObject
 {
-    use SupportRead,
-        HasFiles,
+    use HasFiles,
+        SupportRead,
         Translatable;
 }

@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Refinable;
+use Buzz\Control\Gateway\User;
 
 /**
  * Class Grid
@@ -13,7 +14,7 @@ use Buzz\Control\Campaign\Traits\Refinable;
  * @property string $order
  * @property string $direction
  * @property int $user_id
- * @property-read \Buzz\Control\Gateway\User $user
+ * @property-read User $user
  */
 class Grid extends SdkObject
 {

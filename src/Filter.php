@@ -1,4 +1,6 @@
-<?php namespace Buzz\Control;
+<?php
+
+namespace Buzz\Control;
 
 use ArrayIterator;
 use IteratorAggregate;
@@ -16,19 +18,17 @@ class Filter implements IteratorAggregate
     protected $groups = [];
 
     /**
-     * @param $filters
-     *
      * @return $this
      */
     public function set($filters)
     {
-        if (empty($filters) || !is_array($filters)) {
+        if (empty($filters) || ! is_array($filters)) {
             return $this;
         }
 
         foreach ($filters as $single) {
             if (isset($single['group'])) {
-                $group = new self();
+                $group = new self;
                 $group->set($single['group']);
                 if (isset($single['or'])) {
                     $this->addGroup($group, $single['or']);
@@ -44,9 +44,7 @@ class Filter implements IteratorAggregate
     }
 
     /**
-     * @param Filter $group
-     * @param bool $or
-     *
+     * @param  bool  $or
      * @return $this
      */
     public function addGroup(Filter $group, $or = false)
@@ -60,16 +58,12 @@ class Filter implements IteratorAggregate
     }
 
     /**
-     * @param      $parameter
-     * @param      $operator
-     * @param      $value
-     * @param bool $or
-     *
+     * @param  bool  $or
      * @return $this
      */
     public function add($parameter, $operator, $value = null, $or = false)
     {
-        //@todo REMOVE THIS ONES CAMPAIGN IS REMOVE FROM ALL PROJECTS
+        // @todo REMOVE THIS ONES CAMPAIGN IS REMOVE FROM ALL PROJECTS
         if (strpos($parameter, 'campaign') !== false) {
             return $this;
         }
@@ -83,9 +77,6 @@ class Filter implements IteratorAggregate
     }
 
     /**
-     * @param array $parameters
-     * @param       $term_string
-     *
      * @return $this
      */
     public function addSearchTerm(array $parameters, $term_string)
@@ -101,7 +92,7 @@ class Filter implements IteratorAggregate
         $parameter_first = reset($parameters);
 
         foreach ($terms as $term) {
-            $group = new self();
+            $group = new self;
 
             foreach ($parameters as $parameter) {
                 $group->add($parameter, 'contains', $term, $parameter !== $parameter_first);
@@ -114,8 +105,6 @@ class Filter implements IteratorAggregate
     }
 
     /**
-     * @param ...$params
-     *
      * @return Filter
      */
     public function orGroup(...$params)
@@ -126,14 +115,12 @@ class Filter implements IteratorAggregate
     }
 
     /**
-     * @param callable $callback
-     * @param bool $or
-     *
+     * @param  bool  $or
      * @return $this
      */
     public function group(callable $callback, $or = false)
     {
-        $group = new self();
+        $group = new self;
 
         $this->groups[] = compact('group', 'or');
 
@@ -154,8 +141,7 @@ class Filter implements IteratorAggregate
     }
 
     /**
-     * @param array ...$params
-     *
+     * @param  array  ...$params
      * @return Filter
      */
     public function orAdd(...$params)
@@ -196,7 +182,7 @@ class Filter implements IteratorAggregate
     /**
      * Get an iterator for the filters.
      *
-     * @return \ArrayIterator
+     * @return ArrayIterator
      */
     public function getIterator()
     {

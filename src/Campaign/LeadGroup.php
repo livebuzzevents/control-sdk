@@ -2,6 +2,8 @@
 
 namespace Buzz\Control\Campaign;
 
+use Carbon\Carbon;
+
 /**
  * Class LeadGroup
  *
@@ -9,8 +11,6 @@ namespace Buzz\Control\Campaign;
  * @property string $name
  * @property string $description
  * @property-read int $leads_count
- * @property \Carbon\Carbon $expired_at
+ * @property Carbon $expired_at
  */
-class LeadGroup extends SdkObject
-{
-}
+class LeadGroup extends SdkObject {}

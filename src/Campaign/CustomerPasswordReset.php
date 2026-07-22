@@ -8,10 +8,8 @@ namespace Buzz\Control\Campaign;
  * @property string $token
  * @property string $customer_id
  * @property string $stream_id
- * @property-read boolean $expired
- * @property-read \Buzz\Control\Campaign\Customer $customer
- * @property-read \Buzz\Control\Campaign\Stream $stream
+ * @property-read bool $expired
+ * @property-read Customer $customer
+ * @property-read Stream $stream
  */
-class CustomerPasswordReset extends SdkObject
-{
-}
+class CustomerPasswordReset extends SdkObject {}

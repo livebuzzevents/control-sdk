@@ -16,7 +16,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $version
  * @property string $ip
  * @property int $port
- * @property-read \Buzz\Control\Campaign\BadgeStock $badge_stock
+ * @property-read BadgeStock $badge_stock
  */
 class Printer extends SdkObject
 {

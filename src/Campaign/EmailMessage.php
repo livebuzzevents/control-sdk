@@ -21,37 +21,28 @@ namespace Buzz\Control\Campaign;
  * @property int $opens
  * @property array $details
  * @property string $process_id
- * @property \Carbon\Carbon $provider_deleted_at
- * @property-read \Buzz\Control\Campaign\SingleShot $single_shot
- * @property-read \Buzz\Control\Campaign\Automation $automation
- * @property-read \Buzz\Control\Campaign\EmailMessageTemplate $template
+ * @property Carbon $provider_deleted_at
+ * @property-read SingleShot $single_shot
+ * @property-read Automation $automation
+ * @property-read EmailMessageTemplate $template
  */
 
 use Buzz\Control\Campaign\Traits\Morphable;
+use Carbon\Carbon;
 
 /**
  * Class EmailMessage
- *
- * @package Buzz\Control\Campaign
  */
 class EmailMessage extends SdkObject
 {
     use Morphable;
 
-    /**
-     * @param SdkObject $model
-     * @param string $email_message_template_id
-     * @param string|null $to_address
-     * @param string|null $subject
-     * @param array|null $custom_data
-     * @param bool $send_instantly
-     */
     public function send(
         SdkObject $model,
         string $email_message_template_id,
-        string $to_address = null,
-        string $subject = null,
-        array $custom_data = null,
+        ?string $to_address = null,
+        ?string $subject = null,
+        ?array $custom_data = null,
         bool $send_instantly = false
     ) {
         $model_type = class_basename($model);

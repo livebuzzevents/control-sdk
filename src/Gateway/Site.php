@@ -12,7 +12,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property string $organization_id
  * @property string $campaign_id
  * @property string $stream_id
- * @property boolean $active
+ * @property bool $active
  * @property-read string $organization_identifier
  * @property-read string $campaign_identifier
  * @property-read string $stream_identifier

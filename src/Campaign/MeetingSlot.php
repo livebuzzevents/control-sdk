@@ -3,12 +3,13 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Traits\SupportRead;
+use Carbon\Carbon;
 
 /**
  * Class MeetingSlot
  *
- * @property \Carbon\Carbon $ends_at
- * @property \Carbon\Carbon $starts_at
+ * @property Carbon $ends_at
+ * @property Carbon $starts_at
  */
 class MeetingSlot extends SdkObject
 {

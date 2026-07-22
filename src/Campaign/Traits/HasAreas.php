@@ -2,12 +2,12 @@
 
 namespace Buzz\Control\Campaign\Traits;
 
+use Buzz\Control\Campaign\ModelArea;
+
 /**
  * trait HasAreas
  *
  * @property array $area_ids
- * @property-read \Buzz\Control\Campaign\ModelArea[] $areas
+ * @property-read ModelArea[] $areas
  */
-trait HasAreas
-{
-}
+trait HasAreas {}

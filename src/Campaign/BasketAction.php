@@ -10,10 +10,7 @@ namespace Buzz\Control\Campaign;
  * @property string $basket_id
  * @property array $parameters
  * @property array $results
- *
- * @property-read \Buzz\Control\Campaign\Basket $basket
- * @property-read \Buzz\Control\Campaign\BasketProduct $basket_product
+ * @property-read Basket $basket
+ * @property-read BasketProduct $basket_product
  */
-class BasketAction extends SdkObject
-{
-}
+class BasketAction extends SdkObject {}

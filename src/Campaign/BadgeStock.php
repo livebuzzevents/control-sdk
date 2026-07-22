@@ -14,9 +14,8 @@ use Buzz\Control\Traits\SupportWrite;
  * @property int $height
  * @property array $elements
  * @property array $images
- *
- * @property-read \Buzz\Control\Campaign\Printer[] $printers
- * @property-read \Buzz\Control\Campaign\BadgeType[] $badgeTypes
+ * @property-read Printer[] $printers
+ * @property-read BadgeType[] $badgeTypes
  */
 class BadgeStock extends SdkObject
 {

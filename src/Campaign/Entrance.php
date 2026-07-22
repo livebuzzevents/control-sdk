@@ -10,8 +10,8 @@ use Buzz\Control\Traits\SupportWrite;
  *
  * @property string $identifier
  * @property string $name
- * @property boolean $handles_crossovers
- * @property-read \Buzz\Control\Campaign\Scanner $scanners
+ * @property bool $handles_crossovers
+ * @property-read Scanner $scanners
  */
 class Entrance extends SdkObject
 {

@@ -56,57 +56,57 @@ use Illuminate\Support\Collection;
  * @property-read string $signed_hot_leads_download_link
  * @property-read string $signed_warm_leads_download_link
  * @property-read string $signed_other_leads_download_link
- * @property-read \Buzz\Control\Campaign\Address[] $addresses
- * @property-read \Buzz\Control\Campaign\Answer[] $answers
- * @property-read \Buzz\Control\Campaign\Article[] $articles
- * @property-read \Buzz\Control\Campaign\Basket[] $baskets
- * @property-read \Buzz\Control\Campaign\Invite[] $created_invites
- * @property-read \Buzz\Control\Campaign\Exhibitor $owner
- * @property-read \Buzz\Control\Campaign\Import $import
- * @property-read \Buzz\Control\Campaign\Invite[] $invites
- * @property-read \Buzz\Control\Campaign\Link[] $links
- * @property-read \Buzz\Control\Campaign\Log[] $logs
- * @property-read \Buzz\Control\Campaign\Note[] $notes
- * @property-read \Buzz\Control\Campaign\Order[] $orders
- * @property-read \Buzz\Control\Campaign\Phone[] $phones
- * @property-read \Buzz\Control\Campaign\Property[] $properties
- * @property-read \Buzz\Control\Campaign\Scanner[] $scanners
- * @property-read \Buzz\Control\Campaign\Scan[] $scans
- * @property-read \Buzz\Control\Campaign\CustomType $custom_type
- * @property-read \Buzz\Control\Campaign\SeminarExhibitor[] $seminars
- * @property-read \Buzz\Control\Campaign\PageActivity[] $page_activities
- * @property-read \Buzz\Control\Campaign\ExhibitorPressRelease[] $press_releases
- * @property-read \Buzz\Control\Campaign\ModelTag[] $tags
- * @property-read \Buzz\Control\Campaign\Question[] $questions
- * @property-read \Buzz\Control\Campaign\Product[] $products
- * @property-read \Buzz\Control\Campaign\Customer $main_contact
- * @property-read \Buzz\Control\Campaign\Customer[] $customers
- * @property-read \Buzz\Control\Campaign\Allowance[] $allowances
+ * @property-read Address[] $addresses
+ * @property-read Answer[] $answers
+ * @property-read Article[] $articles
+ * @property-read Basket[] $baskets
+ * @property-read Invite[] $created_invites
+ * @property-read Exhibitor $owner
+ * @property-read Import $import
+ * @property-read Invite[] $invites
+ * @property-read Link[] $links
+ * @property-read Log[] $logs
+ * @property-read Note[] $notes
+ * @property-read Order[] $orders
+ * @property-read Phone[] $phones
+ * @property-read Property[] $properties
+ * @property-read Scanner[] $scanners
+ * @property-read Scan[] $scans
+ * @property-read CustomType $custom_type
+ * @property-read SeminarExhibitor[] $seminars
+ * @property-read PageActivity[] $page_activities
+ * @property-read ExhibitorPressRelease[] $press_releases
+ * @property-read ModelTag[] $tags
+ * @property-read Question[] $questions
+ * @property-read Product[] $products
+ * @property-read Customer $main_contact
+ * @property-read Customer[] $customers
+ * @property-read Allowance[] $allowances
  * @property-read string $signed_all_favourites_download_link
  */
 class Exhibitor extends SdkObject
 {
-    use SupportCrud,
-        HasAreas,
+    use HasAreas,
+        HasFavourites,
+        HasFiles,
+        SupportCrud,
         Taggable,
         WithAnswerHelpers,
-        WithPropertyHelpers,
-        HasFavourites,
-        HasFiles;
+        WithPropertyHelpers;
 
     /**
      * @return \Buzz\EssentialsSdk\Collection
-     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
+     *
+     * @throws ErrorException
      */
-
-    public function getFlattenedAllowances(string $entitlement, string $type = null): Collection
+    public function getFlattenedAllowances(string $entitlement, ?string $type = null): Collection
     {
         return collect(
             $this->api()->post(
-                $this->getEndpoint($this->id . '/flattened-allowances'),
+                $this->getEndpoint($this->id.'/flattened-allowances'),
                 [
                     'entitlement' => $entitlement,
-                    'type' => $type,
+                    'type'        => $type,
                 ]
             )
         );
@@ -114,15 +114,15 @@ class Exhibitor extends SdkObject
 
     /**
      * @return \Buzz\EssentialsSdk\Collection
-     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
+     *
+     * @throws ErrorException
      */
-
     public function getEmailInvites(): Collection
     {
         return Cast::many(
-            (new Invite()),
+            (new Invite),
             $this->api()->get(
-                $this->getEndpoint($this->id . '/email-invites')
+                $this->getEndpoint($this->id.'/email-invites')
             )
         );
     }
@@ -142,48 +142,42 @@ class Exhibitor extends SdkObject
             );
         }
 
-        return $this->api()->get($this->getEndpoint($this->id . '/download-badges/' . $customer->id));
+        return $this->api()->get($this->getEndpoint($this->id.'/download-badges/'.$customer->id));
     }
 
     /**
-     * @return array
      * @throws ErrorException
      */
     public function fetchForApp(string $entityListId): array
     {
         return $this->api()->get("app/fetch/$entityListId/exhibitors", [
-            'page' => request('page'),
+            'page'     => request('page'),
             'per_page' => request('per_page'),
         ]);
     }
 
     /**
-     * @return array
      * @throws ErrorException
      */
     public function fetchBadgeHolders(string $exhibitor): array
     {
         return $this->api()->get("app/fetch/$exhibitor/exhibitor-badge-holders", [
-            'page' => request('page'),
+            'page'     => request('page'),
             'per_page' => request('per_page'),
         ]);
     }
 
     /**
-     * @return array
      * @throws ErrorException
      */
     public function fetchProducts(string $exhibitor): array
     {
         return $this->api()->get("app/fetch/$exhibitor/exhibitor-products", [
-            'page' => request('page'),
+            'page'     => request('page'),
             'per_page' => request('per_page'),
         ]);
     }
 
-    /**
-     * @return Collection
-     */
     public function fetchFilters(string $entityListId): Collection
     {
         return collect($this->api()->get("app/fetch/$entityListId/exhibitor-filters"));
@@ -191,19 +185,19 @@ class Exhibitor extends SdkObject
 
     public function smartscanPlus(): array
     {
-        return $this->api()->get($this->getEndpoint($this->id . '/smartscan-plus'));
+        return $this->api()->get($this->getEndpoint($this->id.'/smartscan-plus'));
     }
 
-    public function downloadLeads(Scanner $scanner = null): string
+    public function downloadLeads(?Scanner $scanner = null): string
     {
         $endpoint = '/download-leads';
 
         if (optional($scanner)->id) {
-            $endpoint .= '/' . $scanner->id;
+            $endpoint .= '/'.$scanner->id;
         }
 
         return $this->api()->post(
-            $this->getEndpoint($this->id . $endpoint), request()->only('scan_filters')
+            $this->getEndpoint($this->id.$endpoint), request()->only('scan_filters')
         );
     }
 }

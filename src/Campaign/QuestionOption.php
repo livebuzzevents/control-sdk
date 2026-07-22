@@ -8,7 +8,7 @@ use Buzz\Control\Traits\SupportCrud;
 /**
  * Class QuestionOption
  *
- * @property boolean $active
+ * @property bool $active
  * @property string $identifier
  * @property string $body
  * @property string $description
@@ -16,9 +16,9 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $open
  * @property array $rules
  * @property int $order
- * @property-read \Buzz\Control\Campaign\Question $question
- * @property-read \Buzz\Control\Campaign\QuestionOptionGroup $question_option_group
- * @property-read \Buzz\Control\Campaign\AnswerOption[] $answer_options
+ * @property-read Question $question
+ * @property-read QuestionOptionGroup $question_option_group
+ * @property-read AnswerOption[] $answer_options
  */
 class QuestionOption extends SdkObject
 {

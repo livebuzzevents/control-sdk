@@ -2,6 +2,8 @@
 
 namespace Buzz\Control\Campaign;
 
+use Carbon\Carbon;
+
 /**
  * Class Refund
  *
@@ -18,11 +20,9 @@ namespace Buzz\Control\Campaign;
  * @property array $captured
  * @property array $settled
  * @property array $status
- * @property \Carbon\Carbon $caputed_at
- * @property-read \Buzz\Control\Campaign\Charge $charge
- * @property-read \Buzz\Control\Campaign\CreditNote $credit_note
- * @property-read \Buzz\Control\Campaign\Fee[] $fees
+ * @property Carbon $caputed_at
+ * @property-read Charge $charge
+ * @property-read CreditNote $credit_note
+ * @property-read Fee[] $fees
  */
-class Refund extends SdkObject
-{
-}
+class Refund extends SdkObject {}

@@ -8,8 +8,7 @@ use Buzz\Control\Campaign\Traits\Morphable;
  * Class EntityListMember
  *
  * @property string $entity_list_id
- *
- * @property-read \Buzz\Control\Campaign\EntityList $entity_list
+ * @property-read EntityList $entity_list
  */
 class EntityListMember extends SdkObject
 {

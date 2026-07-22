@@ -2,6 +2,8 @@
 
 namespace Buzz\Control\Campaign;
 
+use Carbon\Carbon;
+
 /**
  * Class Credit
  *
@@ -17,13 +19,11 @@ namespace Buzz\Control\Campaign;
  * @property string $description
  * @property array $response
  * @property string $settled
- * @property \Carbon\Carbon $captured_at
- * @property-read \Buzz\Control\Campaign\Order $order
- * @property-read \Buzz\Control\Campaign\Customer $customer
- * @property-read \Buzz\Control\Campaign\PaymentProvider $payment_provider
- * @property-read \Buzz\Control\Campaign\CreditNote $credit_note
- * @property-read \Buzz\Control\Campaign\Fee[] $fees
+ * @property Carbon $captured_at
+ * @property-read Order $order
+ * @property-read Customer $customer
+ * @property-read PaymentProvider $payment_provider
+ * @property-read CreditNote $credit_note
+ * @property-read Fee[] $fees
  */
-class Credit extends SdkObject
-{
-}
+class Credit extends SdkObject {}

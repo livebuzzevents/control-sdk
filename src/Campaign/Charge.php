@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Morphable;
+use Carbon\Carbon;
 
 /**
  * Class Charge
@@ -27,13 +28,13 @@ use Buzz\Control\Campaign\Traits\Morphable;
  * @property string $description
  * @property array $response
  * @property string $settled
- * @property \Carbon\Carbon $captured_at
- * @property-read \Buzz\Control\Campaign\Customer $customer
- * @property-read \Buzz\Control\Campaign\PaymentProvider $payment_provider
- * @property-read \Buzz\Control\Campaign\Invoice $invoice
- * @property-read \Buzz\Control\Campaign\Dispute[] $disputes
- * @property-read \Buzz\Control\Campaign\Refund[] $refunds
- * @property-read \Buzz\Control\Campaign\Fee[] $fees
+ * @property Carbon $captured_at
+ * @property-read Customer $customer
+ * @property-read PaymentProvider $payment_provider
+ * @property-read Invoice $invoice
+ * @property-read Dispute[] $disputes
+ * @property-read Refund[] $refunds
+ * @property-read Fee[] $fees
  */
 class Charge extends SdkObject
 {

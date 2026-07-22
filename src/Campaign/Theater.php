@@ -15,7 +15,7 @@ use Buzz\EssentialsSdk\Cast;
  * @property string $type
  * @property string $color
  * @property string $text_color_hexstring
- * @property-read \Buzz\Control\Campaign\Seminar[] $seminars
+ * @property-read Seminar[] $seminars
  */
 class Theater extends SdkObject
 {
@@ -26,7 +26,7 @@ class Theater extends SdkObject
     public function meetingLocations(Customer $customer)
     {
         return Cast::many(
-            (new Theater()),
+            (new Theater),
             $this->api()->get($this->getEndpoint(sprintf('%s/%s', $customer->id, 'meeting-locations')))
         );
     }

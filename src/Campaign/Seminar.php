@@ -28,69 +28,56 @@ use Illuminate\Support\Collection;
  * @property array $settings
  * @property string $source
  * @property string $source_id
- * @property \Carbon\Carbon $ends_at
- * @property \Carbon\Carbon $starts_at
- * @property \Buzz\Control\Campaign\CustomerSeminar[] $speakers
+ * @property Carbon $ends_at
+ * @property Carbon $starts_at
+ * @property CustomerSeminar[] $speakers
  * @property-read string $content_capture_qr_code
  * @property-read int $spaces_taken
  * @property-read int $spaces_available
  * @property-read string $signed_attendees_download_link
- * @property-read \Buzz\Control\Campaign\CustomType $custom_type
- * @property-read \Buzz\Control\Campaign\Link[] $links
- * @property-read \Buzz\Control\Campaign\Theater $theater
- * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
- * @property-read \Buzz\Control\Campaign\Product $product
- * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $customer_seminars
- * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $attendees
- * @property-read \Buzz\Control\Campaign\Scanner[] $scanners
- * @property-read \Buzz\Control\Campaign\SeminarTopic[] $topics
- * @property-read \Buzz\Control\Campaign\Exhibitor[] $exhibitors
+ * @property-read CustomType $custom_type
+ * @property-read Link[] $links
+ * @property-read Theater $theater
+ * @property-read Exhibitor $exhibitor
+ * @property-read Product $product
+ * @property-read CustomerSeminar[] $customer_seminars
+ * @property-read CustomerSeminar[] $attendees
+ * @property-read Scanner[] $scanners
+ * @property-read SeminarTopic[] $topics
+ * @property-read Exhibitor[] $exhibitors
  */
 class Seminar extends SdkObject
 {
-    use SupportRead,
-        SupportWrite,
-        Translatable,
-        HasAreas,
+    use HasAreas,
         HasFavourites,
-        HasFiles;
+        HasFiles,
+        SupportRead,
+        SupportWrite,
+        Translatable;
 
-    /**
-     * @param string $topic_id
-     */
     public function attachTopic(string $topic_id): void
     {
         $this->api()->post($this->getEndpoint("{$this->id}/attach-topic/{$topic_id}"));
     }
 
-    /**
-     * @param string $topic_id
-     */
     public function detachTopic(string $topic_id): void
     {
         $this->api()->delete($this->getEndpoint("{$this->id}/detach-topic/{$topic_id}"));
     }
 
-    /**
-     * @param array $topic_ids
-     */
     public function syncTopics(array $topic_ids): void
     {
         $this->api()->post($this->getEndpoint("{$this->id}/sync-topics"), $topic_ids);
     }
 
-    /**
-     * @return array
-     */
     public function getAdditionalInfo(): array
     {
         return $this->api()->get(
-            $this->getEndpoint($this->id . '/fetch/additional-info')
+            $this->getEndpoint($this->id.'/fetch/additional-info')
         );
     }
 
     /**
-     * @return array
      * @throws ErrorException
      */
     public function fetchForApp(string $entityListId): array
@@ -101,9 +88,6 @@ class Seminar extends SdkObject
         ]);
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     public function fetchFilters(string $entityListId): Collection
     {
         return collect($this->api()->get("app/fetch/$entityListId/seminar-filters"));

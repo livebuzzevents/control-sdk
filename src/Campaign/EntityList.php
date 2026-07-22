@@ -10,8 +10,6 @@ namespace Buzz\Control\Campaign;
  * @property-read int $members_count
  * @property string $static
  * @property array $settings
- * @property-read \Buzz\Control\Campaign\EntityListMember[] $members
+ * @property-read EntityListMember[] $members
  */
-class EntityList extends SdkObject
-{
-}
+class EntityList extends SdkObject {}

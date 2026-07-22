@@ -15,7 +15,7 @@ use Buzz\Control\Traits\SupportWrite;
  */
 class VisaTemplate extends SdkObject
 {
-    use SupportRead,
-        SupportWrite,
-        HasFiles;
+    use HasFiles,
+        SupportRead,
+        SupportWrite;
 }

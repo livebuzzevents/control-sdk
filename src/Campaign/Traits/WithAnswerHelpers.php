@@ -1,15 +1,13 @@
-<?php namespace Buzz\Control\Campaign\Traits;
+<?php
+
+namespace Buzz\Control\Campaign\Traits;
 
 /**
  * Class WithAnswerHelpers
- *
- * @package Buzz\Control\Campaign\Traits
  */
 trait WithAnswerHelpers
 {
     /**
-     * @param $identifier
-     *
      * @return null
      */
     public function getAnswerByIdentifier($identifier)

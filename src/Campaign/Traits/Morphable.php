@@ -1,4 +1,6 @@
-<?php namespace Buzz\Control\Campaign\Traits;
+<?php
+
+namespace Buzz\Control\Campaign\Traits;
 
 use Buzz\Control\Campaign\SdkObject;
 

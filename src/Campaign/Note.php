@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Morphable;
+use Buzz\Control\Gateway\User;
 use Buzz\Control\Traits\SupportCrud;
 
 /**
@@ -13,10 +14,10 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $model_id
  * @property string $model_type
  * @property string $value
- * @property-read \Buzz\Control\Gateway\User $user
- * @property-read \Buzz\Control\Campaign\Customer $creator
+ * @property-read User $user
+ * @property-read Customer $creator
  */
 class Note extends SdkObject
 {
-    use SupportCrud, Morphable;
+    use Morphable, SupportCrud;
 }

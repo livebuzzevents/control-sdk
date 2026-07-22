@@ -15,14 +15,14 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $role
  * @property string $type
  * @property string $status
- * @property-read \Buzz\Control\Campaign\Customer $customer
- * @property-read \Buzz\Control\Campaign\Customer $creator
- * @property-read \Buzz\Control\Campaign\Seminar $seminar
- * @property-read \Buzz\Control\Campaign\CustomType $custom_type
- * @property-read \Buzz\Control\Campaign\Redemption[] $redemptions
+ * @property-read Customer $customer
+ * @property-read Customer $creator
+ * @property-read Seminar $seminar
+ * @property-read CustomType $custom_type
+ * @property-read Redemption[] $redemptions
  */
 class CustomerSeminar extends SdkObject
 {
-    use SupportCrud;
     use Morphable;
+    use SupportCrud;
 }

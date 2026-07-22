@@ -14,6 +14,6 @@ class Fetch extends SdkObject
      */
     public function nationalities()
     {
-        return $this->api()->get($this->getEndpoint("nationalities"));
+        return $this->api()->get($this->getEndpoint('nationalities'));
     }
 }

@@ -24,13 +24,13 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property string $subject
  * @property string $message
  * @property-read string $url
- * @property-read \Buzz\Control\Campaign\Import $import
- * @property-read \Buzz\Control\Campaign\Customer $customer
- * @property-read \Buzz\Control\Campaign\Customer $created_by_customer
- * @property-read \Buzz\Control\Campaign\Exhibitor $created_by_exhibitor
- * @property-read \Buzz\Control\Campaign\Stream $stream
- * @property-read \Buzz\Control\Campaign\BadgeType $badge_type
- * @property-read \Buzz\Control\Campaign\Product $product
+ * @property-read Import $import
+ * @property-read Customer $customer
+ * @property-read Customer $created_by_customer
+ * @property-read Exhibitor $created_by_exhibitor
+ * @property-read Stream $stream
+ * @property-read BadgeType $badge_type
+ * @property-read Product $product
  */
 class Invite extends SdkObject
 {
@@ -45,16 +45,12 @@ class Invite extends SdkObject
     public function delete(): void
     {
         if (in_array($this->status, ['accepted', 'bypassed'])) {
-            throw new ErrorException("Delete is forbidden for invite with status " . $this->status);
+            throw new ErrorException('Delete is forbidden for invite with status '.$this->status);
         }
 
         $this->api()->delete($this->getEndpoint($this->id));
     }
 
-    /**
-     * @param string $email_message_template_id
-     * @return string
-     */
     public function preview(string $email_message_template_id): string
     {
         return $this->api()->post(

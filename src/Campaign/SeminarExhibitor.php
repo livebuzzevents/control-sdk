@@ -7,8 +7,6 @@ namespace Buzz\Control\Campaign;
  *
  * @property string $seminar_id
  * @property string $exhibitor_id
- * @property-read \Buzz\Control\Campaign\Seminar $seminar
+ * @property-read Seminar $seminar
  */
-class SeminarExhibitor extends SdkObject
-{
-}
+class SeminarExhibitor extends SdkObject {}
