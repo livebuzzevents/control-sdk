@@ -158,6 +158,30 @@ class Exhibitor extends SdkObject
     }
 
     /**
+     * @return array
+     * @throws ErrorException
+     */
+    public function fetchBadgeHolders(string $exhibitor): array
+    {
+        return $this->api()->get("app/fetch/$exhibitor/exhibitor-badge-holders", [
+            'page' => request('page'),
+            'per_page' => request('per_page'),
+        ]);
+    }
+
+    /**
+     * @return array
+     * @throws ErrorException
+     */
+    public function fetchProducts(string $exhibitor): array
+    {
+        return $this->api()->get("app/fetch/$exhibitor/exhibitor-products", [
+            'page' => request('page'),
+            'per_page' => request('per_page'),
+        ]);
+    }
+
+    /**
      * @return Collection
      */
     public function fetchFilters(string $entityListId): Collection
