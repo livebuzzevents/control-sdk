@@ -15,11 +15,9 @@ namespace Buzz\Control\Campaign;
  * @property int $sequence
  * @property string $number
  * @property string $paid
- * @property-read \Buzz\Control\Campaign\Invoice $invoice
- * @property-read \Buzz\Control\Campaign\CreditNoteItem[] $items
- * @property-read \Buzz\Control\Campaign\Credit[] $credits
- * @property-read \Buzz\Control\Campaign\Refund[] $refunds
+ * @property-read Invoice $invoice
+ * @property-read CreditNoteItem[] $items
+ * @property-read Credit[] $credits
+ * @property-read Refund[] $refunds
  */
-class CreditNote extends SdkObject
-{
-}
+class CreditNote extends SdkObject {}

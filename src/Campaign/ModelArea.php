@@ -8,8 +8,7 @@ use Buzz\Control\Campaign\Traits\Morphable;
  * Class BadgeStock
  *
  * @property string $area_id
- *
- * @property-read \Buzz\Control\Campaign\Area $area
+ * @property-read Area $area
  */
 class ModelArea extends SdkObject
 {

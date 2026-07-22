@@ -17,11 +17,9 @@ namespace Buzz\Control\Campaign;
  * @property array $settings
  * @property array $details
  * @property string $settled
- * @property-read \Buzz\Control\Campaign\Charge $charge
- * @property-read \Buzz\Control\Campaign\Refund $refund
- * @property-read \Buzz\Control\Campaign\Dispute $dispute
- * @property-read \Buzz\Control\Campaign\Credit $credit
+ * @property-read Charge $charge
+ * @property-read Refund $refund
+ * @property-read Dispute $dispute
+ * @property-read Credit $credit
  */
-class Fee extends SdkObject
-{
-}
+class Fee extends SdkObject {}

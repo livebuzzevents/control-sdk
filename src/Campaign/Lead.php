@@ -10,6 +10,7 @@ use Buzz\Control\Campaign\Traits\Taggable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportCrud;
+use Carbon\Carbon;
 
 /**
  * Class Lead
@@ -37,30 +38,29 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $cloned_campaign_id
  * @property bool $smart_match_synced
  * @property array $details
- * @property \Carbon\Carbon $expires_at
- * @property-read \Buzz\Control\Campaign\LeadGroup $group
- * @property-read \Buzz\Control\Campaign\Address[] $addresses
- * @property-read \Buzz\Control\Campaign\Answer[] $answers
- * @property-read \Buzz\Control\Campaign\EmailMessage[] $email_messages
- * @property-read \Buzz\Control\Campaign\Import $import
- * @property-read \Buzz\Control\Campaign\Link[] $links
- * @property-read \Buzz\Control\Campaign\Log[] $logs
- * @property-read \Buzz\Control\Campaign\Note[] $notes
- * @property-read \Buzz\Control\Campaign\Phone[] $phones
- * @property-read \Buzz\Control\Campaign\Property[] $properties
- * @property-read \Buzz\Control\Campaign\SmsMessage[] $sms_messages
- * @property-read \Buzz\Control\Campaign\Social[] $socials
- * @property-read \Buzz\Control\Campaign\ModelTag[] $tags
- *
+ * @property Carbon $expires_at
+ * @property-read LeadGroup $group
+ * @property-read Address[] $addresses
+ * @property-read Answer[] $answers
+ * @property-read EmailMessage[] $email_messages
+ * @property-read Import $import
+ * @property-read Link[] $links
+ * @property-read Log[] $logs
+ * @property-read Note[] $notes
+ * @property-read Phone[] $phones
+ * @property-read Property[] $properties
+ * @property-read SmsMessage[] $sms_messages
+ * @property-read Social[] $socials
+ * @property-read ModelTag[] $tags
  */
 class Lead extends SdkObject
 {
-    use SupportCrud,
-        CanSendEmailMessage,
+    use CanSendEmailMessage,
         CanSendSmsMessage,
         HasAreas,
+        HasFiles,
+        SupportCrud,
         Taggable,
         WithAnswerHelpers,
-        WithPropertyHelpers,
-        HasFiles;
+        WithPropertyHelpers;
 }

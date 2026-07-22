@@ -2,6 +2,8 @@
 
 namespace Buzz\Control\Campaign;
 
+use Carbon\Carbon;
+
 /**
  * Class SingleShot
  *
@@ -12,12 +14,10 @@ namespace Buzz\Control\Campaign;
  * @property string $template_id
  * @property string $template_type
  * @property int $stopped
- * @property \Carbon\Carbon $sends_at
+ * @property Carbon $sends_at
  * @property-read string $nice_type
- * @property-read boolean $allow_modification
- * @property-read \Buzz\Control\Campaign\SingleShotEntityListMember[] $members
- * @property-read \Buzz\Control\Campaign\EntityList[] $entity_list
+ * @property-read bool $allow_modification
+ * @property-read SingleShotEntityListMember[] $members
+ * @property-read EntityList[] $entity_list
  */
-class SingleShot extends SdkObject
-{
-}
+class SingleShot extends SdkObject {}

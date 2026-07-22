@@ -18,24 +18,18 @@ use Buzz\Control\Campaign\Traits\Morphable;
  * @property int $clicks
  * @property array $details
  * @property string $process_id
- * @property-read \Buzz\Control\Campaign\SingleShot $single_shot
- * @property-read \Buzz\Control\Campaign\Automation $automation
- * @property-read \Buzz\Control\Campaign\SmsMessageTemplate $template
+ * @property-read SingleShot $single_shot
+ * @property-read Automation $automation
+ * @property-read SmsMessageTemplate $template
  */
 class SmsMessage extends SdkObject
 {
     use Morphable;
 
-    /**
-     * @param SdkObject $model
-     * @param string $sms_message_template_id
-     * @param string|null $phone_number
-     * @param bool $send_instantly
-     */
     public function send(
         SdkObject $model,
         string $sms_message_template_id,
-        string $phone_number = null,
+        ?string $phone_number = null,
         bool $send_instantly = false
     ) {
         $model_type = class_basename($model);

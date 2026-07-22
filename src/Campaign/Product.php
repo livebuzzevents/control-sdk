@@ -8,10 +8,8 @@ use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportCrud;
-use Buzz\Control\Traits\SupportRead;
-use Buzz\Control\Traits\SupportWrite;
-use Buzz\EssentialsSdk\Cast;
 use Buzz\EssentialsSdk\Exceptions\ErrorException;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
 /**
@@ -38,43 +36,39 @@ use Illuminate\Support\Collection;
  * @property array $actions
  * @property-read string $currency
  * @property string $active
- * @property \Carbon\Carbon $valid_from
- * @property \Carbon\Carbon $valid_to
+ * @property Carbon $valid_from
+ * @property Carbon $valid_to
  * @property-read string $avatar
  * @property-read string $content_capture_qr_code
  * @property-read string $content_capture_image
  * @property-read string $content_capture_pdf
- * @property-read \Buzz\Control\Campaign\CustomType $custom_type
- * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
- * @property-read \Buzz\Control\Campaign\Seminar $seminar
- * @property-read \Buzz\Control\Campaign\Answer[] $answers
- * @property-read \Buzz\Control\Campaign\OrderProduct[] $order_products
- * @property-read \Buzz\Control\Campaign\Property[] $properties
+ * @property-read CustomType $custom_type
+ * @property-read Exhibitor $exhibitor
+ * @property-read Seminar $seminar
+ * @property-read Answer[] $answers
+ * @property-read OrderProduct[] $order_products
+ * @property-read Property[] $properties
  */
 class Product extends SdkObject
 {
-    use SupportCrud,
+    use HasFavourites,
+        HasFiles,
+        SupportCrud,
         Translatable,
         WithAnswerHelpers,
-        WithPropertyHelpers,
-        HasFavourites,
-        HasFiles;
+        WithPropertyHelpers;
 
     /**
-     * @return array
      * @throws ErrorException
      */
     public function fetchForApp(string $entityListId): array
     {
         return $this->api()->get("app/fetch/$entityListId/products", [
-            'page'         => request('page'),
-            'per_page'     => request('per_page'),
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
         ]);
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     public function fetchFilters(string $entityListId): Collection
     {
         return collect($this->api()->get("app/fetch/$entityListId/product-filters"));

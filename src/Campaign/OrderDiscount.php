@@ -16,10 +16,8 @@ namespace Buzz\Control\Campaign;
  * @property string $code
  * @property array $settings
  * @property string $type
- * @property-read \Buzz\Control\Campaign\Order $order
- * @property-read \Buzz\Control\Campaign\OrderProduct $order_product
- * @property-read \Buzz\Control\Campaign\Discount $discount
+ * @property-read Order $order
+ * @property-read OrderProduct $order_product
+ * @property-read Discount $discount
  */
-class OrderDiscount extends SdkObject
-{
-}
+class OrderDiscount extends SdkObject {}

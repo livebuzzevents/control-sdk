@@ -13,7 +13,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $name
  * @property string $from
  * @property string $message
- * @property-read \Buzz\Control\Campaign\SingleShot[] $single_shots
+ * @property-read SingleShot[] $single_shots
  */
 class SmsMessageTemplate extends SdkObject
 {

@@ -10,7 +10,7 @@ use Buzz\Control\Traits\SupportCrud;
  *
  * @property string $parameter_id
  * @property string $value
- * @property-read \Buzz\Control\Campaign\Parameter $parameter
+ * @property-read Parameter $parameter
  */
 class Property extends SdkObject
 {
@@ -22,7 +22,7 @@ class Property extends SdkObject
      */
     public function save(): void
     {
-        if (!$this->isDirty()) {
+        if (! $this->isDirty()) {
             return;
         }
 

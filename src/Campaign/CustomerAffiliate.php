@@ -8,9 +8,7 @@ namespace Buzz\Control\Campaign;
  * @property string $customer_id
  * @property string $affiliate_id
  * @property string $registered
- * @property-read \Buzz\Control\Campaign\Customer $customer
- * @property-read \Buzz\Control\Campaign\Affiliate $affiliate
+ * @property-read Customer $customer
+ * @property-read Affiliate $affiliate
  */
-class CustomerAffiliate extends SdkObject
-{
-}
+class CustomerAffiliate extends SdkObject {}

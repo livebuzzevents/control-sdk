@@ -2,7 +2,9 @@
 
 namespace Buzz\Control\Organization;
 
+use Buzz\Control\Campaign\File;
 use Buzz\Control\Traits\SupportRead;
+use Carbon\Carbon;
 
 /**
  * Class Campaign
@@ -13,28 +15,28 @@ use Buzz\Control\Traits\SupportRead;
  * @property string $database_id
  * @property string $currency
  * @property int $sequence
- * @property boolean $migrated
+ * @property bool $migrated
  * @property string $dupe_cancelled
  * @property string $dupe_exhibitors
  * @property array $dupe_rules
  * @property array $dashboard_filters
- * @property \Carbon\Carbon $starts_at
- * @property \Carbon\Carbon $ends_at
- * @property \Carbon\Carbon $show_starts_at
- * @property \Carbon\Carbon $show_ends_at
- * @property \Carbon\Carbon $reg_ends_at
- * @property \Carbon\Carbon $hub_ends_at
+ * @property Carbon $starts_at
+ * @property Carbon $ends_at
+ * @property Carbon $show_starts_at
+ * @property Carbon $show_ends_at
+ * @property Carbon $reg_ends_at
+ * @property Carbon $hub_ends_at
  * @property string $language
  * @property array $additional_languages
  * @property string $timezone
  * @property string $version
  * @property-read array $supported_languages
- * @property-read boolean $multilingual
+ * @property-read bool $multilingual
  * @property-read string $full_name
  * @property-read string $status
  * @property-read array $show_days
- * @property-read \Buzz\Control\Organization\Channel $channel
- * @property-read \Buzz\Control\Campaign\File[] $files
+ * @property-read Channel $channel
+ * @property-read File[] $files
  */
 class Campaign extends SdkObject
 {

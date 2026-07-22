@@ -12,10 +12,8 @@ namespace Buzz\Control\Campaign;
  * @property string $status
  * @property-read string $signed_url
  * @property-read array $social_connect_urls
- * @property-read \Buzz\Control\Campaign\Customer $customer
- * @property-read \Buzz\Control\Campaign\Stream $stream
- * @property-read \Buzz\Control\Campaign\CustomerFlowLog[] $logs
+ * @property-read Customer $customer
+ * @property-read Stream $stream
+ * @property-read CustomerFlowLog[] $logs
  */
-class CustomerFlow extends SdkObject
-{
-}
+class CustomerFlow extends SdkObject {}

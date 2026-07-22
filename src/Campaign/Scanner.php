@@ -22,17 +22,17 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $direction
  * @property string $delivery_status
  * @property array $details
- * @property-read boolean $handles_crossovers
+ * @property-read bool $handles_crossovers
  * @property-read string $signed_leads_download_link
  * @property-read string $signed_product_leads_download_link
- * @property-read \Buzz\Control\Campaign\Customer $customer
- * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
- * @property-read \Buzz\Control\Campaign\Seminar $seminar
- * @property-read \Buzz\Control\Campaign\OrderProduct $order_product
- * @property-read \Buzz\Control\Campaign\Entrance $entrance
- * @property-read \Buzz\Control\Campaign\Scan[] $scans
- * @property-read \Buzz\Control\Campaign\SmartScanCode[] $smart_scan_codes
- * @property-read \Buzz\Control\Campaign\Redemption[] $redemptions
+ * @property-read Customer $customer
+ * @property-read Exhibitor $exhibitor
+ * @property-read Seminar $seminar
+ * @property-read OrderProduct $order_product
+ * @property-read Entrance $entrance
+ * @property-read Scan[] $scans
+ * @property-read SmartScanCode[] $smart_scan_codes
+ * @property-read Redemption[] $redemptions
  */
 class Scanner extends SdkObject
 {
@@ -40,16 +40,12 @@ class Scanner extends SdkObject
         SupportWrite;
 
     /**
-     * @param string|null $exhibitor_id
-     * @param string|null $customer_id
-     * @param string|null $paid
-     *
      * @return static
      */
     public function createSmartScanner(
-        string $exhibitor_id = null,
-        string $customer_id = null,
-        string $paid = null
+        ?string $exhibitor_id = null,
+        ?string $customer_id = null,
+        ?string $paid = null
     ) {
         return new static(
             $this->api()->post(

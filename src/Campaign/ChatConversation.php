@@ -25,17 +25,17 @@ class ChatConversation extends SdkObject
             [
                 'conversation_id' => $conversation_id,
                 'sender_id'       => $sender_id,
-                'recipient_id'    => $recipient_id
+                'recipient_id'    => $recipient_id,
             ]
         );
     }
 
     public function fetchMessages(string $sender_id, string $recipient_id, mixed $after = null)
     {
-        $endpoint = 'fetch-messages/' . $sender_id . '/' . $recipient_id;
+        $endpoint = 'fetch-messages/'.$sender_id.'/'.$recipient_id;
 
         if ($after) {
-            $endpoint .= '/' . $after;
+            $endpoint .= '/'.$after;
         }
 
         return $this->api()->get(
@@ -46,7 +46,7 @@ class ChatConversation extends SdkObject
     public function fetchConversations(string $customer_id)
     {
         return $this->api()->get(
-            $this->getEndpoint('fetch-conversations/' . $customer_id),
+            $this->getEndpoint('fetch-conversations/'.$customer_id),
         );
     }
 }

@@ -13,9 +13,9 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $provider
  * @property array $settings
  * @property array $supported_methods
- * @property boolean $active
- * @property-read \Buzz\Control\Campaign\Question $question
- * @property-read \Buzz\Control\Campaign\AnswerOption[] $answer_options
+ * @property bool $active
+ * @property-read Question $question
+ * @property-read AnswerOption[] $answer_options
  */
 class IntegrationProvider extends SdkObject
 {

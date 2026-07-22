@@ -10,6 +10,4 @@ namespace Buzz\Control\Campaign;
  * @property string $status
  * @property-read string $created_at_microtime
  */
-class CustomerFlowLog extends SdkObject
-{
-}
+class CustomerFlowLog extends SdkObject {}

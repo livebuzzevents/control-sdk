@@ -18,15 +18,15 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $color
  * @property array $settings
  * @property string $url
- * @property boolean $has_e_badge
+ * @property bool $has_e_badge
  * @property string $e_badge_line_1
  * @property string $e_badge_line_2
  * @property string $e_badge_line_3
  * @property string $e_badge_qrcode
  * @property string $e_badge_html
- * @property-read \Buzz\Control\Campaign\BadgeStock $badge_stock
- * @property-read \Buzz\Control\Campaign\Stream $stream
- * @property-read \Buzz\Control\Campaign\Customer[] $customers
+ * @property-read BadgeStock $badge_stock
+ * @property-read Stream $stream
+ * @property-read Customer[] $customers
  */
 class BadgeType extends SdkObject
 {

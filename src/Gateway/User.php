@@ -12,6 +12,4 @@ namespace Buzz\Control\Gateway;
  * @property string $mobile
  * @property string $company
  */
-class User extends SdkObject
-{
-}
+class User extends SdkObject {}

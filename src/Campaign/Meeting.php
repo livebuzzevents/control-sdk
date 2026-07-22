@@ -17,10 +17,10 @@ use Buzz\EssentialsSdk\SdkObject as EssentialsSdkObject;
  * @property string $recipient_id
  * @property string $meeting_slot_id
  * @property string $meeting_happened
- * @property-read \Buzz\Control\Campaign\Theater $location
- * @property-read \Buzz\Control\Campaign\Customer $requester
- * @property-read \Buzz\Control\Campaign\Customer $recipient
- * @property-read \Buzz\Control\Campaign\MeetingSlot $meeting_slot
+ * @property-read Theater $location
+ * @property-read Customer $requester
+ * @property-read Customer $recipient
+ * @property-read MeetingSlot $meeting_slot
  */
 class Meeting extends SdkObject
 {
@@ -40,7 +40,7 @@ class Meeting extends SdkObject
     public function reschedule(Customer $customer, MeetingSlot $meetingSlot): EssentialsSdkObject
     {
         return Cast::single(
-            (new Meeting()),
+            (new Meeting),
             $this->api()->post(
                 $this->getEndpoint(sprintf('%s/%s/reschedule/%s', $customer->id, $this->id, $meetingSlot->id)),
                 request()->all()
@@ -51,7 +51,7 @@ class Meeting extends SdkObject
     public function reassign(Customer $customer, MeetingSlot $meetingSlot, string $type): EssentialsSdkObject
     {
         return Cast::single(
-            (new Meeting()),
+            (new Meeting),
             $this->api()->post(
                 $this->getEndpoint(sprintf('%s/%s/reassign/%s/%s', $customer->id, $this->id, $meetingSlot->id, $type)),
                 request()->all()

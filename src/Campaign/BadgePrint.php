@@ -11,10 +11,7 @@ namespace Buzz\Control\Campaign;
  * @property int $height
  * @property array $elements
  * @property array $images
- *
- * @property-read \Buzz\Control\Campaign\Printer[] $printers
- * @property-read \Buzz\Control\Campaign\BadgeType[] $badge_types
+ * @property-read Printer[] $printers
+ * @property-read BadgeType[] $badge_types
  */
-class BadgePrint extends SdkObject
-{
-}
+class BadgePrint extends SdkObject {}

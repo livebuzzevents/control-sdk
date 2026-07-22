@@ -16,10 +16,10 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $page_id
  * @property string $action
  * @property-read object $target
- * @property-read \Buzz\Control\Campaign\Customer $customer
- * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
- * @property-read \Buzz\Control\Campaign\File $file
- * @property-read \Buzz\Control\Campaign\Page $page
+ * @property-read Customer $customer
+ * @property-read Exhibitor $exhibitor
+ * @property-read File $file
+ * @property-read Page $page
  */
 class PageActivity extends SdkObject
 {

@@ -13,15 +13,14 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  *
  * @property string $question_id
  * @property string $text
- *
- * @property-read \Buzz\Control\Campaign\Question $question
- * @property-read \Buzz\Control\Campaign\Customer $customer
- * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
- * @property-read \Buzz\Control\Campaign\Lead $lead
- * @property-read \Buzz\Control\Campaign\Scan $scan
- * @property-read \Buzz\Control\Campaign\Vote $vote
- * @property-read \Buzz\Control\Campaign\Product $product
- * @property \Buzz\Control\Campaign\AnswerOption[] $options
+ * @property-read Question $question
+ * @property-read Customer $customer
+ * @property-read Exhibitor $exhibitor
+ * @property-read Lead $lead
+ * @property-read Scan $scan
+ * @property-read Vote $vote
+ * @property-read Product $product
+ * @property AnswerOption[] $options
  */
 class Answer extends SdkObject
 {
@@ -33,7 +32,7 @@ class Answer extends SdkObject
      */
     public function save(): void
     {
-        if (!$this->isDirty()) {
+        if (! $this->isDirty()) {
             return;
         }
 
@@ -45,15 +44,12 @@ class Answer extends SdkObject
     }
 
     /**
-     * @param iterable $answers
-     *
-     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
-     * @return \Buzz\EssentialsSdk\Collection
+     * @throws ErrorException
      */
     public function saveMany(iterable $answers): Collection
     {
         foreach ($answers as $key => $answer) {
-            if (!$answer->id && !$answer->question_id) {
+            if (! $answer->id && ! $answer->question_id) {
                 throw new ErrorException('Answer id or Question id required!');
             }
             $answers[$key] = $answer->prepareRequestData(false);
@@ -61,32 +57,25 @@ class Answer extends SdkObject
 
         return Cast::many(
             $this,
-            $this->api()->post($this->getEndpoint("save-many"), compact('answers'))
+            $this->api()->post($this->getEndpoint('save-many'), compact('answers'))
         );
     }
 
     /**
-     * @param iterable $answers
-     * @param array $rules
-     *
-     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
+     * @throws ErrorException
      */
     public function validateMany(iterable $answers, array $rules = []): void
     {
         foreach ($answers as $key => $answer) {
-            if (!$answer->id && !$answer->question_id) {
+            if (! $answer->id && ! $answer->question_id) {
                 throw new ErrorException('Answer id or Question id required!');
             }
             $answers[$key] = $answer->prepareRequestData(false);
         }
 
-        $this->api()->post($this->getEndpoint("validate-many"), compact('answers', 'rules'));
+        $this->api()->post($this->getEndpoint('validate-many'), compact('answers', 'rules'));
     }
 
-    /**
-     * @param SdkObject $object
-     * @param array $identifiers
-     */
     public function deleteByIdentifiers(SdkObject $object, array $identifiers)
     {
         $this->api()->delete(
@@ -99,13 +88,6 @@ class Answer extends SdkObject
         );
     }
 
-    /**
-     * @param SdkObject $source
-     * @param SdkObject $target
-     * @param array $identifiers
-     *
-     * @return \Buzz\EssentialsSdk\Collection
-     */
     public function copyByIdentifiers(SdkObject $source, SdkObject $target, array $identifiers): Collection
     {
         return Cast::many(
@@ -123,16 +105,12 @@ class Answer extends SdkObject
         );
     }
 
-    /**
-     */
     public function validate(): void
     {
-        $this->api()->post($this->getEndpoint("validate"), $this->prepareRequestData(false));
+        $this->api()->post($this->getEndpoint('validate'), $this->prepareRequestData(false));
     }
 
     /**
-     * @param $identifier
-     *
      * @return null
      */
     public function getOptionByIdentifier($identifier)

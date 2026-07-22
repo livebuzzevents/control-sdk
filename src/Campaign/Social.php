@@ -14,7 +14,6 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property string $provider_token
  * @property array $details
  * @property int $reach
- *
  */
 class Social extends SdkObject
 {
@@ -22,16 +21,14 @@ class Social extends SdkObject
         SupportCrud;
 
     /**
-     * @param \Buzz\Control\Campaign\Customer $customer
-     * @param \Buzz\Control\Campaign\Invite $invite
-     * @param string $email_message_template_id
+     * @param  string  $email_message_template_id
+     * @return Invite
      *
-     * @return \Buzz\Control\Campaign\Invite
-     * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
+     * @throws ErrorException
      */
     public function inviteEmail(Customer $customer, Invite $invite, array $input)
     {
-        if (!$invite->provider_recipient) {
+        if (! $invite->provider_recipient) {
             throw new ErrorException('Email required!');
         }
 
@@ -44,12 +41,9 @@ class Social extends SdkObject
     }
 
     /**
-     * @param \Buzz\Control\Campaign\Customer $customer
-     * @param \Buzz\Control\Campaign\Invite $invite
-     *
-     * @return \Buzz\Control\Campaign\Invite
+     * @return Invite
      */
-    public function inviteShare(Customer $customer, Invite $invite, string $stream_id = null)
+    public function inviteShare(Customer $customer, Invite $invite, ?string $stream_id = null)
     {
         return new Invite(
             $this->api()->post(
@@ -60,10 +54,7 @@ class Social extends SdkObject
     }
 
     /**
-     * @param \Buzz\Control\Campaign\Customer $customer
-     * @param \Buzz\Control\Campaign\Invite $invite
-     *
-     * @return \Buzz\Control\Campaign\Invite
+     * @return Invite
      */
     public function inviteConnection(Customer $customer, Invite $invite)
     {

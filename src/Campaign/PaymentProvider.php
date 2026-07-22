@@ -20,36 +20,31 @@ use Buzz\EssentialsSdk\Cast;
  * @property array $fees
  * @property string $destination
  * @property string $active
- *
- * @property-read \Buzz\Control\Campaign\Charge[] $charges
+ * @property-read Charge[] $charges
  */
 class PaymentProvider extends SdkObject
 {
     use SupportRead;
 
     /**
-     * @param string $basket_id
-     *
      * @return iterable|mixed
      */
     public function availableForBasket(string $basket_id)
     {
         return Cast::many(
             $this,
-            $this->api()->get('available-for-basket/' . $basket_id)
+            $this->api()->get('available-for-basket/'.$basket_id)
         );
     }
 
     /**
-     * @param string $order_id
-     *
      * @return iterable|mixed
      */
     public function availableForOrder(string $order_id)
     {
         return Cast::many(
             $this,
-            $this->api()->get('available-for-order/' . $order_id)
+            $this->api()->get('available-for-order/'.$order_id)
         );
     }
 }

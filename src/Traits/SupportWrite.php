@@ -4,16 +4,9 @@ namespace Buzz\Control\Traits;
 
 /**
  * Trait SupportWrite
- *
- * @package Buzz\Control\Traits
  */
 trait SupportWrite
 {
-    /**
-     * @param array $attributes
-     *
-     * @return self
-     */
     public function create(array $attributes): self
     {
         $instance = (new static($attributes));
@@ -23,12 +16,9 @@ trait SupportWrite
         return $instance;
     }
 
-    /**
-     *
-     */
     public function save(): void
     {
-        if (!$this->isDirty()) {
+        if (! $this->isDirty()) {
             return;
         }
 

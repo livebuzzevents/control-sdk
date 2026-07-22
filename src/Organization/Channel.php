@@ -9,8 +9,7 @@ use Buzz\Control\Traits\SupportRead;
  *
  * @property string $identifier
  * @property string $name
- *
- * @property-read \Buzz\Control\Organization\Campaign[] $campaigns
+ * @property-read Campaign[] $campaigns
  */
 class Channel extends SdkObject
 {

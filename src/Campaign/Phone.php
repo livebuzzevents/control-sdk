@@ -11,7 +11,6 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $type
  * @property string $number
  * @property string $verified
- *
  */
 class Phone extends SdkObject
 {

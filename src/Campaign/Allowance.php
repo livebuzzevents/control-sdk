@@ -16,8 +16,8 @@ use Buzz\Control\Traits\SupportCrud;
  * @property-read int $redeemed
  * @property-read int $remaining
  * @property-read bool $unlimited
- * @property-read \Buzz\Control\Campaign\OrderProduct $orderProduct
- * @property-read \Buzz\Control\Campaign\Redemption[] $redemptions
+ * @property-read OrderProduct $orderProduct
+ * @property-read Redemption[] $redemptions
  */
 class Allowance extends SdkObject
 {

@@ -9,12 +9,10 @@ namespace Buzz\Control\Campaign;
  * @property string $target
  * @property array $settings
  * @property int $order
- * @property boolean $required
- * @property boolean $active
- * @property-read boolean $submittable
+ * @property bool $required
+ * @property bool $active
+ * @property-read bool $submittable
  * @property-read array $available_targets
- * @property-read \Buzz\Control\Campaign\Page $page
+ * @property-read Page $page
  */
-class Component extends SdkObject
-{
-}
+class Component extends SdkObject {}

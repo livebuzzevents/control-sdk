@@ -1,11 +1,13 @@
-<?php namespace Buzz\Control\Campaign\Traits;
+<?php
+
+namespace Buzz\Control\Campaign\Traits;
+
+use Buzz\Control\Campaign\Translation;
 
 /**
  * trait Translatable
  *
  * @property object $translation
- * @property \Buzz\Control\Campaign\Translation[] $translations
+ * @property Translation[] $translations
  */
-trait Translatable
-{
-}
+trait Translatable {}

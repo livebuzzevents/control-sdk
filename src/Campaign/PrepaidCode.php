@@ -12,8 +12,8 @@ use Buzz\Control\Traits\SupportCrud;
  * @property int $amount
  * @property string $charge_id
  * @property string $payment_provider_id
- * @property-read \Buzz\Control\Campaign\Charge $charge
- * @property-read \Buzz\Control\Campaign\PaymentProvider $payment_provider
+ * @property-read Charge $charge
+ * @property-read PaymentProvider $payment_provider
  */
 class PrepaidCode extends SdkObject
 {

@@ -10,12 +10,12 @@ use Buzz\Control\Traits\SupportCrud;
  *
  * @property string $owner_id
  * @property string $type
- * @property boolean $scanned
- * @property boolean $invite
- * @property-read \Buzz\Control\Campaign\Customer $customer
- * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
- * @property-read \Buzz\Control\Campaign\Product $product
- * @property-read \Buzz\Control\Campaign\Seminar $seminar
+ * @property bool $scanned
+ * @property bool $invite
+ * @property-read Customer $customer
+ * @property-read Exhibitor $exhibitor
+ * @property-read Product $product
+ * @property-read Seminar $seminar
  */
 class Favourite extends SdkObject
 {

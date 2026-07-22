@@ -14,9 +14,7 @@ namespace Buzz\Control\Campaign;
  * @property int $total
  * @property string $returned
  * @property-read string $currency
- * @property-read \Buzz\Control\Campaign\CreditNote $credit_note
- * @property-read \Buzz\Control\Campaign\OrderProduct $order_product
+ * @property-read CreditNote $credit_note
+ * @property-read OrderProduct $order_product
  */
-class CreditNoteItem extends SdkObject
-{
-}
+class CreditNoteItem extends SdkObject {}

@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Morphable;
+use Buzz\Control\Gateway\User;
 
 /**
  * Class Log
@@ -13,9 +14,8 @@ use Buzz\Control\Campaign\Traits\Morphable;
  * @property string $event
  * @property string $data
  * @property string $created_at_microtime
- *
- * @property-read \Buzz\Control\Campaign\Stream $stream
- * @property-read \Buzz\Control\Gateway\User $user
+ * @property-read Stream $stream
+ * @property-read User $user
  */
 class Log extends SdkObject
 {

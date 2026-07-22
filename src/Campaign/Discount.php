@@ -5,6 +5,7 @@ namespace Buzz\Control\Campaign;
 use Buzz\Control\Campaign\Traits\Morphable;
 use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Traits\SupportCrud;
+use Carbon\Carbon;
 
 /**
  * Class Discount
@@ -19,14 +20,14 @@ use Buzz\Control\Traits\SupportCrud;
  * @property int $max_usages
  * @property array $settings
  * @property string $active
- * @property \Carbon\Carbon $valid_from
- * @property \Carbon\Carbon $valid_to
+ * @property Carbon $valid_from
+ * @property Carbon $valid_to
  * @property-read string $currency
  * @property-read string $overview
  */
 class Discount extends SdkObject
 {
-    use Translatable,
-        Morphable,
-        SupportCrud;
+    use Morphable,
+        SupportCrud,
+        Translatable;
 }

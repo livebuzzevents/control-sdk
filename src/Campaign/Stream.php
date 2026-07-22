@@ -2,9 +2,10 @@
 
 namespace Buzz\Control\Campaign;
 
-use Buzz\EssentialsSdk\Cast;
-use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Campaign\Traits\HasFiles;
+use Buzz\Control\Traits\SupportRead;
+use Buzz\EssentialsSdk\Cast;
+use Carbon\Carbon;
 
 /**
  * Class Stream
@@ -21,23 +22,23 @@ use Buzz\Control\Campaign\Traits\HasFiles;
  * @property string $run_scheduler
  * @property array $settings
  * @property array $theme
- * @property-read \Carbon\Carbon $last_deployed_at
+ * @property-read Carbon $last_deployed_at
  * @property-read string $origin_url
  * @property-read string $custom_origin_url
  * @property-read string $default_origin_url
  * @property-read string $forgotten_password_url
  * @property-read array $social_connect_urls
- * @property-read \Buzz\Control\Campaign\Affiliate[] $affiliates
- * @property-read \Buzz\Control\Campaign\BadgeType[] $badge_types
- * @property-read \Buzz\Control\Campaign\CustomerFlow[] $flows
- * @property-read \Buzz\Control\Campaign\Page[] $pages
+ * @property-read Affiliate[] $affiliates
+ * @property-read BadgeType[] $badge_types
+ * @property-read CustomerFlow[] $flows
+ * @property-read Page[] $pages
  */
 class Stream extends SdkObject
 {
-    use SupportRead,
-        HasFiles;
+    use HasFiles,
+        SupportRead;
 
-    public function signedUrl(array $data = null): string
+    public function signedUrl(?array $data = null): string
     {
         return $this->api()->post(sprintf('stream/%s/signed-url', $this->id), $data);
     }
@@ -45,7 +46,7 @@ class Stream extends SdkObject
     public function consumableDetails(string $stream): Stream
     {
         return Cast::single(
-            (new Stream()),
+            (new Stream),
             $this->api()->get(
                 $this->getEndpoint($stream.'/consumable-details')
             )

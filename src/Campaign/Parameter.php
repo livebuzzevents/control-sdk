@@ -12,10 +12,10 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $identifier
  * @property string $name
  * @property array $rules
- * @property-read \Buzz\Control\Campaign\Property[] $properties
- * @property-read \Buzz\Control\Campaign\Property[] $customer_properties
- * @property-read \Buzz\Control\Campaign\Property[] $exhibitor_properties
- * @property-read \Buzz\Control\Campaign\Property[] $product_properties
+ * @property-read Property[] $properties
+ * @property-read Property[] $customer_properties
+ * @property-read Property[] $exhibitor_properties
+ * @property-read Property[] $product_properties
  */
 class Parameter extends SdkObject
 {
