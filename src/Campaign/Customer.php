@@ -633,4 +633,12 @@ class Customer extends SdkObject
             ]
         );
     }
+
+    public function switchableExhibitorHubs(): Collection
+    {
+        return Cast::many(
+            (new Customer),
+            $this->api()->get($this->getEndpoint($this->id.'/switchable-exhibitor-hubs'))['data'],
+        );
+    }
 }
