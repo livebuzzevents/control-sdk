@@ -23,6 +23,6 @@ use Buzz\Control\Traits\SupportCrud;
  */
 class CustomerSeminar extends SdkObject
 {
-    use SupportCrud;
     use Morphable;
+    use SupportCrud;
 }

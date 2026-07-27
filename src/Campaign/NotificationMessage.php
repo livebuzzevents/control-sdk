@@ -12,7 +12,7 @@ use Buzz\Control\Traits\SupportCrud;
  */
 class NotificationMessage extends SdkObject
 {
-    use SupportCrud, Morphable;
+    use Morphable, SupportCrud;
 
     public function updates(array $request): array
     {

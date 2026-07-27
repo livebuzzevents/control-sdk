@@ -18,5 +18,5 @@ use Buzz\Control\Traits\SupportCrud;
  */
 class Note extends SdkObject
 {
-    use SupportCrud, Morphable;
+    use Morphable, SupportCrud;
 }

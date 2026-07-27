@@ -23,7 +23,6 @@ namespace Buzz\Control\Campaign;
 class Export extends SdkObject
 {
     /**
-     * @param ExportPreset $preset
      * @return Export
      */
     public function createFromPreset(ExportPreset $preset)
@@ -32,7 +31,6 @@ class Export extends SdkObject
     }
 
     /**
-     * @param Export $export
      * @return Export
      */
     public function show(Export $export)
@@ -41,7 +39,6 @@ class Export extends SdkObject
     }
 
     /**
-     * @param Export $export
      * @return string
      */
     public function download(Export $export)

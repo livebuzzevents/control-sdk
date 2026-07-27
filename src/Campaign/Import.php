@@ -14,7 +14,7 @@ use Buzz\EssentialsSdk\Cast;
  * @property array $response
  * @property string $type
  * @property array $settings
- * @property boolean $configured
+ * @property bool $configured
  * @property-read int $imported
  * @property-read \Buzz\Control\Gateway\User $user
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
@@ -26,7 +26,7 @@ class Import extends SdkObject
     public function exhibitor(Exhibitor $exhibitor)
     {
         return Cast::single(
-            (new Import()),
+            (new Import),
             $this->api()->post(
                 $this->getEndpoint(sprintf('exhibitor/%s', $exhibitor->id)),
                 array_merge(request()->except('file'), [
@@ -47,19 +47,19 @@ class Import extends SdkObject
         ?string $modelId = null
     ) {
         return Cast::single(
-            (new Import()),
+            (new Import),
             $this->api()->post(
                 $this->getEndpoint(sprintf('invites/%s', $exhibitor->id)),
                 array_merge(request()->except('file'), [
-                    'file'          => [
+                    'file' => [
                         'content' => base64_encode(request()->file('file')->get()),
                         'name'    => request()->input('filename'),
                     ],
-                    'filename'      => request()->input('filename'),
-                    'initiator_id'  => $customer->id,
-                    'stream_id'     => $streamId,
-                    'model_id'      => $modelId,
-                    'type'          => $type,
+                    'filename'     => request()->input('filename'),
+                    'initiator_id' => $customer->id,
+                    'stream_id'    => $streamId,
+                    'model_id'     => $modelId,
+                    'type'         => $type,
                 ])
             )
         );

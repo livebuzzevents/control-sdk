@@ -8,9 +8,6 @@ use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportCrud;
-use Buzz\Control\Traits\SupportRead;
-use Buzz\Control\Traits\SupportWrite;
-use Buzz\EssentialsSdk\Cast;
 use Buzz\EssentialsSdk\Exceptions\ErrorException;
 use Illuminate\Support\Collection;
 
@@ -53,28 +50,24 @@ use Illuminate\Support\Collection;
  */
 class Product extends SdkObject
 {
-    use SupportCrud,
+    use HasFavourites,
+        HasFiles,
+        SupportCrud,
         Translatable,
         WithAnswerHelpers,
-        WithPropertyHelpers,
-        HasFavourites,
-        HasFiles;
+        WithPropertyHelpers;
 
     /**
-     * @return array
      * @throws ErrorException
      */
     public function fetchForApp(string $entityListId): array
     {
         return $this->api()->get("app/fetch/$entityListId/products", [
-            'page'         => request('page'),
-            'per_page'     => request('per_page'),
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
         ]);
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     public function fetchFilters(string $entityListId): Collection
     {
         return collect($this->api()->get("app/fetch/$entityListId/product-filters"));

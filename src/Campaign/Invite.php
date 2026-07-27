@@ -45,16 +45,12 @@ class Invite extends SdkObject
     public function delete(): void
     {
         if (in_array($this->status, ['accepted', 'bypassed'])) {
-            throw new ErrorException("Delete is forbidden for invite with status " . $this->status);
+            throw new ErrorException('Delete is forbidden for invite with status '.$this->status);
         }
 
         $this->api()->delete($this->getEndpoint($this->id));
     }
 
-    /**
-     * @param string $email_message_template_id
-     * @return string
-     */
     public function preview(string $email_message_template_id): string
     {
         return $this->api()->post(

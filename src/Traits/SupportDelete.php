@@ -4,8 +4,6 @@ namespace Buzz\Control\Traits;
 
 /**
  * Trait SupportDelete
- *
- * @package Buzz\Control\Traits
  */
 trait SupportDelete
 {

@@ -31,27 +31,17 @@ use Buzz\Control\Campaign\Traits\Morphable;
 
 /**
  * Class EmailMessage
- *
- * @package Buzz\Control\Campaign
  */
 class EmailMessage extends SdkObject
 {
     use Morphable;
 
-    /**
-     * @param SdkObject $model
-     * @param string $email_message_template_id
-     * @param string|null $to_address
-     * @param string|null $subject
-     * @param array|null $custom_data
-     * @param bool $send_instantly
-     */
     public function send(
         SdkObject $model,
         string $email_message_template_id,
-        string $to_address = null,
-        string $subject = null,
-        array $custom_data = null,
+        ?string $to_address = null,
+        ?string $subject = null,
+        ?array $custom_data = null,
         bool $send_instantly = false
     ) {
         $model_type = class_basename($model);

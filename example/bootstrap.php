@@ -1,11 +1,11 @@
 <?php
 
-require_once(__DIR__ . '/../vendor/autoload.php');
+require_once __DIR__.'/../vendor/autoload.php';
 
-if (file_exists(__DIR__ . '/config.php')) {
-    require __DIR__ . '/config.php';
+if (file_exists(__DIR__.'/config.php')) {
+    require __DIR__.'/config.php';
 } else {
-    require __DIR__ . '/config.example.php';
+    require __DIR__.'/config.example.php';
 }
 
 if ($showErrors) {

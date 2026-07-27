@@ -18,14 +18,10 @@ class Redemption extends SdkObject
 {
     use Morphable,
         Refinable,
-        SupportRead,
-        SupportDelete;
+        SupportDelete,
+        SupportRead;
 
     /**
-     * @param $allowance_id
-     * @param SdkObject $object
-     * @param $type
-     *
      * @return \Buzz\Control\Campaign\Redemption
      */
     public function redeemScanner($allowance_id, SdkObject $object, $type)
@@ -43,9 +39,6 @@ class Redemption extends SdkObject
     }
 
     /**
-     * @param $allowance_id
-     * @param $scanner_id
-     *
      * @return \Buzz\Control\Campaign\Redemption
      */
     public function redeemExistingScanner($allowance_id, $scanner_id)
@@ -58,10 +51,6 @@ class Redemption extends SdkObject
     }
 
     /**
-     * @param $allowance_id
-     * @param $customer_id
-     * @param $seminar_id
-     *
      * @return \Buzz\Control\Campaign\Redemption
      */
     public function redeemSeminar($allowance_id, $customer_id, $seminar_id)
@@ -74,10 +63,6 @@ class Redemption extends SdkObject
     }
 
     /**
-     * @param $allowance_id
-     * @param $customer_id
-     * @param $badge_type_id
-     *
      * @return \Buzz\Control\Campaign\Redemption
      */
     public function redeemBadgeType($allowance_id, $customer_id, $badge_type_id)
@@ -90,10 +75,6 @@ class Redemption extends SdkObject
     }
 
     /**
-     * @param $allowance_id
-     * @param $exhibitor_id
-     * @param $article_id
-     *
      * @return \Buzz\Control\Campaign\Redemption
      */
     public function redeemArticle($allowance_id, $exhibitor_id, $article_id)
@@ -106,10 +87,6 @@ class Redemption extends SdkObject
     }
 
     /**
-     * @param $allowance_id
-     * @param $exhibitor_id
-     * @param $link_id
-     *
      * @return \Buzz\Control\Campaign\Redemption
      */
     public function redeemVideo($allowance_id, $exhibitor_id, $link_id)

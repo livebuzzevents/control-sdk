@@ -40,7 +40,7 @@ class Meeting extends SdkObject
     public function reschedule(Customer $customer, MeetingSlot $meetingSlot): EssentialsSdkObject
     {
         return Cast::single(
-            (new Meeting()),
+            (new Meeting),
             $this->api()->post(
                 $this->getEndpoint(sprintf('%s/%s/reschedule/%s', $customer->id, $this->id, $meetingSlot->id)),
                 request()->all()
@@ -51,7 +51,7 @@ class Meeting extends SdkObject
     public function reassign(Customer $customer, MeetingSlot $meetingSlot, string $type): EssentialsSdkObject
     {
         return Cast::single(
-            (new Meeting()),
+            (new Meeting),
             $this->api()->post(
                 $this->getEndpoint(sprintf('%s/%s/reassign/%s/%s', $customer->id, $this->id, $meetingSlot->id, $type)),
                 request()->all()

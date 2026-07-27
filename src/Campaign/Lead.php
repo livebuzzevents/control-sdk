@@ -51,16 +51,15 @@ use Buzz\Control\Traits\SupportCrud;
  * @property-read \Buzz\Control\Campaign\SmsMessage[] $sms_messages
  * @property-read \Buzz\Control\Campaign\Social[] $socials
  * @property-read \Buzz\Control\Campaign\ModelTag[] $tags
- *
  */
 class Lead extends SdkObject
 {
-    use SupportCrud,
-        CanSendEmailMessage,
+    use CanSendEmailMessage,
         CanSendSmsMessage,
         HasAreas,
+        HasFiles,
+        SupportCrud,
         Taggable,
         WithAnswerHelpers,
-        WithPropertyHelpers,
-        HasFiles;
+        WithPropertyHelpers;
 }

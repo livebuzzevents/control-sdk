@@ -11,9 +11,9 @@ use Buzz\Control\Campaign\Traits\Taggable;
 use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportCrud;
-use Illuminate\Support\Collection;
 use Buzz\EssentialsSdk\Cast;
 use Buzz\EssentialsSdk\Exceptions\ErrorException;
+use Illuminate\Support\Collection;
 
 /**
  * Class Customer
@@ -65,7 +65,7 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property string $status
  * @property string $title
  * @property string $username
- * @property integer $profile_score
+ * @property int $profile_score
  * @property-read bool $has_password
  * @property-read bool $printable
  * @property-read int $managed_customers_count
@@ -131,43 +131,35 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  */
 class Customer extends SdkObject
 {
-    use SupportCrud,
-        CanSendEmailMessage,
+    use CanSendEmailMessage,
         CanSendSmsMessage,
         HasAreas,
+        HasFavourites,
+        HasFiles,
+        SupportCrud,
         Taggable,
         WithAnswerHelpers,
-        WithPropertyHelpers,
-        HasFavourites,
-        HasFiles;
+        WithPropertyHelpers;
 
-    /**
-     * @param $affiliate_id
-     */
     public function attachAffiliate($affiliate_id): void
     {
         $this->api()->post(
-            $this->getEndpoint($this->id . '/attach-affiliate/' . $affiliate_id)
+            $this->getEndpoint($this->id.'/attach-affiliate/'.$affiliate_id)
         );
     }
 
-    /**
-     * @param array $credentials
-     *
-     * @return \Buzz\Control\Campaign\Customer
-     */
     public function login(array $credentials): self
     {
         $user_information = [
-            'user_agent'      => !empty($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null,
-            'accept_language' => !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : null,
+            'user_agent'      => ! empty($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null,
+            'accept_language' => ! empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : null,
         ];
 
-        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        if (! empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             $user_information['x_ip'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
         }
 
-        if (!empty($_SERVER['REMOTE_ADDR'])) {
+        if (! empty($_SERVER['REMOTE_ADDR'])) {
             $user_information['ip'] = $_SERVER['REMOTE_ADDR'];
         }
 
@@ -177,8 +169,6 @@ class Customer extends SdkObject
     }
 
     /**
-     * @param array $parameters
-     *
      * @return string
      */
     public function fetchRecommendations(array $parameters): self
@@ -186,12 +176,6 @@ class Customer extends SdkObject
         return new self($this->api()->get($this->getEndpoint('fetch-recommendations'), $parameters));
     }
 
-    /**
-     * @param $clone_campaign_id
-     * @param $clone_customer_id
-     *
-     * @return \Buzz\Control\Campaign\Customer
-     */
     public function clone($clone_campaign_id, $clone_customer_id): self
     {
         return new self(
@@ -201,12 +185,6 @@ class Customer extends SdkObject
         );
     }
 
-    /**
-     * @param $clone_campaign_id
-     * @param $clone_lead_id
-     *
-     * @return \Buzz\Control\Campaign\Customer
-     */
     public function cloneLead($clone_campaign_id, $clone_lead_id): self
     {
         return new self(
@@ -216,33 +194,22 @@ class Customer extends SdkObject
         );
     }
 
-    /**
-     *
-     */
     public function sendPasswordResetEmail(): void
     {
         $this->api()->post(
-            $this->getEndpoint($this->id . '/send-password-reset-email')
+            $this->getEndpoint($this->id.'/send-password-reset-email')
         );
     }
 
-    /**
-     * @param string $token
-     *
-     * @return \Buzz\Control\Campaign\Customer
-     */
     public function activatePasswordReset(string $token): self
     {
         return new self(
             $this->api()->post(
-                $this->getEndpoint('activate-password-reset/' . $token)
+                $this->getEndpoint('activate-password-reset/'.$token)
             )
         );
     }
 
-    /**
-     * @return bool
-     */
     public function dupeCheck(): bool
     {
         try {
@@ -263,23 +230,19 @@ class Customer extends SdkObject
     public function suggestConnections(): ?array
     {
         return $this->api()->get(
-            $this->getEndpoint($this->id . '/suggest-connections')
+            $this->getEndpoint($this->id.'/suggest-connections')
         );
     }
 
     /**
      * Suggests exhibitors
-     *
-     * @param int $count
-     *
-     * @return \Illuminate\Support\Collection
      */
     public function suggestExhibitors(int $count = 15): Collection
     {
         return Cast::many(
-            (new Exhibitor()),
+            (new Exhibitor),
             $this->api()->get(
-                $this->getEndpoint($this->id . '/suggest-exhibitors/' . $count)
+                $this->getEndpoint($this->id.'/suggest-exhibitors/'.$count)
             )
         );
     }
@@ -290,128 +253,96 @@ class Customer extends SdkObject
     public function setBadgeViewed()
     {
         $this->api()->post(
-            $this->getEndpoint($this->id . '/set-badge-viewed')
+            $this->getEndpoint($this->id.'/set-badge-viewed')
         );
     }
 
     /**
-     * @param int $width
-     * @param int $height
-     *
-     * @return string
+     * @param  int  $width
+     * @param  int  $height
      */
     public function getBarcodeImage($width = 1, $height = 30): string
     {
         return $this->api()->get(
-            $this->getEndpoint($this->id . '/barcode-image'),
+            $this->getEndpoint($this->id.'/barcode-image'),
             compact('width', 'height')
         )['image'];
     }
 
     /**
-     * @param int $size
-     *
-     * @return string
+     * @param  int  $size
      */
     public function getQrCodeImage($size = 125): string
     {
         return $this->api()->get(
-            $this->getEndpoint($this->id . '/qrcode-image'),
+            $this->getEndpoint($this->id.'/qrcode-image'),
             compact('size')
         )['image'];
     }
 
-    /**
-     * @return string
-     */
     public function getEBadge(): string
     {
         return $this->api()->get(
-            $this->getEndpoint($this->id . '/e-badge')
+            $this->getEndpoint($this->id.'/e-badge')
         )['e-badge'];
     }
 
-    /**
-     * @param string $audience
-     * @param int $lifetime_seconds
-     *
-     * @return string
-     */
-    public function generateOAuthToken(string $audience, int $lifetime_seconds = null): string
+    public function generateOAuthToken(string $audience, ?int $lifetime_seconds = null): string
     {
         return $this->api()->post(
-            $this->getEndpoint($this->id . '/generate-oauth-token/' . $audience),
+            $this->getEndpoint($this->id.'/generate-oauth-token/'.$audience),
             compact('lifetime_seconds')
         )['token'];
     }
 
-    /**
-     * @param string $printer_id
-     * @param string|null $badge_stock_id
-     */
-    public function printBadge(string $printer_id, string $badge_stock_id = null): void
+    public function printBadge(string $printer_id, ?string $badge_stock_id = null): void
     {
         $this->api()->post(
-            $this->getEndpoint($this->id . '/print-badge/' . $printer_id),
+            $this->getEndpoint($this->id.'/print-badge/'.$printer_id),
             $badge_stock_id ? ['badge_stock_id' => $badge_stock_id] : null
         );
     }
 
-    /**
-     * @param string $invite_id
-     */
     public function attachInvite(string $invite_id): void
     {
         $this->api()->post(
-            $this->getEndpoint($this->id . '/attach-invite/' . $invite_id)
+            $this->getEndpoint($this->id.'/attach-invite/'.$invite_id)
         );
     }
 
-    /**
-     * @return ?Basket
-     */
     public function getBasket(): ?Basket
     {
         return Cast::single(
-            (new Basket()),
+            (new Basket),
             $this->api()->get(
-                $this->getEndpoint($this->id . '/basket')
+                $this->getEndpoint($this->id.'/basket')
             )
         );
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     public function getEmailInvites(): Collection
     {
         return Cast::many(
-            (new Invite()),
+            (new Invite),
             $this->api()->get(
-                $this->getEndpoint($this->id . '/email-invites')
+                $this->getEndpoint($this->id.'/email-invites')
             )
         );
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function getSeminars(Seminar $seminar = null): Collection
+    public function getSeminars(?Seminar $seminar = null): Collection
     {
         $endpoint = $seminar ? "/seminars/$seminar->id" : '/seminars';
 
         return Cast::many(
-            (new Seminar()),
+            (new Seminar),
             $this->api()->get(
-                $this->getEndpoint($this->id . $endpoint)
+                $this->getEndpoint($this->id.$endpoint)
             )
         );
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function getNotes(string $model_type = null, string $model_id = null): Collection
+    public function getNotes(?string $model_type = null, ?string $model_id = null): Collection
     {
         if ($model_type && $model_id) {
             $request = [
@@ -421,9 +352,9 @@ class Customer extends SdkObject
         }
 
         return Cast::many(
-            (new Note()),
+            (new Note),
             $this->api()->get(
-                $this->getEndpoint($this->id . '/notes'),
+                $this->getEndpoint($this->id.'/notes'),
                 $request ?? null
             )
         );
@@ -431,36 +362,30 @@ class Customer extends SdkObject
 
     public function getFavourites(): array
     {
-        return $this->api()->get($this->getEndpoint($this->id . '/favourites'));
+        return $this->api()->get($this->getEndpoint($this->id.'/favourites'));
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     public function getOrders(): Collection
     {
         return Cast::many(
-            (new Customer()),
+            (new Customer),
             $this->api()->get(
-                $this->getEndpoint($this->id . '/orders')
+                $this->getEndpoint($this->id.'/orders')
             )
         );
     }
 
     public function getStripeOrders(): array
     {
-        return $this->api()->get($this->getEndpoint($this->id . '/stripe-orders'));
+        return $this->api()->get($this->getEndpoint($this->id.'/stripe-orders'));
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     public function getColleagues(): Collection
     {
         return Cast::many(
-            (new Customer()),
+            (new Customer),
             $this->api()->post(
-                $this->getEndpoint($this->id . '/colleagues'),
+                $this->getEndpoint($this->id.'/colleagues'),
                 ['type_ids' => json_decode(request('type_ids'), true)]
             )
         );
@@ -468,7 +393,7 @@ class Customer extends SdkObject
 
     public function getBadgeDownloads(): array
     {
-        return $this->api()->post($this->getEndpoint($this->id . '/badge-downloads'));
+        return $this->api()->post($this->getEndpoint($this->id.'/badge-downloads'));
     }
 
     public function downloadBadges(Customer $customer, ?string $badgeTypeId = null): string
@@ -482,80 +407,56 @@ class Customer extends SdkObject
         return $this->api()->get($this->getEndpoint(sprintf('%s/download-badges', $this->id)));
     }
 
-    /**
-     *
-     */
     public function removeFlow(): void
     {
-        $this->api()->get($this->getEndpoint($this->id . '/remove-flow'));
+        $this->api()->get($this->getEndpoint($this->id.'/remove-flow'));
     }
 
-    /**
-     * @param int $step
-     */
     public function startFlow(int $step = 1): void
     {
-        $this->api()->get($this->getEndpoint($this->id . '/start-flow/' . $step));
+        $this->api()->get($this->getEndpoint($this->id.'/start-flow/'.$step));
     }
 
-    /**
-     *
-     */
     public function completeFlow(): void
     {
-        $this->api()->get($this->getEndpoint($this->id . '/complete-flow'));
+        $this->api()->get($this->getEndpoint($this->id.'/complete-flow'));
     }
 
     /**
-     * @param int $stepB
+     * @param  int  $stepB
      */
     public function setFlowStep(int $step): void
     {
-        $this->api()->get($this->getEndpoint($this->id . '/set-flow-step/' . $step));
+        $this->api()->get($this->getEndpoint($this->id.'/set-flow-step/'.$step));
     }
 
-    /**
-     * @param string $stream_id
-     *
-     * @return string
-     */
     public function getSignedUrl(string $stream_id): string
     {
-        return $this->api()->get($this->getEndpoint($this->id . '/signed-url/' . $stream_id))['url'];
+        return $this->api()->get($this->getEndpoint($this->id.'/signed-url/'.$stream_id))['url'];
     }
 
-    /**
-     * @param string $integration_provider_id
-     *
-     * @return array|null
-     */
     public function getOutgoingSsoOptions(string $integration_provider_id): ?array
     {
-        return $this->api()->get($this->getEndpoint($this->id . '/outgoing-sso-options/' . $integration_provider_id));
+        return $this->api()->get($this->getEndpoint($this->id.'/outgoing-sso-options/'.$integration_provider_id));
     }
 
     /**
-     * @return array
      * @throws ErrorException
      */
     public function fetchAttendeesForApp(string $entityListId): array
     {
         return $this->api()->get("app/fetch/$entityListId/attendees", [
-            'page'         => request('page'),
-            'per_page'     => request('per_page'),
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
         ]);
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     public function fetchAttendeeFilters(string $entityListId): Collection
     {
         return collect($this->api()->get("app/fetch/$entityListId/attendee-filters"));
     }
 
     /**
-     * @return array
      * @throws ErrorException
      */
     public function fetchSpeakersForApp(string $entityListId): array
@@ -566,30 +467,20 @@ class Customer extends SdkObject
         ]);
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     public function fetchSpeakerFilters(string $entityListId): Collection
     {
         return collect($this->api()->get("app/fetch/$entityListId/speaker-filters"));
     }
 
-    /**
-     * @return array
-     */
     public function meetingAgenda(): array
     {
-        return $this->api()->get($this->getEndpoint($this->id . '/meeting-agenda'));
+        return $this->api()->get($this->getEndpoint($this->id.'/meeting-agenda'));
     }
 
-    /**
-     * @param string $email_message_template_id
-     * @return string
-     */
     public function previewInvite(string $email_message_template_id, array $input): string
     {
         return $this->api()->post(
-            $this->getEndpoint(customer()->id . "/preview-invite/{$email_message_template_id}"),
+            $this->getEndpoint(customer()->id."/preview-invite/{$email_message_template_id}"),
             $input
         )['html'];
     }
@@ -597,9 +488,9 @@ class Customer extends SdkObject
     public function transferAssignedOrderProduct(string $product_id): Customer
     {
         return Cast::single(
-            (new Customer()),
+            (new Customer),
             $this->api()->get(
-                $this->getEndpoint($this->id . '/transfer-assigned-order-product/' . $product_id)
+                $this->getEndpoint($this->id.'/transfer-assigned-order-product/'.$product_id)
             )
         );
     }
@@ -608,7 +499,7 @@ class Customer extends SdkObject
     {
         return $this->api()->post(
             $this->getEndpoint(
-                $this->id . '/get-allocations'
+                $this->id.'/get-allocations'
             ),
             ['product_ids' => json_decode(request('product_ids'), true)]
         );
@@ -617,7 +508,7 @@ class Customer extends SdkObject
     public function hasNewMessages(): bool
     {
         return $this->api()->post(
-            $this->getEndpoint(customer()->id . '/has-new-messages'),
+            $this->getEndpoint(customer()->id.'/has-new-messages'),
             [
                 'last_sync' => request('last_sync'),
             ]
@@ -627,7 +518,7 @@ class Customer extends SdkObject
     public function hasMeetingUpdates(): bool
     {
         return $this->api()->post(
-            $this->getEndpoint(customer()->id . '/has-meeting-updates'),
+            $this->getEndpoint(customer()->id.'/has-meeting-updates'),
             [
                 'last_sync' => request('last_sync'),
             ]

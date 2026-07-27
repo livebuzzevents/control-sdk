@@ -16,10 +16,7 @@ namespace Buzz\Control\Campaign;
  * @property array $settled
  * @property array $status
  * @property \Carbon\Carbon $caputed_at
- *
  * @property-read \Buzz\Control\Campaign\Charge $charge
  * @property-read \Buzz\Control\Campaign\Fee[] $fees
  */
-class Dispute extends SdkObject
-{
-}
+class Dispute extends SdkObject {}

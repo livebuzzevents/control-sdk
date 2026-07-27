@@ -17,6 +17,4 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\CreditNote $credit_note
  * @property-read \Buzz\Control\Campaign\OrderProduct $order_product
  */
-class CreditNoteItem extends SdkObject
-{
-}
+class CreditNoteItem extends SdkObject {}

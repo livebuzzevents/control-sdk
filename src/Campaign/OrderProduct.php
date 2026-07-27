@@ -17,7 +17,7 @@ use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
  * @property string $shippable
  * @property int $cost
  * @property int $cost_final
- * @property-read boolean $cost_overridden
+ * @property-read bool $cost_overridden
  * @property-read int $cost_refundable
  * @property-read int $cost_refunded
  * @property int $vat
@@ -27,9 +27,9 @@ use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
  * @property-read int $vat_refundable
  * @property-read int $vat_refunded
  * @property-read int $total_refunded
- * @property-read boolean $vat_percentage_overridden
+ * @property-read bool $vat_percentage_overridden
  * @property-read string $currency
- * @property-read boolean $returned
+ * @property-read bool $returned
  * @property-read \Buzz\Control\Campaign\Order $order
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Product $product

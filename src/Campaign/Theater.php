@@ -26,7 +26,7 @@ class Theater extends SdkObject
     public function meetingLocations(Customer $customer)
     {
         return Cast::many(
-            (new Theater()),
+            (new Theater),
             $this->api()->get($this->getEndpoint(sprintf('%s/%s', $customer->id, 'meeting-locations')))
         );
     }

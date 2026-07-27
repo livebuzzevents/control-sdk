@@ -86,27 +86,27 @@ use Illuminate\Support\Collection;
  */
 class Exhibitor extends SdkObject
 {
-    use SupportCrud,
-        HasAreas,
+    use HasAreas,
+        HasFavourites,
+        HasFiles,
+        SupportCrud,
         Taggable,
         WithAnswerHelpers,
-        WithPropertyHelpers,
-        HasFavourites,
-        HasFiles;
+        WithPropertyHelpers;
 
     /**
      * @return \Buzz\EssentialsSdk\Collection
+     *
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
-
-    public function getFlattenedAllowances(string $entitlement, string $type = null): Collection
+    public function getFlattenedAllowances(string $entitlement, ?string $type = null): Collection
     {
         return collect(
             $this->api()->post(
-                $this->getEndpoint($this->id . '/flattened-allowances'),
+                $this->getEndpoint($this->id.'/flattened-allowances'),
                 [
                     'entitlement' => $entitlement,
-                    'type' => $type,
+                    'type'        => $type,
                 ]
             )
         );
@@ -114,15 +114,15 @@ class Exhibitor extends SdkObject
 
     /**
      * @return \Buzz\EssentialsSdk\Collection
+     *
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
-
     public function getEmailInvites(): Collection
     {
         return Cast::many(
-            (new Invite()),
+            (new Invite),
             $this->api()->get(
-                $this->getEndpoint($this->id . '/email-invites')
+                $this->getEndpoint($this->id.'/email-invites')
             )
         );
     }
@@ -142,48 +142,42 @@ class Exhibitor extends SdkObject
             );
         }
 
-        return $this->api()->get($this->getEndpoint($this->id . '/download-badges/' . $customer->id));
+        return $this->api()->get($this->getEndpoint($this->id.'/download-badges/'.$customer->id));
     }
 
     /**
-     * @return array
      * @throws ErrorException
      */
     public function fetchForApp(string $entityListId): array
     {
         return $this->api()->get("app/fetch/$entityListId/exhibitors", [
-            'page' => request('page'),
+            'page'     => request('page'),
             'per_page' => request('per_page'),
         ]);
     }
 
     /**
-     * @return array
      * @throws ErrorException
      */
     public function fetchBadgeHolders(string $exhibitor): array
     {
         return $this->api()->get("app/fetch/$exhibitor/exhibitor-badge-holders", [
-            'page' => request('page'),
+            'page'     => request('page'),
             'per_page' => request('per_page'),
         ]);
     }
 
     /**
-     * @return array
      * @throws ErrorException
      */
     public function fetchProducts(string $exhibitor): array
     {
         return $this->api()->get("app/fetch/$exhibitor/exhibitor-products", [
-            'page' => request('page'),
+            'page'     => request('page'),
             'per_page' => request('per_page'),
         ]);
     }
 
-    /**
-     * @return Collection
-     */
     public function fetchFilters(string $entityListId): Collection
     {
         return collect($this->api()->get("app/fetch/$entityListId/exhibitor-filters"));
@@ -191,19 +185,19 @@ class Exhibitor extends SdkObject
 
     public function smartscanPlus(): array
     {
-        return $this->api()->get($this->getEndpoint($this->id . '/smartscan-plus'));
+        return $this->api()->get($this->getEndpoint($this->id.'/smartscan-plus'));
     }
 
-    public function downloadLeads(Scanner $scanner = null): string
+    public function downloadLeads(?Scanner $scanner = null): string
     {
         $endpoint = '/download-leads';
 
         if (optional($scanner)->id) {
-            $endpoint .= '/' . $scanner->id;
+            $endpoint .= '/'.$scanner->id;
         }
 
         return $this->api()->post(
-            $this->getEndpoint($this->id . $endpoint), request()->only('scan_filters')
+            $this->getEndpoint($this->id.$endpoint), request()->only('scan_filters')
         );
     }
 }

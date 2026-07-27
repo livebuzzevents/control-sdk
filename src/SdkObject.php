@@ -11,9 +11,6 @@ namespace Buzz\Control;
  */
 class SdkObject extends \Buzz\EssentialsSdk\SdkObject
 {
-    /**
-     * @var
-     */
     protected $section;
 
     /**
@@ -23,17 +20,12 @@ class SdkObject extends \Buzz\EssentialsSdk\SdkObject
 
     /**
      * Override default service
-     *
-     * @return \Buzz\Control\Service
      */
     protected function service(): Service
     {
-        return new Service();
+        return new Service;
     }
 
-    /**
-     *
-     */
     protected function api()
     {
         $api = parent::api();
@@ -43,23 +35,18 @@ class SdkObject extends \Buzz\EssentialsSdk\SdkObject
         return $api;
     }
 
-    /**
-     * @param string|null $path
-     *
-     * @return string
-     */
-    protected function getEndpoint(string $path = null): string
+    protected function getEndpoint(?string $path = null): string
     {
         $resource = kebab_case(str_plural(class_basename(static::class)));
 
         if ($this->endpoint_prefix) {
-            $endpoint = $this->endpoint_prefix . '/' . $resource;
+            $endpoint = $this->endpoint_prefix.'/'.$resource;
         } else {
             $endpoint = $resource;
         }
 
         if ($path) {
-            $endpoint .= '/' . ltrim($path, '/');
+            $endpoint .= '/'.ltrim($path, '/');
         }
 
         return ltrim($endpoint, '/');

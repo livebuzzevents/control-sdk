@@ -37,10 +37,10 @@ use Buzz\EssentialsSdk\Collection;
  */
 class Page extends SdkObject
 {
-    use SupportRead,
+    use HasFiles,
+        SupportRead,
         SupportWrite,
         Translatable,
-        HasFiles,
         WithPropertyHelpers;
 
     /**
@@ -48,19 +48,14 @@ class Page extends SdkObject
      */
     protected $dupeCheckEnabled = true;
 
-    /**
-     * @param bool $dupeCheckEnabled
-     */
     public function setDupeCheck(bool $dupeCheckEnabled)
     {
         $this->dupeCheckEnabled = $dupeCheckEnabled;
     }
 
     /**
-     * @param Stream $stream
-     * @param SdkObject[] $targets
+     * @param  SdkObject[]  $targets
      *
-     * @return Collection
      * @throws Buzz\EssentialsSdk\Exceptions\ErrorException
      */
     public function load(?Stream $stream, array $targets, $filter = null): Collection
@@ -91,15 +86,14 @@ class Page extends SdkObject
         }
 
         return Cast::many(
-            (new Page()),
+            (new Page),
             $this->api()->post('pages-for-hub', $request)
         );
     }
 
     /**
-     * @param \Buzz\Control\Campaign\SdkObject[] $targets
+     * @param  \Buzz\Control\Campaign\SdkObject[]  $targets
      *
-     * @return \Buzz\EssentialsSdk\Collection
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
     public function loadComponents(array $targets, array $extraData = []): Collection
@@ -148,17 +142,16 @@ class Page extends SdkObject
         }
 
         return Cast::many(
-            (new Component()),
+            (new Component),
             $this->api()->post(
-                $this->getEndpoint($this->id . '/load-components'),
+                $this->getEndpoint($this->id.'/load-components'),
                 $request
             )
         );
     }
 
     /**
-     * @param array $input
-     * @param \Buzz\Control\Campaign\SdkObject[] $targets
+     * @param  \Buzz\Control\Campaign\SdkObject[]  $targets
      */
     public function saveComponents(array $input, array $targets, array $extraData = [])
     {
@@ -167,7 +160,7 @@ class Page extends SdkObject
             'components' => array_merge($input, $extraData),
         ];
 
-        if (!$this->dupeCheckEnabled) {
+        if (! $this->dupeCheckEnabled) {
             $request['disable_dupecheck'] = true;
         }
 
@@ -181,7 +174,7 @@ class Page extends SdkObject
         }
 
         $request['components']['initiator']              = true;
-        $request['components']['initiator_id']           = customer()->id ?? null;
+        $request['components']['initiator_id']           = customer()->id  ?? null;
         $request['components']['initiator_exhibitor_id'] = exhibitor()->id ?? null;
 
         if (request('affiliate') || session('affiliate') || session('affiliate-name')) {
@@ -209,12 +202,12 @@ class Page extends SdkObject
         }
 
         $saveComponents = $this->api()->post(
-            $this->getEndpoint($this->id . '/save-components'),
+            $this->getEndpoint($this->id.'/save-components'),
             $request
         );
 
         return Cast::single(
-            app('\\Buzz\\Control\\Campaign\\' . key($saveComponents)),
+            app('\\Buzz\\Control\\Campaign\\'.key($saveComponents)),
             $saveComponents[key($saveComponents)]
         );
     }

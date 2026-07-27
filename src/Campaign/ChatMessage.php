@@ -25,9 +25,9 @@ class ChatMessage extends SdkObject
         return $this->api()->post(
             $this->getEndpoint('send'),
             [
-                'message' => $message,
-                'sender_id' => $sender_id,
-                'recipient_id' => $recipient_id,
+                'message'         => $message,
+                'sender_id'       => $sender_id,
+                'recipient_id'    => $recipient_id,
                 'conversation_id' => $conversation_id,
             ]
         );
@@ -38,7 +38,7 @@ class ChatMessage extends SdkObject
         return $this->api()->post(
             $this->getEndpoint('mark-as-read'),
             [
-                'message_ids' => $message_ids,
+                'message_ids'  => $message_ids,
                 'recipient_id' => $recipient_id,
             ]
         );

@@ -22,7 +22,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $direction
  * @property string $delivery_status
  * @property array $details
- * @property-read boolean $handles_crossovers
+ * @property-read bool $handles_crossovers
  * @property-read string $signed_leads_download_link
  * @property-read string $signed_product_leads_download_link
  * @property-read \Buzz\Control\Campaign\Customer $customer
@@ -40,16 +40,12 @@ class Scanner extends SdkObject
         SupportWrite;
 
     /**
-     * @param string|null $exhibitor_id
-     * @param string|null $customer_id
-     * @param string|null $paid
-     *
      * @return static
      */
     public function createSmartScanner(
-        string $exhibitor_id = null,
-        string $customer_id = null,
-        string $paid = null
+        ?string $exhibitor_id = null,
+        ?string $customer_id = null,
+        ?string $paid = null
     ) {
         return new static(
             $this->api()->post(

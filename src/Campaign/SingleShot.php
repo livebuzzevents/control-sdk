@@ -14,10 +14,8 @@ namespace Buzz\Control\Campaign;
  * @property int $stopped
  * @property \Carbon\Carbon $sends_at
  * @property-read string $nice_type
- * @property-read boolean $allow_modification
+ * @property-read bool $allow_modification
  * @property-read \Buzz\Control\Campaign\SingleShotEntityListMember[] $members
  * @property-read \Buzz\Control\Campaign\EntityList[] $entity_list
  */
-class SingleShot extends SdkObject
-{
-}
+class SingleShot extends SdkObject {}

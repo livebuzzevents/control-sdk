@@ -10,7 +10,6 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $exhibitor_id
  * @property string $title
  * @property string $content
- *
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  */
 class ExhibitorPressRelease extends SdkObject

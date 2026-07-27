@@ -10,16 +10,13 @@ use Traversable;
 class EBadge extends SdkObject
 {
     /**
-     * @param iterable $filters
-     * @param int $page
-     * @param int $per_page
-     * @param null $order
-     * @param null $direction
-     *
-     * @return string
+     * @param  int  $page
+     * @param  int  $per_page
+     * @param  null  $order
+     * @param  null  $direction
      */
     public function get(
-        iterable $filters = null,
+        ?iterable $filters = null,
         $page = 1,
         $per_page = 50,
         $order = null,

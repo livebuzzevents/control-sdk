@@ -20,6 +20,4 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\OrderProduct $order_product
  * @property-read \Buzz\Control\Campaign\Discount $discount
  */
-class OrderDiscount extends SdkObject
-{
-}
+class OrderDiscount extends SdkObject {}

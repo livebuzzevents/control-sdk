@@ -11,6 +11,4 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Affiliate $affiliate
  */
-class CustomerAffiliate extends SdkObject
-{
-}
+class CustomerAffiliate extends SdkObject {}

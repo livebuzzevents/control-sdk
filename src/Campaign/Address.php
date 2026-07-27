@@ -18,7 +18,6 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $county
  * @property string $country
  * @property string $verified
- *
  */
 class Address extends SdkObject
 {

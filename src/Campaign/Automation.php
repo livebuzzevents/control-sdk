@@ -16,9 +16,6 @@ namespace Buzz\Control\Campaign;
  * @property array $days
  * @property string $range_start
  * @property string $range_end
- *
  * @property-read \Buzz\Control\Campaign\EntityList $entity_list
  */
-class Automation extends SdkObject
-{
-}
+class Automation extends SdkObject {}

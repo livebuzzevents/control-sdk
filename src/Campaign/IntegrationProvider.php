@@ -13,7 +13,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $provider
  * @property array $settings
  * @property array $supported_methods
- * @property boolean $active
+ * @property bool $active
  * @property-read \Buzz\Control\Campaign\Question $question
  * @property-read \Buzz\Control\Campaign\AnswerOption[] $answer_options
  */

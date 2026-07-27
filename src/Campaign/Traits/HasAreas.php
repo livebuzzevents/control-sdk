@@ -8,6 +8,4 @@ namespace Buzz\Control\Campaign\Traits;
  * @property array $area_ids
  * @property-read \Buzz\Control\Campaign\ModelArea[] $areas
  */
-trait HasAreas
-{
-}
+trait HasAreas {}

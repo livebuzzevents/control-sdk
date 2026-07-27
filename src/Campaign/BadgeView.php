@@ -8,6 +8,4 @@ namespace Buzz\Control\Campaign;
  * @property string $customer_id
  * @property-read \Buzz\Control\Campaign\Customer $customer
  */
-class BadgeView extends SdkObject
-{
-}
+class BadgeView extends SdkObject {}

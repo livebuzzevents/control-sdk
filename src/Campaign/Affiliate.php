@@ -15,22 +15,19 @@ use Buzz\Control\Traits\SupportCrud;
  * @property-read string $url
  * @property-read string $pretty_url
  * @property-read string $currency
- *
  * @property-read \Buzz\Control\Campaign\Stream $stream
  */
 class Affiliate extends SdkObject
 {
-    use SupportCrud, HasFiles;
+    use HasFiles, SupportCrud;
 
     /**
-     * @param int $size
-     *
-     * @return string
+     * @param  int  $size
      */
     public function getQrCodeImage($size = 125): string
     {
         return $this->api()->get(
-            $this->getEndpoint($this->id . '/qrcode-image'),
+            $this->getEndpoint($this->id.'/qrcode-image'),
             compact('size')
         )['image'];
     }

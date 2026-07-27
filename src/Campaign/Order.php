@@ -59,77 +59,62 @@ class Order extends SdkObject
 
     /**
      * Returns checkout link
-     *
-     * @return string
      */
     public function getCheckoutLink(): string
     {
-        return $this->api()->get($this->getEndpoint($this->id . '/checkout-link'))['checkout-link'];
+        return $this->api()->get($this->getEndpoint($this->id.'/checkout-link'))['checkout-link'];
     }
 
     /**
      * Gets invoice in base64 format
-     *
-     * @return self
      */
     public function complete(): self
     {
-        return new self($this->api()->get($this->getEndpoint($this->id . '/complete')));
+        return new self($this->api()->get($this->getEndpoint($this->id.'/complete')));
     }
 
     /**
      * Generates new charge
-     *
-     * @param string $payment_provider_id
      */
     public function generateCharge(string $payment_provider_id): void
     {
-        $this->api()->post($this->getEndpoint($this->id . '/generate-charge/' . $payment_provider_id));
+        $this->api()->post($this->getEndpoint($this->id.'/generate-charge/'.$payment_provider_id));
     }
 
     /**
      * Pay order with prepaid code
-     *
-     * @param string $code
      */
     public function payWithPrepaidCode(string $code): void
     {
-        $this->api()->post($this->getEndpoint($this->id . '/pay-with-prepaid-code/' . $code));
+        $this->api()->post($this->getEndpoint($this->id.'/pay-with-prepaid-code/'.$code));
     }
 
     /**
      * Cancel existing charge
-     *
-     * @param string $charge_id
      */
     public function cancelCharge(string $charge_id): void
     {
-        $this->api()->delete($this->getEndpoint($this->id . '/cancel-charge/' . $charge_id));
+        $this->api()->delete($this->getEndpoint($this->id.'/cancel-charge/'.$charge_id));
     }
 
     /**
      * Capture existing charge
-     *
-     * @param string $charge_id
-     * @param string $reference_id
      */
     public function captureCharge(string $charge_id, string $reference_id): void
     {
         $this->api()->post(
-            $this->getEndpoint($this->id . '/capture-charge/' . $charge_id),
+            $this->getEndpoint($this->id.'/capture-charge/'.$charge_id),
             ['reference_id' => $reference_id]
         );
     }
 
     /**
      * Refund, return, and cancel order
-     *
-     * @param string $reason
      */
     public function refund(string $reason): void
     {
         $this->api()->post(
-            $this->getEndpoint($this->id . '/refund'),
+            $this->getEndpoint($this->id.'/refund'),
             ['reason' => $reason]
         );
     }

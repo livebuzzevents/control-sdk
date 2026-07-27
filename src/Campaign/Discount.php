@@ -26,7 +26,7 @@ use Buzz\Control\Traits\SupportCrud;
  */
 class Discount extends SdkObject
 {
-    use Translatable,
-        Morphable,
-        SupportCrud;
+    use Morphable,
+        SupportCrud,
+        Translatable;
 }

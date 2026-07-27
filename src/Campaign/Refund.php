@@ -23,6 +23,4 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\CreditNote $credit_note
  * @property-read \Buzz\Control\Campaign\Fee[] $fees
  */
-class Refund extends SdkObject
-{
-}
+class Refund extends SdkObject {}

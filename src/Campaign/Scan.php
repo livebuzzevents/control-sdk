@@ -16,7 +16,7 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property string $barcode
  * @property string $customer_id
  * @property string $scanner_id
- * @property integer $score
+ * @property int $score
  * @property-read \Buzz\Control\Campaign\Scanner $scanner
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
@@ -30,26 +30,12 @@ class Scan extends SdkObject
         WithAnswerHelpers,
         WithPropertyHelpers;
 
-    /**
-     * @param Exhibitor $exhibitor
-     *
-     * @return array
-     */
     public function leadScores(Exhibitor $exhibitor): array
     {
         return $this->api()->get($this->getEndpoint("lead-scores/{$exhibitor->id}"));
     }
 
     /**
-     * @param Customer $customer
-     * @param string $type
-     * @param int $page
-     * @param int $per_page
-     * @param string $order
-     * @param string $direction
-     * @param array $filters
-     *
-     * @return Collection
      * @throws ErrorException
      */
     public function contentCapture(

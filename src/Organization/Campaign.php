@@ -13,7 +13,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property string $database_id
  * @property string $currency
  * @property int $sequence
- * @property boolean $migrated
+ * @property bool $migrated
  * @property string $dupe_cancelled
  * @property string $dupe_exhibitors
  * @property array $dupe_rules
@@ -29,7 +29,7 @@ use Buzz\Control\Traits\SupportRead;
  * @property string $timezone
  * @property string $version
  * @property-read array $supported_languages
- * @property-read boolean $multilingual
+ * @property-read bool $multilingual
  * @property-read string $full_name
  * @property-read string $status
  * @property-read array $show_days
