@@ -21,4 +21,20 @@ class Floorplan extends SdkObject
     use HasFiles,
         SupportRead,
         Translatable;
+
+    public function exhibitors(): array
+    {
+        return $this->api()->get(sprintf('app/fetch/%s/floorplan/exhibitors', customer()->id), [
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
+        ]);
+    }
+
+    public function seminars(): array
+    {
+        return $this->api()->get(sprintf('app/fetch/%s/floorplan/seminars', customer()->id), [
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
+        ]);
+    }
 }
