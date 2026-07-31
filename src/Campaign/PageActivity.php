@@ -9,6 +9,8 @@ use Buzz\Control\Traits\SupportWrite;
  * Class PageActivity
  *
  * @property string $customer_id
+ * @property string $model_id
+ * @property string $model_type
  * @property string $exhibitor_id
  * @property string $file_id
  * @property string $target_id
@@ -17,6 +19,7 @@ use Buzz\Control\Traits\SupportWrite;
  * @property string $action
  * @property-read object $target
  * @property-read \Buzz\Control\Campaign\Customer $customer
+ * @property-read \Buzz\Control\Campaign\Lead $lead
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\File $file
  * @property-read \Buzz\Control\Campaign\Page $page
@@ -25,6 +28,13 @@ class PageActivity extends SdkObject
 {
     use SupportRead,
         SupportWrite;
+
+    public function model(SdkObject $object)
+    {
+        $this->data['model'] = $object;
+        $this->model_type    = class_basename($object);
+        $this->model_id      = $object->id;
+    }
 
     public function associate(SdkObject $object)
     {
