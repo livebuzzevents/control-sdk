@@ -10,7 +10,7 @@
   "type": "package",
   "require": {
     "php": "^8.3",
-    "livebuzz/essentials-sdk": "4.4.0"
+    "livebuzz/essentials-sdk": "4.5.0"
   },
   "require-dev": {
     "laravel/pint": "^1.29",
