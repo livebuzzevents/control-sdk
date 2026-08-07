@@ -11,6 +11,7 @@ use Buzz\Control\Traits\SupportWrite;
 /**
  * Class Seminar
  *
+ * @property boolean $bookable
  * @property string $identifier
  * @property string $title
  * @property string $description
