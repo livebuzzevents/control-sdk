@@ -14,6 +14,7 @@ use Illuminate\Support\Collection;
 /**
  * Class Seminar
  *
+ * @property bool $bookable
  * @property bool $featured
  * @property string $custom_type_id
  * @property string $identifier
