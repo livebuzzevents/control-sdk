@@ -73,7 +73,7 @@ class Seminar extends SdkObject
     public function getAdditionalInfo(): array
     {
         return $this->api()->get(
-            $this->getEndpoint($this->id.'/fetch/additional-info')
+            $this->getEndpoint($this->id.'/fetch/additional-info/'.customer()->id)
         );
     }
 
