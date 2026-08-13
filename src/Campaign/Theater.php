@@ -2,6 +2,7 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
@@ -12,6 +13,7 @@ use Buzz\EssentialsSdk\Cast;
  *
  * @property string $identifier
  * @property string $name
+ * @property string $description
  * @property string $type
  * @property string $color
  * @property string $text_color_hexstring
@@ -19,7 +21,8 @@ use Buzz\EssentialsSdk\Cast;
  */
 class Theater extends SdkObject
 {
-    use SupportRead,
+    use HasFiles,
+        SupportRead,
         SupportWrite,
         Translatable;
 
