@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Taggable;
+use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportRead;
 
 /**
@@ -49,13 +50,15 @@ use Buzz\Control\Traits\SupportRead;
  * @property-read \Buzz\Control\Campaign\Credit[] $credits
  * @property-read \Buzz\Control\Campaign\BillingDetails $billing_details
  * @property-read \Buzz\Control\Campaign\ShippingDetails $shipping_details
+ * @property-read \Buzz\Control\Campaign\Property[] $properties
  * @property-read \Buzz\Control\Campaign\Invoice $invoice
  * @property-read \Buzz\Control\Campaign\OrderAction[] $actions
  */
 class Order extends SdkObject
 {
     use SupportRead,
-        Taggable;
+        Taggable,
+        WithPropertyHelpers;
 
     /**
      * Returns checkout link
