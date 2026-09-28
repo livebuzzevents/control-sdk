@@ -82,7 +82,16 @@ class Page extends SdkObject
         }
 
         if (exhibitor() || config('buzz.stream') === 'exhibitor') {
-            $request['initiator_role'] = customer()->exhibitor_role ?? 'basic';
+            $targetCustomer = collect($targets)->first(function ($target) {
+                return $target instanceof Customer;
+            });
+
+            if (request()->route()?->getName() === 'badge::invite::claim' && request()->isMethod('get')) {
+                $request['initiator_role'] = $targetCustomer->exhibitor_role ?? 'basic';
+            } else {
+                $request['initiator_role'] = customer()->exhibitor_role ?? 'basic';
+            }
+
         }
 
         return Cast::many(
