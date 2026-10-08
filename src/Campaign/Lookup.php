@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\EssentialsSdk\Exceptions\ErrorException;
+use Exception;
 
 /**
  * Class Lookup
@@ -60,7 +61,7 @@ class Lookup extends SdkObject
      *
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
-    public function ip(string $ip)
+    public function ip(string $ip): array
     {
         if (! $ip) {
             throw new ErrorException('Ip required!');
@@ -69,7 +70,13 @@ class Lookup extends SdkObject
             throw new ErrorException('Invalid IP address');
         }
 
-        return $this->api()->get($this->getEndpoint('ip/'.$ip));
+        try {
+            $ipData = $this->api()->get($this->getEndpoint('ip/'.$ip));
+        } catch (Exception) {
+
+        }
+
+        return $ipData ?? ['country_iso' => 'GB'];
     }
 
     /**
