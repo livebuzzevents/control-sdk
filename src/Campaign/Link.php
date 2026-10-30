@@ -10,6 +10,8 @@ use Buzz\Control\Traits\SupportCrud;
  *
  * @property string $type
  * @property string $url
+ * @property string $publish
+ * @property \Carbon\Carbon $publish_at
  * @property-read bool $is_video
  * @property-read bool $is_embeddable_video
  */
