@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\EssentialsSdk\Exceptions\ErrorException;
+use Exception;
 
 /**
  * Class Lookup
@@ -10,18 +11,16 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
 class Lookup extends SdkObject
 {
     /**
-     * @param string $country
-     * @param string $postcode
-     *
      * @return mixed
+     *
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
     public function addressByPostcode(string $country, string $postcode)
     {
-        if (!$country) {
+        if (! $country) {
             throw new ErrorException('Country required!');
         }
-        if (!$postcode) {
+        if (! $postcode) {
             throw new ErrorException('Postcode required!');
         }
 
@@ -29,11 +28,10 @@ class Lookup extends SdkObject
     }
 
     /**
-     * @param string $country
-     * @param string $term
-     * @param string $id
-     *
+     * @param  string  $term
+     * @param  string  $id
      * @return mixed
+     *
      * @throws ErrorException
      */
     public function addressByTerm(string $country)
@@ -42,56 +40,58 @@ class Lookup extends SdkObject
     }
 
     /**
-     * @param string $email
-     *
      * @return mixed
+     *
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
     public function email(string $email)
     {
-        if (!$email) {
+        if (! $email) {
             throw new ErrorException('Email required!');
         }
         if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
             throw new ErrorException('Invalid email address');
         }
 
-        return $this->api()->get($this->getEndpoint('email/' . $email));
+        return $this->api()->get($this->getEndpoint('email/'.$email));
     }
 
     /**
-     * @param string $ip
-     *
      * @return mixed
+     *
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
-    public function ip(string $ip)
+    public function ip(string $ip): array
     {
-        if (!$ip) {
+        if (! $ip) {
             throw new ErrorException('Ip required!');
         }
         if (filter_var($ip, FILTER_VALIDATE_IP) === false) {
             throw new ErrorException('Invalid IP address');
         }
 
-        return $this->api()->get($this->getEndpoint('ip/' . $ip));
+        try {
+            $ipData = $this->api()->get($this->getEndpoint('ip/'.$ip));
+        } catch (Exception) {
+
+        }
+
+        return $ipData ?? ['country_iso' => 'GB'];
     }
 
     /**
-     * @param string|null $country
-     *
      * @return mixed
      */
-    public function country(string $country = null)
+    public function country(?string $country = null)
     {
-        return $this->api()->get($this->getEndpoint(sprintf('country/%s', $country, app()->getLocale())), [
+        return $this->api()->get($this->getEndpoint(sprintf('country/%s', $country)), [
             'locale' => app()->getLocale(),
         ]);
     }
 
-    public function states()
+    public function states(string $country)
     {
-        return $this->api()->get($this->getEndpoint(sprintf('states', app()->getLocale())), [
+        return $this->api()->get($this->getEndpoint(sprintf('states/%s', $country)), [
             'locale' => app()->getLocale(),
         ]);
     }

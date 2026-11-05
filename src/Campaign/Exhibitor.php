@@ -10,11 +10,17 @@ use Buzz\Control\Campaign\Traits\WithAnswerHelpers;
 use Buzz\Control\Campaign\Traits\WithPropertyHelpers;
 use Buzz\Control\Traits\SupportCrud;
 use Buzz\EssentialsSdk\Cast;
-use Buzz\EssentialsSdk\Collection;
+use Buzz\EssentialsSdk\Exceptions\ErrorException;
+use Illuminate\Support\Collection;
 
 /**
  * Class Exhibitor
  *
+ * @property string $show_email
+ * @property string $show_addresses
+ * @property string $show_phones
+ * @property bool $featured
+ * @property string $custom_type_id
  * @property string $import_id
  * @property string $owner_id
  * @property string $publish
@@ -36,8 +42,6 @@ use Buzz\EssentialsSdk\Collection;
  * @property string $cloned_id
  * @property string $cloned_type
  * @property string $cloned_campaign_id
- * @property boolean $featured
- * @property string $custom_type_id
  * @property-read int smartscan_count
  * @property-read int smartscan_purchased_count
  * @property-read int handiscan_count
@@ -68,6 +72,7 @@ use Buzz\EssentialsSdk\Collection;
  * @property-read \Buzz\Control\Campaign\Property[] $properties
  * @property-read \Buzz\Control\Campaign\Scanner[] $scanners
  * @property-read \Buzz\Control\Campaign\Scan[] $scans
+ * @property-read \Buzz\Control\Campaign\CustomType $custom_type
  * @property-read \Buzz\Control\Campaign\SeminarExhibitor[] $seminars
  * @property-read \Buzz\Control\Campaign\PageActivity[] $page_activities
  * @property-read \Buzz\Control\Campaign\ExhibitorPressRelease[] $press_releases
@@ -77,32 +82,31 @@ use Buzz\EssentialsSdk\Collection;
  * @property-read \Buzz\Control\Campaign\Customer $main_contact
  * @property-read \Buzz\Control\Campaign\Customer[] $customers
  * @property-read \Buzz\Control\Campaign\Allowance[] $allowances
- * @property-read \Buzz\Control\Campaign\CustomType $custom_type
  * @property-read string $signed_all_favourites_download_link
  */
 class Exhibitor extends SdkObject
 {
-    use SupportCrud,
-        HasAreas,
+    use HasAreas,
+        HasFavourites,
+        HasFiles,
+        SupportCrud,
         Taggable,
         WithAnswerHelpers,
-        WithPropertyHelpers,
-        HasFavourites,
-        HasFiles;
+        WithPropertyHelpers;
 
     /**
      * @return \Buzz\EssentialsSdk\Collection
+     *
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
-
-    public function getFlattenedAllowances(string $entitlement, string $type = null): \Illuminate\Support\Collection
+    public function getFlattenedAllowances(string $entitlement, ?string $type = null): Collection
     {
         return collect(
             $this->api()->post(
-                $this->getEndpoint($this->id . '/flattened-allowances'),
+                $this->getEndpoint($this->id.'/flattened-allowances'),
                 [
                     'entitlement' => $entitlement,
-                    'type' => $type,
+                    'type'        => $type,
                 ]
             )
         );
@@ -110,14 +114,15 @@ class Exhibitor extends SdkObject
 
     /**
      * @return \Buzz\EssentialsSdk\Collection
+     *
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
     public function getEmailInvites(): Collection
     {
         return Cast::many(
-            (new Invite()),
+            (new Invite),
             $this->api()->get(
-                $this->getEndpoint($this->id . '/email-invites')
+                $this->getEndpoint($this->id.'/email-invites')
             )
         );
     }
@@ -137,6 +142,62 @@ class Exhibitor extends SdkObject
             );
         }
 
-        return $this->api()->get($this->getEndpoint($this->id . '/download-badges/' . $customer->id));
+        return $this->api()->get($this->getEndpoint($this->id.'/download-badges/'.$customer->id));
+    }
+
+    /**
+     * @throws ErrorException
+     */
+    public function fetchForApp(string $entityListId): array
+    {
+        return $this->api()->get("app/fetch/$entityListId/exhibitors", [
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
+        ]);
+    }
+
+    /**
+     * @throws ErrorException
+     */
+    public function fetchBadgeHolders(string $exhibitor): array
+    {
+        return $this->api()->get("app/fetch/$exhibitor/exhibitor-badge-holders", [
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
+        ]);
+    }
+
+    /**
+     * @throws ErrorException
+     */
+    public function fetchProducts(string $exhibitor): array
+    {
+        return $this->api()->get("app/fetch/$exhibitor/exhibitor-products", [
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
+        ]);
+    }
+
+    public function fetchFilters(string $entityListId): Collection
+    {
+        return collect($this->api()->get("app/fetch/$entityListId/exhibitor-filters"));
+    }
+
+    public function smartscanPlus(): array
+    {
+        return $this->api()->get($this->getEndpoint($this->id.'/smartscan-plus'));
+    }
+
+    public function downloadLeads(?Scanner $scanner = null): string
+    {
+        $endpoint = '/download-leads';
+
+        if (optional($scanner)->id) {
+            $endpoint .= '/'.$scanner->id;
+        }
+
+        return $this->api()->post(
+            $this->getEndpoint($this->id.$endpoint), request()->only('scan_filters')
+        );
     }
 }

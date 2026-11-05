@@ -7,7 +7,7 @@ $page         = 1;
 $counter      = 1;
 
 while (true) {
-    $files = (new \Buzz\Control\Campaign\File())->get([['identifier', 'is', 'credentials']], $page, 25);
+    $files = (new \Buzz\Control\Campaign\File)->get([['identifier', 'is', 'credentials']], $page, 25);
 
     if ($files->isEmpty()) {
         break;

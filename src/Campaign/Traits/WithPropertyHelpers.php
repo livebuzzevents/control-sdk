@@ -1,15 +1,13 @@
-<?php namespace Buzz\Control\Campaign\Traits;
+<?php
+
+namespace Buzz\Control\Campaign\Traits;
 
 /**
  * Class WithPropertyHelpers
- *
- * @package Buzz\Control\Campaign\Traits
  */
 trait WithPropertyHelpers
 {
     /**
-     * @param $identifier
-     *
      * @return null
      */
     public function getPropertyByIdentifier($identifier)

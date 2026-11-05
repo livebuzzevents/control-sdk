@@ -1,6 +1,8 @@
+/node_modules
 /vendor
 /.idea
 /.vagrant
 .env
 .composer.lock
 .DS_Store
+.phpunit.result.cache

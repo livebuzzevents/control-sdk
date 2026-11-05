@@ -8,19 +8,18 @@ use Buzz\Control\Traits\SupportCrud;
 /**
  * Class Preference
  *
- * @property boolean $campaign_email
- * @property boolean $campaign_mail
- * @property boolean $campaign_phone
- * @property boolean $campaign_sms
- * @property boolean $organization_email
- * @property boolean $organization_mail
- * @property boolean $organization_phone
- * @property boolean $organization_sms
- * @property boolean $third_party_email
- * @property boolean $third_party_mail
- * @property boolean $third_party_phone
- * @property boolean $third_party_sms
- *
+ * @property bool $campaign_email
+ * @property bool $campaign_mail
+ * @property bool $campaign_phone
+ * @property bool $campaign_sms
+ * @property bool $organization_email
+ * @property bool $organization_mail
+ * @property bool $organization_phone
+ * @property bool $organization_sms
+ * @property bool $third_party_email
+ * @property bool $third_party_mail
+ * @property bool $third_party_phone
+ * @property bool $third_party_sms
  */
 class Preference extends SdkObject
 {
@@ -32,7 +31,7 @@ class Preference extends SdkObject
      */
     public function save(): void
     {
-        if (!$this->isDirty()) {
+        if (! $this->isDirty()) {
             return;
         }
 

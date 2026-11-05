@@ -8,10 +8,8 @@ namespace Buzz\Control\Gateway;
  * @property string $identifier
  * @property string $name
  * @property string $database_id
- * @property boolean $migrated
+ * @property bool $migrated
  * @property string $version
  * @property-read string $database_name
  */
-class Organization extends SdkObject
-{
-}
+class Organization extends SdkObject {}

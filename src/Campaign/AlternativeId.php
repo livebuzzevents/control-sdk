@@ -10,7 +10,6 @@ use Buzz\Control\Traits\SupportCrud;
  *
  * @property string $type
  * @property string $value
- *
  */
 class AlternativeId extends SdkObject
 {

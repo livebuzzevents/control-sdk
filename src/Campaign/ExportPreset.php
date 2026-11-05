@@ -14,6 +14,4 @@ namespace Buzz\Control\Campaign;
  * @property array $option_columns
  * @property array $settings
  */
-class ExportPreset extends SdkObject
-{
-}
+class ExportPreset extends SdkObject {}

@@ -19,14 +19,14 @@ use Buzz\Control\Traits\SupportCrud;
  * @property int $max_usages
  * @property array $settings
  * @property string $active
- * @property \DateTime $valid_from
- * @property \DateTime $valid_to
+ * @property \Carbon\Carbon $valid_from
+ * @property \Carbon\Carbon $valid_to
  * @property-read string $currency
  * @property-read string $overview
  */
 class Discount extends SdkObject
 {
-    use Translatable,
-        Morphable,
-        SupportCrud;
+    use Morphable,
+        SupportCrud,
+        Translatable;
 }

@@ -12,14 +12,11 @@ namespace Buzz\Control\Campaign;
  * @property array $parameters
  * @property array $results
  * @property string $group
- * @property boolean $paid_executed
- * @property boolean $paid_rolled_back
- * @property boolean $completed_executed
- * @property boolean $completed_rolled_back
- *
+ * @property bool $paid_executed
+ * @property bool $paid_rolled_back
+ * @property bool $completed_executed
+ * @property bool $completed_rolled_back
  * @property-read \Buzz\Control\Campaign\Order $order
  * @property-read \Buzz\Control\Campaign\OrderProduct $order_product
  */
-class OrderAction extends SdkObject
-{
-}
+class OrderAction extends SdkObject {}

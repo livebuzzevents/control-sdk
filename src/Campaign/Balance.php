@@ -7,12 +7,8 @@ namespace Buzz\Control\Campaign;
  *
  * @property string $customer_id
  * @property string $amount
- * @property boolean $currency
- *
+ * @property bool $currency
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\BalanceTransaction[] $transactions
- *
  */
-class Balance extends SdkObject
-{
-}
+class Balance extends SdkObject {}

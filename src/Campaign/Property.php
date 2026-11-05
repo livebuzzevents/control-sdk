@@ -22,7 +22,7 @@ class Property extends SdkObject
      */
     public function save(): void
     {
-        if (!$this->isDirty()) {
+        if (! $this->isDirty()) {
             return;
         }
 

@@ -10,7 +10,6 @@ use Buzz\Control\Campaign\Traits\Morphable;
  * @property string $language
  * @property string $field
  * @property string $translation
- *
  */
 class Translation extends SdkObject
 {

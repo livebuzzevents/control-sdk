@@ -9,12 +9,14 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
 /**
  * Class Invite
  *
+ * @property string $import_id
  * @property string $token
  * @property string $customer_id
  * @property string $created_by_customer_id
  * @property string $created_by_exhibitor_id
  * @property string $stream_id
  * @property string $badge_type_id
+ * @property string $product_id
  * @property string $status
  * @property string $provider
  * @property string $provider_sender
@@ -22,11 +24,13 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property string $subject
  * @property string $message
  * @property-read string $url
+ * @property-read \Buzz\Control\Campaign\Import $import
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Customer $created_by_customer
  * @property-read \Buzz\Control\Campaign\Exhibitor $created_by_exhibitor
  * @property-read \Buzz\Control\Campaign\Stream $stream
  * @property-read \Buzz\Control\Campaign\BadgeType $badge_type
+ * @property-read \Buzz\Control\Campaign\Product $product
  */
 class Invite extends SdkObject
 {
@@ -41,21 +45,29 @@ class Invite extends SdkObject
     public function delete(): void
     {
         if (in_array($this->status, ['accepted', 'bypassed'])) {
-            throw new ErrorException("Delete is forbidden for invite with status " . $this->status);
+            throw new ErrorException('Delete is forbidden for invite with status '.$this->status);
         }
 
         $this->api()->delete($this->getEndpoint($this->id));
     }
 
-    /**
-     * @param string $email_message_template_id
-     * @return string
-     */
     public function preview(string $email_message_template_id): string
     {
         return $this->api()->post(
             $this->getEndpoint("preview/{$email_message_template_id}"),
             $this->prepareRequestData()
         )['html'];
+    }
+
+    public function byExhibitor(Exhibitor $exhibitor, array $filters = []): array
+    {
+        return $this->api()->get($this->getEndpoint("by-exhibitor/$exhibitor->id"), [
+            'component_id' => request('component_id'),
+            'filters'      => $filters,
+            'page'         => request('page'),
+            'per_page'     => request('per_page'),
+            'order'        => request('order'),
+            'direction'    => request('direction'),
+        ]);
     }
 }

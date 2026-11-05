@@ -7,13 +7,9 @@ namespace Buzz\Control\Campaign;
  *
  * @property string $balance_id
  * @property string $amount
- * @property boolean $currency
- * @property boolean $reference
- * @property boolean $description
- *
+ * @property bool $currency
+ * @property bool $reference
+ * @property bool $description
  * @property-read \Buzz\Control\Campaign\Balance $balance
- *
  */
-class BalanceTransaction extends SdkObject
-{
-}
+class BalanceTransaction extends SdkObject {}

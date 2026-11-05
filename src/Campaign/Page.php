@@ -9,7 +9,6 @@ use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
 use Buzz\EssentialsSdk\Cast;
 use Buzz\EssentialsSdk\Collection;
-use Buzz\EssentialsSdk\Exceptions\ErrorException;
 
 /**
  * Class Page
@@ -18,6 +17,7 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property string $friendly_url
  * @property string $active
  * @property string $description
+ * @property string $footer
  * @property string $stream_id
  * @property string $parent_id
  * @property string $title
@@ -27,6 +27,9 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  * @property string $value
  * @property int $order
  * @property array $settings
+ * @property array $actions
+ * @property bool $global_page
+ * @property bool $global_components
  * @property-read \Buzz\Control\Campaign\Stream $stream
  * @property-read \Buzz\Control\Campaign\Page $parent
  * @property-read \Buzz\Control\Campaign\Property[] $properties
@@ -34,10 +37,10 @@ use Buzz\EssentialsSdk\Exceptions\ErrorException;
  */
 class Page extends SdkObject
 {
-    use SupportRead,
+    use HasFiles,
+        SupportRead,
         SupportWrite,
         Translatable,
-        HasFiles,
         WithPropertyHelpers;
 
     /**
@@ -45,28 +48,25 @@ class Page extends SdkObject
      */
     protected $dupeCheckEnabled = true;
 
-    /**
-     * @param bool $dupeCheckEnabled
-     */
     public function setDupeCheck(bool $dupeCheckEnabled)
     {
         $this->dupeCheckEnabled = $dupeCheckEnabled;
     }
 
     /**
-     * @param Stream|null $stream
-     * @param SdkObject[] ...$targets
-     * @param null $filter
+     * @param  SdkObject[]  $targets
      *
-     * @return Collection
-     * @throws ErrorException
+     * @throws Buzz\EssentialsSdk\Exceptions\ErrorException
      */
-    public function load(Stream $stream, array $targets, $filter = null): Collection
+    public function load(?Stream $stream, array $targets, $filter = null): Collection
     {
         $request = [
-            'stream_id' => $stream->id,
-            'targets'   => [],
+            'targets' => [],
         ];
+
+        if ($stream) {
+            $request['stream_id'] = $stream->id;
+        }
 
         if ($filter) {
             $request['filter'] = $filter;
@@ -81,27 +81,37 @@ class Page extends SdkObject
             }
         }
 
-        if (exhibitor()) {
-            $request['initiator_role'] = customer()->exhibitor_role;
+        if (exhibitor() || config('buzz.stream') === 'exhibitor') {
+            $targetCustomer = collect($targets)->first(function ($target) {
+                return $target instanceof Customer;
+            });
+
+            if (request()->route()?->getName() === 'badge::invite::claim' && request()->isMethod('get')) {
+                $request['initiator_role'] = $targetCustomer->exhibitor_role ?? 'basic';
+            } else {
+                $request['initiator_role'] = customer()->exhibitor_role ?? 'basic';
+            }
+
         }
 
         return Cast::many(
-            (new Page()),
+            (new Page),
             $this->api()->post('pages-for-hub', $request)
         );
     }
 
     /**
-     * @param \Buzz\Control\Campaign\SdkObject[] ...$targets
+     * @param  \Buzz\Control\Campaign\SdkObject[]  $targets
      *
-     * @return \Buzz\EssentialsSdk\Collection
      * @throws \Buzz\EssentialsSdk\Exceptions\ErrorException
      */
-    public function loadComponents(...$targets): Collection
+    public function loadComponents(array $targets, array $extraData = []): Collection
     {
         $request = [
             'targets' => [],
         ];
+
+        $request = array_merge($request, $extraData);
 
         foreach ($targets as $target) {
             if ($target) {
@@ -112,31 +122,54 @@ class Page extends SdkObject
             }
         }
 
-        if (request()->route() && $badgeTypeId = request()->route()->parameter('badge_type_id')) {
+        if (exhibitor() || config('buzz.stream') === 'exhibitor') {
+            $request['initiator_role'] = customer()->exhibitor_role ?? 'basic';
+        }
+
+        if (request('affiliate') || session('affiliate') || session('affiliate-name')) {
+            $request['affiliate'] = request('affiliate') ?? session('affiliate') ?? session('affiliate-name');
+        }
+
+        if (request('invite') || session('invite')) {
+            $request['visitor_invite'] = true;
+        }
+
+        if (request('exhibitor-inviter') || session('exhibitor-inviter')) {
+            $request['exhibitor_invite'] = true;
+        }
+
+        if (request('registration-type') || session('registration-type')) {
+            $request['registration_type'] = request('registration-type') ?? session('registration-type');
+        }
+
+        if (request()->is('*/clone*') || session('prepop') || customer()?->registration_method === 'pre-pop') {
+            $request['prepop'] = true;
+        }
+
+        if ($badgeTypeId = request()->route()?->parameter('badge_type_id')) {
             $request['badge_type_id'] = $badgeTypeId;
         }
 
         return Cast::many(
-            (new Component()),
+            (new Component),
             $this->api()->post(
-                $this->getEndpoint($this->id . '/load-components'),
+                $this->getEndpoint($this->id.'/load-components'),
                 $request
             )
         );
     }
 
     /**
-     * @param array $input
-     * @param \Buzz\Control\Campaign\SdkObject[] ...$targets
+     * @param  \Buzz\Control\Campaign\SdkObject[]  $targets
      */
-    public function saveComponents(array $input, ...$targets)
+    public function saveComponents(array $input, array $targets, array $extraData = [])
     {
         $request = [
             'targets'    => [],
-            'components' => $input,
+            'components' => array_merge($input, $extraData),
         ];
 
-        if (!$this->dupeCheckEnabled) {
+        if (! $this->dupeCheckEnabled) {
             $request['disable_dupecheck'] = true;
         }
 
@@ -149,17 +182,41 @@ class Page extends SdkObject
             }
         }
 
-        if (request()->route() && $badgeTypeId = request()->route()->parameter('badge_type_id')) {
+        $request['components']['initiator']              = true;
+        $request['components']['initiator_id']           = customer()->id  ?? null;
+        $request['components']['initiator_exhibitor_id'] = exhibitor()->id ?? null;
+
+        if (request('affiliate') || session('affiliate') || session('affiliate-name')) {
+            $request['affiliate'] = request('affiliate') ?? session('affiliate') ?? session('affiliate-name');
+        }
+
+        if (request('invite') || session('invite')) {
+            $request['visitor_invite'] = true;
+        }
+
+        if (request('exhibitor-inviter') || session('exhibitor-inviter')) {
+            $request['exhibitor_invite'] = true;
+        }
+
+        if (request('registration-type') || session('registration-type')) {
+            $request['registration_type'] = request('registration-type') ?? session('registration-type');
+        }
+
+        if (request()->is('*/clone*') || session('prepop') || customer()?->registration_method === 'pre-pop') {
+            $request['prepop'] = true;
+        }
+
+        if ($badgeTypeId = request()->route()?->parameter('badge_type_id')) {
             $request['badge_type_id'] = $badgeTypeId;
         }
 
         $saveComponents = $this->api()->post(
-            $this->getEndpoint($this->id . '/save-components'),
+            $this->getEndpoint($this->id.'/save-components'),
             $request
         );
 
         return Cast::single(
-            app('\\Buzz\\Control\\Campaign\\' . key($saveComponents)),
+            app('\\Buzz\\Control\\Campaign\\'.key($saveComponents)),
             $saveComponents[key($saveComponents)]
         );
     }

@@ -10,6 +10,4 @@ namespace Buzz\Control\Campaign;
  * @property-read \Buzz\Control\Campaign\Topic $topic
  * @property-read \Buzz\Control\Campaign\Seminar $seminar
  */
-class SeminarTopic extends SdkObject
-{
-}
+class SeminarTopic extends SdkObject {}

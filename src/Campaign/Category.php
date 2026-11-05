@@ -10,7 +10,6 @@ use Buzz\Control\Traits\SupportRead;
  * @property string $identifier
  * @property string $name
  * @property array $settings
- *
  * @property-read \Buzz\Control\Campaign\Article[] $articles
  */
 class Category extends SdkObject

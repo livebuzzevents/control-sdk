@@ -9,8 +9,6 @@ namespace Buzz\Control\Campaign;
  * @property string $name
  * @property string $description
  * @property-read int $leads_count
- * @property \DateTime $expired_at
+ * @property \Carbon\Carbon $expired_at
  */
-class LeadGroup extends SdkObject
-{
-}
+class LeadGroup extends SdkObject {}

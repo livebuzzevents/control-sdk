@@ -37,7 +37,7 @@ use Buzz\Control\Traits\SupportCrud;
  * @property string $cloned_campaign_id
  * @property bool $smart_match_synced
  * @property array $details
- * @property \DateTime $expires_at
+ * @property \Carbon\Carbon $expires_at
  * @property-read \Buzz\Control\Campaign\LeadGroup $group
  * @property-read \Buzz\Control\Campaign\Address[] $addresses
  * @property-read \Buzz\Control\Campaign\Answer[] $answers
@@ -51,16 +51,15 @@ use Buzz\Control\Traits\SupportCrud;
  * @property-read \Buzz\Control\Campaign\SmsMessage[] $sms_messages
  * @property-read \Buzz\Control\Campaign\Social[] $socials
  * @property-read \Buzz\Control\Campaign\ModelTag[] $tags
- *
  */
 class Lead extends SdkObject
 {
-    use SupportCrud,
-        CanSendEmailMessage,
+    use CanSendEmailMessage,
         CanSendSmsMessage,
         HasAreas,
+        HasFiles,
+        SupportCrud,
         Taggable,
         WithAnswerHelpers,
-        WithPropertyHelpers,
-        HasFiles;
+        WithPropertyHelpers;
 }

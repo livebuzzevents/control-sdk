@@ -8,6 +8,7 @@ use Buzz\Control\Traits\SupportCrud;
 /**
  * Class CustomerSeminar
  *
+ * @property string $customer_type_id
  * @property string $customer_id
  * @property string $creator_id
  * @property string $seminar_id
@@ -18,11 +19,12 @@ use Buzz\Control\Traits\SupportCrud;
  * @property-read \Buzz\Control\Campaign\Customer $customer
  * @property-read \Buzz\Control\Campaign\Customer $creator
  * @property-read \Buzz\Control\Campaign\Seminar $seminar
+ * @property-read \Buzz\Control\Campaign\CustomType $custom_type
  * @property-read \Buzz\Control\Campaign\Redemption[] $redemptions
  * @property-read \Buzz\Control\Campaign\CustomType $custom_type
  */
 class CustomerSeminar extends SdkObject
 {
-    use SupportCrud;
     use Morphable;
+    use SupportCrud;
 }

@@ -2,16 +2,21 @@
 
 namespace Buzz\Control\Campaign;
 
+use Buzz\Control\Campaign\Traits\HasAreas;
 use Buzz\Control\Campaign\Traits\HasFavourites;
 use Buzz\Control\Campaign\Traits\HasFiles;
 use Buzz\Control\Campaign\Traits\Translatable;
 use Buzz\Control\Traits\SupportRead;
 use Buzz\Control\Traits\SupportWrite;
+use Buzz\EssentialsSdk\Exceptions\ErrorException;
+use Illuminate\Support\Collection;
 
 /**
  * Class Seminar
  *
- * @property boolean $bookable
+ * @property bool $bookable
+ * @property bool $featured
+ * @property string $custom_type_id
  * @property string $identifier
  * @property string $title
  * @property string $description
@@ -23,54 +28,68 @@ use Buzz\Control\Traits\SupportWrite;
  * @property array $settings
  * @property string $source
  * @property string $source_id
- * @property boolean $featured
- * @property string $custom_type_id
- * @property \DateTime $ends_at
- * @property \DateTime $starts_at
+ * @property \Carbon\Carbon $ends_at
+ * @property \Carbon\Carbon $starts_at
+ * @property \Buzz\Control\Campaign\CustomerSeminar[] $speakers
  * @property-read string $content_capture_qr_code
  * @property-read int $spaces_taken
  * @property-read int $spaces_available
  * @property-read string $signed_attendees_download_link
+ * @property-read \Buzz\Control\Campaign\CustomType $custom_type
+ * @property-read \Buzz\Control\Campaign\Link[] $links
  * @property-read \Buzz\Control\Campaign\Theater $theater
  * @property-read \Buzz\Control\Campaign\Exhibitor $exhibitor
  * @property-read \Buzz\Control\Campaign\Product $product
  * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $customer_seminars
  * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $attendees
- * @property-read \Buzz\Control\Campaign\CustomerSeminar[] $speakers
  * @property-read \Buzz\Control\Campaign\Scanner[] $scanners
  * @property-read \Buzz\Control\Campaign\SeminarTopic[] $topics
  * @property-read \Buzz\Control\Campaign\Exhibitor[] $exhibitors
- * @property-read \Buzz\Control\Campaign\CustomType $custom_type
  */
 class Seminar extends SdkObject
 {
-    use SupportRead,
-        SupportWrite,
-        Translatable,
+    use HasAreas,
         HasFavourites,
-        HasFiles;
+        HasFiles,
+        SupportRead,
+        SupportWrite,
+        Translatable;
 
-    /**
-     * @param string $topic_id
-     */
     public function attachTopic(string $topic_id): void
     {
         $this->api()->post($this->getEndpoint("{$this->id}/attach-topic/{$topic_id}"));
     }
 
-    /**
-     * @param string $topic_id
-     */
     public function detachTopic(string $topic_id): void
     {
         $this->api()->delete($this->getEndpoint("{$this->id}/detach-topic/{$topic_id}"));
     }
 
-    /**
-     * @param array $topic_ids
-     */
     public function syncTopics(array $topic_ids): void
     {
         $this->api()->post($this->getEndpoint("{$this->id}/sync-topics"), $topic_ids);
+    }
+
+    public function getAdditionalInfo(): array
+    {
+        return $this->api()->get(
+            $this->getEndpoint($this->id.'/fetch/additional-info/'.customer()->id)
+        );
+    }
+
+    /**
+     * @throws ErrorException
+     */
+    public function fetchForApp(string $entityListId): array
+    {
+        return $this->api()->get("app/fetch/$entityListId/seminars", [
+            'page'     => request('page'),
+            'per_page' => request('per_page'),
+        ]);
+    }
+
+    public function fetchFilters(string $entityListId): Collection
+    {
+        return collect($this->api()->get("app/fetch/$entityListId/seminar-filters"));
     }
 }

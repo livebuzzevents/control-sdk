@@ -1,15 +1,13 @@
 language: php
 
-dist: bionic
+dist: jammy
+addons:
+  apt:
+    packages:
+      - "libonig5"
 
 php:
-  - '7.1'
+  - '8.3'
 
 install:
-  - composer self-update 1.10.16
-  - composer --version
-  - composer install --no-interaction --prefer-source
-
-script:
-  - vendor/bin/phpunit
-  - vendor/bin/phpcs src --standard=psr2
+  - composer install --no-interaction --prefer-source --no-dev

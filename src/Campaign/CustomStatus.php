@@ -3,6 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Translatable;
+use Buzz\Control\Traits\SupportCrud;
 
 /**
  * Class CustomStatus
@@ -14,5 +15,6 @@ use Buzz\Control\Campaign\Traits\Translatable;
  */
 class CustomStatus extends SdkObject
 {
+    use SupportCrud;
     use Translatable;
 }
