@@ -3,7 +3,7 @@
 namespace Buzz\Control\Campaign;
 
 use Buzz\Control\Campaign\Traits\Translatable;
-use Buzz\Control\Traits\SupportCrud;
+use Buzz\Control\Traits\SupportRead;
 
 /**
  * Class IntegrationProvider
@@ -19,6 +19,6 @@ use Buzz\Control\Traits\SupportCrud;
  */
 class IntegrationProvider extends SdkObject
 {
-    use SupportCrud,
+    use SupportRead,
         Translatable;
 }
