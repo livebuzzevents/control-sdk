@@ -330,14 +330,18 @@ class Customer extends SdkObject
         );
     }
 
-    public function getSeminars(?Seminar $seminar = null): Collection
+    public function getSeminars(?Seminar $seminar = null, bool $includeSpeakers = false): Collection
     {
         $endpoint = $seminar ? "/seminars/$seminar->id" : '/seminars';
 
+        if ($includeSpeakers) {
+            $request['include_speakers'] = true;
+        }
+
         return Cast::many(
-            (new Seminar),
+            (new CustomerSeminar),
             $this->api()->get(
-                $this->getEndpoint($this->id.$endpoint)
+                $this->getEndpoint($this->id.$endpoint), $request ?? []
             )
         );
     }
