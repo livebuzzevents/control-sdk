@@ -509,22 +509,14 @@ class Customer extends SdkObject
         );
     }
 
-    public function hasNewMessages(): bool
+    public function fetchEventAppUpdates(): array
     {
         return $this->api()->post(
-            $this->getEndpoint(customer()->id.'/has-new-messages'),
+            $this->getEndpoint(customer()->id.'/fetch-event-app-updates'),
             [
-                'last_sync' => request('last_sync'),
-            ]
-        );
-    }
-
-    public function hasMeetingUpdates(): bool
-    {
-        return $this->api()->post(
-            $this->getEndpoint(customer()->id.'/has-meeting-updates'),
-            [
-                'last_sync' => request('last_sync'),
+                'last_sync'      => request('last_sync'),
+                'check_meetings' => request('check_meetings'),
+                'check_messages' => request('check_messages'),
             ]
         );
     }

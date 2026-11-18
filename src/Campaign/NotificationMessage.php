@@ -13,9 +13,4 @@ use Buzz\Control\Traits\SupportCrud;
 class NotificationMessage extends SdkObject
 {
     use Morphable, SupportCrud;
-
-    public function updates(array $request): array
-    {
-        return $this->api()->post($this->getEndpoint('updates'), array_merge($request, ['model_id' => customer()->id]));
-    }
 }
