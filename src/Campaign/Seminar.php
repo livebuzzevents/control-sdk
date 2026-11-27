@@ -28,6 +28,7 @@ use Illuminate\Support\Collection;
  * @property array $settings
  * @property string $source
  * @property string $source_id
+ * @property string $seminar_code
  * @property \Carbon\Carbon $ends_at
  * @property \Carbon\Carbon $starts_at
  * @property \Buzz\Control\Campaign\CustomerSeminar[] $speakers
